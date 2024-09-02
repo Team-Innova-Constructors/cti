@@ -71,7 +71,7 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
 
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         if (Screen.hasShiftDown()){
-            list.add(Component.translatable("cti.tooltip.item.protonium_ammo").withStyle(ChatFormatting.AQUA));
+            list.add(Component.translatable("cti.tooltip.item.electronium_ammo").withStyle(ChatFormatting.AQUA));
         }else {
             list.add(Component.translatable("cti.tooltip.item.shift").withStyle(ChatFormatting.AQUA));
         }
