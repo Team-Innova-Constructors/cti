@@ -1,0 +1,13 @@
+{
+  "itemGroup.cti.materials": "CTI-材料",
+  "itemGroup.cti.mixc": "CTI-杂项",
+
+  "cti.tooltip.item.shift": "按下 Shift 以获取信息",
+  "cti.tooltip.item.ultradense_ammo": "这种高密度材料制成的特种机关枪弹药具有较高的伤害，命中时能无视敌人无敌帧，但是射程很近而且射击时需要消耗大量压缩空气。",
+  "cti.tooltip.item.protonium_ammo": "这种强互作用材料制成的特种机关枪弹药具有很高的伤害，命中时能无视敌人无敌帧，并且穿甲，但是射程很近且射击时需要非常多压缩空气。",
+  "cti.tooltip.item.electronium_ammo": "这种超轻含能材料制成的特种机关枪弹药伤害相对较低，但是射程很远，而且会对目标施加电离减益。",
+
+  "item.cti.ultradense_ammo": "超致密机枪弹药",
+  "item.cti.protonium_ammo": "质子机枪弹药",
+  "item.cti.electronium_ammo": "电子机枪弹药"
+}

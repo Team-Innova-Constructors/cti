@@ -5,6 +5,7 @@ import me.desht.pneumaticcraft.common.core.ModUpgrades;
 import me.desht.pneumaticcraft.common.item.minigun.AbstractGunAmmoItem;
 import me.desht.pneumaticcraft.common.minigun.Minigun;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -17,30 +18,32 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import net.minecraft.client.gui.screens.Screen;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class UltraDenseAmmo extends AbstractGunAmmoItem {
+public class ProtoniumAmmo extends AbstractGunAmmoItem {
     @Override
     public int getAmmoColor(ItemStack itemStack) {
-        return 0x00600075;
+        return 0x00850060;
     }
     @Override
     public int getMaxDamage(ItemStack stack) {
-        return 750;
+        return 880;
     }
     @Override
     protected float getDamageMultiplier(Entity target, ItemStack ammoStack) {
-        return 2.5f;
+        return 3.5f;
     }
     @Override
     public float getAirUsageMultiplier(Minigun minigun, ItemStack ammoStack) {
-        return 10.0f;
+        return 16.0f;
     }
     public float getRangeMultiplier(ItemStack ammoStack) {
-        return 0.25f;
+        return 0.4f;
+    }
+    protected DamageSource getDamageSource(Minigun minigun) {
+        return DamageSource.playerAttack(minigun.getPlayer()).bypassArmor();
     }
     @Override
     public int onTargetHit(Minigun minigun, ItemStack ammo, Entity target) {
@@ -63,7 +66,7 @@ public class UltraDenseAmmo extends AbstractGunAmmoItem {
 
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         if (Screen.hasShiftDown()){
-            list.add(Component.translatable("cti.tooltip.item.ultradense_ammo").withStyle(ChatFormatting.AQUA));
+            list.add(Component.translatable("cti.tooltip.item.protonium_ammo").withStyle(ChatFormatting.AQUA));
         }else {
             list.add(Component.translatable("cti.tooltip.item.shift").withStyle(ChatFormatting.AQUA));
         }
