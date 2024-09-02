@@ -11,5 +11,11 @@ public class ctiTab {
             return new ItemStack((ItemLike) ctiItem.test.get());
         }
     };
+    public static final CreativeModeTab MIXC = new CreativeModeTab("mixc") {
+        @Override
+        public  ItemStack makeIcon() {
+            return new ItemStack((ItemLike) ctiItem.test.get());
+        }
+    };
     public ctiTab(){}
 }
