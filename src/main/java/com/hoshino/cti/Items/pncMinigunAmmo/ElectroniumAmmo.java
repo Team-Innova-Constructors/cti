@@ -10,6 +10,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.EnderDragonPart;
@@ -35,7 +36,7 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
     }
     @Override
     protected float getDamageMultiplier(Entity target, ItemStack ammoStack) {
-        return 0.85f;
+        return 1.25f;
     }
     @Override
     public float getAirUsageMultiplier(Minigun minigun, ItemStack ammoStack) {
@@ -60,7 +61,8 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
                 target.invulnerableTime=0;
                 target.hurt(getDamageSource(minigun), (float)(ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times));
                 if (target instanceof LivingEntity living){
-                    living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),50,2),minigun.getPlayer());
+                    living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),50,4),minigun.getPlayer());
+                    living.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,100,4),minigun.getPlayer());
                 }
             } else if (target instanceof ShulkerBullet || target instanceof AbstractHurtingProjectile) {
                 target.discard();

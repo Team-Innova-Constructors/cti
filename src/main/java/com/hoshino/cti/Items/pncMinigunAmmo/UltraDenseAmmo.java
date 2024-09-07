@@ -33,7 +33,7 @@ public class UltraDenseAmmo extends AbstractGunAmmoItem {
     }
     @Override
     protected float getDamageMultiplier(Entity target, ItemStack ammoStack) {
-        return 2.5f;
+        return 3f;
     }
     @Override
     public float getAirUsageMultiplier(Minigun minigun, ItemStack ammoStack) {

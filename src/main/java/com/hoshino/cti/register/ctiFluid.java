@@ -13,4 +13,5 @@ public class ctiFluid {
     private static FluidObject<ForgeFlowingFluid> register(String name, int temp) {
         return FLUIDS.register(name).type(FluidType.Properties.create().density(2000).viscosity(10000).temperature(temp).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)).bucket().flowing();
     }
+    public static final FluidObject<ForgeFlowingFluid> flux_fluid = register("flux_fluid",8192);
 }

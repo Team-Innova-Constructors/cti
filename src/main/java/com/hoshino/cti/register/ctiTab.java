@@ -5,16 +5,16 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 
 public class ctiTab {
-    public static final CreativeModeTab MATERIALS = new CreativeModeTab("materials") {
+    public static final CreativeModeTab MATERIALS = new CreativeModeTab("cti.materials") {
         @Override
         public  ItemStack makeIcon() {
             return new ItemStack((ItemLike) ctiItem.test.get());
         }
     };
-    public static final CreativeModeTab MIXC = new CreativeModeTab("mixc") {
+    public static final CreativeModeTab MIXC = new CreativeModeTab("cti.mixc") {
         @Override
         public  ItemStack makeIcon() {
-            return new ItemStack((ItemLike) ctiItem.test.get());
+            return new ItemStack((ItemLike) ctiItem.unipolar_magnet.get());
         }
     };
     public ctiTab(){}

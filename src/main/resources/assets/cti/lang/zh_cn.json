@@ -9,5 +9,14 @@
 
   "item.cti.ultradense_ammo": "超致密机枪弹药",
   "item.cti.protonium_ammo": "质子机枪弹药",
-  "item.cti.electronium_ammo": "电子机枪弹药"
+  "item.cti.electronium_ammo": "电子机枪弹药",
+
+  "item.cti.tier_5_rocket": "五级火箭",
+
+  "block.cti.unipolar_magnet": "单极磁石",
+  "block.cti.unipolar_magnet_budding": "单极磁石母岩",
+  "item.cti.unipolar_magnet": "单极磁石",
+  "item.cti.unipolar_magnet_budding": "单极磁石母岩"
+
+
 }

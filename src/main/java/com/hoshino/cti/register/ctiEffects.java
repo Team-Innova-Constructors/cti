@@ -8,4 +8,5 @@ import static com.marth7th.solidarytinker.solidarytinker.MOD_ID;
 
 public class ctiEffects {
     public static final DeferredRegister<MobEffect> EFFECT = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, MOD_ID);
+
 }
