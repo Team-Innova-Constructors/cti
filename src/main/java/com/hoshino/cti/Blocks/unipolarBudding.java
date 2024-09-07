@@ -22,6 +22,7 @@ public class unipolarBudding extends AmethystBlock {
     }
 
 
+
     @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         Direction direction = DIRECTIONS[pRandom.nextInt(DIRECTIONS.length)];

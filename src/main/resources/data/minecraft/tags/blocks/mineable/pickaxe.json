@@ -1,6 +1,7 @@
 {
   "values": [
     "cti:unipolar_magnet_budding",
-    "cti:unipolar_magnet"
+    "cti:unipolar_magnet",
+    "cti:overdense_glacio_stone"
   ]
 }

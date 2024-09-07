@@ -15,8 +15,14 @@
 
   "block.cti.unipolar_magnet": "单极磁石",
   "block.cti.unipolar_magnet_budding": "单极磁石母岩",
+  "block.cti.overdense_glacio_stone":"超质量霜星石",
   "item.cti.unipolar_magnet": "单极磁石",
-  "item.cti.unipolar_magnet_budding": "单极磁石母岩"
+  "item.cti.unipolar_magnet_budding": "单极磁石母岩",
+  "item.cti.overdense_glacio_stone":"超质量霜星石",
 
-
+  "biome.cti.disordered_zone":"异常区域",
+  "biome.cti.ionized_glacio":"电离冻土",
+  "biome.cti.ionized_mare":"电离月海",
+  "biome.cti.infernal":"炼狱",
+  "biome.cti.infernal_molten_surface":"半熔融炼狱"
 }
