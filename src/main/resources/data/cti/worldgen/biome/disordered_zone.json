@@ -11,9 +11,9 @@
       "foliage_color": -6356840,
       "particle": {
         "options": {
-          "type": "etshtinker:plasmaexplosionpurple"
+          "type": "etshtinker:electric"
         },
-        "probability": 0.001
+        "probability": 0.1
       }
     },
     "creature_spawn_probability": 0,
