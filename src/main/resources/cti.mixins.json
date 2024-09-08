@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "com.hoshino.cti.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.7",
+  "refmap": "cti.refmap.json",
+  "mixins": [
+    "LivingEntityMixin",
+    "TestMixin"
+  ],
+  "client": [
+
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

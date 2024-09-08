@@ -1,13 +1,16 @@
 package com.hoshino.cti.register;
 
+import com.hoshino.cti.Modifier.*;
+import com.hoshino.cti.cti;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
-
-import static com.marth7th.solidarytinker.solidarytinker.MOD_ID;
+import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
 public class ctiModifiers {
     /**
      * 词条的注册部分
      * 图省事所有直接把等号外部分写在一起了（
      */
-    public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);
+    public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(cti.MOD_ID);
+    public static final StaticModifier<ElectricProtect> electric_protect= MODIFIERS.register("electric_protect", ElectricProtect::new);
+    public static final StaticModifier<test> test= MODIFIERS.register("test", test::new);
 }

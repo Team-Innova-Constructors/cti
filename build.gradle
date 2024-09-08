@@ -6,18 +6,22 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '6.0.21+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 plugins {
     id 'eclipse'
     id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '5.+'
 }
 
 
 
 
 apply plugin: 'net.minecraftforge.gradle'
+
+apply plugin: 'org.spongepowered.mixin'
 
 
 
@@ -34,6 +38,8 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg') // Currently, this location cannot be changed from the default.
+
     // The mappings can be changed at any time and must be in the following format.
     // Channel:   Version:
     // official   MCVersion             Official field/method names from Mojang mapping files
@@ -71,7 +77,13 @@ minecraft {
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'cti'
-
+            workingDirectory project.file('run')
+            property 'mixin.env.disableRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            //客户端中指定你资源包中的mixin文件
+            arg '-mixin.config=cti.mixins.json'
             mods {
                 cti {
                     source sourceSets.main
@@ -88,7 +100,8 @@ minecraft {
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'cti'
-
+            //服务端中指定你资源包中的mixin文件
+            arg '-mixin.config=cti.mixins.json'
             mods {
                 cti {
                     source sourceSets.main
@@ -116,7 +129,7 @@ minecraft {
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'cti'
-
+            arg '-mixin.config=cti.mixins.json'
             mods {
                 cti {
                     source sourceSets.main
@@ -133,7 +146,8 @@ minecraft {
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'cti', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
+            //数据包中指定你资源包中的mixin文件
+            arg '-mixin.config=cti.mixins.json'
             mods {
                 cti {
                     source sourceSets.main
@@ -154,6 +168,22 @@ repositories {
     }
     flatDir {
         dir 'libs'
+    }
+    maven {
+        url "https://www.cursemaven.com"
+    }
+    maven {
+        name "Progwml6 maven"
+        url "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+//    maven {
+//        name "ModMaven"
+//        url "https://modmaven.k-4u.nl"
+//    }
+    maven {
+        name = "Curios API"
+        url = "https://maven.theillusivec4.top/"
     }
 }
 
@@ -178,6 +208,20 @@ dependencies {
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    implementation fg.deobf('curse.maven:framework-549225:3873800')
+    implementation fg.deobf('curse.maven:mrcrayfishs-gun-mod-289479:3874034')
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.36')
+    compileOnly fg.deobf("mezz.jei:jei-1.19-common-api:11.0.0.211")
+    compileOnly fg.deobf("mezz.jei:jei-1.19-forge-api:11.0.0.211")
+
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.1.0")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.1.0:api")
+
+    runtimeOnly fg.deobf("mezz.jei:jei-1.19-forge:11.0.0.211")
+
+    //这里引入mixin依赖
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
@@ -190,7 +234,8 @@ jar {
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "hoshino",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs": "cti.mixins.json"
         ])
     }
 }
@@ -217,3 +262,22 @@ publishing {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
+
+
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+//设置你的mixin源文件名称
+mixin {
+    add sourceSets.main, "cti.refmap.json"
+}
+
+
+
+
+
+
+
+

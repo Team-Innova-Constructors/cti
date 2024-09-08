@@ -1,5 +1,5 @@
 {
-    "temperature": 1.6,
+    "temperature": 1075,
     "downfall": 1,
     "precipitation": "none",
     "effects": {
@@ -11,7 +11,7 @@
       "foliage_color": 7842607,
       "particle": {
         "options": {
-          "type": "minecraft:crimson_spore"
+          "type": "minecraft:falling_dripstone_lava"
         },
         "probability": 0.014
       }

@@ -1,5 +1,6 @@
 package com.hoshino.cti;
 
+import com.hoshino.cti.Modifier.capability.ElectricShieldToolCap;
 import com.hoshino.cti.register.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -7,8 +8,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
+import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 
 @Mod(cti.MOD_ID)
 
@@ -27,6 +30,7 @@ public class cti {
          */
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::clientSetup);
+        eventBus.addListener(this::commonSetup);
         ctiItem.ITEMS.register(eventBus);
         ctiModifiers.MODIFIERS.register(eventBus);
         ctiFluid.FLUIDS.register(eventBus);
@@ -36,6 +40,7 @@ public class cti {
         ctiItem.ASTRAITEM.init();
         ctiItem.VEHICLES.init();
         ctiEntity.ENTITY_TYPES.init();
+
         if(Mekenabled){
             ctiGas.GAS.register(eventBus);
         }
@@ -46,6 +51,10 @@ public class cti {
     @SubscribeEvent
     public void clientSetup(FMLClientSetupEvent event){
         event.enqueueWork(ctiEntity::registerEntityRenderers);
+    }
+    @SubscribeEvent
+    public void commonSetup(FMLCommonSetupEvent event){
+        ToolCapabilityProvider.register(ElectricShieldToolCap::new);
     }
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
