@@ -25,20 +25,27 @@ import static com.hoshino.cti.util.BiomeUtil.*;
 
 public class EnvironmentSystem {
     public static final EquipmentSlot[] ARMOR_SLOTS = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
+    //直接伤害的危害基础伤害
     public static final float baseDmg = 20;
+    //百分比伤害的危害基础百分比
     public static final float Multiplier =0.1f;
+
+    //环境危害的计算函数，10ticks执行一次
     public static void EnvironmentTick(LivingEntity living, ServerLevel level) {
         Holder<Biome> biome = level.getBiome(living.blockPosition());
+        //危害水平，等于群系水平-防护水平，后续可以补充
         float lvl_ionize = getBiomeIonizeLevel(biome) - getElectricResistance(living);
         int lvl_scorch = getBiomeScorchLevel(biome);
         int lvl_freeze = getBiomeFreezeLevel(biome);
+        //危害水平>0时的处理
         if (lvl_ionize > 0) {
             living.invulnerableTime = 0;
             living.hurt(DamageSource.DRAGON_BREATH, 0.01f);
             living.setHealth(living.getHealth() - baseDmg * lvl_ionize);
-            ((ServerLevel) living.level).sendParticles(etshtinkerParticleType.electric.get(), living.getX(), living.getY(), living.getZ(), (int) (baseDmg * lvl_ionize), 0, 0, 0, 0.25);
+            ((ServerLevel) living.level).sendParticles(etshtinkerParticleType.electric.get(), living.getX(), living.getY(), living.getZ(), (int) (baseDmg * lvl_ionize*5), 0, 0, 0, 0.25);
         }
     }
+
     public static float getElectricResistance(LivingEntity living){
         float resist =0;
         for (EquipmentSlot slot:ARMOR_SLOTS){
