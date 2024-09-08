@@ -1,0 +1,38 @@
+package com.hoshino.cti.Items;
+
+import earth.terrarium.ad_astra.common.screen.PlanetSelectionMenuProvider;
+import earth.terrarium.botarium.api.menu.MenuHooks;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.Level;
+
+public class PlanetGuiItem extends Item {
+    public int lvl =1;
+    public PlanetGuiItem(Properties p_41383_,int lvl) {
+        super(p_41383_);
+        this.lvl = lvl;
+    }
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        player.startUsingItem(hand);
+        return InteractionResultHolder.consume(player.getItemInHand(hand));
+    }
+    public ItemStack finishUsingItem(ItemStack p_41409_, Level level, LivingEntity living) {
+        if (living instanceof Player player){
+            player.inventoryMenu.removed(player);
+            MenuHooks.openMenu((ServerPlayer) player, new PlanetSelectionMenuProvider(this.lvl));
+        }
+        return p_41409_;
+    }
+    public int getUseDuration(ItemStack p_41454_) {
+        return 1;
+    }
+    public UseAnim getUseAnimation(ItemStack p_41452_) {
+        return UseAnim.BLOCK;
+    }
+}

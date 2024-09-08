@@ -44,9 +44,9 @@ public class BiomeUtil {
     public static final Map<ResourceKey<Biome>,Integer> getBiomeIonizeLevelMap(){
         Map<ResourceKey<Biome>,Integer> map =new HashMap<>();
 
-        map.put(IONIZED_MARE,3);
-        map.put(IONIZED_GLACIO,2);
-        map.put(DISORDERED_ZONE,1);
+        map.put(IONIZED_MARE,2);
+        map.put(IONIZED_GLACIO,1);
+        map.put(DISORDERED_ZONE,3);
 
         return map;
     }
@@ -56,8 +56,6 @@ public class BiomeUtil {
 
         map.put(INFERNAL_MOLTEN,3);
         map.put(INFERNAL,2);
-        map.put(VENUS_BARRENS,1);
-        map.put(VENUS_WASTELAND,1);
 
         return map;
     }

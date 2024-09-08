@@ -1,16 +1,21 @@
 package com.hoshino.cti.Entity.Systems;
 
+import cofh.core.init.CoreMobEffects;
+import cofh.core.init.CoreParticles;
+import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import com.hoshino.cti.Capabilitiess.IElectricShielding;
+import com.hoshino.cti.Capabilitiess.IFreezeShielding;
+import com.hoshino.cti.Capabilitiess.IScorchShielding;
 import com.hoshino.cti.Capabilitiess.ctiCapabilities;
+import com.hoshino.cti.register.ctiDamageSource;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.common.capabilities.Capability;
@@ -35,14 +40,57 @@ public class EnvironmentSystem {
         Holder<Biome> biome = level.getBiome(living.blockPosition());
         //危害水平，等于群系水平-防护水平，后续可以补充
         float lvl_ionize = getBiomeIonizeLevel(biome) - getElectricResistance(living);
-        int lvl_scorch = getBiomeScorchLevel(biome);
-        int lvl_freeze = getBiomeFreezeLevel(biome);
+        float lvl_scorch = getBiomeScorchLevel(biome) -getScorchResistance(living);
+        float lvl_freeze = getBiomeFreezeLevel(biome) -getFreezeResistance(living);
         //危害水平>0时的处理
+        //为了获得死亡信息，用自定义伤害类型处死
         if (lvl_ionize > 0) {
-            living.invulnerableTime = 0;
-            living.hurt(DamageSource.DRAGON_BREATH, 0.01f);
-            living.setHealth(living.getHealth() - baseDmg * lvl_ionize);
-            ((ServerLevel) living.level).sendParticles(etshtinkerParticleType.electric.get(), living.getX(), living.getY(), living.getZ(), (int) (baseDmg * lvl_ionize*5), 0, 0, 0, 0.25);
+            if (living.getHealth()>baseDmg * lvl_ionize) {
+                living.setHealth(living.getHealth() - baseDmg * lvl_ionize);
+                living.addEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),50,(int) lvl_ionize));
+            }
+            else if (living.isAlive()){
+                living.setHealth(0.001f);
+                living.hurt(ctiDamageSource.IONIZED.bypassArmor(), Float.MAX_VALUE);
+                if (living.isAlive()){
+                    living.hurt(ctiDamageSource.IONIZED,2048);
+                }
+            }
+            if (living.isAlive()) {
+                ((ServerLevel) living.level).sendParticles(etshtinkerParticleType.electric.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * lvl_ionize * 5), 0, 0, 0, 0.25);
+            }
+        }
+        if (lvl_freeze > 0) {
+            if (living.getHealth()>baseDmg * lvl_freeze) {
+                living.setHealth(living.getHealth() - baseDmg * lvl_freeze *0.25f);
+                living.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),50,(int) lvl_freeze));
+            }
+            else if (living.isAlive()){
+                living.setHealth(0.001f);
+                living.hurt(ctiDamageSource.FROZEN.bypassArmor(), Float.MAX_VALUE);
+                if (living.isAlive()){
+                    living.hurt(ctiDamageSource.FROZEN,2048);
+                }
+            }
+            if (living.isAlive()) {
+                ((ServerLevel) living.level).sendParticles(CoreParticles.FROST.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * lvl_ionize * 5), 0, 0, 0, 0.25);
+            }
+        }
+        if (lvl_scorch > 0) {
+            if (living.getHealth()>baseDmg * lvl_scorch) {
+                living.setHealth(living.getHealth() - baseDmg * lvl_scorch *0.5f);
+                living.setSecondsOnFire(200);
+            }
+            else if (living.isAlive()){
+                living.setHealth(0.001f);
+                living.hurt(ctiDamageSource.SCORCH.bypassArmor(), Float.MAX_VALUE);
+                if (living.isAlive()){
+                    living.hurt(ctiDamageSource.SCORCH,2048);
+                }
+            }
+            if (living.isAlive()) {
+                ((ServerLevel) living.level).sendParticles(ParticleTypes.FLAME, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * lvl_ionize * 5), 0, 0, 0, 0.25);
+            }
         }
     }
 
@@ -53,6 +101,28 @@ public class EnvironmentSystem {
             Optional<IElectricShielding> shielding = getCapability(stack, ctiCapabilities.ELECTRIC_SHIELDING,null).resolve();
             if (shielding.isPresent()){
                 resist+=shielding.get().getElectricShieldinng();
+            }
+        }
+        return resist;
+    }
+    public static float getScorchResistance(LivingEntity living){
+        float resist =0;
+        for (EquipmentSlot slot:ARMOR_SLOTS){
+            ItemStack stack = living.getItemBySlot(slot);
+            Optional<IScorchShielding> shielding = getCapability(stack, ctiCapabilities.SCORCH_SHIELDING,null).resolve();
+            if (shielding.isPresent()){
+                resist+=shielding.get().getScorchShieldinng();
+            }
+        }
+        return resist;
+    }
+    public static float getFreezeResistance(LivingEntity living){
+        float resist =0;
+        for (EquipmentSlot slot:ARMOR_SLOTS){
+            ItemStack stack = living.getItemBySlot(slot);
+            Optional<IFreezeShielding> shielding = getCapability(stack, ctiCapabilities.FREEZE_SHIELDING,null).resolve();
+            if (shielding.isPresent()){
+                resist+=shielding.get().getFreezeShieldinng();
             }
         }
         return resist;

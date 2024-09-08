@@ -5,8 +5,6 @@ import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -21,7 +19,7 @@ public class OverdenseGlacioStone extends Block {
 
     @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (pRandom.nextInt(300)==1) {
+        if (pRandom.nextInt(250)==1) {
             BlockPos blockpos = new BlockPos(pPos.getX(), pPos.getY() + 1, pPos.getZ());
             BlockState blockstate = pLevel.getBlockState(blockpos);
             int a = 0;
@@ -34,14 +32,11 @@ public class OverdenseGlacioStone extends Block {
                 plasmaexplosionentity entity = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), pLevel);
                 entity.particle = etshtinkerParticleType.plasmaexplosionpurple.get();
                 entity.special = "entropic";
-                entity.scale = 0.8f;
+                entity.scale = 1f;
                 entity.damage = 75;
                 entity.rayVec3 = new Vec3(0, 24 + 12 * pRandom.nextFloat(), 0);
                 entity.setPos(blockpos.getX(), blockpos.getY(), blockpos.getZ());
                 pLevel.addFreshEntity(entity);
-                pLevel.playLocalSound(blockpos.getX(), blockpos.getY(), blockpos.getZ(), SoundEvents.GENERIC_EXPLODE, SoundSource.AMBIENT, 2, 2, true);
-                pLevel.playLocalSound(blockpos.getX(), blockpos.getY(), blockpos.getZ(), SoundEvents.FIREWORK_ROCKET_BLAST_FAR, SoundSource.AMBIENT, 2, 2, true);
-                pLevel.playLocalSound(blockpos.getX(), blockpos.getY(), blockpos.getZ(), SoundEvents.FIREWORK_ROCKET_TWINKLE, SoundSource.AMBIENT, 2, 2, true);
             }
         }
     }

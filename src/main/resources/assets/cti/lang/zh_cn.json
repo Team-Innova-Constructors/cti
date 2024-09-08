@@ -2,16 +2,26 @@
   "itemGroup.cti.materials": "CTI-材料",
   "itemGroup.cti.mixc": "CTI-杂项",
 
+
+
   "cti.tooltip.item.shift": "按下 Shift 以获取信息",
   "cti.tooltip.item.ultradense_ammo": "这种高密度材料制成的特种机关枪弹药具有较高的伤害，命中时能无视敌人无敌帧，但是射程很近而且射击时需要消耗大量压缩空气。",
   "cti.tooltip.item.protonium_ammo": "这种强互作用材料制成的特种机关枪弹药具有很高的伤害，命中时能无视敌人无敌帧，并且穿甲，但是射程很近且射击时需要非常多压缩空气。",
   "cti.tooltip.item.electronium_ammo": "这种超轻含能材料制成的特种机关枪弹药伤害相对较低，但是射程很远，而且会对目标施加电离减益。",
+
+
 
   "item.cti.ultradense_ammo": "超致密机枪弹药",
   "item.cti.protonium_ammo": "质子机枪弹药",
   "item.cti.electronium_ammo": "电子机枪弹药",
 
   "item.cti.tier_5_rocket": "五级火箭",
+
+  "item.cti.astra_tablet_1": "一阶全息星空板",
+  "item.cti.astra_tablet_2": "二阶全息星空板",
+  "item.cti.astra_tablet_3": "三阶全息星空板",
+  "item.cti.astra_tablet_4": "四阶全息星空板",
+  "item.cti.astra_tablet_5": "五阶全息星空板",
 
   "block.cti.unipolar_magnet": "单极磁石",
   "block.cti.unipolar_magnet_budding": "单极磁石母岩",
@@ -20,9 +30,34 @@
   "item.cti.unipolar_magnet_budding": "单极磁石母岩",
   "item.cti.overdense_glacio_stone":"超质量霜星石",
 
+
+
   "biome.cti.disordered_zone":"异常区域",
   "biome.cti.ionized_glacio":"电离冻土",
   "biome.cti.ionized_mare":"电离月海",
   "biome.cti.infernal":"炼狱",
-  "biome.cti.infernal_molten_surface":"半熔融炼狱"
+  "biome.cti.infernal_molten_surface":"半熔融炼狱",
+
+
+
+  "death.attack.cti.ionized": "%1$s 体内的正负电荷被永远分离了。",
+  "death.attack.cti.ionized.player": "%1$s 体内的正负电荷被永远分离了。",
+  "death.attack.cti.scorch": "%1$s 变成了活性炭。",
+  "death.attack.cti.scorch.player": "%1$s 变成了活性炭。",
+  "death.attack.cti.frozen": "%1$s 变成了速冻水饺。",
+  "death.attack.cti.frozen.player": "%1$s 变成了速冻水饺。",
+
+
+
+  "modifier.cti.electric_protect": "电离防护",
+  "modifier.cti.electric_protect.flavor": "电流退散！",
+  "modifier.cti.electric_protect.description":"每级提供25%电离抗性",
+
+  "modifier.cti.scorch_protect": "灼热防护",
+  "modifier.cti.scorch_protect.flavor": "清热解暑！",
+  "modifier.cti.scorch_protect.description":"每级提供25%灼热抗性",
+
+  "modifier.cti.freeze_protect": "极寒防护",
+  "modifier.cti.freeze_protect.flavor": "祛寒避湿！",
+  "modifier.cti.freeze_protect.description":"每级提供25%极寒抗性"
 }
