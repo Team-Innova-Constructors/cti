@@ -36,52 +36,52 @@ public class BiomeUtil {
             INFERNAL,
             INFERNAL_MOLTEN
     );
-    public static final Map<ResourceKey<Biome>,Integer> IONIZE_LEVEL =getBiomeIonizeLevelMap();
-    public static final Map<ResourceKey<Biome>,Integer> SCORCH_LEVEL =getBiomeScorchLevelMap();
-    public static final Map<ResourceKey<Biome>,Integer> FREEZE_LEVEL =getBiomeFreezeLevelMap();
+    public static final Map<ResourceKey<Biome>,Float> IONIZE_LEVEL =getBiomeIonizeLevelMap();
+    public static final Map<ResourceKey<Biome>,Float> SCORCH_LEVEL =getBiomeScorchLevelMap();
+    public static final Map<ResourceKey<Biome>,Float> FREEZE_LEVEL =getBiomeFreezeLevelMap();
 
     //群系电离等级字典，注册完记得加上
-    public static final Map<ResourceKey<Biome>,Integer> getBiomeIonizeLevelMap(){
-        Map<ResourceKey<Biome>,Integer> map =new HashMap<>();
+    public static final Map<ResourceKey<Biome>,Float> getBiomeIonizeLevelMap(){
+        Map<ResourceKey<Biome>,Float> map =new HashMap<>();
 
-        map.put(IONIZED_MARE,2);
-        map.put(IONIZED_GLACIO,1);
-        map.put(DISORDERED_ZONE,3);
+        map.put(IONIZED_MARE,2.1f);
+        map.put(IONIZED_GLACIO,0.8f);
+        map.put(DISORDERED_ZONE,3.5f);
 
         return map;
     }
     //群系灼热等级字典，注册完记得加上
-    public static final Map<ResourceKey<Biome>,Integer> getBiomeScorchLevelMap(){
-        Map<ResourceKey<Biome>,Integer> map =new HashMap<>();
+    public static final Map<ResourceKey<Biome>,Float> getBiomeScorchLevelMap(){
+        Map<ResourceKey<Biome>,Float> map =new HashMap<>();
 
-        map.put(INFERNAL_MOLTEN,3);
-        map.put(INFERNAL,2);
+        map.put(INFERNAL_MOLTEN,2.9f);
+        map.put(INFERNAL,2.1f);
 
         return map;
     }
     //群系极寒等级字典，注册完记得加上
-    public static final Map<ResourceKey<Biome>,Integer> getBiomeFreezeLevelMap(){
-        Map<ResourceKey<Biome>,Integer> map =new HashMap<>();
+    public static final Map<ResourceKey<Biome>,Float> getBiomeFreezeLevelMap(){
+        Map<ResourceKey<Biome>,Float> map =new HashMap<>();
 
-        map.put(IONIZED_MARE,2);
-        map.put(IONIZED_GLACIO,3);
-        map.put(DISORDERED_ZONE,1);
+        map.put(IONIZED_MARE,1.5f);
+        map.put(IONIZED_GLACIO,3.3f);
+        map.put(DISORDERED_ZONE,1.1f);
 
         return map;
     }
 
 
-    public static int getBiomeIonizeLevel(Holder<Biome> holder){
+    public static float getBiomeIonizeLevel(Holder<Biome> holder){
         ResourceKey<Biome> key =getBiomeKey(holder);
-        return key!=null? IONIZE_LEVEL.getOrDefault(key, 0):0;
+        return key!=null? IONIZE_LEVEL.getOrDefault(key, 0f):0f;
     }
-    public static int getBiomeScorchLevel(Holder<Biome> holder){
+    public static float getBiomeScorchLevel(Holder<Biome> holder){
         ResourceKey<Biome> key =getBiomeKey(holder);
-        return key!=null? SCORCH_LEVEL.getOrDefault(key, 0):0;
+        return key!=null? SCORCH_LEVEL.getOrDefault(key, 0f):0f;
     }
-    public static int getBiomeFreezeLevel(Holder<Biome> holder){
+    public static float getBiomeFreezeLevel(Holder<Biome> holder){
         ResourceKey<Biome> key =getBiomeKey(holder);
-        return key!=null? FREEZE_LEVEL.getOrDefault(key, 0):0;
+        return key!=null? FREEZE_LEVEL.getOrDefault(key, 0f):0f;
     }
 
 

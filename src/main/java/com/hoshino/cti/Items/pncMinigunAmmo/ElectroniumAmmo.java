@@ -1,6 +1,7 @@
 package com.hoshino.cti.Items.pncMinigunAmmo;
 
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
+import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
 import me.desht.pneumaticcraft.common.config.ConfigHelper;
 import me.desht.pneumaticcraft.common.core.ModUpgrades;
 import me.desht.pneumaticcraft.common.item.minigun.AbstractGunAmmoItem;
@@ -45,8 +46,8 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
     public float getRangeMultiplier(ItemStack ammoStack) {
         return 1f;
     }
-    protected DamageSource getDamageSource(Minigun minigun) {
-        return DamageSource.playerAttack(minigun.getPlayer()).bypassArmor();
+    protected DamageSource getDamageSource(Minigun minigun,Float amount) {
+        return PierceThrough.pierceDamage(minigun.getPlayer(),amount );
     }
     @Override
     public int onTargetHit(Minigun minigun, ItemStack ammo, Entity target) {
@@ -59,7 +60,7 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
         if (dmgMult > 0) {
             if (target instanceof LivingEntity || target instanceof EnderDragonPart || target instanceof EndCrystal) {
                 target.invulnerableTime=0;
-                target.hurt(getDamageSource(minigun), (float)(ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times));
+                target.hurt(getDamageSource(minigun,(float)(ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times)), (float)(ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times));
                 if (target instanceof LivingEntity living){
                     living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),50,4),minigun.getPlayer());
                     living.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,100,4),minigun.getPlayer());

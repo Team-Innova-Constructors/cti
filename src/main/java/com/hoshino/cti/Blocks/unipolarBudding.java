@@ -29,7 +29,7 @@ public class unipolarBudding extends AmethystBlock {
         Direction direction = DIRECTIONS[pRandom.nextInt(DIRECTIONS.length)];
         BlockPos blockpos = pPos.relative(direction);
         BlockState blockstate = pLevel.getBlockState(blockpos);
-        if (pLevel.getGameTime() % 24000 <= 12000 && pLevel.getGameTime() % 24000 >= 6000&&pLevel.getBiome(blockpos).is(BiomeUtil.DISORDERED_ZONE)&&blockpos.getY()>=160) {
+        if (pLevel.getGameTime() % 24000 >= 1000 && pLevel.getGameTime() % 24000 <= 13000&&pLevel.getBiome(blockpos).is(BiomeUtil.DISORDERED_ZONE)&&((blockstate.is(Blocks.AIR) || blockstate.is(Blocks.CAVE_AIR) || blockstate.is(Blocks.VOID_AIR) || blockstate.is(Blocks.WATER)))) {
             Block block = ctiBlock.unipolar_magnet.get();
             BlockState blockState = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, direction).setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);
             pLevel.setBlockAndUpdate(blockpos, blockState);

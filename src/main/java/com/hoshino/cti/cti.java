@@ -1,8 +1,10 @@
 package com.hoshino.cti;
 
-import com.hoshino.cti.Modifier.capability.ElectricShieldToolCap;
+import com.hoshino.cti.Event.LivingEvents;
+import com.hoshino.cti.Modifier.capability.*;
 import com.hoshino.cti.register.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -40,7 +42,7 @@ public class cti {
         ctiItem.ASTRAITEM.init();
         ctiItem.VEHICLES.init();
         ctiEntity.ENTITY_TYPES.init();
-
+        MinecraftForge.EVENT_BUS.register(new LivingEvents());
         if(Mekenabled){
             ctiGas.GAS.register(eventBus);
         }
@@ -54,7 +56,10 @@ public class cti {
     }
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event){
+        //环境抗性cap，别忘了在这注册上
         ToolCapabilityProvider.register(ElectricShieldToolCap::new);
+        ToolCapabilityProvider.register(ScorchShieldToolCap::new);
+        ToolCapabilityProvider.register(FreezeShieldToolCap::new);
     }
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
