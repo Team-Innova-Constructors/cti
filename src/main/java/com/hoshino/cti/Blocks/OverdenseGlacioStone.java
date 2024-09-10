@@ -44,7 +44,7 @@ public class OverdenseGlacioStone extends Block {
                 entity.scale = 1f;
                 entity.damage = 75;
                 entity.rayVec3 = new Vec3(0, 24 + 12 * pRandom.nextFloat(), 0);
-                entity.setPos(blockpos.getX(), blockpos.getY(), blockpos.getZ());
+                entity.setPos(blockpos.getX(), blockpos.getY()-2, blockpos.getZ());
                 pLevel.addFreshEntity(entity);
             }
         }

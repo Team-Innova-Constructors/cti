@@ -5,7 +5,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 
 public class LivingEvents {
@@ -18,6 +17,7 @@ public class LivingEvents {
     private void onPierceHurt(LivingHurtEvent event) {
         if (event.getSource() instanceof PierceThrough source){
             event.setAmount(source.getAMOUNT());
+            event.setCanceled(false);
         }
     }
 
@@ -30,6 +30,7 @@ public class LivingEvents {
     public void onPierceDamage(LivingDamageEvent event) {
         if (event.getSource() instanceof PierceThrough source){
             event.setAmount(source.getAMOUNT());
+            event.setCanceled(false);
         }
     }
 }

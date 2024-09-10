@@ -10,7 +10,7 @@ public class PierceThrough extends EntityDamageSource {
         super("player",player);
         this.AMOUNT=amount;
     }
-    public static final DamageSource pierceDamage(Player player,Float amount){
+    public static DamageSource pierceDamage(Player player, Float amount){
         return new PierceThrough(player,amount);
     }
     public float getAMOUNT(){
