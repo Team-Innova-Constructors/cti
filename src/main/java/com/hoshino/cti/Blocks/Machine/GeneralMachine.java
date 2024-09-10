@@ -10,14 +10,14 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class GeneralMachine<T extends BlockEntity> extends BaseEntityBlock {
-    protected GeneralMachine(Properties p_49224_,BlockEntity entity,BlockEntityType<T> type) {
+public class GeneralMachine extends BaseEntityBlock {
+    protected GeneralMachine(Properties p_49224_,BlockEntity entity,BlockEntityType type) {
         super(p_49224_);
         this.BLOCK_ENTITY =entity;
         this.BLOCK_ENTITY_TYPE =type;
     }
     private final BlockEntity BLOCK_ENTITY;
-    private final BlockEntityType<T> BLOCK_ENTITY_TYPE;
+    private final BlockEntityType BLOCK_ENTITY_TYPE;
 
     @Nullable
     @Override
@@ -34,11 +34,5 @@ public class GeneralMachine<T extends BlockEntity> extends BaseEntityBlock {
             }
         }
         super.onRemove(state, level, blockPos, newState, isMoving);
-    }
-
-    @Nullable
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
-        return super.getTicker(level, blockState, (BlockEntityType<T>) this.BLOCK_ENTITY_TYPE);
     }
 }

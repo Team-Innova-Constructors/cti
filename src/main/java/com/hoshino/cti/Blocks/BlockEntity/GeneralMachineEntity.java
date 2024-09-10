@@ -1,5 +1,6 @@
 package com.hoshino.cti.Blocks.BlockEntity;
 
+import com.hoshino.cti.util.ctiEnergyStore;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -17,15 +18,19 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class GeneralMachineEntity extends BlockEntity implements MenuProvider {
-    public GeneralMachineEntity(BlockEntityType<?> entityType, BlockPos blockPos, BlockState blockState, int maxProgress, Component displayName) {
+    public GeneralMachineEntity(BlockEntityType<?> entityType, BlockPos blockPos, BlockState blockState, int maxProgress, Component displayName,int maxEnergy,int maxTransfer,int baseEnergyPerTick) {
         super(entityType, blockPos, blockState);
         this.MAX_PROGRESS =maxProgress;
         this.DISPLAY_NAME =displayName;
+        this.MAX_TRANSFER =maxTransfer;
+        this.MAX_ENERGY =maxEnergy;
+        this.BASE_ENERGY_PERTICK =baseEnergyPerTick;
         this.DATA = new ContainerData() {
             @Override
             public int get(int index) {
@@ -51,18 +56,31 @@ public class GeneralMachineEntity extends BlockEntity implements MenuProvider {
         };
     }
 
+    @Nullable
+    private final ctiEnergyStore ENERGY_STORAGE =this.MAX_ENERGY<=0? new ctiEnergyStore(this.MAX_ENERGY,this.MAX_TRANSFER) {
+        @Override
+        public void onEnergyChange() {
+            setChanged();
+        }
+    }:null;
+
     private ItemStackHandler itemStackHandler =new ItemStackHandler(3){
         protected void onContentsChanged(int slot) {
             setChanged();
         }
     };
 
-    protected final ContainerData DATA;
+    protected ContainerData DATA;
     private int PROGRESS =0;
     private int MAX_PROGRESS;
-    private final Component DISPLAY_NAME;
+    private Component DISPLAY_NAME;
+    private int MAX_ENERGY;
+    private int MAX_TRANSFER;
+    private int BASE_ENERGY_PERTICK;
+
 
     private LazyOptional<ItemStackHandler> LazyitemStackHandler = LazyOptional.empty();
+    private LazyOptional<IEnergyStorage> LazyenergyHandler = LazyOptional.empty();
 
     @Override
     public Component getDisplayName() {
@@ -80,6 +98,9 @@ public class GeneralMachineEntity extends BlockEntity implements MenuProvider {
         if (capability == ForgeCapabilities.ITEM_HANDLER){
             return LazyitemStackHandler.cast();
         }
+        if (capability == ForgeCapabilities.ENERGY&&this.MAX_ENERGY>0){
+            return LazyenergyHandler.cast();
+        }
         return super.getCapability(capability);
     }
 
@@ -87,6 +108,7 @@ public class GeneralMachineEntity extends BlockEntity implements MenuProvider {
     public void onLoad() {
         super.onLoad();
         LazyitemStackHandler = LazyOptional.of(()->itemStackHandler);
+        LazyenergyHandler = LazyOptional.of(()->ENERGY_STORAGE);
     }
 
     @Override
@@ -132,6 +154,11 @@ public class GeneralMachineEntity extends BlockEntity implements MenuProvider {
 
     private static void conductCrafting(GeneralMachineEntity entity){
 
+    }
+
+    @Nullable
+    public ctiEnergyStore getEnergyStorage(){
+        return ENERGY_STORAGE;
     }
 
 

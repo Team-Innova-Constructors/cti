@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class plasmaInfuserEntity extends GeneralMachineEntity{
     public plasmaInfuserEntity(BlockEntityType<?> entityType, BlockPos blockPos, BlockState blockState, int maxProgress, Component displayName) {
-        super(entityType, blockPos, blockState, maxProgress, Component.translatable("cti.machine.plasma_infuser").withStyle(ChatFormatting.DARK_PURPLE));
+        super(entityType, blockPos, blockState, maxProgress, Component.translatable("cti.machine.plasma_infuser").withStyle(ChatFormatting.DARK_PURPLE),1000000000,1000000000,1000000000);
     }
 
 }
