@@ -9,11 +9,16 @@ import com.hoshino.cti.Capabilitiess.IFreezeShielding;
 import com.hoshino.cti.Capabilitiess.IScorchShielding;
 import com.hoshino.cti.Capabilitiess.ctiCapabilities;
 import com.hoshino.cti.Entity.specialDamageSource.Environmental;
+import com.hoshino.cti.netwrok.ctiPacketHandler;
+import com.hoshino.cti.netwrok.packet.PFrozenValueSync;
+import com.hoshino.cti.netwrok.packet.PIonizeValueSync;
+import com.hoshino.cti.netwrok.packet.PScorchValueSync;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -59,24 +64,30 @@ public class EnvironmentSystem {
         //危害值>0时的处理
         if (ion_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
-            living.hurt(Environmental.ionizedSource( baseDmg * ion_multiplier), 1);
+            living.hurt(Environmental.ionizedSource( baseDmg * ion_multiplier), baseDmg * ion_multiplier);
             living.addEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(), 50, (int) ion_multiplier));
             ((ServerLevel) living.level).sendParticles(etshtinkerParticleType.electric.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * fro_multiplier * 3), 0, 0, 0, 0.25);
-            nbt.putFloat(IONIZED_AMOUNT,Math.max(0,nbt.getFloat(IONIZED_AMOUNT)*0.9f));
+            nbt.putFloat(IONIZED_AMOUNT,Math.max(0,nbt.getFloat(IONIZED_AMOUNT)*0.99f));
         }
         if (sco_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
-            living.hurt(Environmental.scorchSource(baseDmg * sco_multiplier), 1);
+            living.hurt(Environmental.scorchSource(baseDmg * sco_multiplier), baseDmg * sco_multiplier);
             living.setSecondsOnFire(200);
             ((ServerLevel) living.level).sendParticles(ParticleTypes.FLAME, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * sco_multiplier * 3), 0, 0, 0, 0.25);
-            nbt.putFloat(SCORCH_AMOUNT,Math.max(0,nbt.getFloat(SCORCH_AMOUNT)*0.9f));
+            nbt.putFloat(SCORCH_AMOUNT,Math.max(0,nbt.getFloat(SCORCH_AMOUNT)*0.99f));
         }
         if (fro_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
-            living.hurt(Environmental.frozenSource(baseDmg * fro_multiplier), 1);
+            living.hurt(Environmental.frozenSource(baseDmg * fro_multiplier), baseDmg * fro_multiplier);
             living.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 50, (int) fro_multiplier));
             ((ServerLevel) living.level).sendParticles(CoreParticles.FROST.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * fro_multiplier * 3), 0, 0, 0, 0.25);
-            nbt.putFloat(FROZEN_AMOUNT,Math.max(0,nbt.getFloat(FROZEN_AMOUNT)*0.9f));
+            nbt.putFloat(FROZEN_AMOUNT,Math.max(0,nbt.getFloat(FROZEN_AMOUNT)*0.99f));
+        }
+        //发包
+        if (living instanceof ServerPlayer player){
+            ctiPacketHandler.sendToPlayer(new PIonizeValueSync(nbt.getFloat(IONIZED_AMOUNT),lvl_ionize),player);
+            ctiPacketHandler.sendToPlayer(new PScorchValueSync(nbt.getFloat(SCORCH_AMOUNT),lvl_scorch),player);
+            ctiPacketHandler.sendToPlayer(new PFrozenValueSync(nbt.getFloat(FROZEN_AMOUNT),lvl_freeze),player);
         }
     }
 

@@ -2,8 +2,12 @@ package com.hoshino.cti;
 
 import com.hoshino.cti.Event.LivingEvents;
 import com.hoshino.cti.Modifier.capability.*;
+import com.hoshino.cti.client.hud.EnvironmentalHud;
+import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.register.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -12,6 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 
@@ -33,6 +38,7 @@ public class cti {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::commonSetup);
+        eventBus.addListener(this::registerGuiOverlay);
         ctiItem.ITEMS.register(eventBus);
         ctiModifiers.MODIFIERS.register(eventBus);
         ctiFluid.FLUIDS.register(eventBus);
@@ -43,6 +49,7 @@ public class cti {
         ctiItem.VEHICLES.init();
         ctiEntity.ENTITY_TYPES.init();
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
+        ctiPacketHandler.init();
         if(Mekenabled){
             ctiGas.GAS.register(eventBus);
         }
@@ -53,6 +60,12 @@ public class cti {
     @SubscribeEvent
     public void clientSetup(FMLClientSetupEvent event){
         event.enqueueWork(ctiEntity::registerEntityRenderers);
+    }
+    @SubscribeEvent
+    public void registerGuiOverlay(RegisterGuiOverlaysEvent event){
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            event.registerAboveAll("ionize", EnvironmentalHud.ENVIRONMENT_OVERLAY);
+        }
     }
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event){

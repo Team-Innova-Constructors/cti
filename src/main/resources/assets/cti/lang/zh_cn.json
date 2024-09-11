@@ -60,5 +60,12 @@
 
   "modifier.cti.freeze_protect": "极寒防护",
   "modifier.cti.freeze_protect.flavor": "祛寒避湿！",
-  "modifier.cti.freeze_protect.description":"每级提供25%极寒抗性"
+  "modifier.cti.freeze_protect.description":"每级提供25%极寒抗性",
+
+  "cti.gui.environmental.ionize_build": "电离强度",
+  "cti.gui.environmental.ionize_value": "电离值",
+  "cti.gui.environmental.scorch_build": "灼热强度",
+  "cti.gui.environmental.scorch_value": "灼热值",
+  "cti.gui.environmental.frozen_build": "霜冻强度",
+  "cti.gui.environmental.frozen_value": "霜冻值"
 }

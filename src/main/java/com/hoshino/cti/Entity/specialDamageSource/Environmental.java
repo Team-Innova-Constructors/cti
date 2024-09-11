@@ -5,7 +5,6 @@ import net.minecraft.world.damagesource.DamageSource;
 public class Environmental extends DamageSource {
     public Environmental(String p_19333_,float amount) {
         super(p_19333_);
-        super.bypassArmor();
         this.AMOUNT=amount;
     }
     public float AMOUNT ;
