@@ -61,7 +61,7 @@ public class EnvironmentalHud {
         GuiComponent.drawString(poseStack, font,
                 Component.translatable(Str+"ionize_build").append(": ")
                         .append(String.format("%.01f",ion_build*2))
-                        .append("/s").withStyle(COLOR.get(ion_build<0?0:ion_lvl+1))
+                        .append("/s").withStyle(COLOR.get(ion_build<=0?0:ion_lvl+1))
                 ,x+180,height -56,255);
 
 
