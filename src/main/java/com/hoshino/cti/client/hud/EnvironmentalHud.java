@@ -68,7 +68,7 @@ public class EnvironmentalHud {
         float sco_val =EnvironmentalPlayerData.getScorchValue();
         double sco_build =EnvironmentalPlayerData.getScorchBuild();
         int sco_lvl =(int) Mth.clamp(sco_build,0.0d,5.0d) ;
-        int player_sco_lvl =ion_val<=0? 0:(int) Mth.clamp(sco_val/50,0,4)+1;
+        int player_sco_lvl =sco_val<=0? 0:(int) Mth.clamp(sco_val/50,0,4)+1;
 
         RenderSystem.setShader(GameRenderer::getPositionShader);
         RenderSystem.setShaderColor(1,1,1,1);
@@ -91,7 +91,7 @@ public class EnvironmentalHud {
         float fzn_val =EnvironmentalPlayerData.getFrozenValue();
         double fzn_build =EnvironmentalPlayerData.getFrozenBuild();
         int fzn_lvl =(int) Mth.clamp(fzn_build,0.0d,5.0d) ;
-        int player_fzn_lvl =ion_val<=0? 0:(int) Mth.clamp(fzn_val /50,0,4)+1;
+        int player_fzn_lvl =fzn_val<=0? 0:(int) Mth.clamp(fzn_val /50,0,4)+1;
 
         RenderSystem.setShader(GameRenderer::getPositionShader);
         RenderSystem.setShaderColor(1,1,1,1);
