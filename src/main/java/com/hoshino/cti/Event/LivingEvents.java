@@ -1,5 +1,6 @@
 package com.hoshino.cti.Event;
 
+import com.hoshino.cti.Entity.specialDamageSource.Environmental;
 import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -19,16 +20,27 @@ public class LivingEvents {
             event.setAmount(source.getAMOUNT());
             event.setCanceled(false);
         }
+        else if (event.getSource() instanceof Environmental source){
+            event.setAmount(source.getAMOUNT());
+            event.setCanceled(false);
+        }
     }
 
     private void onPierceAttack(LivingAttackEvent event) {
         if (event.getSource() instanceof PierceThrough source){
             event.setCanceled(false);
         }
+        else if (event.getSource() instanceof Environmental source){
+            event.setCanceled(false);
+        }
     }
 
     public void onPierceDamage(LivingDamageEvent event) {
         if (event.getSource() instanceof PierceThrough source){
+            event.setAmount(source.getAMOUNT());
+            event.setCanceled(false);
+        }
+        else if (event.getSource() instanceof Environmental source){
             event.setAmount(source.getAMOUNT());
             event.setCanceled(false);
         }

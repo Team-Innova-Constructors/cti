@@ -8,6 +8,9 @@ public class Environmental extends DamageSource {
         this.AMOUNT=amount;
     }
     public float AMOUNT ;
+    public float getAMOUNT(){
+        return this.AMOUNT;
+    }
 
     public static Environmental ionizedSource(float amount){
         return new Environmental("cti.ionized",amount);

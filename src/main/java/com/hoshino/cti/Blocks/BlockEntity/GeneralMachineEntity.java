@@ -11,7 +11,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,14 +22,16 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class GeneralMachineEntity extends BlockEntity implements MenuProvider {
-    public GeneralMachineEntity(BlockEntityType<?> entityType, BlockPos blockPos, BlockState blockState, int maxProgress, Component displayName,int maxEnergy,int maxTransfer,int baseEnergyPerTick) {
+public abstract class GeneralMachineEntity extends BlockEntity implements MenuProvider {
+    public GeneralMachineEntity(BlockEntityType<?> entityType, BlockPos blockPos, BlockState blockState, int maxProgress, Component displayName,int itemSlotAmount,int maxEnergy,int maxTransfer,int baseEnergyPerTick) {
         super(entityType, blockPos, blockState);
+
         this.MAX_PROGRESS =maxProgress;
         this.DISPLAY_NAME =displayName;
         this.MAX_TRANSFER =maxTransfer;
         this.MAX_ENERGY =maxEnergy;
         this.BASE_ENERGY_PERTICK =baseEnergyPerTick;
+        this.ITEM_SLOT_AMOUNT =itemSlotAmount;
         this.DATA = new ContainerData() {
             @Override
             public int get(int index) {
@@ -57,14 +58,14 @@ public class GeneralMachineEntity extends BlockEntity implements MenuProvider {
     }
 
     @Nullable
-    private final ctiEnergyStore ENERGY_STORAGE =this.MAX_ENERGY<=0? new ctiEnergyStore(this.MAX_ENERGY,this.MAX_TRANSFER) {
+    private final ctiEnergyStore ENERGY_STORAGE =this.MAX_ENERGY>=0? new ctiEnergyStore(this.MAX_ENERGY,this.MAX_TRANSFER) {
         @Override
         public void onEnergyChange() {
             setChanged();
         }
     }:null;
 
-    private ItemStackHandler itemStackHandler =new ItemStackHandler(3){
+    private ItemStackHandler itemStackHandler =new ItemStackHandler(this.ITEM_SLOT_AMOUNT){
         protected void onContentsChanged(int slot) {
             setChanged();
         }
@@ -77,6 +78,7 @@ public class GeneralMachineEntity extends BlockEntity implements MenuProvider {
     private int MAX_ENERGY;
     private int MAX_TRANSFER;
     private int BASE_ENERGY_PERTICK;
+    private int ITEM_SLOT_AMOUNT;
 
 
     private LazyOptional<ItemStackHandler> LazyitemStackHandler = LazyOptional.empty();
@@ -119,7 +121,13 @@ public class GeneralMachineEntity extends BlockEntity implements MenuProvider {
 
     @Override
     protected void saveAdditional(CompoundTag nbt) {
-        nbt.put("inventory",itemStackHandler.serializeNBT());
+        if (itemStackHandler.getSlots()>0) {
+            nbt.put("inventory", itemStackHandler.serializeNBT());
+        }
+        if (ENERGY_STORAGE != null) {
+            nbt.put("cti_machine.energy_store",ENERGY_STORAGE.serializeNBT());
+        }
+
         nbt.putInt("cti_machine.progerss",this.PROGRESS);
         super.saveAdditional(nbt);
     }
@@ -132,28 +140,15 @@ public class GeneralMachineEntity extends BlockEntity implements MenuProvider {
     }
 
     public void dropItem(){
-        SimpleContainer container =new SimpleContainer(itemStackHandler.getSlots());
-        for (int i =0;i<itemStackHandler.getSlots();i++){
-            container.setItem(i,itemStackHandler.getStackInSlot(i));
+        if (itemStackHandler.getSlots()>0) {
+            SimpleContainer container = new SimpleContainer(itemStackHandler.getSlots());
+            for (int i = 0; i < itemStackHandler.getSlots(); i++) {
+                container.setItem(i, itemStackHandler.getStackInSlot(i));
+            }
+            if (this.level != null) {
+                Containers.dropContents(this.level, this.worldPosition, container);
+            }
         }
-        if (this.level != null) {
-            Containers.dropContents(this.level,this.worldPosition,container);
-        }
-    }
-
-    public static void tick(Level level, BlockPos blockPos, BlockState state, GeneralMachineEntity entity){
-        if (level.isClientSide){
-            return;
-        }
-
-    }
-
-    public boolean canCraft(GeneralMachineEntity entity){
-        return false;
-    }
-
-    private static void conductCrafting(GeneralMachineEntity entity){
-
     }
 
     @Nullable
