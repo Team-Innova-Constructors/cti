@@ -51,8 +51,8 @@ public class EnvironmentSystem {
         Holder<Biome> biome = level.getBiome(living.blockPosition());
         //危害水平，等于群系水平-防护水平，后续可以补充
         float lvl_ionize = getBiomeIonizeLevel(biome) - getElectricResistance(living);
-        float lvl_scorch = getBiomeScorchLevel(biome) -getScorchResistance(living);
-        float lvl_freeze = getBiomeFreezeLevel(biome) -getFreezeResistance(living);
+        float lvl_scorch = getBiomeScorchLevel(biome) -getScorchResistance(living) -getBiomeFreezeLevel(biome);
+        float lvl_freeze = getBiomeFreezeLevel(biome) -getFreezeResistance(living) -getBiomeScorchLevel(biome);
         CompoundTag nbt = living.getPersistentData();
         //积累危害值
         nbt.putFloat(IONIZED_AMOUNT, Mth.clamp(nbt.getFloat(IONIZED_AMOUNT)+lvl_ionize,-20*(1+getElectricResistance(living)),250));
@@ -72,7 +72,7 @@ public class EnvironmentSystem {
         if (sco_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
             living.hurt(Environmental.scorchSource(baseDmg * sco_multiplier), baseDmg * sco_multiplier);
-            living.setSecondsOnFire(200);
+            living.setSecondsOnFire(20);
             ((ServerLevel) living.level).sendParticles(ParticleTypes.FLAME, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * sco_multiplier * 3), 0, 0, 0, 0.25);
             nbt.putFloat(SCORCH_AMOUNT,Math.max(0,nbt.getFloat(SCORCH_AMOUNT)*0.99f));
         }
