@@ -67,5 +67,9 @@
   "cti.gui.environmental.scorch_build": "灼热强度",
   "cti.gui.environmental.scorch_value": "灼热值",
   "cti.gui.environmental.frozen_build": "霜冻强度",
-  "cti.gui.environmental.frozen_value": "霜冻值"
+  "cti.gui.environmental.frozen_value": "霜冻值",
+
+
+  "cti.machine.atmosphere_extractor": "大气提取器",
+  "block.cti.atmosphere_extractor": "大气提取器"
 }

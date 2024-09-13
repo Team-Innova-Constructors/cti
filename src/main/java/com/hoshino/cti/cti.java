@@ -2,9 +2,14 @@ package com.hoshino.cti;
 
 import com.hoshino.cti.Event.LivingEvents;
 import com.hoshino.cti.Modifier.capability.*;
+import com.hoshino.cti.Screen.AtmosphereExtractorScreen;
+import com.hoshino.cti.Screen.menu.ctiMenu;
 import com.hoshino.cti.client.hud.EnvironmentalHud;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.register.*;
+import com.hoshino.cti.util.BiomeUtil;
+import com.hoshino.cti.util.Recipe.AtmosphereExtractor;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
@@ -45,11 +50,13 @@ public class cti {
         ctiBlock.BLOCK.register(eventBus);
         ctiEffects.EFFECT.register(eventBus);
         ctiEntity.ENTITIES.register(eventBus);
+        ctiBlockEntityType.BLOCK_ENTITIES.register(eventBus);
         ctiItem.ASTRAITEM.init();
         ctiItem.VEHICLES.init();
         ctiEntity.ENTITY_TYPES.init();
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
         ctiPacketHandler.init();
+        ctiMenu.MENU_TYPE.register(eventBus);
         if(Mekenabled){
             ctiGas.GAS.register(eventBus);
         }
@@ -59,6 +66,7 @@ public class cti {
     }
     @SubscribeEvent
     public void clientSetup(FMLClientSetupEvent event){
+        MenuScreens.register(ctiMenu.ATMOSPHERE_EXT_MENU.get(), AtmosphereExtractorScreen::new);
         event.enqueueWork(ctiEntity::registerEntityRenderers);
     }
     @SubscribeEvent
@@ -73,6 +81,8 @@ public class cti {
         ToolCapabilityProvider.register(ElectricShieldToolCap::new);
         ToolCapabilityProvider.register(ScorchShieldToolCap::new);
         ToolCapabilityProvider.register(FreezeShieldToolCap::new);
+        event.enqueueWork(AtmosphereExtractor.BiomeToItem::extendMap);
+        event.enqueueWork(BiomeUtil::init);
     }
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));

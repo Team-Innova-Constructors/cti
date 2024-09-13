@@ -7,6 +7,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,26 @@ public class BiomeUtil {
     public static final ResourceKey<Biome> INFERNAL = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(cti.MOD_ID,"infernal"));
     public static final ResourceKey<Biome> INFERNAL_MOLTEN = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(cti.MOD_ID,"infernal_molten_surface"));
 
+
+    public static void init(){
+
+        IONIZE_LEVEL.put(IONIZED_MARE,2.1f);
+        IONIZE_LEVEL.put(IONIZED_GLACIO,0.8f);
+        IONIZE_LEVEL.put(DISORDERED_ZONE,3.5f);
+
+        SCORCH_LEVEL.put(INFERNAL_MOLTEN,2.9f);
+        SCORCH_LEVEL.put(INFERNAL,2.1f);
+
+        FREEZE_LEVEL.put(IONIZED_MARE,1.5f);
+        FREEZE_LEVEL.put(IONIZED_GLACIO,3.3f);
+        FREEZE_LEVEL.put(DISORDERED_ZONE,1.1f);
+
+    }
+
+    public static String BiomekeyToString(ResourceKey<Biome> key){
+        return key!=null? key.location().toString():"cti.gui.biome.null";
+    }
+
     //外星群系列表，注册完记得加上
     public static final List<ResourceKey<Biome>> PLANET_BIOMES = List.of(
             GLACIO_ICE,
@@ -36,39 +57,10 @@ public class BiomeUtil {
             INFERNAL,
             INFERNAL_MOLTEN
     );
-    public static final Map<ResourceKey<Biome>,Float> IONIZE_LEVEL =getBiomeIonizeLevelMap();
-    public static final Map<ResourceKey<Biome>,Float> SCORCH_LEVEL =getBiomeScorchLevelMap();
-    public static final Map<ResourceKey<Biome>,Float> FREEZE_LEVEL =getBiomeFreezeLevelMap();
+    public static final Map<ResourceKey<Biome>,Float> IONIZE_LEVEL =new HashMap<>();
+    public static final Map<ResourceKey<Biome>,Float> SCORCH_LEVEL =new HashMap<>();
+    public static final Map<ResourceKey<Biome>,Float> FREEZE_LEVEL =new HashMap<>();
 
-    //群系电离等级字典，注册完记得加上
-    public static final Map<ResourceKey<Biome>,Float> getBiomeIonizeLevelMap(){
-        Map<ResourceKey<Biome>,Float> map =new HashMap<>();
-
-        map.put(IONIZED_MARE,2.1f);
-        map.put(IONIZED_GLACIO,0.8f);
-        map.put(DISORDERED_ZONE,3.5f);
-
-        return map;
-    }
-    //群系灼热等级字典，注册完记得加上
-    public static final Map<ResourceKey<Biome>,Float> getBiomeScorchLevelMap(){
-        Map<ResourceKey<Biome>,Float> map =new HashMap<>();
-
-        map.put(INFERNAL_MOLTEN,2.9f);
-        map.put(INFERNAL,2.1f);
-
-        return map;
-    }
-    //群系极寒等级字典，注册完记得加上
-    public static final Map<ResourceKey<Biome>,Float> getBiomeFreezeLevelMap(){
-        Map<ResourceKey<Biome>,Float> map =new HashMap<>();
-
-        map.put(IONIZED_MARE,1.5f);
-        map.put(IONIZED_GLACIO,3.3f);
-        map.put(DISORDERED_ZONE,1.1f);
-
-        return map;
-    }
 
 
     public static float getBiomeIonizeLevel(Holder<Biome> holder){
@@ -84,7 +76,7 @@ public class BiomeUtil {
         return key!=null? FREEZE_LEVEL.getOrDefault(key, 0f):0f;
     }
 
-
+    @Nullable
     public static ResourceKey<Biome> getBiomeKey(Holder<Biome> holder){
         ResourceKey<Biome> key =null;
         for (ResourceKey<Biome> biomeResourceKey :PLANET_BIOMES){
