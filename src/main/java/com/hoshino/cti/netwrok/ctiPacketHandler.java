@@ -20,6 +20,7 @@ public class ctiPacketHandler {
         INSTANCE.messageBuilder(PIonizeValueSync.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PIonizeValueSync::new).encoder(PIonizeValueSync::toByte).consumerMainThread(PIonizeValueSync::handle).add();
         INSTANCE.messageBuilder(PScorchValueSync.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PScorchValueSync::new).encoder(PScorchValueSync::toByte).consumerMainThread(PScorchValueSync::handle).add();
         INSTANCE.messageBuilder(PFrozenValueSync.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PFrozenValueSync::new).encoder(PFrozenValueSync::toByte).consumerMainThread(PFrozenValueSync::handle).add();
+        INSTANCE.messageBuilder(PMachineEnergySync.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PMachineEnergySync::new).encoder(PMachineEnergySync::toByte).consumerMainThread(PMachineEnergySync::handle).add();
     }
 
     public static <MSG> void sendToServer(MSG msg){
@@ -28,6 +29,10 @@ public class ctiPacketHandler {
 
     public static <MSG> void sendToPlayer(MSG msg, ServerPlayer player){
         INSTANCE.send(PacketDistributor.PLAYER.with(()->player),msg);
+    }
+
+    public static <MSG> void sendToClient(MSG msg){
+        INSTANCE.send(PacketDistributor.ALL.noArg(), msg);
     }
 
 

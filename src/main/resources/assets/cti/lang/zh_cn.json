@@ -71,5 +71,12 @@
 
 
   "cti.machine.atmosphere_extractor": "大气提取器",
-  "block.cti.atmosphere_extractor": "大气提取器"
+  "block.cti.atmosphere_extractor": "大气提取器",
+
+
+  "cti.gui.biome.null": "null",
+  "cti.gui.biome.incorrect": "无效群系",
+  "cti.gui.cant_output": "无法输出",
+  "cti.gui.missing_input": "缺少输入",
+  "cti.gui.normal": "正常工作"
 }

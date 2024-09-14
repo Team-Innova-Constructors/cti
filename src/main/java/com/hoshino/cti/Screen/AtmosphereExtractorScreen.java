@@ -15,7 +15,7 @@ import net.minecraft.world.entity.player.Inventory;
 import static com.hoshino.cti.util.BiomeUtil.getBiomeKey;
 
 public class AtmosphereExtractorScreen extends AbstractContainerScreen<AtmosphereExtractorMenu> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation("minecraft:textures/gui/container/furnace.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation("cti:textures/gui/machine/atmosphere_extractor_bg.png");
     public static Font font = Minecraft.getInstance().font;
     public AtmosphereExtractorScreen(AtmosphereExtractorMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
@@ -37,6 +37,7 @@ public class AtmosphereExtractorScreen extends AbstractContainerScreen<Atmospher
         this.blit(poseStack,x,y,0,0,imageWidth,imageHeight);
 
         drawProgress(poseStack,x,y);
+        drawFE(poseStack,x,y);
     }
 
     protected void drawProgress(PoseStack poseStack, int x, int y) {
@@ -44,18 +45,31 @@ public class AtmosphereExtractorScreen extends AbstractContainerScreen<Atmospher
             int $$4 = this.leftPos;
             int $$5 = this.topPos;
             int $$7 = menu.getProgressScale();
-            blit(poseStack, $$4 + 79, $$5 + 34, 176, 14, $$7 + 1, 16);
+            blit(poseStack, $$4 + 80, $$5 + 34, 176, 14, $$7 + 1, 16);
         }
+    }
+    protected void drawFE(PoseStack poseStack, int x, int y) {
+        int $$4 = this.leftPos;
+        int $$5 = this.topPos;
+        int $$7 = menu.getEnergyBarScale();
+        blit(poseStack, $$4 + 62, $$5 + 66, 176, 31, $$7,12 );
     }
 
     @Override
     public void render(PoseStack poseStack, int mousex, int mousey, float delta) {
+        int leftPos1 = this.leftPos;
+        int topPos1 = this.topPos;
+
         renderBackground(poseStack);
         super.render(poseStack, mousex, mousey, delta);
         renderTooltip(poseStack,mousex,mousey);
         if (menu.entity.getLevel()!=null) {
-            drawString(poseStack, font,Component.translatable( BiomeUtil.BiomekeyToString(getBiomeKey(menu.entity.getLevel().getBiome(menu.entity.getBlockPos())))), 24, mousey+8, 0x00B0FF);
-            drawString(poseStack, font, String.valueOf(menu.entity.PROGRESS)+"%", mousex, mousey+16, 0x00B0FF);
+            drawString(poseStack, font,Component.literal("群系: ").append(Component.translatable( BiomeUtil.BiomekeyToString(getBiomeKey(menu.entity.getLevel().getBiome(menu.entity.getBlockPos()))))), leftPos1 + 8, topPos1 + 56, 0xDD00FF);
+        }
+        if (mousex>=leftPos1+62&&mousey>=topPos1+66&&mousex<=leftPos1+123&&mousey<=topPos1+79){
+            drawString(poseStack, font, String.valueOf(menu.EnergyStorage)+"FE", mousex+8, mousey-12, 0xff6000);
+            drawString(poseStack, font, "最大: "+String.valueOf( menu.entity.getMaxEnergy())+"FE", mousex+8, mousey, 0xff6000);
+            drawString(poseStack, font, "最大: "+String.valueOf(menu.entity.getEnergyPerTick())+"FE/t", mousex+8, mousey+12, 0xff6000);
         }
     }
 }

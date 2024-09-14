@@ -28,6 +28,9 @@ public abstract class ctiEnergyStore extends EnergyStorage {
     public void setEnergy(int amount){
         this.energy = amount;
     }
+    public void setMaxEnergy(int amount){
+        this.capacity = amount;
+    }
 
     public int getEnergy(){
         return this.energy;

@@ -18,7 +18,7 @@ public class AtmosphereExtractor {
             MAP.put(GLACIO_BARRENS,new ItemStack(ModItems.ICE_SHARD.get(),4));
         }
         public static ItemStack getOutput(ResourceKey<Biome> biome){
-            return MAP.getOrDefault(biome,ItemStack.EMPTY);
+            return MAP.getOrDefault(biome,ItemStack.EMPTY).copy();
         }
     }
 }

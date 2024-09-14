@@ -42,7 +42,7 @@ public class BiomeUtil {
     }
 
     public static String BiomekeyToString(ResourceKey<Biome> key){
-        return key!=null? key.location().toString():"cti.gui.biome.null";
+        return key!=null?"biome."+key.location().toLanguageKey():"cti.gui.biome.null";
     }
 
     //外星群系列表，注册完记得加上
