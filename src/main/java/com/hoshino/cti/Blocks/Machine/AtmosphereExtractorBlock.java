@@ -82,6 +82,7 @@ public class AtmosphereExtractorBlock extends BaseEntityBlock {
             if (entity instanceof AtmosphereExtractorEntity){
                 if (player instanceof ServerPlayer) {
                     NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) entity, blockPos);
+                    return InteractionResult.CONSUME;
                 }
             }else {
                 throw new IllegalStateException("Container provider MISSING");

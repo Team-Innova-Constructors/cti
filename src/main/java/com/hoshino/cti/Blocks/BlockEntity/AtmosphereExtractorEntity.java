@@ -82,7 +82,6 @@ public class AtmosphereExtractorEntity extends GeneralMachineEntity implements M
     public final ctiEnergyStore ENERGY_STORAGE = new ctiEnergyStore(getMaxEnergy(),getMaxTransfer()) {
         @Override
         public void onEnergyChange() {
-            ctiPacketHandler.sendToClient(new PMachineEnergySync(this.getEnergyStored(),getBlockPos()));
             setChanged();
         }
     };
@@ -211,6 +210,7 @@ public class AtmosphereExtractorEntity extends GeneralMachineEntity implements M
         if (level.isClientSide){
             return;
         }
+        ctiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(),entity.getBlockPos()));
         ResourceKey<Biome> biomekey =getBiomeKey(level.getBiome(blockPos));
         if (biomekey == null){
             return;
