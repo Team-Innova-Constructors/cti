@@ -1,8 +1,9 @@
 package com.hoshino.cti.Blocks.Machine;
 
-import com.hoshino.cti.Blocks.BlockEntity.AtmosphereExtractorEntity;
+import com.hoshino.cti.Blocks.BlockEntity.AtmosphereCondensatorEntity;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PMachineEnergySync;
+import com.hoshino.cti.netwrok.packet.PMachineFluidSync;
 import com.hoshino.cti.register.ctiBlock;
 import com.hoshino.cti.register.ctiBlockEntityType;
 import net.minecraft.core.BlockPos;
@@ -29,15 +30,15 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
-public class AtmosphereExtractorBlock extends BaseEntityBlock {
+public class AtmosphereCondensatorBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public AtmosphereExtractorBlock(Properties p_49224_) {
+    public AtmosphereCondensatorBlock(Properties p_49224_) {
         super(p_49224_);
     }
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new AtmosphereExtractorEntity(blockPos,blockState);
+        return new AtmosphereCondensatorEntity(blockPos,blockState);
     }
     public RenderShape getRenderShape(BlockState p_49232_) {
         return RenderShape.MODEL;
@@ -63,7 +64,7 @@ public class AtmosphereExtractorBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level level, BlockPos blockPos, BlockState newState, boolean isMoving) {
         if (state.getBlock()!=newState.getBlock()){
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof AtmosphereExtractorEntity entity&&entity.getBlockState().is(ctiBlock.atmosphere_extractor.get())){
+            if (blockEntity instanceof AtmosphereCondensatorEntity entity&&entity.getBlockState().is(ctiBlock.atmosphere_condensator.get())){
                 entity.dropItem();
             }
             blockEntity.setRemoved();
@@ -74,14 +75,14 @@ public class AtmosphereExtractorBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type,ctiBlockEntityType.Atmosphere_extractor.get(), AtmosphereExtractorEntity::tick);
+        return createTickerHelper(type, ctiBlockEntityType.Atmosphere_condensator.get(), AtmosphereCondensatorEntity::tick);
     }
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult result) {
         if (!level.isClientSide){
             BlockEntity entity =level.getBlockEntity(blockPos);
-            if (entity instanceof AtmosphereExtractorEntity extractor){
+            if (entity instanceof AtmosphereCondensatorEntity condensator){
                 if (player instanceof ServerPlayer) {
                     NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) entity, blockPos);
                     return InteractionResult.CONSUME;

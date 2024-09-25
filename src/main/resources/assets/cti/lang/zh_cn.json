@@ -78,5 +78,8 @@
   "cti.gui.biome.incorrect": "无效群系",
   "cti.gui.cant_output": "无法输出",
   "cti.gui.missing_input": "缺少输入",
-  "cti.gui.normal": "正常工作"
+  "cti.gui.normal": "正常工作",
+
+  "cti.tooltip.liquid.amount.with.capacity": "%s / %s mB",
+  "cti.tooltip.liquid.amount": "%s mB"
 }

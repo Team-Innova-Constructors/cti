@@ -12,11 +12,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
+import java.text.NumberFormat;
+
 import static com.hoshino.cti.util.BiomeUtil.getBiomeKey;
 
 public class AtmosphereExtractorScreen extends AbstractContainerScreen<AtmosphereExtractorMenu> {
     private static final ResourceLocation TEXTURE = new ResourceLocation("cti:textures/gui/machine/atmosphere_extractor_bg.png");
     public static Font font = Minecraft.getInstance().font;
+    public static final NumberFormat nf =NumberFormat.getIntegerInstance();
     public AtmosphereExtractorScreen(AtmosphereExtractorMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
     }

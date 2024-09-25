@@ -2,12 +2,15 @@ package com.hoshino.cti;
 
 import com.hoshino.cti.Event.LivingEvents;
 import com.hoshino.cti.Modifier.capability.*;
+import com.hoshino.cti.Screen.AtmosphereCondensatorScreen;
 import com.hoshino.cti.Screen.AtmosphereExtractorScreen;
+import com.hoshino.cti.Screen.menu.AtmosphereCondensatorMenu;
 import com.hoshino.cti.Screen.menu.ctiMenu;
 import com.hoshino.cti.client.hud.EnvironmentalHud;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.register.*;
 import com.hoshino.cti.util.BiomeUtil;
+import com.hoshino.cti.util.Recipe.AtmosphereCondensator;
 import com.hoshino.cti.util.Recipe.AtmosphereExtractor;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.resources.ResourceLocation;
@@ -67,6 +70,7 @@ public class cti {
     @SubscribeEvent
     public void clientSetup(FMLClientSetupEvent event){
         MenuScreens.register(ctiMenu.ATMOSPHERE_EXT_MENU.get(), AtmosphereExtractorScreen::new);
+        MenuScreens.register(ctiMenu.ATMOSPHERE_CON_MENU.get(), AtmosphereCondensatorScreen::new);
         event.enqueueWork(ctiEntity::registerEntityRenderers);
     }
     @SubscribeEvent
@@ -82,6 +86,7 @@ public class cti {
         ToolCapabilityProvider.register(ScorchShieldToolCap::new);
         ToolCapabilityProvider.register(FreezeShieldToolCap::new);
         event.enqueueWork(AtmosphereExtractor.BiomeToItem::extendMap);
+        event.enqueueWork(AtmosphereCondensator.BiomeToFluid::extendMap);
         event.enqueueWork(BiomeUtil::init);
     }
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {

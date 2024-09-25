@@ -1,5 +1,6 @@
 package com.hoshino.cti.register;
 
+import com.hoshino.cti.Blocks.Machine.AtmosphereCondensatorBlock;
 import com.hoshino.cti.Blocks.Machine.AtmosphereExtractorBlock;
 import com.hoshino.cti.Blocks.OverdenseGlacioStone;
 import com.hoshino.cti.Blocks.unipolarBudding;
@@ -19,4 +20,5 @@ public class ctiBlock {
     public static final RegistryObject<Block> unipolar_magnet = BLOCK.register("unipolar_magnet", () -> new CrystalClusterBlock(SoundEvents.AMETHYST_BLOCK_CHIME,7,3, BlockBehaviour.Properties.of(Material.AMETHYST).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(0.5F).lightLevel((BlockStateBase)-> 5)));
     public static final RegistryObject<Block> overdense_glacio_stone = BLOCK.register("overdense_glacio_stone", () -> new OverdenseGlacioStone(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.ANCIENT_DEBRIS).randomTicks()));
     public static final RegistryObject<BaseEntityBlock> atmosphere_extractor =BLOCK.register("atmosphere_extractor",()->new AtmosphereExtractorBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL)));
+    public static final RegistryObject<BaseEntityBlock> atmosphere_condensator =BLOCK.register("atmosphere_condensator",()->new AtmosphereCondensatorBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL)));
 }

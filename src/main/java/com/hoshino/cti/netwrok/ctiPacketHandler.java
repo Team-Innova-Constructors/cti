@@ -21,6 +21,7 @@ public class ctiPacketHandler {
         INSTANCE.messageBuilder(PScorchValueSync.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PScorchValueSync::new).encoder(PScorchValueSync::toByte).consumerMainThread(PScorchValueSync::handle).add();
         INSTANCE.messageBuilder(PFrozenValueSync.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PFrozenValueSync::new).encoder(PFrozenValueSync::toByte).consumerMainThread(PFrozenValueSync::handle).add();
         INSTANCE.messageBuilder(PMachineEnergySync.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PMachineEnergySync::new).encoder(PMachineEnergySync::toByte).consumerMainThread(PMachineEnergySync::handle).add();
+        INSTANCE.messageBuilder(PMachineFluidSync.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PMachineFluidSync::new).encoder(PMachineFluidSync::toByte).consumerMainThread(PMachineFluidSync::handle).add();
     }
 
     public static <MSG> void sendToServer(MSG msg){
