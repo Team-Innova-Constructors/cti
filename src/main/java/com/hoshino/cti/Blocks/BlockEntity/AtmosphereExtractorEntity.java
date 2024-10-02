@@ -4,17 +4,19 @@ import com.hoshino.cti.Blocks.Machine.AtmosphereExtractorBlock;
 import com.hoshino.cti.Screen.menu.AtmosphereExtractorMenu;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PMachineEnergySync;
+import com.hoshino.cti.recipe.AtmosphereExtractorRecipe;
 import com.hoshino.cti.register.ctiBlockEntityType;
-import com.hoshino.cti.util.Recipe.AtmosphereExtractor;
 import com.hoshino.cti.util.Upgrades;
 import com.hoshino.cti.util.ctiEnergyStore;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Containers;
@@ -37,6 +39,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 
 import static com.hoshino.cti.util.BiomeUtil.getBiomeKey;
@@ -212,13 +215,14 @@ public class AtmosphereExtractorEntity extends GeneralMachineEntity implements M
         }
         ctiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(),entity.getBlockPos()));
         ResourceKey<Biome> biomekey =getBiomeKey(level.getBiome(blockPos));
+
         if (biomekey == null){
             return;
         }
         if (entity.ENERGY_STORAGE.getEnergyStored()<=entity.getEnergyPerTick()){
             return;
         }
-        ItemStack output =AtmosphereExtractor.BiomeToItem.getOutput(biomekey);
+        ItemStack output =getOutPut(biomekey,level);
         if (output.isEmpty()){
             return;
         }
@@ -243,6 +247,16 @@ public class AtmosphereExtractorEntity extends GeneralMachineEntity implements M
             Output(entity,output);
             setChanged(level,blockPos,state);
         }
+    }
+    public static ItemStack getOutPut(ResourceKey<Biome> biomekey,Level level){
+        List<AtmosphereExtractorRecipe> recipeList = level.getRecipeManager().getAllRecipesFor(AtmosphereExtractorRecipe.Type.INSTANCE);
+        for (AtmosphereExtractorRecipe recipe:recipeList){
+            ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(recipe.getBiome()));
+            if (key.equals(biomekey)){
+                return recipe.getResultItem();
+            }
+        }
+        return ItemStack.EMPTY;
     }
 
     public static boolean canOutput(AtmosphereExtractorEntity entity,ItemStack stack){

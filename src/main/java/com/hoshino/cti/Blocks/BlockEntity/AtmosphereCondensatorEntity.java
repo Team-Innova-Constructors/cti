@@ -4,17 +4,19 @@ import com.hoshino.cti.Screen.menu.AtmosphereCondensatorMenu;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PMachineEnergySync;
 import com.hoshino.cti.netwrok.packet.PMachineFluidSync;
+import com.hoshino.cti.recipe.AtmosphereCondensorRecipe;
 import com.hoshino.cti.register.ctiBlockEntityType;
-import com.hoshino.cti.util.Recipe.AtmosphereCondensator;
 import com.hoshino.cti.util.Upgrades;
 import com.hoshino.cti.util.ctiEnergyStore;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Containers;
@@ -39,6 +41,8 @@ import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 import static com.hoshino.cti.util.BiomeUtil.getBiomeKey;
 
@@ -223,7 +227,7 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
         if (entity.ENERGY_STORAGE.getEnergyStored()<=entity.getEnergyPerTick()){
             return;
         }
-        FluidStack output = AtmosphereCondensator.BiomeToFluid.getOutput(biomekey);
+        FluidStack output = getOutPut(biomekey,level);
         if (output.isEmpty()){
             return;
         }
@@ -255,6 +259,16 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
     }
     public static void Output(AtmosphereCondensatorEntity entity, FluidStack output){
         entity.FLUID_TANK.fill(output, IFluidHandler.FluidAction.EXECUTE);
+    }
+    public static FluidStack getOutPut(ResourceKey<Biome> biomekey,Level level){
+        List<AtmosphereCondensorRecipe> recipeList = level.getRecipeManager().getAllRecipesFor(AtmosphereCondensorRecipe.Type.INSTANCE);
+        for (AtmosphereCondensorRecipe recipe:recipeList){
+            ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(recipe.getBiome()));
+            if (key.equals(biomekey)){
+                return recipe.getFluid();
+            }
+        }
+        return FluidStack.EMPTY;
     }
 
     @Nullable
