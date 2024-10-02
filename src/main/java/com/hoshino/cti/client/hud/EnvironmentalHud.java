@@ -51,7 +51,7 @@ public class EnvironmentalHud {
         RenderSystem.setShaderColor(1,1,1,1);
         RenderSystem.setShaderTexture(0,IONIZE);
         GuiComponent.blit(poseStack,x+164, height -64,0,0,16,16,16,16);
-        RenderSystem.setShaderTexture(0,LVL.get(ion_build<0?0:ion_lvl+1));
+        RenderSystem.setShaderTexture(0,LVL.get(ion_build<=0?0:ion_lvl+1));
         GuiComponent.blit(poseStack,x+164, height -64,0,0,16,16,16,16);
         GuiComponent.drawString(poseStack, font,
                 Component.translatable(Str+"ionize_value").append(": ")
