@@ -57,12 +57,12 @@ public class EnvironmentalHud {
                 Component.translatable(Str+"ionize_value").append(": ")
                 .append(String.format("%.01f",ion_val))
                 .append("%").withStyle(COLOR.get(player_ion_lvl))
-                ,x+180,height -64,255);
+                ,x+132,height -64,255);
         GuiComponent.drawString(poseStack, font,
                 Component.translatable(Str+"ionize_build").append(": ")
                         .append(String.format("%.01f",ion_build*2))
                         .append("/s").withStyle(COLOR.get(ion_build<=0?0:ion_lvl+1))
-                ,x+180,height -56,255);
+                ,x+132,height -56,255);
 
 
         float sco_val =EnvironmentalPlayerData.getScorchValue();
@@ -80,12 +80,12 @@ public class EnvironmentalHud {
                 Component.translatable(Str+"scorch_value").append(": ")
                         .append(String.format("%.01f",sco_val))
                         .append("%").withStyle(COLOR.get(player_sco_lvl))
-                ,x+180,height -46,255);
+                ,x+132,height -46,255);
         GuiComponent.drawString(poseStack, font,
                 Component.translatable(Str+"scorch_build").append(": ")
                         .append(String.format("%.01f", sco_build *2))
                         .append("/s").withStyle(COLOR.get(sco_build<=0?0:sco_lvl +1))
-                ,x+180,height -38,255);
+                ,x+132,height -38,255);
 
 
         float fzn_val =EnvironmentalPlayerData.getFrozenValue();
@@ -103,12 +103,12 @@ public class EnvironmentalHud {
                 Component.translatable(Str+"frozen_value").append(": ")
                         .append(String.format("%.01f", fzn_val))
                         .append("%").withStyle(COLOR.get(player_fzn_lvl))
-                ,x+180,height -28,255);
+                ,x+132,height -28,255);
         GuiComponent.drawString(poseStack, font,
                 Component.translatable(Str+"frozen_build").append(": ")
                         .append(String.format("%.01f", fzn_build *2))
                         .append("/s").withStyle(COLOR.get(fzn_build<=0?0:fzn_lvl+1))
-                ,x+180,height -20,255);
+                ,x+132,height -20,255);
 
     });
 
