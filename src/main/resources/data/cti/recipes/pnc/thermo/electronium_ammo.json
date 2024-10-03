@@ -4,7 +4,7 @@
   "exothermic": false,
   "fluid_input": {
     "type": "pneumaticcraft:fluid",
-    "amount": 40,
+    "amount": 30,
     "fluid": "etshtinker:molten_electronium"
   },
   "item_input": {

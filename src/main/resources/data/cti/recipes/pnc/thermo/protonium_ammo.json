@@ -4,7 +4,7 @@
   "exothermic": false,
   "fluid_input": {
     "type": "pneumaticcraft:fluid",
-    "amount": 200,
+    "amount": 180,
     "fluid": "etshtinker:molten_protonium"
   },
   "item_input": {
