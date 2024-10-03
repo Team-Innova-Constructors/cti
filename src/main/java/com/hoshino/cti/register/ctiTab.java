@@ -17,5 +17,11 @@ public class ctiTab {
             return new ItemStack((ItemLike) ctiItem.unipolar_magnet.get());
         }
     };
+    public static final CreativeModeTab MACHINE = new CreativeModeTab("cti.machine") {
+        @Override
+        public  ItemStack makeIcon() {
+            return new ItemStack((ItemLike) ctiItem.atmosphere_condensator.get());
+        }
+    };
     public ctiTab(){}
 }

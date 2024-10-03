@@ -2,7 +2,9 @@ package com.hoshino.cti.register;
 
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
 import com.hoshino.cti.Items.PlanetGuiItem;
+import com.hoshino.cti.Items.TooltipedBlockItem;
 import com.hoshino.cti.Items.Vehicle.RocketItemTier5;
+import com.hoshino.cti.Items.compressedSingularityItem;
 import com.hoshino.cti.Items.pncMinigunAmmo.ElectroniumAmmo;
 import com.hoshino.cti.Items.pncMinigunAmmo.ProtoniumAmmo;
 import com.hoshino.cti.Items.pncMinigunAmmo.UltraDenseAmmo;
@@ -11,12 +13,16 @@ import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistries;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistry;
 import earth.terrarium.ad_astra.AdAstra;
 import earth.terrarium.ad_astra.common.item.vehicle.RocketItem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
 
 import static earth.terrarium.ad_astra.common.registry.ModItems.ITEM_GROUP;
 import static earth.terrarium.ad_astra.common.registry.ModItems.VEHICLES;
@@ -36,12 +42,26 @@ public class ctiItem {
     public static final RegistryObject<Item> astra_tablet_3 = ITEMS.register("astra_tablet_3",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),3));
     public static final RegistryObject<Item> astra_tablet_4 = ITEMS.register("astra_tablet_4",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),4));
     public static final RegistryObject<Item> astra_tablet_5 = ITEMS.register("astra_tablet_5",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),5));
+    public static final RegistryObject<Item> compressed_singularity = ITEMS.register("compressed_singularity",()->new compressedSingularityItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(64).fireResistant().tab(ctiTab.MIXC)));
 
 
 
     public static final RegistryObject<BlockItem> unipolar_magnet = ITEMS.register("unipolar_magnet",()-> new BlockItem(ctiBlock.unipolar_magnet.get(), new Item.Properties().tab(ctiTab.MIXC)));
     public static final RegistryObject<BlockItem> unipolar_magnet_budding = ITEMS.register("unipolar_magnet_budding",()-> new BlockItem(ctiBlock.unipolar_magnet_budding.get(), new Item.Properties().tab(ctiTab.MIXC)));
     public static final RegistryObject<BlockItem> overdense_glacio_stone = ITEMS.register("overdense_glacio_stone",()-> new BlockItem(ctiBlock.overdense_glacio_stone.get(), new Item.Properties().tab(ctiTab.MIXC)));
-    public static final RegistryObject<BlockItem> atmosphere_extractor = ITEMS.register("atmosphere_extractor",()-> new BlockItem(ctiBlock.atmosphere_extractor.get(), new Item.Properties().tab(ctiTab.MIXC)));
-    public static final RegistryObject<BlockItem> atmosphere_condensator = ITEMS.register("atmosphere_condensator",()-> new BlockItem(ctiBlock.atmosphere_condensator.get(), new Item.Properties().tab(ctiTab.MIXC)));
+    public static final RegistryObject<BlockItem> atmosphere_extractor = ITEMS.register("atmosphere_extractor",()-> new TooltipedBlockItem(ctiBlock.atmosphere_extractor.get(), new Item.Properties().tab(ctiTab.MACHINE), List.of(
+            Component.translatable("cti.tooltip.item.atmosphere_extractor").withStyle(ChatFormatting.AQUA),
+            Component.translatable("cti.tooltip.item.fe_max").append(": 7.5 MFE").withStyle(ChatFormatting.RED),
+            Component.translatable("cti.tooltip.item.fe_consumption").append(": 750 kFE/t").withStyle(ChatFormatting.RED)
+    )));
+    public static final RegistryObject<BlockItem> atmosphere_condensator = ITEMS.register("atmosphere_condensator",()-> new TooltipedBlockItem(ctiBlock.atmosphere_condensator.get(), new Item.Properties().tab(ctiTab.MACHINE), List.of(
+            Component.translatable("cti.tooltip.item.atmosphere_condensator").withStyle(ChatFormatting.AQUA),
+            Component.translatable("cti.tooltip.item.fe_max").append(": 7.5 MFE").withStyle(ChatFormatting.RED),
+            Component.translatable("cti.tooltip.item.fe_consumption").append(": 750 kFE/t").withStyle(ChatFormatting.RED)
+    )));
+    public static final RegistryObject<BlockItem> quantum_miner = ITEMS.register("quantum_miner",()-> new TooltipedBlockItem(ctiBlock.quantum_miner.get(), new Item.Properties().tab(ctiTab.MACHINE), List.of(
+            Component.translatable("cti.tooltip.item.quantum_miner").withStyle(ChatFormatting.AQUA),
+            Component.translatable("cti.tooltip.item.fe_max").append(": 2.14 GFE").withStyle(ChatFormatting.RED),
+            Component.translatable("cti.tooltip.item.fe_consumption").append(": 1.07 GFE/t").withStyle(ChatFormatting.RED)
+    )));
 }

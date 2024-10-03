@@ -35,6 +35,7 @@ public class ctiConfiguredFeature {
     public static final RegistryObject<ConfiguredFeature<?,?>> EXTRA_LAPIS_ORE = CONFIGURED_FEATURES.register("extra_lapis",
             ()->new ConfiguredFeature<>(Feature.ORE,new OreConfiguration(EXTRA_LAPIS_ORES.get(),20)));
 
+
     public static final RegistryObject<ConfiguredFeature<?,?>> EXTRA_REDSTONE_ORE = CONFIGURED_FEATURES.register("extra_redstone",
             ()->new ConfiguredFeature<>(Feature.ORE,new OreConfiguration(EXTRA_REDSTONE_ORES.get(),20)));
 }

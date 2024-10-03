@@ -13,6 +13,7 @@ public class ctiRecipes {
 
     public static final RegistryObject<RecipeSerializer<AtmosphereExtractorRecipe>> EXTRACTOR_SERIALIZER = SERIALIZERS.register("atmosphere_extract",() -> AtmosphereExtractorRecipe.Serializer.INSTANCE);
     public static final RegistryObject<RecipeSerializer<AtmosphereCondensorRecipe>> CONDENSER_SERIALIZER = SERIALIZERS.register("atmosphere_condense",() -> AtmosphereCondensorRecipe.Serializer.INSTANCE);
+    public static final RegistryObject<RecipeSerializer<QuantumMinerRecipe>> QUANTUM_MINING = SERIALIZERS.register("quantum_mining",() -> QuantumMinerRecipe.Serializer.INSTANCE);
 
 
     public static void register(IEventBus eventBus){

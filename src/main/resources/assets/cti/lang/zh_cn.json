@@ -9,6 +9,14 @@
   "cti.tooltip.item.protonium_ammo": "这种强互作用材料制成的特种机关枪弹药具有很高的伤害，命中时能无视敌人无敌帧，并且穿甲，但是射程很近且射击时需要非常多压缩空气。",
   "cti.tooltip.item.electronium_ammo": "这种超轻含能材料制成的特种机关枪弹药伤害相对较低，但是射程很远，而且会对目标施加电离减益。",
 
+  "cti.tooltip.item.fe_max": "基础FE存储",
+  "cti.tooltip.item.fe_consumption": "基础FE消耗量",
+
+  "cti.tooltip.item.atmosphere_extractor": "将环境的部分大气成分提取为固体物质。",
+  "cti.tooltip.item.atmosphere_condensator": "将环境的部分大气成分冷凝为流体物质。",
+  "cti.tooltip.item.quantum_miner": "消耗压缩奇点以从另一个位面采集矿物，矿物被存入机器上方的容器里。",
+
+
 
 
   "item.cti.ultradense_ammo": "超致密机枪弹药",
@@ -23,6 +31,8 @@
   "item.cti.astra_tablet_3": "三阶全息星空板",
   "item.cti.astra_tablet_4": "四阶全息星空板",
   "item.cti.astra_tablet_5": "五阶全息星空板",
+
+  "item.cti.compressed_singularity": "压缩奇点",
 
   "block.cti.unipolar_magnet": "单极磁石",
   "block.cti.unipolar_magnet_budding": "单极磁石母岩",
@@ -72,6 +82,10 @@
 
   "cti.machine.atmosphere_extractor": "大气提取器",
   "block.cti.atmosphere_extractor": "大气提取器",
+  "cti.machine.atmosphere_condensator": "大气冷凝器",
+  "block.cti.atmosphere_condensator": "大气冷凝器",
+  "cti.machine.quantum_miner": "位面采矿机",
+  "block.cti.quantum_miner": "位面采矿机",
 
 
   "cti.gui.biome.null": "null",

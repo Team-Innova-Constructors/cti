@@ -2,6 +2,7 @@ package com.hoshino.cti.register;
 
 import com.hoshino.cti.Blocks.Machine.AtmosphereCondensatorBlock;
 import com.hoshino.cti.Blocks.Machine.AtmosphereExtractorBlock;
+import com.hoshino.cti.Blocks.Machine.QuantumMinerBlock;
 import com.hoshino.cti.Blocks.OverdenseGlacioStone;
 import com.hoshino.cti.Blocks.unipolarBudding;
 import net.minecraft.sounds.SoundEvents;
@@ -21,4 +22,5 @@ public class ctiBlock {
     public static final RegistryObject<Block> overdense_glacio_stone = BLOCK.register("overdense_glacio_stone", () -> new OverdenseGlacioStone(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.ANCIENT_DEBRIS).randomTicks()));
     public static final RegistryObject<BaseEntityBlock> atmosphere_extractor =BLOCK.register("atmosphere_extractor",()->new AtmosphereExtractorBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL)));
     public static final RegistryObject<BaseEntityBlock> atmosphere_condensator =BLOCK.register("atmosphere_condensator",()->new AtmosphereCondensatorBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL)));
+    public static final RegistryObject<BaseEntityBlock> quantum_miner =BLOCK.register("quantum_miner",()->new QuantumMinerBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL)));
 }
