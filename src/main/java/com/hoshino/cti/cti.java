@@ -10,6 +10,8 @@ import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.recipe.ctiRecipes;
 import com.hoshino.cti.register.*;
 import com.hoshino.cti.util.BiomeUtil;
+import com.hoshino.cti.world.feature.ctiConfiguredFeature;
+import com.hoshino.cti.world.feature.ctiPlacedFeature;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -59,6 +61,8 @@ public class cti {
         ctiPacketHandler.init();
         ctiMenu.MENU_TYPE.register(eventBus);
         ctiRecipes.register(eventBus);
+        ctiConfiguredFeature.CONFIGURED_FEATURES.register(eventBus);
+        ctiPlacedFeature.PLACED_FEATURES.register(eventBus);
         if(Mekenabled){
             ctiGas.GAS.register(eventBus);
         }

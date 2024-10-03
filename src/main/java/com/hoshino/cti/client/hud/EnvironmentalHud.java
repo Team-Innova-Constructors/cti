@@ -50,9 +50,9 @@ public class EnvironmentalHud {
         RenderSystem.setShader(GameRenderer::getPositionShader);
         RenderSystem.setShaderColor(1,1,1,1);
         RenderSystem.setShaderTexture(0,IONIZE);
-        GuiComponent.blit(poseStack,x+164, height -64,0,0,16,16,16,16);
+        GuiComponent.blit(poseStack,x+116, height -64,0,0,16,16,16,16);
         RenderSystem.setShaderTexture(0,LVL.get(ion_build<=0?0:ion_lvl+1));
-        GuiComponent.blit(poseStack,x+164, height -64,0,0,16,16,16,16);
+        GuiComponent.blit(poseStack,x+116, height -64,0,0,16,16,16,16);
         GuiComponent.drawString(poseStack, font,
                 Component.translatable(Str+"ionize_value").append(": ")
                 .append(String.format("%.01f",ion_val))
@@ -73,9 +73,9 @@ public class EnvironmentalHud {
         RenderSystem.setShader(GameRenderer::getPositionShader);
         RenderSystem.setShaderColor(1,1,1,1);
         RenderSystem.setShaderTexture(0,SCORCH);
-        GuiComponent.blit(poseStack,x+164, height -46,0,0,16,16,16,16);
+        GuiComponent.blit(poseStack,x+116, height -46,0,0,16,16,16,16);
         RenderSystem.setShaderTexture(0,LVL.get(sco_build<=0?0:sco_lvl +1));
-        GuiComponent.blit(poseStack,x+164, height -46,0,0,16,16,16,16);
+        GuiComponent.blit(poseStack,x+116, height -46,0,0,16,16,16,16);
         GuiComponent.drawString(poseStack, font,
                 Component.translatable(Str+"scorch_value").append(": ")
                         .append(String.format("%.01f",sco_val))
@@ -96,9 +96,9 @@ public class EnvironmentalHud {
         RenderSystem.setShader(GameRenderer::getPositionShader);
         RenderSystem.setShaderColor(1,1,1,1);
         RenderSystem.setShaderTexture(0,FROZEN);
-        GuiComponent.blit(poseStack,x+164, height -28,0,0,16,16,16,16);
+        GuiComponent.blit(poseStack,x+116, height -28,0,0,16,16,16,16);
         RenderSystem.setShaderTexture(0,LVL.get(fzn_build<=0?0:fzn_lvl+1));
-        GuiComponent.blit(poseStack,x+164, height -28,0,0,16,16,16,16);
+        GuiComponent.blit(poseStack,x+116, height -28,0,0,16,16,16,16);
         GuiComponent.drawString(poseStack, font,
                 Component.translatable(Str+"frozen_value").append(": ")
                         .append(String.format("%.01f", fzn_val))
