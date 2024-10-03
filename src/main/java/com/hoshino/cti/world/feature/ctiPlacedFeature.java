@@ -18,11 +18,11 @@ public class ctiPlacedFeature {
 
     public static final RegistryObject<PlacedFeature> EXTRA_LAPIS_ORE_PLACED = PLACED_FEATURES.register("extra_lapis_ore_placed",
             () -> new PlacedFeature(ctiConfiguredFeature.EXTRA_LAPIS_ORE.getHolder().get(),
-                    commonOrePlacement(4,
+                    commonOrePlacement(2,
                             HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-20),VerticalAnchor.aboveBottom(56)))));
     public static final RegistryObject<PlacedFeature> EXTRA_REDSTONE_ORE_PLACED = PLACED_FEATURES.register("extra_redstone_ore_placed",
             () -> new PlacedFeature(ctiConfiguredFeature.EXTRA_REDSTONE_ORE.getHolder().get(),
-                    commonOrePlacement(5,
+                    commonOrePlacement(3,
                             HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-20),VerticalAnchor.aboveBottom(56)))));
 
     private static List<PlacementModifier> orePlacement(PlacementModifier p_195347_, PlacementModifier p_195348_) {
