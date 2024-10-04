@@ -2,6 +2,7 @@ package com.hoshino.cti.register;
 
 import com.hoshino.cti.Blocks.Machine.AtmosphereCondensatorBlock;
 import com.hoshino.cti.Blocks.Machine.AtmosphereExtractorBlock;
+import com.hoshino.cti.Blocks.Machine.QuantumMinerAdvancdBlock;
 import com.hoshino.cti.Blocks.Machine.QuantumMinerBlock;
 import com.hoshino.cti.Blocks.OverdenseGlacioStone;
 import com.hoshino.cti.Blocks.unipolarBudding;
@@ -23,4 +24,5 @@ public class ctiBlock {
     public static final RegistryObject<BaseEntityBlock> atmosphere_extractor =BLOCK.register("atmosphere_extractor",()->new AtmosphereExtractorBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL)));
     public static final RegistryObject<BaseEntityBlock> atmosphere_condensator =BLOCK.register("atmosphere_condensator",()->new AtmosphereCondensatorBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL)));
     public static final RegistryObject<BaseEntityBlock> quantum_miner =BLOCK.register("quantum_miner",()->new QuantumMinerBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL)));
+    public static final RegistryObject<BaseEntityBlock> quantum_miner_advanced =BLOCK.register("quantum_miner_advanced",()->new QuantumMinerAdvancdBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL)));
 }

@@ -57,6 +57,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ctiItem.atmosphere_extractor.get()),ATMOSPHERE_EXTRACT);
         registration.addRecipeCatalyst(new ItemStack(ctiItem.atmosphere_condensator.get()),ATMOSPHERE_CONDENSE);
         registration.addRecipeCatalyst(new ItemStack(ctiItem.quantum_miner.get()),QUANTUM_MINING);
+        registration.addRecipeCatalyst(new ItemStack(ctiItem.quantum_miner_advanced.get()),QUANTUM_MINING);
     }
 
 

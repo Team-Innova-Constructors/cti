@@ -7,13 +7,10 @@ import com.hoshino.cti.util.ctiEnergyStore;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.PlayerList;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -23,7 +20,6 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,13 +28,13 @@ import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
-public class QuantumMinerEntity extends BlockEntity {
-    public QuantumMinerEntity(BlockPos p_155229_, BlockState p_155230_) {
-        super(ctiBlockEntityType.QUANTUM_MINER_ENTITY.get(), p_155229_, p_155230_);
+public class QuantumMinerAdvancedEntity extends BlockEntity {
+    public QuantumMinerAdvancedEntity(BlockPos p_155229_, BlockState p_155230_) {
+        super(ctiBlockEntityType.QUANTUM_MINER_ADVANCED_ENTITY.get(), p_155229_, p_155230_);
     }
     protected int MAX_ENERGY =2147483647;
     protected int MAX_TRANSFER =2147483647;
-    protected int BASE_ENERGY_PERTICK =536870912;
+    protected int BASE_ENERGY_PERTICK =1610612736;
     private static final IItemHandler EMPTY =new IItemHandler() {
         @Override
         public int getSlots() {
@@ -155,7 +151,7 @@ public class QuantumMinerEntity extends BlockEntity {
         return ENERGY_STORAGE;
     }
 
-    public static void tick(Level level, BlockPos blockPos, BlockState state, QuantumMinerEntity entity){
+    public static void tick(Level level, BlockPos blockPos, BlockState state, QuantumMinerAdvancedEntity entity){
         if (level.isClientSide){
             return;
         }
@@ -178,23 +174,25 @@ public class QuantumMinerEntity extends BlockEntity {
         if (blockEntity!=null){
             LazyOptional<IItemHandler> optional = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER);
             IItemHandler Handler =optional.orElse(EMPTY);
-            if (Handler!=EMPTY) {
-                int slotAmount = Handler.getSlots();
-                boolean checkoutput = false;
-                int effectiveSlot = 0;
-                for (int a = 0; a < slotAmount; a++) {
-                    if ((Handler.getStackInSlot(a).isEmpty() || (Handler.getStackInSlot(a).is(output.getItem()) && Handler.getStackInSlot(a).getCount() + output.getCount() <= Handler.getSlotLimit(a))) && Handler.isItemValid(a, output)) {
-                        checkoutput = true;
-                        effectiveSlot = a;
+            for (int i=0;i<10;i++) {
+                if (Handler != EMPTY) {
+                    int slotAmount = Handler.getSlots();
+                    boolean checkoutput = false;
+                    int effectiveSlot = 0;
+                    for (int a = 0; a < slotAmount; a++) {
+                        if ((Handler.getStackInSlot(a).isEmpty() || (Handler.getStackInSlot(a).is(output.getItem()) && Handler.getStackInSlot(a).getCount() + output.getCount() <= Handler.getSlotLimit(a))) && Handler.isItemValid(a, output)) {
+                            checkoutput = true;
+                            effectiveSlot = a;
+                        }
                     }
+                    if (!checkoutput) {
+                        return;
+                    }
+                    Handler.insertItem(effectiveSlot, output, false);
+                    entity.ENERGY_STORAGE.extractEnergy(entity.BASE_ENERGY_PERTICK, false);
+                    entity.itemStackHandler.extractItem(0, 1, false);
+                    entity.setChanged();
                 }
-                if (!checkoutput) {
-                    return;
-                }
-                Handler.insertItem(effectiveSlot, output, false);
-                entity.ENERGY_STORAGE.extractEnergy(entity.BASE_ENERGY_PERTICK, false);
-                entity.itemStackHandler.extractItem(0,1,false);
-                entity.setChanged();
             }
         }
     }
@@ -214,7 +212,7 @@ public class QuantumMinerEntity extends BlockEntity {
         else {
             float chance = recipe.getChance()-count;
             count+= EtSHrnd().nextFloat()<chance? -1:0;
-            stack.setCount(stack.getCount()+count);
+            stack.setCount((stack.getCount()+count)*2);
         }
         return stack;
     }
