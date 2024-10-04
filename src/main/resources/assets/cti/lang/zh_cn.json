@@ -97,5 +97,7 @@
   "cti.gui.normal": "正常工作",
 
   "cti.tooltip.liquid.amount.with.capacity": "%s / %s mB",
-  "cti.tooltip.liquid.amount": "%s mB"
+  "cti.tooltip.liquid.amount": "%s mB",
+
+  "gas.cti.neutron": "中子素"
 }

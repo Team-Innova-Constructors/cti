@@ -69,6 +69,5 @@ public class ctiItem {
             Component.translatable("cti.tooltip.item.quantum_miner_advanced").withStyle(ChatFormatting.LIGHT_PURPLE),
             Component.translatable("cti.tooltip.item.fe_max").append(": 2.14 GFE").withStyle(ChatFormatting.RED),
             Component.translatable("cti.tooltip.item.fe_consumption").append(": 1.61 GFE/t").withStyle(ChatFormatting.RED)
-
     )));
 }

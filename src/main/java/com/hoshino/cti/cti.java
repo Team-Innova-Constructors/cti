@@ -64,7 +64,7 @@ public class cti {
         ctiConfiguredFeature.CONFIGURED_FEATURES.register(eventBus);
         ctiPlacedFeature.PLACED_FEATURES.register(eventBus);
         if(Mekenabled){
-            ctiGas.GAS.register(eventBus);
+            ctiChemical.GAS.register(eventBus);
         }
     }
     public static ResourceLocation getResource(String id) {
