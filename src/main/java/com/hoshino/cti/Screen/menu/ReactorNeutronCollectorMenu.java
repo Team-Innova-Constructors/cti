@@ -1,44 +1,65 @@
 package com.hoshino.cti.Screen.menu;
 
-import com.hoshino.cti.Blocks.BlockEntity.AtmosphereCondensatorEntity;
 import com.hoshino.cti.Blocks.BlockEntity.GeneralMachineEntity;
+import com.hoshino.cti.Blocks.BlockEntity.ReactorNeutronCollectorEntity;
 import com.hoshino.cti.register.ctiBlock;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.*;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.SimpleContainerData;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class AtmosphereCondensatorMenu extends GeneralMachineMenu{
-    public final AtmosphereCondensatorEntity entity;
+public class ReactorNeutronCollectorMenu extends GeneralMachineMenu {
+    public final ReactorNeutronCollectorEntity entity;
     private final Level level;
     private final ContainerData data;
-    protected AtmosphereCondensatorMenu(int id , Inventory inventory, FriendlyByteBuf buf) {
+
+
+
+    protected ReactorNeutronCollectorMenu(int id , Inventory inventory, FriendlyByteBuf buf) {
         this(id, inventory,inventory.player.level.getBlockEntity(buf.readBlockPos()),new SimpleContainerData(4));
     }
-    public AtmosphereCondensatorMenu(int id, Inventory inventory, BlockEntity entity, ContainerData data) {
-        super(ctiMenu.ATMOSPHERE_CON_MENU.get(), id,(GeneralMachineEntity) entity);
+    public ReactorNeutronCollectorMenu(int id, Inventory inventory, BlockEntity entity, ContainerData data) {
+        super(ctiMenu.NEUT_COL_MENU.get(), id,(GeneralMachineEntity) entity);
         checkContainerSize(inventory,1);
         this.level = inventory.player.level;
-        this.entity = (AtmosphereCondensatorEntity) entity;
+        this.entity = (ReactorNeutronCollectorEntity) entity;
         this.data =data;
 
         this.entity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler,0,152,8));
-            this.addSlot(new SlotItemHandler(iItemHandler,1,152,26));
-            this.addSlot(new SlotItemHandler(iItemHandler,2,152,44));
-            this.addSlot(new SlotItemHandler(iItemHandler,3,152,62));
+            this.addSlot(new SlotItemHandler(iItemHandler,0,84,35));
         });
 
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);
 
         addDataSlots(data);
+    }
+
+
+
+    public boolean isCrafting(){
+        return data.get(0)>0;
+    }
+
+    public int getEnergyBarScale(){
+        float energyStored =this.getEnergy();
+        float maxEnergyStored =entity.getMaxEnergy();
+        int barSize = 60;
+        return energyStored!=0&&maxEnergyStored!=0? Mth.clamp((int)( barSize*energyStored/maxEnergyStored),0,60):0;
+    }
+    public float getProgress(){
+        float progress = data.get(0);
+        float maxprogress =data.get(1);
+        return 100*progress/maxprogress;
     }
 
     @Override
@@ -48,15 +69,15 @@ public class AtmosphereCondensatorMenu extends GeneralMachineMenu{
         if (slot.hasItem()) {
             ItemStack itemstack1 = slot.getItem();
             itemstack = itemstack1.copy();
-            if (slot0 != 3) {
-                if (slot0 >= 3 && slot0 < 27) {
-                    if (!this.moveItemStackTo(itemstack1, 28, 36, false)) {
+            if (slot0 != 0) {
+                if (slot0 >= 0 && slot0 < 24) {
+                    if (!this.moveItemStackTo(itemstack1, 25, 33, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (slot0 >= 28 && slot0 < 37 && !this.moveItemStackTo(itemstack1, 0, 27, false)) {
+                } else if (slot0 >= 24 && slot0 < 33 && !this.moveItemStackTo(itemstack1, 0, 25, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.moveItemStackTo(itemstack1, 3, 36, false)) {
+            } else if (!this.moveItemStackTo(itemstack1, 0, 33, false)) {
                 return ItemStack.EMPTY;
             }
 
@@ -78,7 +99,7 @@ public class AtmosphereCondensatorMenu extends GeneralMachineMenu{
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(ContainerLevelAccess.create(level,entity.getBlockPos()),player, ctiBlock.atmosphere_condensator.get());
+        return stillValid(ContainerLevelAccess.create(level,entity.getBlockPos()),player, ctiBlock.reactor_neutron_collector.get());
     }
     private void addPlayerInventory(Inventory inventory){
         for (int i=0;i<3;i++){
@@ -93,27 +114,4 @@ public class AtmosphereCondensatorMenu extends GeneralMachineMenu{
             this.addSlot(new Slot(inventory,i,8+i*18,142));
         }
     }
-    public boolean isCrafting(){
-        return data.get(0)>0;
-    }
-
-    public int getProgressScale(){
-        int progress = data.get(0);
-        int maxProgress =data.get(1);
-        int barSize =26;
-        return maxProgress!=0&&progress!=0? barSize*progress/maxProgress:0;
-    }
-    public int getEnergyBarScale(){
-        float energyStored =this.getEnergy();
-        float maxEnergyStored =entity.getMaxEnergy();
-        int barSize = 60;
-        return energyStored!=0&&maxEnergyStored!=0? Mth.clamp((int)( barSize*energyStored/maxEnergyStored),0,60):0;
-    }
-    public int getFluidBarScale(){
-        float fluidStored =this.getFluidstack().getAmount();
-        float maxFluidStored =entity.FLUID_TANK.getCapacity();
-        int barSize = 40;
-        return fluidStored!=0&& maxFluidStored !=0? Mth.clamp((int)( barSize*fluidStored/ maxFluidStored),0,40):0;
-    }
-
 }

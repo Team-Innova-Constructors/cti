@@ -36,11 +36,6 @@ public class PMachineEnergySync {
                     entity.setEnergy(energyStorage);
                 }
             }
-            if (Minecraft.getInstance().player != null) {
-                if (Minecraft.getInstance().player.containerMenu instanceof GeneralMachineMenu menu){
-                    menu.setEnergyDis(energyStorage);
-                }
-            }
         });
         return true;
     }

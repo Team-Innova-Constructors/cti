@@ -79,11 +79,8 @@ public class BiomeUtil {
     @Nullable
     public static ResourceKey<Biome> getBiomeKey(Holder<Biome> holder){
         ResourceKey<Biome> key =null;
-        for (ResourceKey<Biome> biomeResourceKey :PLANET_BIOMES){
-            if (holder.is(biomeResourceKey)){
-                key = biomeResourceKey;
-                break;
-            }
+        if (holder.unwrapKey().isPresent()){
+            key=holder.unwrapKey().get();
         }
         return key;
     }

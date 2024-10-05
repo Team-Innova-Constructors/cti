@@ -165,8 +165,6 @@ public class QuantumMinerEntity extends BlockEntity {
         if (entity.itemStackHandler.getStackInSlot(0).getItem()!=ctiItem.compressed_singularity.get()){
             return;
         }
-        ServerLevel serverLevel =(ServerLevel)level;
-        PlayerList list =serverLevel.getServer().getPlayerList();
         ItemStack output = getOutPut(level);
         if (output.isEmpty()){
             return;

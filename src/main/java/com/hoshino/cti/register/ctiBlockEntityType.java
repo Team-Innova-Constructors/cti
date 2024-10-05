@@ -14,4 +14,5 @@ public class ctiBlockEntityType {
     public static final RegistryObject<BlockEntityType<AtmosphereCondensatorEntity>> Atmosphere_condensator=BLOCK_ENTITIES.register("atmosphere_condensator",()->BlockEntityType.Builder.of(AtmosphereCondensatorEntity::new, ctiBlock.atmosphere_condensator.get()).build(null));
     public static final RegistryObject<BlockEntityType<QuantumMinerEntity>> QUANTUM_MINER_ENTITY=BLOCK_ENTITIES.register("quantum_miner",()->BlockEntityType.Builder.of(QuantumMinerEntity::new, ctiBlock.quantum_miner.get()).build(null));
     public static final RegistryObject<BlockEntityType<QuantumMinerAdvancedEntity>> QUANTUM_MINER_ADVANCED_ENTITY=BLOCK_ENTITIES.register("quantum_miner_advanced",()->BlockEntityType.Builder.of(QuantumMinerAdvancedEntity::new, ctiBlock.quantum_miner_advanced.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ReactorNeutronCollectorEntity>> REACTOR_NEUTRON_COLLECTOR=BLOCK_ENTITIES.register("reactor_neutron_collector",()->BlockEntityType.Builder.of(ReactorNeutronCollectorEntity::new, ctiBlock.reactor_neutron_collector.get()).build(null));
 }

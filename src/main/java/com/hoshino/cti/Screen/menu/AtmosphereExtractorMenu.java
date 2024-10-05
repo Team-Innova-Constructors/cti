@@ -1,6 +1,7 @@
 package com.hoshino.cti.Screen.menu;
 
 import com.hoshino.cti.Blocks.BlockEntity.AtmosphereExtractorEntity;
+import com.hoshino.cti.Blocks.BlockEntity.GeneralMachineEntity;
 import com.hoshino.cti.register.ctiBlock;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.Mth;
@@ -24,7 +25,7 @@ public class AtmosphereExtractorMenu extends GeneralMachineMenu {
         this(id, inventory,inventory.player.level.getBlockEntity(buf.readBlockPos()),new SimpleContainerData(4));
     }
     public AtmosphereExtractorMenu(int id, Inventory inventory, BlockEntity entity, ContainerData data) {
-        super(ctiMenu.ATMOSPHERE_EXT_MENU.get(), id);
+        super(ctiMenu.ATMOSPHERE_EXT_MENU.get(), id,(GeneralMachineEntity) entity);
         checkContainerSize(inventory,1);
         this.level = inventory.player.level;
         this.entity = (AtmosphereExtractorEntity) entity;
@@ -57,7 +58,7 @@ public class AtmosphereExtractorMenu extends GeneralMachineMenu {
         return maxProgress!=0&&progress!=0? barSize*progress/maxProgress:0;
     }
     public int getEnergyBarScale(){
-        float energyStored =this.EnergyStorage;
+        float energyStored =this.getEnergy();
         float maxEnergyStored =entity.getMaxEnergy();
         int barSize = 60;
         return energyStored!=0&&maxEnergyStored!=0? Mth.clamp((int)( barSize*energyStored/maxEnergyStored),0,60):0;

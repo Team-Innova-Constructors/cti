@@ -1,6 +1,6 @@
 package com.hoshino.cti.Blocks.Machine;
 
-import com.hoshino.cti.Blocks.BlockEntity.AtmosphereCondensatorEntity;
+import com.hoshino.cti.Blocks.BlockEntity.ReactorNeutronCollectorEntity;
 import com.hoshino.cti.register.ctiBlock;
 import com.hoshino.cti.register.ctiBlockEntityType;
 import net.minecraft.core.BlockPos;
@@ -27,15 +27,15 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
-public class AtmosphereCondensatorBlock extends BaseEntityBlock {
+public class ReactorNeutronCollectorBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public AtmosphereCondensatorBlock(Properties p_49224_) {
+    public ReactorNeutronCollectorBlock(Properties p_49224_) {
         super(p_49224_);
     }
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new AtmosphereCondensatorEntity(blockPos,blockState);
+        return new ReactorNeutronCollectorEntity(blockPos,blockState);
     }
     public RenderShape getRenderShape(BlockState p_49232_) {
         return RenderShape.MODEL;
@@ -61,7 +61,7 @@ public class AtmosphereCondensatorBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level level, BlockPos blockPos, BlockState newState, boolean isMoving) {
         if (state.getBlock()!=newState.getBlock()){
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof AtmosphereCondensatorEntity entity&&entity.getBlockState().is(ctiBlock.atmosphere_condensator.get())){
+            if (blockEntity instanceof ReactorNeutronCollectorEntity entity&&entity.getBlockState().is(ctiBlock.reactor_neutron_collector.get())){
                 entity.dropItem();
             }
             blockEntity.setRemoved();
@@ -72,14 +72,14 @@ public class AtmosphereCondensatorBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ctiBlockEntityType.Atmosphere_condensator.get(), AtmosphereCondensatorEntity::tick);
+        return createTickerHelper(type, ctiBlockEntityType.REACTOR_NEUTRON_COLLECTOR.get(), ReactorNeutronCollectorEntity::tick);
     }
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult result) {
         if (!level.isClientSide){
             BlockEntity entity =level.getBlockEntity(blockPos);
-            if (entity instanceof AtmosphereCondensatorEntity condensator){
+            if (entity instanceof ReactorNeutronCollectorEntity){
                 if (player instanceof ServerPlayer) {
                     NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) entity, blockPos);
                     return InteractionResult.CONSUME;

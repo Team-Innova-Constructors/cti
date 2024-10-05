@@ -1,5 +1,6 @@
 package com.hoshino.cti.netwrok.packet;
 
+import com.hoshino.cti.Blocks.BlockEntity.GeneralMachineEntity;
 import com.hoshino.cti.Screen.menu.GeneralMachineMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -31,9 +32,9 @@ public class PMachineFluidSync {
     public boolean handle(Supplier<NetworkEvent.Context> supplier){
         NetworkEvent.Context context =supplier.get();
         context.enqueueWork(()->{
-            if (Minecraft.getInstance().player != null) {
-                if (Minecraft.getInstance().player.containerMenu instanceof GeneralMachineMenu menu){
-                    menu.setFluidDis(stack);
+            if (Minecraft.getInstance().level != null) {
+                if (Minecraft.getInstance().level.getBlockEntity(blockPos) instanceof GeneralMachineEntity entity){
+                    entity.setFluidDis(stack);
                 }
             }
         });

@@ -1,8 +1,6 @@
 package com.hoshino.cti.Blocks.Machine;
 
 import com.hoshino.cti.Blocks.BlockEntity.AtmosphereExtractorEntity;
-import com.hoshino.cti.netwrok.ctiPacketHandler;
-import com.hoshino.cti.netwrok.packet.PMachineEnergySync;
 import com.hoshino.cti.register.ctiBlock;
 import com.hoshino.cti.register.ctiBlockEntityType;
 import net.minecraft.core.BlockPos;

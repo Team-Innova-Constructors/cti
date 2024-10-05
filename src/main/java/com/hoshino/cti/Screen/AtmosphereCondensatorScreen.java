@@ -88,19 +88,19 @@ public class AtmosphereCondensatorScreen extends AbstractContainerScreen<Atmosph
         poseStack.pushPose();
         {
             poseStack.translate(leftPos1+116,topPos1+1,0);
-            drawFluid(poseStack,16,this.menu.Fluidstack);
+            drawFluid(poseStack,16,this.menu.getFluidstack());
         }
         poseStack.popPose();
         if (menu.entity.getLevel()!=null) {
             drawString(poseStack, font,Component.literal("群系: ").append(Component.translatable( BiomeUtil.BiomekeyToString(getBiomeKey(menu.entity.getLevel().getBiome(menu.entity.getBlockPos()))))), leftPos1 + 8, topPos1 + 56, 0xDD00FF);
         }
         if (mousex>=leftPos1+62&&mousey>=topPos1+67&&mousex<=leftPos1+123&&mousey<=topPos1+80){
-            drawString(poseStack, font, String.valueOf(menu.EnergyStorage)+"FE", mousex+8, mousey-12, 0xff6000);
+            drawString(poseStack, font, String.valueOf(menu.getEnergy())+"FE", mousex+8, mousey-12, 0xff6000);
             drawString(poseStack, font, "最大: "+String.valueOf( menu.entity.getMaxEnergy())+"FE", mousex+8, mousey, 0xff6000);
             drawString(poseStack, font, "最大: "+String.valueOf(menu.entity.getEnergyPerTick())+"FE/t", mousex+8, mousey+12, 0xff6000);
         }
         if (mousex>=leftPos1+116&&mousey>=topPos1+22&&mousex<=leftPos1+132&&mousey<=topPos1+62){
-            List<Component> ls0 = getTooltip(this.menu.Fluidstack,TooltipFlag.Default.NORMAL);
+            List<Component> ls0 = getTooltip(this.menu.getFluidstack(),TooltipFlag.Default.NORMAL);
             if (!ls0.isEmpty()) {
                 int i=0;
                 int b =ls0.size();

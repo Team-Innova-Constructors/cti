@@ -16,6 +16,10 @@
   "cti.tooltip.item.atmosphere_condensator": "将环境的部分大气成分冷凝为流体物质。",
   "cti.tooltip.item.quantum_miner": "消耗压缩奇点以从另一个位面采集矿物，矿物被存入机器上方的容器里。",
   "cti.tooltip.item.quantum_miner_advanced": "每次产出*2，每tick开采10次。",
+  "cti.tooltip.item.reactor_neutron_collector": "从过热钠蒸汽中提取游离的中子素，会将过热钠变为钠蒸汽。",
+  "cti.tooltip.item.reactor_neutron_collector2": "机器会从左侧的容器吸取过热钠，并向右侧的机器排出钠蒸汽，物品则输出到机器上方的容器。",
+  "cti.tooltip.item.reactor_neutron_collector3": "放入催化剂以提高效率，催化剂越多效率越高，但是消耗概率也会越高。",
+  "cti.tooltip.item.reactor_neutron_collector4": "基础过热钠消耗速率: 100,000mB/t",
 
 
 
@@ -88,6 +92,8 @@
   "block.cti.quantum_miner": "位面采矿机",
   "cti.machine.quantum_miner_advanced": "高级位面采矿机",
   "block.cti.quantum_miner_advanced": "高级位面采矿机",
+  "cti.machine.reactor_neutron_collector": "反应堆中子素收集器",
+  "block.cti.reactor_neutron_collector": "反应堆中子素收集器",
 
 
   "cti.gui.biome.null": "null",

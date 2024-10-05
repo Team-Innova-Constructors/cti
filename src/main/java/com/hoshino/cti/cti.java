@@ -4,6 +4,7 @@ import com.hoshino.cti.Event.LivingEvents;
 import com.hoshino.cti.Modifier.capability.*;
 import com.hoshino.cti.Screen.AtmosphereCondensatorScreen;
 import com.hoshino.cti.Screen.AtmosphereExtractorScreen;
+import com.hoshino.cti.Screen.ReactorNeutronCollectorScreen;
 import com.hoshino.cti.Screen.menu.ctiMenu;
 import com.hoshino.cti.client.hud.EnvironmentalHud;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
@@ -74,6 +75,7 @@ public class cti {
     public void clientSetup(FMLClientSetupEvent event){
         MenuScreens.register(ctiMenu.ATMOSPHERE_EXT_MENU.get(), AtmosphereExtractorScreen::new);
         MenuScreens.register(ctiMenu.ATMOSPHERE_CON_MENU.get(), AtmosphereCondensatorScreen::new);
+        MenuScreens.register(ctiMenu.NEUT_COL_MENU.get(), ReactorNeutronCollectorScreen::new);
         event.enqueueWork(ctiEntity::registerEntityRenderers);
 
     }
