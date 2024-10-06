@@ -10,7 +10,6 @@ import net.minecraft.world.level.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class BiomeUtil {
@@ -24,6 +23,7 @@ public class BiomeUtil {
     public static final ResourceKey<Biome> DISORDERED_ZONE = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(cti.MOD_ID,"disordered_zone"));
     public static final ResourceKey<Biome> INFERNAL = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(cti.MOD_ID,"infernal"));
     public static final ResourceKey<Biome> INFERNAL_MOLTEN = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(cti.MOD_ID,"infernal_molten_surface"));
+    public static final ResourceKey<Biome> JUPITER = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(cti.MOD_ID,"jupiter"));
 
 
     public static void init(){
@@ -34,10 +34,13 @@ public class BiomeUtil {
 
         SCORCH_LEVEL.put(INFERNAL_MOLTEN,2.9f);
         SCORCH_LEVEL.put(INFERNAL,2.1f);
+        SCORCH_LEVEL.put(JUPITER,3.1f);
 
         FREEZE_LEVEL.put(IONIZED_MARE,1.5f);
         FREEZE_LEVEL.put(IONIZED_GLACIO,3.3f);
         FREEZE_LEVEL.put(DISORDERED_ZONE,1.1f);
+
+        PRESSURE_LEVEL.put(JUPITER,3.25f);
 
     }
 
@@ -45,21 +48,10 @@ public class BiomeUtil {
         return key!=null?"biome."+key.location().toLanguageKey():"cti.gui.biome.null";
     }
 
-    //外星群系列表，注册完记得加上
-    public static final List<ResourceKey<Biome>> PLANET_BIOMES = List.of(
-            GLACIO_ICE,
-            GLACIO_BARRENS,
-            VENUS_BARRENS,
-            VENUS_WASTELAND,
-            IONIZED_MARE,
-            IONIZED_GLACIO,
-            DISORDERED_ZONE,
-            INFERNAL,
-            INFERNAL_MOLTEN
-    );
     public static final Map<ResourceKey<Biome>,Float> IONIZE_LEVEL =new HashMap<>();
     public static final Map<ResourceKey<Biome>,Float> SCORCH_LEVEL =new HashMap<>();
     public static final Map<ResourceKey<Biome>,Float> FREEZE_LEVEL =new HashMap<>();
+    public static final Map<ResourceKey<Biome>,Float> PRESSURE_LEVEL =new HashMap<>();
 
 
 
@@ -74,6 +66,10 @@ public class BiomeUtil {
     public static float getBiomeFreezeLevel(Holder<Biome> holder){
         ResourceKey<Biome> key =getBiomeKey(holder);
         return key!=null? FREEZE_LEVEL.getOrDefault(key, 0f):0f;
+    }
+    public static float getBiomePressureLevel(Holder<Biome> holder){
+        ResourceKey<Biome> key =getBiomeKey(holder);
+        return key!=null? PRESSURE_LEVEL.getOrDefault(key, 0f):0f;
     }
 
     @Nullable

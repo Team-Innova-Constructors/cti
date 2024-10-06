@@ -2,12 +2,20 @@ package com.hoshino.cti.world.feature;
 
 import com.google.common.base.Suppliers;
 import com.hoshino.cti.cti;
+import com.hoshino.cti.register.ctiBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.OreFeatures;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.GeodeBlockSettings;
+import net.minecraft.world.level.levelgen.GeodeCrackSettings;
+import net.minecraft.world.level.levelgen.GeodeLayerSettings;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -38,4 +46,16 @@ public class ctiConfiguredFeature {
 
     public static final RegistryObject<ConfiguredFeature<?,?>> EXTRA_REDSTONE_ORE = CONFIGURED_FEATURES.register("extra_redstone",
             ()->new ConfiguredFeature<>(Feature.ORE,new OreConfiguration(EXTRA_REDSTONE_ORES.get(),20)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> HULTRADENSE_GEODE = CONFIGURED_FEATURES.register("hultra_dense_geode",
+            () -> new ConfiguredFeature<>(Feature.GEODE,
+                    new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(Blocks.AIR),
+                            BlockStateProvider.simple(Blocks.BUDDING_AMETHYST),
+                            BlockStateProvider.simple(ctiBlock.ultra_dense_hydride_ore.get()),
+                            BlockStateProvider.simple(Blocks.CALCITE),
+                            BlockStateProvider.simple(Blocks.SMOOTH_BASALT),
+                            List.of(ctiBlock.ultra_dense_hydride_ore.get().defaultBlockState()),
+                            BlockTags.FEATURES_CANNOT_REPLACE , BlockTags.GEODE_INVALID_BLOCKS),
+                            new GeodeLayerSettings(1.7, 2.2, 3.2, 5.2), new GeodeCrackSettings(0.95, 2.0, 2), 0.5D, 0.1D,
+                            true, UniformInt.of(6, 9), UniformInt.of(3, 4), UniformInt.of(1, 2), 16, -32, 0.05D, 1)));
 }

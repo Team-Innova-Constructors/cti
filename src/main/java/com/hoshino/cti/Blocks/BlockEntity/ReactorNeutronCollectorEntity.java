@@ -271,7 +271,7 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
         }
         Gas heatedSodium = MekanismGases.SUPERHEATED_SODIUM.get();
         Gas sodium = MekanismGases.SODIUM.get();
-        ItemStack output = new ItemStack(ModItems.neutron_pile.get());
+        ItemStack output = new ItemStack(ModItems.neutron_nugget.get());
         boolean canInput = false;
         boolean canOutput = false;
         boolean canOutputItem = false;
@@ -324,24 +324,26 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
         insert.setAmount(amount);
         inputHandler.extractChemical(drain, Action.EXECUTE);
         outputHandler.insertChemical(insert, Action.EXECUTE);
-        entity.PROGRESS = (int) Math.min(Integer.MAX_VALUE, entity.PROGRESS + amount);
-        entity.ENERGY_STORAGE.extractEnergy(entity.getEnergyPerTick(), false);
-        entity.setChanged();
-        if (EtSHrnd().nextFloat() <= chanceConsume) {
-            entity.itemStackHandler.extractItem(0, 1, false);
+        if (entity.PROGRESS<2000000000) {
+            if (EtSHrnd().nextFloat() <= chanceConsume) {
+                entity.itemStackHandler.extractItem(0, 1, false);
+            }
+            entity.PROGRESS = (int) Math.min(Integer.MAX_VALUE, entity.PROGRESS + amount);
+            entity.ENERGY_STORAGE.extractEnergy(entity.getEnergyPerTick(), false);
+            entity.setChanged();
         }
         if (entity.PROGRESS>=entity.MAX_PROGRESS) {
-            entity.PROGRESS = entity.MAX_PROGRESS;
             for (int a = 0; a < itemHandler.getSlots(); a++) {
                 if (itemHandler.getStackInSlot(a).isEmpty() && itemHandler.isItemValid(a, output)) {
-                    itemHandler.insertItem(a, output, false);
-                    entity.PROGRESS = 0;
+                    while (entity.PROGRESS>=entity.MAX_PROGRESS&&itemHandler.getStackInSlot(a).getCount()<itemHandler.getSlotLimit(a)&& itemHandler.isItemValid(a, output)) {
+                        itemHandler.insertItem(a, output, false);
+                        entity.PROGRESS -= entity.MAX_PROGRESS;
+                    }
                     break;
                 } else if (itemHandler.getStackInSlot(a).is(output.getItem()) && itemHandler.getStackInSlot(a).getCount() < itemHandler.getSlotLimit(a)) {
-                    itemHandler.insertItem(a, output, false);
-                    entity.PROGRESS = 0;
-                    if (EtSHrnd().nextFloat() <= chanceConsume) {
-                        entity.itemStackHandler.extractItem(0, 1, false);
+                    while (entity.PROGRESS>=entity.MAX_PROGRESS&&itemHandler.getStackInSlot(a).getCount()<itemHandler.getSlotLimit(a)&& itemHandler.isItemValid(a, output)) {
+                        itemHandler.insertItem(a, output, false);
+                        entity.PROGRESS -= entity.MAX_PROGRESS;
                     }
                     break;
                 }

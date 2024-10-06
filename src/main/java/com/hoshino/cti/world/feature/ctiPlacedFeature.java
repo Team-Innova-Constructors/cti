@@ -25,6 +25,13 @@ public class ctiPlacedFeature {
                     commonOrePlacement(3,
                             HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-20),VerticalAnchor.aboveBottom(56)))));
 
+
+    public static final RegistryObject<PlacedFeature> HULTRADENSE_GEODE_PLACED = PLACED_FEATURES.register("hultra_dense_geode_placed",
+            () -> new PlacedFeature(ctiConfiguredFeature.HULTRADENSE_GEODE.getHolder().get(), List.of(
+                    RarityFilter.onAverageOnceEvery(50), InSquarePlacement.spread(),
+                    HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(27), VerticalAnchor.absolute(84)),
+                    BiomeFilter.biome())));
+
     private static List<PlacementModifier> orePlacement(PlacementModifier p_195347_, PlacementModifier p_195348_) {
         return List.of(p_195347_, InSquarePlacement.spread(), p_195348_, BiomeFilter.biome());
     }
