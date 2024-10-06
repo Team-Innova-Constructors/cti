@@ -243,110 +243,111 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
 
 
     public static void tick(Level level, BlockPos blockPos, BlockState state, ReactorNeutronCollectorEntity entity) {
-        if (level.isClientSide){
+        if (level.isClientSide) {
             return;
         }
-        ctiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(),entity.getBlockPos()));
-        if (entity.ENERGY_STORAGE.getEnergyStored()<entity.getEnergyPerTick()){
+        ctiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(), entity.getBlockPos()));
+        if (entity.ENERGY_STORAGE.getEnergyStored() < entity.getEnergyPerTick()) {
             return;
         }
-        if (!state.is(ctiBlock.reactor_neutron_collector.get())){
+        if (!state.is(ctiBlock.reactor_neutron_collector.get())) {
             return;
         }
         Direction direction = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
-        BlockEntity inputContainer =level.getBlockEntity( blockPos.relative(direction.getClockWise()));
-        BlockEntity outputContainer =level.getBlockEntity(blockPos.relative(direction.getCounterClockWise()));
+        BlockEntity inputContainer = level.getBlockEntity(blockPos.relative(direction.getClockWise()));
+        BlockEntity outputContainer = level.getBlockEntity(blockPos.relative(direction.getCounterClockWise()));
         BlockEntity itemContainer = level.getBlockEntity(blockPos.above());
-        if (itemContainer==null||outputContainer==null||inputContainer==null){
+        if (itemContainer == null || outputContainer == null || inputContainer == null) {
             return;
         }
-        LazyOptional<IGasHandler> inputOptional = inputContainer.getCapability(Capabilities.GAS_HANDLER,direction.getCounterClockWise());
-        LazyOptional<IGasHandler> outputOptional = outputContainer.getCapability(Capabilities.GAS_HANDLER,direction.getClockWise());
-        LazyOptional<IItemHandler> itemOptional = itemContainer.getCapability(ForgeCapabilities.ITEM_HANDLER,Direction.DOWN);
-        IGasHandler inputHandler =inputOptional.orElse(EmptyHandlers.GAS_EMPTY);
-        IGasHandler outputHandler =outputOptional.orElse(EmptyHandlers.GAS_EMPTY);
-        IItemHandler itemHandler =itemOptional.orElse(EmptyHandlers.ITEM_EMPTY);
-        if (inputHandler.equals(EmptyHandlers.GAS_EMPTY)||outputHandler.equals(EmptyHandlers.GAS_EMPTY)||itemHandler.equals(EmptyHandlers.ITEM_EMPTY)){
+        LazyOptional<IGasHandler> inputOptional = inputContainer.getCapability(Capabilities.GAS_HANDLER, direction.getCounterClockWise());
+        LazyOptional<IGasHandler> outputOptional = outputContainer.getCapability(Capabilities.GAS_HANDLER, direction.getClockWise());
+        LazyOptional<IItemHandler> itemOptional = itemContainer.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.DOWN);
+        IGasHandler inputHandler = inputOptional.orElse(EmptyHandlers.GAS_EMPTY);
+        IGasHandler outputHandler = outputOptional.orElse(EmptyHandlers.GAS_EMPTY);
+        IItemHandler itemHandler = itemOptional.orElse(EmptyHandlers.ITEM_EMPTY);
+        if (inputHandler.equals(EmptyHandlers.GAS_EMPTY) || outputHandler.equals(EmptyHandlers.GAS_EMPTY) || itemHandler.equals(EmptyHandlers.ITEM_EMPTY)) {
             return;
         }
         Gas heatedSodium = MekanismGases.SUPERHEATED_SODIUM.get();
-        Gas sodium =MekanismGases.SODIUM.get();
-        ItemStack output =new ItemStack(ModItems.neutron_pile.get());
-        boolean canInput =false;
-        boolean canOutput =false;
-        boolean canOutputItem =false;
-        float SodiumAmplifier =1;
-        float chanceConsume =0;
+        Gas sodium = MekanismGases.SODIUM.get();
+        ItemStack output = new ItemStack(ModItems.neutron_pile.get());
+        boolean canInput = false;
+        boolean canOutput = false;
+        boolean canOutputItem = false;
+        float SodiumAmplifier = 1;
+        float chanceConsume = 0;
         ItemStack catalyst = entity.itemStackHandler.getStackInSlot(0);
-        ReactorNeutronCollectorRecipe recipe = getRecipe(level,catalyst);
-        if (recipe!=null){
-            SodiumAmplifier+= recipe.getEfficiency()*(float) (catalyst.getCount()/recipe.getCatalyst().getCount());
-            chanceConsume =recipe.getConsumptionRate()*(float) (catalyst.getCount()/recipe.getCatalyst().getCount());
+        ReactorNeutronCollectorRecipe recipe = getRecipe(level, catalyst);
+        if (recipe != null) {
+            SodiumAmplifier += recipe.getEfficiency() * (float) (catalyst.getCount() / recipe.getCatalyst().getCount());
+            chanceConsume = recipe.getConsumptionRate() * (float) (catalyst.getCount() / recipe.getCatalyst().getCount());
         }
         GasStack drain = GasStack.EMPTY;
         GasStack insert = GasStack.EMPTY;
-        for (int a =0;a<inputHandler.getTanks();a++){
+        for (int a = 0; a < inputHandler.getTanks(); a++) {
             GasStack stack = inputHandler.getChemicalInTank(a);
-            if (stack.getType()==heatedSodium){
-                drain = new GasStack(heatedSodium,(long) Math.min(entity.BASE_SODIUM_PERTICK*SodiumAmplifier,stack.getAmount()));
+            if (stack.getType() == heatedSodium) {
+                drain = new GasStack(heatedSodium, (long) Math.min(entity.BASE_SODIUM_PERTICK * SodiumAmplifier, stack.getAmount()));
                 GasStack gasStack = inputHandler.extractChemical(drain, Action.SIMULATE);
-                if (gasStack.getAmount()>0){
-                    drain =gasStack;
-                    canInput =true;
+                if (gasStack.getAmount() > 0) {
+                    drain = gasStack;
+                    canInput = true;
                     break;
                 } else {
-                    drain =GasStack.EMPTY;
+                    drain = GasStack.EMPTY;
                 }
             }
         }
-        for (int a =0;a<outputHandler.getTanks();a++){
-            if (drain.isEmpty()){
+        for (int a = 0; a < outputHandler.getTanks(); a++) {
+            if (drain.isEmpty()) {
                 break;
             }
             GasStack stack = outputHandler.getChemicalInTank(a);
-            if (stack.getType()==sodium||stack.isEmpty()){
-                insert = new GasStack(sodium, Math.min(drain.getAmount(),outputHandler.getTankCapacity(a)-stack.getAmount()));
+            if (stack.getType() == sodium || stack.isEmpty()) {
+                insert = new GasStack(sodium, Math.min(drain.getAmount(), outputHandler.getTankCapacity(a) - stack.getAmount()));
                 GasStack gasStack = inputHandler.insertChemical(insert, Action.SIMULATE);
-                if (gasStack.getAmount()>0){
-                    insert =gasStack;
-                    canOutput =true;
+                if (gasStack.getAmount() > 0) {
+                    insert = gasStack;
+                    canOutput = true;
                     break;
-                }else {
-                    insert =GasStack.EMPTY;
+                } else {
+                    insert = GasStack.EMPTY;
                 }
             }
         }
-        if (!canInput||!canOutput){
+        if (!canInput || !canOutput) {
             return;
         }
-        long amount =Math.min(drain.getAmount(),insert.getAmount());
+        long amount = Math.min(drain.getAmount(), insert.getAmount());
         drain.setAmount(amount);
         insert.setAmount(amount);
-        inputHandler.extractChemical(drain,Action.EXECUTE);
-        outputHandler.insertChemical(insert,Action.EXECUTE);
-        entity.PROGRESS= (int) Math.min(Integer.MAX_VALUE,entity.PROGRESS+amount);
-        entity.ENERGY_STORAGE.extractEnergy(entity.getEnergyPerTick(),false);
+        inputHandler.extractChemical(drain, Action.EXECUTE);
+        outputHandler.insertChemical(insert, Action.EXECUTE);
+        entity.PROGRESS = (int) Math.min(Integer.MAX_VALUE, entity.PROGRESS + amount);
+        entity.ENERGY_STORAGE.extractEnergy(entity.getEnergyPerTick(), false);
         entity.setChanged();
-        while (entity.PROGRESS>=entity.MAX_PROGRESS){
-            for (int a =0;a<itemHandler.getSlots();a++){
-                if (itemHandler.getStackInSlot(a).isEmpty()&&itemHandler.isItemValid(a,output)){
-                    itemHandler.insertItem(a,output,false);
-                    entity.PROGRESS-= entity.MAX_PROGRESS;
-                    if (EtSHrnd().nextFloat()<=chanceConsume){
-                        entity.itemStackHandler.extractItem(0,1,false);
-                    }
+        if (EtSHrnd().nextFloat() <= chanceConsume) {
+            entity.itemStackHandler.extractItem(0, 1, false);
+        }
+        if (entity.PROGRESS>=entity.MAX_PROGRESS) {
+            entity.PROGRESS = entity.MAX_PROGRESS;
+            for (int a = 0; a < itemHandler.getSlots(); a++) {
+                if (itemHandler.getStackInSlot(a).isEmpty() && itemHandler.isItemValid(a, output)) {
+                    itemHandler.insertItem(a, output, false);
+                    entity.PROGRESS = 0;
                     break;
-                }
-                else if (itemHandler.getStackInSlot(a).is(output.getItem())&&itemHandler.getStackInSlot(a).getCount()<itemHandler.getSlotLimit(a)){
-                    itemHandler.insertItem(a,output,false);
-                    entity.PROGRESS-= entity.MAX_PROGRESS;
-                    if (EtSHrnd().nextFloat()<=chanceConsume){
-                        entity.itemStackHandler.extractItem(0,1,false);
+                } else if (itemHandler.getStackInSlot(a).is(output.getItem()) && itemHandler.getStackInSlot(a).getCount() < itemHandler.getSlotLimit(a)) {
+                    itemHandler.insertItem(a, output, false);
+                    entity.PROGRESS = 0;
+                    if (EtSHrnd().nextFloat() <= chanceConsume) {
+                        entity.itemStackHandler.extractItem(0, 1, false);
                     }
                     break;
                 }
             }
         }
+
     }
 
     public static ReactorNeutronCollectorRecipe getRecipe(Level level,ItemStack stack){
