@@ -4,14 +4,12 @@ import cofh.core.init.CoreMobEffects;
 import cofh.core.init.CoreParticles;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
-import com.hoshino.cti.Capabilitiess.IElectricShielding;
-import com.hoshino.cti.Capabilitiess.IFreezeShielding;
-import com.hoshino.cti.Capabilitiess.IScorchShielding;
-import com.hoshino.cti.Capabilitiess.ctiCapabilities;
+import com.hoshino.cti.Capabilitiess.*;
 import com.hoshino.cti.Entity.specialDamageSource.Environmental;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PFrozenValueSync;
 import com.hoshino.cti.netwrok.packet.PIonizeValueSync;
+import com.hoshino.cti.netwrok.packet.PPressureValueSync;
 import com.hoshino.cti.netwrok.packet.PScorchValueSync;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -21,6 +19,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -45,6 +44,7 @@ public class EnvironmentSystem {
     public static final String IONIZED_AMOUNT ="environmental.ionized";
     public static final String SCORCH_AMOUNT ="environmental.scorch";
     public static final String FROZEN_AMOUNT ="environmental.frozen";
+    public static final String PRESSURE_AMOUNT ="environmental.pressure";
 
     //环境危害的计算函数，10ticks执行一次
     public static void EnvironmentTick(LivingEntity living, ServerLevel level) {
@@ -53,14 +53,17 @@ public class EnvironmentSystem {
         float lvl_ionize = getBiomeIonizeLevel(biome) - getElectricResistance(living);
         float lvl_scorch = getBiomeScorchLevel(biome) -getScorchResistance(living) -getBiomeFreezeLevel(biome);
         float lvl_freeze = getBiomeFreezeLevel(biome) -getFreezeResistance(living) -getBiomeScorchLevel(biome);
+        float lvl_pressure = getBiomePressureLevel(biome) - getPressureResistance(living);
         CompoundTag nbt = living.getPersistentData();
         //积累危害值
         nbt.putFloat(IONIZED_AMOUNT, Mth.clamp(nbt.getFloat(IONIZED_AMOUNT)+lvl_ionize,-20*(1+getElectricResistance(living)),250));
         nbt.putFloat(SCORCH_AMOUNT, Mth.clamp(nbt.getFloat(SCORCH_AMOUNT)+lvl_scorch,-40*(1+getScorchResistance(living)),250));
         nbt.putFloat(FROZEN_AMOUNT, Mth.clamp(nbt.getFloat(FROZEN_AMOUNT)+lvl_freeze,-60*(1+getScorchResistance(living)),250));
+        nbt.putFloat(PRESSURE_AMOUNT, Mth.clamp(nbt.getFloat(PRESSURE_AMOUNT)+lvl_pressure,-100*(1+getPressureResistance(living)),250));
         float ion_multiplier = nbt.getFloat(IONIZED_AMOUNT)/50;
         float sco_multiplier = nbt.getFloat(SCORCH_AMOUNT)/100;
         float fro_multiplier = nbt.getFloat(FROZEN_AMOUNT)/200;
+        float pre_multiplier = nbt.getFloat(PRESSURE_AMOUNT)/50;
         //危害值>0时的处理
         if (ion_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
@@ -83,11 +86,19 @@ public class EnvironmentSystem {
             ((ServerLevel) living.level).sendParticles(CoreParticles.FROST.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * fro_multiplier * 3), 0, 0, 0, 0.25);
             nbt.putFloat(FROZEN_AMOUNT,Math.max(0,nbt.getFloat(FROZEN_AMOUNT)*0.99f));
         }
+        if (pre_multiplier > 0&&living.isAlive()) {
+            living.invulnerableTime = 0;
+            living.hurt(Environmental.pressureSource(Multiplier * pre_multiplier*living.getMaxHealth()), Multiplier * pre_multiplier*living.getMaxHealth());
+            living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, (int) pre_multiplier));
+            ((ServerLevel) living.level).sendParticles(ParticleTypes.SMOKE, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * pre_multiplier * 3), 0, 0, 0, 0.25);
+            nbt.putFloat(PRESSURE_AMOUNT,Math.max(0,nbt.getFloat(PRESSURE_AMOUNT)*0.99f));
+        }
         //发包
         if (living instanceof ServerPlayer player){
             ctiPacketHandler.sendToPlayer(new PIonizeValueSync(nbt.getFloat(IONIZED_AMOUNT),lvl_ionize),player);
             ctiPacketHandler.sendToPlayer(new PScorchValueSync(nbt.getFloat(SCORCH_AMOUNT),lvl_scorch),player);
             ctiPacketHandler.sendToPlayer(new PFrozenValueSync(nbt.getFloat(FROZEN_AMOUNT),lvl_freeze),player);
+            ctiPacketHandler.sendToPlayer(new PPressureValueSync(nbt.getFloat(PRESSURE_AMOUNT),lvl_pressure),player);
         }
     }
 
@@ -120,6 +131,18 @@ public class EnvironmentSystem {
             Optional<IFreezeShielding> shielding = getCapability(stack, ctiCapabilities.FREEZE_SHIELDING,null).resolve();
             if (shielding.isPresent()){
                 resist+=shielding.get().getFreezeShieldinng();
+            }
+        }
+        return resist;
+    }
+
+    public static float getPressureResistance(LivingEntity living){
+        float resist =0;
+        for (EquipmentSlot slot:ARMOR_SLOTS){
+            ItemStack stack = living.getItemBySlot(slot);
+            Optional<IPressureShielding> shielding = getCapability(stack, ctiCapabilities.PRESSURE_SHIELDING,null).resolve();
+            if (shielding.isPresent()){
+                resist+=shielding.get().getPressureShielding();
             }
         }
         return resist;

@@ -21,4 +21,7 @@ public class Environmental extends DamageSource {
     public static Environmental frozenSource(float amount){
         return new Environmental("cti.frozen",amount);
     }
+    public static Environmental pressureSource(float amount){
+        return new Environmental("cti.pressure",amount);
+    }
 }

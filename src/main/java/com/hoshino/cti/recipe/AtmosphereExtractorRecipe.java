@@ -16,6 +16,7 @@ public class AtmosphereExtractorRecipe implements Recipe<SimpleContainer> {
     private final ResourceLocation id;
     private final ItemStack output;
     private final String BiomeString;
+    private final Ingredient ingredient =Ingredient.EMPTY;
 
     public AtmosphereExtractorRecipe(ResourceLocation id, ItemStack output, String BiomeString){
         this.id = id;
@@ -100,7 +101,9 @@ public class AtmosphereExtractorRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public void toNetwork(FriendlyByteBuf pBuffer, AtmosphereExtractorRecipe pRecipe) {
+            pBuffer.writeResourceLocation(pRecipe.id);
             pBuffer.writeInt(pRecipe.getIngredients().size());
+            pRecipe.ingredient.toNetwork(pBuffer);
             pBuffer.writeUtf(pRecipe.getBiome());
             pBuffer.writeItemStack(pRecipe.getResultItem(),false);
         }

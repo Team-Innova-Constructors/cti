@@ -53,15 +53,18 @@
   "biome.cti.ionized_mare":"电离月海",
   "biome.cti.infernal":"炼狱",
   "biome.cti.infernal_molten_surface":"半熔融炼狱",
+  "biome.cti.jupiter":"木星核心",
 
 
 
   "death.attack.cti.ionized": "%1$s 体内的正负电荷被永远分离了。",
   "death.attack.cti.ionized.player": "%1$s 体内的正负电荷被永远分离了。",
-  "death.attack.cti.scorch": "%1$s 变成了活性炭。",
-  "death.attack.cti.scorch.player": "%1$s 变成了活性炭。",
+  "death.attack.cti.scorch": "%1$s 变成了多孔活性炭。",
+  "death.attack.cti.scorch.player": "%1$s 变成了多孔活性炭。",
   "death.attack.cti.frozen": "%1$s 变成了速冻水饺。",
   "death.attack.cti.frozen.player": "%1$s 变成了速冻水饺。",
+  "death.attack.cti.pressure": "%1$s 变成了压缩毛巾。",
+  "death.attack.cti.pressure.player": "%1$s 变成了压缩毛巾。",
 
 
 
@@ -77,12 +80,18 @@
   "modifier.cti.freeze_protect.flavor": "祛寒避湿！",
   "modifier.cti.freeze_protect.description":"每级提供25%极寒抗性",
 
+  "modifier.cti.freeze_protect": "高压防护",
+  "modifier.cti.freeze_protect.flavor": "天塌下来都不怕！",
+  "modifier.cti.freeze_protect.description":"每级提供25%压强抗性",
+
   "cti.gui.environmental.ionize_build": "电离强度",
   "cti.gui.environmental.ionize_value": "电离值",
   "cti.gui.environmental.scorch_build": "灼热强度",
   "cti.gui.environmental.scorch_value": "灼热值",
   "cti.gui.environmental.frozen_build": "霜冻强度",
   "cti.gui.environmental.frozen_value": "霜冻值",
+  "cti.gui.environmental.pressure_build": "压强强度",
+  "cti.gui.environmental.pressure_value": "压强值",
 
 
   "cti.machine.atmosphere_extractor": "大气提取器",

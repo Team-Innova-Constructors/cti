@@ -42,4 +42,18 @@ public class EnvironmentalPlayerData {
     public static double getFrozenBuild(){
         return FROZEN_BUILD;
     }
+
+    public static float PRESSURE;
+    public static double PRESSURE_BUILD;
+
+    public static void setPressureValue(float amount,double amount2){
+        PRESSURE = amount;
+        PRESSURE_BUILD =amount2;
+    }
+    public static float getPressureValue(){
+        return PRESSURE;
+    }
+    public static double getPressureBuild(){
+        return PRESSURE_BUILD;
+    }
 }

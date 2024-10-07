@@ -9,10 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
@@ -23,6 +20,7 @@ public class ReactorNeutronCollectorRecipe implements Recipe<SimpleContainer> {
     private final ItemStack catalyst;
     private final float consumption_rate;
     private final float efficiency;
+    private final Ingredient ingredient =Ingredient.EMPTY;
 
     public ReactorNeutronCollectorRecipe(ResourceLocation id, ItemStack output, float efficiency,float consumption,ItemStack catalyst){
         this.id = id;
@@ -100,24 +98,19 @@ public class ReactorNeutronCollectorRecipe implements Recipe<SimpleContainer> {
         @Override
         public @Nullable ReactorNeutronCollectorRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
             ItemStack output = new ItemStack(ModItems.neutron_pile.get());
-            CompoundTag tag = pBuffer.readNbt();
-            float efficiency =0;
-            float consumption_rate =0;
-            if (tag!=null){
-                efficiency =tag.getFloat("efficiency");
-                consumption_rate =tag.getFloat("consumption_rate");
-            }
+            float efficiency =pBuffer.readFloat();
+            float consumption_rate = (float) pBuffer.readDouble();
             ItemStack catalyst = pBuffer.readItem();
             return new ReactorNeutronCollectorRecipe(pRecipeId,output,efficiency,consumption_rate,catalyst);
         }
 
         @Override
         public void toNetwork(FriendlyByteBuf pBuffer, ReactorNeutronCollectorRecipe pRecipe) {
+            pBuffer.writeResourceLocation(pRecipe.id);
             pBuffer.writeInt(pRecipe.getIngredients().size());
-            CompoundTag tag =new CompoundTag();
-            tag.putFloat("efficiency",pRecipe.efficiency);
-            tag.putFloat("consumption_rate",pRecipe.consumption_rate);
-            pBuffer.writeNbt(tag);
+            pRecipe.ingredient.toNetwork(pBuffer);
+            pBuffer.writeFloat(pRecipe.efficiency);
+            pBuffer.writeDouble(pRecipe.consumption_rate);
             pBuffer.writeItemStack(pRecipe.getCatalyst(),false);
         }
     }

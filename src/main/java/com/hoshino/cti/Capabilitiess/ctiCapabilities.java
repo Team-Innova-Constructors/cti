@@ -9,4 +9,5 @@ public class ctiCapabilities {
     public static final Capability<IElectricShielding> ELECTRIC_SHIELDING = CapabilityManager.get(new CapabilityToken<>() {});
     public static final Capability<IScorchShielding> SCORCH_SHIELDING = CapabilityManager.get(new CapabilityToken<>() {});
     public static final Capability<IFreezeShielding> FREEZE_SHIELDING = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<IPressureShielding> PRESSURE_SHIELDING = CapabilityManager.get(new CapabilityToken<>() {});
 }

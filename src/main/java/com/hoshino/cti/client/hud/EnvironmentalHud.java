@@ -36,10 +36,33 @@ public class EnvironmentalHud {
     public static final ResourceLocation IONIZE = new ResourceLocation(cti.MOD_ID,"/textures/gui/environmental/gui_ionize.png");
     public static final ResourceLocation SCORCH = new ResourceLocation(cti.MOD_ID,"/textures/gui/environmental/gui_scorch.png");
     public static final ResourceLocation FROZEN = new ResourceLocation(cti.MOD_ID,"/textures/gui/environmental/gui_frozen.png");
+    public static final ResourceLocation PRESSURE = new ResourceLocation(cti.MOD_ID,"/textures/gui/environmental/gui_pressure.png");
 
 
     public static final IGuiOverlay ENVIRONMENT_OVERLAY = ((gui, poseStack, partialTick, width, height) -> {
         int x =width/2;
+
+        float pre_val =EnvironmentalPlayerData.getPressureValue();
+        double pre_build =EnvironmentalPlayerData.getPressureBuild();
+        int pre_lvl =(int) Mth.clamp(pre_build,0.0d,5.0d) ;
+        int player_pre_lvl = pre_val <=0? 0:(int) Mth.clamp(pre_val /50,0,4)+1;
+
+        RenderSystem.setShader(GameRenderer::getPositionShader);
+        RenderSystem.setShaderColor(1,1,1,1);
+        RenderSystem.setShaderTexture(0,PRESSURE);
+        GuiComponent.blit(poseStack,x+116, height -82,0,0,16,16,16,16);
+        RenderSystem.setShaderTexture(0,LVL.get(pre_build <=0?0: pre_lvl +1));
+        GuiComponent.blit(poseStack,x+116, height -82,0,0,16,16,16,16);
+        GuiComponent.drawString(poseStack, font,
+                Component.translatable(Str+"pressure_value").append(": ")
+                        .append(String.format("%.01f", pre_val))
+                        .append("%").withStyle(COLOR.get(player_pre_lvl))
+                ,x+132,height -82,255);
+        GuiComponent.drawString(poseStack, font,
+                Component.translatable(Str+"pressure_build").append(": ")
+                        .append(String.format("%.01f", pre_build *2))
+                        .append("/s").withStyle(COLOR.get(pre_build <=0?0: pre_lvl +1))
+                ,x+132,height -74,255);
 
 
         float ion_val =EnvironmentalPlayerData.getIonizeValue();
