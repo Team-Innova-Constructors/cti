@@ -61,7 +61,7 @@ public class cti {
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
         ctiPacketHandler.init();
         ctiMenu.MENU_TYPE.register(eventBus);
-        ctiRecipes.register(eventBus);
+        //ctiRecipes.register(eventBus);
         ctiConfiguredFeature.CONFIGURED_FEATURES.register(eventBus);
         ctiPlacedFeature.PLACED_FEATURES.register(eventBus);
         if(Mekenabled){

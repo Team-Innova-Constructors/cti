@@ -5,10 +5,7 @@ import com.hoshino.cti.integration.AtmosphereCondenseRecipeCategory;
 import com.hoshino.cti.integration.AtmosphereExtractRecipeCategory;
 import com.hoshino.cti.integration.QuantumMinerRecipeCategory;
 import com.hoshino.cti.integration.ReactorNeutronCollectorRecipeCategory;
-import com.hoshino.cti.recipe.AtmosphereCondensorRecipe;
-import com.hoshino.cti.recipe.AtmosphereExtractorRecipe;
-import com.hoshino.cti.recipe.QuantumMinerRecipe;
-import com.hoshino.cti.recipe.ReactorNeutronCollectorRecipe;
+import com.hoshino.cti.recipe.*;
 import com.hoshino.cti.register.ctiItem;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -16,13 +13,10 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeManager;
 
 import java.util.List;
-import java.util.Objects;
 
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
@@ -46,11 +40,10 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        RecipeManager rm = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
-        List<AtmosphereExtractorRecipe> recipesExtract = rm.getAllRecipesFor(AtmosphereExtractorRecipe.Type.INSTANCE);
-        List<AtmosphereCondensorRecipe> recipesCondense = rm.getAllRecipesFor(AtmosphereCondensorRecipe.Type.INSTANCE);
-        List<QuantumMinerRecipe> quantumMining = rm.getAllRecipesFor(QuantumMinerRecipe.Type.INSTANCE);
-        List<ReactorNeutronCollectorRecipe> neutronCollecting = rm.getAllRecipesFor(ReactorNeutronCollectorRecipe.Type.INSTANCE);
+        List<AtmosphereExtractorRecipe> recipesExtract = List.copyOf(RecipeMap.ExtractorRecipeList);
+        List<AtmosphereCondensorRecipe> recipesCondense = List.copyOf(RecipeMap.CondensorRecipeList);
+        List<QuantumMinerRecipe> quantumMining = List.copyOf(RecipeMap.MinerRecipeList);
+        List<ReactorNeutronCollectorRecipe> neutronCollecting = List.copyOf(RecipeMap.NeutronRecipeList);
 
         registration.addRecipes(ATMOSPHERE_EXTRACT, recipesExtract);
         registration.addRecipes(ATMOSPHERE_CONDENSE, recipesCondense);

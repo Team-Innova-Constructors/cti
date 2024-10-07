@@ -82,7 +82,8 @@ public class ReactorNeutronCollectorRecipe implements Recipe<SimpleContainer> {
         public static final String ID = "reactor_neutron_collect";
     }
 
-
+    // 别用json添加配方！
+    @Deprecated
     public static class Serializer implements RecipeSerializer<ReactorNeutronCollectorRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         public static final  ResourceLocation ID =

@@ -77,8 +77,8 @@ public class AtmosphereExtractorRecipe implements Recipe<SimpleContainer> {
         public static final String ID = "atmosphere_extract";
     }
 
-    // 负责解码JSON并通过网络通信
-    // 需要注册
+    // 别用json添加配方！
+    @Deprecated
     public static class Serializer implements RecipeSerializer<AtmosphereExtractorRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         public static final  ResourceLocation ID =

@@ -1,6 +1,7 @@
 package com.hoshino.cti.Blocks.BlockEntity;
 
 import com.hoshino.cti.recipe.QuantumMinerRecipe;
+import com.hoshino.cti.recipe.RecipeMap;
 import com.hoshino.cti.register.ctiBlockEntityType;
 import com.hoshino.cti.register.ctiItem;
 import com.hoshino.cti.util.ctiEnergyStore;
@@ -198,7 +199,7 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
     }
 
     public static ItemStack getOutPut(Level level){
-        List<QuantumMinerRecipe> list =level.getRecipeManager().getAllRecipesFor(QuantumMinerRecipe.Type.INSTANCE);
+        List<QuantumMinerRecipe> list =List.copyOf(RecipeMap.MinerRecipeList);
         if (list.isEmpty()){
             return ItemStack.EMPTY;
         }

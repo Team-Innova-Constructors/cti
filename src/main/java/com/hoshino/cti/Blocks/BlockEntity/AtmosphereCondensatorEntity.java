@@ -5,6 +5,7 @@ import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PMachineEnergySync;
 import com.hoshino.cti.netwrok.packet.PMachineFluidSync;
 import com.hoshino.cti.recipe.AtmosphereCondensorRecipe;
+import com.hoshino.cti.recipe.RecipeMap;
 import com.hoshino.cti.register.ctiBlockEntityType;
 import com.hoshino.cti.util.Upgrades;
 import com.hoshino.cti.util.ctiEnergyStore;
@@ -261,7 +262,7 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
         entity.FLUID_TANK.fill(output, IFluidHandler.FluidAction.EXECUTE);
     }
     public static FluidStack getOutPut(ResourceKey<Biome> biomekey,Level level){
-        List<AtmosphereCondensorRecipe> recipeList = level.getRecipeManager().getAllRecipesFor(AtmosphereCondensorRecipe.Type.INSTANCE);
+        List<AtmosphereCondensorRecipe> recipeList = List.copyOf(RecipeMap.CondensorRecipeList);
         for (AtmosphereCondensorRecipe recipe:recipeList){
             ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(recipe.getBiome()));
             if (key.equals(biomekey)){

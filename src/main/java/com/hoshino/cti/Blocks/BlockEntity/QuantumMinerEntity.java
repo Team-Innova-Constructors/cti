@@ -1,19 +1,15 @@
 package com.hoshino.cti.Blocks.BlockEntity;
 
 import com.hoshino.cti.recipe.QuantumMinerRecipe;
+import com.hoshino.cti.recipe.RecipeMap;
 import com.hoshino.cti.register.ctiBlockEntityType;
 import com.hoshino.cti.register.ctiItem;
 import com.hoshino.cti.util.ctiEnergyStore;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.PlayerList;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -23,7 +19,6 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -198,7 +193,7 @@ public class QuantumMinerEntity extends BlockEntity {
     }
 
     public static ItemStack getOutPut(Level level){
-        List<QuantumMinerRecipe> list =level.getRecipeManager().getAllRecipesFor(QuantumMinerRecipe.Type.INSTANCE);
+        List<QuantumMinerRecipe> list =List.copyOf(RecipeMap.MinerRecipeList);
         if (list.isEmpty()){
             return ItemStack.EMPTY;
         }

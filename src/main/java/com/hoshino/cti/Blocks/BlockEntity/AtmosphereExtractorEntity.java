@@ -5,6 +5,7 @@ import com.hoshino.cti.Screen.menu.AtmosphereExtractorMenu;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PMachineEnergySync;
 import com.hoshino.cti.recipe.AtmosphereExtractorRecipe;
+import com.hoshino.cti.recipe.RecipeMap;
 import com.hoshino.cti.register.ctiBlockEntityType;
 import com.hoshino.cti.util.Upgrades;
 import com.hoshino.cti.util.ctiEnergyStore;
@@ -249,7 +250,7 @@ public class AtmosphereExtractorEntity extends GeneralMachineEntity implements M
         }
     }
     public static ItemStack getOutPut(ResourceKey<Biome> biomekey,Level level){
-        List<AtmosphereExtractorRecipe> recipeList = level.getRecipeManager().getAllRecipesFor(AtmosphereExtractorRecipe.Type.INSTANCE);
+        List<AtmosphereExtractorRecipe> recipeList = List.copyOf(RecipeMap.ExtractorRecipeList);
         for (AtmosphereExtractorRecipe recipe:recipeList){
             ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(recipe.getBiome()));
             if (key.equals(biomekey)){

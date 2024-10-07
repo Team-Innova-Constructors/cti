@@ -70,6 +70,9 @@ public class QuantumMinerRecipe implements Recipe<SimpleContainer> {
         public static final String ID = "quantum_mining";
     }
 
+
+    // 别用json添加配方！
+    @Deprecated
     public static class Serializer implements RecipeSerializer<QuantumMinerRecipe> {
         public static final QuantumMinerRecipe.Serializer INSTANCE = new QuantumMinerRecipe.Serializer();
         public static final  ResourceLocation ID = new ResourceLocation(cti.MOD_ID,"quantum_mining");

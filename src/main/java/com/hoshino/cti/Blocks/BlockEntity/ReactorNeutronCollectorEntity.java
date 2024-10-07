@@ -6,6 +6,7 @@ import com.hoshino.cti.Screen.menu.ReactorNeutronCollectorMenu;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PMachineEnergySync;
 import com.hoshino.cti.recipe.ReactorNeutronCollectorRecipe;
+import com.hoshino.cti.recipe.RecipeMap;
 import com.hoshino.cti.register.ctiBlock;
 import com.hoshino.cti.register.ctiBlockEntityType;
 import com.hoshino.cti.util.EmptyHandlers;
@@ -271,7 +272,7 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
         }
         Gas heatedSodium = MekanismGases.SUPERHEATED_SODIUM.get();
         Gas sodium = MekanismGases.SODIUM.get();
-        ItemStack output = new ItemStack(ModItems.neutron_nugget.get());
+
         boolean canInput = false;
         boolean canOutput = false;
         boolean canOutputItem = false;
@@ -279,9 +280,11 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
         float chanceConsume = 0;
         ItemStack catalyst = entity.itemStackHandler.getStackInSlot(0);
         ReactorNeutronCollectorRecipe recipe = getRecipe(level, catalyst);
+        ItemStack output = new ItemStack(ModItems.neutron_nugget.get());
         if (recipe != null) {
             SodiumAmplifier += recipe.getEfficiency() * (float) (catalyst.getCount() / recipe.getCatalyst().getCount());
             chanceConsume = recipe.getConsumptionRate() * (float) (catalyst.getCount() / recipe.getCatalyst().getCount());
+            output = recipe.getResultItem();
         }
         GasStack drain = GasStack.EMPTY;
         GasStack insert = GasStack.EMPTY;
@@ -353,7 +356,7 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
     }
 
     public static ReactorNeutronCollectorRecipe getRecipe(Level level,ItemStack stack){
-        List<ReactorNeutronCollectorRecipe> list = level.getRecipeManager().getAllRecipesFor(ReactorNeutronCollectorRecipe.Type.INSTANCE);
+        List<ReactorNeutronCollectorRecipe> list = List.copyOf(RecipeMap.NeutronRecipeList);
         for (ReactorNeutronCollectorRecipe recipe:list){
             if (recipe.getCatalyst().is(stack.getItem())){
                 return recipe;
