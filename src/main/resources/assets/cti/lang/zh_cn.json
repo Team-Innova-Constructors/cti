@@ -22,6 +22,8 @@
   "cti.tooltip.item.reactor_neutron_collector3": "放入催化剂以提高效率，催化剂每刻都有概率消耗一个。催化剂数量越多，处理速度越快，但是每刻消耗概率也相应增加。",
   "cti.tooltip.item.reactor_neutron_collector4": "基础过热钠消耗速率: 100,000mB/t",
 
+  "cti.tooltip.item.stellar_plate": "手持时显示当前你所受的环境危害值，右键查看星图。在星图中点击任意星球以关闭星图",
+
 
 
   "item.cti.ultradense_ammo": "超致密机枪弹药",
@@ -80,9 +82,11 @@
   "modifier.cti.freeze_protect.flavor": "祛寒避湿！",
   "modifier.cti.freeze_protect.description":"每级提供25%极寒抗性",
 
-  "modifier.cti.freeze_protect": "高压防护",
-  "modifier.cti.freeze_protect.flavor": "天塌下来都不怕！",
-  "modifier.cti.freeze_protect.description":"每级提供25%压强抗性",
+  "modifier.cti.pressure_protect": "高压防护",
+  "modifier.cti.pressure_protect.flavor": "天塌下来都不怕！",
+  "modifier.cti.pressure_protect.description":"每级提供25%压强抗性",
+
+
 
   "cti.gui.environmental.ionize_build": "电离强度",
   "cti.gui.environmental.ionize_value": "电离值",

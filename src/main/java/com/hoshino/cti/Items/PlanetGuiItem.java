@@ -2,6 +2,8 @@ package com.hoshino.cti.Items;
 
 import earth.terrarium.ad_astra.common.screen.PlanetSelectionMenuProvider;
 import earth.terrarium.botarium.api.menu.MenuHooks;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -9,8 +11,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class PlanetGuiItem extends Item {
     public int lvl =1;
@@ -34,5 +40,10 @@ public class PlanetGuiItem extends Item {
     }
     public UseAnim getUseAnimation(ItemStack p_41452_) {
         return UseAnim.BLOCK;
+    }
+    @Override
+    public void appendHoverText(ItemStack p_40572_, @Nullable Level p_40573_, List<Component> list, TooltipFlag p_40575_) {
+        list.add(Component.translatable("cti.tooltip.item.stellar_plate").withStyle(ChatFormatting.AQUA));
+        super.appendHoverText(p_40572_, p_40573_, list, p_40575_);
     }
 }

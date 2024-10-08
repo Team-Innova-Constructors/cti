@@ -6,10 +6,11 @@
   "refmap": "cti.refmap.json",
   "mixins": [
     "LivingEntityMixin",
-    "TestMixin"
+    "TestMixin",
+    "AdAstraMixin.ModUtilMixin",
+    "AdAstraMixin.TemperatureTick"
   ],
   "client": [
-
   ],
   "injectors": {
     "defaultRequire": 1

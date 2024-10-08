@@ -1,6 +1,6 @@
 package com.hoshino.cti.Modifier.capability;
 
-import com.hoshino.cti.Capabilitiess.IFreezeShielding;
+import com.hoshino.cti.Capabilitiess.IPressureShielding;
 import com.hoshino.cti.Capabilitiess.ctiCapabilities;
 import com.hoshino.cti.register.ctiToolStats;
 import net.minecraft.world.item.ItemStack;
@@ -11,21 +11,21 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import java.util.function.Supplier;
 
-public class FreezeShieldToolCap implements IFreezeShielding, ToolCapabilityProvider.IToolCapabilityProvider {
+public class PressureShieldToolCap implements IPressureShielding, ToolCapabilityProvider.IToolCapabilityProvider {
     public final Supplier<? extends IToolStackView> tool;
-    public final LazyOptional<IFreezeShielding> capOptional;
-    public FreezeShieldToolCap(ItemStack stack, Supplier<? extends IToolStackView> toolStack){
+    public final LazyOptional<IPressureShielding> capOptional;
+    public PressureShieldToolCap(ItemStack stack, Supplier<? extends IToolStackView> toolStack){
         tool =toolStack;
         capOptional =LazyOptional.of(()->this);
     }
 
     @Override
     public <T> LazyOptional<T> getCapability(IToolStackView iToolStackView, Capability<T> capability) {
-        return  iToolStackView.getStats().get(ctiToolStats.FROZEN_RESISTANCE)>0&& capability == ctiCapabilities.FREEZE_SHIELDING ? ctiCapabilities.FREEZE_SHIELDING.orEmpty(capability,this.capOptional):LazyOptional.empty();
+        return  iToolStackView.getStats().get(ctiToolStats.PRESSURE_RESISTANCE)>0&& capability == ctiCapabilities.PRESSURE_SHIELDING ? ctiCapabilities.PRESSURE_SHIELDING.orEmpty(capability,this.capOptional):LazyOptional.empty();
     }
 
     @Override
-    public float getFreezeShieldinng() {
-        return tool.get().getStats().get(ctiToolStats.SCORCH_RESISTANCE);
+    public float getPressureShielding() {
+        return tool.get().getStats().get(ctiToolStats.PRESSURE_RESISTANCE);
     }
 }

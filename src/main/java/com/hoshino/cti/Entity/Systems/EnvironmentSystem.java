@@ -11,6 +11,7 @@ import com.hoshino.cti.netwrok.packet.PFrozenValueSync;
 import com.hoshino.cti.netwrok.packet.PIonizeValueSync;
 import com.hoshino.cti.netwrok.packet.PPressureValueSync;
 import com.hoshino.cti.netwrok.packet.PScorchValueSync;
+import com.hoshino.cti.util.ctiTagkey;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
@@ -121,6 +122,9 @@ public class EnvironmentSystem {
             if (shielding.isPresent()){
                 resist+=shielding.get().getScorchShieldinng();
             }
+            else if (stack.getTags().toList().contains(ctiTagkey.PRESSURE_MINOR)){
+                resist+=0.5f;
+            }
         }
         return resist;
     }
@@ -131,6 +135,9 @@ public class EnvironmentSystem {
             Optional<IFreezeShielding> shielding = getCapability(stack, ctiCapabilities.FREEZE_SHIELDING,null).resolve();
             if (shielding.isPresent()){
                 resist+=shielding.get().getFreezeShieldinng();
+            }
+            else if (stack.getTags().toList().contains(ctiTagkey.PRESSURE_MINOR)){
+                resist+=0.5f;
             }
         }
         return resist;
@@ -143,6 +150,9 @@ public class EnvironmentSystem {
             Optional<IPressureShielding> shielding = getCapability(stack, ctiCapabilities.PRESSURE_SHIELDING,null).resolve();
             if (shielding.isPresent()){
                 resist+=shielding.get().getPressureShielding();
+            }
+            else if (stack.getTags().toList().contains(ctiTagkey.PRESSURE_MINOR)){
+                resist+=0.5f;
             }
         }
         return resist;
