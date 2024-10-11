@@ -5,8 +5,9 @@
   "minVersion": "0.7",
   "refmap": "cti.refmap.json",
   "mixins": [
+    "EntityMixin",
     "LivingEntityMixin",
-    "TestMixin",
+    "AdAstraMixin.CryoFuelLiquidBlockMixin",
     "AdAstraMixin.ModUtilMixin",
     "AdAstraMixin.TemperatureTick"
   ],

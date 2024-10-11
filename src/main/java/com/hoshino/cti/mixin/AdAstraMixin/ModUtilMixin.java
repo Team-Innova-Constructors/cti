@@ -25,13 +25,15 @@ public abstract class ModUtilMixin {
     private static void getEntityGravity(Entity entity, CallbackInfoReturnable<Float> callbackInfo)
     {
         float gravity = callbackInfo.getReturnValueF();
-
+        if (entity instanceof LivingEntity living) {
+            if (BiomeUtil.getBiomeKey(living.level.getBiome(living.blockPosition())) == BiomeUtil.DISORDERED_ZONE&&living.level.getGameTime()%3==0) {
+                callbackInfo.setReturnValue(EtSHrnd().nextFloat()*4-2);
+            }
+        }
         if (gravity != 1.0F)
         {
             if (entity instanceof LivingEntity living){
-                if (BiomeUtil.getBiomeKey(living.level.getBiome(living.blockPosition()))==BiomeUtil.DISORDERED_ZONE){
-                    callbackInfo.setReturnValue(EtSHrnd().nextFloat()+0.5f);
-                }
+
                 for (ItemStack stack: List.of(living.getItemBySlot(EquipmentSlot.HEAD),living.getItemBySlot(EquipmentSlot.CHEST),living.getItemBySlot(EquipmentSlot.FEET),living.getItemBySlot(EquipmentSlot.LEGS))){
                     if (stack.getItem() instanceof IModifiable && ToolStack.from(stack).getModifierLevel(ctiModifiers.gravity_normalizer.get())>0){
                         callbackInfo.setReturnValue(1f);

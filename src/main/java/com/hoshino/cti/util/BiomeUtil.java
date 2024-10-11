@@ -24,6 +24,7 @@ public class BiomeUtil {
     public static final ResourceKey<Biome> INFERNAL = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(cti.MOD_ID,"infernal"));
     public static final ResourceKey<Biome> INFERNAL_MOLTEN = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(cti.MOD_ID,"infernal_molten_surface"));
     public static final ResourceKey<Biome> JUPITER = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(cti.MOD_ID,"jupiter"));
+    public static final ResourceKey<Biome> URANUS = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(cti.MOD_ID,"uranus"));
 
 
     public static void init(){
@@ -36,11 +37,13 @@ public class BiomeUtil {
         SCORCH_LEVEL.put(INFERNAL,2.1f);
         SCORCH_LEVEL.put(JUPITER,3.1f);
 
-        FREEZE_LEVEL.put(IONIZED_MARE,1.5f);
+        FREEZE_LEVEL.put(IONIZED_MARE,2.0f);
         FREEZE_LEVEL.put(IONIZED_GLACIO,3.3f);
         FREEZE_LEVEL.put(DISORDERED_ZONE,1.1f);
+        FREEZE_LEVEL.put(URANUS,0.85f);
 
         PRESSURE_LEVEL.put(JUPITER,3.25f);
+        PRESSURE_LEVEL.put(URANUS,1.80f);
 
     }
 

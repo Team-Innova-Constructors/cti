@@ -1,0 +1,47 @@
+package com.hoshino.cti.mixin;
+
+import earth.terrarium.ad_astra.common.registry.ModDamageSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.getFreezeResistance;
+import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.getScorchResistance;
+
+@Mixin(Entity.class)
+public class EntityMixin {
+    @Inject(at = @At(value = "HEAD"), method = "isInvulnerableTo", cancellable = true)
+    private void setInvulnerableTo(DamageSource source, CallbackInfoReturnable<Boolean> cir){
+        Entity entity =(Entity) (Object)this;
+        if(entity instanceof LivingEntity living){
+            if (getScorchResistance(living)>0.5&&source.isFire()){
+                cir.setReturnValue(true);
+            }
+            if (getFreezeResistance(living)>0.5&&(source== ModDamageSource.CRYO_FUEL||source==DamageSource.FREEZE)){
+                cir.setReturnValue(true);
+            }
+        }
+    }
+    @Inject(at = @At(value = "HEAD"), method = "fireImmune", cancellable = true)
+    private void setFireImmune(CallbackInfoReturnable<Boolean> cir){
+        Entity entity =(Entity) (Object)this;
+        if(entity instanceof LivingEntity living){
+            if (getScorchResistance(living)>0.5){
+                cir.setReturnValue(true);
+            }
+        }
+    }
+    @Inject(at = @At(value = "HEAD"), method = "canFreeze", cancellable = true)
+    private void setFreezeImmune(CallbackInfoReturnable<Boolean> cir){
+        Entity entity =(Entity) (Object)this;
+        if(entity instanceof LivingEntity living){
+            if (getFreezeResistance(living)>0.5){
+                cir.setReturnValue(false);
+            }
+        }
+    }
+}

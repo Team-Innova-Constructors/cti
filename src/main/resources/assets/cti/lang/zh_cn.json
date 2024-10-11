@@ -22,6 +22,10 @@
   "cti.tooltip.item.reactor_neutron_collector3": "放入催化剂以提高效率，催化剂每刻都有概率消耗一个。催化剂数量越多，处理速度越快，但是每刻消耗概率也相应增加。",
   "cti.tooltip.item.reactor_neutron_collector4": "基础过热钠消耗速率: 100,000mB/t",
 
+  "cti.tooltip.item.alloy_centrifuge": "通过压缩空气将镕铸炉内的熔融合金分解为它的原料，需要方块的背面紧挨焦褐排液口才能工作。",
+  "cti.tooltip.item.alloy_centrifuge2": "需要7bar以上的压力才能工作，压力越高压缩空气消耗越快，处理速度也越快（15bar时最高），压缩空气容量: 12800mL。",
+  "cti.tooltip.item.alloy_centrifuge3": "不要对着装有燃料的焦黑冶炼炉使用这个，聪明的你应该知道会发生什么",
+
   "cti.tooltip.item.stellar_plate": "手持时显示当前你所受的环境危害值，右键查看星图。在星图中点击任意星球以关闭星图",
 
 
@@ -108,6 +112,7 @@
   "block.cti.quantum_miner_advanced": "高级位面采矿机",
   "cti.machine.reactor_neutron_collector": "反应堆中子素收集器",
   "block.cti.reactor_neutron_collector": "反应堆中子素收集器",
+  "block.cti.alloy_centrifuge": "气动合金离心机",
 
 
   "cti.gui.biome.null": "null",
