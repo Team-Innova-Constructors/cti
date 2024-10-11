@@ -23,6 +23,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.common.capabilities.Capability;
@@ -105,6 +106,9 @@ public class EnvironmentSystem {
 
     public static float getElectricResistance(LivingEntity living){
         float resist =0;
+        if (!(living instanceof Player)){
+            resist+=1;
+        }
         for (EquipmentSlot slot:ARMOR_SLOTS){
             ItemStack stack = living.getItemBySlot(slot);
             Optional<IElectricShielding> shielding = getCapability(stack, ctiCapabilities.ELECTRIC_SHIELDING,null).resolve();
@@ -116,6 +120,9 @@ public class EnvironmentSystem {
     }
     public static float getScorchResistance(LivingEntity living){
         float resist =0;
+        if (!(living instanceof Player)){
+            resist+=1;
+        }
         for (EquipmentSlot slot:ARMOR_SLOTS){
             ItemStack stack = living.getItemBySlot(slot);
             Optional<IScorchShielding> shielding = getCapability(stack, ctiCapabilities.SCORCH_SHIELDING,null).resolve();
@@ -123,13 +130,16 @@ public class EnvironmentSystem {
                 resist+=shielding.get().getScorchShieldinng();
             }
             else if (stack.getTags().toList().contains(ctiTagkey.PRESSURE_MINOR)){
-                resist+=0.5f;
+                resist+=1;
             }
         }
         return resist;
     }
     public static float getFreezeResistance(LivingEntity living){
         float resist =0;
+        if (!(living instanceof Player)){
+            resist+=1;
+        }
         for (EquipmentSlot slot:ARMOR_SLOTS){
             ItemStack stack = living.getItemBySlot(slot);
             Optional<IFreezeShielding> shielding = getCapability(stack, ctiCapabilities.FREEZE_SHIELDING,null).resolve();
@@ -145,6 +155,9 @@ public class EnvironmentSystem {
 
     public static float getPressureResistance(LivingEntity living){
         float resist =0;
+        if (!(living instanceof Player)){
+            resist+=1;
+        }
         for (EquipmentSlot slot:ARMOR_SLOTS){
             ItemStack stack = living.getItemBySlot(slot);
             Optional<IPressureShielding> shielding = getCapability(stack, ctiCapabilities.PRESSURE_SHIELDING,null).resolve();

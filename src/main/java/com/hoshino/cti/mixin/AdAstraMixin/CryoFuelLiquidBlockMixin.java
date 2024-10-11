@@ -15,11 +15,10 @@ import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.getFreezeResistan
 
 @Mixin(value = CryoFuelLiquidBlock.class, remap = false)
 public class CryoFuelLiquidBlockMixin {
-    @Inject(method = "m_7892_", at = @At("TAIL"), cancellable = true)
+    @Inject(method = "m_7892_", at = @At("HEAD"), cancellable = true)
     private void removeCryoEffect(BlockState state, Level level, BlockPos pos, Entity entity, CallbackInfo ci){
         if (entity instanceof LivingEntity living &&getFreezeResistance(living)>0.5&&!level.isClientSide){
-            entity.setIsInPowderSnow(false);
-            entity.setTicksFrozen(-100);
+            ci.cancel();
         }
     }
 }

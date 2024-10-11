@@ -91,6 +91,7 @@ public class cti {
         ToolCapabilityProvider.register(ElectricShieldToolCap::new);
         ToolCapabilityProvider.register(ScorchShieldToolCap::new);
         ToolCapabilityProvider.register(FreezeShieldToolCap::new);
+        ToolCapabilityProvider.register(PressureShieldToolCap::new);
 
         event.enqueueWork(BiomeUtil::init);
     }
