@@ -33,9 +33,9 @@ public class BiomeUtil {
         IONIZE_LEVEL.put(IONIZED_GLACIO,0.8f);
         IONIZE_LEVEL.put(DISORDERED_ZONE,3.5f);
 
-        SCORCH_LEVEL.put(INFERNAL_MOLTEN,3.1f);
+        SCORCH_LEVEL.put(INFERNAL_MOLTEN,3.5f);
         SCORCH_LEVEL.put(INFERNAL,2.1f);
-        SCORCH_LEVEL.put(JUPITER,3.8f);
+        SCORCH_LEVEL.put(JUPITER, 3.8f);
 
         FREEZE_LEVEL.put(IONIZED_MARE,2.2f);
         FREEZE_LEVEL.put(IONIZED_GLACIO,3.9f);

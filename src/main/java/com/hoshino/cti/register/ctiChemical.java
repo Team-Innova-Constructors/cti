@@ -14,5 +14,6 @@ public class ctiChemical {
     public static final InfuseTypeDeferredRegister INFUSE =new InfuseTypeDeferredRegister(MOD_ID);
     public static final GasRegistryObject<Gas> FLUORINE  = GAS.register("fluorine", 0xadc739);
     public static final GasRegistryObject<Gas> NEUTRON = GAS.register("neutron",0x404259);
+    public static final GasRegistryObject<Gas> OVERCHARGED_NEUTRON = GAS.register("overcharged_neutron",0x6A00DD);
 
 }

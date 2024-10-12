@@ -26,7 +26,7 @@
   "cti.tooltip.item.alloy_centrifuge2": "需要7bar以上的压力才能工作，压力越高压缩空气消耗越快，处理速度也越快（15bar时最高），压缩空气容量: 12800mL。",
   "cti.tooltip.item.alloy_centrifuge3": "不要对着装有燃料的焦黑冶炼炉使用这个，聪明的你应该知道会发生什么",
 
-  "cti.tooltip.item.stellar_plate": "手持时显示当前你所受的环境危害值，右键查看星图。在星图中点击任意星球以关闭星图",
+  "cti.tooltip.item.stellar_plate": "手持时显示当前你所受的环境危害值，右键查看星图，shift+右键查看自己身上的环境抗性。在星图中点击任意星球以关闭星图",
 
 
 
@@ -60,6 +60,7 @@
   "biome.cti.infernal":"炼狱",
   "biome.cti.infernal_molten_surface":"半熔融炼狱",
   "biome.cti.jupiter":"木星核心",
+  "biome.cti.uranus":"天王星核心",
 
 
 
@@ -100,6 +101,11 @@
   "cti.gui.environmental.frozen_value": "霜冻值",
   "cti.gui.environmental.pressure_build": "压强强度",
   "cti.gui.environmental.pressure_value": "压强值",
+
+  "cti.message.environmental.freeze": "霜冻抗性",
+  "cti.message.environmental.scorch": "灼热抗性",
+  "cti.message.environmental.ionize": "电离抗性",
+  "cti.message.environmental.pressure": "压强抗性",
 
 
   "cti.machine.atmosphere_extractor": "大气提取器",

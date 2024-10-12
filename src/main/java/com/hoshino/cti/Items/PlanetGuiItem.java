@@ -16,6 +16,8 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
+import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.*;
+
 import java.util.List;
 
 public class PlanetGuiItem extends Item {
@@ -29,9 +31,17 @@ public class PlanetGuiItem extends Item {
         return InteractionResultHolder.consume(player.getItemInHand(hand));
     }
     public ItemStack finishUsingItem(ItemStack p_41409_, Level level, LivingEntity living) {
-        if (living instanceof Player player){
-            player.inventoryMenu.removed(player);
-            MenuHooks.openMenu((ServerPlayer) player, new PlanetSelectionMenuProvider(this.lvl));
+        if (living instanceof ServerPlayer player){
+            if (!player.isShiftKeyDown()) {
+                player.inventoryMenu.removed(player);
+                MenuHooks.openMenu(player, new PlanetSelectionMenuProvider(this.lvl));
+            }
+            else{
+                player.sendSystemMessage(Component.translatable("cti.message.environmental.freeze").append(" "+String.format("%.2f",getFreezeResistance(player))));
+                player.sendSystemMessage(Component.translatable("cti.message.environmental.scorch").append(" "+String.format("%.2f",getScorchResistance(player))));
+                player.sendSystemMessage(Component.translatable("cti.message.environmental.ionize").append(" "+String.format("%.2f",getElectricResistance(player))));
+                player.sendSystemMessage(Component.translatable("cti.message.environmental.pressure").append(" "+String.format("%.2f",getPressureResistance(player))));
+            }
         }
         return p_41409_;
     }

@@ -41,7 +41,7 @@ public class EnvironmentSystem {
     //直接伤害的危害基础伤害
     public static final float baseDmg = 20;
     //百分比伤害的危害基础百分比
-    public static final float Multiplier =0.1f;
+    public static final float Multiplier =0.2f;
 
     public static final String IONIZED_AMOUNT ="environmental.ionized";
     public static final String SCORCH_AMOUNT ="environmental.scorch";
@@ -69,7 +69,7 @@ public class EnvironmentSystem {
         //危害值>0时的处理
         if (ion_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
-            living.hurt(Environmental.ionizedSource( baseDmg * ion_multiplier), baseDmg * ion_multiplier);
+            living.hurt(Environmental.ionizedSource( baseDmg * ion_multiplier), Multiplier*0.25f*living.getMaxHealth() * ion_multiplier);
             living.addEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(), 50, (int) ion_multiplier));
             ((ServerLevel) living.level).sendParticles(etshtinkerParticleType.electric.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * fro_multiplier * 3), 0, 0, 0, 0.25);
             nbt.putFloat(IONIZED_AMOUNT,Math.max(0,nbt.getFloat(IONIZED_AMOUNT)*0.99f));
@@ -83,7 +83,7 @@ public class EnvironmentSystem {
         }
         if (fro_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
-            living.hurt(Environmental.frozenSource(baseDmg * fro_multiplier), baseDmg * fro_multiplier);
+            living.hurt(Environmental.frozenSource(baseDmg * fro_multiplier), baseDmg*0.5f * fro_multiplier);
             living.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 50, (int) fro_multiplier));
             ((ServerLevel) living.level).sendParticles(CoreParticles.FROST.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * fro_multiplier * 3), 0, 0, 0, 0.25);
             nbt.putFloat(FROZEN_AMOUNT,Math.max(0,nbt.getFloat(FROZEN_AMOUNT)*0.99f));
