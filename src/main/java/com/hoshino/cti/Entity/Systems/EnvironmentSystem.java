@@ -69,28 +69,44 @@ public class EnvironmentSystem {
         //危害值>0时的处理
         if (ion_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
-            living.hurt(Environmental.ionizedSource( baseDmg * ion_multiplier), Multiplier*0.25f*living.getMaxHealth() * ion_multiplier);
+            if (living instanceof Player player){
+                living.hurt(Environmental.playerIonizedSource( baseDmg * ion_multiplier,player), Multiplier*0.25f*living.getMaxHealth() * ion_multiplier);
+            }else {
+                living.hurt(Environmental.ionizedSource(baseDmg * ion_multiplier), Multiplier * 0.25f * living.getMaxHealth() * ion_multiplier);
+            }
             living.addEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(), 50, (int) ion_multiplier));
             ((ServerLevel) living.level).sendParticles(etshtinkerParticleType.electric.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * fro_multiplier * 3), 0, 0, 0, 0.25);
             nbt.putFloat(IONIZED_AMOUNT,Math.max(0,nbt.getFloat(IONIZED_AMOUNT)*0.99f));
         }
         if (sco_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
-            living.hurt(Environmental.scorchSource(baseDmg * sco_multiplier), baseDmg * sco_multiplier);
+            if (living instanceof Player player) {
+                living.hurt(Environmental.playerScorchSource(baseDmg * sco_multiplier,player), baseDmg * sco_multiplier);
+            }else {
+                living.hurt(Environmental.scorchSource(baseDmg * sco_multiplier), baseDmg * sco_multiplier);
+            }
             living.setSecondsOnFire(20);
             ((ServerLevel) living.level).sendParticles(ParticleTypes.FLAME, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * sco_multiplier * 3), 0, 0, 0, 0.25);
             nbt.putFloat(SCORCH_AMOUNT,Math.max(0,nbt.getFloat(SCORCH_AMOUNT)*0.99f));
         }
         if (fro_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
-            living.hurt(Environmental.frozenSource(baseDmg * fro_multiplier), baseDmg*0.5f * fro_multiplier);
+            if (living instanceof Player player) {
+                living.hurt(Environmental.playerFrozenSource(baseDmg * fro_multiplier,player), baseDmg * 0.5f * fro_multiplier);
+            }else {
+                living.hurt(Environmental.frozenSource(baseDmg * fro_multiplier), baseDmg * 0.5f * fro_multiplier);
+            }
             living.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 50, (int) fro_multiplier));
             ((ServerLevel) living.level).sendParticles(CoreParticles.FROST.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * fro_multiplier * 3), 0, 0, 0, 0.25);
             nbt.putFloat(FROZEN_AMOUNT,Math.max(0,nbt.getFloat(FROZEN_AMOUNT)*0.99f));
         }
         if (pre_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
-            living.hurt(Environmental.pressureSource(Multiplier * pre_multiplier*living.getMaxHealth()), Multiplier * pre_multiplier*living.getMaxHealth());
+            if (living instanceof Player player) {
+                living.hurt(Environmental.playerPressureSource(Multiplier * pre_multiplier * living.getMaxHealth(),player), Multiplier * pre_multiplier * living.getMaxHealth());
+            }else {
+                living.hurt(Environmental.pressureSource(Multiplier * pre_multiplier * living.getMaxHealth()), Multiplier * pre_multiplier * living.getMaxHealth());
+            }
             living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, (int) pre_multiplier));
             ((ServerLevel) living.level).sendParticles(ParticleTypes.SMOKE, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * pre_multiplier * 3), 0, 0, 0, 0.25);
             nbt.putFloat(PRESSURE_AMOUNT,Math.max(0,nbt.getFloat(PRESSURE_AMOUNT)*0.99f));
