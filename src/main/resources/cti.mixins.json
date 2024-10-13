@@ -10,7 +10,9 @@
     "AdAstraMixin.AcidRainTick",
     "AdAstraMixin.CryoFuelLiquidBlockMixin",
     "AdAstraMixin.ModUtilMixin",
-    "AdAstraMixin.TemperatureTick"
+    "AdAstraMixin.TemperatureTick",
+    "TIMixin.BlowPipeMixin",
+    "TIMixin.ShruikenMixin"
   ],
   "client": [
   ],
