@@ -1,7 +1,9 @@
 package com.hoshino.cti.register;
 
+import cofh.core.util.helpers.AugmentDataHelper;
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
 import com.hoshino.cti.Items.PlanetGuiItem;
+import com.hoshino.cti.Items.ThermalAugment;
 import com.hoshino.cti.Items.TooltipedBlockItem;
 import com.hoshino.cti.Items.Vehicle.RocketItemTier5;
 import com.hoshino.cti.Items.compressedSingularityItem;
@@ -11,8 +13,6 @@ import com.hoshino.cti.Items.pncMinigunAmmo.UltraDenseAmmo;
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistries;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistry;
-import earth.terrarium.ad_astra.AdAstra;
-import earth.terrarium.ad_astra.common.item.vehicle.RocketItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
@@ -24,10 +24,12 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
 
+import static cofh.core.init.CoreFlags.getFlag;
+import static cofh.lib.util.constants.NBTTags.*;
 import static earth.terrarium.ad_astra.common.registry.ModItems.ITEM_GROUP;
-import static earth.terrarium.ad_astra.common.registry.ModItems.VEHICLES;
 
 public class ctiItem {
+    public static String FLAG_MACHINE_AUGMENTS = "machine_augments";
     public ctiItem(){}
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "cti");
     public static final ResourcefulRegistry<Item> ASTRAITEM  = ResourcefulRegistries.create(Registry.ITEM, "cti");
@@ -84,4 +86,14 @@ public class ctiItem {
             Component.translatable("cti.tooltip.item.fe_max").append(": 500 MFE").withStyle(ChatFormatting.RED),
             Component.translatable("cti.tooltip.item.fe_consumption").append(": 25 MFE/t").withStyle(ChatFormatting.RED)
     )));
+
+
+
+    public static final RegistryObject<Item> advanced_speed_augment = ITEMS.register("advanced_speed_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_AUGMENT_TYPE_MACHINE)
+            .mod(TAG_AUGMENT_MACHINE_POWER, 150.0F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 10F)
+            .mod(TAG_AUGMENT_RF_STORAGE, 50.0F)
+            .mod(TAG_AUGMENT_RF_XFER, 50.0F)
+            .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
 }
