@@ -55,6 +55,7 @@ public class cti {
         ctiEffects.EFFECT.register(eventBus);
         ctiEntity.ENTITIES.register(eventBus);
         ctiBlockEntityType.BLOCK_ENTITIES.register(eventBus);
+        ctiInfusetype.INFUSE.register(eventBus);
         ctiItem.ASTRAITEM.init();
         ctiItem.VEHICLES.init();
         ctiEntity.ENTITY_TYPES.init();
