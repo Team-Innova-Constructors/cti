@@ -88,6 +88,13 @@ public class ctiItem {
             Component.translatable("cti.tooltip.item.fe_max").append(": 500 MFE").withStyle(ChatFormatting.RED),
             Component.translatable("cti.tooltip.item.fe_consumption").append(": 25 MFE/t").withStyle(ChatFormatting.RED)
     )));
+    public static final RegistryObject<BlockItem> sodium_cooler = ITEMS.register("sodium_cooler",()-> new TooltipedBlockItem(ctiBlock.sodium_cooler_block.get(), new Item.Properties().tab(ctiTab.MACHINE), List.of(
+            Component.translatable("cti.tooltip.item.sodium_cooler").withStyle(ChatFormatting.AQUA),
+            Component.translatable("cti.tooltip.item.sodium_cooler2").withStyle(ChatFormatting.AQUA),
+            Component.translatable("cti.tooltip.item.sodium_cooler3").withStyle(ChatFormatting.AQUA),
+            Component.translatable("cti.tooltip.item.fe_max").append(": 250 MFE").withStyle(ChatFormatting.RED),
+            Component.translatable("cti.tooltip.item.fe_generate").append(": 2.5 MFE/t").withStyle(ChatFormatting.RED)
+    )));
 
 
 

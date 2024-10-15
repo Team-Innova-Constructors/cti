@@ -6,6 +6,9 @@ public abstract class ctiEnergyStore extends EnergyStorage {
     public ctiEnergyStore(int capacity, int maxTransfer) {
         super(capacity, maxTransfer, maxTransfer);
     }
+    public ctiEnergyStore(int capacity, int maxReceive,int maxExtract) {
+        super(capacity, maxReceive, maxExtract);
+    }
 
     @Override
     public int extractEnergy(int maxExtract, boolean simulate) {

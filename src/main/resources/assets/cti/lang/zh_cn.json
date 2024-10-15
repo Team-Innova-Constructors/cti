@@ -12,15 +12,19 @@
 
   "cti.tooltip.item.fe_max": "基础FE存储",
   "cti.tooltip.item.fe_consumption": "基础FE消耗量",
+  "cti.tooltip.item.fe_generate": "基础FE产生量",
 
   "cti.tooltip.item.atmosphere_extractor": "将环境的部分大气成分提取为固体物质。",
   "cti.tooltip.item.atmosphere_condensator": "将环境的部分大气成分冷凝为流体物质。",
   "cti.tooltip.item.quantum_miner": "消耗压缩奇点以从另一个位面采集矿物，矿物被存入机器上方的容器里。",
   "cti.tooltip.item.quantum_miner_advanced": "每次产出*2，每tick开采10次。",
   "cti.tooltip.item.reactor_neutron_collector": "从过热钠蒸汽中提取游离的中子素，会将过热钠变为钠蒸汽。",
-  "cti.tooltip.item.reactor_neutron_collector2": "机器会从左侧的容器吸取过热钠，并向右侧的机器排出钠蒸汽，物品则输出到机器上方的容器。",
+  "cti.tooltip.item.reactor_neutron_collector2": "机器会从左侧的容器吸取过热钠，并向右侧的容器排出钠蒸汽，物品则输出到机器上方的容器，若这几个位置没有容器或者容器已满则不工作。",
   "cti.tooltip.item.reactor_neutron_collector3": "放入催化剂以提高效率，催化剂每刻都有概率消耗一个。催化剂数量越多，处理速度越快，但是每刻消耗概率也相应增加。",
   "cti.tooltip.item.reactor_neutron_collector4": "基础过热钠消耗速率: 100,000mB/t",
+  "cti.tooltip.item.sodium_cooler": "小型的安全的集成化的裂变反应堆，能以固定100mB/t的速度燃烧裂变燃料并产生FE。",
+  "cti.tooltip.item.sodium_cooler2": "机器会从左侧的容器吸取裂变燃料，并向右侧的机器排出核废料。机器不会主动输出能量，推荐用通用管道/通量节点提取能量。",
+  "cti.tooltip.item.sodium_cooler3": "能量存储满了、输入/输出端没有化学品容器则无法工作，破坏时不产生辐射。",
 
   "cti.tooltip.item.alloy_centrifuge": "通过压缩空气将镕铸炉内的熔融合金分解为它的原料，需要方块的背面紧挨焦褐排液口才能工作。",
   "cti.tooltip.item.alloy_centrifuge2": "需要7bar以上的压力才能工作，压力越高压缩空气消耗越快，处理速度也越快（15bar时最高），压缩空气容量: 12800mL。",
@@ -80,19 +84,19 @@
 
   "modifier.cti.electric_protect": "电离防护",
   "modifier.cti.electric_protect.flavor": "电流退散！",
-  "modifier.cti.electric_protect.description":"每级提供25%电离抗性",
+  "modifier.cti.electric_protect.description":"每级提供0.25电离抗性",
 
   "modifier.cti.scorch_protect": "灼热防护",
   "modifier.cti.scorch_protect.flavor": "清热解暑！",
-  "modifier.cti.scorch_protect.description":"每级提供25%灼热抗性",
+  "modifier.cti.scorch_protect.description":"每级提供0.25灼热抗性",
 
   "modifier.cti.freeze_protect": "极寒防护",
   "modifier.cti.freeze_protect.flavor": "祛寒避湿！",
-  "modifier.cti.freeze_protect.description":"每级提供25%极寒抗性",
+  "modifier.cti.freeze_protect.description":"每级提供0.25极寒抗性",
 
   "modifier.cti.pressure_protect": "高压防护",
   "modifier.cti.pressure_protect.flavor": "天塌下来都不怕！",
-  "modifier.cti.pressure_protect.description":"每级提供25%压强抗性",
+  "modifier.cti.pressure_protect.description":"每级提供0.25压强抗性",
 
 
 
@@ -122,6 +126,7 @@
   "cti.machine.reactor_neutron_collector": "反应堆中子素收集器",
   "block.cti.reactor_neutron_collector": "反应堆中子素收集器",
   "block.cti.alloy_centrifuge": "气动合金离心机",
+  "block.cti.sodium_cooler": "微型裂变反应堆",
 
 
   "cti.gui.biome.null": "null",

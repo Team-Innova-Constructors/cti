@@ -27,4 +27,5 @@ public class ctiBlock {
     public static final RegistryObject<BaseEntityBlock> quantum_miner_advanced =BLOCK.register("quantum_miner_advanced",()->new QuantumMinerAdvancdBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).destroyTime(2).requiresCorrectToolForDrops()));
     public static final RegistryObject<BaseEntityBlock> reactor_neutron_collector =BLOCK.register("reactor_neutron_collector",()->new ReactorNeutronCollectorBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).destroyTime(2).requiresCorrectToolForDrops()));
     public static final RegistryObject<BaseEntityBlock> alloy_centrifuge_block =BLOCK.register("alloy_centrifuge",()->new AlloyCentrifugeBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).destroyTime(2).requiresCorrectToolForDrops()));
+    public static final RegistryObject<BaseEntityBlock> sodium_cooler_block =BLOCK.register("sodium_cooler",()->new SodiumCooler(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).destroyTime(2).requiresCorrectToolForDrops()));
 }
