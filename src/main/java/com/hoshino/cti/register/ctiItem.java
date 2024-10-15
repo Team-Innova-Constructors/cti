@@ -30,6 +30,8 @@ import static earth.terrarium.ad_astra.common.registry.ModItems.ITEM_GROUP;
 
 public class ctiItem {
     public static String FLAG_MACHINE_AUGMENTS = "machine_augments";
+    public static String FLAG_DYNAMO_AUGMENTS = "dynamo_augments";
+    public static String FLAG_AREA_AUGMENTS = "area_augments";
     public ctiItem(){}
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "cti");
     public static final ResourcefulRegistry<Item> ASTRAITEM  = ResourcefulRegistries.create(Registry.ITEM, "cti");
@@ -39,10 +41,6 @@ public class ctiItem {
     public static final RegistryObject<Item> protonium_ammo = ITEMS.register("protonium_ammo", ProtoniumAmmo::new);
     public static final RegistryObject<Item> electronium_ammo = ITEMS.register("electronium_ammo", ElectroniumAmmo::new);
     public static final RegistryEntry<RocketItemTier5<rocketTier5>> TIER_5_ROCKET = VEHICLES.register("tier_5_rocket", () -> new RocketItemTier5<>(ctiEntity.TIER_5_ROCKET.get(), 5, new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC)));
-    public static final RegistryObject<Item> astra_tablet_1 = ITEMS.register("astra_tablet_1",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),1));
-    public static final RegistryObject<Item> astra_tablet_2 = ITEMS.register("astra_tablet_2",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),2));
-    public static final RegistryObject<Item> astra_tablet_3 = ITEMS.register("astra_tablet_3",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),3));
-    public static final RegistryObject<Item> astra_tablet_4 = ITEMS.register("astra_tablet_4",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),4));
     public static final RegistryObject<Item> astra_tablet_5 = ITEMS.register("astra_tablet_5",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),5));
     public static final RegistryObject<Item> compressed_singularity = ITEMS.register("compressed_singularity",()->new compressedSingularityItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(64).fireResistant().tab(ctiTab.MIXC)));
 
@@ -91,9 +89,33 @@ public class ctiItem {
 
     public static final RegistryObject<Item> advanced_speed_augment = ITEMS.register("advanced_speed_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_MACHINE)
-            .mod(TAG_AUGMENT_MACHINE_POWER, 150.0F)
-            .mod(TAG_AUGMENT_MACHINE_ENERGY, 10F)
+            .mod(TAG_AUGMENT_MACHINE_POWER, 300F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 5F)
             .mod(TAG_AUGMENT_RF_STORAGE, 50.0F)
             .mod(TAG_AUGMENT_RF_XFER, 50.0F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
+
+    public static final RegistryObject<Item> advanced_catalyst_augment = ITEMS.register("advanced_catalyst_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_AUGMENT_TYPE_MACHINE)
+            .mod(TAG_AUGMENT_MACHINE_CATALYST, 0.25F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 2F)
+            .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
+
+    public static final RegistryObject<Item> advanced_dyano_augment = ITEMS.register("advanced_dyano_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_AUGMENT_TYPE_DYNAMO)
+            .mod(TAG_AUGMENT_DYNAMO_POWER, 1000.0F)
+            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 0.1F)
+            .build()).setShowInGroups(getFlag(FLAG_DYNAMO_AUGMENTS)));
+
+    public static final RegistryObject<Item> advanced_range_augment = ITEMS.register("advanced_range_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_AUGMENT_TYPE_AREA_EFFECT)
+            .mod(TAG_AUGMENT_RADIUS, 3.0F)
+            .build()).setShowInGroups(getFlag(FLAG_AREA_AUGMENTS)));
+
+    public static final RegistryObject<Item> advanced_output_augment = ITEMS.register("advanced_output_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_AUGMENT_TYPE_MACHINE)
+            .mod(TAG_AUGMENT_MACHINE_SECONDARY, 1.25F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 2.5F)
+            .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
+
 }
