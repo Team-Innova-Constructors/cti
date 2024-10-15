@@ -52,6 +52,9 @@
   "item.cti.unipolar_magnet_budding": "单极磁石母岩",
   "item.cti.overdense_glacio_stone":"超质量霜星石",
 
+  "item.cti.magic_crystal":"魔力水晶",
+  "item.cti.enriched_mana":"富集魔力水晶",
+
 
 
   "biome.cti.disordered_zone":"异常区域",
@@ -130,5 +133,7 @@
   "cti.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "cti.tooltip.liquid.amount": "%s mB",
 
-  "gas.cti.neutron": "中子素"
+  "gas.cti.neutron": "中子素",
+  "gas.cti.mana_gas": "气态魔力",
+  "infuse_type.cti.mana_infuse": "魔力水晶"
 }
