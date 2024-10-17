@@ -5,6 +5,7 @@
   "modifier.cti": {
     "electric_protect": "#AC89FF",
     "scorch_protect": "#FFE0B7",
-    "freeze_protect": "#86E2FF"
+    "freeze_protect": "#86E2FF",
+    "gold_simulate": "#FFDD77"
   }
 }

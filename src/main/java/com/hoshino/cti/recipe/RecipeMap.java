@@ -38,7 +38,21 @@ public class RecipeMap {
                     "ad_astra:infernal_venus_barrens"),
             new AtmosphereCondensorRecipe(cti.getResource("sufuric_acid2"),
                     new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation("mekanism:sulfuric_acid")),1250),
-                    "ad_astra:venus_wastelands")
+                    "ad_astra:venus_wastelands"),
+
+            new AtmosphereCondensorRecipe(cti.getResource("tritium"),
+                    new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation("mekanismgenerators:tritium")),500),
+                    "cti:jupiter"),
+            new AtmosphereCondensorRecipe(cti.getResource("deuterium"),
+                    new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation("mekanismgenerators:deuterium")),500),
+                    "cti:uranus"),
+
+            new AtmosphereCondensorRecipe(cti.getResource("dense_lava"),
+                    new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation("kubejs:dense_lava")),250),
+                    "cti:infernal_molten_surface"),
+            new AtmosphereCondensorRecipe(cti.getResource("volatile_lava"),
+                    new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation("kubejs:volatile_lava")),250),
+                    "cti:infernal")
     ));
 
     //大气提取器
@@ -56,7 +70,19 @@ public class RecipeMap {
 
             new AtmosphereExtractorRecipe(cti.getResource("ice_shard2"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra:ice_shard")),4),
-                    "ad_astra:glacio_ice_peaks")
+                    "ad_astra:glacio_ice_peaks"),
+            new AtmosphereExtractorRecipe(cti.getResource("gas_hydrate"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:gas_hydrate")),1),
+                    "cti:uranus"),
+            new AtmosphereExtractorRecipe(cti.getResource("diamond_jupiter"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:diamond")),4),
+                    "cti:jupiter"),
+            new AtmosphereExtractorRecipe(cti.getResource("enriched_slag"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:enriched_slag")),4),
+                    "cti:infernal_molten_surface"),
+            new AtmosphereExtractorRecipe(cti.getResource("stable_slag"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:stable_slag")),4),
+                    "cti:infernal")
     ));
 
     //量子采掘
@@ -77,9 +103,78 @@ public class RecipeMap {
                     1.1f),
             new QuantumMinerRecipe(cti.getResource("iron_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:iron_ore")),4),
-                    1.25f)
+                    1.25f),
+            new QuantumMinerRecipe(cti.getResource("coal_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:coal_ore")),9),
+                    1.5f),
+            new QuantumMinerRecipe(cti.getResource("diamond_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:diamond_ore")),2),
+                    1.25f),
+            new QuantumMinerRecipe(cti.getResource("glowstone_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:glowstone")),2),
+                    1.6f),
+            new QuantumMinerRecipe(cti.getResource("redstone_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:redstone_ore")),4),
+                    1.15f),
+            new QuantumMinerRecipe(cti.getResource("lapis_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:lapis_ore")),4),
+                    1.15f),
+            new QuantumMinerRecipe(cti.getResource("silver_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("thermal:silver_ore")),3),
+                    1.45f),
+            new QuantumMinerRecipe(cti.getResource("nickel_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("thermal:nickel_ore")),4),
+                    1.05f),
 
-    ));
+            new QuantumMinerRecipe(cti.getResource("emerald_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:emerald_ore")),4),
+                    1.15f),
+            new QuantumMinerRecipe(cti.getResource("tin_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("thermal:tin_ore")),3),
+                    1.45f),
+            new QuantumMinerRecipe(cti.getResource("lead_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("thermal:lead_ore")),4),
+                    1.05f),
+
+            new QuantumMinerRecipe(cti.getResource("ultra_dense_hydride_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("cti:ultra_dense_hydride_ore")),1),
+                    0.05f),
+            new QuantumMinerRecipe(cti.getResource("calorite_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra:venus_calorite_ore")),3),
+                    0.55f),
+            new QuantumMinerRecipe(cti.getResource("desh_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra:moon_desh_ore")),4),
+                    0.75F),
+
+            new QuantumMinerRecipe(cti.getResource("pyrocrystal_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:pyrocrystal_ore")),1),
+                    0.1f),
+            new QuantumMinerRecipe(cti.getResource("ionized_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:ionized_slag")),6),
+                    0.35f),
+            new QuantumMinerRecipe(cti.getResource("protonium_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:overdense_protonium_ore")),3),
+                    0.35f),
+            new QuantumMinerRecipe(cti.getResource("neutronium_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:overdense_neutronium_ore")),3),
+                    0.35F),
+
+            new QuantumMinerRecipe(cti.getResource("bismuthinite_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("etshtinker:bismuthinite_ore_deepslate")),2),
+                    1.2f),
+            new QuantumMinerRecipe(cti.getResource("cobalt_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("tconstruct:cobalt_ore")),2),
+                    1.35f),
+            new QuantumMinerRecipe(cti.getResource("debris_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:ancient_debris")),2),
+                    0.75f),
+            new QuantumMinerRecipe(cti.getResource("quartz_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:nether_quartz_ore")),3),
+                    1.3F)
+
+
+
+            ));
 
     //中子素收集
     //以第一个为例子  要填的值有6个
@@ -106,7 +201,7 @@ public class RecipeMap {
                     0.00775f,
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("etshtinker:chroma_plate")),5)),
             new ReactorNeutronCollectorRecipe(cti.getResource("ultra_dense"),
-                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("avaritia:neutron_nugget")),1),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("avaritia:neutron_nugget")),2),
                     12.675f,
                     0.00001f,
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("etshtinker:ultra_dense")),3)),
@@ -119,6 +214,22 @@ public class RecipeMap {
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("avaritia:neutron_nugget")),1),
                     17.95f,
                     0.003673f,
-                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("etshtinker:electronium")),1))
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("etshtinker:electronium")),1)),
+            new ReactorNeutronCollectorRecipe(cti.getResource("violium_alloy"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("avaritia:neutron_nugget")),1),
+                    12.198f,
+                    0.00002f,
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:violium_alloy")),2)),
+            new ReactorNeutronCollectorRecipe(cti.getResource("atherium_alloy"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("avaritia:neutron_nugget")),1),
+                    20.25f,
+                    0.000393f,
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:atherium_alloy")),1)),
+            new ReactorNeutronCollectorRecipe(cti.getResource("anti_neutronium"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("avaritia:neutron_nugget")),2),
+                    32f,
+                    0.0000f,
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("etshtinker:anti_neutronium")),2))
+
     ));
 }

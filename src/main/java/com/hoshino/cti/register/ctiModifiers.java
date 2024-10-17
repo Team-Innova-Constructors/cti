@@ -1,6 +1,7 @@
 package com.hoshino.cti.register;
 
 import com.hoshino.cti.Modifier.*;
+import com.hoshino.cti.Modifier.Armor.GoldSimulate;
 import com.hoshino.cti.cti;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
@@ -18,4 +19,5 @@ public class ctiModifiers {
     public static final StaticModifier<SpaceSuitModifier> space_suit= MODIFIERS.register("space_suit", SpaceSuitModifier::new);
     public static final StaticModifier<GravityNormalize> gravity_normalizer= MODIFIERS.register("gravity_normalizer", GravityNormalize::new);
     public static final StaticModifier<test> test= MODIFIERS.register("test", test::new);
+    public static final StaticModifier<GoldSimulate> gold_simulate= MODIFIERS.register("gold_simulate", GoldSimulate::new);
 }
