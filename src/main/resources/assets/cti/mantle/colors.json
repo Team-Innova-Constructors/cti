@@ -1,11 +1,18 @@
 {
   "material.cti": {
+    "uriel": "#fffdab"
   },
 
   "modifier.cti": {
     "electric_protect": "#AC89FF",
     "scorch_protect": "#FFE0B7",
     "freeze_protect": "#86E2FF",
-    "gold_simulate": "#FFDD77"
+    "gold_simulate": "#FFDD77",
+
+    "_uriel_": "乌列尔",
+    "timetojudge": "#fffdab",
+    "netherfire": "#fffdab",
+    "celestiallight": "#fffdab",
+    "archangelwings": "#fffdab"
   }
 }
