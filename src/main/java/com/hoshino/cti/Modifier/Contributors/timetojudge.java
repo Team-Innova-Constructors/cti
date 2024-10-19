@@ -37,7 +37,7 @@ public class timetojudge extends BattleModifier {
     @Override
     public void LivingHurtEvent(LivingHurtEvent event) {
         if (event.getEntity() != null && event.getEntity().getTags().contains("wick")) {
-            event.setAmount(event.getAmount() * 1.2f);
+            event.setAmount(event.getAmount() * 1.4f);
         }
     }
 }

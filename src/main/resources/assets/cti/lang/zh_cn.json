@@ -33,12 +33,18 @@
   "cti.tooltip.item.stellar_plate": "手持时显示当前你所受的环境危害值，右键查看星图，shift+右键查看自己身上的环境抗性。在星图中点击任意星球以关闭星图",
 
   "item.cti.uriel_ingot": "§e乌列尔",
+  "item.cti.molten_uriel_bucket": "熔融乌列尔桶",
+  "fluid_type.cti.molten_uriel": "熔融乌列尔",
   "tooltip.uriel_ingot.desc1": "Esdras IV in Catholic versions",
   "tooltip.uriel_ingot.desc2": "牢墨 贡献者材料",
 
+  "material.cti.uriel": "乌列尔",
+  "material.cti.uriel.flavor": "七大天使之一",
+  "material.cti.uriel.encyclopedia": "牢墨贡献者材料",
+
   "modifier.cti.timetojudge": "审判时刻",
   "modifier.cti.timetojudge.flavor": "我即是正义",
-  "modifier.cti.timetojudge.description":"攻击怪物后将永久为其施加“罪恶者”标签，当怪物具有这个标签的时候此生物受到所有伤害增加20%(包括其他玩家伤害和虚空伤害）",
+  "modifier.cti.timetojudge.description":"攻击怪物后将永久为其施加“罪恶者”标签，当怪物具有这个标签的时候此生物受到所有伤害增加40%(包括其他玩家伤害和虚空伤害）",
 
   "modifier.cti.netherfire": "地狱之火",
   "modifier.cti.netherfire.flavor": "无尽的烈焰",
@@ -50,7 +56,7 @@
 
   "modifier.cti.celestiallight": "天界之光",
   "modifier.cti.celestiallight.flavor": "我即是正义",
-  "modifier.cti.celestiallight.description":"受到致命伤害规避该伤害，并且获得短暂的3秒无敌帧效果。并且在周围引发一次爆炸",
+  "modifier.cti.celestiallight.description":"受到大于当前生命的伤害规避该伤害，并且获得短暂的3秒无敌帧效果。并且在周围引发一次爆炸,同时点燃被标记为罪恶者的生物1000秒(60秒冷却)(需要主手和盔甲同时有此词条)",
 
   "item.cti.ultradense_ammo": "超致密机枪弹药",
   "item.cti.protonium_ammo": "质子机枪弹药",
