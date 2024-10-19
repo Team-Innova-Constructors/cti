@@ -2,7 +2,6 @@ package com.hoshino.cti.Modifier.Armor;
 
 import com.marth7th.solidarytinker.extend.superclass.ArmorModifier;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
