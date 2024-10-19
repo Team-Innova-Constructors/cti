@@ -8,4 +8,5 @@ import net.minecraft.world.item.Item;
 public class ctiTagkey {
     public static final TagKey<Item> OXYGEN_REGEN = TagKey.create(Registry.ITEM_REGISTRY, cti.getResource("oxygen_provide"));
     public static final TagKey<Item> PRESSURE_MINOR = TagKey.create(Registry.ITEM_REGISTRY, cti.getResource("pressure_protect_minor"));
+    public static final TagKey<Item> ENVIRONMENT_ADV = TagKey.create(Registry.ITEM_REGISTRY, cti.getResource("environment_protect_advanced"));
 }

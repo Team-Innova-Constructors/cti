@@ -120,6 +120,10 @@
   "modifier.cti.gold_simulate.flavor": "assert player == Blocks.Gold_Block;",
   "modifier.cti.gold_simulate.description":"在猪的眼里你就是一个金块，所以僵尸猪灵不会主动攻击你。",
 
+  "modifier.cti.gold_simulate": "拟态金",
+  "modifier.cti.gold_simulate.flavor": "assert player == Blocks.Gold_Block;",
+  "modifier.cti.gold_simulate.description":"在猪的眼里你就是一个金块，所以僵尸猪灵不会主动攻击你。",
+
 
 
   "cti.gui.environmental.ionize_build": "电离强度",

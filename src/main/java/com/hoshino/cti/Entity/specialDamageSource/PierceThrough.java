@@ -14,6 +14,7 @@ public class PierceThrough extends EntityDamageSource {
     public PierceThrough(String name, LivingEntity entity, Float amount) {
         super(name,entity);
         this.AMOUNT=amount;
+        this.bypassInvul();
     }
     public static DamageSource pierceDamage(Player player, Float amount){
         return new PierceThrough(player,amount);

@@ -30,18 +30,18 @@ public class ProtoniumAmmo extends AbstractGunAmmoItem {
     }
     @Override
     public int getMaxDamage(ItemStack stack) {
-        return 880;
+        return 2048;
     }
     @Override
     protected float getDamageMultiplier(Entity target, ItemStack ammoStack) {
-        return 5.5f;
+        return 90f;
     }
     @Override
     public float getAirUsageMultiplier(Minigun minigun, ItemStack ammoStack) {
-        return 16.0f;
+        return 0.05f;
     }
     public float getRangeMultiplier(ItemStack ammoStack) {
-        return 0.4f;
+        return 5f;
     }
     protected DamageSource getDamageSource(Minigun minigun,Float amount) {
         return PierceThrough.pierceDamage(minigun.getPlayer(),amount );

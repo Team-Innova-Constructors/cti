@@ -8,6 +8,7 @@ public class Environmental extends DamageSource {
     public Environmental(String p_19333_,float amount) {
         super(p_19333_);
         this.AMOUNT=amount;
+        this.bypassInvul();
     }
     public float AMOUNT ;
     public float getAMOUNT(){

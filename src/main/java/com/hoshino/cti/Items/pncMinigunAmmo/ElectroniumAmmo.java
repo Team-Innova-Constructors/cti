@@ -33,18 +33,18 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
     }
     @Override
     public int getMaxDamage(ItemStack stack) {
-        return 880;
+        return 2048;
     }
     @Override
     protected float getDamageMultiplier(Entity target, ItemStack ammoStack) {
-        return 1.25f;
+        return 27f;
     }
     @Override
     public float getAirUsageMultiplier(Minigun minigun, ItemStack ammoStack) {
-        return 1.0f;
+        return 0.005f;
     }
     public float getRangeMultiplier(ItemStack ammoStack) {
-        return 1f;
+        return 3f;
     }
     protected DamageSource getDamageSource(Minigun minigun,Float amount) {
         return PierceThrough.pierceDamage(minigun.getPlayer(),amount );
@@ -62,8 +62,8 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
                 target.invulnerableTime=0;
                 target.hurt(getDamageSource(minigun,(float)(ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times)), (float)(ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times));
                 if (target instanceof LivingEntity living){
-                    living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),50,4),minigun.getPlayer());
-                    living.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,100,4),minigun.getPlayer());
+                    living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),50,9),minigun.getPlayer());
+                    living.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,100,9),minigun.getPlayer());
                 }
             } else if (target instanceof ShulkerBullet || target instanceof AbstractHurtingProjectile) {
                 target.discard();

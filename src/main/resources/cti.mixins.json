@@ -6,6 +6,7 @@
   "refmap": "cti.refmap.json",
   "mixins": [
     "EntityMixin",
+    "EventMixin",
     "LivingEntityMixin",
     "AdAstraMixin.AcidRainTick",
     "AdAstraMixin.CryoFuelLiquidBlockMixin",

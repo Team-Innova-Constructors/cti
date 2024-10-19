@@ -56,6 +56,12 @@ public class EnvironmentSystem {
         float lvl_scorch = getBiomeScorchLevel(biome) -getScorchResistance(living) -getBiomeFreezeLevel(biome);
         float lvl_freeze = getBiomeFreezeLevel(biome) -getFreezeResistance(living) -getBiomeScorchLevel(biome);
         float lvl_pressure = getBiomePressureLevel(biome) - getPressureResistance(living);
+        if (living.getMaxHealth()>10000){
+            lvl_ionize=-0.5F;
+            lvl_scorch=-0.5F;
+            lvl_freeze=-0.5F;
+            lvl_pressure=-0.5F;
+        }
         CompoundTag nbt = living.getPersistentData();
         //积累危害值
         nbt.putFloat(IONIZED_AMOUNT, Mth.clamp(nbt.getFloat(IONIZED_AMOUNT)+lvl_ionize,-20*(1+getElectricResistance(living)),250));
@@ -131,6 +137,9 @@ public class EnvironmentSystem {
             if (shielding.isPresent()){
                 resist+=shielding.get().getElectricShieldinng();
             }
+            else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)){
+                resist+=10f;
+            }
         }
         return resist;
     }
@@ -145,8 +154,8 @@ public class EnvironmentSystem {
             if (shielding.isPresent()){
                 resist+=shielding.get().getScorchShieldinng();
             }
-            else if (stack.getTags().toList().contains(ctiTagkey.PRESSURE_MINOR)){
-                resist+=1;
+            else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)){
+                resist+=10f;
             }
         }
         return resist;
@@ -165,6 +174,9 @@ public class EnvironmentSystem {
             else if (stack.getTags().toList().contains(ctiTagkey.PRESSURE_MINOR)){
                 resist+=0.5f;
             }
+            else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)){
+                resist+=10f;
+            }
         }
         return resist;
     }
@@ -180,8 +192,8 @@ public class EnvironmentSystem {
             if (shielding.isPresent()){
                 resist+=shielding.get().getPressureShielding();
             }
-            else if (stack.getTags().toList().contains(ctiTagkey.PRESSURE_MINOR)){
-                resist+=0.5f;
+            else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)){
+                resist+=10f;
             }
         }
         return resist;
