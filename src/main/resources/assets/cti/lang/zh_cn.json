@@ -39,23 +39,23 @@
   "tooltip.uriel_ingot.desc2": "牢墨 贡献者材料",
 
   "material.cti.uriel": "乌列尔",
-  "material.cti.uriel.flavor": "七大天使之一",
-  "material.cti.uriel.encyclopedia": "牢墨贡献者材料",
+  "material.cti.uriel.flavor": "恶魔般的火之审判官",
+  "material.cti.uriel.encyclopedia": "牢墨贡献者材料\n祂手持火焰之剑，以地狱之火审判一切罪孽深重之人",
 
   "modifier.cti.timetojudge": "审判时刻",
-  "modifier.cti.timetojudge.flavor": "我即是正义",
+  "modifier.cti.timetojudge.flavor": "自此刻起，下达判决",
   "modifier.cti.timetojudge.description":"攻击怪物后将永久为其施加“罪恶者”标签，当怪物具有这个标签的时候此生物受到所有伤害增加40%(包括其他玩家伤害和虚空伤害）",
 
   "modifier.cti.netherfire": "地狱之火",
-  "modifier.cti.netherfire.flavor": "无尽的烈焰",
+  "modifier.cti.netherfire.flavor": "最后审判已至",
   "modifier.cti.netherfire.description":"对于带有“罪恶者”标签的生物将会提高基于目标护甲值×护甲×词条等级的基础伤害，怪物护甲大于你则这个基础值再翻倍",
 
   "modifier.cti.archangelwings": "大天使之翼",
-  "modifier.cti.archangelwings.flavor": "我即是正义",
+  "modifier.cti.archangelwings.flavor": "七大天使长之一",
   "modifier.cti.archangelwings.description":"受到“罪恶者”伤害后获得短暂的生命回复2和抗性提升2效果（需搭配武器使用）",
 
-  "modifier.cti.celestiallight": "天界之光",
-  "modifier.cti.celestiallight.flavor": "我即是正义",
+  "modifier.cti.celestiallight": "神之光辉",
+  "modifier.cti.celestiallight.flavor": "Light Of God",
   "modifier.cti.celestiallight.description":"受到大于当前生命的伤害规避该伤害，并且获得短暂的3秒无敌帧效果。并且在周围引发一次爆炸,同时点燃被标记为罪恶者的生物1000秒(60秒冷却)(需要主手和盔甲同时有此词条)",
 
   "item.cti.ultradense_ammo": "超致密机枪弹药",

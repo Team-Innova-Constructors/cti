@@ -10,7 +10,7 @@
     "tconstruct:head": {
       "durability": 2018,
       "mining_speed": 2.5,
-      "mining_tier": "minecraft:netherite",
+      "mining_tier": "solidarytinker:momo",
       "melee_attack": 9
     },
     "tconstruct:limb": {
