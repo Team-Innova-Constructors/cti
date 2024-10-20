@@ -32,6 +32,9 @@
 
   "cti.tooltip.item.stellar_plate": "手持时显示当前你所受的环境危害值，右键查看星图，shift+右键查看自己身上的环境抗性。在星图中点击任意星球以关闭星图",
 
+
+  "cti.tooltip.item.etsh": "-EtSH_C2H6S 开发者材料-",
+
   "item.cti.uriel_ingot": "§e乌列尔",
   "item.cti.molten_uriel_bucket": "熔融乌列尔桶",
   "fluid_type.cti.molten_uriel": "熔融乌列尔",
@@ -85,10 +88,7 @@
 
 
 
-  "item.cti.nitro_supersteel": "冰淬高速钢",
-  "material.cti.nitro_supersteel": "冰淬高速钢",
-  "material.cti.nitro_supersteel.flavor": "无限接近玻璃态金属的晶态金属",
-  "material.cti.nitro_supersteel.encyclopedia": "极端的骤冷和独特的材料组成造就了它集坚硬与韧性为一体的特性",
+
 
   "biome.cti.disordered_zone":"异常区域",
   "biome.cti.ionized_glacio":"电离冻土",
@@ -139,9 +139,27 @@
   "modifier.cti.stellar_blade": "斩星",
   "modifier.cti.stellar_blade.flavor": "昔日工匠的辉煌，传说中能斩断星辰的材料...",
   "modifier.cti.stellar_blade.description":"攻击时在你的敌人头顶召唤落星，不同颜色的落星会给目标叠加不同的环境危害。",
+  "modifier.cti.stellar_blade.description.armor":"受到伤害时在周围大范围生物的头顶召唤落星，不同颜色的落星会给目标叠加不同的环境危害。",
+
+  "modifier.cti.all": "宇宙之源",
+  "modifier.cti.all.flavor": "宇宙万法的那个源头，它是——",
+  "modifier.cti.all.description":"攻击/被攻击时对敌人施加易伤、原子分解、夸克解离和10种随机负面效果，自己受到的伤害减半，你的护甲栏和主副手的每件工具都参与计算一次。",
 
 
 
+  "item.cti.nitro_supersteel": "冰淬高速钢",
+  "material.cti.nitro_supersteel": "冰淬高速钢",
+  "material.cti.nitro_supersteel.flavor": "无限接近玻璃态金属的晶态金属",
+  "material.cti.nitro_supersteel.encyclopedia": "极端的骤冷和独特的材料组成造就了它集坚硬与韧性为一体的特性",
+
+  "item.cti.stellar_manyullyn": "无垠星河·玛玉灵",
+  "material.cti.stellar_manyullyn": "§l玛玉灵",
+  "material.cti.stellar_manyullyn.flavor": "-开发者材料-",
+  "material.cti.stellar_manyullyn.encyclopedia": "未曾游历星空，怎知星辰不可触及？皆为幻想。",
+
+
+  "fluid_type.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
+  "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
 
   "cti.gui.environmental.ionize_build": "电离强度",
   "cti.gui.environmental.ionize_value": "电离值",

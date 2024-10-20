@@ -2,11 +2,8 @@ package com.hoshino.cti.register;
 
 import cofh.core.util.helpers.AugmentDataHelper;
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
-import com.hoshino.cti.Items.PlanetGuiItem;
-import com.hoshino.cti.Items.ThermalAugment;
-import com.hoshino.cti.Items.TooltipedBlockItem;
+import com.hoshino.cti.Items.*;
 import com.hoshino.cti.Items.Vehicle.RocketItemTier5;
-import com.hoshino.cti.Items.compressedSingularityItem;
 import com.hoshino.cti.Items.ingots.uriel_ingot;
 import com.hoshino.cti.Items.pncMinigunAmmo.ElectroniumAmmo;
 import com.hoshino.cti.Items.pncMinigunAmmo.ProtoniumAmmo;
@@ -45,6 +42,9 @@ public class ctiItem {
     public static final RegistryObject<Item> magic_crystal = ITEMS.register("magic_crystal",()-> new Item(new Item.Properties().tab(ctiTab.MATERIALS)));
     public static final RegistryObject<Item> enriched_mana = ITEMS.register("enriched_mana",()-> new Item(new Item.Properties().tab(ctiTab.MATERIALS)));
     public static final RegistryObject<Item> uriel_ingot = ITEMS.register("uriel_ingot",()-> new uriel_ingot(new Item.Properties().tab(ctiTab.MATERIALS)));
+    public static final RegistryObject<Item> stellar_manyullyn = ITEMS.register("stellar_manyullyn",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.etsh").withStyle(ChatFormatting.LIGHT_PURPLE))));
+
+
     public static final RegistryObject<Item> electronium_ammo = ITEMS.register("electronium_ammo", ElectroniumAmmo::new);
     public static final RegistryEntry<RocketItemTier5<rocketTier5>> TIER_5_ROCKET = VEHICLES.register("tier_5_rocket", () -> new RocketItemTier5<>(ctiEntity.TIER_5_ROCKET.get(), 5, new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC)));
     public static final RegistryObject<Item> astra_tablet_5 = ITEMS.register("astra_tablet_5",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),5));

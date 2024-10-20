@@ -26,4 +26,5 @@ public class ctiModifiers {
     public static final StaticModifier<GoldSimulate> gold_simulate= MODIFIERS.register("gold_simulate", GoldSimulate::new);
     public static final StaticModifier<EndSlayer> end_slayer= MODIFIERS.register("end_slayer", EndSlayer::new);
     public static final StaticModifier<StellarBlade> stellar_blade= MODIFIERS.register("stellar_blade", StellarBlade::new);
+    public static final StaticModifier<All> all= MODIFIERS.register("all", All::new);
 }

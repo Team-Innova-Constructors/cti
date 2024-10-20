@@ -70,7 +70,7 @@ public class FallenStars extends ItemProjectile {
                     initVec = initVec.scale(0.25);
                 }
                 trackVelo = Math.min(getMold(vec3), 8 / getMold(vec3));
-                trackVelo = Math.min(trackVelo, 0.25);
+                trackVelo = Math.min(trackVelo, 0.3);
                 trackVelo = Math.max(getMold(living.getDeltaMovement())+0.35,trackVelo);
             } else trackVelo = 0;
             vec3 = getUnitizedVec3(vec3).scale(trackVelo);
@@ -80,16 +80,16 @@ public class FallenStars extends ItemProjectile {
             }
             if (getMold(vec3)>=0.1){
                 if (this.environmental== ctiItem.star_frozen.get()) {
-                    serverLevel.sendParticles(CoreParticles.FROST.get(), this.getX(), this.getY() + 0.5 * this.getBbHeight(), this.getZ(), 8, 0.15, 0.15, 0.15, 0.0125);
+                    serverLevel.sendParticles(CoreParticles.FROST.get(), this.getX(), this.getY() + 0.5 * this.getBbHeight(), this.getZ(), 8, 0.25, 0.25, 0.25, 0.0125);
                 }
                 if (this.environmental== ctiItem.star_pressure.get()) {
-                    serverLevel.sendParticles(ParticleTypes.SMOKE, this.getX(), this.getY() + 0.5 * this.getBbHeight(), this.getZ(), 8, 0.15, 0.15, 0.15, 0.0125);
+                    serverLevel.sendParticles(ParticleTypes.SMOKE, this.getX(), this.getY() + 0.5 * this.getBbHeight(), this.getZ(), 8, 0.25, 0.25, 0.25, 0.0125);
                 }
                 if (this.environmental== ctiItem.star_ionize.get()) {
-                    serverLevel.sendParticles(etshtinkerParticleType.electric.get(), this.getX(), this.getY() + 0.5 * this.getBbHeight(), this.getZ(), 8, 0.15, 0.15, 0.15, 0.0125);
+                    serverLevel.sendParticles(etshtinkerParticleType.electric.get(), this.getX(), this.getY() + 0.5 * this.getBbHeight(), this.getZ(), 16, 0.3, 0.3, 0.3, 0.0125);
                 }
                 if (this.environmental== ctiItem.star_blaze.get()) {
-                    serverLevel.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY() + 0.5 * this.getBbHeight(), this.getZ(), 8, 0.15, 0.15, 0.15, 0.0125);
+                    serverLevel.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY() + 0.5 * this.getBbHeight(), this.getZ(), 8, 0.25, 0.25, 0.25, 0.0125);
                 }
             }
             this.setDeltaMovement(vec3);
@@ -98,8 +98,9 @@ public class FallenStars extends ItemProjectile {
             this.remove(RemovalReason.DISCARDED);
         }
         this.setPos(this.getX() + this.getDeltaMovement().x, this.getY() + this.getDeltaMovement().y, this.getZ() + this.getDeltaMovement().z);
-        List<LivingEntity> ls =this.level.getEntitiesOfClass(LivingEntity.class,this.getBoundingBox().inflate(0.5));
+        List<LivingEntity> ls =this.level.getEntitiesOfClass(LivingEntity.class,this.getBoundingBox().inflate(0.25));
         if (!ls.isEmpty()){
+            ls.addAll(this.level.getEntitiesOfClass(LivingEntity.class,this.getBoundingBox().inflate(5)));
             for (LivingEntity living:ls){
                 if (living!=null&&living!=this.getOwner()&&!hitList.contains(living)){
                     if (this.getOwner() instanceof Player player){
@@ -108,16 +109,16 @@ public class FallenStars extends ItemProjectile {
                         if (world1 instanceof ServerLevel serverLevel){
                             serverLevel.sendParticles(ParticleTypes.EXPLOSION,living.getX(),living.getY()+0.5*living.getBbHeight(),living.getZ(),1,0,0,0,0);
                             if (this.environmental== ctiItem.star_frozen.get()) {
-                                serverLevel.sendParticles(CoreParticles.FROST.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 20, 0.05, 0.05, 0.05, 0.25);
+                                serverLevel.sendParticles(CoreParticles.FROST.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 10, 0.05, 0.05, 0.05, 0.25);
                             }
                             if (this.environmental== ctiItem.star_pressure.get()) {
-                                serverLevel.sendParticles(ParticleTypes.SMOKE, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 20, 0.05, 0.05, 0.05, 0.25);
+                                serverLevel.sendParticles(ParticleTypes.SMOKE, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 10, 0.05, 0.05, 0.05, 0.25);
                             }
                             if (this.environmental== ctiItem.star_ionize.get()) {
-                                serverLevel.sendParticles(etshtinkerParticleType.electric.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 20, 0.05, 0.05, 0.05, 0.25);
+                                serverLevel.sendParticles(etshtinkerParticleType.electric.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 10, 0.05, 0.05, 0.05, 0.25);
                             }
                             if (this.environmental== ctiItem.star_blaze.get()) {
-                                serverLevel.sendParticles(ParticleTypes.FLAME, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 20, 0.05, 0.05, 0.05, 0.25);
+                                serverLevel.sendParticles(ParticleTypes.FLAME, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 10, 0.05, 0.05, 0.05, 0.25);
                             }
                         }
                     }
@@ -127,7 +128,7 @@ public class FallenStars extends ItemProjectile {
                 this.time = 299;
             }
             if (this.getOwner() instanceof Player player){
-                player.level.playSound(player,this, SoundEvents.FIREWORK_ROCKET_BLAST_FAR, SoundSource.PLAYERS,1,1);
+                this.playSound(SoundEvents.FIREWORK_ROCKET_BLAST_FAR);
             }
             hitList.addAll(ls);
         }

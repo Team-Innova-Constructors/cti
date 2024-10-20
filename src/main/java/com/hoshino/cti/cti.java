@@ -1,6 +1,7 @@
 package com.hoshino.cti;
 
 import com.hoshino.cti.Event.LivingEvents;
+import com.hoshino.cti.Modifier.All;
 import com.hoshino.cti.Modifier.capability.*;
 import com.hoshino.cti.Screen.AtmosphereCondensatorScreen;
 import com.hoshino.cti.Screen.AtmosphereExtractorScreen;
@@ -93,8 +94,8 @@ public class cti {
         ToolCapabilityProvider.register(ScorchShieldToolCap::new);
         ToolCapabilityProvider.register(FreezeShieldToolCap::new);
         ToolCapabilityProvider.register(PressureShieldToolCap::new);
-
         event.enqueueWork(BiomeUtil::init);
+        event.enqueueWork(All::init);
     }
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));

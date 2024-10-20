@@ -13,6 +13,7 @@
     "AdAstraMixin.ModUtilMixin",
     "AdAstraMixin.TemperatureTick",
     "TIMixin.BlowPipeMixin",
+    "TIMixin.LaserGunMixin",
     "TIMixin.ShruikenMixin"
   ],
   "client": [
