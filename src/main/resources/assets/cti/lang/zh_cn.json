@@ -85,6 +85,11 @@
 
 
 
+  "item.cti.nitro_supersteel": "冰淬高速钢",
+  "material.cti.nitro_supersteel": "冰淬高速钢",
+  "material.cti.nitro_supersteel.flavor": "无限接近玻璃态金属的晶态金属",
+  "material.cti.nitro_supersteel.encyclopedia": "极端的骤冷和独特的材料组成造就了它集坚硬与韧性为一体的特性",
+
   "biome.cti.disordered_zone":"异常区域",
   "biome.cti.ionized_glacio":"电离冻土",
   "biome.cti.ionized_mare":"电离月海",
@@ -126,9 +131,15 @@
   "modifier.cti.gold_simulate.flavor": "assert player == Blocks.Gold_Block;",
   "modifier.cti.gold_simulate.description":"在猪的眼里你就是一个金块，所以僵尸猪灵不会主动攻击你。",
 
-  "modifier.cti.gold_simulate": "拟态金",
-  "modifier.cti.gold_simulate.flavor": "assert player == Blocks.Gold_Block;",
-  "modifier.cti.gold_simulate.description":"在猪的眼里你就是一个金块，所以僵尸猪灵不会主动攻击你。",
+  "modifier.cti.end_slayer": "弑末者",
+  "modifier.cti.end_slayer.flavor": "-仅在七咒模式下生效-",
+  "modifier.cti.end_slayer.description":"对末影人、末影螨、潜影贝造成的伤害翻倍",
+  "modifier.cti.end_slayer.description.armor":"末影人不会主动攻击你，来自对末影人、末影螨、潜影贝的伤害减半，抑制对你有敌意的末影生物的瞬移（只需一件就能生效）",
+
+  "modifier.cti.stellar_blade": "斩星",
+  "modifier.cti.stellar_blade.flavor": "昔日工匠的辉煌，传说中能斩断星辰的材料...",
+  "modifier.cti.stellar_blade.description":"攻击时在你的敌人头顶召唤落星，不同颜色的落星会给目标叠加不同的环境危害。",
+
 
 
 

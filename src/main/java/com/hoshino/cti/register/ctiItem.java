@@ -131,4 +131,15 @@ public class ctiItem {
             .mod(TAG_AUGMENT_MACHINE_ENERGY, 2.5F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
 
+
+    //材料
+    public static final RegistryObject<Item> nitro_supersteel = ITEMS.register("nitro_supersteel", ()->new Item(new Item.Properties().tab(ctiTab.MATERIALS)));
+    public static final RegistryObject<Item> hot_supersteel = ITEMS.register("hot_supersteel", ()->new Item(new Item.Properties().tab(ctiTab.MIXC)));
+
+    //弹射物物品
+    public static final RegistryObject<Item> star_blaze = ITEMS.register("star_blaze", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> star_frozen = ITEMS.register("star_frozen", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> star_ionize = ITEMS.register("star_ionize", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> star_pressure = ITEMS.register("star_pressure", ()->new Item(new Item.Properties()));
+
 }
