@@ -134,17 +134,20 @@
   "modifier.cti.end_slayer": "弑末者",
   "modifier.cti.end_slayer.flavor": "-仅在七咒模式下生效-",
   "modifier.cti.end_slayer.description":"对末影人、末影螨、潜影贝造成的伤害翻倍",
-  "modifier.cti.end_slayer.description.armor":"末影人不会主动攻击你，来自对末影人、末影螨、潜影贝的伤害减半，抑制对你有敌意的末影生物的瞬移（只需一件就能生效）",
+  "modifier.cti.end_slayer.armor":"末影人不会主动攻击你，来自对末影人、末影螨、潜影贝的伤害减半，抑制对你有敌意的末影生物的瞬移（只需一件就能生效）",
 
   "modifier.cti.stellar_blade": "斩星",
   "modifier.cti.stellar_blade.flavor": "昔日工匠的辉煌，传说中能斩断星辰的材料...",
   "modifier.cti.stellar_blade.description":"攻击时在你的敌人头顶召唤落星，不同颜色的落星会给目标叠加不同的环境危害。",
-  "modifier.cti.stellar_blade.description.armor":"受到伤害时在周围大范围生物的头顶召唤落星，不同颜色的落星会给目标叠加不同的环境危害。",
+  "modifier.cti.stellar_blade.armor":"受到伤害时在周围大范围生物的头顶召唤落星，不同颜色的落星会给目标叠加不同的环境危害。",
 
   "modifier.cti.all": "宇宙之源",
   "modifier.cti.all.flavor": "宇宙万法的那个源头，它是——",
   "modifier.cti.all.description":"攻击/被攻击时对敌人施加易伤、原子分解、夸克解离和10种随机负面效果，自己受到的伤害减半，你的护甲栏和主副手的每件工具都参与计算一次。",
 
+  "modifier.cti.stress": "应力",
+  "modifier.cti.stress.flavor": "sigma",
+  "modifier.cti.stress.description":"受伤时获得可堆叠的伤害减免，最大40%",
 
 
   "item.cti.nitro_supersteel": "冰淬高速钢",

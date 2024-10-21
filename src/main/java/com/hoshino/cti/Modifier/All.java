@@ -151,7 +151,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                                     int j =0;
                                     while (j<10){
                                         MobEffect effect = ls.get(EtSHrnd().nextInt(ls.size()));
-                                        living.addEffect(new MobEffectInstance(effect,200,9,false,false));
+                                        living.forceAddEffect(new MobEffectInstance(effect,200,9,false,false),player);
                                         j++;
                                     }
                                 }
@@ -205,7 +205,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                             int i =0;
                             while (i<10){
                                 MobEffect effect = ls.get(EtSHrnd().nextInt(ls.size()));
-                                event.getEntity().addEffect(new MobEffectInstance(effect,200,9,false,false));
+                                event.getEntity().forceAddEffect(new MobEffectInstance(effect,200,9,false,false),player);
                                 i++;
                             }
                         }
@@ -257,7 +257,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                                     int j =0;
                                     while (j<10){
                                         MobEffect effect = ls.get(EtSHrnd().nextInt(ls.size()));
-                                        event.getEntity().addEffect(new MobEffectInstance(effect,200,9,false,false));
+                                        event.getEntity().forceAddEffect(new MobEffectInstance(effect,200,9,false,false),player);
                                         j++;
                                     }
                                 }
