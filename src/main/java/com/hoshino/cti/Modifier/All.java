@@ -64,6 +64,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                         event.setAmount(event.getAmount()/2);
                         if (event.getSource().getEntity() instanceof LivingEntity living){
                             CompoundTag tag = living.getPersistentData();
+                            tag.putBoolean("vulnerable",true);
                             if (!tag.contains("dmg_amplifier")){
                                 tag.putFloat("dmg_amplifier",1.5f);
                             }
@@ -117,6 +118,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                             event.setAmount(event.getAmount()/2);
                             if (event.getSource().getEntity() instanceof LivingEntity living){
                                 CompoundTag tag = living.getPersistentData();
+                                tag.putBoolean("vulnerable",true);
                                 if (!tag.contains("dmg_amplifier")){
                                     tag.putFloat("dmg_amplifier",1.5f);
                                 }
@@ -171,6 +173,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                     ToolStack tool = ToolStack.from(stack);
                     if (tool.getModifierLevel(this)>0&&event.getEntity()!=null){
                         CompoundTag tag = event.getEntity().getPersistentData();
+                        tag.putBoolean("vulnerable",true);
                         if (!tag.contains("dmg_amplifier")){
                             tag.putFloat("dmg_amplifier",1.5f);
                         }
@@ -223,6 +226,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                             event.setAmount(event.getAmount()/2);
                             if (tool.getModifierLevel(this)>0&&event.getEntity()!=null){
                                 CompoundTag tag = event.getEntity().getPersistentData();
+                                tag.putBoolean("vulnerable",true);
                                 if (!tag.contains("dmg_amplifier")){
                                     tag.putFloat("dmg_amplifier",1.5f);
                                 }
