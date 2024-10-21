@@ -66,7 +66,7 @@ public class FallenStars extends ItemProjectile {
             Vec3 vec3 = Entity1ToEntity2(this, living);
             double trackVelo;
             if (getMold(vec3) != 0) {
-                if (getMold(vec3)<=2){
+                if (getMold(vec3)<=0.3){
                     initVec = initVec.scale(0.25);
                 }
                 trackVelo = Math.min(getMold(vec3), 8 / getMold(vec3));

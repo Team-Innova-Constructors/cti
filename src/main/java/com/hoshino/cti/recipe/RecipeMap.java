@@ -82,7 +82,16 @@ public class RecipeMap {
                     "cti:infernal_molten_surface"),
             new AtmosphereExtractorRecipe(cti.getResource("stable_slag"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:stable_slag")),4),
-                    "cti:infernal")
+                    "cti:infernal"),
+            new AtmosphereExtractorRecipe(cti.getResource("dryice"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("powah:dry_ice")),64),
+                    "ad_astra:martian_canyon_creek"),
+            new AtmosphereExtractorRecipe(cti.getResource("dryice2"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("powah:dry_ice")),64),
+                    "ad_astra:martian_polar_caps"),
+            new AtmosphereExtractorRecipe(cti.getResource("dryice2"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("powah:dry_ice")),64),
+                    "ad_astra:martian_wastelands")
     ));
 
     //量子采掘
