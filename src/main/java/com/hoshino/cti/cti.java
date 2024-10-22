@@ -2,20 +2,26 @@ package com.hoshino.cti;
 
 import com.hoshino.cti.Event.LivingEvents;
 import com.hoshino.cti.Modifier.All;
-import com.hoshino.cti.Modifier.capability.*;
+import com.hoshino.cti.Modifier.capability.ElectricShieldToolCap;
+import com.hoshino.cti.Modifier.capability.FreezeShieldToolCap;
+import com.hoshino.cti.Modifier.capability.PressureShieldToolCap;
+import com.hoshino.cti.Modifier.capability.ScorchShieldToolCap;
 import com.hoshino.cti.Screen.AtmosphereCondensatorScreen;
 import com.hoshino.cti.Screen.AtmosphereExtractorScreen;
 import com.hoshino.cti.Screen.ReactorNeutronCollectorScreen;
 import com.hoshino.cti.Screen.menu.ctiMenu;
 import com.hoshino.cti.client.hud.EnvironmentalHud;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
-import com.hoshino.cti.recipe.ctiRecipes;
+import com.marth7th.solidarytinker.register.solidarytinkerItem;
+import net.minecraft.world.item.alchemy.PotionBrewing;
 import com.hoshino.cti.register.*;
 import com.hoshino.cti.util.BiomeUtil;
 import com.hoshino.cti.world.feature.ctiConfiguredFeature;
 import com.hoshino.cti.world.feature.ctiPlacedFeature;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -63,6 +69,7 @@ public class cti {
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
         ctiPacketHandler.init();
         ctiMenu.MENU_TYPE.register(eventBus);
+        ctiPotions.POTIONS.register(eventBus);
         //ctiRecipes.register(eventBus);
         ctiConfiguredFeature.CONFIGURED_FEATURES.register(eventBus);
         ctiPlacedFeature.PLACED_FEATURES.register(eventBus);
@@ -96,6 +103,13 @@ public class cti {
         ToolCapabilityProvider.register(PressureShieldToolCap::new);
         event.enqueueWork(BiomeUtil::init);
         event.enqueueWork(All::init);
+
+
+
+        //药水配方
+        PotionBrewing.addMix(Potions.AWKWARD, solidarytinkerItem.violane.get(), ctiPotions.BLOODANGER.get());
+        PotionBrewing.addMix(ctiPotions.BLOODANGER.get(), Items.REDSTONE, ctiPotions.LONG_BLOODANGER.get());
+        PotionBrewing.addMix(ctiPotions.BLOODANGER.get(), Items.GLOWSTONE_DUST, ctiPotions.STRONG_BLOODANGER.get());
     }
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
