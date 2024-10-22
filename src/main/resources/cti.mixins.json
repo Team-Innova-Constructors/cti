@@ -12,6 +12,8 @@
     "AdAstraMixin.CryoFuelLiquidBlockMixin",
     "AdAstraMixin.ModUtilMixin",
     "AdAstraMixin.TemperatureTick",
+    "TconMixin.InsatiableMixin",
+    "TconMixin.KineticMixin",
     "TIMixin.BlowPipeMixin",
     "TIMixin.LaserGunMixin",
     "TIMixin.ShruikenMixin"

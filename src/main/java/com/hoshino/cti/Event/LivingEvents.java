@@ -2,6 +2,10 @@ package com.hoshino.cti.Event;
 
 import com.hoshino.cti.Entity.specialDamageSource.Environmental;
 import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
+import com.hoshino.cti.register.ctiEffects;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -16,6 +20,14 @@ public class LivingEvents {
     }
 
     private void onPierceHurt(LivingHurtEvent event) {
+        if (event.getEntity() instanceof Player player){
+            MobEffectInstance instance = player.getEffect(ctiEffects.stress.get());
+            if (instance!=null&&instance.getDuration()>0){
+                int level = instance.getAmplifier()+1;
+                float red = Math.max(0.9f,1-0.04f*level);
+                event.setAmount(event.getAmount()*red);
+            }
+        }
         if (event.getSource() instanceof PierceThrough source){
             event.setAmount(source.getAMOUNT());
             event.setCanceled(false);

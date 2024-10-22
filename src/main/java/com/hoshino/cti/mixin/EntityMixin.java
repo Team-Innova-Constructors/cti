@@ -25,7 +25,10 @@ public class EntityMixin {
             if (getFreezeResistance(living)>0.5&&(source== ModDamageSource.CRYO_FUEL||source==DamageSource.FREEZE)){
                 cir.setReturnValue(true);
             }
+        }else if(entity!=null&&entity.getPersistentData().getBoolean("vulnerable")){
+            cir.setReturnValue(false);
         }
+
     }
     @Inject(at = @At(value = "HEAD"), method = "fireImmune", cancellable = true)
     private void setFireImmune(CallbackInfoReturnable<Boolean> cir){

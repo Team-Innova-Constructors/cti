@@ -23,6 +23,9 @@ public class LivingEntityMixin {
         if (entity instanceof Player player && (player.isCreative() || player.isSpectator())) {
             return;
         }
+        if (!(entity instanceof Player)&&entity!=null&&entity.getPersistentData().getBoolean("vulnerable")){
+            entity.invulnerableTime=0;
+        }
         if (!level.isClientSide) {
             if (level.getGameTime()%10==0){
                 EnvironmentSystem.EnvironmentTick(entity,(ServerLevel) level);
