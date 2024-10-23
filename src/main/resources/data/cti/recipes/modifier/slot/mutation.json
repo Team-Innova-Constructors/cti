@@ -6,18 +6,18 @@
     },
     {
       "item": "biomancy:volatile_fluid",
-      "count": 8
+      "amount_needed": 8
     },
     {
       "item": "biomancy:living_flesh"
     },
     {
       "item": "biomancy:nutrients",
-      "count": 8
+      "amount_needed": 8
     },
     {
       "item": "biomancy:hormone_secretion",
-      "count": 8
+      "amount_needed": 8
     }
   ],
   "tools": {
