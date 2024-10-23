@@ -140,8 +140,8 @@
 
   "modifier.cti.end_slayer": "弑末者",
   "modifier.cti.end_slayer.flavor": "-仅在七咒模式下生效-",
-  "modifier.cti.end_slayer.encyclopedia":"对末影人、末影螨、潜影贝造成的伤害翻倍",
-  "modifier.cti.end_slayer.armor":"末影人不会主动攻击你，来自对末影人、末影螨、潜影贝的伤害减半，抑制对你有敌意的末影生物的瞬移（只需一件就能生效）",
+  "modifier.cti.end_slayer.description":"(作为工具时)对末影人、末影螨、潜影贝造成的伤害翻倍\n(作为护甲时)末影人不会主动攻击你，来自对末影人、末影螨、潜影贝的伤害减半，抑制对你有敌意的末影生物的瞬移（只需一件就能生效）",
+  "modifier.cti.end_slayer.armor":"",
 
   "modifier.cti.stellar_blade": "斩星",
   "modifier.cti.stellar_blade.flavor": "昔日工匠的辉煌，传说中能斩断星辰的材料...",
@@ -170,6 +170,18 @@
   "material.cti.stellar_manyullyn": "§l玛玉灵",
   "material.cti.stellar_manyullyn.flavor": "-开发者材料-",
   "material.cti.stellar_manyullyn.encyclopedia": "未曾游历星空，怎知星辰不可触及？皆为幻想。",
+
+  "modifier.cti.improve": "改良",
+  "modifier.cti.improve.flavor": "先进工艺！",
+  "modifier.cti.improve.description":"增加升级防御能力各一个槽位",
+
+  "modifier.cti.hardcore": "硬核",
+  "modifier.cti.hardcore.flavor": "字面意思的硬核",
+  "modifier.cti.hardcore.description":"增加两个防御槽",
+
+  "modifier.cti.mutation": "突变",
+  "modifier.cti.mutation.flavor": "血肉在药物刺激下发生了异变，但他似乎屈服于你",
+  "modifier.cti.mutation.description":"增加防御升级能力各一个槽位",
 
 
   "fluid_type.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
