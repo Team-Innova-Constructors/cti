@@ -24,6 +24,7 @@ public class ctiPacketHandler {
         INSTANCE.messageBuilder(PMachineFluidSync.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PMachineFluidSync::new).encoder(PMachineFluidSync::toByte).consumerMainThread(PMachineFluidSync::handle).add();
         INSTANCE.messageBuilder(PPressureValueSync.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PPressureValueSync::new).encoder(PPressureValueSync::toByte).consumerMainThread(PPressureValueSync::handle).add();
         INSTANCE.messageBuilder(PStellarBlade.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(PStellarBlade::new).encoder(PStellarBlade::toByte).consumerMainThread(PStellarBlade::handle).add();
+        INSTANCE.messageBuilder(PRailgunItemS2C.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PRailgunItemS2C::new).encoder(PRailgunItemS2C::toByte).consumerMainThread(PRailgunItemS2C::handle).add();
     }
 
     public static <MSG> void sendToServer(MSG msg){

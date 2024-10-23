@@ -96,6 +96,7 @@ public class cti {
         ToolCapabilityProvider.register(PressureShieldToolCap::new);
         event.enqueueWork(BiomeUtil::init);
         event.enqueueWork(All::init);
+        event.enqueueWork(ctiRailgunProjectile::register);
     }
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));

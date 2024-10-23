@@ -28,4 +28,5 @@ public class ctiModifiers {
     public static final StaticModifier<StellarBlade> stellar_blade= MODIFIERS.register("stellar_blade", StellarBlade::new);
     public static final StaticModifier<All> all= MODIFIERS.register("all", All::new);
     public static final StaticModifier<StressModifier> stress= MODIFIERS.register("stress", StressModifier::new);
+    public static final StaticModifier<fieryCapable> fiery_capable= MODIFIERS.register("fiery_capable", fieryCapable::new);
 }

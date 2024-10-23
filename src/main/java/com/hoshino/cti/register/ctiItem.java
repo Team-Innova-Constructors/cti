@@ -51,7 +51,6 @@ public class ctiItem {
     public static final RegistryObject<Item> compressed_singularity = ITEMS.register("compressed_singularity",()->new compressedSingularityItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(64).fireResistant().tab(ctiTab.MIXC)));
 
 
-
     public static final RegistryObject<BlockItem> unipolar_magnet = ITEMS.register("unipolar_magnet",()-> new BlockItem(ctiBlock.unipolar_magnet.get(), new Item.Properties().tab(ctiTab.MIXC)));
     public static final RegistryObject<BlockItem> unipolar_magnet_budding = ITEMS.register("unipolar_magnet_budding",()-> new BlockItem(ctiBlock.unipolar_magnet_budding.get(), new Item.Properties().tab(ctiTab.MIXC)));
     public static final RegistryObject<BlockItem> overdense_glacio_stone = ITEMS.register("overdense_glacio_stone",()-> new BlockItem(ctiBlock.overdense_glacio_stone.get(), new Item.Properties().tab(ctiTab.MIXC)));

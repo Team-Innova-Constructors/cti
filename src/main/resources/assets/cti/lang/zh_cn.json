@@ -25,6 +25,7 @@
   "cti.tooltip.item.sodium_cooler": "小型的安全的集成化的裂变反应堆，能以固定100mB/t的速度燃烧裂变燃料并产生FE。",
   "cti.tooltip.item.sodium_cooler2": "机器会从左侧的容器吸取裂变燃料，并向右侧的机器排出核废料。机器不会主动输出能量，推荐用通用线缆/通量节点提取能量。",
   "cti.tooltip.item.sodium_cooler3": "能量存储满了、输入/输出端没有化学品容器则无法工作，破坏时不产生辐射。",
+  "cti.tooltip.item.electronium_electrode": "这个电极不会损耗",
 
   "cti.tooltip.item.alloy_centrifuge": "通过压缩空气将镕铸炉内的熔融合金分解为它的原料，需要方块的背面紧挨焦褐排液口才能工作。",
   "cti.tooltip.item.alloy_centrifuge2": "需要7bar以上的压力才能工作，压力越高压缩空气消耗越快，处理速度也越快（15bar时最高），压缩空气容量: 12800mL。",
@@ -64,6 +65,9 @@
   "item.cti.ultradense_ammo": "超致密机枪弹药",
   "item.cti.protonium_ammo": "质子机枪弹药",
   "item.cti.electronium_ammo": "电子机枪弹药",
+
+  "item.cti.tungsten_electrode": "钨钢电极",
+  "item.cti.electronium_electrode": "电子电极",
 
   "item.cti.tier_5_rocket": "五级火箭",
   "item.ad_astra.tier_5_rocket": "五级火箭",
@@ -133,13 +137,17 @@
 
   "modifier.cti.end_slayer": "弑末者",
   "modifier.cti.end_slayer.flavor": "-仅在七咒模式下生效-",
-  "modifier.cti.end_slayer.description":"对末影人、末影螨、潜影贝造成的伤害翻倍",
+  "modifier.cti.end_slayer.encyclopedia":"对末影人、末影螨、潜影贝造成的伤害翻倍",
   "modifier.cti.end_slayer.armor":"末影人不会主动攻击你，来自对末影人、末影螨、潜影贝的伤害减半，抑制对你有敌意的末影生物的瞬移（只需一件就能生效）",
 
   "modifier.cti.stellar_blade": "斩星",
   "modifier.cti.stellar_blade.flavor": "昔日工匠的辉煌，传说中能斩断星辰的材料...",
   "modifier.cti.stellar_blade.encyclopedia":"攻击时在你的敌人头顶召唤落星，不同颜色的落星会给目标叠加不同的环境危害。",
   "modifier.cti.stellar_blade.armor":"受到伤害时在周围大范围生物的头顶召唤落星，不同颜色的落星会给目标叠加不同的环境危害。",
+
+  "modifier.cti.fiery_capable": "好暑",
+  "modifier.cti.fiery_capable.flavor": "太烧了",
+  "modifier.cti.fiery_capable.encyclopedia":"给予使用者抗火，使用者在熔岩中时缓慢恢复耐久",
 
   "modifier.cti.all": "宇宙之源",
   "modifier.cti.all.flavor": "宇宙万法的那个源头，它是——",
