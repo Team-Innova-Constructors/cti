@@ -37,5 +37,6 @@ public class ctiEntity {
         ClientHooks.registerEntityRenderer(ctiEntity.star_frozen, LargeBrightItemProjectile::new);
         ClientHooks.registerEntityRenderer(ctiEntity.star_pressure, LargeBrightItemProjectile::new);
         ClientHooks.registerEntityRenderer(ctiEntity.tinker_railgun, TinkerRaligunRenderer::new);
+        ClientHooks.registerEntityRenderer(ctiEntity.tinker_railgun_raiper, TinkerRaligunRenderer::new);
     }
 }
