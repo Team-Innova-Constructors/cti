@@ -7,6 +7,7 @@ import com.hoshino.cti.netwrok.packet.PRailgunItemS2C;
 import com.xiaoyue.tinkers_ingenuity.register.TIItems;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
@@ -25,7 +26,9 @@ public class ctiRailgunProjectile {
                 if (shooter!=null) {
                     TinkerRailgunProjectile projectile = new TinkerRailgunProjectile(ctiEntity.tinker_railgun.get(), shooter.level,ammo, TinkerTools.sword.get());
                     projectile.setOwner(shooter);
-                    projectile.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, 10, 0);
+                    projectile.pickup = AbstractArrow.Pickup.ALLOWED;
+                    projectile.damageMul=50;
+                    projectile.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, 20, 0);
                     projectile.setPos(shooter.getX(), shooter.getEyeY()-0.1, shooter.getZ());
                     return projectile;
                 }
@@ -36,9 +39,10 @@ public class ctiRailgunProjectile {
             @Override
             public Entity getProjectile(@Nullable Player shooter, ItemStack ammo, Entity defaultProjectile) {
                 if (shooter!=null) {
-                    TinkerRailgunProjectile projectile = new TinkerRailgunProjectile(ctiEntity.tinker_railgun_raiper.get(), shooter.level,ammo, TIItems.RAPIER.get());
+                    TinkerRailgunProjectile projectile = new TinkerRailgunProjectile(ctiEntity.tinker_railgun.get(), shooter.level,ammo, TIItems.RAPIER.get());
                     projectile.setOwner(shooter);
-                    projectile.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, 10, 0);
+                    projectile.pickup = AbstractArrow.Pickup.ALLOWED;
+                    projectile.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, 8, 0);
                     projectile.setPos(shooter.getX(), shooter.getEyeY()-0.1, shooter.getZ());
                     return projectile;
                 }

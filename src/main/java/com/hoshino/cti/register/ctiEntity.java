@@ -14,6 +14,7 @@ import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistries;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistry;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.registries.RegistryObject;
 import slimeknights.mantle.registration.deferred.EntityTypeDeferredRegister;
 import earth.terrarium.botarium.client.ClientHooks;
@@ -29,7 +30,6 @@ public class ctiEntity {
     public static final RegistryObject<EntityType<FallenStars>> star_frozen = ENTITIES.register("star_frozen", () -> EntityType.Builder.<FallenStars>of((entityType,level)->new FallenStars(entityType,level,ctiItem.star_frozen.get()), MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new FallenStars(ctiEntity.star_frozen.get(), world,ctiItem.star_frozen.get())).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<FallenStars>> star_pressure = ENTITIES.register("star_pressure", () -> EntityType.Builder.<FallenStars>of((entityType,level)->new FallenStars(entityType,level,ctiItem.star_pressure.get()), MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new FallenStars(ctiEntity.star_pressure.get(), world,ctiItem.star_pressure.get())).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<TinkerRailgunProjectile>> tinker_railgun = ENTITIES.register("tinker_railgun", () -> EntityType.Builder.<TinkerRailgunProjectile>of((entityType, level)->new TinkerRailgunProjectile(entityType,level,new ItemStack(TinkerToolParts.toolHandle), TinkerTools.cleaver.get()), MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new TinkerRailgunProjectile(ctiEntity.tinker_railgun.get(), world,new ItemStack(TinkerToolParts.toolHandle),TinkerTools.cleaver.get())).setShouldReceiveVelocityUpdates(true));
-    public static final RegistryObject<EntityType<TinkerRailgunProjectile>> tinker_railgun_raiper = ENTITIES.register("tinker_railgun_raiper", () -> EntityType.Builder.<TinkerRailgunProjectile>of((entityType, level)->new TinkerRailgunProjectile(entityType,level,new ItemStack(TinkerToolParts.toughHandle), TIItems.RAPIER.get()), MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new TinkerRailgunProjectile(ctiEntity.tinker_railgun.get(), world,new ItemStack(TinkerToolParts.toughHandle),TIItems.RAPIER.get())).setShouldReceiveVelocityUpdates(true));
     public static void registerEntityRenderers() {
         ClientHooks.registerEntityRenderer(ctiEntity.TIER_5_ROCKET, RocketRendererTier5::new);
         ClientHooks.registerEntityRenderer(ctiEntity.star_blaze, LargeBrightItemProjectile::new);
@@ -37,6 +37,5 @@ public class ctiEntity {
         ClientHooks.registerEntityRenderer(ctiEntity.star_frozen, LargeBrightItemProjectile::new);
         ClientHooks.registerEntityRenderer(ctiEntity.star_pressure, LargeBrightItemProjectile::new);
         ClientHooks.registerEntityRenderer(ctiEntity.tinker_railgun, TinkerRaligunRenderer::new);
-        ClientHooks.registerEntityRenderer(ctiEntity.tinker_railgun_raiper, TinkerRaligunRenderer::new);
     }
 }

@@ -25,6 +25,8 @@ import slimeknights.tconstruct.library.tools.nbt.MaterialNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.TinkerTools;
 
 import java.util.List;
 import java.util.UUID;
@@ -38,7 +40,10 @@ public class TinkerRailgunProjectile extends AbstractArrow {
         super(p_36721_,p_36722_);
         stack = itemStack;
         ToolPartItem toolPartItem =(ToolPartItem) itemStack.getItem();
-        materialNBT = new MaterialNBT(List.of(MaterialVariant.of(toolPartItem.getMaterial(itemStack)),MaterialVariant.of(toolPartItem.getMaterial(itemStack)),MaterialVariant.of(toolPartItem.getMaterial(itemStack))));
+        if (item == TinkerTools.cleaver.get()){
+            materialNBT = new MaterialNBT(List.of(MaterialVariant.of(toolPartItem.getMaterial(itemStack)),MaterialVariant.of(toolPartItem.getMaterial(itemStack)),MaterialVariant.of(toolPartItem.getMaterial(itemStack)),MaterialVariant.of(toolPartItem.getMaterial(itemStack))));
+        }
+        else materialNBT = new MaterialNBT(List.of(MaterialVariant.of(toolPartItem.getMaterial(itemStack)),MaterialVariant.of(toolPartItem.getMaterial(itemStack)),MaterialVariant.of(toolPartItem.getMaterial(itemStack))));
         tool = ToolStack.createTool(item, ToolDefinitions.RAPIER,materialNBT);
     }
 
@@ -59,6 +64,9 @@ public class TinkerRailgunProjectile extends AbstractArrow {
         Entity at = this.getOwner();
         if (at instanceof Player player&&this.tool!=null&&player.level instanceof ServerLevel serverLevel){
             entity.invulnerableTime=0;
+            if (tool.getItem()==TinkerTools.cleaver.get()){
+                tool.addModifier(TinkerModifiers.severing.getId(),18);
+            }
             tool.rebuildStats();
             FakePlayer fakePlayer = new FakePlayer(serverLevel,new GameProfile(UUID.randomUUID(),player.getName().getString()));
             fakePlayer.setItemInHand(InteractionHand.MAIN_HAND,tool.createStack());
