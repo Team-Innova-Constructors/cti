@@ -91,6 +91,9 @@
   "item.cti.enriched_mana":"富集魔力水晶",
 
 
+  "item.minecraft.potion.effect.bloodanger": "红温药水",
+  "item.minecraft.splash_potion.effect.bloodanger": "喷溅型红温药水",
+  "item.minecraft.lingering_potion.effect.bloodanger": "滞留型红温药水",
 
 
 
