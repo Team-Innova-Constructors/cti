@@ -42,6 +42,7 @@ public class ctiRailgunProjectile {
                     TinkerRailgunProjectile projectile = new TinkerRailgunProjectile(ctiEntity.tinker_railgun.get(), shooter.level,ammo, TIItems.RAPIER.get());
                     projectile.setOwner(shooter);
                     projectile.pickup = AbstractArrow.Pickup.ALLOWED;
+                    projectile.setPierceLevel((byte) 2);
                     projectile.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, 8, 0);
                     projectile.setPos(shooter.getX(), shooter.getEyeY()-0.1, shooter.getZ());
                     return projectile;

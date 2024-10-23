@@ -85,8 +85,8 @@ public class TinkerRailgunProjectile extends AbstractArrow {
             entity.invulnerableTime=0;
             attackUtil.attackEntity(tool,fakePlayer,InteractionHand.MAIN_HAND,entity,()->1,false,EquipmentSlot.MAINHAND,tool.getStats().get(ToolStats.ATTACK_DAMAGE)*damageMul,true,true,true,true,0);
             fakePlayer.discard();
-            this.discard();
         }
+        super.onHitEntity(result);
     }
 
     @Override
