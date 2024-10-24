@@ -104,6 +104,7 @@ public class cti {
         event.enqueueWork(BiomeUtil::init);
         event.enqueueWork(All::init);
         event.enqueueWork(ctiRailgunProjectile::register);
+        ctiPotatocannon.register();
 
 
 
