@@ -15,7 +15,6 @@
     "TconMixin.InsatiableMixin",
     "TconMixin.KineticMixin",
     "TIMixin.BlowPipeMixin",
-    "TIMixin.LaserGunMixin",
     "TIMixin.ShruikenMixin"
   ],
   "client": [

@@ -17,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.server.ServerLifecycleHooks;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
@@ -55,7 +56,9 @@ public class TinkerRailgunProjectile extends AbstractArrow {
     @Override
     public void tick() {
         super.tick();
-        ctiPacketHandler.sendToClient(new PRailgunItemS2C(this,stack));
+        if (ServerLifecycleHooks.getCurrentServer()!=null) {
+            ctiPacketHandler.sendToClient(new PRailgunItemS2C(this, stack));
+        }
     }
 
     @Override
