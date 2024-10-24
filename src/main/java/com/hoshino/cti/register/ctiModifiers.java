@@ -3,6 +3,7 @@ package com.hoshino.cti.register;
 import com.hoshino.cti.Modifier.*;
 import com.hoshino.cti.Modifier.Armor.*;
 import com.hoshino.cti.Modifier.Contributors.*;
+import com.hoshino.cti.Modifier.slot.*;
 import com.hoshino.cti.cti;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
@@ -29,4 +30,7 @@ public class ctiModifiers {
     public static final StaticModifier<All> all= MODIFIERS.register("all", All::new);
     public static final StaticModifier<StressModifier> stress= MODIFIERS.register("stress", StressModifier::new);
     public static final StaticModifier<fieryCapable> fiery_capable= MODIFIERS.register("fiery_capable", fieryCapable::new);
+    public static final StaticModifier<improve> improve= MODIFIERS.register("improve", improve::new);
+    public static final StaticModifier<hardcore> hardcore= MODIFIERS.register("hardcore", hardcore::new);
+    public static final StaticModifier<mutation> mutation= MODIFIERS.register("mutation", mutation::new);
 }

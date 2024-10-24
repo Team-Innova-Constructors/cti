@@ -19,6 +19,12 @@
     "timetojudge": "#fffdab",
     "netherfire": "#fffdab",
     "celestiallight": "#fffdab",
-    "archangelwings": "#fffdab"
+    "archangelwings": "#fffdab",
+
+
+    "_slot_": "升级槽等",
+    "improve": "#f9b5ff",
+    "hardcore": "#f9b5ff",
+    "mutation": "#ff3d3d"
   }
 }
