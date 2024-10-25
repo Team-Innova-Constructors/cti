@@ -61,7 +61,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                 if (stack.getItem() instanceof IModifiable) {
                     ToolStack tool = ToolStack.from(stack);
                     if (tool.getModifierLevel(this) > 0 ) {
-                        event.setAmount(event.getAmount()/2);
+                        event.setAmount(event.getAmount()/4);
                         if (event.getSource().getEntity() instanceof LivingEntity living){
                             CompoundTag tag = living.getPersistentData();
                             tag.putBoolean("vulnerable",true);
@@ -115,7 +115,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                     if (stack.getItem() instanceof IModifiable) {
                         ToolStack tool = ToolStack.from(stack);
                         if (tool.getModifierLevel(this) > 0 ) {
-                            event.setAmount(event.getAmount()/2);
+                            event.setAmount(event.getAmount()/4);
                             if (event.getSource().getEntity() instanceof LivingEntity living){
                                 CompoundTag tag = living.getPersistentData();
                                 tag.putBoolean("vulnerable",true);
@@ -172,6 +172,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                 if (stack.getItem() instanceof IModifiable){
                     ToolStack tool = ToolStack.from(stack);
                     if (tool.getModifierLevel(this)>0&&event.getEntity()!=null){
+                        event.setAmount(event.getAmount()*2);
                         CompoundTag tag = event.getEntity().getPersistentData();
                         tag.putBoolean("vulnerable",true);
                         if (!tag.contains("dmg_amplifier")){
@@ -223,7 +224,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                     if (stack.getItem() instanceof IModifiable) {
                         ToolStack tool = ToolStack.from(stack);
                         if (tool.getModifierLevel(this) > 0 ) {
-                            event.setAmount(event.getAmount()/2);
+                            event.setAmount(event.getAmount()*2);
                             if (tool.getModifierLevel(this)>0&&event.getEntity()!=null){
                                 CompoundTag tag = event.getEntity().getPersistentData();
                                 tag.putBoolean("vulnerable",true);

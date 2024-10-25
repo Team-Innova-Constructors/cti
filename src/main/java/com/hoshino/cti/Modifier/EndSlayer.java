@@ -1,6 +1,7 @@
 package com.hoshino.cti.Modifier;
 
 import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
+import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -27,10 +28,15 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 
-public class EndSlayer extends NoLevelsModifier implements MeleeDamageModifierHook , ModifyDamageModifierHook {
+public class EndSlayer extends etshmodifieriii{
     public EndSlayer(){
         MinecraftForge.EVENT_BUS.addListener(this::OnChangeTarget);
         MinecraftForge.EVENT_BUS.addListener(this::onTeleport);
+    }
+
+    @Override
+    public boolean isNoLevels() {
+        return true;
     }
 
     private void onTeleport(EntityTeleportEvent.EnderEntity event) {
@@ -58,11 +64,6 @@ public class EndSlayer extends NoLevelsModifier implements MeleeDamageModifierHo
         }
     }
 
-    @Override
-    protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        super.registerHooks(hookBuilder);
-        hookBuilder.addHook(ModifierHooks.MELEE_DAMAGE);
-    }
 
     private void OnChangeTarget(LivingChangeTargetEvent event) {
         boolean b =false;
@@ -91,18 +92,18 @@ public class EndSlayer extends NoLevelsModifier implements MeleeDamageModifierHo
     }
 
     @Override
-    public float getMeleeDamage(IToolStackView iToolStackView, ModifierEntry modifierEntry, ToolAttackContext context, float bdmg, float dmg) {
+    public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
         Player player = context.getPlayerAttacker();
         Entity entity =context.getTarget();
         if (player!=null&&SuperpositionHandler.isTheCursedOne(player)&&(entity instanceof Endermite||entity instanceof EnderMan||entity instanceof Shulker)){
-            return dmg*2;
+            return damage*2;
         }
-        return dmg;
+        return damage;
     }
 
 
     @Override
-    public float modifyDamageTaken(IToolStackView iToolStackView, ModifierEntry modifierEntry, EquipmentContext context, EquipmentSlot equipmentSlot, DamageSource damageSource, float v, boolean b) {
+    public float modifierDamageTaken (IToolStackView iToolStackView, ModifierEntry modifierEntry, EquipmentContext context, EquipmentSlot equipmentSlot, DamageSource damageSource, float v, boolean b) {
         LivingEntity living = context.getEntity();
         Entity entity =damageSource.getEntity();
         if (living instanceof Player player&&SuperpositionHandler.isTheCursedOne(player)&&(entity instanceof Endermite||entity instanceof EnderMan||entity instanceof Shulker)){

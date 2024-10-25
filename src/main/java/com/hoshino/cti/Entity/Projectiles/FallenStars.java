@@ -122,10 +122,10 @@ public class FallenStars extends ItemProjectile {
                             }
                         }
                     }
+                    if (this.time<299) {
+                        this.time = 299;
+                    }
                 }
-            }
-            if (this.time<299) {
-                this.time = 299;
             }
             if (this.getOwner() instanceof Player player){
                 this.playSound(SoundEvents.FIREWORK_ROCKET_BLAST_FAR);
