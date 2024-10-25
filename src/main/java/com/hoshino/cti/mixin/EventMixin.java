@@ -5,6 +5,7 @@ import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
 import com.hoshino.cti.Entity.specialDamageSource.Environmental;
 import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -44,6 +45,9 @@ public class EventMixin {
                     return;
                 }
                 DamageSource source = event1.getSource();
+                if (event1.getEntity() instanceof Warden warden&&event1.getSource().getEntity()!=null&&event1.getSource()==DamageSource.sonicBoom(event1.getSource().getEntity())){
+                    event1.setAmount(warden.getMaxHealth()/4);
+                }
                 if (source instanceof Environmental || source instanceof PierceThrough || source instanceof throughSources || source instanceof playerThroughSource) {
                     ci.cancel();
                 }

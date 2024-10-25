@@ -19,7 +19,6 @@ public class SpaceSuitModifier extends Modifier implements ToolStatsModifierHook
     public void addToolStats(IToolContext tool, ModifierEntry modifier, ModifierStatsBuilder builder) {
         ctiToolStats.SCORCH_RESISTANCE.add(builder,0.25*modifier.getLevel());
         ctiToolStats.FROZEN_RESISTANCE.add(builder,0.25*modifier.getLevel());
-        ctiToolStats.PRESSURE_RESISTANCE.add(builder,0.1*modifier.getLevel());
         ctiToolStats.ELECTRIC_RESISTANCE.add(builder,0.1*modifier.getLevel());
     }
 }

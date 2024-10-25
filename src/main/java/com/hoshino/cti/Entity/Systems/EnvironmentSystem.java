@@ -62,6 +62,14 @@ public class EnvironmentSystem {
             lvl_freeze=-0.5F;
             lvl_pressure=-0.5F;
         }
+        if (lvl_pressure>1.5){
+            living.invulnerableTime = 0;
+            if (living instanceof Player player) {
+                living.hurt(Environmental.playerPressureSource(Float.MAX_VALUE, player),Float.MAX_VALUE);
+            }else {
+                living.hurt(Environmental.pressureSource(Float.MAX_VALUE), Float.MAX_VALUE);
+            }
+        }
         CompoundTag nbt = living.getPersistentData();
         //积累危害值
         nbt.putFloat(IONIZED_AMOUNT, Mth.clamp(nbt.getFloat(IONIZED_AMOUNT)+lvl_ionize,-20*(1+getElectricResistance(living)),250));
