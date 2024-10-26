@@ -45,9 +45,6 @@ public class EventMixin {
                     return;
                 }
                 DamageSource source = event1.getSource();
-                if (event1.getEntity() instanceof Warden warden&&event1.getSource().getEntity()!=null&&event1.getSource()==DamageSource.sonicBoom(event1.getSource().getEntity())){
-                    event1.setAmount(warden.getMaxHealth()/4);
-                }
                 if (source instanceof Environmental || source instanceof PierceThrough || source instanceof throughSources || source instanceof playerThroughSource) {
                     ci.cancel();
                 }

@@ -3,8 +3,10 @@ package com.hoshino.cti.Event;
 import com.hoshino.cti.Entity.specialDamageSource.Environmental;
 import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
 import com.hoshino.cti.register.ctiEffects;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -35,6 +37,9 @@ public class LivingEvents {
         else if (event.getSource() instanceof Environmental source){
             event.setAmount(source.getAMOUNT());
             event.setCanceled(false);
+        }
+        if (event.getEntity() instanceof Warden warden&& event.getSource().getMsgId().equals("sonic_boom")){
+            event.setAmount(warden.getMaxHealth()/4);
         }
     }
 
