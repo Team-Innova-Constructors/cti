@@ -158,6 +158,26 @@
   "modifier.cti.stress.flavor": "sigma",
   "modifier.cti.stress.description":"受伤时获得可堆叠的伤害减免，最大40%",
 
+  "modifier.cti.scorch_induced": "焦灼附加",
+  "modifier.cti.scorch_induced.flavor": "热死了，热死了，热死了",
+  "modifier.cti.scorch_induced.description":"攻击时附带一定量焦灼伤害并施加少量焦灼值。",
+
+  "modifier.cti.frozen_induced": "霜冻附加",
+  "modifier.cti.frozen_induced.flavor": "冰！",
+  "modifier.cti.frozen_induced.description":"攻击时附带一定量霜冻伤害并施加少量霜冻值。",
+
+  "modifier.cti.ionize_induced": "电离附加",
+  "modifier.cti.ionize_induced.flavor": "电荷解离！！！",
+  "modifier.cti.ionize_induced.description":"攻击时附带一定量电离伤害并施加少量电离值。",
+
+  "modifier.cti.pressure_induced": "压强附加",
+  "modifier.cti.pressure_induced.flavor": "别压力我了😰😰😰",
+  "modifier.cti.pressure_induced.description":"攻击时附带一定量压强伤害并施加少量电离值。",
+
+  "modifier.cti.disorder": "异常",
+  "modifier.cti.disorder.flavor": "其造成的磁场扰乱了空间中能量的分布",
+  "modifier.cti.disorder.description":"攻击时造成等离子爆炸。",
+
 
   "item.cti.nitro_supersteel": "冰淬高速钢",
   "material.cti.nitro_supersteel": "冰淬高速钢",
@@ -168,6 +188,27 @@
   "material.cti.stellar_manyullyn": "§l玛玉灵",
   "material.cti.stellar_manyullyn.flavor": "-开发者材料-",
   "material.cti.stellar_manyullyn.encyclopedia": "未曾游历星空，怎知星辰不可触及？皆为幻想。",
+
+  "material.cti.pyrocrystal": "永燃水晶",
+  "material.cti.pyrocrystal.flavor": "宇宙珍奇之一",
+  "material.cti.pyrocrystal.encyclopedia": "诞生于被星冕辐射的高温星球之上",
+
+  "material.cti.ice_shard": "寒冰碎片",
+  "material.cti.ice_shard.flavor": "代表着宇宙的寒冷",
+  "material.cti.ice_shard.encyclopedia": "既冻人又扎人",
+
+  "material.cti.ultra_dense_hydride_crystal": "氢化超致密",
+  "material.cti.ultra_dense_hydride_crystal.flavor": "宇宙珍奇之一",
+  "material.cti.ultra_dense_hydride_crystal.encyclopedia": "诞生于富氢气巨的核心之中",
+
+  "material.cti.electrocrystal": "感电水晶",
+  "material.cti.electrocrystal.flavor": "宇宙珍奇之一",
+  "material.cti.electrocrystal.encyclopedia": "诞生于被带电粒子辐射的星表",
+
+  "material.cti.unipolar_magnet": "单极磁石",
+  "material.cti.unipolar_magnet.flavor": "宇宙珍奇之一",
+  "material.cti.unipolar_magnet.encyclopedia": "诞生于异常环境的异常材料",
+
 
   "modifier.cti.improve": "改良",
   "modifier.cti.improve.flavor": "先进工艺！",

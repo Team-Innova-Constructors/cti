@@ -33,4 +33,9 @@ public class ctiModifiers {
     public static final StaticModifier<improve> improve= MODIFIERS.register("improve", improve::new);
     public static final StaticModifier<hardcore> hardcore= MODIFIERS.register("hardcore", hardcore::new);
     public static final StaticModifier<mutation> mutation= MODIFIERS.register("mutation", mutation::new);
+    public static final StaticModifier<ScorchInduced> scorch_induced= MODIFIERS.register("scorch_induced", ScorchInduced::new);
+    public static final StaticModifier<FrozenInduced> frozen_induced= MODIFIERS.register("frozen_induced", FrozenInduced::new);
+    public static final StaticModifier<IonizeIndused> ionize_induced= MODIFIERS.register("ionize_induced", IonizeIndused::new);
+    public static final StaticModifier<PressureIndused> pressure_induced= MODIFIERS.register("pressure_induced", PressureIndused::new);
+    public static final StaticModifier<Disorder> disorder= MODIFIERS.register("disorder", Disorder::new);
 }

@@ -77,9 +77,9 @@ public class EnvironmentSystem {
         nbt.putFloat(FROZEN_AMOUNT, Mth.clamp(nbt.getFloat(FROZEN_AMOUNT)+lvl_freeze,-60*(1+getScorchResistance(living)),250));
         nbt.putFloat(PRESSURE_AMOUNT, Mth.clamp(nbt.getFloat(PRESSURE_AMOUNT)+lvl_pressure,-100*(1+getPressureResistance(living)),250));
         float ion_multiplier = nbt.getFloat(IONIZED_AMOUNT)/50;
-        float sco_multiplier = nbt.getFloat(SCORCH_AMOUNT)/100;
-        float fro_multiplier = nbt.getFloat(FROZEN_AMOUNT)/200;
-        float pre_multiplier = nbt.getFloat(PRESSURE_AMOUNT)/50;
+        float sco_multiplier = nbt.getFloat(SCORCH_AMOUNT)/75;
+        float fro_multiplier = nbt.getFloat(FROZEN_AMOUNT)/100;
+        float pre_multiplier = nbt.getFloat(PRESSURE_AMOUNT)/25;
         //危害值>0时的处理
         if (ion_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
@@ -121,7 +121,7 @@ public class EnvironmentSystem {
             }else {
                 living.hurt(Environmental.pressureSource(Multiplier * pre_multiplier * living.getMaxHealth()), Multiplier * pre_multiplier * living.getMaxHealth());
             }
-            living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, (int) pre_multiplier));
+            living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, (int) pre_multiplier*2));
             ((ServerLevel) living.level).sendParticles(ParticleTypes.SMOKE, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), (int) (baseDmg * pre_multiplier * 3), 0, 0, 0, 0.25);
             nbt.putFloat(PRESSURE_AMOUNT,Math.max(0,nbt.getFloat(PRESSURE_AMOUNT)*0.99f));
         }
@@ -132,6 +132,36 @@ public class EnvironmentSystem {
             ctiPacketHandler.sendToPlayer(new PFrozenValueSync(nbt.getFloat(FROZEN_AMOUNT),lvl_freeze),player);
             ctiPacketHandler.sendToPlayer(new PPressureValueSync(nbt.getFloat(PRESSURE_AMOUNT),lvl_pressure),player);
         }
+    }
+
+    public static void addScorchValue(@NotNull LivingEntity living,float amount){
+        CompoundTag nbt = living.getPersistentData();
+        nbt.putFloat(SCORCH_AMOUNT,nbt.getFloat(SCORCH_AMOUNT)+amount);
+    }
+    public static void addFrozenValue(@NotNull LivingEntity living,float amount){
+        CompoundTag nbt = living.getPersistentData();
+        nbt.putFloat(FROZEN_AMOUNT,nbt.getFloat(FROZEN_AMOUNT)+amount);
+    }
+    public static void addIonizedValue(@NotNull LivingEntity living,float amount){
+        CompoundTag nbt = living.getPersistentData();
+        nbt.putFloat(IONIZED_AMOUNT,nbt.getFloat(IONIZED_AMOUNT)+amount);
+    }
+    public static void addPressureValue(@NotNull LivingEntity living,float amount){
+        CompoundTag nbt = living.getPersistentData();
+        nbt.putFloat(PRESSURE_AMOUNT,nbt.getFloat(PRESSURE_AMOUNT)+amount);
+    }
+
+    public static float getScorchValue(@NotNull LivingEntity living){
+        return living.getPersistentData().getFloat(SCORCH_AMOUNT);
+    }
+    public static float getFrozenValue(@NotNull LivingEntity living){
+        return living.getPersistentData().getFloat(FROZEN_AMOUNT);
+    }
+    public static float getIonizedValue(@NotNull LivingEntity living){
+        return living.getPersistentData().getFloat(IONIZED_AMOUNT);
+    }
+    public static float getPressureValue(@NotNull LivingEntity living){
+        return living.getPersistentData().getFloat(PRESSURE_AMOUNT);
     }
 
     public static float getElectricResistance(LivingEntity living){
