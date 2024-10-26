@@ -23,10 +23,12 @@ public class PressureIndused extends etshmodifieriii {
     public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target ){
+            target.invulnerableTime=0;
             target.hurt(playerPressureSource(damageDealt/2,target),damageDealt/2);
             if (getPressureResistance(target)<=1.5&&getPressureValue(target)<25){
-                addPressureValue(target,5*modifier.getLevel());
+                addPressureValue(target,2*modifier.getLevel());
             }
+            target.invulnerableTime=0;
         }
     }
     @Override
@@ -34,8 +36,8 @@ public class PressureIndused extends etshmodifieriii {
         if (target!=null&&projectile instanceof AbstractArrow arrow){
             target.invulnerableTime=0;
             target.hurt(playerPressureSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2),target),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2));
-            if (getPressureResistance(target)<=1.5){
-                addPressureValue(target,50*modifier.getLevel());
+            if (getPressureResistance(target)<=1.5&&getPressureValue(target)<25){
+                addPressureValue(target,2*modifier.getLevel());
             }
             target.invulnerableTime=0;
         }

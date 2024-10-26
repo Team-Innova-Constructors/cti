@@ -23,10 +23,12 @@ public class IonizeIndused extends etshmodifieriii {
     public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target ){
+            target.invulnerableTime=0;
             target.hurt(playerIonizedSource(damageDealt/2,target),damageDealt/2);
             if (getElectricResistance(target)<=1.5){
                 addIonizedValue(target,25*modifier.getLevel());
             }
+            target.invulnerableTime=0;
         }
     }
     @Override
@@ -35,7 +37,7 @@ public class IonizeIndused extends etshmodifieriii {
             target.invulnerableTime=0;
             target.hurt(playerIonizedSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2),target),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2));
             if (getElectricResistance(target)<=1.5){
-                addIonizedValue(target,50*modifier.getLevel());
+                addIonizedValue(target,25*modifier.getLevel());
             }
             target.invulnerableTime=0;
         }
