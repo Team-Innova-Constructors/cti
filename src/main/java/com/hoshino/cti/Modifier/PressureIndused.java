@@ -25,7 +25,7 @@ public class PressureIndused extends etshmodifieriii {
         if (entity instanceof LivingEntity target ){
             target.invulnerableTime=0;
             target.hurt(playerPressureSource(damageDealt/2,target),damageDealt/2);
-            if (getPressureResistance(target)<=1.5&&getPressureValue(target)<25){
+            if (getPressureResistance(target)<=1.5&&getPressureValue(target)<15){
                 addPressureValue(target,2*modifier.getLevel());
             }
             target.invulnerableTime=0;
@@ -36,7 +36,7 @@ public class PressureIndused extends etshmodifieriii {
         if (target!=null&&projectile instanceof AbstractArrow arrow){
             target.invulnerableTime=0;
             target.hurt(playerPressureSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2),target),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2));
-            if (getPressureResistance(target)<=1.5&&getPressureValue(target)<25){
+            if (getPressureResistance(target)<=1.5&&getPressureValue(target)<15){
                 addPressureValue(target,2*modifier.getLevel());
             }
             target.invulnerableTime=0;

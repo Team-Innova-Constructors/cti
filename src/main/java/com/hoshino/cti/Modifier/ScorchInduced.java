@@ -21,10 +21,10 @@ public class ScorchInduced extends etshmodifieriii {
     @Override
     public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         Entity entity =context.getTarget();
-        if (entity instanceof LivingEntity target &&getScorchValue(target)<100){
+        if (entity instanceof LivingEntity target &&getScorchValue(target)<25){
             target.invulnerableTime=0;
             target.hurt(playerScorchSource(damageDealt/2,target),damageDealt/2);
-            if (getScorchResistance(target)<=1.5){
+            if (getScorchResistance(target)<=1.5&&getScorchValue(target)<50){
                 addScorchValue(target,5*modifier.getLevel());
             }
             target.invulnerableTime=0;
@@ -35,7 +35,7 @@ public class ScorchInduced extends etshmodifieriii {
         if (target!=null&&projectile instanceof AbstractArrow arrow){
             target.invulnerableTime=0;
             target.hurt(playerScorchSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2),target),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2));
-            if (getScorchResistance(target)<=1.5&&getScorchValue(target)<100){
+            if (getScorchResistance(target)<=1.5&&getScorchValue(target)<25){
                 addScorchValue(target,5*modifier.getLevel());
             }
             target.invulnerableTime=0;

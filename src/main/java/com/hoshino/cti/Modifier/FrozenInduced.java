@@ -24,7 +24,7 @@ public class FrozenInduced extends etshmodifieriii {
         if (entity instanceof LivingEntity target ){
             target.invulnerableTime=0;
             target.hurt(playerFrozenSource(damageDealt/2,target),damageDealt/2);
-            if (getFreezeResistance(target)<=1.5){
+            if (getFreezeResistance(target)<=1.5&&getFrozenValue(target)<100){
                 addFrozenValue(target,10*modifier.getLevel());
             }
             target.invulnerableTime=0;
@@ -36,7 +36,7 @@ public class FrozenInduced extends etshmodifieriii {
         if (target!=null&&projectile instanceof AbstractArrow arrow){
             target.invulnerableTime=0;
             target.hurt(playerFrozenSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2),target),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2));
-            if (getFreezeResistance(target)<=1.5){
+            if (getFreezeResistance(target)<=1.5&&getFrozenValue(target)<100){
                 addFrozenValue(target,10*modifier.getLevel());
             }
             target.invulnerableTime=0;
