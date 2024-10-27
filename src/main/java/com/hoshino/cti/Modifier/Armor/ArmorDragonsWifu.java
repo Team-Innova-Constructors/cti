@@ -38,7 +38,7 @@ public class ArmorDragonsWifu extends NoLevelsModifier implements ElytraFlightMo
     public boolean elytraFlightTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, LivingEntity livingEntity, int flightTicks) {
         if (livingEntity instanceof Player player&&player.isShiftKeyDown()){
             double speed = getMold(player.getDeltaMovement());
-            double scale =Math.min(30/speed,1.2);
+            double scale =Math.min(40/speed,1.2);
             player.setDeltaMovement(player.getLookAngle().scale(scale));
         }
         livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,200,0,false,false));
