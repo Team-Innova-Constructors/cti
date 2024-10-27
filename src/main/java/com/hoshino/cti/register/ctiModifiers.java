@@ -38,4 +38,10 @@ public class ctiModifiers {
     public static final StaticModifier<IonizeIndused> ionize_induced= MODIFIERS.register("ionize_induced", IonizeIndused::new);
     public static final StaticModifier<PressureIndused> pressure_induced= MODIFIERS.register("pressure_induced", PressureIndused::new);
     public static final StaticModifier<Disorder> disorder= MODIFIERS.register("disorder", Disorder::new);
+    public static final StaticModifier<StellarBlessing> stellar_blessing= MODIFIERS.register("stellar_blessing", StellarBlessing::new);
+    public static final StaticModifier<DragonsWifu> dragons_wifu= MODIFIERS.register("dragons_wifu", DragonsWifu::new);
+    public static final StaticModifier<ArmorDragonsWifu> armor_dragons_wifu= MODIFIERS.register("armor_dragons_wifu", ArmorDragonsWifu::new);
+    public static final StaticModifier<TrinityCurse> trinitycurse= MODIFIERS.register("trinitycurse", TrinityCurse::new);
+    public static final StaticModifier<TrinityBlessing> trinityblessing= MODIFIERS.register("trinityblessing", TrinityBlessing::new);
+
 }

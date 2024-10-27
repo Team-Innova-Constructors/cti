@@ -1,9 +1,9 @@
 package com.hoshino.cti.Modifier;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.EntityHitResult;
@@ -15,33 +15,28 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
-import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.*;
-import static com.hoshino.cti.Entity.specialDamageSource.Environmental.playerIonizedSource;
 
-public class IonizeIndused extends etshmodifieriii {
+public class DragonsWifu extends etshmodifieriii {
+
     @Override
     public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         Entity entity =context.getTarget();
-        LivingEntity living =context.getAttacker();
-        if (entity instanceof LivingEntity target &&living instanceof Player player){
-            target.invulnerableTime=0;
-            target.hurt(playerIonizedSource(damage/2,player),damage/2);
-            if (getElectricResistance(target)<=1.5&&getIonizedValue(target)<75){
-                addIonizedValue(target,25*modifier.getLevel());
-            }
-            target.invulnerableTime=0;
+        if (entity instanceof LivingEntity livingEntity){
+            livingEntity.invulnerableTime =0;
+            livingEntity.hurt(DamageSource.indirectMagic(context.getAttacker(), context.getAttacker()),damage*0.25f*modifier.getLevel());
+            livingEntity.invulnerableTime=0;
+            livingEntity.hurt(DamageSource.DRAGON_BREATH,damage*0.25f*modifier.getLevel());
+            livingEntity.invulnerableTime =0;
         }
         return knockback;
     }
+
     @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
-        if (target!=null&&projectile instanceof AbstractArrow arrow&&attacker instanceof Player player){
-            target.invulnerableTime=0;
-            target.hurt(playerIonizedSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2),player),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2));
-            if (getElectricResistance(target)<=1.5&&getIonizedValue(target)<75){
-                addIonizedValue(target,25*modifier.getLevel());
-            }
-            target.invulnerableTime=0;
+        if (target !=null&&projectile instanceof AbstractArrow arrow){
+            target.invulnerableTime =0;
+            target.hurt(DamageSource.DRAGON_BREATH, (float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())*0.25f*modifier.getLevel()));
+            target.invulnerableTime =0;
         }
         return false;
     }

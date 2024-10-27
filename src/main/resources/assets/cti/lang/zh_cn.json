@@ -222,6 +222,27 @@
   "modifier.cti.mutation.flavor": "血肉在药物刺激下发生了异变，但他似乎屈服于你",
   "modifier.cti.mutation.description":"增加防御升级能力各一个槽位",
 
+  "modifier.cti.stellar_blessing": "昼夜变换",
+  "modifier.cti.stellar_blessing.flavor": "极致的骤冷与极致的骤热",
+  "modifier.cti.stellar_blessing.description":"攻击时造成额外爆炸伤害，并施加着火或者霜冻。",
+
+  "modifier.cti.dragons_wifu": "龙的老婆",
+  "modifier.cti.dragons_wifu.flavor": "龙娘化！",
+  "modifier.cti.dragons_wifu.description":"攻击时根据等级额外造成龙息伤害。",
+
+  "modifier.cti.armor_dragons_wifu": "龙的老婆",
+  "modifier.cti.armor_dragons_wifu.flavor": "龙娘化！",
+  "modifier.cti.armor_dragons_wifu.description":"免疫末影龙龙息伤害，鞘翅飞行时给予自身抗性提升和夜视，按下shift可以加速飞行",
+
+  "modifier.cti.trinityblessing": "强相互作用",
+  "modifier.cti.trinityblessing.flavor": "三种简并态材料在你的帮助下成功地融合，它们为你的工具赐予了祝福。",
+  "modifier.cti.trinityblessing.description":"你的所有攻击穿甲，自己免疫穿甲攻击，你的工具正常使用不再消耗耐久，每级获得叠乘的167%大部分属性加成，特别地，当属性等级为3时，此增益改为333%",
+
+  "modifier.cti.trinitycurse": "极端顽固",
+  "modifier.cti.trinitycurse.flavor": "以你的技术，无法操作这种坚硬无比的材料，它生气地对你降下诅咒",
+  "modifier.cti.trinitycurse.description":"使你被攻击时所受伤害翻1.33倍，无敌帧缩短，特别地，属性等级为3时移除自身无敌帧，受到伤害的修正倍率变为3.33",
+
+
 
   "fluid_type.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",

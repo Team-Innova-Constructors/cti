@@ -21,7 +21,7 @@ import static com.c2h6s.etshtinker.util.vecCalc.getScatteredVec3;
 
 public class Disorder extends etshmodifieriii {
     @Override
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         if (!context.isExtraAttack()){
             Player player = context.getPlayerAttacker();
             Entity entity = context.getTarget();
@@ -35,7 +35,7 @@ public class Disorder extends etshmodifieriii {
                     Vec3 direction = new Vec3(-(d) * vec3.x, -(d) * vec3.y, -(d) * vec3.z);
                     plasmaexplosionentity explosion = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(),level);
                     explosion.setOwner(player);
-                    explosion.damage=damageDealt/4;
+                    explosion.damage=damage/4;
                     explosion.tool= (ToolStack) tool;
                     explosion.particle = etshtinkerParticleType.plasmaexplosionpurple.get();
                     explosion.setPos(new Vec3(target.getX(),target.getY()+target.getBbHeight()*0.5,target.getZ()).add(direction));
@@ -47,5 +47,6 @@ public class Disorder extends etshmodifieriii {
         if (context.getTarget() instanceof LivingEntity living){
             living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),200,1,false,false), context.getAttacker());
         }
+        return knockback;
     }
 }

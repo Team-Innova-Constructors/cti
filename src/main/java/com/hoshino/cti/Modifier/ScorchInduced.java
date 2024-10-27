@@ -3,6 +3,7 @@ package com.hoshino.cti.Modifier;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.EntityHitResult;
@@ -19,22 +20,24 @@ import static com.hoshino.cti.Entity.specialDamageSource.Environmental.*;
 
 public class ScorchInduced extends etshmodifieriii {
     @Override
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         Entity entity =context.getTarget();
-        if (entity instanceof LivingEntity target &&getScorchValue(target)<25){
+        LivingEntity living =context.getAttacker();
+        if (entity instanceof LivingEntity target&&living instanceof Player player){
             target.invulnerableTime=0;
-            target.hurt(playerScorchSource(damageDealt/2,target),damageDealt/2);
-            if (getScorchResistance(target)<=1.5&&getScorchValue(target)<50){
+            target.hurt(playerScorchSource(damage/2,player),damage/2);
+            if (getScorchResistance(target)<=1.5&&getScorchValue(target)<25){
                 addScorchValue(target,5*modifier.getLevel());
             }
             target.invulnerableTime=0;
         }
+        return knockback;
     }
     @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
-        if (target!=null&&projectile instanceof AbstractArrow arrow){
+        if (target!=null&&projectile instanceof AbstractArrow arrow&&attacker instanceof Player player){
             target.invulnerableTime=0;
-            target.hurt(playerScorchSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2),target),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2));
+            target.hurt(playerScorchSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2),player),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2));
             if (getScorchResistance(target)<=1.5&&getScorchValue(target)<25){
                 addScorchValue(target,5*modifier.getLevel());
             }
