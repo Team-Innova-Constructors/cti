@@ -1,6 +1,7 @@
 package com.hoshino.cti;
 
 import com.hoshino.cti.Event.LivingEvents;
+import com.hoshino.cti.Event.sleep;
 import com.hoshino.cti.Modifier.All;
 import com.hoshino.cti.Modifier.capability.ElectricShieldToolCap;
 import com.hoshino.cti.Modifier.capability.FreezeShieldToolCap;
@@ -12,15 +13,15 @@ import com.hoshino.cti.Screen.ReactorNeutronCollectorScreen;
 import com.hoshino.cti.Screen.menu.ctiMenu;
 import com.hoshino.cti.client.hud.EnvironmentalHud;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
-import com.marth7th.solidarytinker.register.solidarytinkerItem;
-import net.minecraft.world.item.alchemy.PotionBrewing;
 import com.hoshino.cti.register.*;
 import com.hoshino.cti.util.BiomeUtil;
 import com.hoshino.cti.world.feature.ctiConfiguredFeature;
 import com.hoshino.cti.world.feature.ctiPlacedFeature;
+import com.marth7th.solidarytinker.register.solidarytinkerItem;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
@@ -77,7 +78,9 @@ public class cti {
         if(Mekenabled){
             ctiChemical.GAS.register(eventBus);
         }
+
     }
+    public static sleep sleep=new sleep();
     public static ResourceLocation getResource(String id) {
         return new ResourceLocation("cti", id);
     }
