@@ -167,9 +167,10 @@ public class RecipeMap {
                     0.75f),
             new QuantumMinerRecipe(cti.getResource("quartz_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:nether_quartz_ore")),3),
-                    1.3F)
-
-
+                    1.3F),
+            new QuantumMinerRecipe(cti.getResource("zinc_ore_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("create:zinc_ore")),4),
+                    1.7F)
 
             ));
 
