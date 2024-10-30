@@ -33,6 +33,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
+import owmii.powah.api.PowahAPI;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 
@@ -105,9 +106,8 @@ public class cti {
         event.enqueueWork(All::init);
         event.enqueueWork(ctiRailgunProjectile::register);
         ctiPotatocannon.register();
-
-
-
+        //powah反应堆冷却剂
+        PowahAPI.registerSolidCoolant(solidarytinkerItem.extremelycoldsteel_ingot.get(),1981,-206);
         //药水配方
         PotionBrewing.addMix(Potions.AWKWARD, solidarytinkerItem.violane.get(), ctiPotions.BLOODANGER.get());
         PotionBrewing.addMix(ctiPotions.BLOODANGER.get(), Items.REDSTONE, ctiPotions.LONG_BLOODANGER.get());
