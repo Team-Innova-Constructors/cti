@@ -24,6 +24,8 @@ public class sleep {
                 "你在担心前期的数值，但想起伟大的双晶态，立马倒头就睡",
                 "还是睡觉吧，梦里有反物质",
                 "你的精神极度压抑，需要好好钓钓鱼了,明天去钓鱼吧",
+                "玩CTI玩了一天，看到后期的材料后，已经没有什么可害怕了，事已至此，先睡觉吧"
+
         };
         Random random = new Random();
         int randomIndex = random.nextInt(array.length);
