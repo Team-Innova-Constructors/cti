@@ -1,5 +1,6 @@
 package com.hoshino.cti.Blocks.BlockEntity;
 
+import com.hoshino.cti.Items.AtmosphereUpgradeItem;
 import com.hoshino.cti.Screen.menu.AtmosphereCondensatorMenu;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PMachineEnergySync;
@@ -78,8 +79,8 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
     public int PROGRESS =0;
     public int MAX_PROGRESS =100;
     protected Component DISPLAY_NAME =Component.translatable("cti.machine.atmosphere_condensator").withStyle(ChatFormatting.DARK_PURPLE);
-    protected int MAX_ENERGY =7500000;
-    protected int MAX_TRANSFER =7500000;
+    protected int MAX_ENERGY =75000000;
+    protected int MAX_TRANSFER =75000000;
     protected int BASE_ENERGY_PERTICK =750000;
     public int CurrentEnergy =0;
 
@@ -112,9 +113,14 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             if (slot<4){
-                return Upgrades.UPGRADES.contains(stack.getItem());
+                return !stack.isEmpty()&&stack.getItem() instanceof AtmosphereUpgradeItem;
             }
             else return false;
+        }
+
+        @Override
+        public int getSlotLimit(int slot) {
+            return slot<4?1:64;
         }
     };
 
@@ -136,7 +142,7 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
         return this.MAX_PROGRESS;
     }
     public int getEnergyPerTick(){
-        return this.BASE_ENERGY_PERTICK;
+        return (int) (this.BASE_ENERGY_PERTICK*getPowerFactor(this));
     }
 
 
@@ -214,6 +220,33 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
         }
     }
 
+    public static float getPowerFactor(AtmosphereCondensatorEntity entity){
+        float factor = 1;
+        ItemStackHandler handler =entity.itemStackHandler;
+        if (handler!=null) {
+            for (int i = 0; i < 4; i++) {
+                ItemStack stack = handler.getStackInSlot(i);
+                if (stack.getItem() instanceof AtmosphereUpgradeItem item) {
+                    factor *= item.POWER_FACTOR;
+                }
+            }
+        }
+        return factor;
+    }
+    public static float getSpeedFactor(AtmosphereCondensatorEntity entity){
+        float factor = 1;
+        ItemStackHandler handler =entity.itemStackHandler;
+        if (handler!=null) {
+            for (int i = 0; i < 4; i++) {
+                ItemStack stack = handler.getStackInSlot(i);
+                if (stack.getItem() instanceof AtmosphereUpgradeItem item) {
+                    factor += item.SPEED_FACTOR;
+                }
+            }
+        }
+        return factor;
+    }
+
 
     public static void tick(Level level, BlockPos blockPos, BlockState state, AtmosphereCondensatorEntity entity) {
         if (level.isClientSide){
@@ -246,6 +279,7 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
             ((ServerLevel) level).sendParticles(ParticleTypes.DOLPHIN, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 1, 0.25, 0.25, 0.25, 0.05);
             Speed++;
         }
+        Speed= (int) (getSpeedFactor(entity)*Speed);
         entity.PROGRESS= Mth.clamp(entity.PROGRESS+Speed,0,entity.MAX_PROGRESS);
         entity.ENERGY_STORAGE.extractEnergy(entity.getEnergyPerTick(),false);
         if (entity.PROGRESS==entity.MAX_PROGRESS){

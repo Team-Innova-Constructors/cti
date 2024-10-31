@@ -32,6 +32,9 @@
 
   "cti.tooltip.item.stellar_plate": "手持时显示当前你所受的环境危害值，右键查看星图，shift+右键查看自己身上的环境抗性。在星图中点击任意星球以关闭星图",
 
+  "cti.tooltip.item.atmosphere_upgrade": "可放在大气冷凝机/大气提取机里，增强机器的表现。",
+  "cti.tooltip.item.power_factor": "机器能量消耗",
+  "cti.tooltip.item.speed_factor": "机器速度提升",
 
   "cti.tooltip.item.etsh": "-EtSH_C2H6S 开发者材料-",
 
@@ -65,8 +68,6 @@
   "item.cti.protonium_ammo": "质子机枪弹药",
   "item.cti.electronium_ammo": "电子机枪弹药",
 
-  "item.cti.tungsten_electrode": "钨钢电极",
-  "item.cti.electronium_electrode": "电子电极",
 
   "item.cti.tier_5_rocket": "五级火箭",
   "item.ad_astra.tier_5_rocket": "五级火箭",
@@ -78,6 +79,10 @@
   "item.cti.astra_tablet_5": "五阶全息星空板",
 
   "item.cti.compressed_singularity": "压缩奇点",
+
+  "item.cti.upgrade_electronium": "辅助静电场分离组件",
+  "item.cti.upgrade_violium": "外置滤波电容组件",
+  "item.cti.upgrade_aetherium": "超导互感线圈组件",
 
   "block.cti.unipolar_magnet": "单极磁石",
   "block.cti.unipolar_magnet_budding": "单极磁石母岩",

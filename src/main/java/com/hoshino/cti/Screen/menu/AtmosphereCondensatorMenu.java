@@ -48,17 +48,15 @@ public class AtmosphereCondensatorMenu extends GeneralMachineMenu{
         if (slot.hasItem()) {
             ItemStack itemstack1 = slot.getItem();
             itemstack = itemstack1.copy();
-            if (slot0 != 3) {
-                if (slot0 >= 3 && slot0 < 27) {
-                    if (!this.moveItemStackTo(itemstack1, 28, 36, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (slot0 >= 28 && slot0 < 37 && !this.moveItemStackTo(itemstack1, 0, 27, false)) {
+
+            if (slot0 >= 0 && slot0 < 31) {
+                if (!this.moveItemStackTo(itemstack1, 0, 36, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.moveItemStackTo(itemstack1, 3, 36, false)) {
+            } else if (slot0 >= 31 && slot0 < 40 && !this.moveItemStackTo(itemstack1, 0, 27, false)) {
                 return ItemStack.EMPTY;
             }
+
 
             if (itemstack1.isEmpty()) {
                 slot.set(ItemStack.EMPTY);

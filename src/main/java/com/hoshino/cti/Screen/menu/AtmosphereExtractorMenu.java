@@ -72,11 +72,11 @@ public class AtmosphereExtractorMenu extends GeneralMachineMenu {
             ItemStack itemstack1 = slot.getItem();
             itemstack = itemstack1.copy();
             if (slot0 != 4) {
-                if (slot0 >= 4 && slot0 < 28) {
-                    if (!this.moveItemStackTo(itemstack1, 29, 37, false)) {
+                if (slot0 >= 0 && slot0 < 32) {
+                    if (!this.moveItemStackTo(itemstack1, 0, 37, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (slot0 >= 28 && slot0 < 37 && !this.moveItemStackTo(itemstack1, 0, 29, false)) {
+                } else if (slot0 >= 32 && slot0 < 41 && !this.moveItemStackTo(itemstack1, 0, 28, false)) {
                     return ItemStack.EMPTY;
                 }
             } else if (!this.moveItemStackTo(itemstack1, 4, 37, false)) {

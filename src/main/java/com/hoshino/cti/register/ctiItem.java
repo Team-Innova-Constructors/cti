@@ -62,12 +62,12 @@ public class ctiItem {
     )));
     public static final RegistryObject<BlockItem> atmosphere_extractor = ITEMS.register("atmosphere_extractor",()-> new TooltipedBlockItem(ctiBlock.atmosphere_extractor.get(), new Item.Properties().tab(ctiTab.MACHINE), List.of(
             Component.translatable("cti.tooltip.item.atmosphere_extractor").withStyle(ChatFormatting.AQUA),
-            Component.translatable("cti.tooltip.item.fe_max").append(": 7.5 MFE").withStyle(ChatFormatting.RED),
+            Component.translatable("cti.tooltip.item.fe_max").append(": 75 MFE").withStyle(ChatFormatting.RED),
             Component.translatable("cti.tooltip.item.fe_consumption").append(": 750 kFE/t").withStyle(ChatFormatting.RED)
     )));
     public static final RegistryObject<BlockItem> atmosphere_condensator = ITEMS.register("atmosphere_condensator",()-> new TooltipedBlockItem(ctiBlock.atmosphere_condensator.get(), new Item.Properties().tab(ctiTab.MACHINE), List.of(
             Component.translatable("cti.tooltip.item.atmosphere_condensator").withStyle(ChatFormatting.AQUA),
-            Component.translatable("cti.tooltip.item.fe_max").append(": 7.5 MFE").withStyle(ChatFormatting.RED),
+            Component.translatable("cti.tooltip.item.fe_max").append(": 75 MFE").withStyle(ChatFormatting.RED),
             Component.translatable("cti.tooltip.item.fe_consumption").append(": 750 kFE/t").withStyle(ChatFormatting.RED)
     )));
     public static final RegistryObject<BlockItem> quantum_miner = ITEMS.register("quantum_miner",()-> new TooltipedBlockItem(ctiBlock.quantum_miner.get(), new Item.Properties().tab(ctiTab.MACHINE), List.of(
@@ -129,6 +129,10 @@ public class ctiItem {
             .mod(TAG_AUGMENT_MACHINE_SECONDARY, 1.25F)
             .mod(TAG_AUGMENT_MACHINE_ENERGY, 2.5F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
+
+    public static final RegistryObject<Item> upgrade_electronium  = ITEMS.register("upgrade_electronium",()->new AtmosphereUpgradeItem(3f,1.75f));
+    public static final RegistryObject<Item> upgrade_violium  = ITEMS.register("upgrade_violium",()->new AtmosphereUpgradeItem(4.5f,0.5f));
+    public static final RegistryObject<Item> upgrade_aetherium  = ITEMS.register("upgrade_aetherium",()->new AtmosphereUpgradeItem(10.5f,2f));
 
 
     //材料
