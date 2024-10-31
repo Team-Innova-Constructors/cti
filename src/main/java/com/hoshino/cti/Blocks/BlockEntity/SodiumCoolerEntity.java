@@ -155,8 +155,8 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
         for (Direction direction: List.of(Direction.DOWN,Direction.UP,Direction.EAST,Direction.WEST,Direction.NORTH,Direction.SOUTH)){
             if (entity.ENERGY_STORAGE.getEnergyStored()>0){
                 BlockEntity energyContainer = level.getBlockEntity(entity.getBlockPos().relative(direction));
-                if (energyContainer!=null&&energyContainer.getCapability(ForgeCapabilities.ENERGY).isPresent()){
-                    int amount =Math.min( energyContainer.getCapability(ForgeCapabilities.ENERGY).orElse(null).receiveEnergy(entity.ENERGY_STORAGE.getEnergyStored(),true),entity.ENERGY_STORAGE.extractEnergy(entity.ENERGY_STORAGE.getEnergyStored(),true));
+                if (energyContainer!=null&&energyContainer.getCapability(ForgeCapabilities.ENERGY,direction.getOpposite()).isPresent()){
+                    int amount =Math.min( energyContainer.getCapability(ForgeCapabilities.ENERGY,direction.getOpposite()).orElse(null).receiveEnergy(entity.ENERGY_STORAGE.getEnergyStored(),true),entity.ENERGY_STORAGE.extractEnergy(entity.ENERGY_STORAGE.getEnergyStored(),true));
                     if (amount>0){
                         energyContainer.getCapability(ForgeCapabilities.ENERGY).orElse(null).receiveEnergy(amount,false);
                         entity.ENERGY_STORAGE.extractEnergy(amount,false);
@@ -189,7 +189,7 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
         for (int a = 0; a < inputHandler.getTanks(); a++) {
             GasStack stack = inputHandler.getChemicalInTank(a);
             if (stack.getType() == Fuel) {
-                drain = new GasStack(Fuel,Math.min(  stack.getAmount(),100));
+                drain = new GasStack(Fuel,Math.min(  stack.getAmount(),2870));
                 GasStack gasStack = inputHandler.extractChemical(drain, Action.SIMULATE);
                 if (gasStack.getAmount() > 0) {
                     drain = gasStack;

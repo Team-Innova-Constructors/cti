@@ -1,5 +1,6 @@
 package com.hoshino.cti.Capabilitiess;
 
+import me.desht.pneumaticcraft.api.pressure.IPressurizableItem;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
