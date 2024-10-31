@@ -3,6 +3,7 @@ package com.hoshino.cti.register;
 import com.hoshino.cti.Modifier.*;
 import com.hoshino.cti.Modifier.Armor.*;
 import com.hoshino.cti.Modifier.Contributors.*;
+import com.hoshino.cti.Modifier.Replace.*;
 import com.hoshino.cti.Modifier.slot.*;
 import com.hoshino.cti.cti;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
@@ -43,5 +44,6 @@ public class ctiModifiers {
     public static final StaticModifier<ArmorDragonsWifu> armor_dragons_wifu= MODIFIERS.register("armor_dragons_wifu", ArmorDragonsWifu::new);
     public static final StaticModifier<TrinityCurse> trinitycurse= MODIFIERS.register("trinitycurse", TrinityCurse::new);
     public static final StaticModifier<TrinityBlessing> trinityblessing= MODIFIERS.register("trinityblessing", TrinityBlessing::new);
+    public static final StaticModifier<strengthwill> strengthwill= MODIFIERS.register("strengthwill", strengthwill::new);
 
 }

@@ -163,6 +163,9 @@ public class EnvironmentSystem {
     public static float getPressureValue(@NotNull LivingEntity living){
         return living.getPersistentData().getFloat(PRESSURE_AMOUNT);
     }
+    public static float allEnvironmentValue(@NotNull LivingEntity living){
+        return getPressureValue(living)+getFrozenValue(living)+getIonizedValue(living)+getScorchValue(living);
+    }
 
     public static float getElectricResistance(LivingEntity living){
         float resist =0;

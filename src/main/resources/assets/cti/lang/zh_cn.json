@@ -241,6 +241,10 @@
   "modifier.cti.trinitycurse.flavor": "以你的技术，无法操作这种坚硬无比的材料，它生气地对你降下诅咒",
   "modifier.cti.trinitycurse.description":"使你被攻击时所受伤害翻1.33倍，无敌帧缩短，特别地，属性等级为3时移除自身无敌帧，受到伤害的修正倍率变为3.33",
 
+  "modifier.cti.strengthwill": "坚定意志",
+  "modifier.cti.strengthwill.flavor": "第二次机会。",
+  "modifier.cti.strengthwill.description": "生命为满时，不会被受到攻击的一击必杀。",
+
 
 
   "fluid_type.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
