@@ -45,5 +45,6 @@ public class ctiModifiers {
     public static final StaticModifier<TrinityCurse> trinitycurse= MODIFIERS.register("trinitycurse", TrinityCurse::new);
     public static final StaticModifier<TrinityBlessing> trinityblessing= MODIFIERS.register("trinityblessing", TrinityBlessing::new);
     public static final StaticModifier<strengthwill> strengthwill= MODIFIERS.register("strengthwill", strengthwill::new);
-
+    public static final StaticModifier<Breeding> breeding= MODIFIERS.register("breeding", Breeding::new);
+    public static final StaticModifier<Eros> eros= MODIFIERS.register("eros", Eros::new);
 }

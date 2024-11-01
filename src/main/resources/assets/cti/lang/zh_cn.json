@@ -176,11 +176,19 @@
 
   "modifier.cti.pressure_induced": "压强附加",
   "modifier.cti.pressure_induced.flavor": "别压力我了😰😰😰",
-  "modifier.cti.pressure_induced.description":"攻击时附带一定量压强伤害并施加少量电离值。",
+  "modifier.cti.pressure_induced.description":"攻击时附带一定量压强伤害并施加少量压强值。",
 
   "modifier.cti.disorder": "异常",
-  "modifier.cti.disorder.flavor": "其造成的磁场扰乱了空间中能量的分布",
+  "modifier.cti.disorder.flavor": "其产生的磁场扰乱了空间中能量的分布",
   "modifier.cti.disorder.description":"攻击时造成等离子爆炸。",
+
+  "modifier.cti.eros": "本能",
+  "modifier.cti.eros.flavor": "INSTINTS♥♥♥",
+  "modifier.cti.eros.description":"右击动物使动物发情",
+
+  "modifier.cti.breeding": "繁衍",
+  "modifier.cti.breeding.flavor": "MATING♥♥♥",
+  "modifier.cti.breeding.description":"加速身边生物的生长，并清除它们的繁殖冷却",
 
 
   "item.cti.nitro_supersteel": "冰淬高速钢",
