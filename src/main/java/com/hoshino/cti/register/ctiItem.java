@@ -93,8 +93,8 @@ public class ctiItem {
             Component.translatable("cti.tooltip.item.sodium_cooler").withStyle(ChatFormatting.AQUA),
             Component.translatable("cti.tooltip.item.sodium_cooler2").withStyle(ChatFormatting.AQUA),
             Component.translatable("cti.tooltip.item.sodium_cooler3").withStyle(ChatFormatting.AQUA),
-            Component.translatable("cti.tooltip.item.fe_max").append(": 250 MFE").withStyle(ChatFormatting.RED),
-            Component.translatable("cti.tooltip.item.fe_generate").append(": 2.5 MFE/t").withStyle(ChatFormatting.RED)
+            Component.translatable("cti.tooltip.item.fe_max").append(": 2 GFE").withStyle(ChatFormatting.RED),
+            Component.translatable("cti.tooltip.item.fe_generate").append(": 50 MFE/t").withStyle(ChatFormatting.RED)
     )));
 
 

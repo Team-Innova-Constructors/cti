@@ -23,7 +23,7 @@ public class OverdenseGlacioStone extends Block {
 
     @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (pRandom.nextInt(200)==1) {
+        if (pRandom.nextInt(300)==1) {
             BlockPos blockpos = new BlockPos(pPos.getX(), pPos.getY() + 1, pPos.getZ());
             BlockState blockstate = pLevel.getBlockState(blockpos);
             int a = 0;
@@ -41,7 +41,7 @@ public class OverdenseGlacioStone extends Block {
                 plasmaexplosionentity entity = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), pLevel);
                 entity.particle = etshtinkerParticleType.plasmaexplosionpurple.get();
                 entity.special = "entropic";
-                entity.scale = 1f;
+                entity.scale = 1.5f;
                 entity.damage = 75;
                 entity.rayVec3 = new Vec3(0, 24 + 12 * pRandom.nextFloat(), 0);
                 entity.setPos(blockpos.getX(), blockpos.getY()-2, blockpos.getZ());

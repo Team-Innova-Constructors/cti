@@ -32,9 +32,9 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
     public SodiumCoolerEntity(BlockPos blockPos, BlockState blockState) {
         super(ctiBlockEntityType.SODIUM_COOLER.get(), blockPos, blockState);
     }
-    protected int MAX_ENERGY =250000000;
-    protected int MAX_TRANSFER =250000000;
-    protected int BASE_ENERGY_PERTICK =2500000;
+    protected int MAX_ENERGY =2000000000;
+    protected int MAX_TRANSFER =2000000000;
+    protected int BASE_ENERGY_PERTICK =50000000;
 
 
 
