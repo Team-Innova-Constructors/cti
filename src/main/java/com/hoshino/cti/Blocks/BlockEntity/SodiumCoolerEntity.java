@@ -156,9 +156,10 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
             if (entity.ENERGY_STORAGE.getEnergyStored()>0){
                 BlockEntity energyContainer = level.getBlockEntity(entity.getBlockPos().relative(direction));
                 if (energyContainer!=null&&energyContainer.getCapability(ForgeCapabilities.ENERGY,direction.getOpposite()).isPresent()){
-                    int amount =Math.min( energyContainer.getCapability(ForgeCapabilities.ENERGY,direction.getOpposite()).orElse(null).receiveEnergy(entity.ENERGY_STORAGE.getEnergyStored(),true),entity.ENERGY_STORAGE.extractEnergy(entity.ENERGY_STORAGE.getEnergyStored(),true));
-                    if (amount>0){
-                        energyContainer.getCapability(ForgeCapabilities.ENERGY).orElse(null).receiveEnergy(amount,false);
+                    IEnergyStorage storage = energyContainer.getCapability(ForgeCapabilities.ENERGY,direction.getOpposite()).orElse(null);
+                    int amount =Math.min( storage.receiveEnergy(entity.ENERGY_STORAGE.getEnergyStored(),true),entity.ENERGY_STORAGE.extractEnergy(entity.ENERGY_STORAGE.getEnergyStored(),true));
+                    if (storage.receiveEnergy(amount,true)==amount){
+                        storage.receiveEnergy(amount,false);
                         entity.ENERGY_STORAGE.extractEnergy(amount,false);
                     }
                 }

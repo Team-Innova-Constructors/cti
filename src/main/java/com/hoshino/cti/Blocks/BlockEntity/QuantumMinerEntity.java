@@ -33,7 +33,7 @@ public class QuantumMinerEntity extends BlockEntity {
     }
     protected int MAX_ENERGY =2147483647;
     protected int MAX_TRANSFER =2147483647;
-    protected int BASE_ENERGY_PERTICK =536870912;
+    protected int BASE_ENERGY_PERTICK =134217728;
     private static final IItemHandler EMPTY =new IItemHandler() {
         @Override
         public int getSlots() {

@@ -73,13 +73,13 @@ public class ctiItem {
     public static final RegistryObject<BlockItem> quantum_miner = ITEMS.register("quantum_miner",()-> new TooltipedBlockItem(ctiBlock.quantum_miner.get(), new Item.Properties().tab(ctiTab.MACHINE), List.of(
             Component.translatable("cti.tooltip.item.quantum_miner").withStyle(ChatFormatting.AQUA),
             Component.translatable("cti.tooltip.item.fe_max").append(": 2.14 GFE").withStyle(ChatFormatting.RED),
-            Component.translatable("cti.tooltip.item.fe_consumption").append(": 537 MFE/t").withStyle(ChatFormatting.RED)
+            Component.translatable("cti.tooltip.item.fe_consumption").append(": 134 MFE/t").withStyle(ChatFormatting.RED)
     )));
     public static final RegistryObject<BlockItem> quantum_miner_advanced = ITEMS.register("quantum_miner_advanced",()-> new TooltipedBlockItem(ctiBlock.quantum_miner_advanced.get(), new Item.Properties().tab(ctiTab.MACHINE), List.of(
             Component.translatable("cti.tooltip.item.quantum_miner").withStyle(ChatFormatting.AQUA),
             Component.translatable("cti.tooltip.item.quantum_miner_advanced").withStyle(ChatFormatting.LIGHT_PURPLE),
             Component.translatable("cti.tooltip.item.fe_max").append(": 2.14 GFE").withStyle(ChatFormatting.RED),
-            Component.translatable("cti.tooltip.item.fe_consumption").append(": 1.61 GFE/t").withStyle(ChatFormatting.RED)
+            Component.translatable("cti.tooltip.item.fe_consumption").append(": 536 MFE/t").withStyle(ChatFormatting.RED)
     )));
     public static final RegistryObject<BlockItem> reactor_neutron_collector = ITEMS.register("reactor_neutron_collector",()-> new TooltipedBlockItem(ctiBlock.reactor_neutron_collector.get(), new Item.Properties().tab(ctiTab.MACHINE), List.of(
             Component.translatable("cti.tooltip.item.reactor_neutron_collector").withStyle(ChatFormatting.AQUA),
