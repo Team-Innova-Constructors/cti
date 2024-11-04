@@ -258,6 +258,10 @@
   "modifier.cti.strengthwill.flavor": "第二次机会。",
   "modifier.cti.strengthwill.description": "生命为满时，不会被受到攻击的一击必杀。",
 
+  "modifier.cti.ararar": "额外夹板",
+  "modifier.cti.ararar.flavor": "精工细作",
+  "modifier.cti.ararar.description": "每一级增加2护甲和1点韧性(面板)，并且增300耐久上限",
+
 
 
   "fluid_type.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
