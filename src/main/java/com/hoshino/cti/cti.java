@@ -90,7 +90,6 @@ public class cti {
         MenuScreens.register(ctiMenu.ATMOSPHERE_CON_MENU.get(), AtmosphereCondensatorScreen::new);
         MenuScreens.register(ctiMenu.NEUT_COL_MENU.get(), ReactorNeutronCollectorScreen::new);
         event.enqueueWork(ctiEntity::registerEntityRenderers);
-
     }
     @SubscribeEvent
     public void registerGuiOverlay(RegisterGuiOverlaysEvent event){
@@ -108,13 +107,12 @@ public class cti {
         event.enqueueWork(BiomeUtil::init);
         event.enqueueWork(All::init);
         event.enqueueWork(ctiRailgunProjectile::register);
+        //机械动力土豆加农炮
         ctiPotatocannon.register();
         //powah反应堆冷却剂
-        PowahAPI.registerSolidCoolant(solidarytinkerItem.extremelycoldsteel_ingot.get(),1981,-206);
+        PowahSolid.init();
         //药水配方
-        PotionBrewing.addMix(Potions.AWKWARD, solidarytinkerItem.violane.get(), ctiPotions.BLOODANGER.get());
-        PotionBrewing.addMix(ctiPotions.BLOODANGER.get(), Items.REDSTONE, ctiPotions.LONG_BLOODANGER.get());
-        PotionBrewing.addMix(ctiPotions.BLOODANGER.get(), Items.GLOWSTONE_DUST, ctiPotions.STRONG_BLOODANGER.get());
+        ctiBrewing.init();
     }
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
