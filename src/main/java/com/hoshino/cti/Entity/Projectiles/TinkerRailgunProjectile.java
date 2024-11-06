@@ -56,6 +56,8 @@ public class TinkerRailgunProjectile extends AbstractArrow {
     @Override
     public void tick() {
         super.tick();
+    }
+    public void sendItemS2CPacket(){
         if (ServerLifecycleHooks.getCurrentServer()!=null) {
             ctiPacketHandler.sendToClient(new PRailgunItemS2C(this, stack));
         }
