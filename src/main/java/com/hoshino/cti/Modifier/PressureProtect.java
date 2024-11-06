@@ -17,6 +17,6 @@ public class PressureProtect extends Modifier implements ToolStatsModifierHook {
     }
     @Override
     public void addToolStats(IToolContext tool, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ctiToolStats.PRESSURE_RESISTANCE.add(builder,0.75*modifier.getLevel());
+        ctiToolStats.PRESSURE_RESISTANCE.add(builder,0.5*modifier.getLevel());
     }
 }

@@ -233,6 +233,9 @@ public class EnvironmentSystem {
             if (shielding.isPresent()){
                 resist+=shielding.get().getPressureShielding();
             }
+            else if (stack.getTags().toList().contains(ctiTagkey.PRESSURE_MINOR)){
+                resist+=0.5f;
+            }
             else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)){
                 resist+=10f;
             }

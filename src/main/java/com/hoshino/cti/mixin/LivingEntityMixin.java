@@ -30,7 +30,14 @@ public class LivingEntityMixin {
             if (level.getGameTime()%10==0){
                 EnvironmentSystem.EnvironmentTick(entity,(ServerLevel) level);
             }
-            if (getFreezeResistance(entity)>0.5&&entity instanceof Player){
+        }
+    }
+    @Inject(at = @At(value = "TAIL"), method = "tick")
+    public void FreezeTick(CallbackInfo callbackInfo){
+        LivingEntity entity = ((LivingEntity) (Object) this);
+        Level level = entity.level;
+        if (!level.isClientSide) {
+            if (getFreezeResistance(entity) > 0.5 && entity instanceof Player) {
                 entity.setIsInPowderSnow(false);
                 entity.setTicksFrozen(-10);
             }

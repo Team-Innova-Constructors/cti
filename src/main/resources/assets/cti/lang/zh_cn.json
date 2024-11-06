@@ -136,7 +136,7 @@
 
   "modifier.cti.pressure_protect": "高压防护",
   "modifier.cti.pressure_protect.flavor": "天塌下来都不怕！",
-  "modifier.cti.pressure_protect.description":"每级提供0.25压强抗性",
+  "modifier.cti.pressure_protect.description":"每级提供0.5压强抗性",
 
   "modifier.cti.gold_simulate": "拟态金",
   "modifier.cti.gold_simulate.flavor": "assert player == Blocks.Gold_Block;",
@@ -183,12 +183,12 @@
   "modifier.cti.disorder.description":"攻击时造成等离子爆炸。",
 
   "modifier.cti.eros": "本能",
-  "modifier.cti.eros.flavor": "INSTINTS♥♥♥",
+  "modifier.cti.eros.flavor": "勇敢地做",
   "modifier.cti.eros.description":"右击动物使动物发情",
 
   "modifier.cti.breeding": "繁衍",
-  "modifier.cti.breeding.flavor": "MATING♥♥♥",
-  "modifier.cti.breeding.description":"加速身边生物的生长，并清除它们的繁殖冷却",
+  "modifier.cti.breeding.flavor": "Good for sex.",
+  "modifier.cti.breeding.description":"加速身边动物的生长，并清除它们的繁殖冷却",
 
 
   "item.cti.nitro_supersteel": "冰淬高速钢",
@@ -262,7 +262,10 @@
   "modifier.cti.ararar.flavor": "精工细作",
   "modifier.cti.ararar.description": "每一级增加2护甲和1点韧性(面板)，并且增300耐久上限",
 
-
+  "modifier.cti.nerfed_dash": "疾行",
+  "modifier.cti.nerfed_dash.flavor": "风驰电掣",
+  "modifier.cti.nerfed_dash.description": "增加工具5×玩家速度倍的攻击伤害、采掘速度和箭矢初速度。",
+  "material.tinkerscalibration.fazelle.encyclopedia": "增加工具5×玩家速度倍的攻击伤害、采掘速度和箭矢初速度。",
 
   "fluid_type.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",

@@ -17,7 +17,7 @@ import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.getFreezeResistan
 public class CryoFuelLiquidBlockMixin {
     @Inject(method = "m_7892_", at = @At("HEAD"), cancellable = true)
     private void removeCryoEffect(BlockState state, Level level, BlockPos pos, Entity entity, CallbackInfo ci){
-        if (entity instanceof LivingEntity living &&getFreezeResistance(living)>0.5&&!level.isClientSide){
+        if (entity instanceof LivingEntity living &&getFreezeResistance(living)>0.5){
             ci.cancel();
         }
     }
