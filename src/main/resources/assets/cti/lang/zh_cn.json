@@ -68,6 +68,10 @@
   "item.cti.protonium_ammo": "质子机枪弹药",
   "item.cti.electronium_ammo": "电子机枪弹药",
 
+  "item.cti.upgrade_augment_4": "钛锆整合组件",
+  "item.cti.upgrade_augment_5": "彩钢整合组件",
+  "item.cti.upgrade_augment_6": "活化彩钢整合组件",
+
 
   "item.cti.tier_5_rocket": "五级火箭",
   "item.ad_astra.tier_5_rocket": "五级火箭",
