@@ -8,8 +8,6 @@ import com.hoshino.cti.Items.ingots.uriel_ingot;
 import com.hoshino.cti.Items.pncMinigunAmmo.ElectroniumAmmo;
 import com.hoshino.cti.Items.pncMinigunAmmo.ProtoniumAmmo;
 import com.hoshino.cti.Items.pncMinigunAmmo.UltraDenseAmmo;
-import com.marth7th.solidarytinker.Items.ingot.bloodmeat_ingot;
-import com.marth7th.solidarytinker.register.solidarytinkerTab;
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistries;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistry;
@@ -26,6 +24,7 @@ import java.util.List;
 
 import static cofh.core.init.CoreFlags.getFlag;
 import static cofh.lib.util.constants.NBTTags.*;
+import static cofh.thermal.lib.common.ThermalFlags.FLAG_UPGRADE_AUGMENTS;
 import static earth.terrarium.ad_astra.common.registry.ModItems.ITEM_GROUP;
 
 public class ctiItem {
@@ -101,12 +100,11 @@ public class ctiItem {
 
     public static final RegistryObject<Item> advanced_speed_augment = ITEMS.register("advanced_speed_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_MACHINE)
-            .mod(TAG_AUGMENT_MACHINE_POWER, 150F)
-            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.75F)
+            .mod(TAG_AUGMENT_MACHINE_POWER, 50F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.5F)
             .mod(TAG_AUGMENT_RF_STORAGE, 10.0F)
-            .mod(TAG_AUGMENT_RF_XFER, 50.0F)
+            .mod(TAG_AUGMENT_RF_XFER, 20.0F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
-
     public static final RegistryObject<Item> advanced_catalyst_augment = ITEMS.register("advanced_catalyst_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_MACHINE)
             .mod(TAG_AUGMENT_MACHINE_CATALYST, 0.25F)
@@ -115,7 +113,7 @@ public class ctiItem {
 
     public static final RegistryObject<Item> advanced_dyano_augment = ITEMS.register("advanced_dyano_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_DYNAMO)
-            .mod(TAG_AUGMENT_DYNAMO_POWER, 250.0F)
+            .mod(TAG_AUGMENT_DYNAMO_POWER, 150.0F)
             .mod(TAG_AUGMENT_DYNAMO_ENERGY, 2.5F)
             .build()).setShowInGroups(getFlag(FLAG_DYNAMO_AUGMENTS)));
 
@@ -126,9 +124,24 @@ public class ctiItem {
 
     public static final RegistryObject<Item> advanced_output_augment = ITEMS.register("advanced_output_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_MACHINE)
-            .mod(TAG_AUGMENT_MACHINE_SECONDARY, 1.25F)
-            .mod(TAG_AUGMENT_MACHINE_ENERGY, 2.5F)
+            .mod(TAG_AUGMENT_MACHINE_SECONDARY, 1.5F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.5F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
+
+    public static final RegistryObject<Item> UPGRADE_AUGMENTS_4 = ITEMS.register("upgrade_augment_4",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_AUGMENT_TYPE_UPGRADE)
+            .mod(TAG_AUGMENT_BASE_MOD,5)
+            .build()).setShowInGroups(getFlag(FLAG_UPGRADE_AUGMENTS)));
+
+    public static final RegistryObject<Item> UPGRADE_AUGMENTS_5 = ITEMS.register("upgrade_augment_5",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_AUGMENT_TYPE_UPGRADE)
+            .mod(TAG_AUGMENT_BASE_MOD,7)
+            .build()).setShowInGroups(getFlag(FLAG_UPGRADE_AUGMENTS)));
+    public static final RegistryObject<Item> UPGRADE_AUGMENTS_6 = ITEMS.register("upgrade_augment_6",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_AUGMENT_TYPE_UPGRADE)
+            .mod(TAG_AUGMENT_BASE_MOD,9)
+            .build()).setShowInGroups(getFlag(FLAG_UPGRADE_AUGMENTS)));
+
 
     public static final RegistryObject<Item> upgrade_electronium  = ITEMS.register("upgrade_electronium",()->new AtmosphereUpgradeItem(3f,1.75f));
     public static final RegistryObject<Item> upgrade_violium  = ITEMS.register("upgrade_violium",()->new AtmosphereUpgradeItem(4.5f,0.5f));
