@@ -30,11 +30,15 @@ public class sleep {
         Random random = new Random();
         int randomIndex = random.nextInt(array.length);
         if (event.getEntity() instanceof Player player) {
-            if (player.isSleeping() && SuperpositionHandler.hasCurio(player, EnigmaticItems.CURSED_RING)) {
-                if (player.getSleepTimer() == 5) {
-                    if (player instanceof ServerPlayer) {
-                        player.sendSystemMessage(Component.literal(array[randomIndex])
-                                .withStyle(ChatFormatting.GREEN));
+            Random a=new Random();
+            int b=a.nextInt(10);
+            if(b==1){
+                if (player.isSleeping() && SuperpositionHandler.hasCurio(player, EnigmaticItems.CURSED_RING)) {
+                    if (player.getSleepTimer() == 5) {
+                        if (player instanceof ServerPlayer) {
+                            player.sendSystemMessage(Component.literal(array[randomIndex])
+                                    .withStyle(ChatFormatting.GREEN));
+                        }
                     }
                 }
             }

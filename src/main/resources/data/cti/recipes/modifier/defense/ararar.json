@@ -1,0 +1,31 @@
+{
+  "type": "tconstruct:modifier",
+  "inputs": [
+    {
+      "item": "farmersdelight:safety_net"
+    },
+    {
+      "item": "tconstruct:nahuatl"
+    },
+    {
+      "item": "farmersdelight:safety_net"
+    },
+    {
+      "tag": "forge:plates/invar"
+    },
+    {
+      "tag": "forge:plates/invar"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable/armor"
+  },
+  "slots": {
+    "defense": 1
+  },
+  "allow_crystal": true,
+  "result": "cti:ararar",
+  "level": {
+    "max": 1
+  }
+}
