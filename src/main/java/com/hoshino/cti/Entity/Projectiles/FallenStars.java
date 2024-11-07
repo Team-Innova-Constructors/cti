@@ -102,7 +102,7 @@ public class FallenStars extends ItemProjectile {
         if (!ls.isEmpty()){
             ls.addAll(this.level.getEntitiesOfClass(LivingEntity.class,this.getBoundingBox().inflate(5)));
             for (LivingEntity living:ls){
-                if (living!=null&&living!=this.getOwner()&&!hitList.contains(living)){
+                if (living!=null&&living!=this.getOwner()&&!hitList.contains(living)&&!(living instanceof Player)){
                     if (this.getOwner() instanceof Player player){
                         living.invulnerableTime=0;
                         living.hurt(getSource(player,living),this.baseDamage);

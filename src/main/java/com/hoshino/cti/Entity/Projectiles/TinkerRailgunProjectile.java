@@ -1,11 +1,11 @@
 package com.hoshino.cti.Entity.Projectiles;
 
 import com.c2h6s.etshtinker.util.attackUtil;
+import com.hoshino.cti.Entity.DisposibleFakePlayer;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PRailgunItemS2C;
 import com.mojang.authlib.GameProfile;
 import com.xiaoyue.tinkers_ingenuity.content.tools.definition.ToolDefinitions;
-import com.xiaoyue.tinkers_ingenuity.register.TIItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -19,7 +19,6 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
-import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.MaterialNBT;

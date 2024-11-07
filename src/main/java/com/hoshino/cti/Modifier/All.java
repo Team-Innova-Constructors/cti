@@ -62,7 +62,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                     ToolStack tool = ToolStack.from(stack);
                     if (tool.getModifierLevel(this) > 0 ) {
                         event.setAmount(event.getAmount()/4);
-                        if (event.getSource().getEntity() instanceof LivingEntity living){
+                        if (event.getSource().getEntity() instanceof LivingEntity living&&!(living instanceof Player)){
                             CompoundTag tag = living.getPersistentData();
                             tag.putBoolean("vulnerable",true);
                             if (!tag.contains("dmg_amplifier")){
@@ -116,7 +116,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                         ToolStack tool = ToolStack.from(stack);
                         if (tool.getModifierLevel(this) > 0 ) {
                             event.setAmount(event.getAmount()/4);
-                            if (event.getSource().getEntity() instanceof LivingEntity living){
+                            if (event.getSource().getEntity() instanceof LivingEntity living&&!(living instanceof Player)){
                                 CompoundTag tag = living.getPersistentData();
                                 tag.putBoolean("vulnerable",true);
                                 if (!tag.contains("dmg_amplifier")){
@@ -171,7 +171,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                 ItemStack stack = player.getItemBySlot(slot);
                 if (stack.getItem() instanceof IModifiable){
                     ToolStack tool = ToolStack.from(stack);
-                    if (tool.getModifierLevel(this)>0&&event.getEntity()!=null){
+                    if (tool.getModifierLevel(this)>0&&event.getEntity()!=null&&!(event.getEntity() instanceof Player)){
                         event.setAmount(event.getAmount()*2);
                         CompoundTag tag = event.getEntity().getPersistentData();
                         tag.putBoolean("vulnerable",true);
@@ -225,7 +225,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
                         ToolStack tool = ToolStack.from(stack);
                         if (tool.getModifierLevel(this) > 0 ) {
                             event.setAmount(event.getAmount()*2);
-                            if (tool.getModifierLevel(this)>0&&event.getEntity()!=null){
+                            if (tool.getModifierLevel(this)>0&&event.getEntity()!=null&&!(event.getEntity() instanceof Player)){
                                 CompoundTag tag = event.getEntity().getPersistentData();
                                 tag.putBoolean("vulnerable",true);
                                 if (!tag.contains("dmg_amplifier")){

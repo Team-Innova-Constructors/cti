@@ -1,4 +1,4 @@
-package com.hoshino.cti.Entity.Projectiles;
+package com.hoshino.cti.Entity;
 
 import com.mojang.authlib.GameProfile;
 import net.minecraft.server.level.ServerLevel;

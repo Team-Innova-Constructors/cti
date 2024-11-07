@@ -100,7 +100,7 @@ public class StellarBlade extends etshmodifieriii {
 
     @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
-        if (attacker instanceof Player player&&target!=null&&projectile instanceof AbstractArrow arrow){
+        if (attacker instanceof Player player&&target!=null&&projectile instanceof AbstractArrow arrow&&!(target instanceof Player)){
             int c =0;
             while (c<EtSHrnd().nextInt(4)+2) {
                 Level level = player.level;
@@ -133,7 +133,7 @@ public class StellarBlade extends etshmodifieriii {
     public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         Player player = context.getPlayerAttacker();
         Entity entity = context.getTarget();
-        if (player!=null&&entity instanceof LivingEntity target&&!context.isExtraAttack()){
+        if (player!=null&&entity instanceof LivingEntity target&&!context.isExtraAttack()&&!(target instanceof Player)){
             int c =0;
             while (c<EtSHrnd().nextInt(4)+2) {
                 Level level = player.level;
