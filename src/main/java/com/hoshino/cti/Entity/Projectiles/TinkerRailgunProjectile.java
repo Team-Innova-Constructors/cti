@@ -50,12 +50,15 @@ public class TinkerRailgunProjectile extends AbstractArrow {
 
     @Override
     public boolean isNoGravity() {
-        return true;
+        return this.tickCount <= 50;
     }
 
     @Override
     public void tick() {
         super.tick();
+        if (this.tickCount>1200){
+            this.discard();
+        }
     }
     public void sendItemS2CPacket(){
         if (ServerLifecycleHooks.getCurrentServer()!=null) {
@@ -73,7 +76,7 @@ public class TinkerRailgunProjectile extends AbstractArrow {
                 tool.addModifier(TinkerModifiers.severing.getId(),18);
             }
             tool.rebuildStats();
-            FakePlayer fakePlayer = new FakePlayer(serverLevel,new GameProfile(UUID.randomUUID(),player.getName().getString()));
+            FakePlayer fakePlayer = new DisposibleFakePlayer(serverLevel,new GameProfile(UUID.randomUUID(),player.getName().getString()));
             fakePlayer.setItemInHand(InteractionHand.MAIN_HAND,tool.createStack());
             fakePlayer.setPos(player.getX(),player.getY(),player.getZ());
             fakePlayer.setDeltaMovement(player.getDeltaMovement());
@@ -89,7 +92,7 @@ public class TinkerRailgunProjectile extends AbstractArrow {
             ToolAttackUtil.attackEntity(tool,player,InteractionHand.MAIN_HAND,entity,()->1,true);
             entity.invulnerableTime=0;
             attackUtil.attackEntity(tool,fakePlayer,InteractionHand.MAIN_HAND,entity,()->1,false,EquipmentSlot.MAINHAND,tool.getStats().get(ToolStats.ATTACK_DAMAGE)*damageMul,true,true,true,true,0);
-            fakePlayer.discard();
+            entity.invulnerableTime=0;
         }
         super.onHitEntity(result);
     }

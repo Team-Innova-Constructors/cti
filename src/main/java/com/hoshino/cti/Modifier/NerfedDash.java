@@ -39,7 +39,7 @@ public class NerfedDash extends Modifier implements MeleeDamageModifierHook, Bre
         if (context.getLivingTarget() != null && player != null) {
             float speed = (float) player.getDeltaMovement().length();
             float bonus;
-            bonus = getbonus(speed, modifier.getLevel(), 5);
+            bonus = getbonus(speed, modifier.getLevel(), 2);
             return damage + bonus * baseDamage;
         }
         return damage;
@@ -51,7 +51,7 @@ public class NerfedDash extends Modifier implements MeleeDamageModifierHook, Bre
         if (player != null) {
             float speed = (float) player.getDeltaMovement().length();
             float bonus;
-            bonus = getbonus(speed, modifier.getLevel(), 5);
+            bonus = getbonus(speed, modifier.getLevel(), 2);
             event.setNewSpeed(event.getNewSpeed() * (1 + bonus));
         }
     }
@@ -62,7 +62,7 @@ public class NerfedDash extends Modifier implements MeleeDamageModifierHook, Bre
         float speed = (float) living.getDeltaMovement().length();
         float bonus;
         if (living.isSprinting()) {
-            bonus = getbonus(speed, level, 5);
+            bonus = getbonus(speed, level, 2);
             if (stat == ToolStats.VELOCITY) {
                 return baseValue * (1 + bonus);
             }
@@ -75,7 +75,7 @@ public class NerfedDash extends Modifier implements MeleeDamageModifierHook, Bre
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> tooltip, slimeknights.mantle.client.TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             float speed = (float) player.getDeltaMovement().length();
-            float bonus = getbonus(speed, modifier.getLevel(), 5);
+            float bonus = getbonus(speed, modifier.getLevel(), 2);
             boolean harvest = tool.hasTag(TinkerTags.Items.HARVEST);
             if (tooltipKey == TooltipKey.SHIFT) {
                 if (harvest) {

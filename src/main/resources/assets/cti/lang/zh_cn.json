@@ -268,8 +268,8 @@
 
   "modifier.cti.nerfed_dash": "疾行",
   "modifier.cti.nerfed_dash.flavor": "风驰电掣",
-  "modifier.cti.nerfed_dash.description": "增加工具5×玩家速度倍的攻击伤害、采掘速度和箭矢初速度。",
-  "material.tinkerscalibration.fazelle.encyclopedia": "增加工具5×玩家速度倍的攻击伤害、采掘速度和箭矢初速度。",
+  "modifier.cti.nerfed_dash.description": "增加工具2×玩家速度倍的攻击伤害、采掘速度和箭矢初速度。",
+  "material.tinkerscalibration.fazelle.encyclopedia": "增加工具2×玩家速度倍的攻击伤害、采掘速度和箭矢初速度。",
 
   "fluid_type.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
