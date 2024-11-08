@@ -113,8 +113,9 @@ public class ctiItem {
 
     public static final RegistryObject<Item> advanced_dyano_augment = ITEMS.register("advanced_dyano_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_DYNAMO)
-            .mod(TAG_AUGMENT_DYNAMO_POWER, 150.0F)
-            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 2.5F)
+            .mod(TAG_AUGMENT_DYNAMO_THROTTLE,1)
+            .mod(TAG_AUGMENT_DYNAMO_POWER, 80.0F)
+            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 2.0F)
             .build()).setShowInGroups(getFlag(FLAG_DYNAMO_AUGMENTS)));
 
     public static final RegistryObject<Item> advanced_range_augment = ITEMS.register("advanced_range_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
@@ -139,7 +140,7 @@ public class ctiItem {
             .build()).setShowInGroups(getFlag(FLAG_UPGRADE_AUGMENTS)));
     public static final RegistryObject<Item> UPGRADE_AUGMENTS_6 = ITEMS.register("upgrade_augment_6",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_UPGRADE)
-            .mod(TAG_AUGMENT_BASE_MOD,9)
+            .mod(TAG_AUGMENT_BASE_MOD,10)
             .build()).setShowInGroups(getFlag(FLAG_UPGRADE_AUGMENTS)));
 
 
