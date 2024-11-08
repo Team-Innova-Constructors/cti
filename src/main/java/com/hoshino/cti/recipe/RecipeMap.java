@@ -103,7 +103,7 @@ public class RecipeMap {
     public static List<QuantumMinerRecipe> MinerRecipeList = new ArrayList<>(List.of(
 
             new QuantumMinerRecipe(cti.getResource("copper_quantum"),
-                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:copper_ore")),6),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:copper_ore")),12),
                     1.8f),
 
 
@@ -151,6 +151,10 @@ public class RecipeMap {
             new QuantumMinerRecipe(cti.getResource("desh_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra:moon_desh_ore")),4),
                     0.75F),
+            new QuantumMinerRecipe(cti.getResource("ostrum_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra:mars_ostrum_ore")),4),
+                    0.75F),
+
 
             new QuantumMinerRecipe(cti.getResource("neutronium_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:overdense_neutronium_ore")),3),

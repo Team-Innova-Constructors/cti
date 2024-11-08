@@ -1,5 +1,5 @@
 package com.hoshino.cti.mixin.TIMixin;
-
+/*
 import com.xiaoyue.tinkers_ingenuity.content.tools.item.tinker.BlowPipe;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -21,3 +21,5 @@ public class BlowPipeMixin {
         player.getCooldowns().addCooldown(itemStack.getItem(),4);
     }
 }
+
+ */
