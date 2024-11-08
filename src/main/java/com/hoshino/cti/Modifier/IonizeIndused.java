@@ -26,7 +26,7 @@ public class IonizeIndused extends etshmodifieriii {
         if (entity instanceof LivingEntity target &&living instanceof Player player&&!(target instanceof Player)){
             target.invulnerableTime=0;
             target.hurt(playerIonizedSource(damage/2,player),damage/2);
-            if (getElectricResistance(target)<=1.5&&getIonizedValue(target)<75){
+            if (getElectricResistance(target)<=1.5&&getIonizedValue(target)<200){
                 addIonizedValue(target,25*modifier.getLevel());
             }
             target.invulnerableTime=0;
@@ -38,7 +38,7 @@ public class IonizeIndused extends etshmodifieriii {
         if (target!=null&&projectile instanceof AbstractArrow arrow&&attacker instanceof Player player&&!(target instanceof Player)){
             target.invulnerableTime=0;
             target.hurt(playerIonizedSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2),player),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2));
-            if (getElectricResistance(target)<=1.5&&getIonizedValue(target)<75){
+            if (getElectricResistance(target)<=1.5&&getIonizedValue(target)<200){
                 addIonizedValue(target,25*modifier.getLevel());
             }
             target.invulnerableTime=0;

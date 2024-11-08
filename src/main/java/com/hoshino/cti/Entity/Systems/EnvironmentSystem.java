@@ -39,9 +39,9 @@ import static com.hoshino.cti.util.BiomeUtil.*;
 public class EnvironmentSystem {
     public static final EquipmentSlot[] ARMOR_SLOTS = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
     //直接伤害的危害基础伤害
-    public static final float baseDmg = 20;
+    public static final float baseDmg = 10;
     //百分比伤害的危害基础百分比
-    public static final float Multiplier =0.2f;
+    public static final float Multiplier =0.1f;
 
     public static final String IONIZED_AMOUNT ="environmental.ionized";
     public static final String SCORCH_AMOUNT ="environmental.scorch";
@@ -56,7 +56,7 @@ public class EnvironmentSystem {
         float lvl_scorch = getBiomeScorchLevel(biome) -getScorchResistance(living) -getBiomeFreezeLevel(biome);
         float lvl_freeze = getBiomeFreezeLevel(biome) -getFreezeResistance(living) -getBiomeScorchLevel(biome);
         float lvl_pressure = getBiomePressureLevel(biome) - getPressureResistance(living);
-        if (living.getMaxHealth()>10000){
+        if (living.getMaxHealth()>5000&&!(living instanceof Player)){
             lvl_ionize=-0.5F;
             lvl_scorch=-0.5F;
             lvl_freeze=-0.5F;
@@ -72,14 +72,14 @@ public class EnvironmentSystem {
         }
         CompoundTag nbt = living.getPersistentData();
         //积累危害值
-        nbt.putFloat(IONIZED_AMOUNT, Mth.clamp(nbt.getFloat(IONIZED_AMOUNT)+lvl_ionize,-20*(1+getElectricResistance(living)),250));
-        nbt.putFloat(SCORCH_AMOUNT, Mth.clamp(nbt.getFloat(SCORCH_AMOUNT)+lvl_scorch,-40*(1+getScorchResistance(living)),250));
-        nbt.putFloat(FROZEN_AMOUNT, Mth.clamp(nbt.getFloat(FROZEN_AMOUNT)+lvl_freeze,-60*(1+getScorchResistance(living)),250));
-        nbt.putFloat(PRESSURE_AMOUNT, Mth.clamp(nbt.getFloat(PRESSURE_AMOUNT)+lvl_pressure,-100*(1+getPressureResistance(living)),250));
-        float ion_multiplier = nbt.getFloat(IONIZED_AMOUNT)/50;
-        float sco_multiplier = nbt.getFloat(SCORCH_AMOUNT)/75;
-        float fro_multiplier = nbt.getFloat(FROZEN_AMOUNT)/100;
-        float pre_multiplier = nbt.getFloat(PRESSURE_AMOUNT)/25;
+        nbt.putFloat(IONIZED_AMOUNT, Mth.clamp(nbt.getFloat(IONIZED_AMOUNT)+lvl_ionize,-20*(1+getElectricResistance(living)),10000));
+        nbt.putFloat(SCORCH_AMOUNT, Mth.clamp(nbt.getFloat(SCORCH_AMOUNT)+lvl_scorch,-40*(1+getScorchResistance(living)),10000));
+        nbt.putFloat(FROZEN_AMOUNT, Mth.clamp(nbt.getFloat(FROZEN_AMOUNT)+lvl_freeze,-60*(1+getScorchResistance(living)),10000));
+        nbt.putFloat(PRESSURE_AMOUNT, Mth.clamp(nbt.getFloat(PRESSURE_AMOUNT)+lvl_pressure,-100*(1+getPressureResistance(living)),10000));
+        float ion_multiplier = (nbt.getFloat(IONIZED_AMOUNT)-50)/25;
+        float sco_multiplier = (nbt.getFloat(SCORCH_AMOUNT)-50)/75-0.25f;
+        float fro_multiplier = (nbt.getFloat(FROZEN_AMOUNT)-50)/100-0.25f;
+        float pre_multiplier = (nbt.getFloat(PRESSURE_AMOUNT)-50)/50-0.25f;
         //危害值>0时的处理
         if (ion_multiplier > 0&&living.isAlive()) {
             living.invulnerableTime = 0;
@@ -152,19 +152,19 @@ public class EnvironmentSystem {
     }
 
     public static float getScorchValue(@NotNull LivingEntity living){
-        return living.getPersistentData().getFloat(SCORCH_AMOUNT);
+        return living.getPersistentData().getFloat(SCORCH_AMOUNT)-50;
     }
     public static float getFrozenValue(@NotNull LivingEntity living){
-        return living.getPersistentData().getFloat(FROZEN_AMOUNT);
+        return living.getPersistentData().getFloat(FROZEN_AMOUNT)-50;
     }
     public static float getIonizedValue(@NotNull LivingEntity living){
-        return living.getPersistentData().getFloat(IONIZED_AMOUNT);
+        return living.getPersistentData().getFloat(IONIZED_AMOUNT)-50;
     }
     public static float getPressureValue(@NotNull LivingEntity living){
-        return living.getPersistentData().getFloat(PRESSURE_AMOUNT);
+        return living.getPersistentData().getFloat(PRESSURE_AMOUNT)-50;
     }
     public static float allEnvironmentValue(@NotNull LivingEntity living){
-        return getPressureValue(living)+getFrozenValue(living)+getIonizedValue(living)+getScorchValue(living);
+        return getPressureValue(living)+getFrozenValue(living)+getIonizedValue(living)+getScorchValue(living)-200;
     }
 
     public static float getElectricResistance(LivingEntity living){
