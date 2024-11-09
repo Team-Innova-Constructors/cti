@@ -25,8 +25,8 @@ public class FrozenInduced extends etshmodifieriii {
         LivingEntity living =context.getAttacker();
         if (entity instanceof LivingEntity target &&living instanceof Player player&&!(target instanceof Player)){
             target.invulnerableTime=0;
-            target.hurt(playerFrozenSource(damage/2,player),damage/2);
-            if (getFreezeResistance(target)<=1.5&&getFrozenValue(target)<100){
+            target.hurt(playerFrozenSource(damage/4,player),damage/4);
+            if (getFreezeResistance(target)<=1.5&&getFrozenValue(target)<500){
                 addFrozenValue(target,10*modifier.getLevel());
             }
             target.invulnerableTime=0;
@@ -38,8 +38,8 @@ public class FrozenInduced extends etshmodifieriii {
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (target!=null&&projectile instanceof AbstractArrow arrow&&attacker instanceof Player player&&!(target instanceof Player)){
             target.invulnerableTime=0;
-            target.hurt(playerFrozenSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2),player),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/2));
-            if (getFreezeResistance(target)<=1.5&&getFrozenValue(target)<100){
+            target.hurt(playerFrozenSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/4),player),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/4));
+            if (getFreezeResistance(target)<=1.5&&getFrozenValue(target)<500){
                 addFrozenValue(target,10*modifier.getLevel());
             }
             target.invulnerableTime=0;
