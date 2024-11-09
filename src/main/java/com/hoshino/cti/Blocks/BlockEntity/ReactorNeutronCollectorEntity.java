@@ -248,9 +248,6 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
             return;
         }
         ctiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(), entity.getBlockPos()));
-        if (entity.ENERGY_STORAGE.getEnergyStored() < entity.getEnergyPerTick()) {
-            return;
-        }
         if (!state.is(ctiBlock.reactor_neutron_collector.get())) {
             return;
         }
