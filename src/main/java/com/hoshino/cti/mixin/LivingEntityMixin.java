@@ -2,6 +2,7 @@ package com.hoshino.cti.mixin;
 
 import com.hoshino.cti.Entity.Systems.EnvironmentSystem;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -15,6 +16,18 @@ import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.getFreezeResistan
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
+    @Inject(at = @At(value = "HEAD"), method = "aiStep",cancellable = true)
+    public void StopAi(CallbackInfo ci){
+        LivingEntity entity =(LivingEntity) (Object)this;
+        if (entity.getPersistentData().getInt("emp")>0){
+            entity.getPersistentData().putInt("emp",entity.getPersistentData().getInt("emp")-1);
+            if (entity.getPersistentData().getInt("emp")<=0){
+                entity.getPersistentData().remove("emp");
+            }
+            ci.cancel();
+        }
+    }
+
 
     @Inject(at = @At(value = "HEAD"), method = "tick")
     public void CtiTick(CallbackInfo callbackInfo){

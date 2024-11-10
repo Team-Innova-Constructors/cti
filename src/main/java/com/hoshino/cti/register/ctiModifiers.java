@@ -49,4 +49,5 @@ public class ctiModifiers {
     public static final StaticModifier<Eros> eros= MODIFIERS.register("eros", Eros::new);
     public static final StaticModifier<ararar> ararar= MODIFIERS.register("ararar", ararar::new);
     public static final StaticModifier<NerfedDash> nerfed_dash= MODIFIERS.register("nerfed_dash", NerfedDash::new);
+    public static final StaticModifier<Emp> emp= MODIFIERS.register("emp", Emp::new);
 }

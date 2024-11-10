@@ -187,12 +187,16 @@
   "modifier.cti.disorder.description":"攻击时造成等离子爆炸。",
 
   "modifier.cti.eros": "本能",
-  "modifier.cti.eros.flavor": "勇敢地做",
+  "modifier.cti.eros.flavor": "本能觉醒",
   "modifier.cti.eros.description":"右击动物使动物发情",
 
   "modifier.cti.breeding": "繁衍",
   "modifier.cti.breeding.flavor": "Good for sex.",
   "modifier.cti.breeding.description":"加速身边动物的生长，并清除它们的繁殖冷却",
+
+  "modifier.cti.emp": "电磁脉冲发生器",
+  "modifier.cti.emp.flavor": "生物电都给你打歪",
+  "modifier.cti.emp.description":"在物品栏中时充能，满充能打击将使周围生物宕机3秒（对玩家无效），冷却10秒",
 
 
   "item.cti.nitro_supersteel": "冰淬高速钢",
