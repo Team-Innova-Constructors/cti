@@ -25,7 +25,7 @@ public class ScorchInduced extends etshmodifieriii {
         LivingEntity living =context.getAttacker();
         if (entity instanceof LivingEntity target&&living instanceof Player player&&!(entity instanceof Player)){
             target.invulnerableTime=0;
-            target.hurt(playerScorchSource(damage/10,player),damage/10);
+            target.hurt(playerScorchSource(damage/12,player),damage/12);
             if (getScorchResistance(target)<=1.5&&getScorchValue(target)<50){
                 addScorchValue(target,5*modifier.getLevel());
             }
@@ -37,7 +37,7 @@ public class ScorchInduced extends etshmodifieriii {
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (target!=null&&projectile instanceof AbstractArrow arrow&&attacker instanceof Player player&&!(target instanceof Player)){
             target.invulnerableTime=0;
-            target.hurt(playerScorchSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/10),player),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/10));
+            target.hurt(playerScorchSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/12),player),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/12));
             if (getScorchResistance(target)<=1.5&&getScorchValue(target)<50){
                 addScorchValue(target,5*modifier.getLevel());
             }
