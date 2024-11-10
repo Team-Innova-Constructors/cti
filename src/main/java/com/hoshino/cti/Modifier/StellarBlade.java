@@ -62,6 +62,9 @@ public class StellarBlade extends etshmodifieriii {
         if (source.getEntity()!=null&&source==DamageSource.thorns(source.getEntity())){
             return;
         }
+        if (source.getEntity() instanceof Player){
+            return;
+        }
         if (attacker instanceof Player player&&amount>5&&!player.getCooldowns().isOnCooldown(tool.getItem())&&modifier.getLevel()>0) {
             List<Mob> mobbbbbbb = context.getEntity().level.getEntitiesOfClass(Mob.class, new AABB(player.getX() - 16, player.getY() - 16, player.getZ() - 16, player.getX() + 16, player.getY() + 16, player.getZ() + 16));
             if (!mobbbbbbb.isEmpty()) {

@@ -248,11 +248,21 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
             return;
         }
         ctiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(), entity.getBlockPos()));
-        if (entity.ENERGY_STORAGE.getEnergyStored() < entity.getEnergyPerTick()) {
-            return;
-        }
         if (!state.is(ctiBlock.reactor_neutron_collector.get())) {
             return;
+        }
+        for (Direction direction: List.of(Direction.DOWN,Direction.UP,Direction.EAST,Direction.WEST,Direction.NORTH,Direction.SOUTH)){
+            if (entity.ENERGY_STORAGE.getEnergyStored()>0){
+                BlockEntity energyContainer = level.getBlockEntity(entity.getBlockPos().relative(direction));
+                if (energyContainer!=null&&energyContainer.getCapability(ForgeCapabilities.ENERGY,direction.getOpposite()).isPresent()){
+                    IEnergyStorage storage = energyContainer.getCapability(ForgeCapabilities.ENERGY,direction.getOpposite()).orElse(null);
+                    int amount =Math.min( storage.receiveEnergy(entity.ENERGY_STORAGE.getEnergyStored(),true),entity.ENERGY_STORAGE.extractEnergy(entity.ENERGY_STORAGE.getEnergyStored(),true));
+                    if (storage.receiveEnergy(amount,true)==amount){
+                        storage.receiveEnergy(amount,false);
+                        entity.ENERGY_STORAGE.extractEnergy(amount,false);
+                    }
+                }
+            }else break;
         }
         Direction direction = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
         BlockEntity inputContainer = level.getBlockEntity(blockPos.relative(direction.getClockWise()));
@@ -332,7 +342,7 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
                 entity.itemStackHandler.extractItem(0, 1, false);
             }
             entity.PROGRESS = (int) Math.min(Integer.MAX_VALUE, entity.PROGRESS + amount);
-            entity.ENERGY_STORAGE.extractEnergy(entity.getEnergyPerTick(), false);
+            entity.ENERGY_STORAGE.receiveEnergy(entity.getEnergyPerTick(),false);
             entity.setChanged();
         }
         if (entity.PROGRESS>=entity.MAX_PROGRESS) {
