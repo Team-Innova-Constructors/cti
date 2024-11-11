@@ -10,25 +10,15 @@ import net.minecraftforge.event.entity.living.MobEffectEvent;
 
 public class Transmigration extends BattleModifier {
     {
-        MinecraftForge.EVENT_BUS.addListener(this::LivingDeathEvent);
         MinecraftForge.EVENT_BUS.addListener(this::EffectClear);
     }
 
     private void EffectClear(MobEffectEvent.Remove event) {
         if(event.getEffect()==ctiEffects.ev.get()){
-            if(event.getEntity().getPersistentData().getInt("transmigration")<8){
+            int EVlevel=event.getEffectInstance().getAmplifier()+1;
+            if(event.getEntity().getPersistentData().getInt("transmigration1" ) < 128 / (2 * EVlevel)){
                 event.getEntity().die(tinkerdamage.tinker(event.getEntity()));
                 event.getEntity().setHealth(0);
-            }
-            else event.getEntity().getPersistentData().putInt("transmigration",0);
-        }
-    }
-
-    private void LivingDeathEvent(LivingDeathEvent event) {
-        if(event.getSource().getEntity() instanceof Player player){
-            if(player.hasEffect(ctiEffects.ev.get())){
-                int amount=player.getPersistentData().getInt("transmigration");
-                player.getPersistentData().putInt("transmigration",amount+1);
             }
         }
     }

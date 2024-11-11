@@ -229,6 +229,10 @@
   "material.cti.unipolar_magnet.flavor": "宇宙珍奇之一",
   "material.cti.unipolar_magnet.encyclopedia": "诞生于异常环境的异常材料",
 
+  "material.cti.invert_hoshino": "反转星落钢",
+  "material.cti.invert_hoshino.flavor": "是我。是我。是我。是我§k是我。是我。是我。是我。",
+  "material.cti.invert_hoshino.encyclopedia": "高等的神秘§k不可观测",
+
 
   "modifier.cti.improve": "改良",
   "modifier.cti.improve.flavor": "先进工艺！",
@@ -285,11 +289,11 @@
 
   "modifier.cti.eventually": "终焉",
   "modifier.cti.eventually.flavor": "自光明中得到救赎，却又终散于黑暗",
-  "modifier.cti.eventually.description":"你的每次受伤都会叠加终焉值，至多获得128点，每点终焉值额外增加2^终焉值点伤害。当达到128点时候，你会进入12.8秒的狩猎状态，期间会吞噬你攻击遇到的一切生物(你的一切攻击均不会对玩家造成伤害)",
+  "modifier.cti.eventually.description":"你的每次受伤都会叠加终焉值，至多获得128点，每点终焉值额外增加2^终焉值点伤害。当达到128点时候，你会进入128 * 词条等级秒的狩猎状态，期间会吞噬你攻击遇到的一切生物(你的一切攻击均不会对玩家造成伤害)",
 
   "modifier.cti.transmigration": "轮回",
   "modifier.cti.transmigration.flavor": "新的开始",
-  "modifier.cti.transmigration.description":"如果你结束狩猎状态时未击杀>8只生物，你会直接消散",
+  "modifier.cti.transmigration.description":"如果你结束狩猎状态时未击杀>128/2 * level只生物，你会直接消散",
 
   "modifier.cti.nerf_colossal": "泰坦杀手",
   "modifier.cti.nerf_colossal.flavor": "泰坦杀手",
