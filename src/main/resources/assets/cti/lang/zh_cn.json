@@ -275,6 +275,14 @@
   "modifier.cti.nerfed_dash.description": "增加工具2×玩家速度倍的攻击伤害、采掘速度和箭矢初速度。",
   "material.tinkerscalibration.fazelle.encyclopedia": "增加工具2×玩家速度倍的攻击伤害、采掘速度和箭矢初速度。",
 
+  "modifier.cti.eventually": "终焉",
+  "modifier.cti.eventually.flavor": "自光明中得到救赎，却又终散于黑暗",
+  "modifier.cti.eventually.description":"你的每次受伤都会叠加终焉值，至多获得128点，每点终焉值额外增加2^终焉值点伤害。当达到128点时候，你会进入12.8秒的狩猎状态，期间会吞噬你攻击遇到的一切生物(你的一切攻击均不会对玩家造成伤害)",
+
+  "modifier.cti.transmigration": "轮回",
+  "modifier.cti.transmigration.flavor": "新的开始",
+  "modifier.cti.transmigration.description":"如果你结束狩猎状态时未击杀>8只生物，你会被牢墨亲死",
+
   "fluid_type.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
 

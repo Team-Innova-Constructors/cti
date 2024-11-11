@@ -52,7 +52,11 @@ public class RecipeMap {
                     "cti:infernal_molten_surface"),
             new AtmosphereCondensorRecipe(cti.getResource("volatile_lava"),
                     new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation("kubejs:volatile_lava")),250),
-                    "cti:infernal")
+                    "cti:infernal"),
+            new AtmosphereCondensorRecipe(cti.getResource("crude_oil"),
+                    new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation("immersivepetroleum:crudeoil")),1000),
+                    "undergarden:smog_spires")
+
     ));
 
     //大气提取器
