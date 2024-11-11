@@ -1,4 +1,4 @@
-package com.hoshino.cti.Modifier;
+package com.hoshino.cti.Modifier.Replace;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;

@@ -1,4 +1,4 @@
-package com.hoshino.cti.Modifier;
+package com.hoshino.cti.Modifier.Replace;
 
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;

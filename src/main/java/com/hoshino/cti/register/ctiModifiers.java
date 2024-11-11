@@ -52,4 +52,5 @@ public class ctiModifiers {
     public static final StaticModifier<Emp> emp= MODIFIERS.register("emp", Emp::new);
     public static final StaticModifier<transmigration> transmigration= MODIFIERS.register("transmigration", transmigration::new);
     public static final StaticModifier<eventually> eventually= MODIFIERS.register("eventually", eventually::new);
+    public static final StaticModifier<NerfColossal> nerf_colossal= MODIFIERS.register("nerf_colossal", NerfColossal::new);
 }

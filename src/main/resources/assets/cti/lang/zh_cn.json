@@ -283,6 +283,10 @@
   "modifier.cti.transmigration.flavor": "新的开始",
   "modifier.cti.transmigration.description":"如果你结束狩猎状态时未击杀>8只生物，你会被牢墨亲死",
 
+  "modifier.cti.nerf_colossal": "泰坦杀手",
+  "modifier.cti.nerf_colossal.flavor": "泰坦杀手",
+  "modifier.cti.nerf_colossal.description":"对生命值高于你的生物造成更多伤害",
+
   "fluid_type.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
 
