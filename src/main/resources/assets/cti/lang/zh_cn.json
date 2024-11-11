@@ -266,6 +266,14 @@
   "modifier.cti.strengthwill.flavor": "第二次机会。",
   "modifier.cti.strengthwill.description": "生命为满时，不会被受到攻击的一击必杀。",
 
+  "modifier.cti.arrogance": "傲慢",
+  "modifier.cti.arrogance.flavor": "和傲慢诅咒类似",
+  "modifier.cti.arrogance.description": "你对恶意词条大于你的生物将会基于你玩家恶意等级和怪物等级差除50提升倍率，这个倍率不会超过10",
+
+  "modifier.cti.sharpblade": "利刃",
+  "modifier.cti.sharpblade.flavor": "boss生物专精",
+  "modifier.cti.sharpblade.description": "基于(面板攻击力30% x 目标最大生命15%)的十分之一提升你的基础伤害,这个提升不会超过目标最大生命10%",
+
   "modifier.cti.ararar": "额外夹板",
   "modifier.cti.ararar.flavor": "精工细作",
   "modifier.cti.ararar.description": "每一级增加2护甲和1点韧性(面板)，并且增300耐久上限",
@@ -281,7 +289,7 @@
 
   "modifier.cti.transmigration": "轮回",
   "modifier.cti.transmigration.flavor": "新的开始",
-  "modifier.cti.transmigration.description":"如果你结束狩猎状态时未击杀>8只生物，你会被牢墨亲死",
+  "modifier.cti.transmigration.description":"如果你结束狩猎状态时未击杀>8只生物，你会直接消散",
 
   "modifier.cti.nerf_colossal": "泰坦杀手",
   "modifier.cti.nerf_colossal.flavor": "泰坦杀手",
