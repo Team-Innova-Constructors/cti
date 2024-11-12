@@ -4,6 +4,7 @@
   "itemGroup.cti.machine": "CTI-机器",
 
 
+  "effect.cti.ev": "狩猎",
 
   "cti.tooltip.item.shift": "按下 Shift 以获取信息",
   "cti.tooltip.item.ultradense_ammo": "这种高密度材料制成的特种机关枪弹药具有较高的伤害，命中时能无视敌人无敌帧。",
@@ -209,6 +210,12 @@
   "material.cti.stellar_manyullyn.flavor": "-开发者材料-",
   "material.cti.stellar_manyullyn.encyclopedia": "未曾游历星空，怎知星辰不可触及？皆为幻想。",
 
+  "item.cti.invert_hoshino": "星落钢·恐怖",
+  "cti.tooltip.item.invert_hoshino": "独爱流萤 开发者材料-",
+  "material.cti.invert_hoshino": "§l星落钢·恐怖",
+  "material.cti.invert_hoshino.flavor": "是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.",
+  "material.cti.invert_hoshino.encyclopedia": "在催化剂和色彩反中子影响下反转的星落钢",
+
   "material.cti.pyrocrystal": "永燃水晶",
   "material.cti.pyrocrystal.flavor": "宇宙珍奇之一",
   "material.cti.pyrocrystal.encyclopedia": "诞生于被星冕辐射的高温星球之上",
@@ -229,9 +236,7 @@
   "material.cti.unipolar_magnet.flavor": "宇宙珍奇之一",
   "material.cti.unipolar_magnet.encyclopedia": "诞生于异常环境的异常材料",
 
-  "material.cti.invert_hoshino": "反转星落钢",
-  "material.cti.invert_hoshino.flavor": "是我。是我。是我。是我§k是我。是我。是我。是我。",
-  "material.cti.invert_hoshino.encyclopedia": "高等的神秘§k不可观测",
+  "material.tinkers_ingenuity.gleiter_material": "格莱特",
 
 
   "modifier.cti.improve": "改良",
@@ -299,6 +304,10 @@
   "modifier.cti.nerf_colossal.flavor": "泰坦杀手",
   "modifier.cti.nerf_colossal.description":"对生命值高于你的生物造成更多伤害",
 
+  "modifier.cti.overwritesouldevouring": "噬魂",
+  "modifier.cti.overwritesouldevouring.flavor": "吃掉它们，全部！",
+  "modifier.cti.overwritesouldevouring.description":"该工具会在一次次击杀敌人后变得更加强大，每次击杀都会使自身造成的伤害提高词条等级乘1%点。",
+
   "fluid_type.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
 
@@ -342,5 +351,7 @@
 
   "gas.cti.neutron": "中子素",
   "gas.cti.mana_gas": "气态魔力",
-  "infuse_type.cti.mana_infuse": "魔力水晶"
+  "infuse_type.cti.mana_infuse": "魔力水晶",
+
+  "death.attack.tinker": "%1$s 被牢墨用数据线爱死了"
 }

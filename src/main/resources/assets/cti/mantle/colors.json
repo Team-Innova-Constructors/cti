@@ -1,6 +1,7 @@
 {
   "material.cti": {
-    "uriel": "#fffdab"
+    "uriel": "#fffdab",
+    "invert_hoshino": "#ff007f"
   },
 
   "modifier.cti": {
@@ -41,12 +42,17 @@
     "nerf_colossal": "#839A26",
     "sharpblade": "#D8FFF0",
     "arrogance": "#CB45FF",
+    "overwritesouldevouring": "#5a00c8",
 
     "_uriel_": "乌列尔",
     "timetojudge": "#fffdab",
     "netherfire": "#fffdab",
     "celestiallight": "#fffdab",
     "archangelwings": "#fffdab",
+
+    "_hoshino_": "恐怖星野",
+    "eventually": "#ff007f",
+    "transmigration": "#ff007f",
 
 
     "_slot_": "升级槽等",

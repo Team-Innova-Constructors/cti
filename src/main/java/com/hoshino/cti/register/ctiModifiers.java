@@ -56,4 +56,5 @@ public class ctiModifiers {
     public static final StaticModifier<Arrogance> ARROGANCE_STATIC_MODIFIER= MODIFIERS.register("arrogance", Arrogance::new);
     public static final StaticModifier<NerfColossal> nerf_colossal= MODIFIERS.register("nerf_colossal", NerfColossal::new);
     public static final StaticModifier<SharpBlade> SHARP_BLADE_STATIC_MODIFIER= MODIFIERS.register("sharpblade", SharpBlade::new);
+    public static final StaticModifier<OverwriteSoulDevouring> OVERWRITE_SOUL_DEVOURING_STATIC_MODIFIER= MODIFIERS.register("overwritesouldevouring", OverwriteSoulDevouring::new);
 }
