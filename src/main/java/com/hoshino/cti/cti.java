@@ -117,4 +117,7 @@ public class cti {
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
     }
+    public static String makeDescriptionId(String type, String name) {
+        return type + ".cti." + name;
+    }
 }

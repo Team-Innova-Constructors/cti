@@ -53,8 +53,11 @@ public class ctiModifiers {
     public static final StaticModifier<Emp> emp= MODIFIERS.register("emp", Emp::new);
     public static final StaticModifier<Transmigration> transmigration= MODIFIERS.register("transmigration", Transmigration::new);
     public static final StaticModifier<Eventually> eventually= MODIFIERS.register("eventually", Eventually::new);
+    public static final StaticModifier<Trauma> trauma= MODIFIERS.register("trauma", Trauma::new);
     public static final StaticModifier<Arrogance> ARROGANCE_STATIC_MODIFIER= MODIFIERS.register("arrogance", Arrogance::new);
     public static final StaticModifier<NerfColossal> nerf_colossal= MODIFIERS.register("nerf_colossal", NerfColossal::new);
     public static final StaticModifier<SharpBlade> SHARP_BLADE_STATIC_MODIFIER= MODIFIERS.register("sharpblade", SharpBlade::new);
+    public static final StaticModifier<Cosmopolitan> COSMOPOLITAN_STATIC_MODIFIER= MODIFIERS.register("cosmopolitan", Cosmopolitan::new);
+    public static final StaticModifier<Infinity> INFINITY_STATIC_MODIFIER= MODIFIERS.register("infinity", Infinity::new);
     public static final StaticModifier<OverwriteSoulDevouring> OVERWRITE_SOUL_DEVOURING_STATIC_MODIFIER= MODIFIERS.register("overwritesouldevouring", OverwriteSoulDevouring::new);
 }

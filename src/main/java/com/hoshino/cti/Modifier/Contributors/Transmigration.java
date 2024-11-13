@@ -1,14 +1,19 @@
 package com.hoshino.cti.Modifier.Contributors;
 
 import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.register.ctiModifiers;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import com.marth7th.solidarytinker.shelf.damagesource.tinkerdamage;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
+import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -26,20 +31,22 @@ public class Transmigration extends BattleModifier {
         if(event.getEffectInstance().getEffect()==ctiEffects.ev.get()){
             LivingEntity entity=event.getEntity();
             if(entity instanceof Player player){
-                if(player.getTags().contains("transmigration")){
-                    player.heal(10);
-                    TimerTask t = new TimerTask() {
-                        @Override
-                        public void run() {
-                            player.getTags().remove("transmigration");
-                        }
-                    };
-                    Timer timer = new Timer();
-                    timer.schedule(t, 300);
-                }
-                else{
-                    DamageSource momo=new DamageSource("momo");
-
+                List<ItemStack>itemStacks=player.getInventory().armor;
+                for(ItemStack itemStack:itemStacks){
+                    if(player.getTags().contains("transmigration")|| ModifierUtil.getModifierLevel(itemStack, ctiModifiers.trauma.getId())>0){
+                        player.heal(10);
+                        TimerTask t = new TimerTask() {
+                            @Override
+                            public void run() {
+                                player.getTags().remove("transmigration");
+                            }
+                        };
+                        Timer timer = new Timer();
+                        timer.schedule(t, 300);
+                    }
+                    else{
+                        DamageSource momo=new DamageSource("momo");
+                    }
                 }
             }
         }
