@@ -111,10 +111,14 @@ public class cti {
         ctiPotatocannon.register();
         //powah反应堆冷却剂
         PowahSolid.init();
+        ctiSlots.init();
         //药水配方
         ctiBrewing.init();
     }
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
+    }
+    public static String makeDescriptionId(String type, String name) {
+        return type + ".cti." + name;
     }
 }

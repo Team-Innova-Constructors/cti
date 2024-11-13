@@ -3,6 +3,7 @@
   "itemGroup.cti.mixc": "CTI-杂项",
   "itemGroup.cti.machine": "CTI-机器",
 
+  "block.cti.molten_infinity_fluid":"熔融无尽",
 
   "effect.cti.ev": "狩猎",
 
@@ -41,7 +42,7 @@
 
   "item.cti.uriel_ingot": "§e乌列尔",
   "item.cti.molten_uriel_bucket": "熔融乌列尔桶",
-  "fluid_type.cti.molten_uriel": "熔融乌列尔",
+  "fluid.cti.molten_uriel": "熔融乌列尔",
   "tooltip.uriel_ingot.desc1": "Esdras IV in Catholic versions",
   "tooltip.uriel_ingot.desc2": "牢墨 贡献者材料",
 
@@ -236,6 +237,10 @@
   "material.cti.unipolar_magnet.flavor": "宇宙珍奇之一",
   "material.cti.unipolar_magnet.encyclopedia": "诞生于异常环境的异常材料",
 
+  "material.cti.true_infinity": "无尽",
+  "material.cti.true_infinity.flavor": "结束了？",
+  "material.cti.true_infinity.encyclopedia": "历经了千辛万苦，你终于制得了这种材料\n寰宇之力在你的手中",
+
   "material.tinkers_ingenuity.gleiter_material": "格莱特",
 
 
@@ -294,11 +299,15 @@
 
   "modifier.cti.eventually": "终焉",
   "modifier.cti.eventually.flavor": "自光明中得到救赎，却又终散于黑暗",
-  "modifier.cti.eventually.description":"你的每次受伤都会叠加终焉值，至多获得128点，每点终焉值额外增加2^终焉值点伤害。当达到128点时候，你会进入128 * 词条等级秒的狩猎状态，期间会吞噬你攻击遇到的一切生物(你的一切攻击均不会对玩家造成伤害)",
+  "modifier.cti.eventually.description":"你的每次受伤都会叠加终焉值，至多获得128点，每点终焉值额外增加2^终焉值点伤害。当达到128点时候，你会进入128 * 词条等级秒的狩猎状态，期间会肘死你攻击遇到的一切生物(你的一切攻击均不会对玩家造成伤害)",
 
   "modifier.cti.transmigration": "轮回",
   "modifier.cti.transmigration.flavor": "新的开始",
   "modifier.cti.transmigration.description":"如果你结束狩猎状态时未击杀>128/2 * level只生物，你会直接消散",
+
+  "modifier.cti.trauma": "创伤",
+  "modifier.cti.trauma.flavor": "第二次机会",
+  "modifier.cti.trauma.description":"[需配合星落钢-恐怖 武器使用]你获得等同于你主手武器2^终焉值的伤害格挡,当你未满足狩猎要求时不会消散.当你处于狩猎状态时免疫一切伤害",
 
   "modifier.cti.nerf_colossal": "泰坦杀手",
   "modifier.cti.nerf_colossal.flavor": "泰坦杀手",
@@ -308,8 +317,31 @@
   "modifier.cti.overwritesouldevouring.flavor": "吃掉它们，全部！",
   "modifier.cti.overwritesouldevouring.description":"该工具会在一次次击杀敌人后变得更加强大，每次击杀都会使自身造成的伤害提高词条等级乘1%点。",
 
-  "fluid_type.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
+  "modifier.cti.infinity": "无限",
+  "modifier.cti.infinity.flavor": "旅途的重点",
+  "modifier.cti.infinity.description":"每级提升基础伤害131072点,并且附带目标最大生命33% * 词条等级的生命值扣除.当词条等级大于3时候，你的攻击会直接杀死目标",
+
+  "modifier.cti.cosmopolitan": "寰宇",
+  "modifier.cti.cosmopolitan.flavor": "......",
+  "modifier.cti.cosmopolitan.description":"工具正常使用不再消耗耐久,在你的背包时候每刻恢复耐久100点",
+
+  "modifier.cti.tinge": "色彩",
+  "modifier.cti.tinge.flavor": "......",
+  "modifier.cti.tinge.description":"每级等效增加时运,抢夺10级",
+
+  "modifier.cti.deepanddeep": "更加深入",
+  "modifier.cti.deepanddeep.flavor": "......",
+  "modifier.cti.deepanddeep.description":"每级增加25%回声倍率",
+
+  "modifier.solidarytinker.deepoceanecho": "深海的回声",
+  "modifier.solidarytinker.deepoceanecho.flavor": "你听到了吗",
+  "modifier.solidarytinker.deepoceanecho.description":"基于（最大生命值的30% * 护甲值的30% + 总经验点数的10000分之1【这个至少为1】 ）获得回声点数，回声点数 * 0.1 * 词条等级将会转化为你的实际伤害。如果你的工具持有海蒙/海梦/深海紫水晶/海王/海神等词条，则会每级额外提升20%的伤害,\n获得5海洋槽\n你不再对玩家造成基础伤害",
+
+  "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
+
+  "fluid.cti.molten_infinity": "熔融无尽",
+  "item.cti.molten_infinity_bucket": "熔融无尽桶",
 
   "cti.gui.environmental.ionize_build": "电离强度",
   "cti.gui.environmental.ionize_value": "电离值",
@@ -352,6 +384,11 @@
   "gas.cti.neutron": "中子素",
   "gas.cti.mana_gas": "气态魔力",
   "infuse_type.cti.mana_infuse": "魔力水晶",
+
+  "stat.tconstruct.slot.prefix.ocean": "深海槽：",
+  "stat.tconstruct.slot.display.ocean": "深海",
+  "stat.tconstruct.slot.prefix.shenjin": "神金槽：",
+  "stat.tconstruct.slot.display.shenjin": "神金",
 
   "death.attack.tinker": "%1$s 被牢墨用数据线爱死了"
 }

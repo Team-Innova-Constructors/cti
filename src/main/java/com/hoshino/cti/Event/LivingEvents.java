@@ -9,9 +9,11 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 
 public class LivingEvents {
@@ -19,6 +21,13 @@ public class LivingEvents {
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onPierceDamage);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onPierceAttack);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onPierceHurt);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onFakePlayerHurt);
+    }
+
+    private void onFakePlayerHurt(LivingHurtEvent event) {
+        if(event.getEntity().getMaxHealth()>10000&&event.getSource().getEntity() instanceof FakePlayer){
+            event.setCanceled(true);
+        }
     }
 
     private void onPierceHurt(LivingHurtEvent event) {

@@ -1,6 +1,7 @@
 {
   "material.cti": {
     "uriel": "#fffdab",
+    "true_infinity": "#ff5356",
     "invert_hoshino": "#ff007f"
   },
 
@@ -43,6 +44,11 @@
     "sharpblade": "#D8FFF0",
     "arrogance": "#CB45FF",
     "overwritesouldevouring": "#5a00c8",
+    "infinity": "#ff626c",
+    "cosmopolitan": "#ff8555",
+    "tinge": "#eeff52",
+    "deepoceanecho": "#495bc2",
+    "deepanddeep": "#495bc2",
 
     "_uriel_": "乌列尔",
     "timetojudge": "#fffdab",
