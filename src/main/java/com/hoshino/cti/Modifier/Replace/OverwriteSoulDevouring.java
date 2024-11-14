@@ -10,6 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -58,16 +59,19 @@ public class OverwriteSoulDevouring extends XIRModifier implements ModifierRemov
 
     public void onKillTarget(IToolStackView tool, LivingDeathEvent event, LivingEntity attacker, LivingEntity target, int level) {
         if (event.getSource().getEntity() instanceof AbstractArrow) {
-            this.getData(tool).putFloat(this.KEY, this.getData(tool).getFloat(this.KEY) + 0.1F);
+            this.getData(tool).putFloat(this.KEY, this.getData(tool).getFloat(this.KEY) + 0.1F * (float)level);
         }
-
     }
 
     public void onAfterMeleeHit(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity target, float damageDealt) {
         if (target.isDeadOrDying()) {
-            this.getData(tool).putFloat(this.KEY, this.getData(tool).getFloat(this.KEY) + 0.1F);
+            if(attacker instanceof FakePlayer){
+                return;
+            }
+            else {
+                this.getData(tool).putFloat(this.KEY, this.getData(tool).getFloat(this.KEY) + 0.1F);
+            }
         }
-
     }
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> list, TooltipKey key, TooltipFlag tooltipFlag) {

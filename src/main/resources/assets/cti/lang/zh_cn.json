@@ -333,9 +333,9 @@
   "modifier.cti.deepanddeep.flavor": "......",
   "modifier.cti.deepanddeep.description":"每级增加25%回声倍率",
 
-  "modifier.solidarytinker.deepoceanecho": "深海的回声",
-  "modifier.solidarytinker.deepoceanecho.flavor": "你听到了吗",
-  "modifier.solidarytinker.deepoceanecho.description":"基于（最大生命值的30% * 护甲值的30% + 总经验点数的10000分之1【这个至少为1】 ）获得回声点数，回声点数 * 0.1 * 词条等级将会转化为你的实际伤害。如果你的工具持有海蒙/海梦/深海紫水晶/海王/海神等词条，则会每级额外提升20%的伤害,\n获得5海洋槽\n你不再对玩家造成基础伤害",
+  "modifier.cti.deepoceanecho": "深海的回声",
+  "modifier.cti.deepoceanecho.flavor": "你听到了吗",
+  "modifier.cti.deepoceanecho.description":"基于（最大生命值的30% * 护甲值的30% + 总经验点数的10000分之1【这个至少为1】 ）获得回声点数，回声点数 * 0.1 * 词条等级将会转化为你的实际伤害。如果你的工具持有海蒙/海梦/深海紫水晶/海王/海神等词条，则会每级额外提升20%的伤害,\n获得5海洋槽\n你不再对玩家造成基础伤害",
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
