@@ -1,5 +1,6 @@
 package com.hoshino.cti.Event;
 
+import com.hoshino.cti.Entity.DisposibleFakePlayer;
 import com.hoshino.cti.Entity.specialDamageSource.Environmental;
 import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
 import com.hoshino.cti.register.ctiEffects;
@@ -25,7 +26,7 @@ public class LivingEvents {
     }
 
     private void onFakePlayerHurt(LivingHurtEvent event) {
-        if(event.getEntity().getMaxHealth()>10000&&event.getSource().getEntity() instanceof FakePlayer){
+        if(event.getEntity().getMaxHealth()>10000&&event.getSource().getEntity() instanceof FakePlayer fakePlayer&&!(fakePlayer instanceof DisposibleFakePlayer)){
             event.setCanceled(true);
         }
     }
