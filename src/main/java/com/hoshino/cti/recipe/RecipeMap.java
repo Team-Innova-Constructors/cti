@@ -148,6 +148,9 @@ public class RecipeMap {
             new QuantumMinerRecipe(cti.getResource("lead_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("thermal:lead_ore")),4),
                     1.05f),
+            new QuantumMinerRecipe(cti.getResource("aluminium_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("immersiveengineering:ore_aluminum")),4),
+                    1.65f),
 
             new QuantumMinerRecipe(cti.getResource("calorite_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra:venus_calorite_ore")),3),
