@@ -31,9 +31,6 @@ public class AcidRainTick {
             } else if (stack.getTags().toList().contains(ctiTagkey.OXYGEN_REGEN)) {
                 b = true;
             }
-            if (!b) {
-                break;
-            }
         }
         if (b) {
             ci.cancel();
