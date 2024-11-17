@@ -3,9 +3,6 @@ package com.hoshino.cti.Modifier.Contributors;
 import com.hoshino.cti.register.ctiEffects;
 import com.hoshino.cti.register.ctiModifiers;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
-import com.marth7th.solidarytinker.shelf.damagesource.tinkerdamage;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -45,7 +42,7 @@ public class Transmigration extends BattleModifier {
                         timer.schedule(t, 300);
                     }
                     else{
-                        DamageSource momo=new DamageSource("momo");
+                        return;
                     }
                 }
             }

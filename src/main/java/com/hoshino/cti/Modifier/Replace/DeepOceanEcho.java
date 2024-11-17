@@ -5,7 +5,7 @@ import com.hoshino.cti.register.ctiModifiers;
 import com.hoshino.cti.register.ctiSlots;
 import com.james.tinkerscalibration.Utils;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
-import com.marth7th.solidarytinker.util.compound.icefantasy;
+import com.marth7th.solidarytinker.util.compound.IceFantasy;
 import com.xiaoyue.tinkers_ingenuity.register.TIModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -69,10 +69,10 @@ public class DeepOceanEcho extends BattleModifier {
             int SEA= ModifierUtil.getModifierLevel(Tool, TIModifiers.SEA_DREAM.getId())+ModifierUtil.getModifierLevel(Tool, TCIntegrationsModifiers.WATER_POWERED_MODIFIER.getId())
                     +ModifierUtil.getModifierLevel(Tool, TIModifiers.DIVISION.getId())+ModifierUtil.getModifierLevel(Tool, TinkersInnovationModifiers.poseidite_weapon.getId())+ModifierUtil.getModifierLevel(Tool,Utils.hydrophilous.getId());
             float a = (Math.max(player.getMaxHealth() * 0.2f,1) * Math.max(player.getArmorValue() * 0.3f,1) *Math.max(player.totalExperience * 0.0001f,1))*0.1f*level*Math.max(SEA * 0.2F,1)*(1+ModifierUtil.getModifierLevel(Tool, ctiModifiers.DEEP_AND_DEEP_STATIC_MODIFIER.getId()));
-            list.add(applyStyle(Component.literal(icefantasy.GetColor("当前回声点数")).append(icefantasy.GetColor(a + ""))));
-            list.add(applyStyle(Component.literal(icefantasy.GetColor("额外生效的词条等级")).append(icefantasy.GetColor(SEA + ""))));
-            list.add(applyStyle(Component.literal(icefantasy.GetColor("每点回声所增幅的伤害")).append(icefantasy.GetColor(level * 0.1f*Math.max(SEA * 0.2F,1) +"攻击力"))));
-            list.add(applyStyle(Component.literal(icefantasy.GetColor("实际提升的总伤害")).append(icefantasy.GetColor((level * 0.1f)*Math.max(SEA * 0.2F,1) * a + "攻击力"))));
+            list.add(applyStyle(Component.literal(IceFantasy.GetColor("当前回声点数")).append(IceFantasy.GetColor(a + ""))));
+            list.add(applyStyle(Component.literal(IceFantasy.GetColor("额外生效的词条等级")).append(IceFantasy.GetColor(SEA + ""))));
+            list.add(applyStyle(Component.literal(IceFantasy.GetColor("每点回声所增幅的伤害")).append(IceFantasy.GetColor(level * 0.1f*Math.max(SEA * 0.2F,1) +"攻击力"))));
+            list.add(applyStyle(Component.literal(IceFantasy.GetColor("实际提升的总伤害")).append(IceFantasy.GetColor((level * 0.1f)*Math.max(SEA * 0.2F,1) * a + "攻击力"))));
         }
     }
 }
