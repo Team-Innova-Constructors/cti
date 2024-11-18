@@ -2,7 +2,7 @@ package com.hoshino.cti.Modifier.Replace;
 
 import com.hoshino.cti.cti;
 import com.xiaoyue.tinkers_ingenuity.generic.XIRModifier;
-import com.xiaoyue.tinkers_ingenuity.utils.item.ToolTipUtils;
+import com.xiaoyue.tinkers_ingenuity.utils.TooltipUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
@@ -75,7 +75,7 @@ public class OverwriteSoulDevouring extends XIRModifier implements ModifierRemov
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> list, TooltipKey key, TooltipFlag tooltipFlag) {
         if (player != null && this.getData(tool).contains(this.KEY, 5)) {
-            TooltipModifierHook.addPercentBoost(this, ToolTipUtils.addModifierTooltip("soul_devouring.attack_damage"), (double) (this.getData(tool).getFloat(this.KEY) * 0.1F * modifier.getLevel()), list);
+            TooltipModifierHook.addPercentBoost(this, TooltipUtils.addTooltip("soul_devouring.attack_damage"), (double) (this.getData(tool).getFloat(this.KEY) * 0.1F * modifier.getLevel()), list);
         }
     }
 }
