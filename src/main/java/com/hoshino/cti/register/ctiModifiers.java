@@ -6,7 +6,6 @@ import com.hoshino.cti.Modifier.Contributors.*;
 import com.hoshino.cti.Modifier.Replace.*;
 import com.hoshino.cti.Modifier.slot.*;
 import com.hoshino.cti.cti;
-import com.xiaoyue.tinkers_ingenuity.modifiers.both.StrengthWill;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
