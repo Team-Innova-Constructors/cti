@@ -114,6 +114,9 @@ public class RecipeMap {
             new QuantumMinerRecipe(cti.getResource("gold_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:gold_ore")),3),
                     1.1f),
+            new QuantumMinerRecipe(cti.getResource("osmium_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:osmium_ore")),4),
+                    1.21f),
             new QuantumMinerRecipe(cti.getResource("iron_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:iron_ore")),4),
                     1.25f),
@@ -161,6 +164,13 @@ public class RecipeMap {
             new QuantumMinerRecipe(cti.getResource("ostrum_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra:mars_ostrum_ore")),4),
                     0.75F),
+
+            new QuantumMinerRecipe(cti.getResource("zirconium_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("tinkers_reforged:titanium_ore")),2),
+                    0.75f),
+            new QuantumMinerRecipe(cti.getResource("ttan_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("tinkerscalibration:titanium_ore")),3),
+                    0.95F),
 
 
             new QuantumMinerRecipe(cti.getResource("neutronium_quantum"),

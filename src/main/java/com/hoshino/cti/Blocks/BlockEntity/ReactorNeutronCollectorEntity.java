@@ -91,8 +91,8 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
     protected Component DISPLAY_NAME =Component.translatable("cti.machine.reactor_neutron_collector").withStyle(ChatFormatting.DARK_PURPLE);
     protected int MAX_ENERGY =500000000;
     protected int MAX_TRANSFER =500000000;
-    protected int BASE_ENERGY_PERTICK =25000000;
-    protected int BASE_SODIUM =100000000;
+    protected int BASE_ENERGY_PERTICK =100000;
+    protected int BASE_SODIUM =200000000;
     protected int BASE_SODIUM_PERTICK =100000 ;
     public int CurrentEnergy =0;
 
@@ -335,6 +335,7 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
         long amount = Math.min(drain.getAmount(), insert.getAmount());
         drain.setAmount(amount);
         insert.setAmount(amount);
+        int fe = (int) Math.min(Integer.MAX_VALUE,amount/entity.BASE_SODIUM_PERTICK);
         inputHandler.extractChemical(drain, Action.EXECUTE);
         outputHandler.insertChemical(insert, Action.EXECUTE);
         if (entity.PROGRESS<2000000000) {
@@ -342,7 +343,7 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
                 entity.itemStackHandler.extractItem(0, 1, false);
             }
             entity.PROGRESS = (int) Math.min(Integer.MAX_VALUE, entity.PROGRESS + amount);
-            entity.ENERGY_STORAGE.receiveEnergy(entity.getEnergyPerTick(),false);
+            entity.ENERGY_STORAGE.receiveEnergy(entity.getEnergyPerTick()*fe,false);
             entity.setChanged();
         }
         if (entity.PROGRESS>=entity.MAX_PROGRESS) {
