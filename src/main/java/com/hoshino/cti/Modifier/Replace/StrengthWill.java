@@ -5,7 +5,6 @@ import com.xiaoyue.tinkers_ingenuity.TinkersIngenuity;
 import com.xiaoyue.tinkers_ingenuity.generic.XIModifier;
 import com.xiaoyue.tinkers_ingenuity.register.TIEffects;
 import com.xiaoyue.tinkers_ingenuity.utils.EntityUtils;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.LivingEntity;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
@@ -21,8 +20,8 @@ public class StrengthWill extends XIModifier {
     }
     public static void onLivDamage(LivingEntity entity) {
         entity.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
-            if ((Integer)holder.get(KEY, 0) > 0 && entity.getHealth() >= entity.getMaxHealth()&&EnvironmentSystem.allEnvironmentValue(entity)<0) {
-                EntityUtils.addEffect(entity, (MobEffect) TIEffects.LAST_STAND.get(), 40);
+            if (holder.get(KEY, 0) > 0 && entity.getHealth() >= entity.getMaxHealth()&&EnvironmentSystem.allEnvironmentValue(entity)<0) {
+                EntityUtils.addEffect(entity, TIEffects.LAST_STAND.get(), 40);
             }
         });
     }

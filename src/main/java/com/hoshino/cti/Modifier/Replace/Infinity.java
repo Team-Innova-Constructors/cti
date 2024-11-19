@@ -17,8 +17,10 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 public class Infinity extends BattleModifier {
     @Override
     public float staticdamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity livingTarget, float baseDamage, float damage) {
-        if(livingTarget instanceof Mob mob&&attacker instanceof Player){
+        if(livingTarget instanceof Mob mob&&attacker instanceof Player player){
             if(level>3){
+                livingTarget.die(DamageSource.playerAttack(player));
+                livingTarget.kill();
                 return damage + Integer.MAX_VALUE * level;
             }
             else {
@@ -27,19 +29,6 @@ public class Infinity extends BattleModifier {
             }
         }
         return damage;
-    }
-
-    @Override
-    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-        if(context.getLivingTarget()!=null&&context.getPlayerAttacker()!=null&&context.getLivingTarget() instanceof Mob mob){
-            if(modifier.getLevel()<4){
-                return;
-            }
-            else {
-                context.getLivingTarget().die(DamageSource.playerAttack(context.getPlayerAttacker()));
-                context.getTarget().kill();
-            }
-        }
     }
 
     @Override
