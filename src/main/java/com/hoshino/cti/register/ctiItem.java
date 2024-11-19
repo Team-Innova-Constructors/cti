@@ -100,8 +100,8 @@ public class ctiItem {
     public static final RegistryObject<Item> advanced_speed_augment = ITEMS.register("advanced_speed_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_MACHINE)
             .mod(TAG_AUGMENT_MACHINE_POWER, 50F)
-            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.5F)
-            .mod(TAG_AUGMENT_RF_STORAGE, 10.0F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 2.5F)
+            .mod(TAG_AUGMENT_RF_STORAGE, 5.0F)
             .mod(TAG_AUGMENT_RF_XFER, 20.0F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
     public static final RegistryObject<Item> advanced_catalyst_augment = ITEMS.register("advanced_catalyst_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
@@ -124,8 +124,9 @@ public class ctiItem {
 
     public static final RegistryObject<Item> advanced_output_augment = ITEMS.register("advanced_output_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_MACHINE)
-            .mod(TAG_AUGMENT_MACHINE_SECONDARY, 1.5F)
-            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.5F)
+            .mod(TAG_AUGMENT_MACHINE_PRIMARY, 0.8F)
+            .mod(TAG_AUGMENT_MACHINE_SECONDARY, 0.8F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.75F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
 
     public static final RegistryObject<Item> UPGRADE_AUGMENTS_4 = ITEMS.register("upgrade_augment_4",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
