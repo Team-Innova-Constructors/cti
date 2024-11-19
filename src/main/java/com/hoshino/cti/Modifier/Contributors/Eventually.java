@@ -3,11 +3,10 @@ package com.hoshino.cti.Modifier.Contributors;
 import com.hoshino.cti.cti;
 import com.hoshino.cti.register.ctiEffects;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
-import com.marth7th.solidarytinker.util.method.modifierlevel;
+import com.marth7th.solidarytinker.util.method.ModifierLevel;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -50,7 +49,7 @@ public class Eventually extends BattleModifier {
 
     private void LivingDeathEvent(LivingDeathEvent event) {
         if(event.getSource().getEntity() instanceof Player player){
-            if(modifierlevel.getMainhandModifierlevel(player,this.getId())>0&&player.hasEffect(ctiEffects.ev.get())){
+            if(ModifierLevel.getMainhandModifierlevel(player,this.getId())>0&&player.hasEffect(ctiEffects.ev.get())){
                 IToolStackView tool= ToolStack.from(player.getMainHandItem());
                 ModDataNBT ToolData=tool.getPersistentData();
                 ToolData.putInt(DEATH, ToolData.getInt(DEATH)+1);

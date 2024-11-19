@@ -11,6 +11,11 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class Cosmopolitan extends BattleModifier {
     @Override
+    public boolean havenolevel() {
+        return true;
+    }
+
+    @Override
     public int onDamageTool(IToolStackView tool, ModifierEntry modifier, int amount, @Nullable LivingEntity entity) {
         return 0;
     }

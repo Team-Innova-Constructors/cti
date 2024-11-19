@@ -6,7 +6,6 @@ import com.hoshino.cti.Modifier.Contributors.*;
 import com.hoshino.cti.Modifier.Replace.*;
 import com.hoshino.cti.Modifier.slot.*;
 import com.hoshino.cti.cti;
-import com.xiaoyue.tinkers_ingenuity.modifiers.both.StrengthWill;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
@@ -61,5 +60,7 @@ public class ctiModifiers {
     public static final StaticModifier<Infinity> INFINITY_STATIC_MODIFIER= MODIFIERS.register("infinity", Infinity::new);
     public static final StaticModifier<DeepAndDeep> DEEP_AND_DEEP_STATIC_MODIFIER= MODIFIERS.register("deepanddeep", DeepAndDeep::new);
     public static final StaticModifier<DeepOceanEcho> DeepOceanEcho= MODIFIERS.register("deepoceanecho", DeepOceanEcho::new);
+    public static final StaticModifier<Decoying> DECOYING_STATIC_MODIFIER= MODIFIERS.register("decoying", Decoying::new);
+    public static final StaticModifier<StrengthWill> STRENGTH_WILL= MODIFIERS.register("strengthWill", StrengthWill::new);
     public static final StaticModifier<OverwriteSoulDevouring> OVERWRITE_SOUL_DEVOURING_STATIC_MODIFIER= MODIFIERS.register("overwritesouldevouring", OverwriteSoulDevouring::new);
 }

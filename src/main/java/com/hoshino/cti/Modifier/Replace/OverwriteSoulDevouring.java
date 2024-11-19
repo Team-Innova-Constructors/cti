@@ -2,7 +2,7 @@ package com.hoshino.cti.Modifier.Replace;
 
 import com.hoshino.cti.cti;
 import com.xiaoyue.tinkers_ingenuity.generic.XIRModifier;
-import com.xiaoyue.tinkers_ingenuity.utils.item.TooltipUtils;
+import com.xiaoyue.tinkers_ingenuity.utils.TooltipUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
@@ -54,7 +54,6 @@ public class OverwriteSoulDevouring extends XIRModifier implements ModifierRemov
         if (this.getData(bow).contains(this.KEY, 5)) {
             arrow.setBaseDamage(arrow.getBaseDamage() * (double)(1.0F + this.getBonus(bow, level)));
         }
-
     }
 
     public void onKillTarget(IToolStackView tool, LivingDeathEvent event, LivingEntity attacker, LivingEntity target, int level) {

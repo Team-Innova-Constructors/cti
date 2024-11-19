@@ -23,6 +23,15 @@ public class LivingEvents {
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onPierceAttack);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onPierceHurt);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onFakePlayerHurt);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onPlayerHurt);
+    }
+
+    private void onPlayerHurt(LivingHurtEvent event) {
+        if(event.getSource().getEntity()instanceof Player player1&&event.getEntity()instanceof Player player2){
+            if(!(player1==player2)){
+                event.setCanceled(true);
+            }
+        }
     }
 
     private void onFakePlayerHurt(LivingHurtEvent event) {
