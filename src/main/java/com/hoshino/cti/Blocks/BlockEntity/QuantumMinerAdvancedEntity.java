@@ -181,7 +181,7 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
                     boolean checkoutput = false;
                     int effectiveSlot = 0;
                     for (int a = 0; a < slotAmount; a++) {
-                        if ((Handler.getStackInSlot(a).isEmpty() || (Handler.getStackInSlot(a).is(output.getItem()) && Handler.getStackInSlot(a).getCount() + output.getCount() <= Handler.getSlotLimit(a))) && Handler.isItemValid(a, output)) {
+                        if ((Handler.getStackInSlot(a).isEmpty() || (Handler.getStackInSlot(a).is(output.getItem()) && Handler.getStackInSlot(a).getCount() + output.getCount() <= Handler.getSlotLimit(a))) && Handler.isItemValid(a, output)&&entity.itemStackHandler.getStackInSlot(0).getItem()==ctiItem.compressed_singularity.get()) {
                             checkoutput = true;
                             effectiveSlot = a;
                         }
