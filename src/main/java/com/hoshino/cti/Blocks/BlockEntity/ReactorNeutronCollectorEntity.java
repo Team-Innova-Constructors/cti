@@ -335,15 +335,16 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
         long amount = Math.min(drain.getAmount(), insert.getAmount());
         drain.setAmount(amount);
         insert.setAmount(amount);
-        int fe = (int) Math.min(Integer.MAX_VALUE,amount/entity.BASE_SODIUM_PERTICK);
+        float fe = Math.min(Integer.MAX_VALUE,(float) amount/(float) entity.BASE_SODIUM_PERTICK);
+        entity.ENERGY_STORAGE.receiveEnergy((int) (entity.getEnergyPerTick()*fe),false);
         inputHandler.extractChemical(drain, Action.EXECUTE);
         outputHandler.insertChemical(insert, Action.EXECUTE);
         if (entity.PROGRESS<2000000000) {
             if (EtSHrnd().nextFloat() <= chanceConsume) {
                 entity.itemStackHandler.extractItem(0, 1, false);
+                entity.PROGRESS = (int) Math.min(Integer.MAX_VALUE, entity.PROGRESS + amount);
             }
-            entity.PROGRESS = (int) Math.min(Integer.MAX_VALUE, entity.PROGRESS + amount);
-            entity.ENERGY_STORAGE.receiveEnergy(entity.getEnergyPerTick()*fe,false);
+
             entity.setChanged();
         }
         if (entity.PROGRESS>=entity.MAX_PROGRESS) {

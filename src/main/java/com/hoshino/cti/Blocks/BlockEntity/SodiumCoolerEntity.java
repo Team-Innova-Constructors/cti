@@ -222,12 +222,12 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
             return;
         }
         long amount = Math.min(drain.getAmount(), insert.getAmount());
-        int multiplier =Math.round((float) amount/2870f);
+        float multiplier =(float) amount/2870f;
         drain.setAmount(amount);
         insert.setAmount(amount);
         inputHandler.extractChemical(drain, Action.EXECUTE);
         outputHandler.insertChemical(insert, Action.EXECUTE);
-        entity.ENERGY_STORAGE.setEnergy(entity.ENERGY_STORAGE.getEnergy()+ entity.getEnergyPerTick()*multiplier);
+        entity.ENERGY_STORAGE.setEnergy(entity.ENERGY_STORAGE.getEnergy()+(int) (entity.getEnergyPerTick()*multiplier));
         entity.setChanged();
     }
 
