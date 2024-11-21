@@ -1,6 +1,8 @@
 package com.hoshino.cti.Modifier.Replace;
 
 import com.hoshino.cti.cti;
+import com.xiaoyue.tingenuity_library.generic.XICModifier;
+import com.xiaoyue.tingenuity_library.generic.XModifier;
 import com.xiaoyue.tinkers_ingenuity.generic.XIRModifier;
 import com.xiaoyue.tinkers_ingenuity.utils.TooltipUtils;
 import net.minecraft.network.chat.Component;

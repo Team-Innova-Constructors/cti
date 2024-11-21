@@ -35,4 +35,6 @@ public class ctiFluid {
     public static final FluidObject<ForgeFlowingFluid> molten_uriel = register("molten_uriel",8192);
     public static final FluidObject<ForgeFlowingFluid> molten_infinity = register("molten_infinity",8192);
     public static final FluidObject<ForgeFlowingFluid> molten_stellar_manyullyn = register("molten_stellar_manyullyn",131072);
+    public static final FluidObject<ForgeFlowingFluid> molten_invert_hoshino = register("molten_invert_hoshino",350234);
+    public static final FluidObject<ForgeFlowingFluid> molten_roxy = register("molten_roxy",225252);
 }

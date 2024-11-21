@@ -35,7 +35,7 @@ public class ctiItem {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "cti");
     public static final ResourcefulRegistry<Item> ASTRAITEM  = ResourcefulRegistries.create(Registry.ITEM, "cti");
     public static final ResourcefulRegistry<Item> VEHICLES = ResourcefulRegistries.create(ASTRAITEM);
-    public static final RegistryObject<Item> test = ITEMS.register("test", ( ) -> new Item(new Item.Properties().tab(com.hoshino.cti.register.ctiTab.MATERIALS)));
+    public static final RegistryObject<Item> test = ITEMS.register("test", ( ) -> new Item(new Item.Properties().tab(ctiTab.MATERIALS)));
     public static final RegistryObject<Item> ultradense_ammo = ITEMS.register("ultradense_ammo", UltraDenseAmmo::new);
     public static final RegistryObject<Item> protonium_ammo = ITEMS.register("protonium_ammo", ProtoniumAmmo::new);
     public static final RegistryObject<Item> magic_crystal = ITEMS.register("magic_crystal",()-> new Item(new Item.Properties().tab(ctiTab.MATERIALS)));
@@ -43,6 +43,7 @@ public class ctiItem {
     public static final RegistryObject<Item> uriel_ingot = ITEMS.register("uriel_ingot",()-> new uriel_ingot(new Item.Properties().tab(ctiTab.MATERIALS)));
     public static final RegistryObject<Item> stellar_manyullyn = ITEMS.register("stellar_manyullyn",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.etsh").withStyle(ChatFormatting.LIGHT_PURPLE))));
     public static final RegistryObject<Item> invert_hoshino = ITEMS.register("invert_hoshino",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.invert_hoshino").withStyle(ChatFormatting.DARK_PURPLE))));
+    public static final RegistryObject<Item> roxy_ingot = ITEMS.register("roxy_ingot",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.roxy_ingot").withStyle(ChatFormatting.BLUE))));
     public static final RegistryObject<Item> electronium_ammo = ITEMS.register("electronium_ammo", ElectroniumAmmo::new);
     public static final RegistryEntry<RocketItemTier5<rocketTier5>> TIER_5_ROCKET = VEHICLES.register("tier_5_rocket", () -> new RocketItemTier5<>(ctiEntity.TIER_5_ROCKET.get(), 5, new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC)));
     public static final RegistryObject<Item> astra_tablet_5 = ITEMS.register("astra_tablet_5",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),5));

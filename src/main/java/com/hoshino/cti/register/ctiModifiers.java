@@ -23,7 +23,7 @@ public class ctiModifiers {
     public static final StaticModifier<GravityNormalize> gravity_normalizer= MODIFIERS.register("gravity_normalizer", GravityNormalize::new);
     public static final StaticModifier<TimeToJudge> timetojudge= MODIFIERS.register("timetojudge", TimeToJudge::new);
     public static final StaticModifier<NetherFire> netherfire= MODIFIERS.register("netherfire", NetherFire::new);
-    public static final StaticModifier<celestiallight> celestiallight= MODIFIERS.register("celestiallight", celestiallight::new);
+    public static final StaticModifier<CelestialLight> celestiallight= MODIFIERS.register("celestiallight", CelestialLight::new);
     public static final StaticModifier<archangelwings> archangelwings= MODIFIERS.register("archangelwings", archangelwings::new);
     public static final StaticModifier<GoldSimulate> gold_simulate= MODIFIERS.register("gold_simulate", GoldSimulate::new);
     public static final StaticModifier<EndSlayer> end_slayer= MODIFIERS.register("end_slayer", EndSlayer::new);
@@ -62,5 +62,10 @@ public class ctiModifiers {
     public static final StaticModifier<DeepOceanEcho> DeepOceanEcho= MODIFIERS.register("deepoceanecho", DeepOceanEcho::new);
     public static final StaticModifier<Decoying> DECOYING_STATIC_MODIFIER= MODIFIERS.register("decoying", Decoying::new);
     public static final StaticModifier<StrengthWill> STRENGTH_WILL= MODIFIERS.register("strengthWill", StrengthWill::new);
+    public static final StaticModifier<LebegusProtection> LebegusProtection= MODIFIERS.register("lebegusprotection", LebegusProtection::new);
+    public static final StaticModifier<RoxyLightning> RoxyLightning= MODIFIERS.register("roxylightning", RoxyLightning::new);
+    public static final StaticModifier<Abelisures> Abelisures= MODIFIERS.register("abelisures", Abelisures::new);
+    public static final StaticModifier<AlienMatter> AlienMatter= MODIFIERS.register("alienmatter", AlienMatter::new);
     public static final StaticModifier<OverwriteSoulDevouring> OVERWRITE_SOUL_DEVOURING_STATIC_MODIFIER= MODIFIERS.register("overwritesouldevouring", OverwriteSoulDevouring::new);
+
 }

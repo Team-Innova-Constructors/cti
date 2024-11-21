@@ -20,7 +20,7 @@ public class ctiTab {
     public static final CreativeModeTab MACHINE = new CreativeModeTab("cti.machine") {
         @Override
         public  ItemStack makeIcon() {
-            return new ItemStack((ItemLike) ctiItem.atmosphere_condensator.get());
+            return new ItemStack(ctiItem.atmosphere_condensator.get());
         }
     };
     public ctiTab(){}
