@@ -15,17 +15,21 @@ import com.hoshino.cti.client.hud.EnvironmentalHud;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.register.*;
 import com.hoshino.cti.util.BiomeUtil;
+import com.hoshino.cti.util.tier.Roxy;
 import com.hoshino.cti.world.feature.ctiConfiguredFeature;
 import com.hoshino.cti.world.feature.ctiPlacedFeature;
 import com.marth7th.solidarytinker.register.solidarytinkerItem;
+import com.marth7th.solidarytinker.shelf.tier.Momo;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -37,6 +41,8 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 import owmii.powah.api.PowahAPI;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
+
+import java.util.List;
 
 @Mod(cti.MOD_ID)
 
@@ -114,6 +120,7 @@ public class cti {
         ctiSlots.init();
         //药水配方
         ctiBrewing.init();
+        TierSortingRegistry.registerTier(Roxy.instance, new ResourceLocation("cti:roxy"), List.of(Tiers.NETHERITE), List.of());
     }
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));

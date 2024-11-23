@@ -12,4 +12,5 @@ public class ctiEffects {
     public static final DeferredRegister<MobEffect> EFFECT = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, MOD_ID);
     public static final RegistryObject<MobEffect> stress =EFFECT.register("stress", Stress::new);
     public static final RegistryObject<MobEffect> ev =EFFECT.register("ev", Ev::new);
+    public static final RegistryObject<MobEffect> Abel =EFFECT.register("abel", Abel::new);
 }
