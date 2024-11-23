@@ -87,7 +87,7 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
     }
     public ContainerData DATA;
     public int PROGRESS =0;
-    public int MAX_PROGRESS =100000000;
+    public int MAX_PROGRESS =200000000;
     protected Component DISPLAY_NAME =Component.translatable("cti.machine.reactor_neutron_collector").withStyle(ChatFormatting.DARK_PURPLE);
     protected int MAX_ENERGY =500000000;
     protected int MAX_TRANSFER =500000000;

@@ -74,8 +74,8 @@ public class ReactorNeutronCollectorRecipeCategory implements IRecipeCategory<Re
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, ReactorNeutronCollectorRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT,10,33).addIngredient(MekanismJEI.TYPE_GAS,new GasStack(MekanismGases.SUPERHEATED_SODIUM,100000000)).setCustomRenderer(MekanismJEI.TYPE_GAS,new ChemicalStackRenderer<GasStack>(100000000,16,16));
-        builder.addSlot(RecipeIngredientRole.OUTPUT,154,33).addIngredient(MekanismJEI.TYPE_GAS,new GasStack(MekanismGases.SODIUM,100000000)).setCustomRenderer(MekanismJEI.TYPE_GAS,new ChemicalStackRenderer<GasStack>(100000000,16,16));
+        builder.addSlot(RecipeIngredientRole.INPUT,10,33).addIngredient(MekanismJEI.TYPE_GAS,new GasStack(MekanismGases.SUPERHEATED_SODIUM,200000000)).setCustomRenderer(MekanismJEI.TYPE_GAS,new ChemicalStackRenderer<GasStack>(100000000,16,16));
+        builder.addSlot(RecipeIngredientRole.OUTPUT,154,33).addIngredient(MekanismJEI.TYPE_GAS,new GasStack(MekanismGases.SODIUM,200000000)).setCustomRenderer(MekanismJEI.TYPE_GAS,new ChemicalStackRenderer<GasStack>(100000000,16,16));
         builder.addSlot(RecipeIngredientRole.INPUT,82,33).addItemStack(recipe.getCatalyst());
         builder.addSlot(RecipeIngredientRole.OUTPUT,118,10).addItemStack(recipe.getResultItem());
     }
