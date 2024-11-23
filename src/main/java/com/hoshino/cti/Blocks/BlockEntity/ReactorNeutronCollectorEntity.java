@@ -340,11 +340,10 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
         inputHandler.extractChemical(drain, Action.EXECUTE);
         outputHandler.insertChemical(insert, Action.EXECUTE);
         if (entity.PROGRESS<2000000000) {
+            entity.PROGRESS = (int) Math.min(Integer.MAX_VALUE, entity.PROGRESS + amount);
             if (EtSHrnd().nextFloat() <= chanceConsume) {
                 entity.itemStackHandler.extractItem(0, 1, false);
-                entity.PROGRESS = (int) Math.min(Integer.MAX_VALUE, entity.PROGRESS + amount);
             }
-
             entity.setChanged();
         }
         if (entity.PROGRESS>=entity.MAX_PROGRESS) {
