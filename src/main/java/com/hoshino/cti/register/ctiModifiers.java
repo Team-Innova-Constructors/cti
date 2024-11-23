@@ -62,5 +62,6 @@ public class ctiModifiers {
     public static final StaticModifier<DeepOceanEcho> DeepOceanEcho= MODIFIERS.register("deepoceanecho", DeepOceanEcho::new);
     public static final StaticModifier<Decoying> DECOYING_STATIC_MODIFIER= MODIFIERS.register("decoying", Decoying::new);
     public static final StaticModifier<StrengthWill> STRENGTH_WILL= MODIFIERS.register("strengthWill", StrengthWill::new);
+    public static final StaticModifier<DominateModifier> DOMINATE_MODIFIER_REPLACEMENT= MODIFIERS.register("dominate_replace", DominateModifier::new);
     public static final StaticModifier<OverwriteSoulDevouring> OVERWRITE_SOUL_DEVOURING_STATIC_MODIFIER= MODIFIERS.register("overwritesouldevouring", OverwriteSoulDevouring::new);
 }
