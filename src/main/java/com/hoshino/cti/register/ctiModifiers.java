@@ -3,6 +3,7 @@ package com.hoshino.cti.register;
 import com.hoshino.cti.Modifier.*;
 import com.hoshino.cti.Modifier.Armor.*;
 import com.hoshino.cti.Modifier.Contributors.*;
+import com.hoshino.cti.Modifier.Developer.*;
 import com.hoshino.cti.Modifier.Replace.*;
 import com.hoshino.cti.Modifier.slot.*;
 import com.hoshino.cti.cti;
@@ -69,5 +70,6 @@ public class ctiModifiers {
     public static final StaticModifier<AlienMatter> AlienMatter= MODIFIERS.register("alienmatter", AlienMatter::new);
     public static final StaticModifier<ChewEvolution> chewevolution= MODIFIERS.register("chewevolution", ChewEvolution::new);
     public static final StaticModifier<OverwriteSoulDevouring> OVERWRITE_SOUL_DEVOURING_STATIC_MODIFIER= MODIFIERS.register("overwritesouldevouring", OverwriteSoulDevouring::new);
+    public static final StaticModifier<PressureLoaded> pressure_loaded= MODIFIERS.register("pressure_loaded", PressureLoaded::new);
 
 }

@@ -1,6 +1,7 @@
-package com.hoshino.cti.Modifier;
+package com.hoshino.cti.Modifier.Developer;
 
 import com.c2h6s.etshtinker.util.slotUtil;
+import com.hoshino.cti.register.ctiToolStats;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -19,11 +20,14 @@ import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.ToolDamageModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.item.IModifiable;
+import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.ArrayList;
@@ -32,7 +36,7 @@ import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
-public class All extends NoLevelsModifier implements ToolDamageModifierHook {
+public class All extends NoLevelsModifier implements ToolDamageModifierHook , ToolStatsModifierHook {
     public static List<MobEffect> ls =new ArrayList<>(List.of());
     public static void init(){
         Iterator<MobEffect> iterator =ForgeRegistries.MOB_EFFECTS.iterator();
@@ -51,10 +55,13 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         super.registerHooks(hookBuilder);
-        hookBuilder.addHook(this, ModifierHooks.TOOL_DAMAGE);
+        hookBuilder.addHook(this, ModifierHooks.TOOL_DAMAGE,ModifierHooks.TOOL_STATS);
     }
 
     private void livingDamageEvent(LivingDamageEvent event) {
+        if (ls.isEmpty()){
+            init();
+        }
         if (event.getEntity() instanceof Player player&&event.getSource().getEntity()!=player) {
             for (EquipmentSlot slot : slotUtil.ALL) {
                 ItemStack stack = player.getItemBySlot(slot);
@@ -282,5 +289,13 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook {
     @Override
     public int onDamageTool(IToolStackView iToolStackView, ModifierEntry modifierEntry, int i, @Nullable LivingEntity livingEntity) {
         return 0;
+    }
+
+    @Override
+    public void addToolStats(IToolContext iToolContext, ModifierEntry modifierEntry, ModifierStatsBuilder modifierStatsBuilder) {
+        ctiToolStats.ELECTRIC_RESISTANCE.add(modifierStatsBuilder,50);
+        ctiToolStats.SCORCH_RESISTANCE.add(modifierStatsBuilder,50);
+        ctiToolStats.FROZEN_RESISTANCE.add(modifierStatsBuilder,50);
+        ctiToolStats.PRESSURE_RESISTANCE.add(modifierStatsBuilder,50);
     }
 }

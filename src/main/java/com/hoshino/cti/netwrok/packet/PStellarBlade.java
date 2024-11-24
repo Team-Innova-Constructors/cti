@@ -1,6 +1,6 @@
 package com.hoshino.cti.netwrok.packet;
 
-import com.hoshino.cti.Modifier.StellarBlade;
+import com.hoshino.cti.Modifier.Developer.StellarBlade;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
