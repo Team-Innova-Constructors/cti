@@ -4,6 +4,7 @@ import cofh.core.util.helpers.AugmentDataHelper;
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
 import com.hoshino.cti.Items.*;
 import com.hoshino.cti.Items.Vehicle.RocketItemTier5;
+import com.hoshino.cti.Items.Wine.Unknown_Wine;
 import com.hoshino.cti.Items.ingots.uriel_ingot;
 import com.hoshino.cti.Items.pncMinigunAmmo.ElectroniumAmmo;
 import com.hoshino.cti.Items.pncMinigunAmmo.ProtoniumAmmo;
@@ -19,6 +20,8 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import umpaz.brewinandchewin.BrewinAndChewin;
+import umpaz.brewinandchewin.common.item.BoozeItem;
 
 import java.util.List;
 
@@ -26,12 +29,16 @@ import static cofh.core.init.CoreFlags.getFlag;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.lib.common.ThermalFlags.FLAG_UPGRADE_AUGMENTS;
 import static earth.terrarium.ad_astra.common.registry.ModItems.ITEM_GROUP;
+import static umpaz.brewinandchewin.common.registry.BCItems.TANKARD;
 
 public class ctiItem {
     public static String FLAG_MACHINE_AUGMENTS = "machine_augments";
     public static String FLAG_DYNAMO_AUGMENTS = "dynamo_augments";
     public static String FLAG_AREA_AUGMENTS = "area_augments";
     public ctiItem(){}
+    public static Item.Properties drinkItem() {
+        return (new Item.Properties()).craftRemainder(TANKARD.get()).stacksTo(16).tab(BrewinAndChewin.CREATIVE_TAB);
+    }
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "cti");
     public static final ResourcefulRegistry<Item> ASTRAITEM  = ResourcefulRegistries.create(Registry.ITEM, "cti");
     public static final ResourcefulRegistry<Item> VEHICLES = ResourcefulRegistries.create(ASTRAITEM);
@@ -159,5 +166,10 @@ public class ctiItem {
     public static final RegistryObject<Item> star_frozen = ITEMS.register("star_frozen", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> star_ionize = ITEMS.register("star_ionize", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> star_pressure = ITEMS.register("star_pressure", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COLD_GOBBERWINE = ITEMS.register("cold_gobberwine", () -> new BoozeItem(1, 5,drinkItem().food(ctiWine.COLD_GOBBERWINE)));
+    public static final RegistryObject<Item> ETHANOL_ABSOLUTE = ITEMS.register("ethanol_absolute", () -> new BoozeItem(3, 20,drinkItem().food(ctiWine.ETHANOL_ABSOLUTE)));
+    public static final RegistryObject<Item> cornflower_beer = ITEMS.register("cornflower_beer", () -> new BoozeItem(1, 5,drinkItem().food(ctiWine.cornflower_beer)));
+    public static final RegistryObject<Item> etbeer = ITEMS.register("etbeer", () -> new BoozeItem(3, 10,drinkItem().food(ctiWine.etbeer)));
+    public static final RegistryObject<Item> UNKNOWN_WINE = ITEMS.register("unknown_wine", () -> new Unknown_Wine(drinkItem().food(ctiWine.UNKNOWN_WINE).craftRemainder(TANKARD.get())));
 
 }
