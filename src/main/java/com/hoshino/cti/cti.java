@@ -2,11 +2,7 @@ package com.hoshino.cti;
 
 import com.hoshino.cti.Event.LivingEvents;
 import com.hoshino.cti.Event.sleep;
-import com.hoshino.cti.Modifier.All;
-import com.hoshino.cti.Modifier.capability.ElectricShieldToolCap;
-import com.hoshino.cti.Modifier.capability.FreezeShieldToolCap;
-import com.hoshino.cti.Modifier.capability.PressureShieldToolCap;
-import com.hoshino.cti.Modifier.capability.ScorchShieldToolCap;
+import com.hoshino.cti.Modifier.capability.*;
 import com.hoshino.cti.Screen.AtmosphereCondensatorScreen;
 import com.hoshino.cti.Screen.AtmosphereExtractorScreen;
 import com.hoshino.cti.Screen.ReactorNeutronCollectorScreen;
@@ -110,8 +106,8 @@ public class cti {
         ToolCapabilityProvider.register(ScorchShieldToolCap::new);
         ToolCapabilityProvider.register(FreezeShieldToolCap::new);
         ToolCapabilityProvider.register(PressureShieldToolCap::new);
+        ToolCapabilityProvider.register(PressurizableToolCap::new);
         event.enqueueWork(BiomeUtil::init);
-        event.enqueueWork(All::init);
         event.enqueueWork(ctiRailgunProjectile::register);
         //机械动力土豆加农炮
         ctiPotatocannon.register();
