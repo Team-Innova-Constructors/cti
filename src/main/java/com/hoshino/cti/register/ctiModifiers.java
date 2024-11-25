@@ -68,6 +68,7 @@ public class ctiModifiers {
     public static final StaticModifier<RoxyLightning> RoxyLightning= MODIFIERS.register("roxylightning", RoxyLightning::new);
     public static final StaticModifier<Abelisures> Abelisures= MODIFIERS.register("abelisures", Abelisures::new);
     public static final StaticModifier<AlienMatter> AlienMatter= MODIFIERS.register("alienmatter", AlienMatter::new);
+    public static final StaticModifier<ChewEvolution> chewevolution= MODIFIERS.register("chewevolution", ChewEvolution::new);
     public static final StaticModifier<OverwriteSoulDevouring> OVERWRITE_SOUL_DEVOURING_STATIC_MODIFIER= MODIFIERS.register("overwritesouldevouring", OverwriteSoulDevouring::new);
     public static final StaticModifier<PressureLoaded> pressure_loaded= MODIFIERS.register("pressure_loaded", PressureLoaded::new);
 
