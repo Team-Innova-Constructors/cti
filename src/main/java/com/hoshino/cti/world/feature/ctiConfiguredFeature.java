@@ -40,12 +40,25 @@ public class ctiConfiguredFeature {
             OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, Blocks.LAPIS_ORE.defaultBlockState()),
             OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES,Blocks.DEEPSLATE_LAPIS_ORE.defaultBlockState())
     ));
+    public static final Supplier<List<OreConfiguration.TargetBlockState>> EXTRA_IRON_ORES = Suppliers.memoize(()-> List.of(
+            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, Blocks.IRON_ORE.defaultBlockState()),
+            OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES,Blocks.DEEPSLATE_IRON_ORE.defaultBlockState())
+    ));
+    public static final Supplier<List<OreConfiguration.TargetBlockState>> EXTRA_GOLD_ORES = Suppliers.memoize(()-> List.of(
+            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, Blocks.GOLD_ORE.defaultBlockState()),
+            OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES,Blocks.DEEPSLATE_GOLD_ORE.defaultBlockState())
+    ));
     public static final RegistryObject<ConfiguredFeature<?,?>> EXTRA_LAPIS_ORE = CONFIGURED_FEATURES.register("extra_lapis",
             ()->new ConfiguredFeature<>(Feature.ORE,new OreConfiguration(EXTRA_LAPIS_ORES.get(),20)));
 
-
     public static final RegistryObject<ConfiguredFeature<?,?>> EXTRA_REDSTONE_ORE = CONFIGURED_FEATURES.register("extra_redstone",
             ()->new ConfiguredFeature<>(Feature.ORE,new OreConfiguration(EXTRA_REDSTONE_ORES.get(),20)));
+
+    public static final RegistryObject<ConfiguredFeature<?,?>> EXTRA_IRON_ORE = CONFIGURED_FEATURES.register("extra_iron",
+            ()->new ConfiguredFeature<>(Feature.ORE,new OreConfiguration(EXTRA_IRON_ORES.get(),30)));
+
+    public static final RegistryObject<ConfiguredFeature<?,?>> EXTRA_GOLD_ORE = CONFIGURED_FEATURES.register("extra_gold",
+            ()->new ConfiguredFeature<>(Feature.ORE,new OreConfiguration(EXTRA_GOLD_ORES.get(),15)));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> HULTRADENSE_GEODE = CONFIGURED_FEATURES.register("hultra_dense_geode",
             () -> new ConfiguredFeature<>(Feature.GEODE,

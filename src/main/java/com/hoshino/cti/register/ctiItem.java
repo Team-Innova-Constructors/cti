@@ -120,9 +120,16 @@ public class ctiItem {
 
     public static final RegistryObject<Item> advanced_dyano_augment = ITEMS.register("advanced_dyano_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_DYNAMO)
+            .mod(TAG_AUGMENT_FLUID_STORAGE,4)
             .mod(TAG_AUGMENT_DYNAMO_THROTTLE,1)
             .mod(TAG_AUGMENT_DYNAMO_POWER, 80.0F)
             .mod(TAG_AUGMENT_DYNAMO_ENERGY, 2.0F)
+            .build()).setShowInGroups(getFlag(FLAG_DYNAMO_AUGMENTS)));
+    public static final RegistryObject<Item> Secondary_dyano_augment = ITEMS.register("secondary_dyano_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_AUGMENT_TYPE_DYNAMO)
+            .mod(TAG_AUGMENT_DYNAMO_THROTTLE,2)
+            .mod(TAG_AUGMENT_DYNAMO_POWER, 40.0F)
+            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 1.5F)
             .build()).setShowInGroups(getFlag(FLAG_DYNAMO_AUGMENTS)));
 
     public static final RegistryObject<Item> advanced_range_augment = ITEMS.register("advanced_range_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
@@ -170,6 +177,9 @@ public class ctiItem {
     public static final RegistryObject<Item> ETHANOL_ABSOLUTE = ITEMS.register("ethanol_absolute", () -> new BoozeItem(3, 20,drinkItem().food(ctiWine.ETHANOL_ABSOLUTE)));
     public static final RegistryObject<Item> cornflower_beer = ITEMS.register("cornflower_beer", () -> new BoozeItem(1, 5,drinkItem().food(ctiWine.cornflower_beer)));
     public static final RegistryObject<Item> etbeer = ITEMS.register("etbeer", () -> new BoozeItem(3, 10,drinkItem().food(ctiWine.etbeer)));
+    public static final RegistryObject<Item> xuerou_wine = ITEMS.register("xuerou_wine", () -> new BoozeItem(3, 5,drinkItem().food(ctiWine.xuerou_wine)));
+    public static final RegistryObject<Item> mahoushaojiu_wine = ITEMS.register("mahoushaojiu_wine", () -> new BoozeItem(1, 10,drinkItem().food(ctiWine.mahoushaojiu_wine)));
     public static final RegistryObject<Item> UNKNOWN_WINE = ITEMS.register("unknown_wine", () -> new Unknown_Wine(drinkItem().food(ctiWine.UNKNOWN_WINE).craftRemainder(TANKARD.get())));
+
 
 }
