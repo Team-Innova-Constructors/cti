@@ -57,7 +57,7 @@ public class Emp extends etshmodifieriii implements DurabilityDisplayModifierHoo
     }
 
     @Override
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         LivingEntity living =context.getAttacker();
         if (tool.getPersistentData().getInt(charge)>=100&&living.getPersistentData().getInt("empcd")<=0) {
             Entity entity = context.getTarget();

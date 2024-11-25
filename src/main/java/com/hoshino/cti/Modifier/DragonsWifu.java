@@ -19,7 +19,7 @@ import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 public class DragonsWifu extends etshmodifieriii {
 
     @Override
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity livingEntity){
             livingEntity.invulnerableTime =0;

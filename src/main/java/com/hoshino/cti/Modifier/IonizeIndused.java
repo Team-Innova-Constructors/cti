@@ -20,7 +20,12 @@ import static com.hoshino.cti.Entity.specialDamageSource.Environmental.playerIon
 
 public class IonizeIndused extends etshmodifieriii {
     @Override
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public int getPriority() {
+        return 255;
+    }
+
+    @Override
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         Entity entity =context.getTarget();
         LivingEntity living =context.getAttacker();
         if (entity instanceof LivingEntity target &&living instanceof Player player&&!(target instanceof Player)){

@@ -1,10 +1,10 @@
 package com.hoshino.cti.Plugin;
 
+import blusunrize.immersiveengineering.api.crafting.IERecipeTypes;
+import blusunrize.immersiveengineering.api.excavator.MineralMix;
+import blusunrize.immersiveengineering.common.register.IEBlocks;
 import com.hoshino.cti.cti;
-import com.hoshino.cti.integration.AtmosphereCondenseRecipeCategory;
-import com.hoshino.cti.integration.AtmosphereExtractRecipeCategory;
-import com.hoshino.cti.integration.QuantumMinerRecipeCategory;
-import com.hoshino.cti.integration.ReactorNeutronCollectorRecipeCategory;
+import com.hoshino.cti.integration.*;
 import com.hoshino.cti.recipe.*;
 import com.hoshino.cti.register.ctiItem;
 import mezz.jei.api.IModPlugin;
@@ -13,6 +13,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
@@ -24,6 +25,7 @@ public class JEIPlugin implements IModPlugin {
     public static RecipeType<AtmosphereCondensorRecipe> ATMOSPHERE_CONDENSE = new RecipeType<>(AtmosphereCondenseRecipeCategory.UID, AtmosphereCondensorRecipe.class);
     public static RecipeType<QuantumMinerRecipe> QUANTUM_MINING = new RecipeType<>(QuantumMinerRecipeCategory.UID, QuantumMinerRecipe.class);
     public static RecipeType<ReactorNeutronCollectorRecipe> NEUTRON_COLLECTING = new RecipeType<>(ReactorNeutronCollectorRecipeCategory.UID, ReactorNeutronCollectorRecipe.class);
+    public static RecipeType<MineralMix> MINERAL_MIX = new RecipeType<>(ImmersiveMineRecipeCategory.UID, MineralMix.class);
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -36,6 +38,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCategories(new AtmosphereCondenseRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new QuantumMinerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new ReactorNeutronCollectorRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new ImmersiveMineRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -49,6 +52,11 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipes(ATMOSPHERE_CONDENSE, recipesCondense);
         registration.addRecipes(QUANTUM_MINING, quantumMining);
         registration.addRecipes(NEUTRON_COLLECTING, neutronCollecting);
+
+        if (Minecraft.getInstance().level != null) {
+            List<MineralMix> mineralMixes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(IERecipeTypes.MINERAL_MIX.get());
+            registration.addRecipes(MINERAL_MIX,mineralMixes);
+        }
     }
 
     @Override
@@ -58,6 +66,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ctiItem.quantum_miner.get()),QUANTUM_MINING);
         registration.addRecipeCatalyst(new ItemStack(ctiItem.quantum_miner_advanced.get()),QUANTUM_MINING);
         registration.addRecipeCatalyst(new ItemStack(ctiItem.reactor_neutron_collector.get()),NEUTRON_COLLECTING);
+        registration.addRecipeCatalyst(new ItemStack(IEBlocks.Multiblocks.EXCAVATOR),MINERAL_MIX);
     }
 
 

@@ -30,6 +30,13 @@ public class EntityMixin {
         }
 
     }
+    @Inject(at = @At(value = "HEAD"), method = "isInvulnerable", cancellable = true)
+    private void setVulnerable(CallbackInfoReturnable<Boolean> cir){
+        Entity entity =(Entity) (Object)this;
+        if(entity!=null&&entity.getPersistentData().getBoolean("vulnerable")){
+            cir.setReturnValue(false);
+        }
+    }
     @Inject(at = @At(value = "HEAD"), method = "fireImmune", cancellable = true)
     private void setFireImmune(CallbackInfoReturnable<Boolean> cir){
         Entity entity =(Entity) (Object)this;

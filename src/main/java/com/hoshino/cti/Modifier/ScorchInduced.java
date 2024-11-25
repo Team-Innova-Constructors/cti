@@ -20,18 +20,17 @@ import static com.hoshino.cti.Entity.specialDamageSource.Environmental.*;
 
 public class ScorchInduced extends etshmodifieriii {
     @Override
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         Entity entity =context.getTarget();
         LivingEntity living =context.getAttacker();
         if (entity instanceof LivingEntity target&&living instanceof Player player&&!(entity instanceof Player)){
             target.invulnerableTime=0;
-            target.hurt(playerScorchSource(damage/12,player),damage/12);
+            target.hurt(playerScorchSource(damageDealt/6,player),damageDealt/6);
             if (getScorchResistance(target)<=1.5&&getScorchValue(target)<50){
                 addScorchValue(target,5*modifier.getLevel());
             }
             target.invulnerableTime=0;
         }
-        return knockback;
     }
     @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {

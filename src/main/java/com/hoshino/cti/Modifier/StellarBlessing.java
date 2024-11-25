@@ -14,7 +14,7 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
 public class StellarBlessing extends etshmodifieriii {
     @Override
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         Entity entity =context.getTarget();
         LivingEntity attacker =context.getAttacker();
         if (entity instanceof LivingEntity living){

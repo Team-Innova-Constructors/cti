@@ -181,7 +181,7 @@
 
   "modifier.cti.ionize_induced": "电离附加",
   "modifier.cti.ionize_induced.flavor": "电荷解离！！！",
-  "modifier.cti.ionize_induced.description":"攻击时附带一定量电离伤害并施加少量电离值。",
+  "modifier.cti.ionize_induced.description":"攻击时附带一定量电离伤害，穿透敌人的绝大部分防御手段，并施加少量电离值。",
 
   "modifier.cti.pressure_induced": "压强附加",
   "modifier.cti.pressure_induced.flavor": "别压力我了😰😰😰",
@@ -189,7 +189,7 @@
 
   "modifier.cti.disorder": "异常",
   "modifier.cti.disorder.flavor": "其产生的磁场扰乱了空间中能量的分布",
-  "modifier.cti.disorder.description":"攻击时造成等离子爆炸。",
+  "modifier.cti.disorder.description":"攻击时造成几束等离子爆炸。",
 
   "modifier.cti.eros": "本能",
   "modifier.cti.eros.flavor": "本能觉醒",
@@ -442,5 +442,10 @@
   "item.cti.molten_aetherium_bucket": "熔融阳清合金桶",
 
   "fluid.cti.molten_violium": "熔融维奥合金",
-  "item.cti.molten_violium_bucket": "熔融维奥合金桶"
+  "item.cti.molten_violium_bucket": "熔融维奥合金桶",
+
+  "dimension.ad_astra.infernal": "炼狱",
+  "dimension.ad_astra.uranus": "天王星",
+  "dimension.ad_astra.jupiter": "木星",
+  "dimension.ad_astra.ionized_glacio": "电离冻土"
 }

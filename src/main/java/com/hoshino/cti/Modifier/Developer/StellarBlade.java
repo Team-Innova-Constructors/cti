@@ -133,7 +133,7 @@ public class StellarBlade extends etshmodifieriii {
     }
 
     @Override
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         Player player = context.getPlayerAttacker();
         Entity entity = context.getTarget();
         if (player!=null&&entity instanceof LivingEntity target&&!context.isExtraAttack()&&!(target instanceof Player)){

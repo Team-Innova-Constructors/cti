@@ -20,20 +20,21 @@ import static com.hoshino.cti.Entity.specialDamageSource.Environmental.playerIon
 import static com.hoshino.cti.Entity.specialDamageSource.Environmental.playerPressureSource;
 
 public class PressureIndused extends etshmodifieriii {
+
     @Override
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         Entity entity =context.getTarget();
         LivingEntity living =context.getAttacker();
         if (entity instanceof LivingEntity target &&living instanceof Player player&&!(entity instanceof Player)){
             target.invulnerableTime=0;
-            target.hurt(playerPressureSource(damage/6,player),damage/6);
+            target.hurt(playerPressureSource(damageDealt/6,player),damageDealt/6);
             if (getPressureResistance(target)<=1.5&&getPressureValue(target)<20){
                 addPressureValue(target,2*modifier.getLevel());
             }
             target.invulnerableTime=0;
         }
-        return knockback;
     }
+
     @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (target!=null&&projectile instanceof AbstractArrow arrow&&attacker instanceof Player player&&!(target instanceof Player)){

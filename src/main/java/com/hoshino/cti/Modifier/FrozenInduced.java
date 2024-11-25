@@ -19,19 +19,19 @@ import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.*;
 import static com.hoshino.cti.Entity.specialDamageSource.Environmental.playerFrozenSource;
 
 public class FrozenInduced extends etshmodifieriii {
+
     @Override
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         Entity entity =context.getTarget();
         LivingEntity living =context.getAttacker();
         if (entity instanceof LivingEntity target &&living instanceof Player player&&!(target instanceof Player)){
             target.invulnerableTime=0;
-            target.hurt(playerFrozenSource(damage/8,player),damage/8);
+            target.hurt(playerFrozenSource(damageDealt/4,player),damageDealt/4);
             if (getFreezeResistance(target)<=1.5&&getFrozenValue(target)<500){
                 addFrozenValue(target,10*modifier.getLevel());
             }
             target.invulnerableTime=0;
         }
-        return knockback;
     }
 
     @Override
