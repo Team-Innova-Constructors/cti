@@ -1,14 +1,12 @@
 package com.hoshino.cti.util;
 
-import java.security.SecureRandom;
+import java.util.Random;
 import java.util.UUID;
-
-import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
 public class MathUtil {
     public static UUID getUUIDFromString(String str) {
         int hash = str.hashCode();
-        SecureRandom random =EtSHrnd();
+        Random random =new Random();
         random.setSeed(hash);
         long l0 = random.nextLong();
         long l1 = random.nextLong();

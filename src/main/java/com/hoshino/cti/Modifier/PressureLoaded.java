@@ -32,11 +32,13 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import static com.hoshino.cti.Modifier.capability.PressurizableToolCap.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.function.BiConsumer;
 
 public class PressureLoaded extends PressurizableModifier implements ToolDamageModifierHook, BreakSpeedModifierHook, MeleeDamageModifierHook, ProjectileLaunchModifierHook, AttributesModifierHook , DurabilityDisplayModifierHook {
@@ -112,21 +114,21 @@ public class PressureLoaded extends PressurizableModifier implements ToolDamageM
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot equipmentSlot, BiConsumer<Attribute, AttributeModifier> biConsumer) {
         if (slotUtil.ARMOR.contains(equipmentSlot)&&getBonus(tool,modifier)>0){
-            biConsumer.accept(Attributes.ARMOR,new AttributeModifier(MathUtil.getUUIDFromString("cti.air.armor").toString(),1+getBonus(tool,modifier), AttributeModifier.Operation.MULTIPLY_BASE));
-            biConsumer.accept(Attributes.ARMOR_TOUGHNESS,new AttributeModifier(MathUtil.getUUIDFromString("cti.air.armor_toughness").toString(),1+getBonus(tool,modifier), AttributeModifier.Operation.MULTIPLY_BASE));
-            biConsumer.accept(Attributes.KNOCKBACK_RESISTANCE,new AttributeModifier(MathUtil.getUUIDFromString("cti.air.knockback_resistance").toString(),1+getBonus(tool,modifier), AttributeModifier.Operation.MULTIPLY_BASE));
+            biConsumer.accept(Attributes.ARMOR,new AttributeModifier(UUID.fromString("dd956aaf-a7e7-ca28-f352-34e76c7a4ebf"),Attributes.ARMOR.getDescriptionId(),getBonus(tool,modifier), AttributeModifier.Operation.MULTIPLY_BASE));
+            biConsumer.accept(Attributes.ARMOR_TOUGHNESS,new AttributeModifier(UUID.fromString("45bbb1ce-b4ee-7ee2-2f5c-df86d24c361a"),Attributes.ARMOR_TOUGHNESS.getDescriptionId(),getBonus(tool,modifier), AttributeModifier.Operation.MULTIPLY_BASE));
+            biConsumer.accept(Attributes.KNOCKBACK_RESISTANCE,new AttributeModifier(UUID.fromString("4639fef7-40a3-4ecf-ff5b-0cd263d3c9c0"),Attributes.KNOCKBACK_RESISTANCE.getDescriptionId(),getBonus(tool,modifier), AttributeModifier.Operation.MULTIPLY_BASE));
         }
     }
 
     @Nullable
     @Override
-    public Boolean showDurabilityBar(IToolStackView iToolStackView, ModifierEntry modifierEntry) {
-        return true;
+    public Boolean showDurabilityBar(IToolStackView tool, ModifierEntry modifierEntry) {
+        return PressurizableToolCap.getAir(tool)>0;
     }
 
     @Override
     public int getDurabilityWidth(IToolStackView tool, ModifierEntry modifierEntry) {
-        return PressurizableToolCap.getAir(tool)>0?(int) (PressurizableToolCap.getAir(tool)*13/(PressurizableToolCap.getMaxPressure(tool)*PressurizableToolCap.getBaseVolume(tool))):0;
+        return (int) (PressurizableToolCap.getAir(tool)*12/(PressurizableToolCap.getMaxPressure(tool)*PressurizableToolCap.getBaseVolume(tool)))+1;
     }
 
     @Override
