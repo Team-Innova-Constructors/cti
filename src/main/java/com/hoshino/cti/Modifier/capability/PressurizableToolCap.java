@@ -119,4 +119,12 @@ public class PressurizableToolCap implements ToolCapabilityProvider.IToolCapabil
             tool.getPersistentData().putInt(AIR_KEY, amount);
         }
     }
+
+    public static int getBaseVolume(IToolStackView tool){
+        return tool.getVolatileData().getInt(BASE_VOLUME_KEY);
+    }
+
+    public static float getMaxPressure(IToolStackView tool){
+        return tool.getVolatileData().getInt(MAX_PRESSURE_KEY);
+    }
 }

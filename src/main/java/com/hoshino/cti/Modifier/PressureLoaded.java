@@ -1,12 +1,18 @@
 package com.hoshino.cti.Modifier;
 
+import com.c2h6s.etshtinker.util.slotUtil;
 import com.hoshino.cti.Modifier.Base.PressurizableModifier;
 import com.hoshino.cti.Modifier.capability.PressurizableToolCap;
+import com.hoshino.cti.util.MathUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -16,8 +22,10 @@ import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.behavior.AttributesModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.ToolDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.display.DurabilityDisplayModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.mining.BreakSpeedModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileLaunchModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
@@ -29,12 +37,13 @@ import static com.hoshino.cti.Modifier.capability.PressurizableToolCap.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public class PressureLoaded extends PressurizableModifier implements ToolDamageModifierHook, BreakSpeedModifierHook, MeleeDamageModifierHook, ProjectileLaunchModifierHook {
+public class PressureLoaded extends PressurizableModifier implements ToolDamageModifierHook, BreakSpeedModifierHook, MeleeDamageModifierHook, ProjectileLaunchModifierHook, AttributesModifierHook , DurabilityDisplayModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.TOOL_DAMAGE,ModifierHooks.BREAK_SPEED,ModifierHooks.MELEE_DAMAGE,ModifierHooks.PROJECTILE_LAUNCH);
+        builder.addHook(this, ModifierHooks.TOOL_DAMAGE,ModifierHooks.BREAK_SPEED,ModifierHooks.MELEE_DAMAGE,ModifierHooks.PROJECTILE_LAUNCH,ModifierHooks.ATTRIBUTES,ModifierHooks.DURABILITY_DISPLAY);
     }
 
     @Override
@@ -71,7 +80,7 @@ public class PressureLoaded extends PressurizableModifier implements ToolDamageM
     }
 
     public float getBonus(IToolStackView tool, ModifierEntry modifier){
-        return (PressurizableToolCap.getPressure(tool)+modifier.getLevel())/40;
+        return PressurizableToolCap.getPressure(tool)>0? (PressurizableToolCap.getPressure(tool)+modifier.getLevel())/40:0;
     }
 
 
@@ -98,5 +107,30 @@ public class PressureLoaded extends PressurizableModifier implements ToolDamageM
             PressurizableToolCap.addAir(tool,-(int) (100*multiplier));
             arrow.setBaseDamage(arrow.getBaseDamage()*multiplier);
         }
+    }
+
+    @Override
+    public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot equipmentSlot, BiConsumer<Attribute, AttributeModifier> biConsumer) {
+        if (slotUtil.ARMOR.contains(equipmentSlot)&&getBonus(tool,modifier)>0){
+            biConsumer.accept(Attributes.ARMOR,new AttributeModifier(MathUtil.getUUIDFromString("cti.air.armor").toString(),1+getBonus(tool,modifier), AttributeModifier.Operation.MULTIPLY_BASE));
+            biConsumer.accept(Attributes.ARMOR_TOUGHNESS,new AttributeModifier(MathUtil.getUUIDFromString("cti.air.armor_toughness").toString(),1+getBonus(tool,modifier), AttributeModifier.Operation.MULTIPLY_BASE));
+            biConsumer.accept(Attributes.KNOCKBACK_RESISTANCE,new AttributeModifier(MathUtil.getUUIDFromString("cti.air.knockback_resistance").toString(),1+getBonus(tool,modifier), AttributeModifier.Operation.MULTIPLY_BASE));
+        }
+    }
+
+    @Nullable
+    @Override
+    public Boolean showDurabilityBar(IToolStackView iToolStackView, ModifierEntry modifierEntry) {
+        return true;
+    }
+
+    @Override
+    public int getDurabilityWidth(IToolStackView tool, ModifierEntry modifierEntry) {
+        return PressurizableToolCap.getAir(tool)>0?(int) (PressurizableToolCap.getAir(tool)*13/(PressurizableToolCap.getMaxPressure(tool)*PressurizableToolCap.getBaseVolume(tool))):0;
+    }
+
+    @Override
+    public int getDurabilityRGB(IToolStackView iToolStackView, ModifierEntry modifierEntry) {
+        return 0xffffff;
     }
 }

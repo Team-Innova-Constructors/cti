@@ -376,7 +376,7 @@
 
   "modifier.cti.pressure_loaded": "空气装载",
   "modifier.cti.pressure_loaded.flavor": "空气动力学！",
-  "modifier.cti.pressure_loaded.description":"你的工具获得每级5000mL的压缩空气基础容量，优先消耗压缩空气而非耐久。根据压力增加伤害和挖掘速度。",
+  "modifier.cti.pressure_loaded.description":"你的工具获得每级5000mL的压缩空气基础容量，优先消耗压缩空气而非耐久。根据压力增加伤害、挖掘速度和防御力。",
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
@@ -443,7 +443,7 @@
   "cti.tooltip.modifier.volume": "基础空气容量",
   "cti.tooltip.modifier.air": "空气体积",
   "cti.tooltip.modifier.pressure": "空气压力",
-  "cti.tooltip.modifier.pressure_damage": "压缩空气伤害增幅",
+  "cti.tooltip.modifier.pressure_damage": "压缩空气增幅",
 
   "fluid.cti.molten_aetherium": "熔融阳清合金",
   "item.cti.molten_aetherium_bucket": "熔融阳清合金桶",
