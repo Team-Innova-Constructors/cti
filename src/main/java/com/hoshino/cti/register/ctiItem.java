@@ -1,6 +1,8 @@
 package com.hoshino.cti.register;
 
 import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.thermal.lib.common.ThermalFlags;
+import cofh.thermal.lib.item.AugmentItem;
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
 import com.hoshino.cti.Items.*;
 import com.hoshino.cti.Items.Vehicle.RocketItemTier5;
@@ -17,6 +19,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -36,8 +39,11 @@ public class ctiItem {
     public static String FLAG_DYNAMO_AUGMENTS = "dynamo_augments";
     public static String FLAG_AREA_AUGMENTS = "area_augments";
     public ctiItem(){}
-    public static Item.Properties drinkItem() {
+    public static Item.Properties tankard_drinkItem() {
         return (new Item.Properties()).craftRemainder(TANKARD.get()).stacksTo(16).tab(BrewinAndChewin.CREATIVE_TAB);
+    }
+    public static Item.Properties bottle_drinkItem() {
+        return (new Item.Properties()).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16).tab(BrewinAndChewin.CREATIVE_TAB);
     }
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "cti");
     public static final ResourcefulRegistry<Item> ASTRAITEM  = ResourcefulRegistries.create(Registry.ITEM, "cti");
@@ -108,7 +114,7 @@ public class ctiItem {
     public static final RegistryObject<Item> advanced_speed_augment = ITEMS.register("advanced_speed_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_MACHINE)
             .mod(TAG_AUGMENT_MACHINE_POWER, 50F)
-            .mod(TAG_AUGMENT_MACHINE_ENERGY, 2.5F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.5F)
             .mod(TAG_AUGMENT_RF_STORAGE, 5.0F)
             .mod(TAG_AUGMENT_RF_XFER, 20.0F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
@@ -143,7 +149,10 @@ public class ctiItem {
             .mod(TAG_AUGMENT_MACHINE_SECONDARY, 0.8F)
             .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.75F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
-
+    public static final RegistryObject<Item> advanced_fluid_tank_augment = ITEMS.register("advanced_fluid_tank_augment",()->(new AugmentItem((new Item.Properties()).tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_FLUID)
+            .mod(TAG_AUGMENT_FLUID_STORAGE, 12.0F)
+            .build())).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_STORAGE_AUGMENTS)));
     public static final RegistryObject<Item> UPGRADE_AUGMENTS_4 = ITEMS.register("upgrade_augment_4",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_UPGRADE)
             .mod(TAG_AUGMENT_BASE_MOD,5)
@@ -173,13 +182,16 @@ public class ctiItem {
     public static final RegistryObject<Item> star_frozen = ITEMS.register("star_frozen", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> star_ionize = ITEMS.register("star_ionize", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> star_pressure = ITEMS.register("star_pressure", ()->new Item(new Item.Properties()));
-    public static final RegistryObject<Item> COLD_GOBBERWINE = ITEMS.register("cold_gobberwine", () -> new BoozeItem(1, 5,drinkItem().food(ctiWine.COLD_GOBBERWINE)));
-    public static final RegistryObject<Item> ETHANOL_ABSOLUTE = ITEMS.register("ethanol_absolute", () -> new BoozeItem(3, 20,drinkItem().food(ctiWine.ETHANOL_ABSOLUTE)));
-    public static final RegistryObject<Item> cornflower_beer = ITEMS.register("cornflower_beer", () -> new BoozeItem(1, 5,drinkItem().food(ctiWine.cornflower_beer)));
-    public static final RegistryObject<Item> etbeer = ITEMS.register("etbeer", () -> new BoozeItem(3, 10,drinkItem().food(ctiWine.etbeer)));
-    public static final RegistryObject<Item> xuerou_wine = ITEMS.register("xuerou_wine", () -> new BoozeItem(3, 5,drinkItem().food(ctiWine.xuerou_wine)));
-    public static final RegistryObject<Item> mahoushaojiu_wine = ITEMS.register("mahoushaojiu_wine", () -> new BoozeItem(1, 10,drinkItem().food(ctiWine.mahoushaojiu_wine)));
-    public static final RegistryObject<Item> UNKNOWN_WINE = ITEMS.register("unknown_wine", () -> new Unknown_Wine(drinkItem().food(ctiWine.UNKNOWN_WINE).craftRemainder(TANKARD.get())));
+    //吃的喝的
+    public static final RegistryObject<Item> COLD_GOBBERWINE = ITEMS.register("cold_gobberwine", () -> new BoozeItem(1, 5,tankard_drinkItem().food(ctiWine.COLD_GOBBERWINE)));
+    public static final RegistryObject<Item> ETHANOL_ABSOLUTE = ITEMS.register("ethanol_absolute", () -> new BoozeItem(3, 20,tankard_drinkItem().food(ctiWine.ETHANOL_ABSOLUTE)));
+    public static final RegistryObject<Item> cornflower_beer = ITEMS.register("cornflower_beer", () -> new BoozeItem(1, 5,tankard_drinkItem().food(ctiWine.cornflower_beer)));
+    public static final RegistryObject<Item> etbeer = ITEMS.register("etbeer", () -> new BoozeItem(3, 10,tankard_drinkItem().food(ctiWine.etbeer)));
+    public static final RegistryObject<Item> xuerou_wine = ITEMS.register("xuerou_wine", () -> new BoozeItem(3, 5,tankard_drinkItem().food(ctiWine.xuerou_wine)));
+    public static final RegistryObject<Item> mahoushaojiu_wine = ITEMS.register("mahoushaojiu_wine", () -> new BoozeItem(1, 10,tankard_drinkItem().food(ctiWine.mahoushaojiu_wine)));
+    public static final RegistryObject<Item> UNKNOWN_WINE = ITEMS.register("unknown_wine", () -> new Unknown_Wine(tankard_drinkItem().food(ctiWine.UNKNOWN_WINE).craftRemainder(TANKARD.get())));
+    public static final RegistryObject<Item> qdbeer = ITEMS.register("qdbeer", () -> new BoozeItem(1, 1,bottle_drinkItem().food(ctiWine.qdbeer)));
+    public static final RegistryObject<Item> boomwine = ITEMS.register("boomwine", () -> new BoozeItem(1, 5,bottle_drinkItem().food(ctiWine.boomwine)));
 
 
 }

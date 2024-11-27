@@ -1,6 +1,7 @@
 package com.hoshino.cti;
 
 import com.hoshino.cti.Event.LivingEvents;
+import com.hoshino.cti.Event.MobEffect;
 import com.hoshino.cti.Event.sleep;
 import com.hoshino.cti.Modifier.capability.*;
 import com.hoshino.cti.Screen.AtmosphereCondensatorScreen;
@@ -14,14 +15,9 @@ import com.hoshino.cti.util.BiomeUtil;
 import com.hoshino.cti.util.tier.Roxy;
 import com.hoshino.cti.world.feature.ctiConfiguredFeature;
 import com.hoshino.cti.world.feature.ctiPlacedFeature;
-import com.marth7th.solidarytinker.register.solidarytinkerItem;
-import com.marth7th.solidarytinker.shelf.tier.Momo;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tiers;
-import net.minecraft.world.item.alchemy.PotionBrewing;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,7 +30,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
-import owmii.powah.api.PowahAPI;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 
@@ -43,18 +38,9 @@ import java.util.List;
 @Mod(cti.MOD_ID)
 
 public class cti {
-    /**
-     * 联动模组
-     * mekanism
-     * etshtinker的离子炮
-     */
     public static boolean Mekenabled = ModList.get().isLoaded("mekanism");
-    public static boolean ETSH = ModList.get().isLoaded("etshtinker");
-    public static final String MOD_ID = "cti"; //*是你的模组名，需要英文
+    public static final String MOD_ID = "cti";
     public cti() {
-        /**
-         *几个注册表都在这边，有的联动所以需要前置
-         */
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::commonSetup);
@@ -71,6 +57,7 @@ public class cti {
         ctiItem.VEHICLES.init();
         ctiEntity.ENTITY_TYPES.init();
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
+        MinecraftForge.EVENT_BUS.register(new MobEffect());
         ctiPacketHandler.init();
         ctiMenu.MENU_TYPE.register(eventBus);
         ctiPotions.POTIONS.register(eventBus);

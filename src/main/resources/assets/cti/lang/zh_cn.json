@@ -93,6 +93,8 @@
   "item.cti.upgrade_violium": "外置滤波电容组件",
   "item.cti.upgrade_aetherium": "超导互感线圈组件",
 
+  "item.cti.advanced_fluid_tank_augment": "高级扩容升级",
+
   "block.cti.unipolar_magnet": "单极磁石",
   "block.cti.unipolar_magnet_budding": "单极磁石母岩",
   "block.cti.overdense_glacio_stone":"超质量霜星石",
@@ -110,10 +112,16 @@
   "item.cti.etbeer":"呕吐酒",
   "item.cti.mahoushaojiu_wine":"马猴烧酒",
   "item.cti.xuerou_wine":"血肉之精酿",
+  "item.cti.qdbeer":"轻倒啤酒(铀铀最爱)",
+  "item.cti.boomwine":"炸蛋鸡尾酒",
 
   "item.minecraft.potion.effect.bloodanger": "红温药水",
   "item.minecraft.splash_potion.effect.bloodanger": "喷溅型红温药水",
   "item.minecraft.lingering_potion.effect.bloodanger": "滞留型红温药水",
+
+  "item.minecraft.potion.effect.resolute": "坚定药水",
+  "item.minecraft.splash_potion.effect.resolute": "喷溅型坚定药水",
+  "item.minecraft.lingering_potion.effect.resolute": "滞留型坚定药水",
 
 
 
@@ -356,7 +364,7 @@
 
   "modifier.cti.tinge": "色彩",
   "modifier.cti.tinge.flavor": "......",
-  "modifier.cti.tinge.description":"每级等效增加时运,抢夺10级",
+  "modifier.cti.tinge.description":"每级等效增加时运,抢夺88级",
 
   "modifier.cti.deepanddeep": "更加深入",
   "modifier.cti.deepanddeep.flavor": "......",
@@ -438,6 +446,7 @@
   "stat.tconstruct.slot.display.shenjin": "神金",
 
   "death.attack.tinker": "%1$s 被牢墨用数据线爱死了",
+
   "stat.tconstruct.harvest_tier.cti.roxy": "洛琪希",
 
   "cti.tooltip.modifier.volume": "基础空气容量",

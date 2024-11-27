@@ -10,5 +10,8 @@ public class ctiBrewing {
         PotionBrewing.addMix(Potions.AWKWARD, solidarytinkerItem.violane.get(), ctiPotions.BLOODANGER.get());
         PotionBrewing.addMix(ctiPotions.BLOODANGER.get(), Items.REDSTONE, ctiPotions.LONG_BLOODANGER.get());
         PotionBrewing.addMix(ctiPotions.BLOODANGER.get(), Items.GLOWSTONE_DUST, ctiPotions.STRONG_BLOODANGER.get());
+
+        PotionBrewing.addMix(Potions.AWKWARD, Items.OBSIDIAN, ctiPotions.resolute.get());
+        PotionBrewing.addMix(ctiPotions.resolute.get(), Items.REDSTONE, ctiPotions.long_resolute.get());
     }
 }
