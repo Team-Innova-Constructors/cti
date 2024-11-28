@@ -128,14 +128,15 @@ public class ctiItem {
             .type(TAG_AUGMENT_TYPE_DYNAMO)
             .mod(TAG_AUGMENT_FLUID_STORAGE,4)
             .mod(TAG_AUGMENT_DYNAMO_THROTTLE,1)
-            .mod(TAG_AUGMENT_DYNAMO_POWER, 80.0F)
-            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 2.0F)
+            .mod(TAG_AUGMENT_DYNAMO_POWER, 60.0F)
+            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 2.5F)
             .build()).setShowInGroups(getFlag(FLAG_DYNAMO_AUGMENTS)));
     public static final RegistryObject<Item> Secondary_dyano_augment = ITEMS.register("secondary_dyano_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_DYNAMO)
-            .mod(TAG_AUGMENT_DYNAMO_THROTTLE,2)
-            .mod(TAG_AUGMENT_DYNAMO_POWER, 40.0F)
-            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 1.5F)
+            .mod(TAG_AUGMENT_FLUID_STORAGE,2)
+            .mod(TAG_AUGMENT_DYNAMO_THROTTLE,1)
+            .mod(TAG_AUGMENT_DYNAMO_POWER, 30.0F)
+            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 1.6F)
             .build()).setShowInGroups(getFlag(FLAG_DYNAMO_AUGMENTS)));
 
     public static final RegistryObject<Item> advanced_range_augment = ITEMS.register("advanced_range_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
@@ -151,7 +152,7 @@ public class ctiItem {
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
     public static final RegistryObject<Item> advanced_fluid_tank_augment = ITEMS.register("advanced_fluid_tank_augment",()->(new AugmentItem((new Item.Properties()).tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_FLUID)
-            .mod(TAG_AUGMENT_FLUID_STORAGE, 12.0F)
+            .mod(TAG_AUGMENT_FLUID_STORAGE, 16.0F)
             .build())).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_STORAGE_AUGMENTS)));
     public static final RegistryObject<Item> UPGRADE_AUGMENTS_4 = ITEMS.register("upgrade_augment_4",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_UPGRADE)
