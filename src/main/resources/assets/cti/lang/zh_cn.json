@@ -43,6 +43,12 @@
 
   "cti.tooltip.item.etsh": "-EtSH_C2H6S 开发者材料-",
 
+  "item.cti.omniscient_gold_ingot": "§e全知魔金",
+  "item.cti.molten_omniscient_gold_bucket": "熔融全知魔金桶",
+  "fluid.cti.molten_omniscient_gold": "熔融全知魔金",
+  "cti.tooltip.item.omniscient_gold_ingot.desc1": "听起来怎么有点耳熟",
+  "cti.tooltip.item.omniscient_gold_ingot.desc2": "铀铀 贡献者材料",
+
   "item.cti.uriel_ingot": "§e乌列尔",
   "item.cti.molten_uriel_bucket": "熔融乌列尔桶",
   "fluid.cti.molten_uriel": "熔融乌列尔",
@@ -114,6 +120,7 @@
   "item.cti.xuerou_wine":"血肉之精酿",
   "item.cti.qdbeer":"轻倒啤酒(铀铀最爱)",
   "item.cti.boomwine":"炸蛋鸡尾酒",
+  "item.cti.fishbone_wine":"牢墨爱喝的鱼骨酒",
 
   "item.minecraft.potion.effect.bloodanger": "红温药水",
   "item.minecraft.splash_potion.effect.bloodanger": "喷溅型红温药水",
@@ -213,6 +220,10 @@
   "modifier.cti.breeding": "繁衍",
   "modifier.cti.breeding.flavor": "Good for sex.",
   "modifier.cti.breeding.description":"加速身边动物的生长，并清除它们的繁殖冷却",
+
+  "modifier.cti.knightglory": "骑士辉耀",
+  "modifier.cti.knightglory.flavor": "剑与盾！",
+  "modifier.cti.knightglory.description":"攻击时，将部分伤害转化为可叠加的伤害吸收，每次10%最大生命，上限等级 * 最大生命30%。并根据伤害吸收提高攻击伤害每级每点1伤害,远程减半",
 
   "modifier.cti.emp": "电磁脉冲发生器",
   "modifier.cti.emp.flavor": "生物电都给你打歪",

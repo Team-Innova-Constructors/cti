@@ -40,10 +40,10 @@ public class ctiItem {
     public static String FLAG_AREA_AUGMENTS = "area_augments";
     public ctiItem(){}
     public static Item.Properties tankard_drinkItem() {
-        return (new Item.Properties()).craftRemainder(TANKARD.get()).stacksTo(16).tab(BrewinAndChewin.CREATIVE_TAB);
+        return (new Item.Properties()).craftRemainder(TANKARD.get()).stacksTo(16).tab(ctiTab.FOOD);
     }
     public static Item.Properties bottle_drinkItem() {
-        return (new Item.Properties()).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16).tab(BrewinAndChewin.CREATIVE_TAB);
+        return (new Item.Properties()).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16).tab(ctiTab.FOOD);
     }
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "cti");
     public static final ResourcefulRegistry<Item> ASTRAITEM  = ResourcefulRegistries.create(Registry.ITEM, "cti");
@@ -57,6 +57,7 @@ public class ctiItem {
     public static final RegistryObject<Item> stellar_manyullyn = ITEMS.register("stellar_manyullyn",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.etsh").withStyle(ChatFormatting.LIGHT_PURPLE))));
     public static final RegistryObject<Item> invert_hoshino = ITEMS.register("invert_hoshino",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.invert_hoshino").withStyle(ChatFormatting.DARK_PURPLE))));
     public static final RegistryObject<Item> roxy_ingot = ITEMS.register("roxy_ingot",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.roxy_ingot").withStyle(ChatFormatting.BLUE))));
+    public static final RegistryObject<Item> omniscient_gold_ingot = ITEMS.register("omniscient_gold_ingot",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.omniscient_gold_ingot.desc1").withStyle(ChatFormatting.DARK_PURPLE),Component.translatable("cti.tooltip.item.omniscient_gold_ingot.desc2").withStyle(ChatFormatting.DARK_PURPLE))));
     public static final RegistryObject<Item> electronium_ammo = ITEMS.register("electronium_ammo", ElectroniumAmmo::new);
     public static final RegistryEntry<RocketItemTier5<rocketTier5>> TIER_5_ROCKET = VEHICLES.register("tier_5_rocket", () -> new RocketItemTier5<>(ctiEntity.TIER_5_ROCKET.get(), 5, new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC)));
     public static final RegistryObject<Item> astra_tablet_5 = ITEMS.register("astra_tablet_5",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),5));
@@ -193,6 +194,6 @@ public class ctiItem {
     public static final RegistryObject<Item> UNKNOWN_WINE = ITEMS.register("unknown_wine", () -> new Unknown_Wine(tankard_drinkItem().food(ctiWine.UNKNOWN_WINE).craftRemainder(TANKARD.get())));
     public static final RegistryObject<Item> qdbeer = ITEMS.register("qdbeer", () -> new BoozeItem(1, 1,bottle_drinkItem().food(ctiWine.qdbeer)));
     public static final RegistryObject<Item> boomwine = ITEMS.register("boomwine", () -> new BoozeItem(1, 5,bottle_drinkItem().food(ctiWine.boomwine)));
-
+    public static final RegistryObject<Item> fishbone_wine = ITEMS.register("fishbone_wine", () -> new BoozeItem(1, 1,tankard_drinkItem().food(ctiWine.fishbone_wine).craftRemainder(Items.ENCHANTED_GOLDEN_APPLE)));
 
 }

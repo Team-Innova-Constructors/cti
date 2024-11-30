@@ -25,4 +25,5 @@ public class StrengthWill extends XIModifier {
             }
         });
     }
+
 }

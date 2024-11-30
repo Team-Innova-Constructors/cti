@@ -61,4 +61,9 @@ public class ctiWine {
             new MobEffectInstance(MobEffects.JUMP, 6000, 2), 1F).effect(() ->
             new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 6000, 2), 0.8F).effect(() ->
             new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3000, 2), 0.3F).saturationMod(0.2F).nutrition(5).alwaysEat().build();
+    public static final FoodProperties fishbone_wine = (
+            new FoodProperties.Builder()).effect(() ->
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1800, 4), 1F).effect(() ->
+            new MobEffectInstance(MobEffects.REGENERATION, 2000, 4), 1F).effect(() ->
+            new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 900, 4), 1F).saturationMod(1F).nutrition(10).alwaysEat().build();
 }

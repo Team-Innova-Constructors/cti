@@ -13,7 +13,6 @@ public class ctiPotions {
     public static final RegistryObject<Potion> BLOODANGER = POTIONS.register("bloodanger", () -> new Potion("bloodanger", new MobEffectInstance(solidarytinkerEffects.bloodanger.get(), 4800)));
     public static final RegistryObject<Potion> LONG_BLOODANGER = POTIONS.register("long_bloodanger", () -> new Potion("bloodanger", new MobEffectInstance(solidarytinkerEffects.bloodanger.get(), 9600)));
     public static final RegistryObject<Potion> STRONG_BLOODANGER = POTIONS.register("strong_bloodanger", () -> new Potion("bloodanger", new MobEffectInstance(solidarytinkerEffects.bloodanger.get(), 2400,1)));
-
     public static final RegistryObject<Potion> resolute = POTIONS.register("resolute", () -> new Potion("resolute", new MobEffectInstance(ctiEffects.resolute.get(), 3000)));
     public static final RegistryObject<Potion> long_resolute = POTIONS.register("long_resolute", () -> new Potion("long_resolute", new MobEffectInstance(ctiEffects.resolute.get(), 6000)));
 
