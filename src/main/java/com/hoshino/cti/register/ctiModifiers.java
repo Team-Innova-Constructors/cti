@@ -62,7 +62,6 @@ public class ctiModifiers {
     public static final StaticModifier<DeepAndDeep> DEEP_AND_DEEP_STATIC_MODIFIER= MODIFIERS.register("deepanddeep", DeepAndDeep::new);
     public static final StaticModifier<DeepOceanEcho> DeepOceanEcho= MODIFIERS.register("deepoceanecho", DeepOceanEcho::new);
     public static final StaticModifier<Decoying> DECOYING_STATIC_MODIFIER= MODIFIERS.register("decoying", Decoying::new);
-    public static final StaticModifier<StrengthWill> STRENGTH_WILL= MODIFIERS.register("strengthWill", StrengthWill::new);
     public static final StaticModifier<DominateModifier> DOMINATE_MODIFIER_REPLACEMENT= MODIFIERS.register("dominate_replace", DominateModifier::new);
     public static final StaticModifier<LebegusProtection> LebegusProtection= MODIFIERS.register("lebegusprotection", LebegusProtection::new);
     public static final StaticModifier<RoxyLightning> RoxyLightning= MODIFIERS.register("roxylightning", RoxyLightning::new);
@@ -71,5 +70,5 @@ public class ctiModifiers {
     public static final StaticModifier<ChewEvolution> chewevolution= MODIFIERS.register("chewevolution", ChewEvolution::new);
     public static final StaticModifier<OverwriteSoulDevouring> OVERWRITE_SOUL_DEVOURING_STATIC_MODIFIER= MODIFIERS.register("overwritesouldevouring", OverwriteSoulDevouring::new);
     public static final StaticModifier<PressureLoaded> pressure_loaded= MODIFIERS.register("pressure_loaded", PressureLoaded::new);
-
+    public static final StaticModifier<FixedOracular> fixed_oracular= MODIFIERS.register("fixed_oracular", FixedOracular::new);
 }

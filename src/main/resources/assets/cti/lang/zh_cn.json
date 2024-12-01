@@ -378,6 +378,10 @@
   "modifier.cti.pressure_loaded.flavor": "空气动力学！",
   "modifier.cti.pressure_loaded.description":"你的工具获得每级5000mL的压缩空气基础容量，优先消耗压缩空气而非耐久。根据压力增加伤害、挖掘速度和防御力。",
 
+  "modifier.cti.fixed_oracular": "神谕",
+  "modifier.cti.fixed_oracular.flavor": "洗涤心灵。",
+  "modifier.cti.fixed_oracular.description":"净化目标增益效果，净化使用者减益效果。",
+
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
 

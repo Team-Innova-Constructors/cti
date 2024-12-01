@@ -12,8 +12,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
@@ -50,6 +52,25 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
     public All(){
         MinecraftForge.EVENT_BUS.addListener(this::livingHurtEvent);
         MinecraftForge.EVENT_BUS.addListener(this::livingDamageEvent);
+        MinecraftForge.EVENT_BUS.addListener(this::livingAttackEvent);
+    }
+
+    private void livingAttackEvent(LivingAttackEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            for (EquipmentSlot slot : slotUtil.ALL) {
+                ItemStack stack = player.getItemBySlot(slot);
+                if (stack.getItem() instanceof IModifiable) {
+                    ToolStack tool = ToolStack.from(stack);
+                    if (tool.getModifierLevel(this) > 0) {
+                        event.setCanceled(true);
+                        LivingHurtEvent hurtEvent =new LivingHurtEvent(player,event.getSource(),5);
+                        LivingDamageEvent damageEvent =new LivingDamageEvent(player,event.getSource(),5);
+                        MinecraftForge.EVENT_BUS.post(hurtEvent);
+                        MinecraftForge.EVENT_BUS.post(damageEvent);
+                    }
+                }
+            }
+        }
     }
 
     @Override
@@ -68,7 +89,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                 if (stack.getItem() instanceof IModifiable) {
                     ToolStack tool = ToolStack.from(stack);
                     if (tool.getModifierLevel(this) > 0 ) {
-                        event.setAmount(event.getAmount()/4);
+                        event.setAmount(0);
                         if (event.getSource().getEntity() instanceof LivingEntity living&&!(living instanceof Player)){
                             CompoundTag tag = living.getPersistentData();
                             tag.putBoolean("vulnerable",true);
@@ -122,7 +143,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                     if (stack.getItem() instanceof IModifiable) {
                         ToolStack tool = ToolStack.from(stack);
                         if (tool.getModifierLevel(this) > 0 ) {
-                            event.setAmount(event.getAmount()/4);
+                            event.setAmount(0);
                             if (event.getSource().getEntity() instanceof LivingEntity living&&!(living instanceof Player)){
                                 CompoundTag tag = living.getPersistentData();
                                 tag.putBoolean("vulnerable",true);

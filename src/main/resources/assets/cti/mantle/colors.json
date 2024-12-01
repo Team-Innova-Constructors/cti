@@ -7,6 +7,7 @@
   },
 
   "modifier.cti": {
+    "fixed_oracular": "#CBFF2B",
     "electric_protect": "#AC89FF",
     "scorch_protect": "#FFE0B7",
     "freeze_protect": "#86E2FF",
