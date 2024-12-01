@@ -71,4 +71,5 @@ public class ctiModifiers {
     public static final StaticModifier<OverwriteSoulDevouring> OVERWRITE_SOUL_DEVOURING_STATIC_MODIFIER= MODIFIERS.register("overwritesouldevouring", OverwriteSoulDevouring::new);
     public static final StaticModifier<PressureLoaded> pressure_loaded= MODIFIERS.register("pressure_loaded", PressureLoaded::new);
     public static final StaticModifier<FixedOracular> fixed_oracular= MODIFIERS.register("fixed_oracular", FixedOracular::new);
+    public static final StaticModifier<OverwriteKnightGlory> OverwriteKnightGlory= MODIFIERS.register("knightglory", OverwriteKnightGlory::new);
 }

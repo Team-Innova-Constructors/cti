@@ -4,7 +4,7 @@
   "modules": [
     {
       "type": "tconstruct:constant_enchantment",
-      "level": 10,
+      "level": 88,
       "name": "minecraft:fortune",
       "tool": {
         "type": "mantle:tag",
@@ -13,7 +13,7 @@
     },
     {
       "type": "tconstruct:armor_harvest_enchantment",
-      "level": 10,
+      "level": 88,
       "name": "minecraft:fortune",
       "slots": [
         "feet",

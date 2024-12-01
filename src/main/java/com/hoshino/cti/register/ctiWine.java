@@ -48,4 +48,22 @@ public class ctiWine {
             new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 12000, 4), 0.8F).effect(() ->
             new MobEffectInstance(MobEffects.BLINDNESS, 12000, 4), 0.8F).effect(() ->
             new MobEffectInstance(MobEffects.POISON, 12000, 1), 1).saturationMod(1).nutrition(20).fast().alwaysEat().build();
+    public static final FoodProperties qdbeer = (
+            new FoodProperties.Builder()).effect(() ->
+            new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 12000, 2), 1F).effect(() ->
+            new MobEffectInstance(MobEffects.LUCK, 12000, 1), 1F).effect(() ->
+            new MobEffectInstance(MobEffects.DAMAGE_BOOST, 12000, 2), 1F).effect(() ->
+            new MobEffectInstance(MobEffects.SLOW_FALLING, 3000, 0), 1).saturationMod(10).nutrition(2).alwaysEat().build();
+    public static final FoodProperties boomwine = (
+            new FoodProperties.Builder()).effect(() ->
+            new MobEffectInstance(ModPotions.BLAST_EFFECT.get(), 200, 6), 1F).effect(() ->
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1800, 1), 1F).effect(() ->
+            new MobEffectInstance(MobEffects.JUMP, 6000, 2), 1F).effect(() ->
+            new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 6000, 2), 0.8F).effect(() ->
+            new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3000, 2), 0.3F).saturationMod(0.2F).nutrition(5).alwaysEat().build();
+    public static final FoodProperties fishbone_wine = (
+            new FoodProperties.Builder()).effect(() ->
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1800, 4), 1F).effect(() ->
+            new MobEffectInstance(MobEffects.REGENERATION, 2000, 4), 1F).effect(() ->
+            new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 900, 4), 1F).saturationMod(1F).nutrition(10).alwaysEat().build();
 }

@@ -23,5 +23,11 @@ public class ctiTab {
             return new ItemStack(ctiItem.atmosphere_condensator.get());
         }
     };
+    public static final CreativeModeTab FOOD = new CreativeModeTab("cti.food") {
+        @Override
+        public  ItemStack makeIcon() {
+            return new ItemStack(ctiItem.etbeer.get());
+        }
+    };
     public ctiTab(){}
 }

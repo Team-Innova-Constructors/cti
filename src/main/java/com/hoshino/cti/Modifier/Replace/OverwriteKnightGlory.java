@@ -1,9 +1,8 @@
 package com.hoshino.cti.Modifier.Replace;
 
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -14,35 +13,27 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
-public class Infinity extends BattleModifier {
+public class OverwriteKnightGlory extends BattleModifier {
+    @Override
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+        if(context.getLivingTarget()!=null&&context.getAttacker() instanceof Player player){
+            player.setAbsorptionAmount(Mth.clamp(player.getAbsorptionAmount()+player.getMaxHealth()*0.1F,0,player.getMaxHealth()*(1+0.3F * modifier.getLevel())));
+        }
+    }
+
     @Override
     public float staticdamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity livingTarget, float baseDamage, float damage) {
-        if(livingTarget instanceof Mob mob&&attacker instanceof Player player){
-            if(level>3){
-                livingTarget.die(DamageSource.playerAttack(player));
-                livingTarget.kill();
-                return damage + Integer.MAX_VALUE * level;
-            }
-            else {
-                mob.setHealth((mob.getHealth() - mob.getMaxHealth() * 0.33f*level));
-                return damage+131072*level;
-            }
+        if(attacker.getAbsorptionAmount()!=0){
+            return damage + Math.min(attacker.getAbsorptionAmount() * 1F * level,attacker.getMaxHealth() * 0.3F * level);
         }
         return damage;
     }
 
     @Override
     public void arrowhurt(ModifierNBT modifiers, NamespacedNBT persistentData, int level, Projectile projectile, EntityHitResult hit, AbstractArrow arrow, LivingEntity attacker, LivingEntity target) {
-        if(target instanceof Mob mob&&attacker instanceof Player player){
-            if(level<4){
-                mob.setHealth((mob.getHealth() - mob.getMaxHealth() * 0.33f*level));
-                arrow.setBaseDamage(arrow.getBaseDamage() + 131072 * level);
-            }
-            else {
-                arrow.setBaseDamage(2147483647);
-                mob.die(DamageSource.playerAttack(player));
-                mob.kill();
-            }
+        if(attacker instanceof Player player&&target!=null){
+            player.setAbsorptionAmount(Mth.clamp(player.getAbsorptionAmount()+player.getMaxHealth()*0.1F,0,player.getMaxHealth()*(1+0.3F * level)));
+            arrow.setBaseDamage(arrow.getBaseDamage() + player.getAbsorptionAmount() * 0.5F*level);
         }
     }
 }
