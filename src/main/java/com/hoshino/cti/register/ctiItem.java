@@ -114,8 +114,8 @@ public class ctiItem {
 
     public static final RegistryObject<Item> advanced_speed_augment = ITEMS.register("advanced_speed_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_MACHINE)
-            .mod(TAG_AUGMENT_MACHINE_POWER, 50F)
-            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.5F)
+            .mod(TAG_AUGMENT_MACHINE_POWER, 25F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.2F)
             .mod(TAG_AUGMENT_RF_STORAGE, 5.0F)
             .mod(TAG_AUGMENT_RF_XFER, 20.0F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
