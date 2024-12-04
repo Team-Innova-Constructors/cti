@@ -54,7 +54,8 @@
     "dominate_replace": "#B52424",
     "pressure_loaded": "#7F7F7F",
     "knightglory": "#ffbcf0",
-
+    "fixed_purify":"#00fff6",
+    "combustor_modifier":"#E65C00",
 
     "_uriel_": "乌列尔",
     "timetojudge": "#fffdab",

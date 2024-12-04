@@ -387,7 +387,7 @@
 
   "modifier.cti.dominate_replace": "主宰",
   "modifier.cti.dominate_replace.flavor": "我是世界的主宰！",
-  "modifier.cti.dominate_replace.description":"根据目标血量造成额外伤害，每级最大增加2000点",
+  "modifier.cti.dominate_replace.description":"根据目标血量造成额外伤害，每级最大增加1000点",
 
   "modifier.cti.nerf_colossal": "泰坦杀手",
   "modifier.cti.nerf_colossal.flavor": "泰坦杀手",
@@ -400,6 +400,14 @@
   "modifier.cti.fixed_oracular": "神谕",
   "modifier.cti.fixed_oracular.flavor": "洗涤心灵。",
   "modifier.cti.fixed_oracular.description":"净化目标增益效果，净化使用者减益效果。",
+
+  "modifier.cti.fixed_purify": "净化",
+  "modifier.cti.fixed_purify.flavor": "纯净之躯。",
+  "modifier.cti.fixed_purify.description":"净化所有负面效果。",
+
+  "modifier.cti.combustor_modifier": "加力燃烧室",
+  "modifier.cti.combustor_modifier.flavor": "内置四缸发动机。",
+  "modifier.cti.combustor_modifier.description":"攻击时消耗背包里的燃料物品增加伤害，燃料的燃烧时长越长增加的伤害越多（最大+450%），对于熔岩桶这种有燃烧产物的物品不生效。",
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",

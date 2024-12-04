@@ -24,7 +24,7 @@ public class DominateModifier extends Modifier implements MeleeDamageModifierHoo
         LivingEntity target = context.getLivingTarget();
         float bonus =0;
         if (target != null&&modifier.getLevel()>0) {
-            float cap = modifier.getLevel()*2000f;
+            float cap = modifier.getLevel()*1000f;
             bonus =Math.min(cap,modifier.getLevel()>=2?target.getHealth()*0.4f:target.getHealth()*0.25f);
         }
         return damage+bonus;
@@ -39,7 +39,7 @@ public class DominateModifier extends Modifier implements MeleeDamageModifierHoo
         if (projectile instanceof AbstractArrow arrow && target != null) {
             float bonus =0;
             if (modifier.getLevel()>0) {
-                float cap = modifier.getLevel()*2000f;
+                float cap = modifier.getLevel()*1000f;
                 bonus =Math.min(cap,modifier.getLevel()>=2?target.getHealth()*0.4f:target.getHealth()*0.25f);
             }
             arrow.setBaseDamage(arrow.getBaseDamage()+bonus);
