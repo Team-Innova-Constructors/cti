@@ -76,7 +76,7 @@ public class RecipeMap {
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra:ice_shard")),4),
                     "ad_astra:glacio_ice_peaks"),
             new AtmosphereExtractorRecipe(cti.getResource("gas_hydrate"),
-                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:gas_hydrate")),1),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:gas_hydrate")),8),
                     "cti:uranus"),
             new AtmosphereExtractorRecipe(cti.getResource("diamond_jupiter"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:diamond")),4),
@@ -191,7 +191,11 @@ public class RecipeMap {
                     1.3F),
             new QuantumMinerRecipe(cti.getResource("zinc_ore_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("create:zinc_ore")),4),
-                    1.7F)
+                    1.7F),
+            new QuantumMinerRecipe(cti.getResource("moon_cheese_ore_quantum"),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra:moon_cheese_ore")),3),
+                    0.75F)
+
 
             ));
 

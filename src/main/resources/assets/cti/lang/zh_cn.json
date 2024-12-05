@@ -32,7 +32,7 @@
   "cti.tooltip.item.sodium_cooler3": "能量存储满了、输入/输出端没有化学品容器则无法工作，破坏时不产生辐射。",
 
   "cti.tooltip.item.alloy_centrifuge": "通过压缩空气将镕铸炉内的熔融合金分解为它的原料，需要方块的背面紧挨焦褐排液口才能工作。",
-  "cti.tooltip.item.alloy_centrifuge2": "需要7bar以上的压力才能工作，压力越高压缩空气消耗越快，处理速度也越快（15bar时最高），压缩空气容量: 12800mL。",
+  "cti.tooltip.item.alloy_centrifuge2": "需要2bar以上的压力才能工作，压力越高压缩空气消耗越快，处理速度也越快（10bar时最高），压缩空气容量: 12800mL。",
   "cti.tooltip.item.alloy_centrifuge3": "不要对着装有燃料的焦黑冶炼炉使用这个，聪明的你应该知道会发生什么",
 
   "cti.tooltip.item.stellar_plate": "手持时显示当前你所受的环境危害值，右键查看星图，shift+右键查看自己身上的环境抗性。在星图中点击任意星球以关闭星图",

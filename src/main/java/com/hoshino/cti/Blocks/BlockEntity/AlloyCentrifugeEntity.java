@@ -93,10 +93,10 @@ public class AlloyCentrifugeEntity extends BlockEntity {
         if (level.isClientSide){
             return;
         }
-        if (entity.machineAirHandler.getVolume()<100*(int) entity.machineAirHandler.getPressure()||entity.machineAirHandler.getPressure()<7){
+        if (entity.machineAirHandler.getVolume()<100*(int) entity.machineAirHandler.getPressure()||entity.machineAirHandler.getPressure()<3){
             return;
         }
-        if (level.getGameTime()%Math.max(3,18-(int) entity.machineAirHandler.getPressure())!=0){
+        if (level.getGameTime()%Math.max(2,12-(int) entity.machineAirHandler.getPressure())!=0){
             return;
         }
         if (list.isEmpty()){
