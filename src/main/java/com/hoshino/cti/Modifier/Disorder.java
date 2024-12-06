@@ -30,7 +30,7 @@ public class Disorder extends etshmodifieriii {
                 while (c < modifier.getLevel()) {
                     c++;
                     Level level = player.level;
-                    Vec3 vec3 = getScatteredVec3(new Vec3(0, EtSHrnd().nextInt(2)==1?1:-1, 0), 80);
+                    Vec3 vec3 = getScatteredVec3(new Vec3(0, EtSHrnd().nextInt(2)==1?1:-1, 0), 80).normalize();
                     double d = EtSHrnd().nextDouble() * 4+2;
                     Vec3 direction = new Vec3(-(d) * vec3.x, -(d) * vec3.y, -(d) * vec3.z);
                     plasmaexplosionentity explosion = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(),level);
