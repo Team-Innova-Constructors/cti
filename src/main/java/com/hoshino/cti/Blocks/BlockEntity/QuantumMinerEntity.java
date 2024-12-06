@@ -206,7 +206,7 @@ public class QuantumMinerEntity extends BlockEntity {
         }
         else {
             float chance = recipe.getChance()-count;
-            count+= EtSHrnd().nextFloat()<chance? -1:0;
+            count+= EtSHrnd().nextFloat()<chance? 0:1;
             stack.setCount(stack.getCount()+count);
         }
         return stack;

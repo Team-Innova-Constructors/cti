@@ -37,6 +37,8 @@ public abstract class ModUtilMixin {
                 for (ItemStack stack: List.of(living.getItemBySlot(EquipmentSlot.HEAD),living.getItemBySlot(EquipmentSlot.CHEST),living.getItemBySlot(EquipmentSlot.FEET),living.getItemBySlot(EquipmentSlot.LEGS))){
                     if (stack.getItem() instanceof IModifiable && ToolStack.from(stack).getModifierLevel(ctiModifiers.gravity_normalizer.get())>0){
                         callbackInfo.setReturnValue(1f);
+                    }else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)){
+                        callbackInfo.setReturnValue(1f);
                     }
                 }
             }
