@@ -175,6 +175,7 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
         if (blockEntity!=null){
             LazyOptional<IItemHandler> optional = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER);
             IItemHandler Handler =optional.orElse(EMPTY);
+            boolean effective =false;
             for (int i=0;i<10;i++) {
                 if (Handler != EMPTY) {
                     int slotAmount = Handler.getSlots();
@@ -190,16 +191,19 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
                         return;
                     }
                     Handler.insertItem(effectiveSlot, output, false);
-                    entity.ENERGY_STORAGE.extractEnergy(entity.BASE_ENERGY_PERTICK, false);
                     entity.itemStackHandler.extractItem(0, 1, false);
+                    effective =true;
                     entity.setChanged();
                 }
+            }
+            if (effective) {
+                entity.ENERGY_STORAGE.extractEnergy(entity.BASE_ENERGY_PERTICK, false);
             }
         }
     }
 
     public static ItemStack getOutPut(Level level){
-        List<QuantumMinerRecipe> list =List.copyOf(RecipeMap.MinerRecipeList);
+        List<QuantumMinerRecipe> list =List.copyOf(RecipeMap.AdvancedMinerRecipeList);
         if (list.isEmpty()){
             return ItemStack.EMPTY;
         }
@@ -207,12 +211,12 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
         QuantumMinerRecipe recipe =list.get(EtSHrnd().nextInt(length));
         ItemStack stack = recipe.getResultItem();
         int count = (int)recipe.getChance();
-        if (count==0&&EtSHrnd().nextFloat()<recipe.getChance()){
+        if (count==0&&EtSHrnd().nextFloat()>recipe.getChance()){
             stack = ItemStack.EMPTY;
         }
         else {
             float chance = recipe.getChance()-count;
-            count+= EtSHrnd().nextFloat()<chance? -1:0;
+            count+= EtSHrnd().nextFloat()>chance? -1:0;
             stack.setCount((stack.getCount()+count)*2);
         }
         return stack;
