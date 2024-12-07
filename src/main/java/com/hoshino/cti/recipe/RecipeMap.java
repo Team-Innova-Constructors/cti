@@ -175,7 +175,7 @@ public class RecipeMap {
 
             new QuantumMinerRecipe(cti.getResource("neutronium_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:overdense_neutronium_ore")),2),
-                    0.1F),
+                    0.2F),
 
             new QuantumMinerRecipe(cti.getResource("bismuthinite_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("etshtinker:bismuthinite_ore_deepslate")),3),
@@ -265,8 +265,8 @@ public class RecipeMap {
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("tinkerscalibration:titanium_ingot")),8),
                     0.95F),
             new QuantumMinerRecipe(cti.getResource("neutronium_quantum"),
-                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("avaritia:neutron_ingot")),1),
-                    0.1F),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("avaritia:neutron_ingot")),2),
+                    0.15F),
             new QuantumMinerRecipe(cti.getResource("bismuthinite_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("etshtinker:bismuth_ingot")),6),
                     1.2f),

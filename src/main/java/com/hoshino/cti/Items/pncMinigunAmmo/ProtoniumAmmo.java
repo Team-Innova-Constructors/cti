@@ -30,11 +30,11 @@ public class ProtoniumAmmo extends AbstractGunAmmoItem {
     }
     @Override
     public int getMaxDamage(ItemStack stack) {
-        return 2048;
+        return 1024;
     }
     @Override
     protected float getDamageMultiplier(Entity target, ItemStack ammoStack) {
-        return 90f;
+        return 20f;
     }
     @Override
     public float getAirUsageMultiplier(Minigun minigun, ItemStack ammoStack) {

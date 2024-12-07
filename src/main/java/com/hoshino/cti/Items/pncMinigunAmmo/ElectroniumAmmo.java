@@ -37,14 +37,14 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
     }
     @Override
     protected float getDamageMultiplier(Entity target, ItemStack ammoStack) {
-        return 27f;
+        return 36f;
     }
     @Override
     public float getAirUsageMultiplier(Minigun minigun, ItemStack ammoStack) {
         return 0.005f;
     }
     public float getRangeMultiplier(ItemStack ammoStack) {
-        return 3f;
+        return 2f;
     }
     protected DamageSource getDamageSource(Minigun minigun,Float amount) {
         return PierceThrough.pierceDamage(minigun.getPlayer(),amount );
