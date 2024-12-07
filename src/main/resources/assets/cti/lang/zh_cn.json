@@ -4,7 +4,7 @@
   "itemGroup.cti.machine": "CTI-机器",
 
   "block.cti.molten_infinity_fluid":"熔融无尽",
-  "block.cti.molten_invert_hoshino":"熔融星落钢-恐怖",
+  "block.cti.molten_invert_hoshino":"熔融星野-恐怖",
   "block.cti.molten_roxy":"熔融洛琪希",
 
 
@@ -240,11 +240,11 @@
   "material.cti.stellar_manyullyn.flavor": "-开发者材料-",
   "material.cti.stellar_manyullyn.encyclopedia": "未曾游历星空，怎知星辰不可触及？皆为幻想。",
 
-  "item.cti.invert_hoshino": "星落钢·恐怖",
+  "item.cti.invert_hoshino": "星野·恐怖",
   "cti.tooltip.item.invert_hoshino": "独爱流萤 开发者材料-",
-  "material.cti.invert_hoshino": "§l星落钢·恐怖",
+  "material.cti.invert_hoshino": "§l星野·恐怖",
   "material.cti.invert_hoshino.flavor": "是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.是我.",
-  "material.cti.invert_hoshino.encyclopedia": "在催化剂和反中子影响下反转的星落钢",
+  "material.cti.invert_hoshino.encyclopedia": "在催化剂和反中子影响下反转的星野锭",
 
   "material.cti.pyrocrystal": "永燃水晶",
   "material.cti.pyrocrystal.flavor": "宇宙珍奇之一",
@@ -355,7 +355,7 @@
 
   "modifier.cti.trauma": "创伤",
   "modifier.cti.trauma.flavor": "第二次机会",
-  "modifier.cti.trauma.description":"[需配合星落钢-恐怖 武器使用]你获得等同于你主手武器2^终焉值的伤害格挡,当你未满足狩猎要求时不会消散.当你处于狩猎状态时免疫一切伤害",
+  "modifier.cti.trauma.description":"[需配合星野-恐怖 武器使用]你获得等同于你主手武器2^终焉值的伤害格挡,当你未满足狩猎要求时不会消散.当你处于狩猎状态时免疫一切伤害",
 
   "modifier.cti.nerf_colossal": "泰坦杀手",
   "modifier.cti.nerf_colossal.flavor": "泰坦杀手",
@@ -393,6 +393,10 @@
   "modifier.cti.nerf_colossal.flavor": "泰坦杀手",
   "modifier.cti.nerf_colossal.description":"对生命值高于你的生物造成更多伤害",
 
+  "modifier.cti.decoying": "诱食物",
+  "modifier.cti.decoying.flavor": "吸引生物",
+  "modifier.cti.decoying.description":"使用时有概率召唤生物，等级越高召唤概率越高",
+
   "modifier.cti.pressure_loaded": "空气装载",
   "modifier.cti.pressure_loaded.flavor": "空气动力学！",
   "modifier.cti.pressure_loaded.description":"你的工具获得每级5000mL的压缩空气基础容量，优先消耗压缩空气而非耐久。根据压力增加伤害、挖掘速度和防御力。",
@@ -415,8 +419,8 @@
   "fluid.cti.molten_infinity": "熔融无尽",
   "item.cti.molten_infinity_bucket": "熔融无尽桶",
 
-  "fluid.cti.molten_invert_hoshino": "熔融星落钢-恐怖",
-  "item.cti.molten_invert_hoshino_bucket": "熔融星落钢-恐怖桶",
+  "fluid.cti.molten_invert_hoshino": "熔融星野-恐怖",
+  "item.cti.molten_invert_hoshino_bucket": "熔融星野-恐怖桶",
 
   "fluid.cti.molten_roxy": "熔融洛琪希",
   "item.cti.molten_roxy_bucket": "熔融洛琪希桶",
