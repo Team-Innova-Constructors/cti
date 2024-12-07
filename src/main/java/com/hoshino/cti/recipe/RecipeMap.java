@@ -265,7 +265,7 @@ public class RecipeMap {
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("tinkerscalibration:titanium_ingot")),8),
                     0.95F),
             new QuantumMinerRecipe(cti.getResource("neutronium_quantum"),
-                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:neutronium_ingot")),4),
+                    new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:neutron_ingot")),1),
                     0.1F),
             new QuantumMinerRecipe(cti.getResource("bismuthinite_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("etshtinker:bismuth_ingot")),6),
