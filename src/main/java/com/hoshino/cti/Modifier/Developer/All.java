@@ -51,7 +51,6 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
     }
     public All(){
         MinecraftForge.EVENT_BUS.addListener(this::livingHurtEvent);
-        MinecraftForge.EVENT_BUS.addListener(this::livingDamageEvent);
         MinecraftForge.EVENT_BUS.addListener(this::livingAttackEvent);
     }
 
@@ -63,33 +62,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                     ToolStack tool = ToolStack.from(stack);
                     if (tool.getModifierLevel(this) > 0) {
                         event.setCanceled(true);
-                        LivingHurtEvent hurtEvent =new LivingHurtEvent(player,event.getSource(),5);
-                        LivingDamageEvent damageEvent =new LivingDamageEvent(player,event.getSource(),5);
-                        MinecraftForge.EVENT_BUS.post(hurtEvent);
-                        MinecraftForge.EVENT_BUS.post(damageEvent);
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        super.registerHooks(hookBuilder);
-        hookBuilder.addHook(this, ModifierHooks.TOOL_DAMAGE,ModifierHooks.TOOL_STATS);
-    }
-
-    private void livingDamageEvent(LivingDamageEvent event) {
-        if (ls.isEmpty()){
-            init();
-        }
-        if (event.getEntity() instanceof Player player&&event.getSource().getEntity()!=player) {
-            for (EquipmentSlot slot : slotUtil.ALL) {
-                ItemStack stack = player.getItemBySlot(slot);
-                if (stack.getItem() instanceof IModifiable) {
-                    ToolStack tool = ToolStack.from(stack);
-                    if (tool.getModifierLevel(this) > 0 ) {
-                        event.setAmount(0);
+                        StellarBlade.summonStars(player);
                         if (event.getSource().getEntity() instanceof LivingEntity living&&!(living instanceof Player)){
                             CompoundTag tag = living.getPersistentData();
                             tag.putBoolean("vulnerable",true);
@@ -104,8 +77,8 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                                 tag.putFloat("legacyhealth",event.getEntity().getHealth()-event.getAmount());
                             }
                             else {
-                                if (event.getEntity().getHealth()>tag.getFloat("legacyhealth")){
-                                    event.getEntity().setHealth(tag.getFloat("legacyhealth"));
+                                if (living.getHealth()>tag.getFloat("legacyhealth")){
+                                    living.setHealth(tag.getFloat("legacyhealth"));
                                 }
                                 tag.putFloat("legacyhealth",tag.getFloat("legacyhealth")-event.getAmount());
                             }
@@ -127,63 +100,8 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                                 int i =0;
                                 while (i<10){
                                     MobEffect effect = ls.get(EtSHrnd().nextInt(ls.size()));
-                                    living.addEffect(new MobEffectInstance(effect,200,9,false,false));
+                                    event.getEntity().forceAddEffect(new MobEffectInstance(effect,200,9,false,false),player);
                                     i++;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            LazyOptional<IItemHandlerModifiable> optional = CuriosApi.getCuriosHelper().getEquippedCurios(player);
-            if (optional.isPresent()){
-                IItemHandlerModifiable handler =optional.orElse(null);
-                for (int i =0;i<handler.getSlots();i++){
-                    ItemStack stack =handler.getStackInSlot(i);
-                    if (stack.getItem() instanceof IModifiable) {
-                        ToolStack tool = ToolStack.from(stack);
-                        if (tool.getModifierLevel(this) > 0 ) {
-                            event.setAmount(0);
-                            if (event.getSource().getEntity() instanceof LivingEntity living&&!(living instanceof Player)){
-                                CompoundTag tag = living.getPersistentData();
-                                tag.putBoolean("vulnerable",true);
-                                if (!tag.contains("dmg_amplifier")){
-                                    tag.putFloat("dmg_amplifier",1.5f);
-                                }
-                                else {
-                                    tag.putFloat("dmg_amplifier",Math.max(1.5f,tag.getFloat("dmg_amplifier")+0.5f));
-                                }
-
-                                if (!tag.contains("legacyhealth")){
-                                    tag.putFloat("legacyhealth",event.getEntity().getHealth()-event.getAmount());
-                                }
-                                else {
-                                    if (event.getEntity().getHealth()>tag.getFloat("legacyhealth")){
-                                        event.getEntity().setHealth(tag.getFloat("legacyhealth"));
-                                    }
-                                    tag.putFloat("legacyhealth",tag.getFloat("legacyhealth")-event.getAmount());
-                                }
-
-                                if (!tag.contains("dmg_amplifier")){
-                                    tag.putFloat("dmg_amplifier",1.5f);
-                                }
-                                else {
-                                    tag.putFloat("atomic_dec",Math.max(20,tag.getFloat("atomic_dec")+20));
-                                }
-
-                                if (!tag.contains("dmg_amplifier")){
-                                    tag.putFloat("dmg_amplifier",1.5f);
-                                }
-                                else {
-                                    tag.putFloat("quark_disassemble",Math.max(20,tag.getFloat("quark_disassemble")+20));
-                                }
-                                if (ls!=null&&!ls.isEmpty()){
-                                    int j =0;
-                                    while (j<10){
-                                        MobEffect effect = ls.get(EtSHrnd().nextInt(ls.size()));
-                                        living.forceAddEffect(new MobEffectInstance(effect,200,9,false,false),player);
-                                        j++;
-                                    }
                                 }
                             }
                         }
@@ -193,14 +111,20 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
         }
     }
 
+    @Override
+    protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
+        super.registerHooks(hookBuilder);
+        hookBuilder.addHook(this, ModifierHooks.TOOL_DAMAGE,ModifierHooks.TOOL_STATS);
+    }
+
     private void livingHurtEvent(LivingHurtEvent event) {
-        if (event.getSource().getEntity() instanceof Player player&&event.getEntity()!=player){
+        if (event.getSource().getEntity() instanceof Player player&&!(event.getEntity() instanceof Player)){
             for (EquipmentSlot slot: slotUtil.ALL){
                 ItemStack stack = player.getItemBySlot(slot);
                 if (stack.getItem() instanceof IModifiable){
                     ToolStack tool = ToolStack.from(stack);
                     if (tool.getModifierLevel(this)>0&&event.getEntity()!=null&&!(event.getEntity() instanceof Player)){
-                        event.setAmount(event.getAmount()*2);
+                        event.setAmount(event.getAmount()*10);
                         CompoundTag tag = event.getEntity().getPersistentData();
                         tag.putBoolean("vulnerable",true);
                         if (!tag.contains("dmg_amplifier")){
@@ -252,7 +176,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                     if (stack.getItem() instanceof IModifiable) {
                         ToolStack tool = ToolStack.from(stack);
                         if (tool.getModifierLevel(this) > 0 ) {
-                            event.setAmount(event.getAmount()*2);
+                            event.setAmount(event.getAmount()*10);
                             if (tool.getModifierLevel(this)>0&&event.getEntity()!=null&&!(event.getEntity() instanceof Player)){
                                 CompoundTag tag = event.getEntity().getPersistentData();
                                 tag.putBoolean("vulnerable",true);
