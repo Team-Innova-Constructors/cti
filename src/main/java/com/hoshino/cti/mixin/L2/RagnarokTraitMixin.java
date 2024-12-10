@@ -2,14 +2,17 @@ package com.hoshino.cti.mixin.L2;
 
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.hoshino.cti.register.ctiModifiers;
+import com.marth7th.solidarytinker.register.TinkerCuriosModifier;
 import com.marth7th.solidarytinker.register.solidarytinkerModifiers;
 import com.marth7th.solidarytinker.util.method.ModifierLevel;
 import com.xiaoyue.tinkers_ingenuity.register.TIModifiers;
+import com.xiaoyue.tinkers_ingenuity.utils.ToolUtils;
 import dev.xkmc.l2hostility.compat.curios.EntitySlotAccess;
 import dev.xkmc.l2hostility.content.traits.legendary.RagnarokTrait;
 import mekanism.common.registries.MekanismItems;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -24,7 +27,7 @@ import java.util.List;
 @Mixin(value = RagnarokTrait.class, remap = false)
 public abstract class RagnarokTraitMixin {
     @Inject(at = {@At("HEAD")}, method = {"allowSeal"}, cancellable = true)
-    private static void Neutralization(EntitySlotAccess access, CallbackInfoReturnable<Boolean> cir){
+    private static void Neutralization(EntitySlotAccess access, CallbackInfoReturnable<Boolean> cir) {
         //防止自身被封印
         List<Modifier> sealModifier = new ArrayList<>();
         sealModifier.add(solidarytinkerModifiers.TACTICSPROTECT_STATIC_MODIFIER.get());//星野
@@ -40,15 +43,23 @@ public abstract class RagnarokTraitMixin {
         sealModifier.add(ctiModifiers.ionize_induced.get());//感电水晶
         sealModifier.add(TIModifiers.SEA_DREAM.get());//海梦
         for (Modifier modifier : sealModifier) {
-            if (ModifierUtil.getModifierLevel(access.get(),modifier.getId())>0||access.get()==MekanismItems.MEKASUIT_HELMET.getItemStack()||access.get()== MekanismItems.MEKASUIT_BODYARMOR.getItemStack()||access.get()== MekanismItems.MEKASUIT_PANTS.getItemStack()||access.get()== MekanismItems.MEKASUIT_BOOTS.getItemStack()) {
+            if (ModifierUtil.getModifierLevel(access.get(), modifier.getId()) > 0 || access.get() == MekanismItems.MEKASUIT_HELMET.getItemStack() || access.get() == MekanismItems.MEKASUIT_BODYARMOR.getItemStack() || access.get() == MekanismItems.MEKASUIT_PANTS.getItemStack() || access.get() == MekanismItems.MEKASUIT_BOOTS.getItemStack()) {
                 cir.setReturnValue(false);
             }
         }
     }
+
     @Inject(at = {@At("HEAD")}, method = {"postHurtImpl"}, cancellable = true)
     private void ignore(int level, LivingEntity attacker, LivingEntity target, CallbackInfo ci) {
-        //这个列表里面的是只要身上4盔甲/主副有这个材料就会让诸神黄昏对所有装备都不生效
-        if (target instanceof Player) {
+        if (target instanceof Player player) {
+            //戒指专属
+            List<ItemStack> curio = ToolUtils.Curios.getStacks(player);
+            for (ItemStack curios : curio) {
+                if (ModifierUtil.getModifierLevel(curios, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId()) > 0) {
+                    ci.cancel();
+                }
+            }
+            //这个列表里面的是只要身上4盔甲/主副有这个材料就会让诸神黄昏对所有装备都不生效
             List<Modifier> AllowModifier = new ArrayList<>();
             AllowModifier.add(ctiModifiers.INFINITY_STATIC_MODIFIER.get());//无尽
             AllowModifier.add(ctiModifiers.trauma.get());//恐怖
