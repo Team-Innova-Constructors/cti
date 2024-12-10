@@ -1,4 +1,4 @@
-package com.hoshino.cti.Modifier.Contributors;
+package com.hoshino.cti.Modifier.Developer;
 
 import com.hoshino.cti.cti;
 import com.marth7th.solidarytinker.extend.superclass.ArmorModifier;

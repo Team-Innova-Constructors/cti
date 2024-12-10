@@ -35,7 +35,7 @@ public class LivingEvents {
     }
 
     private void onFakePlayerHurt(LivingHurtEvent event) {
-        if(event.getEntity().getMaxHealth()>10000&&event.getSource().getEntity() instanceof FakePlayer fakePlayer&&!(fakePlayer instanceof DisposibleFakePlayer)){
+        if(event.getEntity().getMaxHealth()>10000&&event.getSource().getEntity() instanceof FakePlayer fakePlayer&&!(fakePlayer instanceof DisposibleFakePlayer)&&event.getAmount()<2147483647){
             event.setCanceled(true);
         }
     }

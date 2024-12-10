@@ -73,5 +73,6 @@ public class ctiModifiers {
     public static final StaticModifier<FixedOracular> fixed_oracular= MODIFIERS.register("fixed_oracular", FixedOracular::new);
     public static final StaticModifier<OverwriteKnightGlory> OverwriteKnightGlory= MODIFIERS.register("knightglory", OverwriteKnightGlory::new);
     public static final StaticModifier<FixedPurify> fixed_purify= MODIFIERS.register("fixed_purify", FixedPurify::new);
+    public static final StaticModifier<Flying> Flying= MODIFIERS.register("flying", Flying::new);
     public static final StaticModifier<CombustorModifier> combustor_modifier= MODIFIERS.register("combustor_modifier", CombustorModifier::new);
 }
