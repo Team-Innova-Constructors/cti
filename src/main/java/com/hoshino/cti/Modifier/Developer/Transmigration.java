@@ -1,4 +1,4 @@
-package com.hoshino.cti.Modifier.Contributors;
+package com.hoshino.cti.Modifier.Developer;
 
 import com.hoshino.cti.register.ctiEffects;
 import com.hoshino.cti.register.ctiModifiers;

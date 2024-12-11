@@ -393,9 +393,13 @@
   "modifier.cti.nerf_colossal.flavor": "泰坦杀手",
   "modifier.cti.nerf_colossal.description":"对生命值高于你的生物造成更多伤害",
 
+  "modifier.cti.flying": "飞行模式",
+  "modifier.cti.flying.flavor": "安全飞行",
+  "modifier.cti.flying.description":"对生命值高于你的生物造成更多伤害",
+
   "modifier.cti.decoying": "诱食",
   "modifier.cti.decoying.flavor": "吸引生物",
-  "modifier.cti.decoying.description":"使用时有概率召唤生物，等级越高召唤概率越高",
+  "modifier.cti.decoying.description":"装备上具有此词条装备时获得飞行能力",
 
   "modifier.cti.pressure_loaded": "空气装载",
   "modifier.cti.pressure_loaded.flavor": "空气动力学！",

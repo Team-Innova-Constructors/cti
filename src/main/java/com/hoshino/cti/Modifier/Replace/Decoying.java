@@ -4,10 +4,8 @@ import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.Chicken;
-import net.minecraft.world.entity.animal.Cow;
-import net.minecraft.world.entity.animal.Rabbit;
-import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.animal.*;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.FakePlayer;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -23,9 +21,8 @@ public class Decoying extends BattleModifier {
         if(!(context.getAttacker() instanceof FakePlayer)) {
             LivingEntity player= context.getPlayerAttacker();
             LivingEntity target= context.getLivingTarget();
-            int random = RANDOM.nextInt(1, 5);
-            int SpawnRandom=RANDOM.nextInt(Math.max(10,100-20*modifier.getLevel()));
-            if (target != null&&SpawnRandom<11) {
+            int random = RANDOM.nextInt(1, modifier.getLevel()+1);
+            if (target != null) {
                 Level World=target.getLevel();
                 switch (random){
                     case 1:
@@ -36,10 +33,10 @@ public class Decoying extends BattleModifier {
                         }
                         break;
                     case 2:
-                        Cow cow = EntityType.COW.create(World);
-                        this.spawnAnimal(World,cow);
-                        if (cow != null) {
-                            cow.moveTo(target.getPosition(0));
+                        Pig pig = EntityType.PIG.create(World);
+                        this.spawnAnimal(World,pig);
+                        if (pig != null) {
+                            pig.moveTo(target.getPosition(0));
                         }
                         break;
                     case 3:
@@ -50,10 +47,24 @@ public class Decoying extends BattleModifier {
                         }
                         break;
                     case 4:
+                        Cow cow=EntityType.COW.create(World);
+                        this.spawnAnimal(World,cow);
+                        if (cow != null) {
+                            cow.moveTo(target.getPosition(0));
+                        }
+                        break;
+                    case 5:
                         Rabbit rabbit=EntityType.RABBIT.create(World);
                         this.spawnAnimal(World,rabbit);
                         if (rabbit != null) {
                             rabbit.moveTo(target.getPosition(0));
+                        }
+                        break;
+                    case 6:
+                        Villager villager=EntityType.VILLAGER.create(World);
+                        this.spawnAnimal(World,villager);
+                        if (villager != null) {
+                            villager.moveTo(target.getPosition(0));
                         }
                         break;
                 }
