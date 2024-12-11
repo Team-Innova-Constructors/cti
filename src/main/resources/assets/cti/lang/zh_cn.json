@@ -300,6 +300,10 @@
   "modifier.cti.hardcore.flavor": "字面意思的硬核",
   "modifier.cti.hardcore.description":"增加两个防御槽",
 
+  "modifier.cti.reflect": "反射",
+  "modifier.cti.reflect.flavor": "谁家棘刺背心",
+  "modifier.cti.reflect.description":"每级反射原伤害10%给攻击者，会计算全身总装备词条等级",
+
   "modifier.cti.mutation": "突变",
   "modifier.cti.mutation.flavor": "血肉在药物刺激下发生了异变，但他似乎屈服于你",
   "modifier.cti.mutation.description":"增加防御升级能力各一个槽位",
