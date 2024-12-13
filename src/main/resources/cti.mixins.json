@@ -7,7 +7,6 @@
   "mixins": [
     "EffectMixin",
     "EntityMixin",
-    "EventMixin",
     "LivingEntityMixin",
     "AdAstraMixin.AcidRainTick",
     "AdAstraMixin.CryoFuelLiquidBlockMixin",
@@ -15,12 +14,17 @@
     "AdAstraMixin.TemperatureTick",
     "AetherMixin.cloud",
     "Eni.CubeMixin",
+    "ForgeEventMixin.EventMixin",
+    "ForgeEventMixin.LivingDamageEventMixin",
+    "ForgeEventMixin.LivingHurtEventMixin",
+    "L2.EffectUtilMixin",
     "L2.RagnarokTraitMixin",
     "L2.RepellingMixin",
     "L2.UndyingTraitMixin",
     "PnCMixin.AirGrateMixin",
     "TconMixin.InsatiableMixin",
-    "TconMixin.KineticMixin"
+    "TconMixin.KineticMixin",
+    "TIMixin.ToolUtilsMixin"
   ],
   "client": [
   ],

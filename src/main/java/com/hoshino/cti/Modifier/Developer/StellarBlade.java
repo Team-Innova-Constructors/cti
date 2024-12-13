@@ -56,52 +56,6 @@ public class StellarBlade extends etshmodifieriii {
     public static final List<Item> ls = List.of(ctiItem.star_blaze.get(),ctiItem.star_pressure.get(),ctiItem.star_ionize.get(),ctiItem.star_frozen.get());
 
     @Override
-    public void modifierOnAttacked(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
-        super.modifierOnAttacked(tool, modifier, context, slotType, source, amount, isDirectDamage);
-        LivingEntity attacker = context.getEntity();
-        if (source.getEntity()!=null&&source==DamageSource.thorns(source.getEntity())){
-            return;
-        }
-        if (source.getEntity() instanceof Player){
-            return;
-        }
-        if (attacker instanceof Player player&&amount>5&&!player.getCooldowns().isOnCooldown(tool.getItem())&&modifier.getLevel()>0) {
-            List<Mob> mobbbbbbb = context.getEntity().level.getEntitiesOfClass(Mob.class, new AABB(player.getX() - 16, player.getY() - 16, player.getZ() - 16, player.getX() + 16, player.getY() + 16, player.getZ() + 16));
-            if (!mobbbbbbb.isEmpty()) {
-                for (Mob target : mobbbbbbb) {
-                    if (target != null) {
-                        int c = 0;
-                        while (c < EtSHrnd().nextInt(4) + 2) {
-                            Level level = player.level;
-                            Vec3 vec3 = getScatteredVec3(new Vec3(0, -0.25, 0), 0.57735);
-                            double d = EtSHrnd().nextDouble() * 20;
-                            Vec3 direction = new Vec3(-(30 + d) * vec3.x, -(30 + d) * vec3.y, -(30 + d) * vec3.z);
-                            FallenStars fallenStars;
-                            int rnd = EtSHrnd().nextInt(4);
-                            if (rnd == 1) {
-                                fallenStars = new FallenStars(ctiEntity.star_pressure.get(), level, ls.get(1));
-                            } else if (rnd == 2) {
-                                fallenStars = new FallenStars(ctiEntity.star_ionize.get(), level, ls.get(2));
-                            } else if (rnd == 3) {
-                                fallenStars = new FallenStars(ctiEntity.star_frozen.get(), level, ls.get(3));
-                            } else {
-                                fallenStars = new FallenStars(ctiEntity.star_blaze.get(), level, ls.get(0));
-                            }
-                            fallenStars.setOwner(player);
-                            fallenStars.baseDamage = amount;
-                            fallenStars.setDeltaMovement(vec3);
-                            fallenStars.setPos(target.getX() + direction.x, target.getY() + target.getBbHeight() + direction.y, target.getZ() + direction.z);
-                            player.level.addFreshEntity(fallenStars);
-                            c++;
-                        }
-                    }
-                }
-                player.getCooldowns().addCooldown(tool.getItem(),10);
-            }
-        }
-    }
-
-    @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (attacker instanceof Player player&&target!=null&&projectile instanceof AbstractArrow arrow&&!(target instanceof Player)){
             int c =0;

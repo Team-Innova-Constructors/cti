@@ -1,21 +1,31 @@
 package com.hoshino.cti.Event;
 
+import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
+import com.aizistral.enigmaticlegacy.items.EnigmaticItem;
+import com.aizistral.enigmaticlegacy.registries.EnigmaticItems;
 import com.hoshino.cti.Entity.DisposibleFakePlayer;
 import com.hoshino.cti.Entity.specialDamageSource.Environmental;
 import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
 import com.hoshino.cti.register.ctiEffects;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
+
+import java.util.Collection;
 
 public class LivingEvents {
     public LivingEvents(){
@@ -24,6 +34,28 @@ public class LivingEvents {
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onPierceHurt);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onFakePlayerHurt);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onPlayerHurt);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST,this::onEffectApply);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEffectApply);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST,this::onPlayerTick);
+    }
+
+    private void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.player instanceof ServerPlayer player&& SuperpositionHandler.hasCurio(player,EnigmaticItems.THE_CUBE)){
+            Collection<MobEffectInstance> harmeffect = player.getActiveEffects();
+            for (int i = 0; i < harmeffect.size(); i++) {
+                MobEffectInstance effect = harmeffect.stream().toList().get(i);
+                MobEffect harm = effect.getEffect();
+                if (harm.getCategory() == MobEffectCategory.HARMFUL) {
+                    player.removeEffect(harm);
+                }
+            }
+        }
+    }
+
+    private void onEffectApply(MobEffectEvent.Applicable event) {
+        if (event.getEntity() instanceof Player player&&event.getEffectInstance().getEffect().getCategory()== MobEffectCategory.HARMFUL&& SuperpositionHandler.hasCurio(player,EnigmaticItems.THE_CUBE)){
+            event.setResult(Event.Result.DENY);
+        }
     }
 
     private void onPlayerHurt(LivingHurtEvent event) {

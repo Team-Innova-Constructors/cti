@@ -26,6 +26,6 @@ public class FreezeShieldToolCap implements IFreezeShielding, ToolCapabilityProv
 
     @Override
     public float getFreezeShieldinng() {
-        return tool.get().getStats().get(ctiToolStats.SCORCH_RESISTANCE);
+        return tool.get().getStats().get(ctiToolStats.FROZEN_RESISTANCE);
     }
 }

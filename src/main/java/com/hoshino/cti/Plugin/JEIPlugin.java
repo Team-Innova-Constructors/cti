@@ -3,6 +3,7 @@ package com.hoshino.cti.Plugin;
 import blusunrize.immersiveengineering.api.crafting.IERecipeTypes;
 import blusunrize.immersiveengineering.api.excavator.MineralMix;
 import blusunrize.immersiveengineering.common.register.IEBlocks;
+import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.hoshino.cti.cti;
 import com.hoshino.cti.integration.*;
 import com.hoshino.cti.recipe.*;
@@ -16,6 +17,9 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import slimeknights.tconstruct.library.recipe.TinkerRecipeTypes;
+import slimeknights.tconstruct.library.recipe.fuel.MeltingFuel;
+import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 
 import java.util.List;
 
@@ -26,6 +30,7 @@ public class JEIPlugin implements IModPlugin {
     public static RecipeType<QuantumMinerRecipe> QUANTUM_MINING = new RecipeType<>(QuantumMinerRecipeCategory.UID, QuantumMinerRecipe.class);
     public static RecipeType<ReactorNeutronCollectorRecipe> NEUTRON_COLLECTING = new RecipeType<>(ReactorNeutronCollectorRecipeCategory.UID, ReactorNeutronCollectorRecipe.class);
     public static RecipeType<MineralMix> MINERAL_MIX = new RecipeType<>(ImmersiveMineRecipeCategory.UID, MineralMix.class);
+    public static RecipeType<MeltingFuel> MELTING_FUEL = new RecipeType<>(MeltingFuelRecipeCategory.UID, MeltingFuel.class);
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -39,6 +44,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCategories(new QuantumMinerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new ReactorNeutronCollectorRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new ImmersiveMineRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new MeltingFuelRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -55,7 +61,10 @@ public class JEIPlugin implements IModPlugin {
 
         if (Minecraft.getInstance().level != null) {
             List<MineralMix> mineralMixes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(IERecipeTypes.MINERAL_MIX.get());
+            List<MeltingFuel> meltingFuels = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(TinkerRecipeTypes.FUEL.get());
+
             registration.addRecipes(MINERAL_MIX,mineralMixes);
+            registration.addRecipes(MELTING_FUEL,meltingFuels);
         }
     }
 
@@ -67,6 +76,12 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ctiItem.quantum_miner_advanced.get()),QUANTUM_MINING);
         registration.addRecipeCatalyst(new ItemStack(ctiItem.reactor_neutron_collector.get()),NEUTRON_COLLECTING);
         registration.addRecipeCatalyst(new ItemStack(IEBlocks.Multiblocks.EXCAVATOR),MINERAL_MIX);
+
+        registration.addRecipeCatalyst(new ItemStack(TinkerSmeltery.smelteryController),MELTING_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(TinkerSmeltery.scorchedAlloyer),MELTING_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(TinkerSmeltery.searedMelter),MELTING_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(TinkerSmeltery.foundryController),MELTING_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(etshtinkerItems.constrained_plasma_saber.get()),MELTING_FUEL);
     }
 
 

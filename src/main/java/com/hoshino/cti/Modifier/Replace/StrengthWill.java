@@ -20,7 +20,7 @@ public class StrengthWill extends XIModifier {
     }
     public static void onLivDamage(LivingEntity entity) {
         entity.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
-            if (holder.get(KEY, 0) > 0 && entity.getHealth() >= entity.getMaxHealth()&&EnvironmentSystem.allEnvironmentValue(entity)<0) {
+            if (holder.get(KEY, 0) > 0 && entity.getHealth() >= entity.getMaxHealth()&&EnvironmentSystem.IsEnvironmentalSafe(entity)) {
                 EntityUtils.addEffect(entity, TIEffects.LAST_STAND.get(), 40);
             }
         });

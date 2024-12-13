@@ -1,6 +1,7 @@
 package com.hoshino.cti.mixin;
 
 import earth.terrarium.ad_astra.common.registry.ModDamageSource;
+import me.desht.pneumaticcraft.common.entity.semiblock.AbstractSemiblockEntity;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,6 +28,9 @@ public class EntityMixin {
             }
         }else if(entity!=null&&entity.getPersistentData().getBoolean("vulnerable")){
             cir.setReturnValue(false);
+        }
+        if(entity instanceof AbstractSemiblockEntity&&!source.isBypassInvul()){
+            cir.setReturnValue(true);
         }
 
     }
