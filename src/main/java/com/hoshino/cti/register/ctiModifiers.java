@@ -76,4 +76,5 @@ public class ctiModifiers {
     public static final StaticModifier<Flying> Flying= MODIFIERS.register("flying", Flying::new);
     public static final StaticModifier<CombustorModifier> combustor_modifier= MODIFIERS.register("combustor_modifier", CombustorModifier::new);
     public static final StaticModifier<NerfIgneous> igneous= MODIFIERS.register("igneous", NerfIgneous::new);
+    public static final StaticModifier<Reflect> reflectStaticModifier= MODIFIERS.register("reflect", Reflect::new);
 }
