@@ -2,6 +2,7 @@ package com.hoshino.cti.Entity.Systems;
 
 import cofh.core.init.CoreMobEffects;
 import cofh.core.init.CoreParticles;
+import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import com.hoshino.cti.Capabilitiess.*;
@@ -21,6 +22,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -66,6 +68,11 @@ public class EnvironmentSystem {
             living.invulnerableTime = 0;
             if (living instanceof Player player) {
                 living.hurt(Environmental.playerPressureSource(Float.MAX_VALUE, player),Float.MAX_VALUE);
+                if (!living.isDeadOrDying()){
+                    living.die(Environmental.pressureSource(Float.MAX_VALUE));
+                    living.setHealth(0);
+                    living.remove(Entity.RemovalReason.KILLED);
+                }
             }else {
                 living.hurt(Environmental.pressureSource(Float.MAX_VALUE), Float.MAX_VALUE);
             }
