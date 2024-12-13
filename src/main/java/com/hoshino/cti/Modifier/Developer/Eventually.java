@@ -90,7 +90,7 @@ public class Eventually extends BattleModifier {
                 int ev=ToolData.getInt(HIT);
                 int level=ModifierUtil.getModifierLevel(player.getMainHandItem(),this.getId());
                 if(ev<128&&!player.hasEffect(ctiEffects.ev.get())){
-                   ToolData.putInt(HIT,ev+1);
+                   ToolData.putInt(HIT,ev+8);
                 }
                 else {
                     player.addEffect(new MobEffectInstance(ctiEffects.ev.get(),2560 * level,level-1,true,true));

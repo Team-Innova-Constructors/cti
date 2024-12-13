@@ -13,6 +13,7 @@
     "AdAstraMixin.CryoFuelLiquidBlockMixin",
     "AdAstraMixin.ModUtilMixin",
     "AdAstraMixin.TemperatureTick",
+    "AetherMixin.cloud",
     "Eni.CubeMixin",
     "L2.RagnarokTraitMixin",
     "L2.RepellingMixin",

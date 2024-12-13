@@ -19,7 +19,6 @@ public class Decoying extends BattleModifier {
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         if(!(context.getAttacker() instanceof FakePlayer)) {
-            LivingEntity player= context.getPlayerAttacker();
             LivingEntity target= context.getLivingTarget();
             int random = RANDOM.nextInt(1, modifier.getLevel()+1);
             if (target != null) {
