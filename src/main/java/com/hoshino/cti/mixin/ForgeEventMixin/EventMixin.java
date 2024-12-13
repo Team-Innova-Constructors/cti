@@ -1,11 +1,10 @@
-package com.hoshino.cti.mixin;
+package com.hoshino.cti.mixin.ForgeEventMixin;
 
 import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
 import com.hoshino.cti.Entity.specialDamageSource.Environmental;
 import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;

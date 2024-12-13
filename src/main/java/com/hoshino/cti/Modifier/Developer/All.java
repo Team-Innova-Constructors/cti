@@ -1,6 +1,8 @@
 package com.hoshino.cti.Modifier.Developer;
 
 import com.c2h6s.etshtinker.util.slotUtil;
+import com.hoshino.cti.Entity.Projectiles.FallenStars;
+import com.hoshino.cti.register.ctiEntity;
 import com.hoshino.cti.register.ctiToolStats;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffect;
@@ -8,8 +10,12 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -37,6 +43,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
+import static com.c2h6s.etshtinker.util.vecCalc.getScatteredVec3;
 
 public class All extends NoLevelsModifier implements ToolDamageModifierHook , ToolStatsModifierHook {
     public static List<MobEffect> ls =new ArrayList<>(List.of());
@@ -63,6 +70,40 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                     if (tool.getModifierLevel(this) > 0) {
                         event.setCanceled(true);
                         StellarBlade.summonStars(player);
+                        if (event.getAmount()>5&&slotUtil.ARMOR.contains(slot)&&!player.getCooldowns().isOnCooldown(tool.getItem())) {
+                            List<Mob> mobbbbbbb = player.level.getEntitiesOfClass(Mob.class, new AABB(player.getX() - 16, player.getY() - 16, player.getZ() - 16, player.getX() + 16, player.getY() + 16, player.getZ() + 16));
+                            if (!mobbbbbbb.isEmpty()) {
+                                for (Mob target : mobbbbbbb) {
+                                    if (target != null) {
+                                        int c = 0;
+                                        while (c < EtSHrnd().nextInt(3) + 1) {
+                                            Level level = player.level;
+                                            Vec3 vec3 = getScatteredVec3(new Vec3(0, -0.25, 0), 0.57735);
+                                            double d = EtSHrnd().nextDouble() * 20;
+                                            Vec3 direction = new Vec3(-(30 + d) * vec3.x, -(30 + d) * vec3.y, -(30 + d) * vec3.z);
+                                            FallenStars fallenStars;
+                                            int rnd = EtSHrnd().nextInt(4);
+                                            if (rnd == 1) {
+                                                fallenStars = new FallenStars(ctiEntity.star_pressure.get(), level, StellarBlade.ls.get(1));
+                                            } else if (rnd == 2) {
+                                                fallenStars = new FallenStars(ctiEntity.star_ionize.get(), level, StellarBlade.ls.get(2));
+                                            } else if (rnd == 3) {
+                                                fallenStars = new FallenStars(ctiEntity.star_frozen.get(), level, StellarBlade.ls.get(3));
+                                            } else {
+                                                fallenStars = new FallenStars(ctiEntity.star_blaze.get(), level, StellarBlade.ls.get(0));
+                                            }
+                                            fallenStars.setOwner(player);
+                                            fallenStars.baseDamage = event.getAmount();
+                                            fallenStars.setDeltaMovement(vec3);
+                                            fallenStars.setPos(target.getX() + direction.x, target.getY() + target.getBbHeight() + direction.y, target.getZ() + direction.z);
+                                            player.level.addFreshEntity(fallenStars);
+                                            c++;
+                                        }
+                                    }
+                                }
+                                player.getCooldowns().addCooldown(tool.getItem(),10);
+                            }
+                        }
                         if (event.getSource().getEntity() instanceof LivingEntity living&&!(living instanceof Player)){
                             CompoundTag tag = living.getPersistentData();
                             tag.putBoolean("vulnerable",true);

@@ -164,7 +164,15 @@ public class EnvironmentSystem {
         return living.getPersistentData().getFloat(PRESSURE_AMOUNT)-50;
     }
     public static float allEnvironmentValue(@NotNull LivingEntity living){
-        return getPressureValue(living)+getFrozenValue(living)+getIonizedValue(living)+getScorchValue(living)-200;
+        return Math.max(getPressureValue(living),0)+Math.max(getFrozenValue(living),0)+Math.max(getIonizedValue(living),0)+Math.max(getScorchValue(living),0);
+    }
+    public static boolean IsEnvironmentalSafe(@NotNull LivingEntity living){
+        Holder<Biome> biome =living.level.getBiome(living.blockPosition());
+        float lvl_ionize = getBiomeIonizeLevel(biome) - getElectricResistance(living);
+        float lvl_scorch = getBiomeScorchLevel(biome) -getScorchResistance(living) -getBiomeFreezeLevel(biome);
+        float lvl_freeze = getBiomeFreezeLevel(biome) -getFreezeResistance(living) -getBiomeScorchLevel(biome);
+        float lvl_pressure = getBiomePressureLevel(biome) - getPressureResistance(living);
+        return lvl_freeze<=0&&lvl_pressure<=0&&lvl_scorch<=0&&lvl_ionize<=0;
     }
 
     public static float getElectricResistance(LivingEntity living){
