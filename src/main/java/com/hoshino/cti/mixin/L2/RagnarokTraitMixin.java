@@ -1,5 +1,7 @@
 package com.hoshino.cti.mixin.L2;
 
+import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
+import com.aizistral.enigmaticlegacy.registries.EnigmaticItems;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.hoshino.cti.register.ctiModifiers;
 import com.marth7th.solidarytinker.register.TinkerCuriosModifier;
@@ -20,6 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +46,7 @@ public abstract class RagnarokTraitMixin {
         sealModifier.add(ctiModifiers.ionize_induced.get());//感电水晶
         sealModifier.add(TIModifiers.SEA_DREAM.get());//海梦
         for (Modifier modifier : sealModifier) {
-            if (ModifierUtil.getModifierLevel(access.get(), modifier.getId()) > 0 || access.get() == MekanismItems.MEKASUIT_HELMET.getItemStack() || access.get() == MekanismItems.MEKASUIT_BODYARMOR.getItemStack() || access.get() == MekanismItems.MEKASUIT_PANTS.getItemStack() || access.get() == MekanismItems.MEKASUIT_BOOTS.getItemStack()) {
+            if (ModifierUtil.getModifierLevel(access.get(), modifier.getId()) > 0) {
                 cir.setReturnValue(false);
             }
         }
@@ -58,6 +61,9 @@ public abstract class RagnarokTraitMixin {
                 if (ModifierUtil.getModifierLevel(curios, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId()) > 0) {
                     ci.cancel();
                 }
+            }
+            if (SuperpositionHandler.hasCurio(player,EnigmaticItems.THE_CUBE)){
+                ci.cancel();
             }
             //这个列表里面的是只要身上4盔甲/主副有这个材料就会让诸神黄昏对所有装备都不生效
             List<Modifier> AllowModifier = new ArrayList<>();
