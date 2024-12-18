@@ -12,6 +12,7 @@
     "AdAstraMixin.CryoFuelLiquidBlockMixin",
     "AdAstraMixin.ModUtilMixin",
     "AdAstraMixin.TemperatureTick",
+    "AetherMixin.cloud",
     "Eni.CubeMixin",
     "ForgeEventMixin.EventMixin",
     "ForgeEventMixin.LivingDamageEventMixin",

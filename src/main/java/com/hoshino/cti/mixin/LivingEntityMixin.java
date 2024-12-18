@@ -2,6 +2,8 @@ package com.hoshino.cti.mixin;
 
 import com.hoshino.cti.Entity.Systems.EnvironmentSystem;
 import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.register.ctiModifiers;
+import com.marth7th.solidarytinker.util.method.ModifierLevel;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;

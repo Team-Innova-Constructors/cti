@@ -6,6 +6,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
@@ -38,6 +39,13 @@ public class TimeToJudge extends BattleModifier {
     public void LivingHurtEvent(LivingHurtEvent event) {
         if (event.getEntity() != null && event.getEntity().getTags().contains("wick")) {
             event.setAmount(event.getAmount() * 1.4f);
+        }
+    }
+
+    @Override
+    public void LivingAttackEvent(LivingAttackEvent event) {
+        if (event.getEntity() != null && event.getEntity().getTags().contains("wick")) {
+            event.getSource().bypassInvul().bypassMagic();
         }
     }
 }
