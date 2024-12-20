@@ -425,6 +425,10 @@
   "modifier.cti.igneous.flavor": "火成岩！",
   "modifier.cti.igneous.description": "工具会在火中变得更加锋利和坚固，等级越高加成越明显。",
 
+  "modifier.cti.egg_boost": "杀鸡取卵",
+  "modifier.cti.egg_boost.flavor": "某些时候把鸡宰了比等它生蛋更有效！",
+  "modifier.cti.egg_boost.description": "杀死鸡时额外掉落鸡蛋，等级越高掉落的越多。",
+
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
 

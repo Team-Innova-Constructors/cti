@@ -18,6 +18,8 @@ public abstract class UndyingTraitMixin {
             ci.cancel();
         }else if (event.getSource() instanceof PierceThrough||event.getSource() instanceof Environmental){
             ci.cancel();
+        }else if (entity.getMaxHealth()<=10||entity.getPersistentData().contains("atomic_dec")||entity.getPersistentData().contains("quark_disassemble")){
+            ci.cancel();
         }
     }
 }
