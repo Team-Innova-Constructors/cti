@@ -115,7 +115,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                             }
 
                             if (!tag.contains("legacyhealth")){
-                                tag.putFloat("legacyhealth",event.getEntity().getHealth()-event.getAmount());
+                                tag.putFloat("legacyhealth",living.getHealth()-event.getAmount());
                             }
                             else {
                                 if (living.getHealth()>tag.getFloat("legacyhealth")){
@@ -124,15 +124,15 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                                 tag.putFloat("legacyhealth",tag.getFloat("legacyhealth")-event.getAmount());
                             }
 
-                            if (!tag.contains("dmg_amplifier")){
-                                tag.putFloat("dmg_amplifier",1.5f);
+                            if (!tag.contains("atomic_dec")){
+                                tag.putFloat("atomic_dec",20f);
                             }
                             else {
                                 tag.putFloat("atomic_dec",Math.max(20,tag.getFloat("atomic_dec")+20));
                             }
 
-                            if (!tag.contains("dmg_amplifier")){
-                                tag.putFloat("dmg_amplifier",1.5f);
+                            if (!tag.contains("quark_disassemble")){
+                                tag.putFloat("quark_disassemble",20f);
                             }
                             else {
                                 tag.putFloat("quark_disassemble",Math.max(20,tag.getFloat("quark_disassemble")+20));
@@ -141,7 +141,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                                 int i =0;
                                 while (i<10){
                                     MobEffect effect = ls.get(EtSHrnd().nextInt(ls.size()));
-                                    event.getEntity().forceAddEffect(new MobEffectInstance(effect,200,9,false,false),player);
+                                    living.forceAddEffect(new MobEffectInstance(effect,200,9,false,false),player);
                                     i++;
                                 }
                             }
@@ -185,15 +185,15 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                             tag.putFloat("legacyhealth",tag.getFloat("legacyhealth")-event.getAmount());
                         }
 
-                        if (!tag.contains("dmg_amplifier")){
-                            tag.putFloat("dmg_amplifier",1.5f);
+                        if (!tag.contains("atomic_dec")){
+                            tag.putFloat("atomic_dec",20f);
                         }
                         else {
                             tag.putFloat("atomic_dec",Math.max(20,tag.getFloat("atomic_dec")+20));
                         }
 
-                        if (!tag.contains("dmg_amplifier")){
-                            tag.putFloat("dmg_amplifier",1.5f);
+                        if (!tag.contains("quark_disassemble")){
+                            tag.putFloat("quark_disassemble",20f);
                         }
                         else {
                             tag.putFloat("quark_disassemble",Math.max(20,tag.getFloat("quark_disassemble")+20));
