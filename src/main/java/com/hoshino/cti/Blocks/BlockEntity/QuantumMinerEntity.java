@@ -10,6 +10,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -30,10 +31,36 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 public class QuantumMinerEntity extends BlockEntity {
     public QuantumMinerEntity(BlockPos p_155229_, BlockState p_155230_) {
         super(ctiBlockEntityType.QUANTUM_MINER_ENTITY.get(), p_155229_, p_155230_);
+        this.DATA = new ContainerData() {
+            @Override
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> QuantumMinerEntity.this.PROGRESS;
+                    case 1 -> QuantumMinerEntity.this.MAX_PROGRESS;
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0 -> QuantumMinerEntity.this.PROGRESS = value;
+                    case 1 -> QuantumMinerEntity.this.MAX_PROGRESS = value;
+                }
+            }
+
+            @Override
+            public int getCount() {
+                return 2;
+            }
+        };
     }
     protected int MAX_ENERGY =2147483647;
     protected int MAX_TRANSFER =2147483647;
     protected int BASE_ENERGY_PERTICK =134217728;
+    public ContainerData DATA;
+    public int PROGRESS =0;
+    public int MAX_PROGRESS =20;
     private static final IItemHandler EMPTY =new IItemHandler() {
         @Override
         public int getSlots() {
@@ -167,11 +194,15 @@ public class QuantumMinerEntity extends BlockEntity {
         if (entity.ENERGY_STORAGE.getEnergyStored()<entity.BASE_ENERGY_PERTICK){
             return;
         }
+        if (entity.PROGRESS<=0&&!entity.itemStackHandler.extractItem(0,1,true).isEmpty()&&entity.itemStackHandler.extractItem(0,1,true).is(ctiItem.compressed_singularity.get())){
+            entity.itemStackHandler.extractItem(0,1,false);
+            entity.PROGRESS+=20;
+        }
         BlockEntity blockEntity =level.getBlockEntity(blockPos.above());
         if (blockEntity!=null){
             LazyOptional<IItemHandler> optional = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER);
             IItemHandler Handler =optional.orElse(EMPTY);
-            if (Handler!=EMPTY) {
+            if (Handler!=EMPTY&&entity.PROGRESS>0) {
                 int slotAmount = Handler.getSlots();
                 boolean checkoutput = false;
                 int effectiveSlot = 0;
@@ -186,7 +217,7 @@ public class QuantumMinerEntity extends BlockEntity {
                 }
                 Handler.insertItem(effectiveSlot, output, false);
                 entity.ENERGY_STORAGE.extractEnergy(entity.BASE_ENERGY_PERTICK, false);
-                entity.itemStackHandler.extractItem(0,1,false);
+                entity.PROGRESS--;
                 entity.setChanged();
             }
         }

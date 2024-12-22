@@ -12,6 +12,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.players.PlayerList;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -36,6 +37,9 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
     protected int MAX_ENERGY =2147483647;
     protected int MAX_TRANSFER =2147483647;
     protected int BASE_ENERGY_PERTICK =536870912;
+    public ContainerData DATA;
+    public int PROGRESS =0;
+    public int MAX_PROGRESS =20;
     private static final IItemHandler EMPTY =new IItemHandler() {
         @Override
         public int getSlots() {
@@ -162,6 +166,10 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
         if (entity.itemStackHandler.getStackInSlot(0).getItem()!=ctiItem.compressed_singularity.get()){
             return;
         }
+        if (entity.PROGRESS<=0&&!entity.itemStackHandler.extractItem(0,1,true).isEmpty()&&entity.itemStackHandler.extractItem(0,1,true).is(ctiItem.compressed_singularity.get())){
+            entity.itemStackHandler.extractItem(0,1,false);
+            entity.PROGRESS+=20;
+        }
         ServerLevel serverLevel =(ServerLevel)level;
         PlayerList list =serverLevel.getServer().getPlayerList();
         ItemStack output = getOutPut(level);
@@ -177,7 +185,7 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
             IItemHandler Handler =optional.orElse(EMPTY);
             boolean effective =false;
             for (int i=0;i<10;i++) {
-                if (Handler != EMPTY) {
+                if (Handler != EMPTY&&entity.PROGRESS>0) {
                     int slotAmount = Handler.getSlots();
                     boolean checkoutput = false;
                     int effectiveSlot = 0;
@@ -192,7 +200,11 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
                         return;
                     }
                     Handler.insertItem(effectiveSlot, output, false);
-                    entity.itemStackHandler.extractItem(0, 1, false);
+                    entity.PROGRESS--;
+                    if (entity.PROGRESS<=0&&!entity.itemStackHandler.extractItem(0,1,true).isEmpty()&&entity.itemStackHandler.extractItem(0,1,true).is(ctiItem.compressed_singularity.get())){
+                        entity.itemStackHandler.extractItem(0,1,false);
+                        entity.PROGRESS+=20;
+                    }
                     effective =true;
                     entity.setChanged();
                 }

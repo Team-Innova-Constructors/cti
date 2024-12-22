@@ -506,5 +506,16 @@
   "dimension.ad_astra.infernal": "炼狱",
   "dimension.ad_astra.uranus": "天王星",
   "dimension.ad_astra.jupiter": "木星",
-  "dimension.ad_astra.ionized_glacio": "电离冻土"
+  "dimension.ad_astra.ionized_glacio": "电离冻土",
+
+
+  "item.cti.upgrade_double_kit": "无限速度-能量升级安装器",
+  "item.cti.upgrade_energy_kit": "无限能量升级安装器",
+  "item.cti.upgrade_gas_kit": "无限气体升级安装器",
+  "item.cti.upgrade_speed_kit": "无限速度升级安装器",
+  "item.cti.chroma_upgrade_speed_kit": "速度升级套件T1",
+  "item.cti.aetherium_upgrade_speed_kit": "速度升级套件T2",
+  "item.cti.anti_upgrade_speed_kit": "速度升级套件T3",
+  "item.cti.upgrade_energy_kit_2": "高级无限能量升级安装器",
+  "item.cti.upgrade_energy_kit_3": "高高高高高级无限能量升级安装器"
 }

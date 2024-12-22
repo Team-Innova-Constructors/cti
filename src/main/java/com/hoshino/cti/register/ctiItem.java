@@ -5,6 +5,7 @@ import cofh.thermal.lib.common.ThermalFlags;
 import cofh.thermal.lib.item.AugmentItem;
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
 import com.hoshino.cti.Items.*;
+import com.hoshino.cti.Items.MekUpgrades.AdvancedUpgrade;
 import com.hoshino.cti.Items.Vehicle.RocketItemTier5;
 import com.hoshino.cti.Items.Wine.Unknown_Wine;
 import com.hoshino.cti.Items.ingots.uriel_ingot;
@@ -14,6 +15,7 @@ import com.hoshino.cti.Items.pncMinigunAmmo.UltraDenseAmmo;
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistries;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistry;
+import mekanism.api.Upgrade;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
@@ -195,5 +197,17 @@ public class ctiItem {
     public static final RegistryObject<Item> qdbeer = ITEMS.register("qdbeer", () -> new BoozeItem(1, 1,bottle_drinkItem().food(ctiWine.qdbeer)));
     public static final RegistryObject<Item> boomwine = ITEMS.register("boomwine", () -> new BoozeItem(1, 5,bottle_drinkItem().food(ctiWine.boomwine)));
     public static final RegistryObject<Item> fishbone_wine = ITEMS.register("fishbone_wine", () -> new BoozeItem(1, 1,tankard_drinkItem().food(ctiWine.fishbone_wine).craftRemainder(Items.ENCHANTED_GOLDEN_APPLE)));
+
+
+    //mek高级升级
+    public static final RegistryObject<Item> chroma_upgrade_speed_kit = ITEMS.register("chroma_upgrade_speed_kit", () -> new AdvancedUpgrade(12,true,List.of(Upgrade.SPEED)));
+    public static final RegistryObject<Item> aetherium_upgrade_speed_kit = ITEMS.register("aetherium_upgrade_speed_kit", () -> new AdvancedUpgrade(16,true,List.of(Upgrade.SPEED)));
+    public static final RegistryObject<Item> anti_upgrade_speed_kit = ITEMS.register("anti_upgrade_speed_kit", () -> new AdvancedUpgrade(20,true,List.of(Upgrade.SPEED)));
+    public static final RegistryObject<Item> upgrade_double_kit = ITEMS.register("upgrade_double_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.SPEED,Upgrade.ENERGY)));
+    public static final RegistryObject<Item> upgrade_energy_kit = ITEMS.register("upgrade_energy_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.ENERGY)));
+    public static final RegistryObject<Item> upgrade_gas_kit = ITEMS.register("upgrade_gas_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.GAS)));
+    public static final RegistryObject<Item> upgrade_speed_kit = ITEMS.register("upgrade_speed_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.SPEED)));
+    public static final RegistryObject<Item> upgrade_energy_kit_2 = ITEMS.register("upgrade_energy_kit_2", () -> new AdvancedUpgrade(12,false,List.of(Upgrade.ENERGY)));
+    public static final RegistryObject<Item> upgrade_energy_kit_3 = ITEMS.register("upgrade_energy_kit_3", () -> new AdvancedUpgrade(16,false,List.of(Upgrade.ENERGY)));
 
 }
