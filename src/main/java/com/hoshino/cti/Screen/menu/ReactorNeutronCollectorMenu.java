@@ -64,37 +64,7 @@ public class ReactorNeutronCollectorMenu extends GeneralMachineMenu {
 
     @Override
     public ItemStack quickMoveStack(Player player, int slot0) {
-        ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = this.slots.get(slot0);
-        if (slot.hasItem()) {
-            ItemStack itemstack1 = slot.getItem();
-            itemstack = itemstack1.copy();
-            if (slot0 != 0) {
-                if (slot0 >= 0 && slot0 < 24) {
-                    if (!this.moveItemStackTo(itemstack1, 25, 33, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (slot0 >= 24 && slot0 < 33 && !this.moveItemStackTo(itemstack1, 0, 25, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.moveItemStackTo(itemstack1, 0, 33, false)) {
-                return ItemStack.EMPTY;
-            }
-
-            if (itemstack1.isEmpty()) {
-                slot.set(ItemStack.EMPTY);
-            } else {
-                slot.setChanged();
-            }
-
-            if (itemstack1.getCount() == itemstack.getCount()) {
-                return ItemStack.EMPTY;
-            }
-
-            slot.onTake(player, itemstack1);
-        }
-
-        return itemstack;
+        return ItemStack.EMPTY;
     }
 
     @Override
