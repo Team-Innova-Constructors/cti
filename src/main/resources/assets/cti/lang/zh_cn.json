@@ -429,6 +429,10 @@
   "modifier.cti.egg_boost.flavor": "某些时候把鸡宰了比等它生蛋更有效！",
   "modifier.cti.egg_boost.description": "杀死鸡时额外掉落鸡蛋，等级越高掉落的越多。",
 
+  "modifier.cti.earth_core_crush": "地心崩裂",
+  "modifier.cti.earth_core_crush.flavor": "一镐即穿！",
+  "modifier.cti.earth_core_crush.description": "该工具的挖掘速度快到极致，且能够挖掘基岩。",
+
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
 

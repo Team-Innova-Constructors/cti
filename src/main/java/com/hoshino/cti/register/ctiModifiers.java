@@ -78,4 +78,5 @@ public class ctiModifiers {
     public static final StaticModifier<NerfIgneous> igneous= MODIFIERS.register("igneous", NerfIgneous::new);
     public static final StaticModifier<Reflect> reflectStaticModifier= MODIFIERS.register("reflect", Reflect::new);
     public static final StaticModifier<EggBoost> egg_boost= MODIFIERS.register("egg_boost", EggBoost::new);
+    public static final StaticModifier<FixedEarthCoreCrush> earth_core_crush= MODIFIERS.register("earth_core_crush", FixedEarthCoreCrush::new);
 }
