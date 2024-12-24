@@ -64,6 +64,7 @@ public class ctiItem {
     public static final RegistryEntry<RocketItemTier5<rocketTier5>> TIER_5_ROCKET = VEHICLES.register("tier_5_rocket", () -> new RocketItemTier5<>(ctiEntity.TIER_5_ROCKET.get(), 5, new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC)));
     public static final RegistryObject<Item> astra_tablet_5 = ITEMS.register("astra_tablet_5",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),5));
     public static final RegistryObject<Item> compressed_singularity = ITEMS.register("compressed_singularity",()->new compressedSingularityItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(64).fireResistant().tab(ctiTab.MIXC)));
+    public static final RegistryObject<Item> recipe_test_item = ITEMS.register("recipe_test_item", RecipeTestItem::new);
 
 
     public static final RegistryObject<BlockItem> unipolar_magnet = ITEMS.register("unipolar_magnet",()-> new BlockItem(ctiBlock.unipolar_magnet.get(), new Item.Properties().tab(ctiTab.MIXC)));
@@ -207,7 +208,7 @@ public class ctiItem {
     public static final RegistryObject<Item> upgrade_energy_kit = ITEMS.register("upgrade_energy_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.ENERGY)));
     public static final RegistryObject<Item> upgrade_gas_kit = ITEMS.register("upgrade_gas_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.GAS)));
     public static final RegistryObject<Item> upgrade_speed_kit = ITEMS.register("upgrade_speed_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.SPEED)));
-    public static final RegistryObject<Item> upgrade_energy_kit_2 = ITEMS.register("upgrade_energy_kit_2", () -> new AdvancedUpgrade(12,false,List.of(Upgrade.ENERGY)));
-    public static final RegistryObject<Item> upgrade_energy_kit_3 = ITEMS.register("upgrade_energy_kit_3", () -> new AdvancedUpgrade(16,false,List.of(Upgrade.ENERGY)));
+    public static final RegistryObject<Item> upgrade_energy_kit_2 = ITEMS.register("upgrade_energy_kit_2", () -> new AdvancedUpgrade(14,false,List.of(Upgrade.ENERGY)));
+    public static final RegistryObject<Item> upgrade_energy_kit_3 = ITEMS.register("upgrade_energy_kit_3", () -> new AdvancedUpgrade(20,false,List.of(Upgrade.ENERGY)));
 
 }
