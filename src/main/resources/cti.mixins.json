@@ -36,6 +36,7 @@
     "TIMixin.ToolUtilsMixin"
   ],
   "client": [
+    "GameRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

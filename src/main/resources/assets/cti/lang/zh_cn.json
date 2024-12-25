@@ -433,6 +433,10 @@
   "modifier.cti.earth_core_crush.flavor": "一镐即穿！",
   "modifier.cti.earth_core_crush.description": "该工具的挖掘速度快到极致，且能够挖掘基岩。",
 
+  "modifier.cti.anti_stun_goggles": "防眩眼镜",
+  "modifier.cti.anti_stun_goggles.flavor": "指防止屏幕前的你晕眩",
+  "modifier.cti.anti_stun_goggles.description": "取消受伤时的屏幕抖动。",
+
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
 
