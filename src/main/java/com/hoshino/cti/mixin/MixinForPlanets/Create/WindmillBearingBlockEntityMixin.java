@@ -23,7 +23,7 @@ public class WindmillBearingBlockEntityMixin {
                 cir.setReturnValue(8*f);
             }
             else if (level.dimension().equals(DimensionConstants.URANUS)){
-                cir.setReturnValue(36*f);
+                cir.setReturnValue(Math.max(24*f,256));
             }
         }
     }
