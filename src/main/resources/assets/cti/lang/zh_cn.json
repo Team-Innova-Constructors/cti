@@ -521,5 +521,8 @@
   "item.cti.aetherium_upgrade_speed_kit": "速度升级套件T2",
   "item.cti.anti_upgrade_speed_kit": "速度升级套件T3",
   "item.cti.upgrade_energy_kit_2": "高级无限能量升级安装器",
-  "item.cti.upgrade_energy_kit_3": "高高高高高级无限能量升级安装器"
+  "item.cti.upgrade_energy_kit_3": "高高高高高级无限能量升级安装器",
+
+  "item.cti.flat_tablet": "全息永夜世界投影板",
+  "item.cti.flat_tablet_day": "全息永昼世界投影板"
 }

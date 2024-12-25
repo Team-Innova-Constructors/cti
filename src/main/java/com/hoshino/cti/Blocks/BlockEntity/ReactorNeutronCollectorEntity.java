@@ -9,6 +9,7 @@ import com.hoshino.cti.recipe.ReactorNeutronCollectorRecipe;
 import com.hoshino.cti.recipe.RecipeMap;
 import com.hoshino.cti.register.ctiBlock;
 import com.hoshino.cti.register.ctiBlockEntityType;
+import com.hoshino.cti.util.DimensionConstants;
 import com.hoshino.cti.util.EmptyHandlers;
 import com.hoshino.cti.util.Upgrades;
 import com.hoshino.cti.util.ctiEnergyStore;
@@ -89,8 +90,8 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
     public int PROGRESS =0;
     public int MAX_PROGRESS =100000000;
     protected Component DISPLAY_NAME =Component.translatable("cti.machine.reactor_neutron_collector").withStyle(ChatFormatting.DARK_PURPLE);
-    protected int MAX_ENERGY =500000000;
-    protected int MAX_TRANSFER =500000000;
+    protected int MAX_ENERGY =2000000000;
+    protected int MAX_TRANSFER =2000000000;
     protected int BASE_ENERGY_PERTICK =100000;
     protected int BASE_SODIUM =100000000;
     protected int BASE_SODIUM_PERTICK =100000 ;
@@ -264,6 +265,9 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
                 }
             }else break;
         }
+
+        boolean good = level.dimension().equals(DimensionConstants.IONIZED_GLACIO);
+
         Direction direction = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
         BlockEntity inputContainer = level.getBlockEntity(blockPos.relative(direction.getClockWise()));
         BlockEntity outputContainer = level.getBlockEntity(blockPos.relative(direction.getCounterClockWise()));
@@ -295,6 +299,10 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
             SodiumAmplifier += recipe.getEfficiency() * (float) (catalyst.getCount() / recipe.getCatalyst().getCount());
             chanceConsume = recipe.getConsumptionRate() * (float) (catalyst.getCount() / recipe.getCatalyst().getCount());
             output = recipe.getResultItem();
+        }
+        if (good){
+            SodiumAmplifier*=2f;
+            chanceConsume*=0.75f;
         }
         GasStack drain = GasStack.EMPTY;
         GasStack insert = GasStack.EMPTY;
