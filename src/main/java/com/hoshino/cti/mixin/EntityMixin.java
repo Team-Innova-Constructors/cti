@@ -1,5 +1,7 @@
 package com.hoshino.cti.mixin;
 
+import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
+import com.hoshino.cti.register.ctiItem;
 import earth.terrarium.ad_astra.common.registry.ModDamageSource;
 import me.desht.pneumaticcraft.common.entity.semiblock.AbstractSemiblockEntity;
 import net.minecraft.world.damagesource.DamageSource;
@@ -45,7 +47,7 @@ public class EntityMixin {
     private void setFireImmune(CallbackInfoReturnable<Boolean> cir){
         Entity entity =(Entity) (Object)this;
         if(entity instanceof Player living){
-            if (getScorchResistance(living)>0.5){
+            if (getScorchResistance(living)>0.5|| SuperpositionHandler.hasCurio(living, ctiItem.astra_tablet_5.get())){
                 cir.setReturnValue(true);
             }
         }

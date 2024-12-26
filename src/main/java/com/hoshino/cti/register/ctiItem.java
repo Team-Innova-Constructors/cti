@@ -65,7 +65,8 @@ public class ctiItem {
     public static final RegistryObject<Item> astra_tablet_5 = ITEMS.register("astra_tablet_5",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),5));
     public static final RegistryObject<Item> compressed_singularity = ITEMS.register("compressed_singularity",()->new compressedSingularityItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(64).fireResistant().tab(ctiTab.MIXC)));
     public static final RegistryObject<Item> recipe_test_item = ITEMS.register("recipe_test_item", RecipeTestItem::new);
-
+    public static final RegistryObject<Item> flat_tablet = ITEMS.register("flat_tablet", FlatWorldTabletItem::new);
+    public static final RegistryObject<Item> flat_tablet_day = ITEMS.register("flat_tablet_day", FlatWorldDayTabletItem::new);
 
     public static final RegistryObject<BlockItem> unipolar_magnet = ITEMS.register("unipolar_magnet",()-> new BlockItem(ctiBlock.unipolar_magnet.get(), new Item.Properties().tab(ctiTab.MIXC)));
     public static final RegistryObject<BlockItem> unipolar_magnet_budding = ITEMS.register("unipolar_magnet_budding",()-> new BlockItem(ctiBlock.unipolar_magnet_budding.get(), new Item.Properties().tab(ctiTab.MIXC)));

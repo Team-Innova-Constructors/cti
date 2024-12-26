@@ -35,7 +35,8 @@
   "cti.tooltip.item.alloy_centrifuge2": "需要2bar以上的压力才能工作，压力越高压缩空气消耗越快，处理速度也越快（10bar时最高），压缩空气容量: 12800mL。",
   "cti.tooltip.item.alloy_centrifuge3": "不要对着装有燃料的焦黑冶炼炉使用这个，聪明的你应该知道会发生什么",
 
-  "cti.tooltip.item.stellar_plate": "手持时显示当前你所受的环境危害值，右键查看星图，shift+右键查看自己身上的环境抗性。在星图中点击任意星球以关闭星图",
+  "cti.tooltip.item.stellar_plate": "右键查看星图，在星图中点击任意星球以关闭星图。",
+  "cti.tooltip.item.stellar_plate2": "装备时在右下角显示当前你所受的环境危害值，shift+右键查看自己身上的环境抗性。",
 
   "cti.tooltip.item.atmosphere_upgrade": "可放在大气冷凝机/大气提取机里，增强机器的表现。",
   "cti.tooltip.item.power_factor": "机器能量消耗",
@@ -445,6 +446,10 @@
   "modifier.cti.earth_core_crush.flavor": "一镐即穿！",
   "modifier.cti.earth_core_crush.description": "该工具的挖掘速度快到极致，且能够挖掘基岩。",
 
+  "modifier.cti.anti_stun_goggles": "防眩眼镜",
+  "modifier.cti.anti_stun_goggles.flavor": "指防止屏幕前的你晕眩",
+  "modifier.cti.anti_stun_goggles.description": "取消受伤时的屏幕抖动，免疫反胃效果，移除移速造成的视角场效果。",
+
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
 
@@ -533,5 +538,8 @@
   "item.cti.aetherium_upgrade_speed_kit": "速度升级套件T2",
   "item.cti.anti_upgrade_speed_kit": "速度升级套件T3",
   "item.cti.upgrade_energy_kit_2": "高级无限能量升级安装器",
-  "item.cti.upgrade_energy_kit_3": "高高高高高级无限能量升级安装器"
+  "item.cti.upgrade_energy_kit_3": "高高高高高级无限能量升级安装器",
+
+  "item.cti.flat_tablet": "全息永夜世界投影板",
+  "item.cti.flat_tablet_day": "全息永昼世界投影板"
 }

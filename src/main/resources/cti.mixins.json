@@ -30,12 +30,20 @@
     "MekMixin.TileComponentUpgradeMixin",
     "MekMixin.UpgradeMixin",
     "MekMixin.UpgradeUtilsMixin",
+    "MixinForPlanets.Create.BlazeBurnerBlockEntityMixin",
+    "MixinForPlanets.Create.WindmillBearingBlockEntityMixin",
+    "MixinForPlanets.PnC.ManualCompressorBlockEntityMixin",
+    "MixinForPlanets.Powah.AbstractEnergyProviderMixin",
     "PnCMixin.AirGrateMixin",
     "TconMixin.InsatiableMixin",
     "TconMixin.KineticMixin",
     "TIMixin.ToolUtilsMixin"
   ],
   "client": [
+    "AbstractClientPlayerMixin",
+    "GameRendererMixin",
+    "AdAstraMixin.CustomButtonMixin",
+    "AdAstraMixin.PlanetSelectionScreenMixin"
   ],
   "server": [
   ],
