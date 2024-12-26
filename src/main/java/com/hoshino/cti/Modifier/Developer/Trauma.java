@@ -74,12 +74,13 @@ public class Trauma extends ArmorModifier {
                     double z = player.getZ();
                     List<Mob> mobbbb = player.level.getEntitiesOfClass(Mob.class, new AABB(x + 10, y + 10, z + 10, x - 10, y - 10, z - 10));
                     for (Mob targets : mobbbb) {
-                        if (targets != null) {
-                            BlockPos posA = targets.getOnPos();
+                        if (targets != null&&!targets.getType().getCategory().isFriendly()) {
+                            BlockPos posA = player.getOnPos();
                             targets.hurt(DamageSource.playerAttack(player).bypassMagic().bypassArmor().bypassInvul(),Float.MAX_VALUE);
                             targets.die(DamageSource.playerAttack(player));
-                            targets.level.playSound(null,posA, SoundEvents.ANVIL_FALL, SoundSource.PLAYERS,1F,1F);
+                            player.level.playSound(null,posA, SoundEvents.ZOMBIE_VILLAGER_CURE, SoundSource.PLAYERS,1F,1F);
                             targets.remove(Entity.RemovalReason.KILLED);
+                            break;
                         }
                     }
                 }

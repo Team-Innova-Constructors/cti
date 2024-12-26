@@ -1,5 +1,6 @@
 package com.hoshino.cti.Event;
 
+import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
 import com.aizistral.enigmaticlegacy.items.EnigmaticItem;
 import com.aizistral.enigmaticlegacy.registries.EnigmaticItems;
@@ -7,6 +8,8 @@ import com.hoshino.cti.Entity.DisposibleFakePlayer;
 import com.hoshino.cti.Entity.specialDamageSource.Environmental;
 import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
 import com.hoshino.cti.register.ctiEffects;
+import com.marth7th.solidarytinker.register.solidarytinkerModifiers;
+import com.marth7th.solidarytinker.util.method.ModifierLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
@@ -37,6 +40,14 @@ public class LivingEvents {
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST,this::onEffectApply);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEffectApply);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST,this::onPlayerTick);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST,this::SunSpiritCool);
+    }
+    public void SunSpiritCool(LivingAttackEvent event) {
+        if(event.getSource().getEntity() instanceof Player player&& ModifierLevel.EquipHasModifierlevel(player, solidarytinkerModifiers.EXTREMELYCOLD_STATIC_MODIFIER.getId())){
+            if(event.getEntity().getType()== AetherEntityTypes.SUN_SPIRIT.get()){
+                event.getSource().bypassArmor().bypassMagic().bypassInvul();
+            }
+        }
     }
 
     private void onPlayerTick(TickEvent.PlayerTickEvent event) {

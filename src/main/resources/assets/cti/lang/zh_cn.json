@@ -61,7 +61,7 @@
 
   "modifier.cti.timetojudge": "审判时刻",
   "modifier.cti.timetojudge.flavor": "自此刻起，下达判决",
-  "modifier.cti.timetojudge.description":"攻击怪物后将永久为其施加“罪恶者”标签，当怪物具有这个标签的时候此生物受到所有伤害增加40%(包括其他玩家伤害和虚空伤害）",
+  "modifier.cti.timetojudge.description":"攻击怪物后将永久为其施加“罪恶者”标签，当怪物具有这个标签的时候此生物受到所有伤害增加800%(包括其他玩家伤害和虚空伤害）,并且其收到的所有伤害穿透魔法抗性",
 
   "modifier.cti.netherfire": "地狱之火",
   "modifier.cti.netherfire.flavor": "最后审判已至",
@@ -416,6 +416,18 @@
   "modifier.cti.fixed_purify": "净化",
   "modifier.cti.fixed_purify.flavor": "纯净之躯。",
   "modifier.cti.fixed_purify.description":"净化所有负面效果。",
+
+  "modifier.cti.encrypt": "加密",
+  "modifier.cti.encrypt.flavor": "???",
+  "modifier.cti.encrypt.description":"怪物无法复印你的装备词条",
+
+  "modifier.cti.cripplesuppermass": "超级质量",
+  "modifier.cti.cripplesuppermass.flavor": "保护效果更上一层楼！",
+  "modifier.cti.cripplesuppermass.description":"每点护甲值额外降低0.2% * 全身总词条等级 受到的攻击伤害，上限90%。,如果目标伤害穿透护甲则这个收益和上限均减半",
+
+  "modifier.cti.fixsanguine": "血染",
+  "modifier.cti.fixsanguine.flavor": "血肉之躯，燃烧一次足矣！",
+  "modifier.cti.fixsanguine.description":"降低该工具15%的耐久，每次受到伤害时，若伤害大于5点则有概率为该工具附加一层血印，每层血印提高1%攻击伤害与1%攻击速度或初速度，每级至多附加50层血印。",
 
   "modifier.cti.combustor_modifier": "加力燃烧室",
   "modifier.cti.combustor_modifier.flavor": "内置四缸发动机。",
