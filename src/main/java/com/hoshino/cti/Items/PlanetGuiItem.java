@@ -1,5 +1,6 @@
 package com.hoshino.cti.Items;
 
+import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
 import earth.terrarium.ad_astra.common.screen.PlanetSelectionMenuProvider;
 import earth.terrarium.botarium.api.menu.MenuHooks;
 import net.minecraft.ChatFormatting;
@@ -15,12 +16,23 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.*;
 
 import java.util.List;
 
-public class PlanetGuiItem extends Item {
+public class PlanetGuiItem extends Item implements ICurioItem {
+    @Override
+    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
+        return !SuperpositionHandler.hasCurio(slotContext.entity(), this);
+    }
+    @Override
+    public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
+        return true;
+    }
+
     public int lvl =1;
     public PlanetGuiItem(Properties p_41383_,int lvl) {
         super(p_41383_);
@@ -54,6 +66,8 @@ public class PlanetGuiItem extends Item {
     @Override
     public void appendHoverText(ItemStack p_40572_, @Nullable Level p_40573_, List<Component> list, TooltipFlag p_40575_) {
         list.add(Component.translatable("cti.tooltip.item.stellar_plate").withStyle(ChatFormatting.AQUA));
+        list.add(Component.translatable("cti.tooltip.item.stellar_plate2").withStyle(ChatFormatting.GREEN));
+        list.add(Component.literal("作为饰品时获得抗火效果").withStyle(ChatFormatting.GOLD));
         super.appendHoverText(p_40572_, p_40573_, list, p_40575_);
     }
 }

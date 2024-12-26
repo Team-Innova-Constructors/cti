@@ -36,7 +36,10 @@
     "TIMixin.ToolUtilsMixin"
   ],
   "client": [
-    "GameRendererMixin"
+    "AbstractClientPlayerMixin",
+    "GameRendererMixin",
+    "AdAstraMixin.CustomButtonMixin",
+    "AdAstraMixin.PlanetSelectionScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
