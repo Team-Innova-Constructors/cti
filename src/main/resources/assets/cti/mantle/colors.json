@@ -8,7 +8,6 @@
 
   "modifier.cti": {
     "igneous": "#AA00AA",
-    "encrypt": "#AA00AA",
     "fixed_oracular": "#CBFF2B",
     "electric_protect": "#AC89FF",
     "scorch_protect": "#FFE0B7",
@@ -62,8 +61,7 @@
     "flying": "#8bd4d2",
     "reflect": "#87d45d",
     "egg_boost": "#FFEFD9",
-    "cripplesuppermass": "#3f3f3f",
-    "fixsanguine": "#d91b30",
+    "double_edged": "#BDBDBD",
 
     "_uriel_": "乌列尔",
     "timetojudge": "#fffdab",
