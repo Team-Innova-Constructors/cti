@@ -41,6 +41,8 @@
         "ad_astra:glacio_deepslate_copper_ore",
         "ad_astra:glacio_deepslate_iron_ore",
         "ad_astra:glacio_deepslate_lapis_ore",
+        "cti:glacio_rasterite_geode_placed",
+        "cti:ionized_rasterite_geode_placed",
         "kubejs:inoized_slag",
         "kubejs:overdense_neutronium_ore"
       ]

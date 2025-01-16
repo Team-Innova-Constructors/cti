@@ -72,6 +72,11 @@ public class ctiItem {
     public static final RegistryObject<BlockItem> unipolar_magnet_budding = ITEMS.register("unipolar_magnet_budding",()-> new BlockItem(ctiBlock.unipolar_magnet_budding.get(), new Item.Properties().tab(ctiTab.MIXC)));
     public static final RegistryObject<BlockItem> overdense_glacio_stone = ITEMS.register("overdense_glacio_stone",()-> new BlockItem(ctiBlock.overdense_glacio_stone.get(), new Item.Properties().tab(ctiTab.MIXC)));
     public static final RegistryObject<BlockItem> ultra_dense_hydride_ore = ITEMS.register("ultra_dense_hydride_ore",()-> new BlockItem(ctiBlock.ultra_dense_hydride_ore.get(), new Item.Properties().tab(ctiTab.MIXC)));
+    public static final RegistryObject<BlockItem> fracture_silicon = ITEMS.register("fracture_silicon",()-> new BlockItem(ctiBlock.fracture_silicon.get(), new Item.Properties().tab(ctiTab.MIXC)));
+    public static final RegistryObject<BlockItem> fracture_silicon_budding = ITEMS.register("fracture_silicon_budding",()-> new BlockItem(ctiBlock.fracture_silicon_budding.get(), new Item.Properties().tab(ctiTab.MIXC)));
+    public static final RegistryObject<BlockItem> rasterite = ITEMS.register("rasterite",()-> new BlockItem(ctiBlock.rasterite.get(), new Item.Properties().tab(ctiTab.MIXC)));
+    public static final RegistryObject<BlockItem> rasterite_budding = ITEMS.register("rasterite_budding",()-> new BlockItem(ctiBlock.rasterite_budding.get(), new Item.Properties().tab(ctiTab.MIXC)));
+
     public static final RegistryObject<BlockItem> alloy_centrifuge = ITEMS.register("alloy_centrifuge",()-> new TooltipedBlockItem(ctiBlock.alloy_centrifuge_block.get(), new Item.Properties().tab(ctiTab.MACHINE),List.of(
             Component.translatable("cti.tooltip.item.alloy_centrifuge").withStyle(ChatFormatting.AQUA),
             Component.translatable("cti.tooltip.item.alloy_centrifuge2").withStyle(ChatFormatting.GOLD),
