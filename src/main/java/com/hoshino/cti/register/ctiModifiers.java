@@ -81,4 +81,5 @@ public class ctiModifiers {
     public static final StaticModifier<FixedEarthCoreCrush> earth_core_crush= MODIFIERS.register("earth_core_crush", FixedEarthCoreCrush::new);
     public static final StaticModifier<AntiStunGoggles> anti_stun_goggles= MODIFIERS.register("anti_stun_goggles", AntiStunGoggles::new);
     public static final StaticModifier<DoubleEdged> double_edged= MODIFIERS.register("double_edged", DoubleEdged::new);
+    public static final StaticModifier<Ragnarok> ragnarok= MODIFIERS.register("ragnarok", Ragnarok::new);
 }

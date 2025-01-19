@@ -37,6 +37,8 @@
     "PnCMixin.AirGrateMixin",
     "TconMixin.InsatiableMixin",
     "TconMixin.KineticMixin",
+    "TIMixin.BlowPipeMixin",
+    "TIMixin.ShurikenMixin",
     "TIMixin.ToolUtilsMixin"
   ],
   "client": [

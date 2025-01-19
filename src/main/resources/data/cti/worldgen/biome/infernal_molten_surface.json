@@ -37,6 +37,8 @@
         "minecraft:patch_soul_fire",
         "minecraft:ore_magma",
         "minecraft:spring_closed_double",
+        "cti:infernal_fracture_silicon_geode_placed",
+        "cti:mercury_fracture_silicon_geode_placed",
         "kubejs:infernal_pyrocrystal",
         "kubejs:infernal_pyrocrystal_lava"
       ]

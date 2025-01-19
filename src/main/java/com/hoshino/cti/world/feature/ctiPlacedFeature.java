@@ -35,9 +35,34 @@ public class ctiPlacedFeature {
 
     public static final RegistryObject<PlacedFeature> HULTRADENSE_GEODE_PLACED = PLACED_FEATURES.register("hultra_dense_geode_placed",
             () -> new PlacedFeature(ctiConfiguredFeature.HULTRADENSE_GEODE.getHolder().get(), List.of(
-                    RarityFilter.onAverageOnceEvery(50), InSquarePlacement.spread(),
-                    HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(27), VerticalAnchor.absolute(84)),
+                    RarityFilter.onAverageOnceEvery(157), InSquarePlacement.spread(),
+                    HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(16), VerticalAnchor.absolute(48)),
                     BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> GLACIO_RASTERITE_GEODE_PLACED = PLACED_FEATURES.register("glacio_rasterite_geode_placed",
+            () -> new PlacedFeature(ctiConfiguredFeature.GLACIO_RASTERITE_GEODE.getHolder().get(), List.of(
+                    RarityFilter.onAverageOnceEvery(156), InSquarePlacement.spread(),
+                    HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(32), VerticalAnchor.absolute(76)),
+                    BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> IONIZED_RASTERITE_GEODE_PLACED = PLACED_FEATURES.register("ionized_rasterite_geode_placed",
+            () -> new PlacedFeature(ctiConfiguredFeature.IONIZED_RASTERITE_GEODE.getHolder().get(), List.of(
+                    RarityFilter.onAverageOnceEvery(20), InSquarePlacement.spread(),
+                    HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(8), VerticalAnchor.absolute(96)),
+                    BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> MERCURY_FRACTURE_SILICON_GEODE_PLACED = PLACED_FEATURES.register("mercury_fracture_silicon_geode_placed",
+            () -> new PlacedFeature(ctiConfiguredFeature.MERCURY_FRACTURE_SILICON_GEODE.getHolder().get(), List.of(
+                    RarityFilter.onAverageOnceEvery(125), InSquarePlacement.spread(),
+                    HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(8), VerticalAnchor.absolute(48)),
+                    BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> INFERNAL_FRACTURE_SILICON_GEODE_PLACED = PLACED_FEATURES.register("infernal_fracture_silicon_geode_placed",
+            () -> new PlacedFeature(ctiConfiguredFeature.INFERNAL_FRACTURE_SILICON_GEODE.getHolder().get(), List.of(
+                    RarityFilter.onAverageOnceEvery(30), InSquarePlacement.spread(),
+                    HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(16), VerticalAnchor.absolute(64)),
+                    BiomeFilter.biome())));
+
 
     private static List<PlacementModifier> orePlacement(PlacementModifier p_195347_, PlacementModifier p_195348_) {
         return List.of(p_195347_, InSquarePlacement.spread(), p_195348_, BiomeFilter.biome());

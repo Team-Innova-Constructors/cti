@@ -109,6 +109,16 @@
   "item.cti.unipolar_magnet_budding": "单极磁石母岩",
   "item.cti.overdense_glacio_stone":"超质量霜星石",
 
+  "block.cti.rasterite": "光栅石",
+  "block.cti.rasterite_budding": "光栅石母岩",
+  "item.cti.rasterite": "光栅石",
+  "item.cti.rasterite_budding": "光栅石母岩",
+
+  "block.cti.fracture_silicon": "分形硅石",
+  "block.cti.fracture_silicon_budding": "分形硅石母岩",
+  "item.cti.fracture_silicon": "分形硅石",
+  "item.cti.fracture_silicon_budding": "分形硅石母岩",
+
   "item.cti.magic_crystal":"魔力水晶",
   "item.cti.enriched_mana":"富集魔力水晶",
 
@@ -453,6 +463,12 @@
   "modifier.cti.anti_stun_goggles": "防眩眼镜",
   "modifier.cti.anti_stun_goggles.flavor": "指防止屏幕前的你晕眩",
   "modifier.cti.anti_stun_goggles.description": "取消受伤时的屏幕抖动，免疫反胃效果，移除移速造成的视角场效果。",
+
+  "modifier.cti.ragnarok": "诸神黄昏·仿",
+  "modifier.cti.ragnarok.flavor": "史蒂夫对恶意生物的研究成果",
+  "modifier.cti.ragnarok.description": "攻击时有概率移除目标的一个词条并将它掉落出来。",
+
+
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
