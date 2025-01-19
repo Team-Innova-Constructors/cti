@@ -31,6 +31,5 @@ public class DispellTraitMixin {
     }
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraftforge/event/entity/living/LivingAttackEvent;setCanceled(Z)V"),method = "onAttackedByOthers",remap = false)
     private void onAttacked(LivingAttackEvent instance, boolean b){
-
     }
 }

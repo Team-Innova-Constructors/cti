@@ -4,17 +4,17 @@ import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
 import com.aizistral.enigmaticlegacy.registries.EnigmaticItems;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.hoshino.cti.register.ctiModifiers;
+import com.hoshino.cti.util.method.GetModifierLevel;
 import com.marth7th.solidarytinker.register.TinkerCuriosModifier;
 import com.marth7th.solidarytinker.register.solidarytinkerModifiers;
 import com.marth7th.solidarytinker.util.method.ModifierLevel;
 import com.xiaoyue.tinkers_ingenuity.register.TIModifiers;
-import com.xiaoyue.tinkers_ingenuity.utils.ToolUtils;
 import dev.xkmc.l2hostility.compat.curios.EntitySlotAccess;
 import dev.xkmc.l2hostility.content.traits.legendary.RagnarokTrait;
 import mekanism.common.registries.MekanismItems;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
-import top.theillusivec4.curios.api.CuriosApi;
+import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,11 +56,8 @@ public abstract class RagnarokTraitMixin {
     private void ignore(int level, LivingEntity attacker, LivingEntity target, CallbackInfo ci) {
         if (target instanceof Player player) {
             //戒指专属
-            List<ItemStack> curio = ToolUtils.Curios.getStacks(player);
-            for (ItemStack curios : curio) {
-                if (ModifierUtil.getModifierLevel(curios, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId()) > 0) {
-                    ci.cancel();
-                }
+            if (GetModifierLevel.CurioHasModifierlevel(player, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId())) {
+                ci.cancel();
             }
             if (SuperpositionHandler.hasCurio(player,EnigmaticItems.THE_CUBE)){
                 ci.cancel();
@@ -80,6 +77,9 @@ public abstract class RagnarokTraitMixin {
                 if (ModifierLevel.EquipHasModifierlevel(target, modifier.getId())) {
                     ci.cancel();
                 }
+            }
+            if(player.getItemBySlot(EquipmentSlot.HEAD).is(MekanismItems.MEKASUIT_HELMET.get())||player.getItemBySlot(EquipmentSlot.CHEST).is(MekanismItems.MEKASUIT_BODYARMOR.get())||player.getItemBySlot(EquipmentSlot.LEGS).is(MekanismItems.MEKASUIT_PANTS.get())||player.getItemBySlot(EquipmentSlot.FEET).is(MekanismItems.MEKASUIT_BOOTS.get())){
+                ci.cancel();
             }
         }
     }
