@@ -17,7 +17,7 @@ public class OverwriteKnightGlory extends BattleModifier {
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         if(context.getLivingTarget()!=null&&context.getAttacker() instanceof Player player){
-            player.setAbsorptionAmount(Mth.clamp(player.getAbsorptionAmount()+player.getMaxHealth()*0.1F,0,player.getMaxHealth()*(1+0.3F * modifier.getLevel())));
+            player.setAbsorptionAmount(Mth.clamp(player.getAbsorptionAmount()+player.getMaxHealth()*0.1F,0,player.getMaxHealth()*(0.3F * modifier.getLevel())));
         }
     }
 
@@ -32,7 +32,7 @@ public class OverwriteKnightGlory extends BattleModifier {
     @Override
     public void arrowhurt(ModifierNBT modifiers, NamespacedNBT persistentData, int level, Projectile projectile, EntityHitResult hit, AbstractArrow arrow, LivingEntity attacker, LivingEntity target) {
         if(attacker instanceof Player player&&target!=null){
-            player.setAbsorptionAmount(Mth.clamp(player.getAbsorptionAmount()+player.getMaxHealth()*0.1F,0,player.getMaxHealth()*(1+0.3F * level)));
+            player.setAbsorptionAmount(Mth.clamp(player.getAbsorptionAmount()+player.getMaxHealth()*0.1F,0,player.getMaxHealth()*(0.3F * level)));
             arrow.setBaseDamage(arrow.getBaseDamage() + player.getAbsorptionAmount() * 0.5F*level);
         }
     }

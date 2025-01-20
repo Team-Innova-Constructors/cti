@@ -6,10 +6,11 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.EntityHitResult;
+import org.jetbrains.annotations.NotNull;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
-import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
+import slimeknights.tconstruct.library.tools.nbt.*;
 
 public class NetherFire extends BattleModifier {
 
@@ -22,6 +23,11 @@ public class NetherFire extends BattleModifier {
                 return damage + livingTarget.getArmorValue() * (float) livingTarget.getAttributeValue(Attributes.ARMOR_TOUGHNESS) * level;
         }
         return damage;
+    }
+
+    @Override
+    public void addVolatileData(IToolContext iToolContext, @NotNull ModifierEntry modifierEntry, ModDataNBT modDataNBT) {
+        modDataNBT.addSlots(SlotType.DEFENSE,3);
     }
 
     @Override

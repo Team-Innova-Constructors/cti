@@ -19,9 +19,13 @@
     "ForgeEventMixin.EventMixin",
     "ForgeEventMixin.LivingDamageEventMixin",
     "ForgeEventMixin.LivingHurtEventMixin",
+    "L2.DementorMixin",
+    "L2.DispellTraitMixin",
+    "L2.DrainTraitMixin",
     "L2.EffectUtilMixin",
     "L2.RagnarokTraitMixin",
     "L2.RepellingMixin",
+    "L2.ReprintMixin",
     "L2.UndyingTraitMixin",
     "MekMixin.ItemUpgradeMixin",
     "MekMixin.MekanismUtilMixin",
@@ -44,6 +48,8 @@
     "GameRendererMixin",
     "AdAstraMixin.CustomButtonMixin",
     "AdAstraMixin.PlanetSelectionScreenMixin"
+  ],
+  "server": [
   ],
   "injectors": {
     "defaultRequire": 1
