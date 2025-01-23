@@ -68,11 +68,11 @@ public class Trauma extends ArmorModifier {
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         if(entity instanceof Player player){
             if(player.hasEffect(ctiEffects.ev.get())){
-                if(ModifierLevel.EquipHasModifierlevel(entity,this.getId())){
+                if(ModifierLevel.getMainhandModifierlevel(entity,this.getId())>0){
                     double x = player.getX();
                     double y = player.getY();
                     double z = player.getZ();
-                    List<Mob> mobbbb = player.level.getEntitiesOfClass(Mob.class, new AABB(x + 10, y + 10, z + 10, x - 10, y - 10, z - 10));
+                    List<Mob> mobbbb = player.level.getEntitiesOfClass(Mob.class, new AABB(x + 20, y + 20, z + 20, x - 20, y - 20, z - 20));
                     for (Mob targets : mobbbb) {
                         if (targets != null&&!targets.getType().getCategory().isFriendly()) {
                             BlockPos posA = player.getOnPos();

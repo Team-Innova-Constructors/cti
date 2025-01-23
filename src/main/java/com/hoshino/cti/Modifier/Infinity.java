@@ -17,12 +17,12 @@ public class Infinity extends BattleModifier {
     @Override
     public float staticdamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity livingTarget, float baseDamage, float damage) {
         if(livingTarget instanceof Mob mob&&attacker instanceof Player player){
-            if(level>3){
+            if(level>3||mob.getHealth()<=mob.getMaxHealth() * 0.33f*level){
                 livingTarget.die(DamageSource.playerAttack(player));
                 livingTarget.kill();
                 return damage + Integer.MAX_VALUE * level;
             }
-            else {
+            else if(mob.getHealth()>mob.getMaxHealth() * 0.33f*level){
                 mob.setHealth((mob.getHealth() - mob.getMaxHealth() * 0.33f*level));
                 return damage+131072*level;
             }
@@ -33,7 +33,7 @@ public class Infinity extends BattleModifier {
     @Override
     public void arrowhurt(ModifierNBT modifiers, NamespacedNBT persistentData, int level, Projectile projectile, EntityHitResult hit, AbstractArrow arrow, LivingEntity attacker, LivingEntity target) {
         if(target instanceof Mob mob&&attacker instanceof Player player){
-            if(level<4){
+            if(level<4||mob.getHealth()>=mob.getMaxHealth() * 0.33f*level){
                 mob.setHealth((mob.getHealth() - mob.getMaxHealth() * 0.33f*level));
                 arrow.setBaseDamage(arrow.getBaseDamage() + 131072 * level);
             }
