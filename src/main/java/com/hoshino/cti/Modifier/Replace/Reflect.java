@@ -11,7 +11,7 @@ public class Reflect extends ArmorModifier {
     @Override
     public void LivingHurt(LivingHurtEvent event, LivingEntity entity, Player player) {
         if(player!=null&&event.getSource().getEntity() instanceof LivingEntity enemy){
-            if(ModifierLevel.EquipHasModifierlevel(player,this.getId())){
+            if(ModifierLevel.EquipHasModifierlevel(player,this.getId())&&event.getSource()!=DamageSource.thorns(enemy)){
                 int level=ModifierLevel.getTotalArmorModifierlevel(player,this.getId())+ModifierLevel.getEachHandsTotalModifierlevel(player,this.getId());
                 enemy.hurt(DamageSource.thorns(player),event.getAmount() * 0.25F *level);
             }

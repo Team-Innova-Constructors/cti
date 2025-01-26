@@ -436,6 +436,22 @@
   "modifier.cti.encrypt.flavor": "???",
   "modifier.cti.encrypt.description":"怪物无法复印你的装备词条",
 
+  "modifier.cti.commongobberbless": "戈伯恩惠",
+  "modifier.cti.commongobberbless.flavor": "主世界加成",
+  "modifier.cti.commongobberbless.description":"处于主世界时，伤害每级增加15%，并且缓慢恢复饱食度.作为盔甲时每级减少6%收到的伤害",
+
+  "modifier.cti.nethergobberbless": "下界戈伯恩惠",
+  "modifier.cti.nethergobberbless.flavor": "下界加成",
+  "modifier.cti.nethergobberbless.description":"处于下界时，获得常驻的抗火效果，伤害每级增加25%，并且缓慢恢复饱食度.作为盔甲时每级减少8%收到的伤害",
+
+  "modifier.cti.endergobberbless": "末影戈伯恩惠",
+  "modifier.cti.endergobberbless.flavor": "末地加成",
+  "modifier.cti.endergobberbless.description":"处于末地时，获得常驻的飞行和抗火效果，伤害每级增加35%，并且缓慢恢复饱食度.作为盔甲时每级减少10%收到的伤害",
+
+  "modifier.cti.encrypt": "加密",
+  "modifier.cti.encrypt.flavor": "???",
+  "modifier.cti.encrypt.description":"怪物无法复印你的装备词条",
+
   "modifier.cti.cripplesuppermass": "超级质量",
   "modifier.cti.cripplesuppermass.flavor": "保护效果更上一层楼！",
   "modifier.cti.cripplesuppermass.description":"每点护甲值额外降低0.2% * 全身总词条等级 受到的攻击伤害，上限90%。,如果目标伤害穿透护甲则这个收益和上限均减半",

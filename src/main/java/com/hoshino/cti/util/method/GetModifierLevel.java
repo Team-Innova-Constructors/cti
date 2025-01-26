@@ -122,6 +122,9 @@ public class GetModifierLevel {
     public static boolean EquipHasModifierlevel(LivingEntity entity, ModifierId modifierId) {
         return GetModifierLevel.getTotalArmorModifierlevel(entity, modifierId) > 0 || GetModifierLevel.HandsHaveModifierlevel(entity, modifierId);
     }
+    public static int getAllSlotModifierlevel(LivingEntity entity, ModifierId modifierId) {
+        return GetModifierLevel.getTotalArmorModifierlevel(entity, modifierId) + GetModifierLevel.getEachHandsTotalModifierlevel(entity, modifierId);
+    }
     public static int CurioModifierLevel(LivingEntity entity, ModifierId modifierId) {
         if (entity != null) {
             if (entity instanceof Player) {
