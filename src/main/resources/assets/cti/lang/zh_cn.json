@@ -366,15 +366,15 @@
 
   "modifier.cti.eventually": "终焉",
   "modifier.cti.eventually.flavor": "自光明中得到救赎，却又终散于黑暗",
-  "modifier.cti.eventually.description":"你的每次受伤都会叠加8点终焉值，至多获得128点，每点终焉值额外增加2^终焉值点伤害。当达到128点时候，你会进入128 * 词条等级秒的狩猎状态，处于你10格以内的所有非玩家都会被吞噬",
+  "modifier.cti.eventually.description":"获得持久的狩猎状态，主手持有时，处于狩猎状态，你10格以内的所有友善生物和玩家以外的生物都会被吞噬",
 
   "modifier.cti.transmigration": "轮回",
-  "modifier.cti.transmigration.flavor": "新的开始",
-  "modifier.cti.transmigration.description":"如果你结束狩猎状态时未击杀>128/2 * level只生物，你会直接消散",
+  "modifier.cti.transmigration.flavor": "最后一刻",
+  "modifier.cti.transmigration.description":"会赢吗？",
 
   "modifier.cti.trauma": "创伤",
   "modifier.cti.trauma.flavor": "第二次机会",
-  "modifier.cti.trauma.description":"处于狩猎状态不会受到 '伤害' ",
+  "modifier.cti.trauma.description":"处于狩猎状态你受到的“伤害”会被全部抵消，代价是什么呢",
 
   "modifier.cti.nerf_colossal": "泰坦杀手",
   "modifier.cti.nerf_colossal.flavor": "泰坦杀手",
@@ -431,6 +431,22 @@
   "modifier.cti.fixed_purify": "净化",
   "modifier.cti.fixed_purify.flavor": "纯净之躯。",
   "modifier.cti.fixed_purify.description":"净化所有负面效果。",
+
+  "modifier.cti.encrypt": "加密",
+  "modifier.cti.encrypt.flavor": "???",
+  "modifier.cti.encrypt.description":"怪物无法复印你的装备词条",
+
+  "modifier.cti.commongobberbless": "戈伯恩惠",
+  "modifier.cti.commongobberbless.flavor": "主世界加成",
+  "modifier.cti.commongobberbless.description":"处于主世界时，伤害每级增加15%，并且缓慢恢复饱食度.作为盔甲时每级减少6%收到的伤害",
+
+  "modifier.cti.nethergobberbless": "下界戈伯恩惠",
+  "modifier.cti.nethergobberbless.flavor": "下界加成",
+  "modifier.cti.nethergobberbless.description":"处于下界时，获得常驻的抗火效果，伤害每级增加25%，并且缓慢恢复饱食度.作为盔甲时每级减少8%收到的伤害",
+
+  "modifier.cti.endergobberbless": "末影戈伯恩惠",
+  "modifier.cti.endergobberbless.flavor": "末地加成",
+  "modifier.cti.endergobberbless.description":"处于末地时，获得常驻的飞行和抗火效果，伤害每级增加35%，并且缓慢恢复饱食度.作为盔甲时每级减少10%收到的伤害",
 
   "modifier.cti.encrypt": "加密",
   "modifier.cti.encrypt.flavor": "???",
