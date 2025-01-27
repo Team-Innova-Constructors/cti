@@ -50,8 +50,8 @@ public class EnderGobberBless extends BattleModifier {
                 if(ModifierUtil.getModifierLevel(itemStack1,this.getId())>0&&player.tickCount%20==0){
                     float saturationLevel= player.getFoodData().getSaturationLevel();
                     int foodlevel=player.getFoodData().getFoodLevel();
-                    player.getFoodData().setFoodLevel(foodlevel+1);
-                    player.getFoodData().setSaturation(saturationLevel+1);
+                    player.getFoodData().setFoodLevel(Math.min(20,foodlevel+1));
+                    player.getFoodData().setSaturation(Math.min(20,saturationLevel+1));
                 }
             }
         }
@@ -59,21 +59,17 @@ public class EnderGobberBless extends BattleModifier {
 
     @Override
     public void onEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        if(context.getEntity() instanceof Player player){
-            if(!player.getAbilities().flying){
-                player.getAbilities().flying=true;
-                player.getAbilities().mayfly=true;
-            }
+        if((context.getEntity() instanceof Player player && !player.getAbilities().mayfly&&!player.getAbilities().flying&&this.isCorrectDimension(player))) {
+            player.getAbilities().flying=true;
+            player.getAbilities().mayfly=true;
         }
     }
 
     @Override
     public void onUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        if(context.getEntity() instanceof Player player){
-            if(player.getAbilities().flying){
-                player.getAbilities().flying=false;
-                player.getAbilities().mayfly=false;
-            }
+        if((context.getEntity() instanceof Player player && player.getAbilities().mayfly&&player.getAbilities().flying&&this.isCorrectDimension(player))) {
+            player.getAbilities().flying = false;
+            player.getAbilities().mayfly = false;
         }
     }
 

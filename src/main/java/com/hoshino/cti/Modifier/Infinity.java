@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.EntityHitResult;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
@@ -19,15 +20,25 @@ public class Infinity extends BattleModifier {
         if(livingTarget instanceof Mob mob&&attacker instanceof Player player){
             if(level>3||mob.getHealth()<=mob.getMaxHealth() * 0.33f*level){
                 livingTarget.die(DamageSource.playerAttack(player));
-                livingTarget.kill();
-                return damage + Integer.MAX_VALUE * level;
+                
             }
             else if(mob.getHealth()>mob.getMaxHealth() * 0.33f*level){
-                mob.setHealth((mob.getHealth() - mob.getMaxHealth() * 0.33f*level));
                 return damage+131072*level;
             }
         }
         return damage;
+    }
+
+    @Override
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+        if(context.getLivingTarget() instanceof Mob mob){
+            if(modifier.getLevel()>3||mob.getHealth()<=mob.getMaxHealth() * 0.33f*modifier.getLevel()){
+                mob.kill();
+            }
+            else if(mob.getHealth()>mob.getMaxHealth() * 0.33* modifier.getLevel()){
+                mob.setHealth(mob.getHealth()-mob.getMaxHealth() * 0.33f*modifier.getLevel());
+            }
+        }
     }
 
     @Override

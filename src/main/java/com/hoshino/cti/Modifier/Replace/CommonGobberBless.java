@@ -44,8 +44,8 @@ public class CommonGobberBless extends BattleModifier {
                 if(ModifierUtil.getModifierLevel(itemStack1,this.getId())>0&&player.tickCount%100==0){
                     float saturationLevel= player.getFoodData().getSaturationLevel();
                     int foodlevel=player.getFoodData().getFoodLevel();
-                    player.getFoodData().setFoodLevel(foodlevel+1);
-                    player.getFoodData().setSaturation(saturationLevel+1);
+                    player.getFoodData().setFoodLevel(Math.min(20,foodlevel+1));
+                    player.getFoodData().setSaturation(Math.min(20,saturationLevel+1));
                 }
             }
         }
