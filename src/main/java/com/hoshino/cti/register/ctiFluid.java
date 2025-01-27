@@ -40,4 +40,6 @@ public class ctiFluid {
     public static final FluidObject<ForgeFlowingFluid> molten_omniscient_gold = register("molten_omniscient_gold",225252);
     public static final FluidObject<ForgeFlowingFluid> molten_violium = register("molten_violium",6000);
     public static final FluidObject<ForgeFlowingFluid> molten_aetherium = register("molten_aetherium",7000);
+    public static final FluidObject<ForgeFlowingFluid> extraterrestrial_essense = register("extraterrestrial_essense",0);
+    public static final FluidObject<ForgeFlowingFluid> molten_meteorium = register("molten_meteorium",8900);
 }

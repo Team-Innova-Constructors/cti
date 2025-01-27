@@ -30,7 +30,7 @@ public class IonizeIndused extends etshmodifieriii {
         LivingEntity living =context.getAttacker();
         if (entity instanceof LivingEntity target &&living instanceof Player player&&!(target instanceof Player)){
             target.invulnerableTime=0;
-            target.hurt(playerIonizedSource(damage/4,player),damage/4);
+            target.hurt(playerIonizedSource(damage/16,player),damage/16);
             if (getElectricResistance(target)<=1.5&&getIonizedValue(target)<1000){
                 addIonizedValue(target,25*modifier.getLevel());
             }

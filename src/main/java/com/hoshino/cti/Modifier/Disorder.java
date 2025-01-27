@@ -16,6 +16,8 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
+import java.util.Random;
+
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.vecCalc.getScatteredVec3;
 
@@ -23,11 +25,13 @@ public class Disorder extends etshmodifieriii {
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         if (!context.isExtraAttack()){
+            Random random = new Random();
             Player player = context.getPlayerAttacker();
             Entity entity = context.getTarget();
             if (player!=null&&entity instanceof LivingEntity target) {
                 int c = 0;
                 while (c < modifier.getLevel()) {
+                    if (random.nextBoolean()) break;
                     c++;
                     Level level = player.level;
                     Vec3 vec3 = getScatteredVec3(new Vec3(0, EtSHrnd().nextInt(2)==1?1:-1, 0), 80).normalize();
