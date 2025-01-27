@@ -16,6 +16,8 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
+import java.util.Random;
+
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.vecCalc.getScatteredVec3;
 
@@ -25,21 +27,32 @@ public class Disorder extends etshmodifieriii {
         if (!context.isExtraAttack()){
             Player player = context.getPlayerAttacker();
             Entity entity = context.getTarget();
-            if (player!=null&&entity instanceof LivingEntity target) {
-                int c = 0;
-                while (c < modifier.getLevel()) {
-                    c++;
-                    Level level = player.level;
-                    Vec3 vec3 = getScatteredVec3(new Vec3(0, EtSHrnd().nextInt(2)==1?1:-1, 0), 80).normalize();
-                    double d = EtSHrnd().nextDouble() * 4+2;
-                    Vec3 direction = new Vec3(-(d) * vec3.x, -(d) * vec3.y, -(d) * vec3.z);
-                    plasmaexplosionentity explosion = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(),level);
+            Random random = new Random();
+            if (player!=null&&entity instanceof LivingEntity target&&random.nextInt(5)<=modifier.getLevel()) {
+                int i = random.nextInt(16);
+                Level level = player.level;
+                Vec3 vec3 = getScatteredVec3(new Vec3(0, EtSHrnd().nextInt(2) == 1 ? 1 : -1, 0), 80).normalize();
+                double d = EtSHrnd().nextDouble() * 16 + 16;
+                Vec3 direction = new Vec3(-(d) * vec3.x, -(d) * vec3.y, -(d) * vec3.z);
+                plasmaexplosionentity explosion = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), level);
+                explosion.setOwner(player);
+                explosion.damage = damage / (24-i);
+                explosion.tool = (ToolStack) tool;
+                explosion.particle = etshtinkerParticleType.plasmaexplosionpurple.get();
+                explosion.setPos(new Vec3(target.getX(), target.getY() + target.getBbHeight() * 0.5, target.getZ()).add(direction));
+                explosion.rayVec3 = vec3.scale(d * 2);
+                level.addFreshEntity(explosion);
+                if (random.nextInt(10)<=modifier.getLevel()){
+                    vec3 = getScatteredVec3(new Vec3(0, EtSHrnd().nextInt(2) == 1 ? 1 : -1, 0), 80).normalize();
+                    d = EtSHrnd().nextDouble() * 16 + 16;
+                    direction = new Vec3(-(d) * vec3.x, -(d) * vec3.y, -(d) * vec3.z);
+                    explosion = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), level);
                     explosion.setOwner(player);
-                    explosion.damage=damage/4;
-                    explosion.tool= (ToolStack) tool;
+                    explosion.damage = damage / (8+i);
+                    explosion.tool = (ToolStack) tool;
                     explosion.particle = etshtinkerParticleType.plasmaexplosionpurple.get();
-                    explosion.setPos(new Vec3(target.getX(),target.getY()+target.getBbHeight()*0.5,target.getZ()).add(direction));
-                    explosion.rayVec3 = vec3.scale(d*2);
+                    explosion.setPos(new Vec3(target.getX(), target.getY() + target.getBbHeight() * 0.5, target.getZ()).add(direction));
+                    explosion.rayVec3 = vec3.scale(d * 2);
                     level.addFreshEntity(explosion);
                 }
             }

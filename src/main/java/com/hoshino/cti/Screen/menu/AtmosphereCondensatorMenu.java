@@ -43,13 +43,14 @@ public class AtmosphereCondensatorMenu extends GeneralMachineMenu{
 
     @Override
     public ItemStack quickMoveStack(Player player, int slot0) {
+        /*
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.slots.get(slot0);
         if (slot.hasItem()) {
             ItemStack itemstack1 = slot.getItem();
             itemstack = itemstack1.copy();
 
-            if (slot0 >= 0 && slot0 < 31) {
+            if (slot0 >= 0 && slot0 < 4) {
                 if (!this.moveItemStackTo(itemstack1, 0, 36, false)) {
                     return ItemStack.EMPTY;
                 }
@@ -70,8 +71,9 @@ public class AtmosphereCondensatorMenu extends GeneralMachineMenu{
 
             slot.onTake(player, itemstack1);
         }
-
         return itemstack;
+         */
+        return ItemStack.EMPTY;
     }
 
     @Override

@@ -30,7 +30,7 @@ public class IonizeIndused extends etshmodifieriii {
         LivingEntity living =context.getAttacker();
         if (entity instanceof LivingEntity target &&living instanceof Player player&&!(target instanceof Player)){
             target.invulnerableTime=0;
-            target.hurt(playerIonizedSource(damage/4,player),damage/4);
+            target.hurt(playerIonizedSource(damage/16,player),damage/16);
             if (getElectricResistance(target)<=1.5&&getIonizedValue(target)<1000){
                 addIonizedValue(target,25*modifier.getLevel());
             }
@@ -42,7 +42,7 @@ public class IonizeIndused extends etshmodifieriii {
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (target!=null&&projectile instanceof AbstractArrow arrow&&attacker instanceof Player player&&!(target instanceof Player)){
             target.invulnerableTime=0;
-            target.hurt(playerIonizedSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()))/4,player),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()))/4);
+            target.hurt(playerIonizedSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()))/16,player),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()))/16);
             if (getElectricResistance(target)<=1.5&&getIonizedValue(target)<1000){
                 addIonizedValue(target,25*modifier.getLevel());
             }

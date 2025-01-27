@@ -66,6 +66,7 @@ public class AtmosphereExtractorMenu extends GeneralMachineMenu {
 
     @Override
     public ItemStack quickMoveStack(Player player, int slot0) {
+        /*
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.slots.get(slot0);
         if (slot.hasItem()) {
@@ -95,8 +96,9 @@ public class AtmosphereExtractorMenu extends GeneralMachineMenu {
 
             slot.onTake(player, itemstack1);
         }
-
         return itemstack;
+         */
+        return ItemStack.EMPTY;
     }
 
     @Override
