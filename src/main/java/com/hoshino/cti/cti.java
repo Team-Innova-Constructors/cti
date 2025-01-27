@@ -2,6 +2,7 @@ package com.hoshino.cti;
 
 import com.hoshino.cti.Event.LivingEvents;
 import com.hoshino.cti.Event.MobEffect;
+import com.hoshino.cti.Event.ServerEvent;
 import com.hoshino.cti.Event.sleep;
 import com.hoshino.cti.Modifier.capability.*;
 import com.hoshino.cti.Screen.AtmosphereCondensatorScreen;
@@ -58,9 +59,11 @@ public class cti {
         ctiEntity.ENTITY_TYPES.init();
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
         MinecraftForge.EVENT_BUS.register(new MobEffect());
+        MinecraftForge.EVENT_BUS.register(new ServerEvent());
         ctiPacketHandler.init();
         ctiMenu.MENU_TYPE.register(eventBus);
         ctiPotions.POTIONS.register(eventBus);
+        ctiItem.registerPartModels();
         //ctiRecipes.register(eventBus);
         ctiConfiguredFeature.CONFIGURED_FEATURES.register(eventBus);
         ctiPlacedFeature.PLACED_FEATURES.register(eventBus);
@@ -96,6 +99,7 @@ public class cti {
         ToolCapabilityProvider.register(PressurizableToolCap::new);
         event.enqueueWork(BiomeUtil::init);
         event.enqueueWork(ctiRailgunProjectile::register);
+        event.enqueueWork(ctiRitual::init);
         //机械动力土豆加农炮
         ctiPotatocannon.register();
         //powah反应堆冷却剂

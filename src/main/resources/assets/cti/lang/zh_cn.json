@@ -9,6 +9,8 @@
 
 
   "effect.cti.ev": "狩猎",
+  "effect.cti.meteor_shower": "陨石雨",
+
 
   "cti.tooltip.item.shift": "按下 Shift 以获取信息",
   "cti.tooltip.item.ultradense_ammo": "这种高密度材料制成的特种机关枪弹药具有较高的伤害，命中时能无视敌人无敌帧。",
@@ -118,6 +120,9 @@
   "block.cti.fracture_silicon_budding": "分形硅石母岩",
   "item.cti.fracture_silicon": "分形硅石",
   "item.cti.fracture_silicon_budding": "分形硅石母岩",
+
+  "block.cti.meteorite_ore": "陨铁矿",
+  "item.cti.meteorium_plane": "陨铁接收面板",
 
   "item.cti.magic_crystal":"魔力水晶",
   "item.cti.enriched_mana":"富集魔力水晶",
@@ -484,6 +489,15 @@
   "modifier.cti.ragnarok.flavor": "史蒂夫对恶意生物的研究成果",
   "modifier.cti.ragnarok.description": "攻击时有概率移除目标的一个词条并将它掉落出来。",
 
+  "modifier.cti.plasma_wave_slash_ex": "等离子波动斩EX",
+  "modifier.cti.plasma_wave_slash_ex.flavor": "泰拉瑞亚1.4.4更新后的泰拉之刃belike",
+  "modifier.cti.plasma_wave_slash_ex.description": "挥舞武器时释放等离子波动，点燃目标并造成电离减益。",
+
+  "modifier.cti.plasma_shielding": "离子护盾",
+  "modifier.cti.plasma_shielding.flavor": "泰拉瑞亚1.4.4更新后的泰拉之刃belike",
+  "modifier.cti.plasma_shielding.description": "挥舞武器时释放等离子波动，点燃目标并造成电离减益。",
+
+
 
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
@@ -560,6 +574,12 @@
   "fluid.cti.molten_violium": "熔融维奥合金",
   "item.cti.molten_violium_bucket": "熔融维奥合金桶",
 
+  "fluid.cti.extraterrestrial_essense": "外世之魂",
+  "item.cti.extraterrestrial_essense_bucket": "外世之魂桶",
+
+    "fluid.cti.molten_meteorium": "熔融陨铁合金",
+  "item.cti.molten_meteorium_bucket": "熔融陨铁合金桶",
+
   "dimension.ad_astra.infernal": "炼狱",
   "dimension.ad_astra.uranus": "天王星",
   "dimension.ad_astra.jupiter": "木星",
@@ -577,5 +597,10 @@
   "item.cti.upgrade_energy_kit_3": "高高高高高级无限能量升级安装器",
 
   "item.cti.flat_tablet": "全息永夜世界投影板",
-  "item.cti.flat_tablet_day": "全息永昼世界投影板"
+  "item.cti.flat_tablet_day": "全息永昼世界投影板",
+
+  "item.cti.meteor_shower": "流星雨",
+  "cti.ritual_desc.meteor_shower":"让雨点般密集的陨石从天上坠落，将你的世界焚烧殆尽。注：作用范围为84*84，这些陨石可能会摧毁你的火盆。",
+
+  "cti.ritual_desc.meteor_shower":"让雨点般密集的陨石从天上坠落，将你的世界焚烧殆尽。注：作用范围为84*84，这些陨石可能会摧毁你的火盆。"
 }

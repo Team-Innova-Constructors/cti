@@ -1,8 +1,13 @@
 package com.hoshino.cti.register;
 
+import appeng.api.parts.PartModels;
+import appeng.items.parts.PartItem;
+import appeng.items.parts.PartModelsHelper;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.thermal.lib.common.ThermalFlags;
 import cofh.thermal.lib.item.AugmentItem;
+import com.hollingsworth.arsnouveau.common.items.RitualTablet;
+import com.hoshino.cti.Blocks.MeteoriumAnnihilationPlanePart;
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
 import com.hoshino.cti.Items.*;
 import com.hoshino.cti.Items.MekUpgrades.AdvancedUpgrade;
@@ -12,6 +17,7 @@ import com.hoshino.cti.Items.ingots.uriel_ingot;
 import com.hoshino.cti.Items.pncMinigunAmmo.ElectroniumAmmo;
 import com.hoshino.cti.Items.pncMinigunAmmo.ProtoniumAmmo;
 import com.hoshino.cti.Items.pncMinigunAmmo.UltraDenseAmmo;
+import com.hoshino.cti.integration.ArsNouveau.MeteorShowerRitual;
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistries;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistry;
@@ -47,6 +53,9 @@ public class ctiItem {
     public static Item.Properties bottle_drinkItem() {
         return (new Item.Properties()).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16).tab(ctiTab.FOOD);
     }
+    public static void registerPartModels(){
+        PartModels.registerModels(PartModelsHelper.createModels(MeteoriumAnnihilationPlanePart.class));
+    }
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "cti");
     public static final ResourcefulRegistry<Item> ASTRAITEM  = ResourcefulRegistries.create(Registry.ITEM, "cti");
     public static final ResourcefulRegistry<Item> VEHICLES = ResourcefulRegistries.create(ASTRAITEM);
@@ -76,6 +85,15 @@ public class ctiItem {
     public static final RegistryObject<BlockItem> fracture_silicon_budding = ITEMS.register("fracture_silicon_budding",()-> new BlockItem(ctiBlock.fracture_silicon_budding.get(), new Item.Properties().tab(ctiTab.MIXC)));
     public static final RegistryObject<BlockItem> rasterite = ITEMS.register("rasterite",()-> new BlockItem(ctiBlock.rasterite.get(), new Item.Properties().tab(ctiTab.MIXC)));
     public static final RegistryObject<BlockItem> rasterite_budding = ITEMS.register("rasterite_budding",()-> new BlockItem(ctiBlock.rasterite_budding.get(), new Item.Properties().tab(ctiTab.MIXC)));
+    public static final RegistryObject<BlockItem> meteorite_ore = ITEMS.register("meteorite_ore",()-> new BlockItem(ctiBlock.meteorite_ore.get(), new Item.Properties().tab(ctiTab.MIXC)));
+
+    public static final RegistryObject<PartItem<MeteoriumAnnihilationPlanePart>> meteorium_plane = ITEMS.register("meteorium_plane",()-> new PartItem<>(new Item.Properties().tab(ctiTab.MIXC), MeteoriumAnnihilationPlanePart.class,MeteoriumAnnihilationPlanePart::new));
+
+    public static final RegistryObject<RitualTablet> meteor_shower_tablet = ITEMS.register("meteor_shower_tablet",()-> {
+        RitualTablet tablet = new RitualTablet(new Item.Properties().tab(ctiTab.MIXC));
+        tablet.ritual = new MeteorShowerRitual();
+        return tablet;
+    });
 
     public static final RegistryObject<BlockItem> alloy_centrifuge = ITEMS.register("alloy_centrifuge",()-> new TooltipedBlockItem(ctiBlock.alloy_centrifuge_block.get(), new Item.Properties().tab(ctiTab.MACHINE),List.of(
             Component.translatable("cti.tooltip.item.alloy_centrifuge").withStyle(ChatFormatting.AQUA),
