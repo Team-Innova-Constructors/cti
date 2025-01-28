@@ -32,6 +32,9 @@
   "cti.tooltip.item.sodium_cooler": "小型的安全的集成化的裂变反应堆，能以固定2870mB/t的速度燃烧裂变燃料并产生FE。",
   "cti.tooltip.item.sodium_cooler2": "机器会从左侧的容器吸取裂变燃料，并向右侧的容器排出核废料。",
   "cti.tooltip.item.sodium_cooler3": "能量存储满了、输入/输出端没有化学品容器则无法工作，破坏时不产生辐射。",
+  "cti.tooltip.item.xenoglarium_ingot": "展现在我们面前的宇宙是一个虚无缥缈的存在。",
+  "cti.tooltip.item.xenoglarium_ingot2": "什么，你问我上面那句话和这个材料有什么关系？我不知道。",
+  "cti.tooltip.item.xenoglarium_ingot3": "尽管如此，这些文字并非毫无意义。",
 
   "cti.tooltip.item.alloy_centrifuge": "通过压缩空气将镕铸炉内的熔融合金分解为它的原料，需要方块的背面紧挨焦褐排液口才能工作。",
   "cti.tooltip.item.alloy_centrifuge2": "需要2bar以上的压力才能工作，压力越高压缩空气消耗越快，处理速度也越快（10bar时最高），压缩空气容量: 12800mL。",
@@ -296,6 +299,17 @@
   "material.cti.roxy.flavor": "冥冥之中的动力推动你将陨石加护的异星物质雕刻如此，温润如水的光芒从中散发",
   "material.cti.roxy.encyclopedia": "来自天穹的物质将你包裹起来，你获得了n层神明的加护",
 
+  "material.cti.meteorium": "陨铁合金",
+  "material.cti.meteorium.flavor": "它是从哪里来的呢？",
+  "material.cti.meteorium.encyclopedia": "一块来自外星的陨铁，似乎包含了一种神奇的能量。\n怎么把这种能量分离出来呢？",
+
+  "item.cti.xenoglarium_ingot": "烈光合金锭",
+  "material.cti.xenoglarium": "烈光合金",
+  "material.cti.xenoglarium.flavor": "柔和的光芒电离了周围的空气。",
+  "material.cti.xenoglarium.encyclopedia": "“存在即为意义”",
+
+
+
   "modifier.cti.roxylightning": "雷光",
   "modifier.cti.roxylightning.flavor": "消耗命运的一击！",
   "modifier.cti.roxylightning.description":"每隔10s叠加一层自身血量上限*10闪电类型的附伤，至多等级+2层，打出后为使用者附加10s反胃、虚弱和电子效果",
@@ -494,8 +508,12 @@
   "modifier.cti.plasma_wave_slash_ex.description": "挥舞武器时释放等离子波动，点燃目标并造成电离减益。",
 
   "modifier.cti.plasma_shielding": "离子护盾",
-  "modifier.cti.plasma_shielding.flavor": "泰拉瑞亚1.4.4更新后的泰拉之刃belike",
-  "modifier.cti.plasma_shielding.description": "挥舞武器时释放等离子波动，点燃目标并造成电离减益。",
+  "modifier.cti.plasma_shielding.flavor": "离子护盾",
+  "modifier.cti.plasma_shielding.description": "免疫弹射物和爆炸伤害，获得压强以外的1点全环境抗性。获得一面能格挡2次伤害的护盾，护盾破碎后会冷却30秒然后重新充能。",
+
+  "modifier.cti.outer_space": "天外来客",
+  "modifier.cti.outer_space.flavor": "人走在路上被陨石砸死的概率很小，但是不为零",
+  "modifier.cti.outer_space.description": "所有攻击附带20%的下坠方块伤害，在非主世界的维度时所有伤害增加25%。",
 
 
 
@@ -574,8 +592,8 @@
   "fluid.cti.molten_violium": "熔融维奥合金",
   "item.cti.molten_violium_bucket": "熔融维奥合金桶",
 
-  "fluid.cti.extraterrestrial_essense": "外世之魂",
-  "item.cti.extraterrestrial_essense_bucket": "外世之魂桶",
+  "fluid.cti.extraterrestrial_essense": "液化以太",
+  "item.cti.extraterrestrial_essense_bucket": "液化以太桶",
 
     "fluid.cti.molten_meteorium": "熔融陨铁合金",
   "item.cti.molten_meteorium_bucket": "熔融陨铁合金桶",

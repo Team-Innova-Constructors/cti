@@ -313,4 +313,9 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
         ctiPacketHandler.sendToClient(new PMachineFluidSync(this.getFluid(),this.getBlockPos()));
         return new AtmosphereCondensatorMenu(i,inventory,this,this.DATA);
     }
+
+    @Override
+    public ItemStackHandler getItemHandler() {
+        return itemStackHandler;
+    }
 }

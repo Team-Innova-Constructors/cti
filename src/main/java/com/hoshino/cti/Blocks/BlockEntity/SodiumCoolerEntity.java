@@ -23,6 +23,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
+import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -118,6 +119,11 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
         super.onLoad();
         LazyenergyHandler = LazyOptional.of(()->ENERGY_STORAGE);
         LazyGasHandler = LazyOptional.of(()->gasHandler);
+    }
+
+    @Override
+    public ItemStackHandler getItemHandler() {
+        return null;
     }
 
     @Override

@@ -69,7 +69,9 @@
     "endergobberbless": "#72d3b3",
 
     "fixsanguine": "#d91b30",
-    "plasma_wave_slash_ex": "6D29FF",
+    "plasma_wave_slash_ex": "#6D29FF",
+    "plasma_shielding": "#6D29FF",
+    "outer_space":"#D65C00",
 
     "_uriel_": "乌列尔",
     "timetojudge": "#fffdab",

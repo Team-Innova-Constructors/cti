@@ -6,14 +6,12 @@ import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.util.vecCalc;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PPlasmaWaveSlashC2S;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.fml.LogicalSide;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
@@ -28,23 +26,26 @@ public class PlasmaWaveSlashPlus extends etshmodifieriii {
         MinecraftForge.EVENT_BUS.addListener(this::LeftClickBlock);
     }
 
+    @Override
+    public boolean isNoLevels() {
+        return true;
+    }
+
     private void LeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         if (event.getSide()== LogicalSide.SERVER){
             Player player = event.getEntity();
             ItemStack stack =player.getItemInHand(event.getHand());
-            if (stack.getItem() instanceof IModifiable&&player.getAttackStrengthScale(0)>0.8) {
+            if (stack.getItem() instanceof IModifiable) {
                 if (ToolStack.from(stack).getModifierLevel(this)>0) createslash(event.getEntity(), ToolStack.from(stack));
             }
         }
     }
 
     private void LeftClick(PlayerInteractEvent.LeftClickEmpty event) {
-        if (event.getSide()== LogicalSide.CLIENT&&event.getHand()== InteractionHand.MAIN_HAND){
-            Player player = event.getEntity();
-            ItemStack stack =player.getMainHandItem();
-            if (stack.getItem() instanceof IModifiable&&player.getAttackStrengthScale(0)>0.8) {
-                if (ToolStack.from(stack).getModifierLevel(this)>0) ctiPacketHandler.sendToServer(new PPlasmaWaveSlashC2S());
-            }
+        Player player = event.getEntity();
+        ItemStack stack =player.getMainHandItem();
+        if (stack.getItem() instanceof IModifiable) {
+            if (ToolStack.from(stack).getModifierLevel(this)>0) ctiPacketHandler.sendToServer(new PPlasmaWaveSlashC2S());
         }
     }
 
@@ -57,7 +58,7 @@ public class PlasmaWaveSlashPlus extends etshmodifieriii {
     }
 
     public void createslash(Player player, IToolStackView tool) {
-        if (player != null) {
+        if (player != null&&player.getAttackStrengthScale(0)>=0.8) {
             Level world = player.level;
             plasmawaveslashentity slash = new plasmawaveslashentity(etshtinkerEntity.plasmawaveslashEntity.get(), world);
             world.noCollision(slash);
@@ -72,7 +73,7 @@ public class PlasmaWaveSlashPlus extends etshmodifieriii {
     }
 
     public static void createSlash(Player player, IToolStackView tool) {
-        if (player != null) {
+        if (player != null&&player.getAttackStrengthScale(0)>=0.8) {
             Level world = player.level;
             plasmawaveslashentity slash = new plasmawaveslashentity(etshtinkerEntity.plasmawaveslashEntity.get(), world);
             world.noCollision(slash);

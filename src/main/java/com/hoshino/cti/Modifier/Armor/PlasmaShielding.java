@@ -45,7 +45,7 @@ public class PlasmaShielding extends Modifier implements DamageBlockModifierHook
             damageSource.setProjectile();
             projectile.discard();
         }
-        if (tool.getPersistentData().getInt(SHIELD_LOCATION)>0&&tool.getPersistentData().getInt(CD_LOCATION)<=0&&equipmentContext.getEntity().invulnerableTime<=0&&!damageSource.isProjectile()&&!damageSource.isExplosion()){
+        if (tool.getPersistentData().getInt(SHIELD_LOCATION)>0&&tool.getPersistentData().getInt(CD_LOCATION)<=0&&equipmentContext.getEntity().invulnerableTime<=0&&!damageSource.isProjectile()&&!damageSource.isExplosion()&&!damageSource.isFire()){
             tool.getPersistentData().putInt(SHIELD_LOCATION,tool.getPersistentData().getInt(SHIELD_LOCATION)-1);
             equipmentContext.getEntity().invulnerableTime=Math.max(10,equipmentContext.getEntity().invulnerableTime);
             if (equipmentContext.getEntity().level.isClientSide){
@@ -65,8 +65,9 @@ public class PlasmaShielding extends Modifier implements DamageBlockModifierHook
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         if (isCorrectSlot){
-            if (tool.getPersistentData().getInt(CD_LOCATION)>modifier.getLevel()+1&&tool.getPersistentData().getInt(CD_LOCATION)==0){
+            if (tool.getPersistentData().getInt(SHIELD_LOCATION)<modifier.getLevel()+1&&tool.getPersistentData().getInt(CD_LOCATION)<=0){
                 tool.getPersistentData().putInt(SHIELD_LOCATION,modifier.getLevel()+1);
+                if (world.isClientSide) world.playLocalSound(holder.getX(),holder.getEyeY(),holder.getZ(),SoundEvents.AMETHYST_BLOCK_CHIME,SoundSource.PLAYERS,1,0.75f,true);
             }
         }
     }
