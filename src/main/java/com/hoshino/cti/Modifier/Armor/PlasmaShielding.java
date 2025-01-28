@@ -20,6 +20,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.armor.DamageBlockModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickModifierHook;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.item.IModifiable;
@@ -28,7 +29,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 
-public class PlasmaShielding extends Modifier implements DamageBlockModifierHook , InventoryTickModifierHook , ToolStatsModifierHook {
+public class PlasmaShielding extends NoLevelsModifier implements DamageBlockModifierHook , InventoryTickModifierHook , ToolStatsModifierHook {
     public static final ResourceLocation SHIELD_LOCATION = cti.getResource("plasma_shield");
     public static final ResourceLocation CD_LOCATION = cti.getResource("plasma_cooldown");
 
@@ -40,7 +41,6 @@ public class PlasmaShielding extends Modifier implements DamageBlockModifierHook
 
     @Override
     public boolean isDamageBlocked(IToolStackView tool, ModifierEntry modifierEntry, EquipmentContext equipmentContext, EquipmentSlot equipmentSlot, DamageSource damageSource, float damage) {
-        LivingEntity entity = equipmentContext.getEntity();
         if (damageSource.getEntity() instanceof Projectile projectile){
             damageSource.setProjectile();
             projectile.discard();
@@ -53,13 +53,12 @@ public class PlasmaShielding extends Modifier implements DamageBlockModifierHook
             tool.getPersistentData().putInt(SHIELD_LOCATION,tool.getPersistentData().getInt(SHIELD_LOCATION)-1);
             equipmentContext.getEntity().invulnerableTime=Math.max(10,equipmentContext.getEntity().invulnerableTime);
             if (equipmentContext.getEntity().level.isClientSide){
-                equipmentContext.getEntity().level.playLocalSound(entity.getX(),entity.getEyeY(),entity.getZ(), SoundEvents.METAL_HIT, SoundSource.PLAYERS,1,1.5f,true);
+                equipmentContext.getEntity().playSound(SoundEvents.METAL_HIT,1,1.5f);
             }
             if (tool.getPersistentData().getInt(SHIELD_LOCATION)<=0){
                 tool.getPersistentData().putInt(CD_LOCATION,600);
-                if (equipmentContext.getEntity().level.isClientSide){
-                    equipmentContext.getEntity().level.playLocalSound(entity.getX(),entity.getEyeY(),entity.getZ(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS,1,1.2f,true);
-                }
+                equipmentContext.getEntity().playSound(SoundEvents.GLASS_BREAK,1,1.2f);
+
             }
             return true;
         }
@@ -69,9 +68,9 @@ public class PlasmaShielding extends Modifier implements DamageBlockModifierHook
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         if (isCorrectSlot){
-            if (tool.getPersistentData().getInt(SHIELD_LOCATION)<modifier.getLevel()+2&&tool.getPersistentData().getInt(CD_LOCATION)<=0){
-                tool.getPersistentData().putInt(SHIELD_LOCATION,modifier.getLevel()+2);
-                if (world.isClientSide) world.playLocalSound(holder.getX(),holder.getEyeY(),holder.getZ(),SoundEvents.AMETHYST_BLOCK_CHIME,SoundSource.PLAYERS,1,0.75f,true);
+            if (tool.getPersistentData().getInt(SHIELD_LOCATION)<4&&tool.getPersistentData().getInt(CD_LOCATION)<=0){
+                tool.getPersistentData().putInt(SHIELD_LOCATION,4);
+                holder.playSound(SoundEvents.AMETHYST_BLOCK_CHIME,1,0.75f);
             }
         }
     }
