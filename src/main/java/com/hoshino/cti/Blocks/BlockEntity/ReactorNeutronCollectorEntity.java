@@ -390,4 +390,9 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
         ctiPacketHandler.sendToClient(new PMachineEnergySync(this.ENERGY_STORAGE.getEnergyStored(),this.getBlockPos()));
         return new ReactorNeutronCollectorMenu(i,inventory,this,this.DATA);
     }
+
+    @Override
+    public ItemStackHandler getItemHandler() {
+        return itemStackHandler;
+    }
 }

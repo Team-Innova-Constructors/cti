@@ -87,4 +87,5 @@ public class ctiModifiers {
     public static final StaticModifier<Ragnarok> ragnarok= MODIFIERS.register("ragnarok", Ragnarok::new);
     public static final StaticModifier<PlasmaWaveSlashPlus> plasma_wave_slash_ex= MODIFIERS.register("plasma_wave_slash_ex", PlasmaWaveSlashPlus::new);
     public static final StaticModifier<PlasmaShielding> plasma_shielding= MODIFIERS.register("plasma_shielding", PlasmaShielding::new);
+    public static final StaticModifier<OuterSpace> outer_space= MODIFIERS.register("outer_space", OuterSpace::new);
 }

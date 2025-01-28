@@ -27,9 +27,9 @@ public class MeteorShowerRitual extends AbstractRitual {
                 float x =random.nextFloat() * 128 - 64;
                 float y =random.nextFloat() * 128 - 64;
                 if (x==0&&y==0){
-                    x+=0.1f;
+                    x=0.1f;
                 }
-                float v = Math.abs(x) + Math.abs(y);
+                float v = (float) Math.sqrt(x*x+y*y);
                 float x1 = x/ v;
                 float y1 = y/ v;
                 x+=x<0?-20*x1:20*x1;
@@ -49,7 +49,7 @@ public class MeteorShowerRitual extends AbstractRitual {
                 if (x==0&&y==0){
                     x+=0.1f;
                 }
-                float v = Math.abs(x) + Math.abs(y);
+                float v = (float) Math.sqrt(x*x+y*y);
                 float x1 = x/ v;
                 float y1 = y/ v;
                 x+=x<0?-8*x1:8*x1;

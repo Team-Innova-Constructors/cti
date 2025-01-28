@@ -6,6 +6,7 @@ import appeng.items.parts.PartModelsHelper;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.thermal.lib.common.ThermalFlags;
 import cofh.thermal.lib.item.AugmentItem;
+import com.c2h6s.etshtinker.Items.StoriedMaterial;
 import com.hollingsworth.arsnouveau.common.items.RitualTablet;
 import com.hoshino.cti.Blocks.MeteoriumAnnihilationPlanePart;
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
@@ -86,6 +87,15 @@ public class ctiItem {
     public static final RegistryObject<BlockItem> rasterite = ITEMS.register("rasterite",()-> new BlockItem(ctiBlock.rasterite.get(), new Item.Properties().tab(ctiTab.MIXC)));
     public static final RegistryObject<BlockItem> rasterite_budding = ITEMS.register("rasterite_budding",()-> new BlockItem(ctiBlock.rasterite_budding.get(), new Item.Properties().tab(ctiTab.MIXC)));
     public static final RegistryObject<BlockItem> meteorite_ore = ITEMS.register("meteorite_ore",()-> new BlockItem(ctiBlock.meteorite_ore.get(), new Item.Properties().tab(ctiTab.MIXC)));
+    public static final RegistryObject<StoriedMaterial> xenoglarium_ingot = ITEMS.register("xenoglarium_ingot",()-> new StoriedMaterial(new Item.Properties().tab(ctiTab.MATERIALS),List.of(
+            Component.translatable("cti.tooltip.item.xenoglarium_ingot").withStyle(ChatFormatting.AQUA),
+            Component.translatable("cti.tooltip.item.xenoglarium_ingot2").withStyle(ChatFormatting.DARK_AQUA),
+            Component.translatable("cti.tooltip.item.xenoglarium_ingot3").withStyle(ChatFormatting.AQUA),
+            Component.translatable("etshtinker.item.tooltip.special").withStyle(ChatFormatting.LIGHT_PURPLE),
+            Component.translatable("etshtinker.item.tooltip.special2").withStyle(ChatFormatting.LIGHT_PURPLE)
+    )));
+
+
 
     public static final RegistryObject<PartItem<MeteoriumAnnihilationPlanePart>> meteorium_plane = ITEMS.register("meteorium_plane",()-> new PartItem<>(new Item.Properties().tab(ctiTab.MIXC), MeteoriumAnnihilationPlanePart.class,MeteoriumAnnihilationPlanePart::new));
 
