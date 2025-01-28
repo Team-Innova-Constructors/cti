@@ -250,7 +250,7 @@
 
   "modifier.cti.double_edged": "双刃剑",
   "modifier.cti.double_edged.flavor": "大动脉撕裂者",
-  "modifier.cti.description":"满蓄力打击时对敌人造成2.5倍伤害。然而如果未击中或者没有满蓄力，你会打中你自己。",
+  "modifier.cti.double_edged.description":"满蓄力打击时对敌人造成2.5倍伤害。然而如果未击中或者没有满蓄力，你会打中你自己。",
 
 
   "item.cti.nitro_supersteel": "冰淬高速钢",
@@ -509,7 +509,7 @@
 
   "modifier.cti.plasma_shielding": "离子护盾",
   "modifier.cti.plasma_shielding.flavor": "离子护盾",
-  "modifier.cti.plasma_shielding.description": "免疫弹射物和爆炸伤害，获得压强以外的1点全环境抗性。获得一面能格挡2次伤害的护盾，护盾破碎后会冷却30秒然后重新充能。",
+  "modifier.cti.plasma_shielding.description": "免疫弹射物和爆炸伤害，获得压强以外的1点全环境抗性。获得一面能格挡词条等级+2次伤害的护盾，护盾破碎后会冷却30秒然后重新充能。",
 
   "modifier.cti.outer_space": "天外来客",
   "modifier.cti.outer_space.flavor": "人走在路上被陨石砸死的概率很小，但是不为零",
