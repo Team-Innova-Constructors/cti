@@ -1,9 +1,11 @@
 package com.hoshino.cti.register;
 
 import com.hoshino.cti.Entity.Projectiles.FallenStars;
+import com.hoshino.cti.Entity.Projectiles.MeteorEntity;
 import com.hoshino.cti.Entity.Projectiles.TinkerRailgunProjectile;
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
 import com.hoshino.cti.client.renderer.projectile.LargeBrightItemProjectile;
+import com.hoshino.cti.client.renderer.projectile.MeteorEntityRenderer;
 import com.hoshino.cti.client.renderer.projectile.TinkerRaligunRenderer;
 import com.hoshino.cti.client.renderer.vehicle.rocketTier5.RocketRendererTier5;
 import com.xiaoyue.tinkers_ingenuity.register.TIItems;
@@ -30,6 +32,7 @@ public class ctiEntity {
     public static final RegistryObject<EntityType<FallenStars>> star_frozen = ENTITIES.register("star_frozen", () -> EntityType.Builder.<FallenStars>of((entityType,level)->new FallenStars(entityType,level,ctiItem.star_frozen.get()), MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new FallenStars(ctiEntity.star_frozen.get(), world,ctiItem.star_frozen.get())).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<FallenStars>> star_pressure = ENTITIES.register("star_pressure", () -> EntityType.Builder.<FallenStars>of((entityType,level)->new FallenStars(entityType,level,ctiItem.star_pressure.get()), MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new FallenStars(ctiEntity.star_pressure.get(), world,ctiItem.star_pressure.get())).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<TinkerRailgunProjectile>> tinker_railgun = ENTITIES.register("tinker_railgun", () -> EntityType.Builder.<TinkerRailgunProjectile>of((entityType, level)->new TinkerRailgunProjectile(entityType,level,new ItemStack(TinkerToolParts.toolHandle), TinkerTools.cleaver.get()), MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new TinkerRailgunProjectile(ctiEntity.tinker_railgun.get(), world,new ItemStack(TinkerToolParts.toolHandle),TinkerTools.cleaver.get())).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<MeteorEntity>> meteor_entity = ENTITIES.register("meteor_entity", () -> EntityType.Builder.<MeteorEntity>of(MeteorEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new MeteorEntity(world,spawnEntity.getPosX(),spawnEntity.getPosY(),spawnEntity.getPosZ(),spawnEntity.getEntity().getDeltaMovement())).setShouldReceiveVelocityUpdates(true));
     public static void registerEntityRenderers() {
         ClientHooks.registerEntityRenderer(ctiEntity.TIER_5_ROCKET, RocketRendererTier5::new);
         ClientHooks.registerEntityRenderer(ctiEntity.star_blaze, LargeBrightItemProjectile::new);
@@ -37,5 +40,6 @@ public class ctiEntity {
         ClientHooks.registerEntityRenderer(ctiEntity.star_frozen, LargeBrightItemProjectile::new);
         ClientHooks.registerEntityRenderer(ctiEntity.star_pressure, LargeBrightItemProjectile::new);
         ClientHooks.registerEntityRenderer(ctiEntity.tinker_railgun, TinkerRaligunRenderer::new);
+        ClientHooks.registerEntityRenderer(ctiEntity.meteor_entity, MeteorEntityRenderer::new);
     }
 }

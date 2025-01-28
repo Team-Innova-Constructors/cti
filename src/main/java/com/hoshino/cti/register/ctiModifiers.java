@@ -85,6 +85,9 @@ public class ctiModifiers {
     public static final StaticModifier<FixSanguine> fixSanguineStaticModifier= MODIFIERS.register("fixsanguine", FixSanguine::new);
     public static final StaticModifier<CrippleSupperMass> crippleSupperMassStaticModifier= MODIFIERS.register("cripplesuppermass", CrippleSupperMass::new);
     public static final StaticModifier<Ragnarok> ragnarok= MODIFIERS.register("ragnarok", Ragnarok::new);
+    public static final StaticModifier<PlasmaWaveSlashPlus> plasma_wave_slash_ex= MODIFIERS.register("plasma_wave_slash_ex", PlasmaWaveSlashPlus::new);
+    public static final StaticModifier<PlasmaShielding> plasma_shielding= MODIFIERS.register("plasma_shielding", PlasmaShielding::new);
+    public static final StaticModifier<OuterSpace> outer_space= MODIFIERS.register("outer_space", OuterSpace::new);
     public static final StaticModifier<CommonGobberBless> commonGobberBlessStaticModifier= MODIFIERS.register("commongobberbless", CommonGobberBless::new);
     public static final StaticModifier<NetherGobberBless> netherGobberBlessStaticModifier= MODIFIERS.register("nethergobberbless", NetherGobberBless::new);
     public static final StaticModifier<EnderGobberBless> enderGobberBlessStaticModifier= MODIFIERS.register("endergobberbless", EnderGobberBless::new);
