@@ -58,6 +58,7 @@ public class LivingEvents {
                 MobEffect harm = effect.getEffect();
                 if (harm.getCategory() == MobEffectCategory.HARMFUL) {
                     player.removeEffect(harm);
+                    player.kill();
                 }
             }
         }

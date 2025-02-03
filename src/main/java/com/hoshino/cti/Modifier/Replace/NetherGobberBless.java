@@ -2,22 +2,30 @@ package com.hoshino.cti.Modifier.Replace;
 
 import com.hoshino.cti.util.method.GetModifierLevel;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.WitherSkeleton;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import slimeknights.tconstruct.TConstruct;
+import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
+import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.TinkerTools;
 
 public class NetherGobberBless extends BattleModifier {
     public boolean isCorrectDimension(LivingEntity livingEntity){
@@ -36,6 +44,22 @@ public class NetherGobberBless extends BattleModifier {
     public void arrowhurt(ModifierNBT modifiers, NamespacedNBT persistentData, int level, Projectile projectile, EntityHitResult hit, AbstractArrow arrow, LivingEntity attacker, LivingEntity target) {
         if(this.isCorrectDimension(attacker)){
             arrow.setBaseDamage(arrow.getBaseDamage() * (1+level*0.25f));
+        }
+    }
+    @Override
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+        if(context.getAttacker() instanceof Player player&&context.getLivingTarget() instanceof WitherSkeleton WS){
+            WS.die(DamageSource.playerAttack(player));
+            WS.remove(Entity.RemovalReason.KILLED);
+            ItemStack skull = new ItemStack(Items.WITHER_SKELETON_SKULL);
+            int Modifierlevel= ModifierUtil.getModifierLevel(tool.getItem().getDefaultInstance(), TinkerModifiers.severing.getId())-5;
+            if(tool.getItem()== TinkerTools.cleaver.get()){
+                for(int i=0;i<9;i++){
+                    skull.setCount(Modifierlevel);
+                    player.getInventory().add(skull);
+                }
+            }
+            else player.getInventory().add(skull);
         }
     }
 

@@ -2,7 +2,9 @@ package com.hoshino.cti.Modifier.Replace;
 
 import com.hoshino.cti.util.method.GetModifierLevel;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -48,6 +50,13 @@ public class CommonGobberBless extends BattleModifier {
                     player.getFoodData().setSaturation(Math.min(20,saturationLevel+1));
                 }
             }
+        }
+    }
+
+    @Override
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+        if(context.getLivingTarget()instanceof WitherBoss wither&&context.getAttacker() instanceof Player player){
+            wither.hurt(DamageSource.playerAttack(player),wither.getMaxHealth() *0.06F);
         }
     }
 

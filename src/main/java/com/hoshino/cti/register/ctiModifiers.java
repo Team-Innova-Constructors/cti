@@ -88,4 +88,5 @@ public class ctiModifiers {
     public static final StaticModifier<CommonGobberBless> commonGobberBlessStaticModifier= MODIFIERS.register("commongobberbless", CommonGobberBless::new);
     public static final StaticModifier<NetherGobberBless> netherGobberBlessStaticModifier= MODIFIERS.register("nethergobberbless", NetherGobberBless::new);
     public static final StaticModifier<EnderGobberBless> enderGobberBlessStaticModifier= MODIFIERS.register("endergobberbless", EnderGobberBless::new);
+    public static final StaticModifier<imprison> imprison= MODIFIERS.register("imprison", imprison::new);
 }
