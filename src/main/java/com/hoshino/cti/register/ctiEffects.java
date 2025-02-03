@@ -15,4 +15,5 @@ public class ctiEffects {
     public static final RegistryObject<MobEffect> Abel =EFFECT.register("abel", Abel::new);
     public static final RegistryObject<MobEffect> resolute =EFFECT.register("resolute", Resolute::new);
     public static final RegistryObject<MobEffect> AncientDragonFlame =EFFECT.register("ancientdragonflame", AncientDragonFlame::new);
+    public static final RegistryObject<MobEffect> meteor_shower =EFFECT.register("meteor_shower", MeteorShower::new);
 }

@@ -103,6 +103,11 @@ public class AtmosphereExtractorEntity extends GeneralMachineEntity implements M
             }
             else return false;
         }
+
+        @Override
+        public int getSlotLimit(int slot) {
+            return slot<4?1:64;
+        }
     };
 
     public int getMaxEnergy(){
@@ -308,6 +313,8 @@ public class AtmosphereExtractorEntity extends GeneralMachineEntity implements M
     }
 
 
-
-
+    @Override
+    public ItemStackHandler getItemHandler() {
+        return itemStackHandler;
+    }
 }

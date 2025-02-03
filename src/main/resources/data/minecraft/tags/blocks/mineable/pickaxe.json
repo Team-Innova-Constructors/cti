@@ -8,6 +8,8 @@
     "cti:quantum_miner",
     "cti:reactor_neutron_collector",
     "cti:quantum_miner_advanced",
-    "cti:sodium_cooler"
+    "cti:sodium_cooler",
+    "cti:meteorite_ore"
+
   ]
 }

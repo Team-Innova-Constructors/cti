@@ -16,4 +16,5 @@ public class DimensionConstants {
     public static final ResourceKey<Level> MARS = ResourceKey.create(Registry.DIMENSION_REGISTRY,new ResourceLocation("ad_astra","mars"));
     public static final ResourceKey<Level> MERCURY = ResourceKey.create(Registry.DIMENSION_REGISTRY,new ResourceLocation("ad_astra","mercury"));
     public static final ResourceKey<Level> GLACIO = ResourceKey.create(Registry.DIMENSION_REGISTRY,new ResourceLocation("ad_astra","glacio"));
+    public static final ResourceKey<Level> MOON = ResourceKey.create(Registry.DIMENSION_REGISTRY,new ResourceLocation("ad_astra","moon"));
 }

@@ -9,6 +9,8 @@
 
 
   "effect.cti.ev": "狩猎",
+  "effect.cti.meteor_shower": "陨石雨",
+
 
   "cti.tooltip.item.shift": "按下 Shift 以获取信息",
   "cti.tooltip.item.ultradense_ammo": "这种高密度材料制成的特种机关枪弹药具有较高的伤害，命中时能无视敌人无敌帧。",
@@ -30,6 +32,9 @@
   "cti.tooltip.item.sodium_cooler": "小型的安全的集成化的裂变反应堆，能以固定2870mB/t的速度燃烧裂变燃料并产生FE。",
   "cti.tooltip.item.sodium_cooler2": "机器会从左侧的容器吸取裂变燃料，并向右侧的容器排出核废料。",
   "cti.tooltip.item.sodium_cooler3": "能量存储满了、输入/输出端没有化学品容器则无法工作，破坏时不产生辐射。",
+  "cti.tooltip.item.xenoglarium_ingot": "展现在我们面前的宇宙是一个虚无缥缈的存在。",
+  "cti.tooltip.item.xenoglarium_ingot2": "什么，你问我上面那句话和这个材料有什么关系？我不知道。",
+  "cti.tooltip.item.xenoglarium_ingot3": "尽管如此，这些文字并非毫无意义。",
 
   "cti.tooltip.item.alloy_centrifuge": "通过压缩空气将镕铸炉内的熔融合金分解为它的原料，需要方块的背面紧挨焦褐排液口才能工作。",
   "cti.tooltip.item.alloy_centrifuge2": "需要2bar以上的压力才能工作，压力越高压缩空气消耗越快，处理速度也越快（10bar时最高），压缩空气容量: 12800mL。",
@@ -118,6 +123,9 @@
   "block.cti.fracture_silicon_budding": "分形硅石母岩",
   "item.cti.fracture_silicon": "分形硅石",
   "item.cti.fracture_silicon_budding": "分形硅石母岩",
+
+  "block.cti.meteorite_ore": "陨铁矿",
+  "item.cti.meteorium_plane": "陨铁接收面板",
 
   "item.cti.magic_crystal":"魔力水晶",
   "item.cti.enriched_mana":"富集魔力水晶",
@@ -242,7 +250,7 @@
 
   "modifier.cti.double_edged": "双刃剑",
   "modifier.cti.double_edged.flavor": "大动脉撕裂者",
-  "modifier.cti.description":"满蓄力打击时对敌人造成2.5倍伤害。然而如果未击中或者没有满蓄力，你会打中你自己。",
+  "modifier.cti.double_edged.description":"满蓄力打击时对敌人造成2.5倍伤害。然而如果未击中或者没有满蓄力，你会打中你自己。",
 
 
   "item.cti.nitro_supersteel": "冰淬高速钢",
@@ -290,6 +298,17 @@
   "material.cti.roxy": "洛琪希",
   "material.cti.roxy.flavor": "冥冥之中的动力推动你将陨石加护的异星物质雕刻如此，温润如水的光芒从中散发",
   "material.cti.roxy.encyclopedia": "来自天穹的物质将你包裹起来，你获得了n层神明的加护",
+
+  "material.cti.meteorium": "陨铁合金",
+  "material.cti.meteorium.flavor": "它是从哪里来的呢？",
+  "material.cti.meteorium.encyclopedia": "一块来自外星的陨铁，似乎包含了一种神奇的能量。\n怎么把这种能量分离出来呢？",
+
+  "item.cti.xenoglarium_ingot": "烈光合金锭",
+  "material.cti.xenoglarium": "烈光合金",
+  "material.cti.xenoglarium.flavor": "柔和的光芒电离了周围的空气。",
+  "material.cti.xenoglarium.encyclopedia": "“存在即为意义”",
+
+
 
   "modifier.cti.roxylightning": "雷光",
   "modifier.cti.roxylightning.flavor": "消耗命运的一击！",
@@ -488,6 +507,19 @@
   "modifier.cti.ragnarok.flavor": "史蒂夫对恶意生物的研究成果",
   "modifier.cti.ragnarok.description": "攻击时有概率移除目标的一个词条并将它掉落出来。",
 
+  "modifier.cti.plasma_wave_slash_ex": "等离子波动斩EX",
+  "modifier.cti.plasma_wave_slash_ex.flavor": "泰拉瑞亚1.4.4更新后的泰拉之刃belike",
+  "modifier.cti.plasma_wave_slash_ex.description": "挥舞武器时释放等离子波动，点燃目标并造成电离减益。",
+
+  "modifier.cti.plasma_shielding": "离子护盾",
+  "modifier.cti.plasma_shielding.flavor": "离子护盾",
+  "modifier.cti.plasma_shielding.description": "免疫弹射物和爆炸伤害，获得压强以外的1点全环境抗性。获得一面能格挡4次伤害的护盾，护盾破碎后会冷却30秒然后重新充能。",
+
+  "modifier.cti.outer_space": "天外来客",
+  "modifier.cti.outer_space.flavor": "人走在路上被陨石砸死的概率很小，但是不为零",
+  "modifier.cti.outer_space.description": "所有攻击附带20%的下坠方块伤害，在非主世界的维度时所有伤害增加25%。",
+
+
 
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
@@ -564,6 +596,12 @@
   "fluid.cti.molten_violium": "熔融维奥合金",
   "item.cti.molten_violium_bucket": "熔融维奥合金桶",
 
+  "fluid.cti.extraterrestrial_essense": "液化以太",
+  "item.cti.extraterrestrial_essense_bucket": "液化以太桶",
+
+    "fluid.cti.molten_meteorium": "熔融陨铁合金",
+  "item.cti.molten_meteorium_bucket": "熔融陨铁合金桶",
+
   "dimension.ad_astra.infernal": "炼狱",
   "dimension.ad_astra.uranus": "天王星",
   "dimension.ad_astra.jupiter": "木星",
@@ -581,5 +619,10 @@
   "item.cti.upgrade_energy_kit_3": "高高高高高级无限能量升级安装器",
 
   "item.cti.flat_tablet": "全息永夜世界投影板",
-  "item.cti.flat_tablet_day": "全息永昼世界投影板"
+  "item.cti.flat_tablet_day": "全息永昼世界投影板",
+
+  "item.cti.meteor_shower": "流星雨",
+  "cti.ritual_desc.meteor_shower":"让雨点般密集的陨石从天上坠落，将你的世界焚烧殆尽。注：作用范围为84*84，这些陨石可能会摧毁你的火盆。",
+
+  "cti.ritual_desc.meteor_shower":"让雨点般密集的陨石从天上坠落，将你的世界焚烧殆尽。注：作用范围为84*84，这些陨石可能会摧毁你的火盆。"
 }
