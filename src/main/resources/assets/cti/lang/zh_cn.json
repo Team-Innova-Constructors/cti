@@ -431,6 +431,10 @@
   "modifier.cti.nerf_colossal.flavor": "泰坦杀手",
   "modifier.cti.nerf_colossal.description":"对生命值高于你的生物造成更多伤害",
 
+  "modifier.cti.imprison": "禁锢",
+  "modifier.cti.imprison.flavor": "别问为什么",
+  "modifier.cti.imprison.description":"由于匠魂戒指加强化会导致远程伤害无限叠加，而原作者已经停更，故戒指无法施加匠魂强化",
+
   "modifier.cti.flying": "飞行模式",
   "modifier.cti.flying.flavor": "安全飞行",
   "modifier.cti.flying.description":"现在你可以飞行了",
@@ -457,11 +461,11 @@
 
   "modifier.cti.commongobberbless": "戈伯恩惠",
   "modifier.cti.commongobberbless.flavor": "主世界加成",
-  "modifier.cti.commongobberbless.description":"处于主世界时，伤害每级增加15%，并且缓慢恢复饱食度.作为盔甲时每级减少6%收到的伤害",
+  "modifier.cti.commongobberbless.description":"处于主世界时，伤害每级增加15%，并且缓慢恢复饱食度.作为盔甲时每级减少6%收到的伤害\n[特殊效果]作为近战武器，对凋灵会附带6%最大生命的伤害(六百六十六，这个玩家开桂了)",
 
   "modifier.cti.nethergobberbless": "下界戈伯恩惠",
   "modifier.cti.nethergobberbless.flavor": "下界加成",
-  "modifier.cti.nethergobberbless.description":"处于下界时，获得常驻的抗火效果，伤害每级增加25%，并且缓慢恢复饱食度.作为盔甲时每级减少8%收到的伤害",
+  "modifier.cti.nethergobberbless.description":"处于下界时，获得常驻的抗火效果，伤害每级增加25%，并且缓慢恢复饱食度.作为盔甲时每级减少8%收到的伤害\n[特殊效果]作为近战武器，对凋灵骷髅会直接击杀并且必定获得一个头颅。当对应工具为劈刀，则增加九倍的头颅获取量，并且基于肢解等级合-5会额外提升头颅获得倍率，至高一次获得27个头颅",
 
   "modifier.cti.endergobberbless": "末影戈伯恩惠",
   "modifier.cti.endergobberbless.flavor": "末地加成",
