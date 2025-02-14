@@ -1,5 +1,6 @@
 package com.hoshino.cti.Modifier;
 
+import com.hoshino.cti.register.ctiToolStats;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -9,12 +10,30 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.EntityHitResult;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
+import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
+import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 
-public class Infinity extends BattleModifier {
+public class Infinity extends BattleModifier implements ToolStatsModifierHook {
+    @Override
+    protected void registerHooks(ModuleHookMap.Builder builder) {
+        super.registerHooks(builder);
+        builder.addHook(this, ModifierHooks.TOOL_STATS);
+    }
+
+    @Override
+    public void addToolStats(IToolContext iToolContext, ModifierEntry modifierEntry, ModifierStatsBuilder modifierStatsBuilder) {
+        ctiToolStats.ELECTRIC_RESISTANCE.add(modifierStatsBuilder,50);
+        ctiToolStats.SCORCH_RESISTANCE.add(modifierStatsBuilder,50);
+        ctiToolStats.FROZEN_RESISTANCE.add(modifierStatsBuilder,50);
+        ctiToolStats.PRESSURE_RESISTANCE.add(modifierStatsBuilder,50);
+    }
     @Override
     public float staticdamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity livingTarget, float baseDamage, float damage) {
         if(livingTarget instanceof Mob mob&&attacker instanceof Player player){

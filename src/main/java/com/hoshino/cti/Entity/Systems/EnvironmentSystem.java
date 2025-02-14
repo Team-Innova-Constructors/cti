@@ -210,6 +210,9 @@ public class EnvironmentSystem {
             if (shielding.isPresent()){
                 resist+=shielding.get().getScorchShieldinng();
             }
+            else if (stack.getTags().toList().contains(ctiTagkey.PRESSURE_MINOR)){
+                resist+=1f;
+            }
             else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)){
                 resist+=10f;
             }

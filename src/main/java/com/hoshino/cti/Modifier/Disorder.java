@@ -32,12 +32,12 @@ public class Disorder extends etshmodifieriii {
                 int i = random.nextInt(16);
                 Level level = player.level;
                 Vec3 vec3 = getScatteredVec3(new Vec3(0, EtSHrnd().nextInt(2) == 1 ? 1 : -1, 0), 80).normalize();
-                double d = EtSHrnd().nextDouble() * 16 + 16;
+                double d = EtSHrnd().nextDouble() * 1 + 2;
                 Vec3 direction = new Vec3(-(d) * vec3.x, -(d) * vec3.y, -(d) * vec3.z);
                 plasmaexplosionentity explosion = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), level);
+                explosion.special = "entropic";
                 explosion.setOwner(player);
                 explosion.damage = damage / (24-i);
-                explosion.tool = (ToolStack) tool;
                 explosion.particle = etshtinkerParticleType.plasmaexplosionpurple.get();
                 explosion.setPos(new Vec3(target.getX(), target.getY() + target.getBbHeight() * 0.5, target.getZ()).add(direction));
                 explosion.rayVec3 = vec3.scale(d * 2);
@@ -45,11 +45,11 @@ public class Disorder extends etshmodifieriii {
                 if (random.nextInt(10)<=modifier.getLevel()){
                     vec3 = getScatteredVec3(new Vec3(0, EtSHrnd().nextInt(2) == 1 ? 1 : -1, 0), 80).normalize();
                     d = EtSHrnd().nextDouble() * 16 + 16;
+                    explosion.special = "entropic";
                     direction = new Vec3(-(d) * vec3.x, -(d) * vec3.y, -(d) * vec3.z);
                     explosion = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), level);
                     explosion.setOwner(player);
                     explosion.damage = damage / (8+i);
-                    explosion.tool = (ToolStack) tool;
                     explosion.particle = etshtinkerParticleType.plasmaexplosionpurple.get();
                     explosion.setPos(new Vec3(target.getX(), target.getY() + target.getBbHeight() * 0.5, target.getZ()).add(direction));
                     explosion.rayVec3 = vec3.scale(d * 2);
