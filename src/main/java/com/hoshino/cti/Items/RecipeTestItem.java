@@ -74,7 +74,7 @@ public class RecipeTestItem extends Item {
             return null;
         });
     }
-    private static Collection<String> discoverNewPacks(PackRepository repository, WorldData data, Collection<String> collection) {
+    public static Collection<String> discoverNewPacks(PackRepository repository, WorldData data, Collection<String> collection) {
         repository.reload();
         Collection<String> $$3 = Lists.newArrayList(collection);
         Collection<String> $$4 = data.getDataPackConfig().getDisabled();

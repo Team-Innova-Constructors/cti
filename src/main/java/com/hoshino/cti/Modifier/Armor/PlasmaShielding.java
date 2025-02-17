@@ -4,6 +4,8 @@ import com.c2h6s.etshtinker.util.slotUtil;
 import com.hoshino.cti.cti;
 import com.hoshino.cti.register.ctiModifiers;
 import com.hoshino.cti.register.ctiToolStats;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -49,25 +51,27 @@ public class PlasmaShielding extends NoLevelsModifier implements DamageBlockModi
         if (damage<=0){
             return true;
         }
-        if (tool.getPersistentData().getInt(SHIELD_LOCATION)>0&&tool.getPersistentData().getInt(CD_LOCATION)<=0&&equipmentContext.getEntity().invulnerableTime<=0&&!damageSource.isProjectile()&&!damageSource.isExplosion()&&!damageSource.isFire()){
-            tool.getPersistentData().putInt(SHIELD_LOCATION,tool.getPersistentData().getInt(SHIELD_LOCATION)-1);
-            equipmentContext.getEntity().invulnerableTime=Math.max(10,equipmentContext.getEntity().invulnerableTime);
-            if (equipmentContext.getEntity().level.isClientSide){
-                equipmentContext.getEntity().playSound(SoundEvents.METAL_HIT,1,1.5f);
-            }
-            if (tool.getPersistentData().getInt(SHIELD_LOCATION)<=0){
-                tool.getPersistentData().putInt(CD_LOCATION,600);
-                equipmentContext.getEntity().playSound(SoundEvents.GLASS_BREAK,1,1.2f);
+        LivingEntity living = equipmentContext.getEntity();
+        if (!living.level.isClientSide) {
+            if (tool.getPersistentData().getInt(SHIELD_LOCATION) > 0 && tool.getPersistentData().getInt(CD_LOCATION) <= 0 && equipmentContext.getEntity().invulnerableTime <= 0 && !damageSource.isProjectile() && !damageSource.isExplosion() && !damageSource.isFire()) {
+                tool.getPersistentData().putInt(SHIELD_LOCATION, tool.getPersistentData().getInt(SHIELD_LOCATION) - 1);
+                living.invulnerableTime = Math.max(10, equipmentContext.getEntity().invulnerableTime);
+                living.level.playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.METAL_HIT, living.getSoundSource(), 1, 1.5f);
 
+                if (tool.getPersistentData().getInt(SHIELD_LOCATION) <= 0) {
+                    tool.getPersistentData().putInt(CD_LOCATION, 1200);
+                    living.level.playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.GLASS_BREAK, living.getSoundSource(), 1, 1.2f);
+
+                }
+                return true;
             }
-            return true;
         }
         return damageSource.isProjectile()||damageSource.isExplosion();
     }
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-        if (isCorrectSlot){
+        if (isCorrectSlot&&!world.isClientSide){
             if (tool.getPersistentData().getInt(SHIELD_LOCATION)<4&&tool.getPersistentData().getInt(CD_LOCATION)<=0){
                 tool.getPersistentData().putInt(SHIELD_LOCATION,4);
                 holder.playSound(SoundEvents.AMETHYST_BLOCK_CHIME,1,0.75f);
