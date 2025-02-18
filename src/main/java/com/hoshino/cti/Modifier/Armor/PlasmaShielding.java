@@ -53,15 +53,13 @@ public class PlasmaShielding extends NoLevelsModifier implements DamageBlockModi
         }
         LivingEntity living = equipmentContext.getEntity();
         if (!living.level.isClientSide) {
-            if (tool.getPersistentData().getInt(SHIELD_LOCATION) > 0 && tool.getPersistentData().getInt(CD_LOCATION) <= 0 && equipmentContext.getEntity().invulnerableTime <= 0 && !damageSource.isProjectile() && !damageSource.isExplosion() && !damageSource.isFire()) {
+            if (tool.getPersistentData().getInt(SHIELD_LOCATION) > 0 && equipmentContext.getEntity().invulnerableTime <= 0 && !damageSource.isProjectile() && !damageSource.isExplosion() && !damageSource.isFire()) {
                 tool.getPersistentData().putInt(SHIELD_LOCATION, tool.getPersistentData().getInt(SHIELD_LOCATION) - 1);
+                tool.getPersistentData().putInt(CD_LOCATION, 1200);
                 living.invulnerableTime = Math.max(10, equipmentContext.getEntity().invulnerableTime);
                 living.level.playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.METAL_HIT, living.getSoundSource(), 1, 1.5f);
-
                 if (tool.getPersistentData().getInt(SHIELD_LOCATION) <= 0) {
-                    tool.getPersistentData().putInt(CD_LOCATION, 1200);
                     living.level.playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.GLASS_BREAK, living.getSoundSource(), 1, 1.2f);
-
                 }
                 return true;
             }
@@ -74,7 +72,10 @@ public class PlasmaShielding extends NoLevelsModifier implements DamageBlockModi
         if (isCorrectSlot&&!world.isClientSide){
             if (tool.getPersistentData().getInt(SHIELD_LOCATION)<4&&tool.getPersistentData().getInt(CD_LOCATION)<=0){
                 tool.getPersistentData().putInt(SHIELD_LOCATION,4);
-                holder.playSound(SoundEvents.AMETHYST_BLOCK_CHIME,1,0.75f);
+                holder.level.playSound(null, holder.getX(), holder.getY(), holder.getZ(),SoundEvents.AMETHYST_BLOCK_CHIME,holder.getSoundSource(),1,0.75f);
+            }
+            if (tool.getPersistentData().getInt(CD_LOCATION)>0){
+                tool.getPersistentData().putInt(CD_LOCATION, tool.getPersistentData().getInt(CD_LOCATION) - 1);
             }
         }
     }

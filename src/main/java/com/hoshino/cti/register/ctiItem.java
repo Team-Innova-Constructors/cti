@@ -242,7 +242,7 @@ public class ctiItem {
     public static final RegistryObject<Item> upgrade_energy_kit = ITEMS.register("upgrade_energy_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.ENERGY)));
     public static final RegistryObject<Item> upgrade_gas_kit = ITEMS.register("upgrade_gas_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.GAS)));
     public static final RegistryObject<Item> upgrade_speed_kit = ITEMS.register("upgrade_speed_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.SPEED)));
-    public static final RegistryObject<Item> upgrade_energy_kit_2 = ITEMS.register("upgrade_energy_kit_2", () -> new AdvancedUpgrade(14,false,List.of(Upgrade.ENERGY)));
-    public static final RegistryObject<Item> upgrade_energy_kit_3 = ITEMS.register("upgrade_energy_kit_3", () -> new AdvancedUpgrade(20,false,List.of(Upgrade.ENERGY)));
+    public static final RegistryObject<Item> upgrade_energy_kit_2 = ITEMS.register("upgrade_energy_kit_2", () -> new AdvancedUpgrade(16,false,List.of(Upgrade.ENERGY)));
+    public static final RegistryObject<Item> upgrade_energy_kit_3 = ITEMS.register("upgrade_energy_kit_3", () -> new AdvancedUpgrade(32,false,List.of(Upgrade.ENERGY)));
 
 }

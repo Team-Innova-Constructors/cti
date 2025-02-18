@@ -9,6 +9,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -25,11 +26,6 @@ public abstract class ModUtilMixin {
     private static void getEntityGravity(Entity entity, CallbackInfoReturnable<Float> callbackInfo)
     {
         float gravity = callbackInfo.getReturnValueF();
-        if (entity instanceof LivingEntity living) {
-            if (BiomeUtil.getBiomeKey(living.level.getBiome(living.blockPosition())) == BiomeUtil.DISORDERED_ZONE&&living.level.getGameTime()%3==0) {
-                callbackInfo.setReturnValue(EtSHrnd().nextFloat()*4-2);
-            }
-        }
         if (gravity != 1.0F)
         {
             if (entity instanceof LivingEntity living){
@@ -41,6 +37,14 @@ public abstract class ModUtilMixin {
                         callbackInfo.setReturnValue(1f);
                     }
                 }
+            }
+        }
+        if (entity instanceof LivingEntity living) {
+            if (BiomeUtil.getBiomeKey(living.level.getBiome(living.blockPosition())) == BiomeUtil.DISORDERED_ZONE) {
+                if (living.level.getGameTime()%5==0){
+                    living.getPersistentData().putFloat("cti.rnd_gravity",EtSHrnd().nextFloat()*4-1);
+                }
+                callbackInfo.setReturnValue(living.getPersistentData().getFloat("cti.rnd_gravity"));
             }
         }
 
