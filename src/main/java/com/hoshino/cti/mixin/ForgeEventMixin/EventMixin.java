@@ -8,6 +8,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.Event;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,7 +27,7 @@ public class EventMixin {
                     return;
                 }
                 DamageSource source = event1.getSource();
-                if (source instanceof Environmental || source instanceof PierceThrough || source instanceof throughSources || source instanceof playerThroughSource) {
+                if (source instanceof Environmental || source instanceof PierceThrough) {
                     ci.cancel();
                 }
             }
@@ -35,7 +36,7 @@ public class EventMixin {
                     return;
                 }
                 DamageSource source = event1.getSource();
-                if (source instanceof Environmental || source instanceof PierceThrough || source instanceof throughSources || source instanceof playerThroughSource) {
+                if (source instanceof Environmental || source instanceof PierceThrough) {
                     ci.cancel();
                 }
             }
@@ -44,7 +45,16 @@ public class EventMixin {
                     return;
                 }
                 DamageSource source = event1.getSource();
-                if (source instanceof Environmental || source instanceof PierceThrough || source instanceof throughSources || source instanceof playerThroughSource) {
+                if (source instanceof Environmental || source instanceof PierceThrough) {
+                    ci.cancel();
+                }
+            }
+            if (event instanceof LivingDeathEvent event1) {
+                if (event1.getEntity() instanceof Player player&&player.isCreative()){
+                    return;
+                }
+                DamageSource source = event1.getSource();
+                if (source instanceof Environmental || source instanceof PierceThrough) {
                     ci.cancel();
                 }
             }

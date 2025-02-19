@@ -67,11 +67,10 @@ public class EnvironmentSystem {
         if (lvl_pressure>1.5){
             living.invulnerableTime = 0;
             if (living instanceof Player player) {
-                living.hurt(Environmental.playerPressureSource(Float.MAX_VALUE, player),Float.MAX_VALUE);
+                living.hurt(Environmental.pressureSource(Float.MAX_VALUE),Float.MAX_VALUE);
                 if (!living.isDeadOrDying()){
-                    living.die(Environmental.pressureSource(Float.MAX_VALUE));
                     living.setHealth(0);
-                    living.remove(Entity.RemovalReason.KILLED);
+                    living.die(Environmental.pressureSource(Float.MAX_VALUE));
                 }
             }else {
                 living.hurt(Environmental.pressureSource(Float.MAX_VALUE), Float.MAX_VALUE);
