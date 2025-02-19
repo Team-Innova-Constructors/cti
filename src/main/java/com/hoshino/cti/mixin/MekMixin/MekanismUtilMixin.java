@@ -30,4 +30,21 @@ public class MekanismUtilMixin {
     public static FloatingLong getEnergyPerTick(IUpgradeTile tile, FloatingLong def) {
         return tile.supportsUpgrades() ? def.multiply(Math.pow((double) MekanismConfig.general.maxUpgradeMultiplier.get(), 2.0 * fractionUpgrades(tile, Upgrade.SPEED) -Math.min( fractionUpgrades(tile, Upgrade.ENERGY),1))) : def;
     }
+
+    /**
+     * @author EtSH_C2H6S
+     * @reason 让速度升级不再产生极高的气体消耗
+     */
+    @Overwrite
+    public static double getGasPerTickMeanMultiplier(IUpgradeTile tile) {
+        if (tile.supportsUpgrades()) {
+            double upgradeMul =fractionUpgrades(tile,Upgrade.SPEED);
+            double gasMul =fractionUpgrades(tile, Upgrade.GAS);
+            if (upgradeMul<=1) {
+                return tile.supportsUpgrade(Upgrade.GAS) ? Math.pow(MekanismConfig.general.maxUpgradeMultiplier.get(), 2.0 * upgradeMul - gasMul) : Math.pow(MekanismConfig.general.maxUpgradeMultiplier.get(), upgradeMul);
+            }else return tile.supportsUpgrade(Upgrade.GAS) ? Math.pow(MekanismConfig.general.maxUpgradeMultiplier.get(), 2.0 * upgradeMul - gasMul * upgradeMul) : Math.pow(MekanismConfig.general.maxUpgradeMultiplier.get(), upgradeMul);
+        } else {
+            return 1.0;
+        }
+    }
 }

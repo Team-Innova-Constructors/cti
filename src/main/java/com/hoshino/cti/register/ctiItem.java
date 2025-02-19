@@ -237,7 +237,7 @@ public class ctiItem {
     //mek高级升级
     public static final RegistryObject<Item> chroma_upgrade_speed_kit = ITEMS.register("chroma_upgrade_speed_kit", () -> new AdvancedUpgrade(12,true,List.of(Upgrade.SPEED)));
     public static final RegistryObject<Item> aetherium_upgrade_speed_kit = ITEMS.register("aetherium_upgrade_speed_kit", () -> new AdvancedUpgrade(16,true,List.of(Upgrade.SPEED)));
-    public static final RegistryObject<Item> anti_upgrade_speed_kit = ITEMS.register("anti_upgrade_speed_kit", () -> new AdvancedUpgrade(20,true,List.of(Upgrade.SPEED)));
+    //public static final RegistryObject<Item> anti_upgrade_speed_kit = ITEMS.register("anti_upgrade_speed_kit", () -> new AdvancedUpgrade(20,true,List.of(Upgrade.SPEED)));
     public static final RegistryObject<Item> upgrade_double_kit = ITEMS.register("upgrade_double_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.SPEED,Upgrade.ENERGY)));
     public static final RegistryObject<Item> upgrade_energy_kit = ITEMS.register("upgrade_energy_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.ENERGY)));
     public static final RegistryObject<Item> upgrade_gas_kit = ITEMS.register("upgrade_gas_kit", () -> new AdvancedUpgrade(8,false,List.of(Upgrade.GAS)));
