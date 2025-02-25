@@ -15,6 +15,7 @@
     "AdAstraMixin.ModUtilMixin",
     "AdAstraMixin.TemperatureTick",
     "AetherMixin.cloud",
+    "Aquamixin.ScrollEffectsMixin",
     "Eni.CubeMixin",
     "ForgeEventMixin.EventMixin",
     "ForgeEventMixin.LivingDamageEventMixin",
@@ -40,7 +41,11 @@
     "TconMixin.InsatiableMixin",
     "TconMixin.KineticMixin",
     "TIMixin.BlowPipeMixin",
+    "TIMixin.GaiaGuardMixin",
+    "TIMixin.KnightCrystalCurioMixin",
     "TIMixin.ShurikenMixin",
+    "TIMixin.Sin_RootMixin",
+    "TIMixin.SpriteOfGaiaMixin",
     "TIMixin.ToolUtilsMixin"
   ],
   "client": [

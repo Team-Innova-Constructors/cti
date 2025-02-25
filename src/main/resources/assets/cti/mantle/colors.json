@@ -3,7 +3,10 @@
     "uriel": "#fffdab",
     "true_infinity": "#ff5356",
     "invert_hoshino": "#ff007f",
-    "roxy": "#629df5"
+    "roxy": "#629df5",
+    "awakesaintchef": "#75edff",
+    "bloodgod": "#ff0c38",
+    "omniscient_gold": "#d24bff"
   },
 
   "modifier.cti": {
@@ -67,6 +70,14 @@
     "commongobberbless": "#5dbef1",
     "nethergobberbless": "#d30000",
     "endergobberbless": "#72d3b3",
+    "arcaneomniscient": "#d24bff",
+    "arcaneprotect": "#d24bff",
+    "arcanetough": "#d24bff",
+    "arcanefilling": "#d24bff",
+    "chewevolution": "#75edff",
+    "bloodgodbless": "#ff0c38",
+    "bloodthirsty": "#ff0c38",
+    "subspace": "#ff0c38",
 
     "fixsanguine": "#d91b30",
     "plasma_wave_slash_ex": "#6D29FF",
