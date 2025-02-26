@@ -132,7 +132,7 @@
 
   "modifier.cti.arcaneprotect": "奥法•魔力加护",
   "modifier.cti.arcaneprotect.flavor": "纵使相逢应不识,牢署模组几时实",
-  "modifier.cti.arcaneprotect.description":"你收到的所有为魔法类型的伤害变为1点,并且受伤的无敌帧延长",
+  "modifier.cti.arcaneprotect.description":"你收到的所有为魔法类型的伤害变为1点,并且受伤的无敌帧延长.每5秒获得6秒生命恢复5",
 
   "modifier.cti.arcanetough": "奥法•坚韧",
   "modifier.cti.arcanetough.flavor": "门前冷落鞍马稀,牢署大饼积又积",

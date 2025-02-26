@@ -36,8 +36,7 @@ public class Disorder extends etshmodifieriii {
                 Vec3 direction = new Vec3(-(d) * vec3.x, -(d) * vec3.y, -(d) * vec3.z);
                 plasmaexplosionentity explosion = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), level);
                 explosion.special = "entropic";
-                explosion.setOwner(player);
-                explosion.damage = damage / (24-i);
+                explosion.damage = damage *i*0.25f;
                 explosion.particle = etshtinkerParticleType.plasmaexplosionpurple.get();
                 explosion.setPos(new Vec3(target.getX(), target.getY() + target.getBbHeight() * 0.5, target.getZ()).add(direction));
                 explosion.rayVec3 = vec3.scale(d * 2);
@@ -48,8 +47,7 @@ public class Disorder extends etshmodifieriii {
                     explosion.special = "entropic";
                     direction = new Vec3(-(d) * vec3.x, -(d) * vec3.y, -(d) * vec3.z);
                     explosion = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), level);
-                    explosion.setOwner(player);
-                    explosion.damage = damage / (8+i);
+                    explosion.damage = damage*8/i;
                     explosion.particle = etshtinkerParticleType.plasmaexplosionpurple.get();
                     explosion.setPos(new Vec3(target.getX(), target.getY() + target.getBbHeight() * 0.5, target.getZ()).add(direction));
                     explosion.rayVec3 = vec3.scale(d * 2);
