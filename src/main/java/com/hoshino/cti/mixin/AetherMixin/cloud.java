@@ -14,6 +14,9 @@ public abstract class cloud extends Fireball {
     public cloud(EntityType<? extends Fireball> p_37006_, Level p_37007_) {
         super(p_37006_, p_37007_);
     }
+    /**@author firefly
+     * @reason 这B吐泡泡一弹弹十多格诗人啊,天镜还一直刷，杀都杀不完,搭个裂变产线崩飞800次
+     */
 
     @Inject(at = @At("HEAD"),method = "m_8119_",cancellable = true)
     private void tick(CallbackInfo ci){

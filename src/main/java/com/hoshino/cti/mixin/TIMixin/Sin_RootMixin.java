@@ -15,8 +15,9 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 @Mixin(value = SinRoot.class,remap = false)
 public class Sin_RootMixin {
     /**
-     * @author Firefly
-     * @reason 欠削无需多言
+     * @author  Firefly
+     * @reason  <h4></h4>欠削无需多言
+     * @数值调整 <h4></h4>最大生命4%->最大生命3%
      */
     @Overwrite
     private float getBonus(LivingEntity entity) {

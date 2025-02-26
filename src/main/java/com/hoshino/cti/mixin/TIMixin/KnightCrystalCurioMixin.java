@@ -14,6 +14,7 @@ public class KnightCrystalCurioMixin {
     /**
      * @author firyfly
      * @reason 这B太超模了，欠削
+     * @数值调整 最大生命4.0->最大生命 0.2
      */
     @Overwrite
     public void onCurioTakeHurt(IToolStackView curio, LivingHurtEvent event, LivingEntity entity, DamageSource source, int level){

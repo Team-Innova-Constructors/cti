@@ -16,7 +16,8 @@ import vazkii.botania.api.mana.ManaItemHandler;
 public class SpriteOfGaiaMixin {
     /**
      * @author Firefly
-     * @reason 降低额外伤害比例 0.5->0.3
+     * @reason 额外伤害给的凋零伤而且明显过高
+     * @数值调整 50%->30%
      */
     @Overwrite
     public void onAfterMeleeHit(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity target, float damageDealt) {

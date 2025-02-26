@@ -11,16 +11,17 @@ public class ArcaneProtect extends ArmorModifier {
     public boolean havenolevel() {
         return true;
     }
+
     public ArcaneProtect() {
         MinecraftForge.EVENT_BUS.addListener(this::LivingMagicDamage);
     }
 
     private void LivingMagicDamage(LivingDamageEvent event) {
-        if (event.getSource().isMagic() && event.getEntity() instanceof Player player) {
-            if (GetModifierLevel.EquipHasModifierlevel(player, this.getId())) {
-                player.invulnerableTime=100;
+        if (event.getEntity() instanceof Player player && GetModifierLevel.EquipHasModifierlevel(player, this.getId())) {
+            if (event.getSource().isMagic()) {
                 event.setAmount(1);
             }
+            player.invulnerableTime=100;
         }
     }
 }

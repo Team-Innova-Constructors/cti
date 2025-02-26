@@ -14,8 +14,9 @@ import vazkii.botania.api.mana.ManaItemHandler;
 @Mixin(value = GaiaGuard.class,remap = false)
 public class GaiaGuardMixin {
     /**
-     * @author
-     * @reason
+     * @author Firefly
+     * @reason 无需多言,222格挡诗人啊？
+     * @数值调整 格挡值222->100
      */
     @Overwrite
     public float onModifyTakeDamage(IToolStackView armor, int level, EquipmentContext context, EquipmentSlot slot, DamageSource source, float amount, boolean isDirectDamage) {

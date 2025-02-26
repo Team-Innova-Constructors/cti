@@ -21,7 +21,7 @@ public class ArcaneFilling extends BattleModifier {
 
     @Override
     public void LivingHurtEvent(LivingHurtEvent event) {
-        if(event.getSource().isMagic()&&event.getEntity() instanceof Player player){
+        if(event.getSource().isMagic()&&event.getSource().getEntity() instanceof Player player){
             if(ModifierLevel.EquipHasModifierlevel(player,this.getId())){
                 event.setAmount(event.getAmount() * 2F);
             }
