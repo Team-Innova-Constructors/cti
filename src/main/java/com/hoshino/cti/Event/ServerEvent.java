@@ -49,7 +49,7 @@ public class ServerEvent {
     public void onPlayerTick(TickEvent.PlayerTickEvent event){
         if(event.player.getLevel() instanceof ServerLevel level &&level.dimension().equals(DimensionConstants.MOON)&&level.getGameTime()%2000==0) {
             Player player = event.player;
-            if (Math.abs(player.getX()) + Math.abs(player.getY()) > 750) {
+            if (Math.abs(player.getX()) + Math.abs(player.getZ()) > 750) {
                 Random random = new Random();
                 if (random.nextInt(10) == 0) {
                     Vec2 pos = new Vec2((float) (player.getX() + random.nextFloat() * 192), (float) (player.getZ() + random.nextFloat() * 192));
