@@ -30,6 +30,7 @@
     "L2.UndyingTraitMixin",
     "MekMixin.ItemUpgradeMixin",
     "MekMixin.MekanismUtilMixin",
+    "MekMixin.ModuleSolarRechargingUnitMixin",
     "MekMixin.TileComponentUpgradeMixin",
     "MekMixin.UpgradeMixin",
     "MekMixin.UpgradeUtilsMixin",
