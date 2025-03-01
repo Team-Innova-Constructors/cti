@@ -100,4 +100,10 @@ public class ctiModifiers {
     public static final StaticModifier<BloodGodBless> bloodgodbless= MODIFIERS.register("bloodgodbless", BloodGodBless::new);
     public static final StaticModifier<BloodThirsty> bloodthirsty= MODIFIERS.register("bloodthirsty", BloodThirsty::new);
     public static final StaticModifier<Subspace> subspace= MODIFIERS.register("subspace", Subspace::new);
+    public static final StaticModifier<OriginBasedComputation> originbasedcomputation= MODIFIERS.register("originbasedcomputation", OriginBasedComputation::new);
+    public static final StaticModifier<KingdomOfNumbers> kingdomofnumbers= MODIFIERS.register("kingdomofnumbers", KingdomOfNumbers::new);
+    public static final StaticModifier<CurveMapping> curvemapping= MODIFIERS.register("curvemapping", CurveMapping::new);
+    public static final StaticModifier<SupplementaryFormula> supplementaryformula= MODIFIERS.register("supplementaryformula", SupplementaryFormula::new);
+    public static final StaticModifier<TriangleTheory> triangletheory= MODIFIERS.register("triangletheory", TriangleTheory::new);
+
 }
