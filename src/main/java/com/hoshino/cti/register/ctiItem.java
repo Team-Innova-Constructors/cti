@@ -69,7 +69,7 @@ public class ctiItem {
     public static final RegistryObject<Item> stellar_manyullyn = ITEMS.register("stellar_manyullyn",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.etsh").withStyle(ChatFormatting.LIGHT_PURPLE))));
     public static final RegistryObject<Item> invert_hoshino = ITEMS.register("invert_hoshino",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.invert_hoshino").withStyle(ChatFormatting.DARK_PURPLE))));
     public static final RegistryObject<Item> roxy_ingot = ITEMS.register("roxy_ingot",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.roxy_ingot").withStyle(ChatFormatting.BLUE))));
-    public static final RegistryObject<Item> omniscient_gold_ingot = ITEMS.register("omniscient_gold_ingot",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.omniscient_gold_ingot.desc1").withStyle(ChatFormatting.DARK_PURPLE),Component.translatable("cti.tooltip.item.omniscient_gold_ingot.desc2").withStyle(ChatFormatting.DARK_PURPLE))));
+
     public static final RegistryObject<Item> electronium_ammo = ITEMS.register("electronium_ammo", ElectroniumAmmo::new);
     public static final RegistryEntry<RocketItemTier5<rocketTier5>> TIER_5_ROCKET = VEHICLES.register("tier_5_rocket", () -> new RocketItemTier5<>(ctiEntity.TIER_5_ROCKET.get(), 5, new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC)));
     public static final RegistryObject<Item> astra_tablet_5 = ITEMS.register("astra_tablet_5",()->new PlanetGuiItem(new Item.Properties().tab(ITEM_GROUP).stacksTo(1).fireResistant().tab(ctiTab.MIXC),5));
@@ -151,14 +151,14 @@ public class ctiItem {
 
     public static final RegistryObject<Item> advanced_speed_augment = ITEMS.register("advanced_speed_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_MACHINE)
-            .mod(TAG_AUGMENT_MACHINE_POWER, 25F)
-            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.2F)
-            .mod(TAG_AUGMENT_RF_STORAGE, 5.0F)
-            .mod(TAG_AUGMENT_RF_XFER, 20.0F)
+            .mod(TAG_AUGMENT_MACHINE_POWER, 15F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.3F)
+            .mod(TAG_AUGMENT_RF_STORAGE, 2.5F)
+            .mod(TAG_AUGMENT_RF_XFER, 12.5F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
     public static final RegistryObject<Item> advanced_catalyst_augment = ITEMS.register("advanced_catalyst_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_MACHINE)
-            .mod(TAG_AUGMENT_MACHINE_CATALYST, 0.25F)
+            .mod(TAG_AUGMENT_MACHINE_CATALYST, 0.18F)
             .mod(TAG_AUGMENT_MACHINE_ENERGY, 2F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
 
@@ -166,15 +166,15 @@ public class ctiItem {
             .type(TAG_AUGMENT_TYPE_DYNAMO)
             .mod(TAG_AUGMENT_FLUID_STORAGE,4)
             .mod(TAG_AUGMENT_DYNAMO_THROTTLE,1)
-            .mod(TAG_AUGMENT_DYNAMO_POWER, 60.0F)
-            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 2.5F)
+            .mod(TAG_AUGMENT_DYNAMO_POWER, 40.0F)
+            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 2.0F)
             .build()).setShowInGroups(getFlag(FLAG_DYNAMO_AUGMENTS)));
     public static final RegistryObject<Item> Secondary_dyano_augment = ITEMS.register("secondary_dyano_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_DYNAMO)
             .mod(TAG_AUGMENT_FLUID_STORAGE,2)
             .mod(TAG_AUGMENT_DYNAMO_THROTTLE,1)
-            .mod(TAG_AUGMENT_DYNAMO_POWER, 30.0F)
-            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 1.6F)
+            .mod(TAG_AUGMENT_DYNAMO_POWER, 25.0F)
+            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 1.5F)
             .build()).setShowInGroups(getFlag(FLAG_DYNAMO_AUGMENTS)));
 
     public static final RegistryObject<Item> advanced_range_augment = ITEMS.register("advanced_range_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
@@ -184,8 +184,8 @@ public class ctiItem {
 
     public static final RegistryObject<Item> advanced_output_augment = ITEMS.register("advanced_output_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_MACHINE)
-            .mod(TAG_AUGMENT_MACHINE_PRIMARY, 0.8F)
-            .mod(TAG_AUGMENT_MACHINE_SECONDARY, 0.8F)
+            .mod(TAG_AUGMENT_MACHINE_PRIMARY, 0.4F)
+            .mod(TAG_AUGMENT_MACHINE_SECONDARY, 0.4F)
             .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.75F)
             .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
     public static final RegistryObject<Item> advanced_fluid_tank_augment = ITEMS.register("advanced_fluid_tank_augment",()->(new AugmentItem((new Item.Properties()).tab(ctiTab.MIXC), AugmentDataHelper.builder()
@@ -206,6 +206,31 @@ public class ctiItem {
             .mod(TAG_AUGMENT_BASE_MOD,10)
             .build()).setShowInGroups(getFlag(FLAG_UPGRADE_AUGMENTS)));
 
+    //黑雾级别
+    //黑雾能源炉插件
+    public static final RegistryObject<Item> extereme_dyano_augment = ITEMS.register("extereme_dyano_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_AUGMENT_TYPE_DYNAMO)
+            .mod(TAG_AUGMENT_FLUID_STORAGE,8)
+            .mod(TAG_AUGMENT_DYNAMO_THROTTLE,1)
+            .mod(TAG_AUGMENT_DYNAMO_POWER, 100.0F)
+            .mod(TAG_AUGMENT_DYNAMO_ENERGY, 3.0F)
+            .build()).setShowInGroups(getFlag(FLAG_DYNAMO_AUGMENTS)));
+    //黑雾速度插件
+    public static final RegistryObject<Item> extereme_speed_augment = ITEMS.register("extereme_speed_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_AUGMENT_TYPE_MACHINE)
+            .mod(TAG_AUGMENT_MACHINE_POWER, 40F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.1F)
+            .mod(TAG_AUGMENT_RF_STORAGE, 10F)
+            .mod(TAG_AUGMENT_RF_XFER, 40.0F)
+            .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
+    //黑雾深度催化
+    public static final RegistryObject<Item> extereme_output_augment = ITEMS.register("extereme_output_augment",()->new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
+            .type(TAG_AUGMENT_TYPE_MACHINE)
+            .mod(TAG_AUGMENT_MACHINE_PRIMARY, 1F)
+            .mod(TAG_AUGMENT_MACHINE_SECONDARY, 1F)
+            .mod(TAG_AUGMENT_MACHINE_ENERGY, 1.25F)
+            .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
+
 
     public static final RegistryObject<Item> upgrade_electronium  = ITEMS.register("upgrade_electronium",()->new AtmosphereUpgradeItem(3f,1.75f));
     public static final RegistryObject<Item> upgrade_violium  = ITEMS.register("upgrade_violium",()->new AtmosphereUpgradeItem(4.5f,0.5f));
@@ -215,7 +240,9 @@ public class ctiItem {
     //材料
     public static final RegistryObject<Item> nitro_supersteel = ITEMS.register("nitro_supersteel", ()->new Item(new Item.Properties().tab(ctiTab.MATERIALS)));
     public static final RegistryObject<Item> hot_supersteel = ITEMS.register("hot_supersteel", ()->new Item(new Item.Properties().tab(ctiTab.MIXC)));
-
+    public static final RegistryObject<Item> awakesaintchef_ingot = ITEMS.register("awakesaintchef_ingot", ()->new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.awakesaintchef_ingot.desc1").withStyle(ChatFormatting.DARK_PURPLE),Component.translatable("cti.tooltip.item.awakesaintchef_ingot.desc2").withStyle(ChatFormatting.DARK_PURPLE))));
+    public static final RegistryObject<Item> omniscient_gold_ingot = ITEMS.register("omniscient_gold_ingot",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.omniscient_gold_ingot.desc1").withStyle(ChatFormatting.DARK_PURPLE),Component.translatable("cti.tooltip.item.omniscient_gold_ingot.desc2").withStyle(ChatFormatting.DARK_PURPLE))));
+    public static final RegistryObject<Item> bloodgod_ingot = ITEMS.register("bloodgod_ingot",()-> new TooltipedItem(new Item.Properties().tab(ctiTab.MATERIALS),List.of(Component.translatable("cti.tooltip.item.bloodgod_ingot.desc1").withStyle(ChatFormatting.DARK_PURPLE),Component.translatable("cti.tooltip.item.bloodgod_ingot.desc2").withStyle(ChatFormatting.DARK_PURPLE))));
     //弹射物物品
     public static final RegistryObject<Item> star_blaze = ITEMS.register("star_blaze", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> star_frozen = ITEMS.register("star_frozen", ()->new Item(new Item.Properties()));

@@ -18,12 +18,18 @@ public class Decoying extends BattleModifier {
     }
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+        //如果不属于假玩家
         if(!(context.getAttacker() instanceof FakePlayer)) {
+            //目标实例
             LivingEntity target= context.getLivingTarget();
+            //1到词条等级+1的随机数
             int random = RANDOM.nextInt(1, modifier.getLevel()+1);
             if (target != null) {
+                //获取level实例
                 Level World=target.getLevel();
+                //对随机数进行处理
                 switch (random){
+                    //1输出鸡
                     case 1:
                         Chicken chicken = EntityType.CHICKEN.create(World);
                         this.spawnAnimal(World,chicken);
@@ -31,6 +37,7 @@ public class Decoying extends BattleModifier {
                             chicken.moveTo(target.getPosition(0));
                         }
                         break;
+                    //2输出猪
                     case 2:
                         Pig pig = EntityType.PIG.create(World);
                         this.spawnAnimal(World,pig);
@@ -38,6 +45,7 @@ public class Decoying extends BattleModifier {
                             pig.moveTo(target.getPosition(0));
                         }
                         break;
+                    //3输出羊
                     case 3:
                         Sheep sheep=EntityType.SHEEP.create(World);
                         this.spawnAnimal(World,sheep);
@@ -45,6 +53,7 @@ public class Decoying extends BattleModifier {
                             sheep.moveTo(target.getPosition(0));
                         }
                         break;
+                    //4输出牛
                     case 4:
                         Cow cow=EntityType.COW.create(World);
                         this.spawnAnimal(World,cow);
@@ -52,6 +61,7 @@ public class Decoying extends BattleModifier {
                             cow.moveTo(target.getPosition(0));
                         }
                         break;
+                    //5输出兔
                     case 5:
                         Rabbit rabbit=EntityType.RABBIT.create(World);
                         this.spawnAnimal(World,rabbit);
@@ -59,6 +69,7 @@ public class Decoying extends BattleModifier {
                             rabbit.moveTo(target.getPosition(0));
                         }
                         break;
+                    //6输出村民
                     case 6:
                         Villager villager=EntityType.VILLAGER.create(World);
                         this.spawnAnimal(World,villager);

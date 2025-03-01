@@ -9,6 +9,7 @@
 
 
   "effect.cti.ev": "狩猎",
+  "effect.cti.ancientdragonflame": "远古龙焰",
   "effect.cti.meteor_shower": "陨石雨",
 
 
@@ -49,11 +50,45 @@
 
   "cti.tooltip.item.etsh": "-EtSH_C2H6S 开发者材料-",
 
-  "item.cti.omniscient_gold_ingot": "§e全知魔金",
-  "item.cti.molten_omniscient_gold_bucket": "熔融全知魔金桶",
-  "fluid.cti.molten_omniscient_gold": "熔融全知魔金",
-  "cti.tooltip.item.omniscient_gold_ingot.desc1": "听起来怎么有点耳熟",
-  "cti.tooltip.item.omniscient_gold_ingot.desc2": "铀铀 贡献者材料",
+
+  "item.cti.bloodgod_ingot": "§c血神锭",
+  "item.cti.molten_bloodgod_bucket": "熔融血神桶",
+  "fluid.cti.molten_bloodgod": "熔融血神",
+  "cti.tooltip.item.bloodgod_ingot.desc1": "让这一抹殷红色重铸吾身",
+  "cti.tooltip.item.bloodgod_ingot.desc2": "白武男(rRickroll) 贡献者材料",
+
+  "material.cti.bloodgod": "血神",
+  "material.cti.bloodgod.flavor": "殷红且不可直视",
+  "material.cti.bloodgod.encyclopedia": "白武男(rRickroll) 贡献者材料\n据说那个叫白武男的群友55天都在哈气",
+
+  "modifier.cti.bloodgodbless": "血神赐福",
+  "modifier.cti.bloodgodbless.flavor": "与我，缔结契约吧",
+  "modifier.cti.bloodgodbless.description":"你每失去一点生命提升0.8%的伤害。当你拥有红温效果时，你的攻击(包括远程)额外附带8%当前生命值与黄心的伤害；你每次攻击回复8%的已损失生命值",
+
+  "modifier.cti.bloodthirsty": "渴血",
+  "modifier.cti.bloodthirsty.flavor": "更多...我需要更多",
+  "modifier.cti.bloodthirsty.description":"嗜血:你的第8次攻击伤害将提升至8倍。你造成的伤害额外附带8%的目标已损失血量，你的每次攻击消耗自身当前8%的生命值(最多降低至8血)。(仅近战生效)",
+
+  "modifier.cti.subspace": "亚空间本质",
+  "modifier.cti.subspace.flavor": "行走于生死之间",
+  "modifier.cti.subspace.description":"受到的远程攻击和魔法伤害伤害均降低60%",
+
+  "item.cti.awakesaintchef_ingot": "§6觉醒龙皇锭(未完成）",
+  "item.cti.molten_awakesaintchef_ingot_bucket": "熔融觉醒龙皇桶",
+  "fluid.cti.molten_awakesaintchef": "熔融觉醒龙皇",
+  "cti.tooltip.item.awakesaintchef_ingot.desc1": "进化之龙的最终形态,让你亲眼见识一下吧",
+  "cti.tooltip.item.awakesaintchef_ingot.desc2": "天宇冰痕 贡献者材料",
+
+
+  "material.cti.awakesaintchef": "觉醒龙皇",
+  "material.cti.awakesaintchef.flavor": "圣厨锭界限突破了",
+  "material.cti.awakesaintchef.encyclopedia": "天宇冰痕贡献者材料\n关注天宇冰痕谢谢喵",
+
+
+  "modifier.cti.chewevolution": "掠食者进化",
+  "modifier.cti.chewevolution.flavor": "谁家小圣厨",
+  "modifier.cti.chewevolution.description":"根据你所吃过的食物种类解锁独特的能力\n　　50层：每次攻击造成额外的（食物种类*1.5*词条等级）的魔法伤害\n　　125层：击中目标会使目标产生额外的爆炸，对其与周围敌人造成额外的（食物种类*0.15*词条等级）的伤害\n　　250层：使攻击目标陷入“远古龙焰”状态3秒，每秒对敌方造成敌方总血量3%的三穿伤害\n　　300层：工具正常使用不再损失耐久\n　　500层：攻击目标时，若敌方血量削至百分之（食物种类*0.03*词条等级）下时，直接斩杀。该斩杀血量百分比最高为25%",
+
 
   "item.cti.uriel_ingot": "§e乌列尔",
   "item.cti.molten_uriel_bucket": "熔融乌列尔桶",
@@ -81,6 +116,34 @@
   "modifier.cti.celestiallight.flavor": "Light Of God",
   "modifier.cti.celestiallight.description":"受到大于当前生命的伤害规避该伤害，并且获得短暂的3秒无敌帧效果。并且在周围引发一次爆炸,同时点燃被标记为罪恶者的生物1000秒(60秒冷却)(需要主手和盔甲同时有此词条)",
 
+  "item.cti.omniscient_gold_ingot": "§e全知魔金",
+  "item.cti.molten_omniscient_gold_bucket": "熔融全知魔金桶",
+  "fluid.cti.molten_omniscient_gold": "熔融全知魔金",
+  "cti.tooltip.item.omniscient_gold_ingot.desc1": "听起来怎么有点耳熟",
+  "cti.tooltip.item.omniscient_gold_ingot.desc2": "铀铀 贡献者材料",
+
+  "material.cti.omniscient_gold": "全知魔金",
+  "material.cti.omniscient_gold.flavor": "嘶...这不是个饼吗",
+  "material.cti.omniscient_gold.encyclopedia": "铀铀贡献者材料\n待君模组备,草木亦谢矣",
+
+  "modifier.cti.arcaneomniscient": "奥法•全知",
+  "modifier.cti.arcaneomniscient.flavor": "我做了一个梦,一个牢署写出来全知魔金的梦",
+  "modifier.cti.arcaneomniscient.description":"增加三种槽位各两个",
+
+  "modifier.cti.arcaneprotect": "奥法•魔力加护",
+  "modifier.cti.arcaneprotect.flavor": "纵使相逢应不识,牢署模组几时实",
+  "modifier.cti.arcaneprotect.description":"你收到的所有为魔法类型的伤害变为1点,并且受伤的无敌帧延长.每5秒获得6秒生命恢复5",
+
+  "modifier.cti.arcanetough": "奥法•坚韧",
+  "modifier.cti.arcanetough.flavor": "门前冷落鞍马稀,牢署大饼积又积",
+  "modifier.cti.arcanetough.description":"工具会吸收魔力来修复自己,并且每次修复10耐久,每次修复还会给与玩家1000经验点数.但是工具正常使用不再消耗耐久",
+
+  "modifier.cti.arcanefilling": "奥法•充盈",
+  "modifier.cti.arcanefilling.flavor": "白日放歌须纵酒,署观教程愁又愁",
+  "modifier.cti.arcanefilling.description":"你的工具会对周围敌人溅射等额魔法伤害,等级越高范围越大.当装备这个装备到身上时,你造成的所有自己来源魔法伤害翻倍",
+
+
+
   "item.cti.ultradense_ammo": "超致密机枪弹药",
   "item.cti.protonium_ammo": "质子机枪弹药",
   "item.cti.electronium_ammo": "电子机枪弹药",
@@ -89,6 +152,9 @@
   "item.cti.upgrade_augment_5": "彩钢整合组件",
   "item.cti.upgrade_augment_6": "活化彩钢整合组件",
 
+  "item.cti.extereme_dyano_augment": "恶念燃烧室组件",
+  "item.cti.extereme_speed_augment": "恶念速度提升组件",
+  "item.cti.extereme_output_augment": "恶念催化组件",
 
   "item.cti.tier_5_rocket": "五级火箭",
   "item.ad_astra.tier_5_rocket": "五级火箭",
@@ -299,6 +365,7 @@
   "material.cti.roxy.flavor": "冥冥之中的动力推动你将陨石加护的异星物质雕刻如此，温润如水的光芒从中散发",
   "material.cti.roxy.encyclopedia": "来自天穹的物质将你包裹起来，你获得了n层神明的加护",
 
+
   "material.cti.meteorium": "陨铁合金",
   "material.cti.meteorium.flavor": "它是从哪里来的呢？",
   "material.cti.meteorium.encyclopedia": "一块来自外星的陨铁，似乎包含了一种神奇的能量。\n怎么把这种能量分离出来呢？",
@@ -335,7 +402,7 @@
   "modifier.cti.hardcore.description":"增加两个防御槽",
 
   "modifier.cti.reflect": "反射",
-  "modifier.cti.reflect.flavor": "谁家棘刺背心",
+  "modifier.cti.reflect.flavor": "别怕了,他不崩服务器的",
   "modifier.cti.reflect.description":"每级反射原伤害10%给攻击者，会计算全身总装备词条等级",
 
   "modifier.cti.mutation": "突变",
@@ -417,11 +484,11 @@
 
   "modifier.cti.deepanddeep": "更加深入",
   "modifier.cti.deepanddeep.flavor": "......",
-  "modifier.cti.deepanddeep.description":"每级增加25%回声倍率",
+  "modifier.cti.deepanddeep.description":"每级增加100%回声倍率",
 
   "modifier.cti.deepoceanecho": "深海的回声",
   "modifier.cti.deepoceanecho.flavor": "你听到了吗",
-  "modifier.cti.deepoceanecho.description":"基于（最大生命值的30% * 护甲值的30% + 总经验点数的10000分之1【这个至少为1】 ）获得回声点数，回声点数 * 0.1 * 词条等级将会转化为你的实际伤害。如果你的工具持有海蒙/海梦/深海紫水晶/海王/海神等词条，则会每级额外提升20%的伤害,\n获得5海洋槽\n你不再对玩家造成基础伤害",
+  "modifier.cti.deepoceanecho.description":"基于（最大生命值的30% * 护甲值的30% + 总经验点数的10000分之1【这个至少为1】 ）获得回声点数,回声点数 * 0.1 * 词条等级将会转化为你的实际伤害。如果你的工具持有海蒙/海梦/深海紫水晶/海王/海神等词条，则会每级额外提升200%的伤害,\n获得5海洋槽\n你不再对玩家造成基础伤害",
 
   "modifier.cti.dominate_replace": "主宰",
   "modifier.cti.dominate_replace.flavor": "我是世界的主宰！",
@@ -433,7 +500,7 @@
 
   "modifier.cti.imprison": "禁锢",
   "modifier.cti.imprison.flavor": "别问为什么",
-  "modifier.cti.imprison.description":"由于匠魂戒指加强化会导致远程伤害无限叠加，而原作者已经停更，故戒指无法施加匠魂强化",
+  "modifier.cti.imprison.description":"由于匠魂戒指加强化会导致远程伤害无限叠加，而原作者已经停更，故戒指无法施加匠魂强化，并且一旦组装无法更换部件",
 
   "modifier.cti.flying": "飞行模式",
   "modifier.cti.flying.flavor": "安全飞行",
@@ -469,7 +536,7 @@
 
   "modifier.cti.endergobberbless": "末影戈伯恩惠",
   "modifier.cti.endergobberbless.flavor": "末地加成",
-  "modifier.cti.endergobberbless.description":"处于末地时，获得常驻的飞行和抗火效果，伤害每级增加35%，并且缓慢恢复饱食度.作为盔甲时每级减少10%收到的伤害",
+  "modifier.cti.endergobberbless.description":"处于末地时，获得常驻的飞行和抗火效果，伤害每级增加35%，并且缓慢恢复饱食度.作为盔甲时每级减少10%收到的伤害\n[特殊效果]作为武器每次对末影龙造成伤害均会额外提升末影龙4%最大生命的伤害,使用劈刀击杀末影龙的时候必定掉落9个末影龙头颅",
 
   "modifier.cti.encrypt": "加密",
   "modifier.cti.encrypt.flavor": "???",

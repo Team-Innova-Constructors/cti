@@ -46,7 +46,6 @@ public class FixSanguine extends XIRModifier {
         if (event.getAmount() > 5.0F && RANDOM.nextBoolean() && this.getData(tool).getInt(this.KEY) < 50 * level) {
             this.getData(tool).putInt(this.KEY, this.getData(tool).getInt(this.KEY) + 1);
         }
-
     }
 
     public float onModifyMeleeDamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity target, float baseDamage, float actualDamage) {
@@ -61,7 +60,6 @@ public class FixSanguine extends XIRModifier {
         if (slot == EquipmentSlot.MAINHAND) {
             consumer.accept(Attributes.ATTACK_SPEED, ItemUtils.mulBaseAttr(slot, ItemUtils.getAttrName("sanguine", slot), (double)this.getBonus(tool)));
         }
-
     }
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> list, TooltipKey key, TooltipFlag tooltipFlag) {

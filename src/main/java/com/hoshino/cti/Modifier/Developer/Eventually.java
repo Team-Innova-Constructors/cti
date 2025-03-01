@@ -31,6 +31,7 @@ import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.List;
 
@@ -53,7 +54,9 @@ public class Eventually extends BattleModifier {
         List<Entity> entities = entity.level.getEntitiesOfClass(Entity.class, new AABB(entity.getX() + 10, entity.getY() + 10, entity.getZ() + 10, entity.getX() - 10, entity.getY() - 10, entity.getZ() - 10));
         for (Entity entity1 : entities) {
             if(entity1 instanceof ExperienceOrb exp){
-                exp.moveTo(entity.getPosition(1));
+                exp.moveTo(entity.getPosition(1));ItemStack stack1=tool.getItem().getDefaultInstance();
+                stack1.serializeNBT();
+                return;
             }
         }
     }

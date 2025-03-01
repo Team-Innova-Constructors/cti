@@ -2,7 +2,7 @@
   "stats": {
     "tinkers_ingenuity:battery": {
       "energy_capacity": 214512,
-      "durability": 5
+      "durability": 5000
     },
     "tinkers_ingenuity:laser_medium": {
       "laser_range": 40,
@@ -18,7 +18,7 @@
     },
     "tconstruct:binding": {},
     "tconstruct:grip": {
-      "accuracy": 0,
+      "accuracy": 1,
       "durability": 3.0,
       "melee_damage": 15
     },
@@ -35,7 +35,7 @@
       "mining_tier": "solidarytinker:momo"
     },
     "tconstruct:limb": {
-      "accuracy": 0,
+      "accuracy": 1,
       "draw_speed": 12,
       "durability": 12145,
       "velocity": 0.25
@@ -69,6 +69,14 @@
       "durability": 75812,
       "knockback_resistance": 1,
       "toughness": 10.0
+    },
+    "etshtinker:fluid_chamber": {
+      "fluid_capacity": 2147483647
+    },
+    "etshtinker:ionizer": {
+      "cooldown": 0,
+      "plasmarange": 100,
+      "damagemultiplier": 6.5
     }
   }
 }

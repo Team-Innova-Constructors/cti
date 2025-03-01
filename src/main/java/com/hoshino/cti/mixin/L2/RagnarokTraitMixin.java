@@ -22,7 +22,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
-import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,7 @@ public abstract class RagnarokTraitMixin {
         sealModifier.add(solidarytinkerModifiers.COLLAPSE_STATIC_MODIFIER.get());//白矮星
         sealModifier.add(etshtinkerModifiers.manaoverload_STATIC_MODIFIER.get());//魔灵皇
         sealModifier.add(etshtinkerModifiers.perfectism.get());//魔灵皇
-        sealModifier.add(ctiModifiers.trinitycurse.get());//三位一体
+        sealModifier.add(etshtinkerModifiers.trinitycurse_STATIC_MODIFIER.get());//三位一体
         sealModifier.add(ctiModifiers.timetojudge.get());//乌列尔
         sealModifier.add(ctiModifiers.celestiallight.get());//乌列尔
         sealModifier.add(ctiModifiers.disorder.get());//单机磁石
@@ -49,6 +48,9 @@ public abstract class RagnarokTraitMixin {
             if (ModifierUtil.getModifierLevel(access.get(), modifier.getId()) > 0) {
                 cir.setReturnValue(false);
             }
+        }
+        if(access.get().is(EnigmaticItems.CURSED_RING)){
+            cir.setReturnValue(false);
         }
     }
 

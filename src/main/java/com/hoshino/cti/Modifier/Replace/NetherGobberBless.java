@@ -16,8 +16,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import slimeknights.tconstruct.TConstruct;
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
@@ -52,14 +50,11 @@ public class NetherGobberBless extends BattleModifier {
             WS.die(DamageSource.playerAttack(player));
             WS.remove(Entity.RemovalReason.KILLED);
             ItemStack skull = new ItemStack(Items.WITHER_SKELETON_SKULL);
-            int Modifierlevel= ModifierUtil.getModifierLevel(tool.getItem().getDefaultInstance(), TinkerModifiers.severing.getId())-5;
-            if(tool.getItem()== TinkerTools.cleaver.get()){
-                for(int i=0;i<9;i++){
-                    skull.setCount(Modifierlevel);
-                    player.getInventory().add(skull);
-                }
+            int Modifierlevel= ModifierUtil.getModifierLevel(player.getMainHandItem(), TinkerModifiers.severing.getId())-4;
+            if(tool.getItem()==TinkerTools.cleaver.get()){
+                    context.getLivingTarget().spawnAtLocation(skull,9*Modifierlevel);
             }
-            else player.getInventory().add(skull);
+            else context.getLivingTarget().spawnAtLocation(skull,1);
         }
     }
 

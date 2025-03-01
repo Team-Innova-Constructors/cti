@@ -93,4 +93,11 @@ public class ctiModifiers {
     public static final StaticModifier<EnderGobberBless> enderGobberBlessStaticModifier= MODIFIERS.register("endergobberbless", EnderGobberBless::new);
     public static final StaticModifier<Refined> refined= MODIFIERS.register("refined", Refined::new);
     public static final StaticModifier<imprison> imprison= MODIFIERS.register("imprison", imprison::new);
+    public static final StaticModifier<ArcaneOmniscient> magicomniscient= MODIFIERS.register("arcaneomniscient", ArcaneOmniscient::new);
+    public static final StaticModifier<ArcaneProtect> magicProtectStaticModifier= MODIFIERS.register("arcaneprotect", ArcaneProtect::new);
+    public static final StaticModifier<ArcaneTough> magictough= MODIFIERS.register("arcanetough", ArcaneTough::new);
+    public static final StaticModifier<ArcaneFilling> arcanefilling= MODIFIERS.register("arcanefilling", ArcaneFilling::new);
+    public static final StaticModifier<BloodGodBless> bloodgodbless= MODIFIERS.register("bloodgodbless", BloodGodBless::new);
+    public static final StaticModifier<BloodThirsty> bloodthirsty= MODIFIERS.register("bloodthirsty", BloodThirsty::new);
+    public static final StaticModifier<Subspace> subspace= MODIFIERS.register("subspace", Subspace::new);
 }

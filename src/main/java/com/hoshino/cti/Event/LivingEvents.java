@@ -16,17 +16,19 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.MobEffectEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import slimeknights.tconstruct.tools.TinkerTools;
 
 import java.util.Collection;
 
@@ -39,13 +41,15 @@ public class LivingEvents {
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onPlayerHurt);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST,this::onEffectApply);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEffectApply);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL,this::onGobberKillEnderDragon);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST,this::onPlayerTick);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST,this::SunSpiritCool);
     }
-    public void SunSpiritCool(LivingAttackEvent event) {
-        if(event.getSource().getEntity() instanceof Player player&& ModifierLevel.EquipHasModifierlevel(player, solidarytinkerModifiers.EXTREMELYCOLD_STATIC_MODIFIER.getId())){
-            if(event.getEntity().getType()== AetherEntityTypes.SUN_SPIRIT.get()){
-                event.getSource().bypassArmor().bypassMagic().bypassInvul();
+
+    private void onGobberKillEnderDragon(LivingDeathEvent event) {
+        if(event.getEntity() instanceof EnderDragon enderDragon&&event.getSource().getEntity() instanceof Player player){
+            ItemStack skull = new ItemStack(Items.DRAGON_HEAD);
+            if(player.getMainHandItem().getItem()== TinkerTools.cleaver.get()){
+               enderDragon.spawnAtLocation(skull,9);
             }
         }
     }

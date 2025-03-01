@@ -27,17 +27,29 @@ import tcintegrations.items.TCIntegrationsModifiers;
 import java.util.List;
 
 public class DeepOceanEcho extends BattleModifier {
+    private int SeaLevel(ItemStack tool){
+        return ModifierUtil.getModifierLevel(tool, TIModifiers.SEA_DREAM.getId())+ModifierUtil.getModifierLevel(tool, TCIntegrationsModifiers.WATER_POWERED_MODIFIER.getId())
+                +ModifierUtil.getModifierLevel(tool, TIModifiers.DIVISION.getId())+ModifierUtil.getModifierLevel(tool, TinkersInnovationModifiers.poseidite_weapon.getId())+ModifierUtil.getModifierLevel(tool,Utils.hydrophilous.getId());
+    }
+    private int DeepAndDeepLevel(ItemStack tool){
+        return ModifierUtil.getModifierLevel(tool, ctiModifiers.DEEP_AND_DEEP_STATIC_MODIFIER.getId());
+    }
+    private float EchoAmount(Player player){
+        return Math.max(player.getMaxHealth() * 0.2f,1) * Math.max(player.getArmorValue() * 0.3f,1) *Math.max(player.totalExperience * 0.0001f,1);
+    }
+    private float DamageAddAmount(Player player,ItemStack tool, int ModifierLevel){
+        return (this.EchoAmount(player)) * 0.1f  *  ModifierLevel *  ((this.SeaLevel(tool)+1)*2F)  *  (this.DeepAndDeepLevel(tool)+1);
+    }
+
     @Override
     public float staticdamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity livingTarget, float baseDamage, float damage) {
         if(attacker instanceof Player player){
-            ItemStack Tool=player.getMainHandItem();
-            int SEA= ModifierUtil.getModifierLevel(Tool, TIModifiers.SEA_DREAM.getId())+ModifierUtil.getModifierLevel(Tool, TCIntegrationsModifiers.WATER_POWERED_MODIFIER.getId())
-                    +ModifierUtil.getModifierLevel(Tool, TIModifiers.DIVISION.getId())+ModifierUtil.getModifierLevel(Tool, TinkersInnovationModifiers.poseidite_weapon.getId())+ModifierUtil.getModifierLevel(Tool,Utils.hydrophilous.getId());
-            float a = (Math.max(player.getMaxHealth() * 0.2f,1) * Math.max(player.getArmorValue() * 0.3f,1) *Math.max(player.totalExperience * 0.0001f,1))*0.1f*level*Math.max(SEA * 0.2F,1)*(1+ModifierUtil.getModifierLevel(Tool, ctiModifiers.DEEP_AND_DEEP_STATIC_MODIFIER.getId()));
+            ItemStack Stack=player.getMainHandItem();
+            float TrueDamageBoost=this.DamageAddAmount(player,Stack,level);
             if(livingTarget instanceof Player){
                 return damage * 0f;
             }
-            else return damage+(a * 0.5f * level);
+            else return damage + TrueDamageBoost;
         }
         return damage;
     }
@@ -45,34 +57,28 @@ public class DeepOceanEcho extends BattleModifier {
     @Override
     public void arrowhurt(ModifierNBT modifiers, NamespacedNBT persistentData, int level, Projectile projectile, EntityHitResult hit, AbstractArrow arrow, LivingEntity attacker, LivingEntity target) {
         if(attacker instanceof Player player){
-            ItemStack Tool=player.getMainHandItem();
-            int SEA= ModifierUtil.getModifierLevel(Tool, TIModifiers.SEA_DREAM.getId())+ModifierUtil.getModifierLevel(Tool, TCIntegrationsModifiers.WATER_POWERED_MODIFIER.getId())
-                    +ModifierUtil.getModifierLevel(Tool, TIModifiers.DIVISION.getId())+ModifierUtil.getModifierLevel(Tool, TinkersInnovationModifiers.poseidite_weapon.getId())+ModifierUtil.getModifierLevel(Tool,Utils.hydrophilous.getId());
-            float a = (Math.max(player.getMaxHealth() * 0.2f,1) * Math.max(player.getArmorValue() * 0.3f,1) *Math.max(player.totalExperience * 0.0001f,1))*0.1f*level*Math.max(SEA * 0.2F,1)*(1+ModifierUtil.getModifierLevel(Tool, ctiModifiers.DEEP_AND_DEEP_STATIC_MODIFIER.getId()));
+            ItemStack Stack=player.getMainHandItem();
+            float TrueDamageBoost=this.DamageAddAmount(player,Stack,level);
             if(target instanceof Player){
                 arrow.setBaseDamage(0);
-            }else arrow.setBaseDamage(arrow.getBaseDamage() + (a * 0.5 * level));
+            }else arrow.setBaseDamage(arrow.getBaseDamage() + TrueDamageBoost);
         }
     }
 
     @Override
     public void addVolatileData(IToolContext iToolContext, @NotNull ModifierEntry modifierEntry, ModDataNBT modDataNBT) {
         modDataNBT.addSlots(ctiSlots.OCEAN,5);
-        modDataNBT.addSlots(ctiSlots.SHENJIN,5);
     }
 
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> list, TooltipKey key, TooltipFlag tooltipFlag) {
         if (player != null) {
-            ItemStack Tool=player.getMainHandItem();
-            int level = modifier.getLevel();
-            int SEA= ModifierUtil.getModifierLevel(Tool, TIModifiers.SEA_DREAM.getId())+ModifierUtil.getModifierLevel(Tool, TCIntegrationsModifiers.WATER_POWERED_MODIFIER.getId())
-                    +ModifierUtil.getModifierLevel(Tool, TIModifiers.DIVISION.getId())+ModifierUtil.getModifierLevel(Tool, TinkersInnovationModifiers.poseidite_weapon.getId())+ModifierUtil.getModifierLevel(Tool,Utils.hydrophilous.getId());
-            float a = (Math.max(player.getMaxHealth() * 0.2f,1) * Math.max(player.getArmorValue() * 0.3f,1) *Math.max(player.totalExperience * 0.0001f,1))*0.1f*level*Math.max(SEA * 0.2F,1)*(1+ModifierUtil.getModifierLevel(Tool, ctiModifiers.DEEP_AND_DEEP_STATIC_MODIFIER.getId()));
-            list.add(applyStyle(Component.literal(IceFantasy.GetColor("当前回声点数")).append(IceFantasy.GetColor(a + ""))));
-            list.add(applyStyle(Component.literal(IceFantasy.GetColor("额外生效的词条等级")).append(IceFantasy.GetColor(SEA + ""))));
-            list.add(applyStyle(Component.literal(IceFantasy.GetColor("每点回声所增幅的伤害")).append(IceFantasy.GetColor(level * 0.1f*Math.max(SEA * 0.2F,1) +"攻击力"))));
-            list.add(applyStyle(Component.literal(IceFantasy.GetColor("实际提升的总伤害")).append(IceFantasy.GetColor((level * 0.1f)*Math.max(SEA * 0.2F,1) * a + "攻击力"))));
+            ItemStack stack=player.getMainHandItem();
+            int level=modifier.getLevel();
+            list.add(applyStyle(Component.literal(IceFantasy.GetColor("当前回声点数")).append(IceFantasy.GetColor(this.EchoAmount(player) + ""))));
+            list.add(applyStyle(Component.literal(IceFantasy.GetColor("额外生效的海洋系词条等级")).append(IceFantasy.GetColor(this.SeaLevel(stack) + ""))));
+            list.add(applyStyle(Component.literal(IceFantasy.GetColor("每点回声所增幅的伤害")).append(IceFantasy.GetColor(0.1f  *  level *  ((this.SeaLevel(stack)+1)*2F)  *  (this.DeepAndDeepLevel(stack)+1)+"攻击力"))));
+            list.add(applyStyle(Component.literal(IceFantasy.GetColor("实际提升的总伤害")).append(IceFantasy.GetColor(this.DamageAddAmount(player,stack,level)+ "攻击力"))));
         }
     }
 }

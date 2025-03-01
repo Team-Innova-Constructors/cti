@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class DementorMixin {
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraftforge/event/entity/living/LivingAttackEvent;setCanceled(Z)V"),method = "onAttackedByOthers",remap = false, cancellable = true)
     private void OnAttack(int level, LivingEntity entity, LivingAttackEvent event, CallbackInfo ci){
-        if(!event.getSource().isBypassArmor()&&!event.getSource().isMagic()&&!event.getSource().isBypassInvul()&&event.getSource().getEntity()!=null){
+        if(((event.getSource().isBypassArmor()||event.getSource().isMagic()||event.getSource().isBypassInvul())&&event.getSource().getEntity()!=null)||event.getAmount()>event.getEntity().getMaxHealth() *10F){
             ci.cancel();
         }
     }

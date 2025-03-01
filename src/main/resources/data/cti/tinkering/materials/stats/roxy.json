@@ -4,7 +4,7 @@
     "tconstruct:handle": {
       "durability": 1.31,
       "mining_speed": -0.75,
-      "melee_speed": 4.75,
+      "melee_speed": 2.78,
       "melee_damage": 1.14
     },
     "tconstruct:head": {
@@ -23,11 +23,6 @@
       "durability": 1.9,
       "accuracy": 2.0,
       "melee_damage": 5.0
-    },
-    "tconstruct:plating_shield": {
-      "durability": 1360,
-      "knockback_resistance": 0.4,
-      "toughness": 5
     }
   }
 }
