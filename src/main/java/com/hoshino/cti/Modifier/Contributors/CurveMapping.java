@@ -4,20 +4,28 @@ package com.hoshino.cti.Modifier.Contributors;
 import com.hoshino.cti.cti;
 import com.hoshino.cti.register.ctiEffects;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+
+import java.util.List;
 
 import static com.hoshino.cti.register.ctiModifiers.curvemapping;
 import static com.hoshino.cti.register.ctiModifiers.kingdomofnumbers;
@@ -52,6 +60,13 @@ public class CurveMapping extends BattleModifier {
             if (tool.getPersistentData().getInt(curvemappingtime)>0){
                 tool.getPersistentData().putInt(curvemappingtime,tool.getPersistentData().getInt(curvemappingtime)-1);
             }
+        }
+    }
+
+    public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
+        if (player != null) {
+            ModDataNBT tooldata = tool.getPersistentData();
+            tooltip.add(net.minecraft.network.chat.Component.translatable("[曲线映射]的冷却还剩" + (tooldata.getInt(curvemappingtime)/20)+"秒").withStyle(ChatFormatting.AQUA));
         }
     }
 }
