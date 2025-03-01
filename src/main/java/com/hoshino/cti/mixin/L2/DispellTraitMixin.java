@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -27,6 +28,16 @@ public class DispellTraitMixin {
                     ci.cancel();
                 }
             }
+        }
+    }
+    /**
+     * @author firefly
+     * @reason 破魔判定问题
+     */
+    @Overwrite
+    public void onAttackedByOthers(int level, LivingEntity entity, LivingAttackEvent event) {
+        if(!(event.getAmount() >=entity.getMaxHealth()* 0.2F)&&event.getSource().isMagic()){
+            event.setCanceled(true);
         }
     }
 }
