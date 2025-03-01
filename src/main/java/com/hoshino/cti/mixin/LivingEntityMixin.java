@@ -26,6 +26,14 @@ public abstract class LivingEntityMixin {
 
     @Shadow @Nullable public abstract LivingEntity getLastHurtByMob();
 
+    @Inject(at = @At(value = "HEAD"), method = "checkTotemDeathProtection",cancellable = true)
+    private void checkTotemDeathProtection(DamageSource pDamageSource, CallbackInfoReturnable<Boolean> cir) {
+        LivingEntity living = (LivingEntity) (Object) this;
+        if (pDamageSource.isBypassMagic()||pDamageSource.getEntity()== living){
+            cir.setReturnValue(false);
+        }
+    }
+
     @Inject(at = @At(value = "HEAD"), method = "aiStep",cancellable = true)
     public void StopAi(CallbackInfo ci){
         LivingEntity entity =(LivingEntity) (Object)this;

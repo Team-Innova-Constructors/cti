@@ -32,11 +32,6 @@ public class ServerEvent {
     public ServerEvent(){
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerTick);
         MinecraftForge.EVENT_BUS.addListener(this::onEntityTravelDimension);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onServerStart);
-    }
-
-    private void onServerStart(ServerStartedEvent event) {
-        CommonUtil.Reload(event.getServer());
     }
 
     private void onEntityTravelDimension(EntityTravelToDimensionEvent event) {
