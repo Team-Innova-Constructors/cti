@@ -5,7 +5,6 @@
   "minVersion": "0.7",
   "refmap": "cti.refmap.json",
   "mixins": [
-    "EffectMixin",
     "EntityMixin",
     "LivingEntityAccessor",
     "LivingEntityMixin",

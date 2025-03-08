@@ -32,6 +32,10 @@
       {
         "name": "tinkers_ingenuity:unmatched",
         "level": 1
+      },
+      {
+        "name": "cti:infinity",
+        "level": 1
       }
     ],
     "tinkersinnovation:shield": [

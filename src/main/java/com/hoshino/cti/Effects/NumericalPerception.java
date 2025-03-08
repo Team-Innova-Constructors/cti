@@ -20,9 +20,6 @@ public class NumericalPerception extends StaticMobEffect{
         return true;
     }
     private void livinghurtlevent(LivingHurtEvent event) {
-        Entity a = event.getSource().getEntity();
-        if (a instanceof ServerPlayer player && event.getEntity() != null) {
-            event.setAmount(event.getAmount()*2F);
-        }
+
     }
 }

@@ -32,12 +32,9 @@ public class DispellTraitMixin {
     }
     /**
      * @author firefly
-     * @reason 破魔判定问题
+     * @reason 破魔判定问题，此形参无法正确检测isBypassMagic属性,因此mixin掉,不再免疫
      */
     @Overwrite
     public void onAttackedByOthers(int level, LivingEntity entity, LivingAttackEvent event) {
-        if(!(event.getAmount() >=entity.getMaxHealth()* 0.2F)&&event.getSource().isMagic()){
-            event.setCanceled(true);
-        }
     }
 }

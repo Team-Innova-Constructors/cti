@@ -13,6 +13,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -43,15 +44,18 @@ public class Trauma extends ArmorModifier {
                     double y = player.getY();
                     double z = player.getZ();
                     List<Mob> mobbbb = player.level.getEntitiesOfClass(Mob.class, new AABB(x + 10, y + 10, z + 10, x - 10, y - 10, z - 10));
-                    for (Mob targets : mobbbb) {
+                    for (Mob targets :mobbbb) {
                         if (targets != null && !targets.getType().getCategory().isFriendly()) {
+                            if(targets instanceof Slime slime){
+                                slime.setSize(1,false);
+                            }
                             BlockPos posA = player.getOnPos();
                             targets.hurt(DamageSource.playerAttack(player).bypassMagic().bypassArmor().bypassInvul(), Float.MAX_VALUE);
                             targets.die(DamageSource.playerAttack(player));
                             player.level.playSound(null, posA, SoundEvents.ZOMBIE_VILLAGER_CURE, SoundSource.PLAYERS, 1F, 1F);
                             targets.remove(Entity.RemovalReason.KILLED);
                             Minecraft.getInstance().particleEngine.createTrackingEmitter(targets, ParticleTypes.TOTEM_OF_UNDYING, 30);
-                            if (player.level.isClientSide) {
+                            if (player.level.isClientSide&&mobbbb.size()<20) {
                                 Vec3 center = player.position();
                                 float tpi = (float) (Math.PI * 2);
                                 Vec3 v0 = new Vec3(0, 10, 0);
