@@ -33,7 +33,6 @@ public class EntityMixin {
         if(entity instanceof AbstractSemiblockEntity&&!source.isBypassInvul()){
             cir.setReturnValue(true);
         }
-
     }
     @Inject(at = @At(value = "HEAD"), method = "isInvulnerable", cancellable = true)
     private void setVulnerable(CallbackInfoReturnable<Boolean> cir){

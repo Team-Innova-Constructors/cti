@@ -84,8 +84,4 @@ public class Eventually extends BattleModifier {
             context.getLivingTarget().remove(Entity.RemovalReason.KILLED);
         }
     }
-
-    @Override
-    public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> list, TooltipKey key, TooltipFlag tooltipFlag) {
-    }
 }

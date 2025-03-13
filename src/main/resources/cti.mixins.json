@@ -41,6 +41,7 @@
     "TconMixin.InsatiableMixin",
     "TconMixin.KineticMixin",
     "TIMixin.BlowPipeMixin",
+    "TIMixin.CurioExquisiteMixin",
     "TIMixin.GaiaGuardMixin",
     "TIMixin.KnightCrystalCurioMixin",
     "TIMixin.ShurikenMixin",

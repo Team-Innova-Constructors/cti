@@ -57,10 +57,10 @@ public class ctiConfiguredFeature {
             ()->new ConfiguredFeature<>(Feature.ORE,new OreConfiguration(EXTRA_REDSTONE_ORES.get(),20)));
 
     public static final RegistryObject<ConfiguredFeature<?,?>> EXTRA_IRON_ORE = CONFIGURED_FEATURES.register("extra_iron",
-            ()->new ConfiguredFeature<>(Feature.ORE,new OreConfiguration(EXTRA_IRON_ORES.get(),30)));
+            ()->new ConfiguredFeature<>(Feature.ORE,new OreConfiguration(EXTRA_IRON_ORES.get(),20)));
 
     public static final RegistryObject<ConfiguredFeature<?,?>> EXTRA_GOLD_ORE = CONFIGURED_FEATURES.register("extra_gold",
-            ()->new ConfiguredFeature<>(Feature.ORE,new OreConfiguration(EXTRA_GOLD_ORES.get(),15)));
+            ()->new ConfiguredFeature<>(Feature.ORE,new OreConfiguration(EXTRA_GOLD_ORES.get(),20)));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> HULTRADENSE_GEODE = CONFIGURED_FEATURES.register("hultra_dense_geode",
             () -> new ConfiguredFeature<>(Feature.GEODE,

@@ -549,16 +549,16 @@
   "modifier.cti.encrypt.description":"怪物无法复印你的装备词条",
 
   "modifier.cti.commongobberbless": "戈伯恩惠",
-  "modifier.cti.commongobberbless.flavor": "主世界加成",
-  "modifier.cti.commongobberbless.description":"处于主世界时，伤害每级增加15%，并且缓慢恢复饱食度.作为盔甲时每级减少6%收到的伤害\n[特殊效果]作为近战武器，对凋灵会附带6%最大生命的伤害(六百六十六，这个玩家开桂了)",
+  "modifier.cti.commongobberbless.flavor": "旅途的开始",
+  "modifier.cti.commongobberbless.description":"伤害每级增加15%，并且缓慢恢复饱食度.作为盔甲时每级减少6%收到的伤害\n[特殊效果]作为近战武器，对凋灵会附带6%最大生命的伤害(六百六十六，这个玩家开桂了)",
 
   "modifier.cti.nethergobberbless": "下界戈伯恩惠",
-  "modifier.cti.nethergobberbless.flavor": "下界加成",
-  "modifier.cti.nethergobberbless.description":"处于下界时，获得常驻的抗火效果，伤害每级增加25%，并且缓慢恢复饱食度.作为盔甲时每级减少8%收到的伤害\n[特殊效果]作为近战武器，对凋灵骷髅会直接击杀并且必定获得一个头颅。当对应工具为劈刀，则增加九倍的头颅获取量，并且基于肢解等级合-5会额外提升头颅获得倍率，至高一次获得27个头颅",
+  "modifier.cti.nethergobberbless.flavor": "焱狱与苦难",
+  "modifier.cti.nethergobberbless.description":"获得常驻的抗火效果，伤害每级增加25%，并且缓慢恢复饱食度.作为盔甲时每级减少8%收到的伤害\n[特殊效果]作为近战武器，对凋灵骷髅会直接击杀并且必定获得一个头颅。当对应工具为劈刀，会基于肢解等级*抢夺类词条总等级会额外提升头颅获得倍率",
 
   "modifier.cti.endergobberbless": "末影戈伯恩惠",
-  "modifier.cti.endergobberbless.flavor": "末地加成",
-  "modifier.cti.endergobberbless.description":"处于末地时，获得常驻的飞行和抗火效果，伤害每级增加35%，并且缓慢恢复饱食度.作为盔甲时每级减少10%收到的伤害\n[特殊效果]作为武器每次对末影龙造成伤害均会额外提升末影龙4%最大生命的伤害,使用劈刀击杀末影龙的时候必定掉落9个末影龙头颅",
+  "modifier.cti.endergobberbless.flavor": "结束了？",
+  "modifier.cti.endergobberbless.description":"获得抗火效果，伤害每级增加35%，并且缓慢恢复饱食度.作为盔甲时每级减少10%收到的伤害\n[特殊效果]作为武器每次对末影龙造成伤害均会额外提升末影龙6%最大生命的伤害,使用劈刀击杀末影龙的时候必定掉落9个末影龙头颅",
 
   "modifier.cti.encrypt": "加密",
   "modifier.cti.encrypt.flavor": "???",

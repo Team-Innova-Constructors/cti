@@ -2,7 +2,6 @@ package com.hoshino.cti.Modifier.Replace;
 
 import com.hoshino.cti.util.method.GetModifierLevel;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,7 +14,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -23,15 +21,11 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 public class EnderGobberBless extends BattleModifier {
-    public boolean isCorrectDimension(LivingEntity livingEntity) {
-        return livingEntity.getLevel().dimension().equals(Level.END);
-    }
-
     @Override
     public float staticdamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity livingTarget, float baseDamage, float damage) {
-        if (this.isCorrectDimension(attacker)&&attacker instanceof Player player) {
-            if(livingTarget instanceof EnderDragon enderDragon){
-                return damage * (1 + level * 0.35f)+enderDragon.getMaxHealth() * 0.04F;
+        if (attacker instanceof Player player) {
+            if (livingTarget instanceof EnderDragon enderDragon) {
+                return damage * (1 + level * 0.35f) + enderDragon.getMaxHealth() * 0.06F;
             }
             return damage * (1 + level * 0.35f);
         }
@@ -40,11 +34,10 @@ public class EnderGobberBless extends BattleModifier {
 
     @Override
     public void arrowhurt(ModifierNBT modifiers, NamespacedNBT persistentData, int level, Projectile projectile, EntityHitResult hit, AbstractArrow arrow, LivingEntity attacker, LivingEntity target) {
-        if (this.isCorrectDimension(attacker)&&attacker instanceof Player player) {
-            if(target instanceof EnderDragon enderDragon){
-                arrow.setBaseDamage(arrow.getBaseDamage() * (1 + level * 0.35f)+enderDragon.getMaxHealth() * 0.04f);
-            }
-            else {
+        if (attacker instanceof Player player) {
+            if (target instanceof EnderDragon enderDragon) {
+                arrow.setBaseDamage(arrow.getBaseDamage() * (1 + level * 0.35f) + enderDragon.getMaxHealth() * 0.06f);
+            } else {
                 arrow.setBaseDamage(arrow.getBaseDamage() * (1 + level * 0.35f));
             }
         }
@@ -68,33 +61,11 @@ public class EnderGobberBless extends BattleModifier {
     }
 
     @Override
-    public void onEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        if ((context.getEntity() instanceof Player player && !player.getAbilities().mayfly && !player.getAbilities().flying && this.isCorrectDimension(player))) {
-            if (GetModifierLevel.getTotalArmorModifierlevel(player, this.getId()) > 0) {
-                player.getAbilities().flying = true;
-                player.getAbilities().mayfly = true;
-            }
-        }
-    }
-
-    @Override
-    public void onUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        if ((context.getEntity() instanceof Player player && player.getAbilities().mayfly && player.getAbilities().flying && this.isCorrectDimension(player))) {
-            if (GetModifierLevel.getTotalArmorModifierlevel(player, this.getId()) > 0) {
-                player.getAbilities().flying = false;
-                player.getAbilities().mayfly = false;
-            }
-        }
-    }
-
-    @Override
     public void LivingDamageEvent(LivingDamageEvent event) {
         if (event.getEntity() instanceof Player player) {
-            if (this.isCorrectDimension(player)) {
-                int level = GetModifierLevel.getAllSlotModifierlevel(player, this.getId());
-                if (level > 0) {
-                    event.setAmount(event.getAmount() * (1 - level * 0.1F));
-                }
+            int level = GetModifierLevel.getAllSlotModifierlevel(player, this.getId());
+            if (level > 0) {
+                event.setAmount(event.getAmount() * (1 - level * 0.1F));
             }
         }
     }

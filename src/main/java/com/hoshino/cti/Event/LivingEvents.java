@@ -49,7 +49,8 @@ public class LivingEvents {
         if(event.getEntity() instanceof EnderDragon enderDragon&&event.getSource().getEntity() instanceof Player player){
             ItemStack skull = new ItemStack(Items.DRAGON_HEAD);
             if(player.getMainHandItem().getItem()== TinkerTools.cleaver.get()){
-               enderDragon.spawnAtLocation(skull,9);
+                skull.setCount(9);
+                enderDragon.spawnAtLocation(skull);
             }
         }
     }
