@@ -15,11 +15,11 @@ public class Hardcore extends ArmorModifier {
 
     @Override
     public boolean havenolevel() {
-        return  true;
+        return true;
     }
 
     @Override
     public void addVolatileData(IToolContext iToolContext, @NotNull ModifierEntry modifierEntry, ModDataNBT modDataNBT) {
-        modDataNBT.addSlots(SlotType.DEFENSE,2);
+        modDataNBT.addSlots(SlotType.DEFENSE, 2);
     }
 }

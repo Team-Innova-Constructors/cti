@@ -20,23 +20,23 @@ public class DragonsWifu extends etshmodifieriii {
 
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
-        Entity entity =context.getTarget();
-        if (entity instanceof LivingEntity livingEntity){
-            livingEntity.invulnerableTime =0;
-            livingEntity.hurt(DamageSource.indirectMagic(context.getAttacker(), context.getAttacker()),damage*0.25f*modifier.getLevel());
-            livingEntity.invulnerableTime=0;
-            livingEntity.hurt(DamageSource.DRAGON_BREATH,damage*0.25f*modifier.getLevel());
-            livingEntity.invulnerableTime =0;
+        Entity entity = context.getTarget();
+        if (entity instanceof LivingEntity livingEntity) {
+            livingEntity.invulnerableTime = 0;
+            livingEntity.hurt(DamageSource.indirectMagic(context.getAttacker(), context.getAttacker()), damage * 0.25f * modifier.getLevel());
+            livingEntity.invulnerableTime = 0;
+            livingEntity.hurt(DamageSource.DRAGON_BREATH, damage * 0.25f * modifier.getLevel());
+            livingEntity.invulnerableTime = 0;
         }
         return knockback;
     }
 
     @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
-        if (target !=null&&projectile instanceof AbstractArrow arrow){
-            target.invulnerableTime =0;
-            target.hurt(DamageSource.DRAGON_BREATH, (float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())*0.25f*modifier.getLevel()));
-            target.invulnerableTime =0;
+        if (target != null && projectile instanceof AbstractArrow arrow) {
+            target.invulnerableTime = 0;
+            target.hurt(DamageSource.DRAGON_BREATH, (float) (arrow.getBaseDamage() * getMold(arrow.getDeltaMovement()) * 0.25f * modifier.getLevel()));
+            target.invulnerableTime = 0;
         }
         return false;
     }

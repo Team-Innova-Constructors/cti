@@ -12,6 +12,7 @@ public class RocketItemRendererTier5 extends BlockEntityWithoutLevelRenderer {
     public RocketItemRendererTier5() {
         super(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels());
     }
+
     @Override
     public void renderByItem(ItemStack stack, ItemTransforms.TransformType mode, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         VehicleRenderer.renderRocketItem(RocketRendererTier5.TEXTURE, RocketModelTier5.LAYER_LOCATION, poseStack, buffer, packedLight, packedOverlay);

@@ -28,24 +28,30 @@ public class ProtoniumAmmo extends AbstractGunAmmoItem {
     public int getAmmoColor(ItemStack itemStack) {
         return 0x00850060;
     }
+
     @Override
     public int getMaxDamage(ItemStack stack) {
         return 1024;
     }
+
     @Override
     protected float getDamageMultiplier(Entity target, ItemStack ammoStack) {
         return 20f;
     }
+
     @Override
     public float getAirUsageMultiplier(Minigun minigun, ItemStack ammoStack) {
         return 0.05f;
     }
+
     public float getRangeMultiplier(ItemStack ammoStack) {
         return 5f;
     }
-    protected DamageSource getDamageSource(Minigun minigun,Float amount) {
-        return PierceThrough.pierceDamage(minigun.getPlayer(),amount );
+
+    protected DamageSource getDamageSource(Minigun minigun, Float amount) {
+        return PierceThrough.pierceDamage(minigun.getPlayer(), amount);
     }
+
     @Override
     public int onTargetHit(Minigun minigun, ItemStack ammo, Entity target) {
         int times = 1;
@@ -56,8 +62,8 @@ public class ProtoniumAmmo extends AbstractGunAmmoItem {
         double dmgMult = getDamageMultiplier(target, ammo);
         if (dmgMult > 0) {
             if (target instanceof LivingEntity || target instanceof EnderDragonPart || target instanceof EndCrystal) {
-                target.invulnerableTime=0;
-                target.hurt(getDamageSource(minigun,(float)(ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times)), (float)(ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times));
+                target.invulnerableTime = 0;
+                target.hurt(getDamageSource(minigun, (float) (ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times)), (float) (ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times));
             } else if (target instanceof ShulkerBullet || target instanceof AbstractHurtingProjectile) {
                 target.discard();
             }
@@ -66,9 +72,9 @@ public class ProtoniumAmmo extends AbstractGunAmmoItem {
     }
 
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        if (Screen.hasShiftDown()){
+        if (Screen.hasShiftDown()) {
             list.add(Component.translatable("cti.tooltip.item.protonium_ammo").withStyle(ChatFormatting.AQUA));
-        }else {
+        } else {
             list.add(Component.translatable("cti.tooltip.item.shift").withStyle(ChatFormatting.AQUA));
         }
     }

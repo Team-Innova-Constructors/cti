@@ -103,6 +103,14 @@
   "material.cti.uriel.flavor": "恶魔般的火之审判官",
   "material.cti.uriel.encyclopedia": "牢墨贡献者材料\n祂手持火焰之剑，以地狱之火审判一切罪孽深重之人",
 
+  "material.cti.buriedocean": "海葬",
+  "material.cti.buriedocean.flavor": "跟随柯尼利亚船长一同沉入海底的一把随身武器的材料",
+  "material.cti.buriedocean.encyclopedia": "绽放着淡蓝色的光芒,明亮但又略显黯淡",
+
+  "modifier.cti.buriedocean": "海葬",
+  "modifier.cti.buriedocean.flavor": "无尽的怨恨",
+  "modifier.cti.buriedocean.description":"对目标额外造成柯尼利亚船长自身最大生命3%的魔法伤害,此伤害穿透魔法防御,并且会越累计越高,至多堆积到6000%倍率",
+
   "modifier.cti.timetojudge": "审判时刻",
   "modifier.cti.timetojudge.flavor": "自此刻起，下达判决",
   "modifier.cti.timetojudge.description":"攻击怪物后将永久为其施加“罪恶者”标签，当怪物具有这个标签的时候此生物受到所有伤害增加800%(包括其他玩家伤害和虚空伤害）,并且其收到的所有伤害穿透魔法抗性",
@@ -607,6 +615,14 @@
   "modifier.cti.outer_space": "天外来客",
   "modifier.cti.outer_space.flavor": "人走在路上被陨石砸死的概率很小，但是不为零",
   "modifier.cti.outer_space.description": "所有攻击附带20%的下坠方块伤害，在非主世界的维度时所有伤害增加25%。",
+
+  "modifier.cti.explosionprevent": "热爆甲",
+  "modifier.cti.explosionprevent.flavor": "谁家小热爆花",
+  "modifier.cti.explosionprevent.description":"你周围10格内苦力怕类生物的爆炸会被完全压制，不再破坏方块",
+
+  "modifier.cti.atrophyblade": "生长抑制剂",
+  "modifier.cti.atrophyblade.flavor": "永远也长不大",
+  "modifier.cti.atrophyblade.description":"攻击时候会把史莱姆大小强行压制为1",
 
 
 

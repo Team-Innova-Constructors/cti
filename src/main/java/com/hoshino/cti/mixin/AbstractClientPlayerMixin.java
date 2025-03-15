@@ -14,16 +14,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractClientPlayer.class)
 public class AbstractClientPlayerMixin {
-    @Inject(at = @At(value = "RETURN"),method = "getFieldOfViewModifier",cancellable = true)
-    public void resetModifier(CallbackInfoReturnable<Float> cir){
+    @Inject(at = @At(value = "RETURN"), method = "getFieldOfViewModifier", cancellable = true)
+    public void resetModifier(CallbackInfoReturnable<Float> cir) {
         Player player = (AbstractClientPlayer) (Object) this;
-        float f =1f;
-        if (player!=null&& EntityUtil.isAntiStun(player)){
+        float f = 1f;
+        if (player != null && EntityUtil.isAntiStun(player)) {
             ItemStack itemstack = player.getUseItem();
             if (player.isUsingItem()) {
                 if (itemstack.is(Items.BOW)) {
                     int i = player.getTicksUsingItem();
-                    float f1 = (float)i / 20.0F;
+                    float f1 = (float) i / 20.0F;
                     if (f1 > 1) {
                         f1 = 1;
                     } else {

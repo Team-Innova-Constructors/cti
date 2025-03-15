@@ -16,10 +16,12 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
-@Mixin(remap = false,value = ModuleSolarRechargingUnit.class)
+@Mixin(remap = false, value = ModuleSolarRechargingUnit.class)
 public class ModuleSolarRechargingUnitMixin {
     @Final
-    @Shadow private static FloatingLong RAIN_MULTIPLIER;
+    @Shadow
+    private static FloatingLong RAIN_MULTIPLIER;
+
     /**
      * @author EtSH_C2H6S
      * @reason 修复太阳能模组崩溃
@@ -33,7 +35,7 @@ public class ModuleSolarRechargingUnitMixin {
                 Biome b = player.level.getBiomeManager().getBiome(pos).value();
                 boolean needsRainCheck = b.getPrecipitation() != Biome.Precipitation.NONE;
                 float tempEff = 0.3F * (0.8F - b.getBaseTemperature());
-                tempEff = Math.max(tempEff,0);
+                tempEff = Math.max(tempEff, 0);
                 float humidityEff = needsRainCheck ? -0.3F * b.getDownfall() : 0.0F;
                 FloatingLong peakOutput = MekanismConfig.gear.mekaSuitSolarRechargingRate.get().multiply(1.0F + tempEff + humidityEff);
                 float brightness = WorldUtils.getSunBrightness(player.level, 1.0F);

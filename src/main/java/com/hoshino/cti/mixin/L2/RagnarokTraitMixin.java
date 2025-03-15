@@ -49,7 +49,7 @@ public abstract class RagnarokTraitMixin {
                 cir.setReturnValue(false);
             }
         }
-        if(access.get().is(EnigmaticItems.CURSED_RING)){
+        if (access.get().is(EnigmaticItems.CURSED_RING)) {
             cir.setReturnValue(false);
         }
     }
@@ -61,7 +61,7 @@ public abstract class RagnarokTraitMixin {
             if (GetModifierLevel.CurioHasModifierlevel(player, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId())) {
                 ci.cancel();
             }
-            if (SuperpositionHandler.hasCurio(player,EnigmaticItems.THE_CUBE)){
+            if (SuperpositionHandler.hasCurio(player, EnigmaticItems.THE_CUBE)) {
                 ci.cancel();
             }
             //这个列表里面的是只要身上4盔甲/主副有这个材料就会让诸神黄昏对所有装备都不生效
@@ -80,7 +80,7 @@ public abstract class RagnarokTraitMixin {
                     ci.cancel();
                 }
             }
-            if(player.getItemBySlot(EquipmentSlot.HEAD).is(MekanismItems.MEKASUIT_HELMET.get())||player.getItemBySlot(EquipmentSlot.CHEST).is(MekanismItems.MEKASUIT_BODYARMOR.get())||player.getItemBySlot(EquipmentSlot.LEGS).is(MekanismItems.MEKASUIT_PANTS.get())||player.getItemBySlot(EquipmentSlot.FEET).is(MekanismItems.MEKASUIT_BOOTS.get())){
+            if (player.getItemBySlot(EquipmentSlot.HEAD).is(MekanismItems.MEKASUIT_HELMET.get()) || player.getItemBySlot(EquipmentSlot.CHEST).is(MekanismItems.MEKASUIT_BODYARMOR.get()) || player.getItemBySlot(EquipmentSlot.LEGS).is(MekanismItems.MEKASUIT_PANTS.get()) || player.getItemBySlot(EquipmentSlot.FEET).is(MekanismItems.MEKASUIT_BOOTS.get())) {
                 ci.cancel();
             }
         }

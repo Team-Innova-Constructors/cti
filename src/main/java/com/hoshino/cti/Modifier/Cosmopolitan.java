@@ -22,6 +22,6 @@ public class Cosmopolitan extends BattleModifier {
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-        ToolDamageUtil.repair(tool,100);
+        ToolDamageUtil.repair(tool, 100);
     }
 }

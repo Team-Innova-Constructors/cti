@@ -28,7 +28,6 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import java.util.List;
 
 import static com.hoshino.cti.register.ctiModifiers.curvemapping;
-import static com.hoshino.cti.register.ctiModifiers.kingdomofnumbers;
 
 public class CurveMapping extends BattleModifier {
     public CurveMapping() {
@@ -45,7 +44,7 @@ public class CurveMapping extends BattleModifier {
             if (c > 0) {
                 int b = (int) event.getAmount();
                 event.setAmount(b);
-                if (b % 2 == 0&&tool.getPersistentData().getInt(curvemappingtime)==0) {
+                if (b % 2 == 0 && tool.getPersistentData().getInt(curvemappingtime) == 0) {
                     tool.getPersistentData().putInt(curvemappingtime, 300 - c * 10);
                     player.addEffect(new MobEffectInstance(ctiEffects.curve_mapping.get(), 200, c));
                 }
@@ -57,8 +56,8 @@ public class CurveMapping extends BattleModifier {
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
         if (entity instanceof ServerPlayer player) {
             ToolStack tool = ToolStack.from(player.getMainHandItem());
-            if (tool.getPersistentData().getInt(curvemappingtime)>0){
-                tool.getPersistentData().putInt(curvemappingtime,tool.getPersistentData().getInt(curvemappingtime)-1);
+            if (tool.getPersistentData().getInt(curvemappingtime) > 0) {
+                tool.getPersistentData().putInt(curvemappingtime, tool.getPersistentData().getInt(curvemappingtime) - 1);
             }
         }
     }
@@ -66,7 +65,7 @@ public class CurveMapping extends BattleModifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             ModDataNBT tooldata = tool.getPersistentData();
-            tooltip.add(net.minecraft.network.chat.Component.translatable("[曲线映射]的冷却还剩" + (tooldata.getInt(curvemappingtime)/20)+"秒").withStyle(ChatFormatting.AQUA));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("[曲线映射]的冷却还剩" + (tooldata.getInt(curvemappingtime) / 20) + "秒").withStyle(ChatFormatting.AQUA));
         }
     }
 }

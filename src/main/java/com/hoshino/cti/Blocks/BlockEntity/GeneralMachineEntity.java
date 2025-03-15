@@ -15,21 +15,23 @@ public abstract class GeneralMachineEntity extends BlockEntity {
 
     public abstract ItemStackHandler getItemHandler();
 
-    private int CurrentEnergy =0;
-    private FluidStack Fluidstack =FluidStack.EMPTY;
+    private int CurrentEnergy = 0;
+    private FluidStack Fluidstack = FluidStack.EMPTY;
 
 
-    public void setEnergy(int Amount){
+    public void setEnergy(int Amount) {
         this.CurrentEnergy = Amount;
     }
-    public int getCurrentEnergy(){
+
+    public int getCurrentEnergy() {
         return this.CurrentEnergy;
     }
 
-    public void setFluidDis(FluidStack stack1){
-        this.Fluidstack =stack1;
+    public void setFluidDis(FluidStack stack1) {
+        this.Fluidstack = stack1;
     }
-    public FluidStack getFluidDis(){
+
+    public FluidStack getFluidDis() {
         return this.Fluidstack;
     }
 }

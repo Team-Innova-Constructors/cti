@@ -16,8 +16,9 @@ public class FreezeProtect extends Modifier implements ToolStatsModifierHook {
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.TOOL_STATS);
     }
+
     @Override
     public void addToolStats(IToolContext tool, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ctiToolStats.FROZEN_RESISTANCE.add(builder,0.25*modifier.getLevel());
+        ctiToolStats.FROZEN_RESISTANCE.add(builder, 0.25 * modifier.getLevel());
     }
 }

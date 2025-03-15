@@ -7,7 +7,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.Event;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.armor.ElytraFlightModifierHook;
@@ -24,25 +23,25 @@ public class ArmorDragonsWifu extends NoLevelsModifier implements ElytraFlightMo
         builder.addHook(this, ModifierHooks.ELYTRA_FLIGHT);
     }
 
-    public ArmorDragonsWifu(){
+    public ArmorDragonsWifu() {
         MinecraftForge.EVENT_BUS.addListener(this::onLivingHurt);
     }
 
     private void onLivingHurt(LivingHurtEvent event) {
-        if (event.getSource()== DamageSource.DRAGON_BREATH){
+        if (event.getSource() == DamageSource.DRAGON_BREATH) {
             event.setCanceled(true);
         }
     }
 
     @Override
     public boolean elytraFlightTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, LivingEntity livingEntity, int flightTicks) {
-        if (livingEntity instanceof Player player&&player.isShiftKeyDown()){
+        if (livingEntity instanceof Player player && player.isShiftKeyDown()) {
             double speed = getMold(player.getDeltaMovement());
-            double scale =Math.min(60/speed,1.2);
+            double scale = Math.min(60 / speed, 1.2);
             player.setDeltaMovement(player.getLookAngle().scale(scale));
         }
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,200,0,false,false));
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,200,3,false,false));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 200, 0, false, false));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 3, false, false));
         return false;
     }
 

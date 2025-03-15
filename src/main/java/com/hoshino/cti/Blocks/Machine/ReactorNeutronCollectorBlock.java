@@ -29,14 +29,17 @@ import org.jetbrains.annotations.Nullable;
 
 public class ReactorNeutronCollectorBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+
     public ReactorNeutronCollectorBlock(Properties p_49224_) {
         super(p_49224_);
     }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new ReactorNeutronCollectorEntity(blockPos,blockState);
+        return new ReactorNeutronCollectorEntity(blockPos, blockState);
     }
+
     public RenderShape getRenderShape(BlockState p_49232_) {
         return RenderShape.MODEL;
     }
@@ -44,12 +47,12 @@ public class ReactorNeutronCollectorBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return defaultBlockState().setValue(FACING,context.getHorizontalDirection().getOpposite());
+        return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @Override
     public BlockState rotate(BlockState state, LevelAccessor level, BlockPos pos, Rotation direction) {
-        return state.setValue(FACING,direction.rotate(state.getValue(FACING)));
+        return state.setValue(FACING, direction.rotate(state.getValue(FACING)));
     }
 
     @Override
@@ -59,9 +62,9 @@ public class ReactorNeutronCollectorBlock extends BaseEntityBlock {
 
     @Override
     public void onRemove(BlockState state, Level level, BlockPos blockPos, BlockState newState, boolean isMoving) {
-        if (state.getBlock()!=newState.getBlock()){
+        if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof ReactorNeutronCollectorEntity entity&&entity.getBlockState().is(ctiBlock.reactor_neutron_collector.get())){
+            if (blockEntity instanceof ReactorNeutronCollectorEntity entity && entity.getBlockState().is(ctiBlock.reactor_neutron_collector.get())) {
                 entity.dropItem();
             }
             blockEntity.setRemoved();
@@ -77,14 +80,14 @@ public class ReactorNeutronCollectorBlock extends BaseEntityBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult result) {
-        if (!level.isClientSide){
-            BlockEntity entity =level.getBlockEntity(blockPos);
-            if (entity instanceof ReactorNeutronCollectorEntity){
+        if (!level.isClientSide) {
+            BlockEntity entity = level.getBlockEntity(blockPos);
+            if (entity instanceof ReactorNeutronCollectorEntity) {
                 if (player instanceof ServerPlayer) {
                     NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) entity, blockPos);
                     return InteractionResult.CONSUME;
                 }
-            }else {
+            } else {
                 throw new IllegalStateException("Container provider MISSING");
             }
         }

@@ -27,7 +27,7 @@ public class NetherFire extends BattleModifier {
 
     @Override
     public void addVolatileData(IToolContext iToolContext, @NotNull ModifierEntry modifierEntry, ModDataNBT modDataNBT) {
-        modDataNBT.addSlots(SlotType.DEFENSE,3);
+        modDataNBT.addSlots(SlotType.DEFENSE, 3);
     }
 
     @Override

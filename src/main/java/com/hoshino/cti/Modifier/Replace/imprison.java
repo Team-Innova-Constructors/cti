@@ -18,8 +18,8 @@ public class imprison extends XICModifier implements VolatileDataModifierHook {
 
     @Override
     public void addVolatileData(@NotNull IToolContext iToolContext, @NotNull ModifierEntry modifierEntry, ModDataNBT modDataNBT) {
-        modDataNBT.addSlots(SlotType.ABILITY,-10000);
-        modDataNBT.addSlots(SlotType.DEFENSE,-10000);
-        modDataNBT.addSlots(SlotType.UPGRADE,-10000);
+        modDataNBT.addSlots(SlotType.ABILITY, -10000);
+        modDataNBT.addSlots(SlotType.DEFENSE, -10000);
+        modDataNBT.addSlots(SlotType.UPGRADE, -10000);
     }
 }

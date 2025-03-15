@@ -13,7 +13,9 @@ public class RocketModelTier5 extends VehicleModel<rocketTier5> {
     public RocketModelTier5(ModelPart root) {
         super(root, "rocket");
     }
+
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(AdAstra.MOD_ID, "tier_4_rocket"), "main");
+
     @SuppressWarnings("unused")
     public static LayerDefinition createBodyLayer() {
         MeshDefinition modelData = new MeshDefinition();

@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mixin(remap = false,value = UpgradeUtils.class)
+@Mixin(remap = false, value = UpgradeUtils.class)
 public class UpgradeUtilsMixin {
     /**
      * @author EtSH_C2H6S
@@ -36,7 +36,7 @@ public class UpgradeUtilsMixin {
     public static List<Component> getExpScaledInfo(IUpgradeTile tile, Upgrade upgrade) {
         List<Component> ret = new ArrayList<>();
         if (tile.supportsUpgrades() && upgrade.getMax() > 1) {
-            ret.add(MekanismLang.UPGRADES_EFFECT.translate(Math.pow(2, (float) tile.getComponent().getUpgrades(upgrade)/8d)));
+            ret.add(MekanismLang.UPGRADES_EFFECT.translate(Math.pow(2, (float) tile.getComponent().getUpgrades(upgrade) / 8d)));
         }
         return ret;
     }

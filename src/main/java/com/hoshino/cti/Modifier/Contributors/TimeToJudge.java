@@ -20,7 +20,7 @@ public class TimeToJudge extends BattleModifier {
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         if (context.getLivingTarget() instanceof Mob mob) {
-            if(!mob.getTags().contains("wick")){
+            if (!mob.getTags().contains("wick")) {
                 mob.addTag("wick");
             }
         }
@@ -29,7 +29,7 @@ public class TimeToJudge extends BattleModifier {
     @Override
     public void arrowhurt(ModifierNBT modifiers, NamespacedNBT persistentData, int level, Projectile projectile, EntityHitResult hit, AbstractArrow arrow, LivingEntity attacker, LivingEntity target) {
         if (target instanceof Mob mob) {
-            if(!mob.getTags().contains("wick")){
+            if (!mob.getTags().contains("wick")) {
                 mob.addTag("wick");
             }
         }

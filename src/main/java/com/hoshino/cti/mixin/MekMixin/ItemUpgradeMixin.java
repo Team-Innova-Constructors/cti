@@ -14,10 +14,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-@Mixin(remap = false,value = ItemUpgrade.class)
+@Mixin(remap = false, value = ItemUpgrade.class)
 public class ItemUpgradeMixin {
     /**
      * @author EtSH_C2H6S
@@ -25,7 +23,7 @@ public class ItemUpgradeMixin {
      */
     @Overwrite
     public @NotNull InteractionResult m_6225_(UseOnContext context) {
-        ItemUpgrade itemUpgrade =(ItemUpgrade)(Object) this;
+        ItemUpgrade itemUpgrade = (ItemUpgrade) (Object) this;
         Player player = context.getPlayer();
         if (player != null && player.isShiftKeyDown()) {
             Level world = context.getLevel();
@@ -37,8 +35,8 @@ public class ItemUpgradeMixin {
                     Upgrade type = itemUpgrade.getUpgradeType(stack);
                     if (component.supports(type)) {
                         if (!world.isClientSide) {
-                            int toAdd = Math.min(8-component.getUpgrades(type),stack.getCount());
-                            if (toAdd>0&&toAdd<=8) {
+                            int toAdd = Math.min(8 - component.getUpgrades(type), stack.getCount());
+                            if (toAdd > 0 && toAdd <= 8) {
                                 int added = component.addUpgrades(type, toAdd);
                                 if (added > 0) {
                                     stack.shrink(added);

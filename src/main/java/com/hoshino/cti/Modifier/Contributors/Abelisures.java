@@ -33,7 +33,7 @@ public class Abelisures extends ArmorModifier {
     }
 
     private void DeathEvent(LivingDeathEvent event) {
-        if(event.getEntity().hasEffect(ctiEffects.Abel.get())&&event.getEntity() instanceof Player player){
+        if (event.getEntity().hasEffect(ctiEffects.Abel.get()) && event.getEntity() instanceof Player player) {
             player.setHealth(1);
             event.setCanceled(true);
         }
@@ -47,6 +47,7 @@ public class Abelisures extends ArmorModifier {
             return InteractionResult.PASS;
         }
     }
+
     private void WhenEffectExpire(MobEffectEvent.Expired event) {
         if (event.getEffectInstance().getEffect() == ctiEffects.Abel.get() && event.getEntity() instanceof ServerPlayer player) {
             Collection<MobEffectInstance> Effect = player.getActiveEffects();
@@ -58,7 +59,7 @@ public class Abelisures extends ArmorModifier {
                     if (mob != null) {
                         SuperpositionHandler.backToSpawn(player);
                         player.removeEffect(harm);
-                        EffectUtil.refreshEffect(mob, new MobEffectInstance(harm, 400,  0), EffectUtil.AddReason.FORCE, mob);
+                        EffectUtil.refreshEffect(mob, new MobEffectInstance(harm, 400, 0), EffectUtil.AddReason.FORCE, mob);
                     }
                 }
             }
@@ -67,9 +68,9 @@ public class Abelisures extends ArmorModifier {
 
     @Override
     public void MobEffectEvent(MobEffectEvent.Applicable event) {
-        if(event.getEntity().getLastHurtByMob()!=null){
-            if(event.getEntity().getLastHurtByMob() instanceof Player player){
-                if(player.hasEffect(ctiEffects.ev.get())){
+        if (event.getEntity().getLastHurtByMob() != null) {
+            if (event.getEntity().getLastHurtByMob() instanceof Player player) {
+                if (player.hasEffect(ctiEffects.ev.get())) {
                     event.setResult(Event.Result.ALLOW);
                 }
             }
@@ -79,14 +80,16 @@ public class Abelisures extends ArmorModifier {
     @Override
     public void onFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
         if (tool.getCurrentDurability() > 500 && entity instanceof ServerPlayer player) {
-            player.addEffect(new MobEffectInstance(ctiEffects.Abel.get(), 200*modifier.getLevel(), 0));
-            player.getCooldowns().addCooldown( tool.getItem(),2400);
+            player.addEffect(new MobEffectInstance(ctiEffects.Abel.get(), 200 * modifier.getLevel(), 0));
+            player.getCooldowns().addCooldown(tool.getItem(), 2400);
             ToolDamageUtil.damageAnimated(tool, 500, entity);
         }
     }
+
     public UseAnim getUseAction(IToolStackView tool, ModifierEntry modifier) {
         return UseAnim.BLOCK;
     }
+
     public int getUseDuration(IToolStackView tool, ModifierEntry modifier) {
         return 10;
     }

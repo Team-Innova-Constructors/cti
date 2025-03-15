@@ -17,18 +17,19 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.LinkedList;
 import java.util.List;
 
-import static earth.terrarium.ad_astra.client.screen.util.PlanetSelectionScreen.TooltipType.*;
-
-@Mixin(remap = false,value = CustomButton.class)
+@Mixin(remap = false, value = CustomButton.class)
 public class CustomButtonMixin {
     @Final
-    @Shadow private  PlanetSelectionScreen.TooltipType tooltip;
+    @Shadow
+    private PlanetSelectionScreen.TooltipType tooltip;
 
     @Final
-    @Shadow private Planet planetInfo;
+    @Shadow
+    private Planet planetInfo;
 
     @Final
-    @Shadow private  Component label;
+    @Shadow
+    private Component label;
 
     /**
      * @author EtSH_C2H6S
@@ -82,11 +83,11 @@ public class CustomButtonMixin {
                 textEntries.add(Component.nullToEmpty("§b" + "电离危害" + ": " + PlanetUtil.getIonizeDisplay(this.planetInfo)));
                 break;
             case SPACE_STATION:
-                PlanetSelectionScreen currentScreen = (PlanetSelectionScreen)minecraft.screen;
+                PlanetSelectionScreen currentScreen = (PlanetSelectionScreen) minecraft.screen;
                 textEntries.add(Component.nullToEmpty("§9" + PlanetSelectionScreen.ITEM_REQUIREMENT_TEXT.getString()));
                 currentScreen.ingredients.forEach((ingredient) -> {
-                    boolean isEnough = ((ItemStack)ingredient.getFirst()).getCount() >= (Integer)ingredient.getSecond();
-                    textEntries.add(Component.nullToEmpty("§" + (isEnough ? "a" : "c") + ((ItemStack)ingredient.getFirst()).getCount() + "/" + ingredient.getSecond() + " §3" + ((ItemStack)ingredient.getFirst()).getHoverName().getString()));
+                    boolean isEnough = ((ItemStack) ingredient.getFirst()).getCount() >= (Integer) ingredient.getSecond();
+                    textEntries.add(Component.nullToEmpty("§" + (isEnough ? "a" : "c") + ((ItemStack) ingredient.getFirst()).getCount() + "/" + ingredient.getSecond() + " §3" + ((ItemStack) ingredient.getFirst()).getHoverName().getString()));
                 });
                 textEntries.add(Component.nullToEmpty("§c----------------"));
         }

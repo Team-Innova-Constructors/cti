@@ -41,6 +41,7 @@ import java.util.List;
 public class cti {
     public static boolean Mekenabled = ModList.get().isLoaded("mekanism");
     public static final String MOD_ID = "cti";
+
     public cti() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::clientSetup);
@@ -56,6 +57,7 @@ public class cti {
         ctiInfusetype.INFUSE.register(eventBus);
         ctiItem.ASTRAITEM.init();
         ctiItem.VEHICLES.init();
+        ctiHostilityTrait.register();
         ctiEntity.ENTITY_TYPES.init();
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
         MinecraftForge.EVENT_BUS.register(new MobEffect());
@@ -67,30 +69,35 @@ public class cti {
         //ctiRecipes.register(eventBus);
         ctiConfiguredFeature.CONFIGURED_FEATURES.register(eventBus);
         ctiPlacedFeature.PLACED_FEATURES.register(eventBus);
-        if(Mekenabled){
+        if (Mekenabled) {
             ctiChemical.GAS.register(eventBus);
         }
 
     }
-    public static sleep sleep=new sleep();
+
+    public static sleep sleep = new sleep();
+
     public static ResourceLocation getResource(String id) {
         return new ResourceLocation("cti", id);
     }
+
     @SubscribeEvent
-    public void clientSetup(FMLClientSetupEvent event){
+    public void clientSetup(FMLClientSetupEvent event) {
         MenuScreens.register(ctiMenu.ATMOSPHERE_EXT_MENU.get(), AtmosphereExtractorScreen::new);
         MenuScreens.register(ctiMenu.ATMOSPHERE_CON_MENU.get(), AtmosphereCondensatorScreen::new);
         MenuScreens.register(ctiMenu.NEUT_COL_MENU.get(), ReactorNeutronCollectorScreen::new);
         event.enqueueWork(ctiEntity::registerEntityRenderers);
     }
+
     @SubscribeEvent
-    public void registerGuiOverlay(RegisterGuiOverlaysEvent event){
+    public void registerGuiOverlay(RegisterGuiOverlaysEvent event) {
         if (FMLEnvironment.dist == Dist.CLIENT) {
             event.registerAboveAll("ionize", EnvironmentalHud.ENVIRONMENT_OVERLAY);
         }
     }
+
     @SubscribeEvent
-    public void commonSetup(FMLCommonSetupEvent event){
+    public void commonSetup(FMLCommonSetupEvent event) {
         //环境抗性cap，别忘了在这注册上
         ToolCapabilityProvider.register(ElectricShieldToolCap::new);
         ToolCapabilityProvider.register(ScorchShieldToolCap::new);
@@ -109,9 +116,11 @@ public class cti {
         ctiBrewing.init();
         TierSortingRegistry.registerTier(Roxy.instance, new ResourceLocation("cti:roxy"), List.of(Tiers.NETHERITE), List.of());
     }
+
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
     }
+
     public static String makeDescriptionId(String type, String name) {
         return type + ".cti." + name;
     }

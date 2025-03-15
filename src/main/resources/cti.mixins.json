@@ -14,6 +14,7 @@
     "AdAstraMixin.ModUtilMixin",
     "AdAstraMixin.TemperatureTick",
     "AetherMixin.cloud",
+    "Aquamixin.CaptainCorneliaMixin",
     "Aquamixin.ScrollEffectsMixin",
     "Eni.CubeMixin",
     "ForgeEventMixin.EventMixin",

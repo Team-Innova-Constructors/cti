@@ -8,7 +8,7 @@ import net.minecraftforge.items.IItemHandler;
 import org.jetbrains.annotations.NotNull;
 
 public class EmptyHandlers {
-    public static final IGasHandler GAS_EMPTY =new IGasHandler() {
+    public static final IGasHandler GAS_EMPTY = new IGasHandler() {
         @Override
         public int getTanks() {
             return 0;
@@ -45,7 +45,7 @@ public class EmptyHandlers {
         }
     };
 
-    public static final IItemHandler ITEM_EMPTY =new IItemHandler() {
+    public static final IItemHandler ITEM_EMPTY = new IItemHandler() {
         @Override
         public int getSlots() {
             return 0;

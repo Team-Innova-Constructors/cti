@@ -14,6 +14,6 @@ public class KineticMixin {
     @Redirect(method = "onAttacked", remap = false, at = @At(value = "INVOKE", target = "Lslimeknights/tconstruct/tools/modifiers/traits/melee/InsatiableModifier;applyEffect(Lnet/minecraft/world/entity/LivingEntity;Lslimeknights/tconstruct/tools/stats/ToolType;III)V"))
     private void applyEffect(LivingEntity living, ToolType type, int duration, int add, int maxLevel) {
         TinkerEffect effect = TinkerModifiers.insatiableEffect.get(type);
-        effect.apply(living, duration*4, Math.min(maxLevel*9, effect.getLevel(living) + add*4), true);
+        effect.apply(living, duration * 4, Math.min(maxLevel * 9, effect.getLevel(living) + add * 4), true);
     }
 }

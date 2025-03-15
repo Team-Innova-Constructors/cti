@@ -13,27 +13,27 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 @Mixin(Player.class)
 public class PlayerMixin {
-    @Inject(method = "getAttackStrengthScale",at = @At(value = "RETURN"), cancellable = true)
+    @Inject(method = "getAttackStrengthScale", at = @At(value = "RETURN"), cancellable = true)
     public void changeScale(float p_36404_, CallbackInfoReturnable<Float> cir) {
-        Player player =(Player) (Object) this;
+        Player player = (Player) (Object) this;
         float delay = player.getCurrentItemAttackStrengthDelay();
-        if (player.getItemInHand(player.getUsedItemHand()).getItem() instanceof IModifiable){
+        if (player.getItemInHand(player.getUsedItemHand()).getItem() instanceof IModifiable) {
             ToolStack toolStack = ToolStack.from(player.getItemInHand(player.getUsedItemHand()));
-            if (toolStack.getModifierLevel(etshtinkerModifiers.atomorigin_STATIC_MODIFIER.get())>0){
+            if (toolStack.getModifierLevel(etshtinkerModifiers.atomorigin_STATIC_MODIFIER.get()) > 0) {
                 return;
             }
         }
-        if (player.level.getDifficulty()== Difficulty.HARD) {
-            delay*=1.25f;
+        if (player.level.getDifficulty() == Difficulty.HARD) {
+            delay *= 1.25f;
         }
-        if (delay<10){
-            if (player.level.getDifficulty()== Difficulty.HARD) {
+        if (delay < 10) {
+            if (player.level.getDifficulty() == Difficulty.HARD) {
                 cir.setReturnValue(Mth.clamp(((float) ((LivingEntityAccessor) player).getAttackStrengthTicker() + p_36404_) / (delay * 0.6f + 4f), 0.0F, 1.0F));
             }
-            if (player.level.getDifficulty()== Difficulty.NORMAL) {
+            if (player.level.getDifficulty() == Difficulty.NORMAL) {
                 cir.setReturnValue(Mth.clamp(((float) ((LivingEntityAccessor) player).getAttackStrengthTicker() + p_36404_) / (delay * 0.7f + 3f), 0.0F, 1.0F));
             }
-            if (player.level.getDifficulty()== Difficulty.EASY) {
+            if (player.level.getDifficulty() == Difficulty.EASY) {
                 cir.setReturnValue(Mth.clamp(((float) ((LivingEntityAccessor) player).getAttackStrengthTicker() + p_36404_) / (delay * 0.8f + 2f), 0.0F, 1.0F));
             }
         }

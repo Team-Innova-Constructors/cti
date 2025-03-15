@@ -25,8 +25,8 @@ public class OriginBasedComputation extends BattleModifier {
     }
 
     private void livingcriticalhitevent(CriticalHitEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player &&event.getTarget()!=null&&ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), originbasedcomputation.getId()) > 0) {
-            if (event.getResult() != Event.Result.ALLOW){
+        if (event.getEntity() instanceof ServerPlayer player && event.getTarget() != null && ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), originbasedcomputation.getId()) > 0) {
+            if (event.getResult() != Event.Result.ALLOW) {
                 event.setResult(Event.Result.ALLOW);
             }
             event.setDamageModifier(1.85F);
@@ -35,7 +35,7 @@ public class OriginBasedComputation extends BattleModifier {
 
     public void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getSource().getEntity();
-        if (a instanceof ServerPlayer player &&event.getEntity()!=null) {
+        if (a instanceof ServerPlayer player && event.getEntity() != null) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), originbasedcomputation.getId()) > 0) {
                 event.getEntity().invulnerableTime = 0;
                 event.getSource().bypassArmor().bypassMagic().bypassInvul().bypassEnchantments();

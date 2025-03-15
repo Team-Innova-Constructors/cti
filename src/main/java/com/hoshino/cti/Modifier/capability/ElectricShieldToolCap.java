@@ -14,14 +14,15 @@ import java.util.function.Supplier;
 public class ElectricShieldToolCap implements IElectricShielding, ToolCapabilityProvider.IToolCapabilityProvider {
     public final Supplier<? extends IToolStackView> tool;
     public final LazyOptional<IElectricShielding> capOptional;
-    public ElectricShieldToolCap(ItemStack stack, Supplier<? extends IToolStackView> toolStack){
-        tool =toolStack;
-        capOptional =LazyOptional.of(()->this);
+
+    public ElectricShieldToolCap(ItemStack stack, Supplier<? extends IToolStackView> toolStack) {
+        tool = toolStack;
+        capOptional = LazyOptional.of(() -> this);
     }
 
     @Override
     public <T> LazyOptional<T> getCapability(IToolStackView iToolStackView, Capability<T> capability) {
-        return  iToolStackView.getStats().get(ctiToolStats.ELECTRIC_RESISTANCE)>0&& capability == ctiCapabilities.ELECTRIC_SHIELDING ? ctiCapabilities.ELECTRIC_SHIELDING.orEmpty(capability,this.capOptional):LazyOptional.empty();
+        return iToolStackView.getStats().get(ctiToolStats.ELECTRIC_RESISTANCE) > 0 && capability == ctiCapabilities.ELECTRIC_SHIELDING ? ctiCapabilities.ELECTRIC_SHIELDING.orEmpty(capability, this.capOptional) : LazyOptional.empty();
     }
 
     @Override

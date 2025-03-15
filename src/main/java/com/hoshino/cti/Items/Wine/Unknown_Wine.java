@@ -15,16 +15,17 @@ public class Unknown_Wine extends BowlFoodItem {
     public Unknown_Wine(Properties properties) {
         super(properties);
     }
+
     private static void applyMobEffect(LivingEntity livingEntity, Potion potion) {
-        for (MobEffectInstance effectInstance :potion.getEffects()) {
+        for (MobEffectInstance effectInstance : potion.getEffects()) {
             if (effectInstance.getEffect().isInstantenous()) {
                 effectInstance.getEffect().applyInstantenousEffect(livingEntity, livingEntity, livingEntity, 1000, 2);
-            }
-            else {
+            } else {
                 livingEntity.addEffect(new MobEffectInstance(effectInstance));
             }
         }
     }
+
     @Override
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         ItemStack result = entity.eat(level, stack);

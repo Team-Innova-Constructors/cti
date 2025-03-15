@@ -7,27 +7,21 @@ import com.hoshino.cti.netwrok.packet.PStellarBlade;
 import com.hoshino.cti.register.ctiEntity;
 import com.hoshino.cti.register.ctiItem;
 import com.hoshino.cti.register.ctiModifiers;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
@@ -41,7 +35,7 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 
 public class StellarBlade extends etshmodifieriii {
-    public StellarBlade(){
+    public StellarBlade() {
         MinecraftForge.EVENT_BUS.addListener(this::LeftClick);
     }
 
@@ -53,13 +47,14 @@ public class StellarBlade extends etshmodifieriii {
     public boolean isNoLevels() {
         return true;
     }
-    public static final List<Item> ls = List.of(ctiItem.star_blaze.get(),ctiItem.star_pressure.get(),ctiItem.star_ionize.get(),ctiItem.star_frozen.get());
+
+    public static final List<Item> ls = List.of(ctiItem.star_blaze.get(), ctiItem.star_pressure.get(), ctiItem.star_ionize.get(), ctiItem.star_frozen.get());
 
     @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
-        if (attacker instanceof Player player&&target!=null&&projectile instanceof AbstractArrow arrow&&!(target instanceof Player)){
-            int c =0;
-            while (c<EtSHrnd().nextInt(4)+2) {
+        if (attacker instanceof Player player && target != null && projectile instanceof AbstractArrow arrow && !(target instanceof Player)) {
+            int c = 0;
+            while (c < EtSHrnd().nextInt(4) + 2) {
                 Level level = player.level;
                 Vec3 vec3 = getScatteredVec3(new Vec3(0, -0.25, 0), 0.57735);
                 double d = EtSHrnd().nextDouble() * 20;
@@ -76,7 +71,7 @@ public class StellarBlade extends etshmodifieriii {
                     fallenStars = new FallenStars(ctiEntity.star_blaze.get(), level, ls.get(0));
                 }
                 fallenStars.setOwner(player);
-                fallenStars.baseDamage = (float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
+                fallenStars.baseDamage = (float) (arrow.getBaseDamage() * getMold(arrow.getDeltaMovement()));
                 fallenStars.setDeltaMovement(vec3);
                 fallenStars.setPos(target.getX() + direction.x, target.getY() + target.getBbHeight() + direction.y, target.getZ() + direction.z);
                 player.level.addFreshEntity(fallenStars);
@@ -90,9 +85,9 @@ public class StellarBlade extends etshmodifieriii {
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         Player player = context.getPlayerAttacker();
         Entity entity = context.getTarget();
-        if (player!=null&&entity instanceof LivingEntity target&&!context.isExtraAttack()&&!(target instanceof Player)){
-            int c =0;
-            while (c<EtSHrnd().nextInt(4)+2) {
+        if (player != null && entity instanceof LivingEntity target && !context.isExtraAttack() && !(target instanceof Player)) {
+            int c = 0;
+            while (c < EtSHrnd().nextInt(4) + 2) {
                 Level level = player.level;
                 Vec3 vec3 = getScatteredVec3(new Vec3(0, -0.25, 0), 0.57735);
                 double d = EtSHrnd().nextDouble() * 20;
@@ -118,12 +113,13 @@ public class StellarBlade extends etshmodifieriii {
         }
         return knockback;
     }
-    public static void summonStars(@NotNull Player player){
-        Entity entity =getNearestLiEnt(16f,player,player.level);
+
+    public static void summonStars(@NotNull Player player) {
+        Entity entity = getNearestLiEnt(16f, player, player.level);
         ToolStack tool = ToolStack.from(player.getItemInHand(player.getUsedItemHand()));
-        if (entity instanceof LivingEntity target&&tool.getModifierLevel(ctiModifiers.stellar_blade.get())>0){
-            int c =0;
-            while (c<EtSHrnd().nextInt(4)+2) {
+        if (entity instanceof LivingEntity target && tool.getModifierLevel(ctiModifiers.stellar_blade.get()) > 0) {
+            int c = 0;
+            while (c < EtSHrnd().nextInt(4) + 2) {
                 Level level = player.level;
                 Vec3 vec3 = getScatteredVec3(new Vec3(0, -0.25, 0), 0.57735);
                 double d = EtSHrnd().nextDouble() * 20;
@@ -141,8 +137,8 @@ public class StellarBlade extends etshmodifieriii {
                 }
                 fallenStars.setOwner(player);
                 float damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-                for (ModifierEntry modifiers:tool.getModifierList()){
-                    damage = modifiers.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool,modifiers,new ToolAttackContext(player,player,player.getUsedItemHand(),target,target,false,0,true),tool.getStats().get(ToolStats.ATTACK_DAMAGE),damage);
+                for (ModifierEntry modifiers : tool.getModifierList()) {
+                    damage = modifiers.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, modifiers, new ToolAttackContext(player, player, player.getUsedItemHand(), target, target, false, 0, true), tool.getStats().get(ToolStats.ATTACK_DAMAGE), damage);
                 }
                 fallenStars.baseDamage = damage;
                 fallenStars.setDeltaMovement(vec3);

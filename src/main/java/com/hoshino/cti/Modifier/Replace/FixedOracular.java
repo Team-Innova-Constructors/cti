@@ -66,7 +66,7 @@ public class FixedOracular extends Modifier implements MeleeHitModifierHook, Pro
 
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
-        if (target != null&&attacker!=null) {
+        if (target != null && attacker != null) {
             Collection<MobEffectInstance> harmeffect;
             harmeffect = target.getActiveEffects();
             for (int i = 0; i < harmeffect.size(); i++) {

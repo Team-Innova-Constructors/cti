@@ -17,8 +17,8 @@ public class Spirit {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void SunSpiritCool(LivingAttackEvent event) {
-        if(event.getSource().getEntity() instanceof Player player&& ModifierLevel.EquipHasModifierlevel(player, solidarytinkerModifiers.EXTREMELYCOLD_STATIC_MODIFIER.getId())){
-            if(event.getEntity().getType()== AetherEntityTypes.SUN_SPIRIT.get()){
+        if (event.getSource().getEntity() instanceof Player player && ModifierLevel.EquipHasModifierlevel(player, solidarytinkerModifiers.EXTREMELYCOLD_STATIC_MODIFIER.getId())) {
+            if (event.getEntity().getType() == AetherEntityTypes.SUN_SPIRIT.get()) {
                 event.getSource().bypassArmor().bypassMagic().bypassInvul();
             }
         }
@@ -26,9 +26,9 @@ public class Spirit {
 
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void onSunSpiritCool(LivingDamageEvent event) {
-        if(event.getSource().getEntity() instanceof Player player&& ModifierLevel.EquipHasModifierlevel(player, solidarytinkerModifiers.EXTREMELYCOLD_STATIC_MODIFIER.getId())){
-            if(event.getEntity().getType()== AetherEntityTypes.SUN_SPIRIT.get()){
-                event.setAmount(event.getEntity().getMaxHealth() * 0.1F+event.getAmount());
+        if (event.getSource().getEntity() instanceof Player player && ModifierLevel.EquipHasModifierlevel(player, solidarytinkerModifiers.EXTREMELYCOLD_STATIC_MODIFIER.getId())) {
+            if (event.getEntity().getType() == AetherEntityTypes.SUN_SPIRIT.get()) {
+                event.setAmount(event.getEntity().getMaxHealth() * 0.1F + event.getAmount());
             }
         }
     }

@@ -6,13 +6,13 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(value = DementorTrait.class,remap = false)
+@Mixin(value = DementorTrait.class, remap = false)
 public class DementorMixin {
     /**
      * @author FireFly
      * @reason 摄魂判定问题，此形参无法正确检测isBypassArmor属性,因此mixin掉,不再免疫
      */
     @Overwrite
-    public void onAttackedByOthers(int level, LivingEntity entity, LivingAttackEvent event){
+    public void onAttackedByOthers(int level, LivingEntity entity, LivingAttackEvent event) {
     }
 }

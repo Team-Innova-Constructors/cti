@@ -34,7 +34,7 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(cti.MOD_ID,"jei");
+        return new ResourceLocation(cti.MOD_ID, "jei");
     }
 
     @Override
@@ -63,25 +63,25 @@ public class JEIPlugin implements IModPlugin {
             List<MineralMix> mineralMixes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(IERecipeTypes.MINERAL_MIX.get());
             List<MeltingFuel> meltingFuels = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(TinkerRecipeTypes.FUEL.get());
 
-            registration.addRecipes(MINERAL_MIX,mineralMixes);
-            registration.addRecipes(MELTING_FUEL,meltingFuels);
+            registration.addRecipes(MINERAL_MIX, mineralMixes);
+            registration.addRecipes(MELTING_FUEL, meltingFuels);
         }
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(new ItemStack(ctiItem.atmosphere_extractor.get()),ATMOSPHERE_EXTRACT);
-        registration.addRecipeCatalyst(new ItemStack(ctiItem.atmosphere_condensator.get()),ATMOSPHERE_CONDENSE);
-        registration.addRecipeCatalyst(new ItemStack(ctiItem.quantum_miner.get()),QUANTUM_MINING);
-        registration.addRecipeCatalyst(new ItemStack(ctiItem.quantum_miner_advanced.get()),QUANTUM_MINING);
-        registration.addRecipeCatalyst(new ItemStack(ctiItem.reactor_neutron_collector.get()),NEUTRON_COLLECTING);
-        registration.addRecipeCatalyst(new ItemStack(IEBlocks.Multiblocks.EXCAVATOR),MINERAL_MIX);
+        registration.addRecipeCatalyst(new ItemStack(ctiItem.atmosphere_extractor.get()), ATMOSPHERE_EXTRACT);
+        registration.addRecipeCatalyst(new ItemStack(ctiItem.atmosphere_condensator.get()), ATMOSPHERE_CONDENSE);
+        registration.addRecipeCatalyst(new ItemStack(ctiItem.quantum_miner.get()), QUANTUM_MINING);
+        registration.addRecipeCatalyst(new ItemStack(ctiItem.quantum_miner_advanced.get()), QUANTUM_MINING);
+        registration.addRecipeCatalyst(new ItemStack(ctiItem.reactor_neutron_collector.get()), NEUTRON_COLLECTING);
+        registration.addRecipeCatalyst(new ItemStack(IEBlocks.Multiblocks.EXCAVATOR), MINERAL_MIX);
 
-        registration.addRecipeCatalyst(new ItemStack(TinkerSmeltery.smelteryController),MELTING_FUEL);
-        registration.addRecipeCatalyst(new ItemStack(TinkerSmeltery.scorchedAlloyer),MELTING_FUEL);
-        registration.addRecipeCatalyst(new ItemStack(TinkerSmeltery.searedMelter),MELTING_FUEL);
-        registration.addRecipeCatalyst(new ItemStack(TinkerSmeltery.foundryController),MELTING_FUEL);
-        registration.addRecipeCatalyst(new ItemStack(etshtinkerItems.constrained_plasma_saber.get()),MELTING_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(TinkerSmeltery.smelteryController), MELTING_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(TinkerSmeltery.scorchedAlloyer), MELTING_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(TinkerSmeltery.searedMelter), MELTING_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(TinkerSmeltery.foundryController), MELTING_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(etshtinkerItems.constrained_plasma_saber.get()), MELTING_FUEL);
     }
 
 

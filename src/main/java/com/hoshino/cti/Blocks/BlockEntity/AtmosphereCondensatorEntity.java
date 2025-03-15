@@ -8,7 +8,6 @@ import com.hoshino.cti.netwrok.packet.PMachineFluidSync;
 import com.hoshino.cti.recipe.AtmosphereCondensorRecipe;
 import com.hoshino.cti.recipe.RecipeMap;
 import com.hoshino.cti.register.ctiBlockEntityType;
-import com.hoshino.cti.util.Upgrades;
 import com.hoshino.cti.util.ctiEnergyStore;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -54,19 +53,20 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
         this.DATA = new ContainerData() {
             @Override
             public int get(int index) {
-                return switch (index){
-                    case 0-> AtmosphereCondensatorEntity.this.PROGRESS;
-                    case 1-> AtmosphereCondensatorEntity.this.MAX_PROGRESS;
+                return switch (index) {
+                    case 0 -> AtmosphereCondensatorEntity.this.PROGRESS;
+                    case 1 -> AtmosphereCondensatorEntity.this.MAX_PROGRESS;
                     default -> 0;
                 };
             }
 
             @Override
             public void set(int index, int value) {
-                switch (index){
-                    case 0-> AtmosphereCondensatorEntity.this.PROGRESS =value;
-                    case 1-> AtmosphereCondensatorEntity.this.MAX_PROGRESS =value;
-                };
+                switch (index) {
+                    case 0 -> AtmosphereCondensatorEntity.this.PROGRESS = value;
+                    case 1 -> AtmosphereCondensatorEntity.this.MAX_PROGRESS = value;
+                }
+                ;
             }
 
             @Override
@@ -75,18 +75,18 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
             }
         };
     }
+
     public ContainerData DATA;
-    public int PROGRESS =0;
-    public int MAX_PROGRESS =100;
-    protected Component DISPLAY_NAME =Component.translatable("cti.machine.atmosphere_condensator").withStyle(ChatFormatting.DARK_PURPLE);
-    protected int MAX_ENERGY =75000000;
-    protected int MAX_TRANSFER =75000000;
-    protected int BASE_ENERGY_PERTICK =750000;
-    public int CurrentEnergy =0;
+    public int PROGRESS = 0;
+    public int MAX_PROGRESS = 100;
+    protected Component DISPLAY_NAME = Component.translatable("cti.machine.atmosphere_condensator").withStyle(ChatFormatting.DARK_PURPLE);
+    protected int MAX_ENERGY = 75000000;
+    protected int MAX_TRANSFER = 75000000;
+    protected int BASE_ENERGY_PERTICK = 750000;
+    public int CurrentEnergy = 0;
 
 
-
-    public final FluidTank FLUID_TANK =new FluidTank(10000){
+    public final FluidTank FLUID_TANK = new FluidTank(10000) {
         @Override
         protected void onContentsChanged() {
             setChanged();
@@ -94,55 +94,57 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
 
         @Override
         public boolean isFluidValid(FluidStack stack) {
-            return FLUID_TANK.getFluid().getFluid()==stack.getFluid()||FLUID_TANK.isEmpty();
+            return FLUID_TANK.getFluid().getFluid() == stack.getFluid() || FLUID_TANK.isEmpty();
         }
     };
 
-    public final ctiEnergyStore ENERGY_STORAGE = new ctiEnergyStore(getMaxEnergy(),getMaxTransfer()) {
+    public final ctiEnergyStore ENERGY_STORAGE = new ctiEnergyStore(getMaxEnergy(), getMaxTransfer()) {
         @Override
         public void onEnergyChange() {
             setChanged();
         }
     };
 
-    private final ItemStackHandler itemStackHandler =new ItemStackHandler(4){
+    private final ItemStackHandler itemStackHandler = new ItemStackHandler(4) {
         protected void onContentsChanged(int slot) {
             setChanged();
         }
 
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-            if (slot<4){
-                return !stack.isEmpty()&&stack.getItem() instanceof AtmosphereUpgradeItem;
-            }
-            else return false;
+            if (slot < 4) {
+                return !stack.isEmpty() && stack.getItem() instanceof AtmosphereUpgradeItem;
+            } else return false;
         }
 
         @Override
         public int getSlotLimit(int slot) {
-            return slot<4?1:64;
+            return slot < 4 ? 1 : 64;
         }
     };
 
-    public void setFluid(FluidStack stack){
+    public void setFluid(FluidStack stack) {
         this.FLUID_TANK.setFluid(stack);
     }
 
-    public FluidStack getFluid(){
+    public FluidStack getFluid() {
         return this.FLUID_TANK.getFluid();
     }
 
-    public int getMaxEnergy(){
+    public int getMaxEnergy() {
         return this.MAX_ENERGY;
     }
-    public int getMaxTransfer(){
+
+    public int getMaxTransfer() {
         return this.MAX_TRANSFER;
     }
-    public int getMaxProgress(){
+
+    public int getMaxProgress() {
         return this.MAX_PROGRESS;
     }
-    public int getEnergyPerTick(){
-        return (int) (this.BASE_ENERGY_PERTICK*getPowerFactor(this));
+
+    public int getEnergyPerTick() {
+        return (int) (this.BASE_ENERGY_PERTICK * getPowerFactor(this));
     }
 
 
@@ -155,25 +157,25 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
     private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
 
     @Override
-    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> capability,@Nullable Direction direction){
-        if (direction==null&&capability ==ForgeCapabilities.ITEM_HANDLER) {
+    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction direction) {
+        if (direction == null && capability == ForgeCapabilities.ITEM_HANDLER) {
             return LazyitemStackHandler.cast();
         }
-        if (capability == ForgeCapabilities.ENERGY){
+        if (capability == ForgeCapabilities.ENERGY) {
             return LazyenergyHandler.cast();
         }
-        if (capability == ForgeCapabilities.FLUID_HANDLER){
+        if (capability == ForgeCapabilities.FLUID_HANDLER) {
             return lazyFluidHandler.cast();
         }
-        return super.getCapability(capability,direction);
+        return super.getCapability(capability, direction);
     }
 
     @Override
     public void onLoad() {
         super.onLoad();
-        lazyFluidHandler =LazyOptional.of(()->FLUID_TANK);
-        LazyitemStackHandler = LazyOptional.of(()->itemStackHandler);
-        LazyenergyHandler = LazyOptional.of(()->ENERGY_STORAGE);
+        lazyFluidHandler = LazyOptional.of(() -> FLUID_TANK);
+        LazyitemStackHandler = LazyOptional.of(() -> itemStackHandler);
+        LazyenergyHandler = LazyOptional.of(() -> ENERGY_STORAGE);
     }
 
     @Override
@@ -188,7 +190,7 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
     protected void saveAdditional(CompoundTag nbt) {
         nbt.put("energy_store", ENERGY_STORAGE.serializeNBT());
         nbt.put("inventory", itemStackHandler.serializeNBT());
-        nbt.putInt("atmosphere_condensator.progress",this.PROGRESS);
+        nbt.putInt("atmosphere_condensator.progress", this.PROGRESS);
         nbt = FLUID_TANK.writeToNBT(nbt);
         super.saveAdditional(nbt);
     }
@@ -197,19 +199,19 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
     public void load(CompoundTag nbt) {
         ENERGY_STORAGE.deserializeNBT(nbt.get("energy_store"));
         itemStackHandler.deserializeNBT(nbt.getCompound("inventory"));
-        this.PROGRESS =nbt.getInt("atmosphere_condensator.progress");
+        this.PROGRESS = nbt.getInt("atmosphere_condensator.progress");
         FLUID_TANK.readFromNBT(nbt);
         super.load(nbt);
     }
 
 
     @Nullable
-    public ctiEnergyStore getEnergyStorage(){
+    public ctiEnergyStore getEnergyStorage() {
         return ENERGY_STORAGE;
     }
 
-    public void dropItem(){
-        if (itemStackHandler.getSlots()>0) {
+    public void dropItem() {
+        if (itemStackHandler.getSlots() > 0) {
             SimpleContainer container = new SimpleContainer(itemStackHandler.getSlots());
             for (int i = 0; i < itemStackHandler.getSlots(); i++) {
                 container.setItem(i, itemStackHandler.getStackInSlot(i));
@@ -220,10 +222,10 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
         }
     }
 
-    public static float getPowerFactor(AtmosphereCondensatorEntity entity){
+    public static float getPowerFactor(AtmosphereCondensatorEntity entity) {
         float factor = 1;
-        ItemStackHandler handler =entity.itemStackHandler;
-        if (handler!=null) {
+        ItemStackHandler handler = entity.itemStackHandler;
+        if (handler != null) {
             for (int i = 0; i < 4; i++) {
                 ItemStack stack = handler.getStackInSlot(i);
                 if (stack.getItem() instanceof AtmosphereUpgradeItem item) {
@@ -233,10 +235,11 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
         }
         return factor;
     }
-    public static float getSpeedFactor(AtmosphereCondensatorEntity entity){
+
+    public static float getSpeedFactor(AtmosphereCondensatorEntity entity) {
         float factor = 1;
-        ItemStackHandler handler =entity.itemStackHandler;
-        if (handler!=null) {
+        ItemStackHandler handler = entity.itemStackHandler;
+        if (handler != null) {
             for (int i = 0; i < 4; i++) {
                 ItemStack stack = handler.getStackInSlot(i);
                 if (stack.getItem() instanceof AtmosphereUpgradeItem item) {
@@ -249,57 +252,59 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
 
 
     public static void tick(Level level, BlockPos blockPos, BlockState state, AtmosphereCondensatorEntity entity) {
-        if (level.isClientSide){
+        if (level.isClientSide) {
             return;
         }
-        ctiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(),entity.getBlockPos()));
-        ctiPacketHandler.sendToClient(new PMachineFluidSync(entity.getFluid(),entity.getBlockPos()));
-        ResourceKey<Biome> biomekey =getBiomeKey(level.getBiome(blockPos));
-        if (biomekey == null){
+        ctiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(), entity.getBlockPos()));
+        ctiPacketHandler.sendToClient(new PMachineFluidSync(entity.getFluid(), entity.getBlockPos()));
+        ResourceKey<Biome> biomekey = getBiomeKey(level.getBiome(blockPos));
+        if (biomekey == null) {
             return;
         }
-        if (entity.ENERGY_STORAGE.getEnergyStored()<=entity.getEnergyPerTick()){
+        if (entity.ENERGY_STORAGE.getEnergyStored() <= entity.getEnergyPerTick()) {
             return;
         }
-        FluidStack output = getOutPut(biomekey,level);
-        if (output.isEmpty()){
+        FluidStack output = getOutPut(biomekey, level);
+        if (output.isEmpty()) {
             return;
         }
-        if (!canOutput(entity,output)){
+        if (!canOutput(entity, output)) {
             return;
         }
-        int Speed=1;
-        BlockPos pos =blockPos;
-        for (int i=0;i<4;i++){
-            pos =pos.above();
+        int Speed = 1;
+        BlockPos pos = blockPos;
+        for (int i = 0; i < 4; i++) {
+            pos = pos.above();
             BlockState blockstate = level.getBlockState(pos);
-            if (!(blockstate.is(Blocks.AIR) || blockstate.is(Blocks.CAVE_AIR) || blockstate.is(Blocks.VOID_AIR) )){
+            if (!(blockstate.is(Blocks.AIR) || blockstate.is(Blocks.CAVE_AIR) || blockstate.is(Blocks.VOID_AIR))) {
                 break;
             }
             ((ServerLevel) level).sendParticles(ParticleTypes.DOLPHIN, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 1, 0.25, 0.25, 0.25, 0.05);
             Speed++;
         }
-        Speed= (int) (getSpeedFactor(entity)*Speed);
-        entity.PROGRESS= Mth.clamp(entity.PROGRESS+Speed,0,entity.MAX_PROGRESS);
-        entity.ENERGY_STORAGE.extractEnergy(entity.getEnergyPerTick(),false);
-        if (entity.PROGRESS==entity.MAX_PROGRESS){
-            entity.PROGRESS=0;
-            Output(entity,output);
-            setChanged(level,blockPos,state);
+        Speed = (int) (getSpeedFactor(entity) * Speed);
+        entity.PROGRESS = Mth.clamp(entity.PROGRESS + Speed, 0, entity.MAX_PROGRESS);
+        entity.ENERGY_STORAGE.extractEnergy(entity.getEnergyPerTick(), false);
+        if (entity.PROGRESS == entity.MAX_PROGRESS) {
+            entity.PROGRESS = 0;
+            Output(entity, output);
+            setChanged(level, blockPos, state);
         }
     }
 
-    public static boolean canOutput(AtmosphereCondensatorEntity entity, FluidStack stack){
-        return entity.FLUID_TANK.isFluidValid(stack)&&entity.FLUID_TANK.getSpace()>=stack.getAmount();
+    public static boolean canOutput(AtmosphereCondensatorEntity entity, FluidStack stack) {
+        return entity.FLUID_TANK.isFluidValid(stack) && entity.FLUID_TANK.getSpace() >= stack.getAmount();
     }
-    public static void Output(AtmosphereCondensatorEntity entity, FluidStack output){
+
+    public static void Output(AtmosphereCondensatorEntity entity, FluidStack output) {
         entity.FLUID_TANK.fill(output, IFluidHandler.FluidAction.EXECUTE);
     }
-    public static FluidStack getOutPut(ResourceKey<Biome> biomekey,Level level){
+
+    public static FluidStack getOutPut(ResourceKey<Biome> biomekey, Level level) {
         List<AtmosphereCondensorRecipe> recipeList = List.copyOf(RecipeMap.CondensorRecipeList);
-        for (AtmosphereCondensorRecipe recipe:recipeList){
-            ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(recipe.getBiome()));
-            if (key.equals(biomekey)){
+        for (AtmosphereCondensorRecipe recipe : recipeList) {
+            ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(recipe.getBiome()));
+            if (key.equals(biomekey)) {
                 return recipe.getFluid();
             }
         }
@@ -309,9 +314,9 @@ public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        ctiPacketHandler.sendToClient(new PMachineEnergySync(this.ENERGY_STORAGE.getEnergyStored(),this.getBlockPos()));
-        ctiPacketHandler.sendToClient(new PMachineFluidSync(this.getFluid(),this.getBlockPos()));
-        return new AtmosphereCondensatorMenu(i,inventory,this,this.DATA);
+        ctiPacketHandler.sendToClient(new PMachineEnergySync(this.ENERGY_STORAGE.getEnergyStored(), this.getBlockPos()));
+        ctiPacketHandler.sendToClient(new PMachineFluidSync(this.getFluid(), this.getBlockPos()));
+        return new AtmosphereCondensatorMenu(i, inventory, this, this.DATA);
     }
 
     @Override

@@ -20,13 +20,14 @@ public class Arrogance extends BattleModifier {
     public int getPriority() {
         return 100;
     }
+
     @Override
     public float staticdamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity livingTarget, float baseDamage, float damage) {
-        if(attacker instanceof Player player&&livingTarget instanceof Mob mob) {
-            float var10001=DifficultyLevel.ofAny(player);
-            float var10002=DifficultyLevel.ofAny(mob);
-            if(var10002>var10001){
-                return damage + baseDamage * Math.min((var10002-var10001)/50,10);
+        if (attacker instanceof Player player && livingTarget instanceof Mob mob) {
+            float var10001 = DifficultyLevel.ofAny(player);
+            float var10002 = DifficultyLevel.ofAny(mob);
+            if (var10002 > var10001) {
+                return damage + baseDamage * Math.min((var10002 - var10001) / 50, 10);
             }
         }
         return baseDamage;
@@ -34,8 +35,8 @@ public class Arrogance extends BattleModifier {
 
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> list, TooltipKey key, TooltipFlag tooltipFlag) {
-        if(player!=null){
-            float var10001=DifficultyLevel.ofAny(player);
+        if (player != null) {
+            float var10001 = DifficultyLevel.ofAny(player);
             list.add(Component.literal("当前玩家等级：" + var10001).withStyle(ChatFormatting.GRAY));
         }
     }

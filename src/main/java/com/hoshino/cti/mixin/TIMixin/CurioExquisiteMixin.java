@@ -9,15 +9,15 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 
-@Mixin(CurioExquisite.class)
+@Mixin(value = CurioExquisite.class, remap = false)
 public class CurioExquisiteMixin extends XICModifier {
     /**
      * @author firefly
      * @reason 加算有铸币写成乘算了
      */
     @Overwrite
-    public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder){
-        TIToolStats.ARMOR.add(builder, 0.1F * (float)modifier.getLevel());
-        TIToolStats.ARMOR_TOUGHNESS.add(builder, 0.1F * (float)modifier.getLevel());
+    public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
+        TIToolStats.ARMOR.add(builder, 0.1F * (float) modifier.getLevel());
+        TIToolStats.ARMOR_TOUGHNESS.add(builder, 0.1F * (float) modifier.getLevel());
     }
 }

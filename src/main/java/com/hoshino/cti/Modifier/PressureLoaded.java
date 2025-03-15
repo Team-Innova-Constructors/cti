@@ -3,7 +3,6 @@ package com.hoshino.cti.Modifier;
 import com.c2h6s.etshtinker.util.slotUtil;
 import com.hoshino.cti.Modifier.Base.PressurizableModifier;
 import com.hoshino.cti.Modifier.capability.PressurizableToolCap;
-import com.hoshino.cti.util.MathUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -32,42 +31,40 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
-import slimeknights.tconstruct.library.tools.stat.ToolStats;
-
-import static com.hoshino.cti.Modifier.capability.PressurizableToolCap.*;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
-public class PressureLoaded extends PressurizableModifier implements ToolDamageModifierHook, BreakSpeedModifierHook, MeleeDamageModifierHook, ProjectileLaunchModifierHook, AttributesModifierHook , DurabilityDisplayModifierHook {
+import static com.hoshino.cti.Modifier.capability.PressurizableToolCap.AIR_KEY;
+
+public class PressureLoaded extends PressurizableModifier implements ToolDamageModifierHook, BreakSpeedModifierHook, MeleeDamageModifierHook, ProjectileLaunchModifierHook, AttributesModifierHook, DurabilityDisplayModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.TOOL_DAMAGE,ModifierHooks.BREAK_SPEED,ModifierHooks.MELEE_DAMAGE,ModifierHooks.PROJECTILE_LAUNCH,ModifierHooks.ATTRIBUTES,ModifierHooks.DURABILITY_DISPLAY);
+        builder.addHook(this, ModifierHooks.TOOL_DAMAGE, ModifierHooks.BREAK_SPEED, ModifierHooks.MELEE_DAMAGE, ModifierHooks.PROJECTILE_LAUNCH, ModifierHooks.ATTRIBUTES, ModifierHooks.DURABILITY_DISPLAY);
     }
 
     @Override
     public int getBaseVolume(ModifierEntry entry) {
-        return 5000*entry.getLevel();
+        return 5000 * entry.getLevel();
     }
 
     @Override
     public float getMaxPressure(ModifierEntry entry) {
-        return Math.min(20,5*entry.getLevel());
+        return Math.min(20, 5 * entry.getLevel());
     }
 
     @Override
     public int onDamageTool(IToolStackView tool, ModifierEntry modifier, int amount, @Nullable LivingEntity livingEntity) {
-        if (100*amount<PressurizableToolCap.getAir(tool)){
-            PressurizableToolCap.addAir(tool,-100*amount);
+        if (100 * amount < PressurizableToolCap.getAir(tool)) {
+            PressurizableToolCap.addAir(tool, -100 * amount);
             return 0;
-        }
-        else if (PressurizableToolCap.getAir(tool)>100){
-            int minus = PressurizableToolCap.getAir(tool)/100;
-            PressurizableToolCap.addAir(tool,-100*minus);
-            return amount-minus;
+        } else if (PressurizableToolCap.getAir(tool) > 100) {
+            int minus = PressurizableToolCap.getAir(tool) / 100;
+            PressurizableToolCap.addAir(tool, -100 * minus);
+            return amount - minus;
         }
         return amount;
     }
@@ -78,20 +75,20 @@ public class PressureLoaded extends PressurizableModifier implements ToolDamageM
         if (!isEffective || pos.isEmpty()) {
             return;
         }
-        event.setNewSpeed(event.getNewSpeed()*(1+ (float) tool.getPersistentData().getInt(AIR_KEY)*modifier.getLevel() /2));
+        event.setNewSpeed(event.getNewSpeed() * (1 + (float) tool.getPersistentData().getInt(AIR_KEY) * modifier.getLevel() / 2));
     }
 
-    public float getBonus(IToolStackView tool, ModifierEntry modifier){
-        return PressurizableToolCap.getPressure(tool)>0? (PressurizableToolCap.getPressure(tool)+modifier.getLevel())/40:0;
+    public float getBonus(IToolStackView tool, ModifierEntry modifier) {
+        return PressurizableToolCap.getPressure(tool) > 0 ? (PressurizableToolCap.getPressure(tool) + modifier.getLevel()) / 40 : 0;
     }
 
 
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
-        float multiplier =1+getBonus(tool,modifier);
-        if (PressurizableToolCap.getAir(tool)>100){
-            PressurizableToolCap.addAir(tool,-(int) (100*multiplier));
-            return damage*multiplier;
+        float multiplier = 1 + getBonus(tool, modifier);
+        if (PressurizableToolCap.getAir(tool) > 100) {
+            PressurizableToolCap.addAir(tool, -(int) (100 * multiplier));
+            return damage * multiplier;
         }
         return damage;
     }
@@ -99,36 +96,36 @@ public class PressureLoaded extends PressurizableModifier implements ToolDamageM
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @Nullable Player player, List<Component> list, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         super.addTooltip(tool, modifierEntry, player, list, tooltipKey, tooltipFlag);
-        list.add(Component.translatable("cti.tooltip.modifier.pressure_damage").append(" +").append(String.format("%.1f",getBonus(tool,modifierEntry)*100)).append("%").withStyle(ChatFormatting.GREEN));
+        list.add(Component.translatable("cti.tooltip.modifier.pressure_damage").append(" +").append(String.format("%.1f", getBonus(tool, modifierEntry) * 100)).append("%").withStyle(ChatFormatting.GREEN));
     }
 
     @Override
     public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifier, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean b) {
-        float multiplier =1+getBonus(tool,modifier);
-        if (PressurizableToolCap.getAir(tool)>100&&projectile instanceof AbstractArrow arrow){
-            PressurizableToolCap.addAir(tool,-(int) (100*multiplier));
-            arrow.setBaseDamage(arrow.getBaseDamage()*multiplier);
+        float multiplier = 1 + getBonus(tool, modifier);
+        if (PressurizableToolCap.getAir(tool) > 100 && projectile instanceof AbstractArrow arrow) {
+            PressurizableToolCap.addAir(tool, -(int) (100 * multiplier));
+            arrow.setBaseDamage(arrow.getBaseDamage() * multiplier);
         }
     }
 
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot equipmentSlot, BiConsumer<Attribute, AttributeModifier> biConsumer) {
-        if (slotUtil.ARMOR.contains(equipmentSlot)&&getBonus(tool,modifier)>0){
-            biConsumer.accept(Attributes.ARMOR,new AttributeModifier(UUID.fromString("dd956aaf-a7e7-ca28-f352-34e76c7a4ebf"),Attributes.ARMOR.getDescriptionId(),getBonus(tool,modifier), AttributeModifier.Operation.MULTIPLY_BASE));
-            biConsumer.accept(Attributes.ARMOR_TOUGHNESS,new AttributeModifier(UUID.fromString("45bbb1ce-b4ee-7ee2-2f5c-df86d24c361a"),Attributes.ARMOR_TOUGHNESS.getDescriptionId(),getBonus(tool,modifier), AttributeModifier.Operation.MULTIPLY_BASE));
-            biConsumer.accept(Attributes.KNOCKBACK_RESISTANCE,new AttributeModifier(UUID.fromString("4639fef7-40a3-4ecf-ff5b-0cd263d3c9c0"),Attributes.KNOCKBACK_RESISTANCE.getDescriptionId(),getBonus(tool,modifier), AttributeModifier.Operation.MULTIPLY_BASE));
+        if (slotUtil.ARMOR.contains(equipmentSlot) && getBonus(tool, modifier) > 0) {
+            biConsumer.accept(Attributes.ARMOR, new AttributeModifier(UUID.fromString("dd956aaf-a7e7-ca28-f352-34e76c7a4ebf"), Attributes.ARMOR.getDescriptionId(), getBonus(tool, modifier), AttributeModifier.Operation.MULTIPLY_BASE));
+            biConsumer.accept(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(UUID.fromString("45bbb1ce-b4ee-7ee2-2f5c-df86d24c361a"), Attributes.ARMOR_TOUGHNESS.getDescriptionId(), getBonus(tool, modifier), AttributeModifier.Operation.MULTIPLY_BASE));
+            biConsumer.accept(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(UUID.fromString("4639fef7-40a3-4ecf-ff5b-0cd263d3c9c0"), Attributes.KNOCKBACK_RESISTANCE.getDescriptionId(), getBonus(tool, modifier), AttributeModifier.Operation.MULTIPLY_BASE));
         }
     }
 
     @Nullable
     @Override
     public Boolean showDurabilityBar(IToolStackView tool, ModifierEntry modifierEntry) {
-        return PressurizableToolCap.getAir(tool)>0;
+        return PressurizableToolCap.getAir(tool) > 0;
     }
 
     @Override
     public int getDurabilityWidth(IToolStackView tool, ModifierEntry modifierEntry) {
-        return (int) (PressurizableToolCap.getAir(tool)*12/(PressurizableToolCap.getMaxPressure(tool)*PressurizableToolCap.getBaseVolume(tool)))+1;
+        return (int) (PressurizableToolCap.getAir(tool) * 12 / (PressurizableToolCap.getMaxPressure(tool) * PressurizableToolCap.getBaseVolume(tool))) + 1;
     }
 
     @Override

@@ -17,13 +17,15 @@ public class RasteriteBudding extends AmethystBlock {
     public RasteriteBudding(Properties p_151999_) {
         super(p_151999_);
     }
+
     private static final Direction[] DIRECTIONS = Direction.values();
+
     @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         Direction direction = DIRECTIONS[pRandom.nextInt(DIRECTIONS.length)];
         BlockPos blockpos = pPos.relative(direction);
         BlockState blockstate = pLevel.getBlockState(blockpos);
-        if (pRandom.nextInt(144)<=pLevel.getBrightness(LightLayer.BLOCK,blockpos)*pLevel.getBrightness(LightLayer.BLOCK,blockpos)) {
+        if (pRandom.nextInt(144) <= pLevel.getBrightness(LightLayer.BLOCK, blockpos) * pLevel.getBrightness(LightLayer.BLOCK, blockpos)) {
             if ((blockstate.is(Blocks.AIR) || blockstate.is(Blocks.CAVE_AIR) || blockstate.is(Blocks.VOID_AIR) || blockstate.is(Blocks.WATER))) {
                 Block block = ctiBlock.rasterite.get();
                 BlockState blockState = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, direction).setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);

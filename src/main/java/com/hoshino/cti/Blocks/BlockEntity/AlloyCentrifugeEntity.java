@@ -31,11 +31,12 @@ public class AlloyCentrifugeEntity extends BlockEntity {
     public AlloyCentrifugeEntity(BlockPos p_155229_, BlockState p_155230_) {
         super(ctiBlockEntityType.ALLOY_CENTRIFUGE.get(), p_155229_, p_155230_);
     }
-    protected static List<AlloyRecipe> list=new ArrayList<>();
+
+    protected static List<AlloyRecipe> list = new ArrayList<>();
 
     private LazyOptional<IAirHandlerMachine> airHandler = LazyOptional.empty();
 
-    private MachineAirHandler machineAirHandler = new MachineAirHandler(PressureTier.TIER_TWO,12800){
+    private MachineAirHandler machineAirHandler = new MachineAirHandler(PressureTier.TIER_TWO, 12800) {
         @Override
         public float getCriticalPressure() {
             return 40;
@@ -54,15 +55,16 @@ public class AlloyCentrifugeEntity extends BlockEntity {
     };
 
     @Override
-    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction direction){
-        if (capability == PNCCapabilities.AIR_HANDLER_MACHINE_CAPABILITY){
+    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction direction) {
+        if (capability == PNCCapabilities.AIR_HANDLER_MACHINE_CAPABILITY) {
             return airHandler.cast();
         }
-        return super.getCapability(capability,direction);
+        return super.getCapability(capability, direction);
     }
+
     @Override
     public void onLoad() {
-        this.airHandler = LazyOptional.of(()->this.machineAirHandler);
+        this.airHandler = LazyOptional.of(() -> this.machineAirHandler);
         super.onLoad();
     }
 
@@ -88,27 +90,26 @@ public class AlloyCentrifugeEntity extends BlockEntity {
     }
 
 
-
-    public static void tick(Level level, BlockPos blockPos, BlockState state, AlloyCentrifugeEntity entity){
-        if (level.isClientSide){
+    public static void tick(Level level, BlockPos blockPos, BlockState state, AlloyCentrifugeEntity entity) {
+        if (level.isClientSide) {
             return;
         }
-        if (entity.machineAirHandler.getVolume()<100*(int) entity.machineAirHandler.getPressure()||entity.machineAirHandler.getPressure()<3){
+        if (entity.machineAirHandler.getVolume() < 100 * (int) entity.machineAirHandler.getPressure() || entity.machineAirHandler.getPressure() < 3) {
             return;
         }
-        if (level.getGameTime()%Math.max(2,12-(int) entity.machineAirHandler.getPressure())!=0){
+        if (level.getGameTime() % Math.max(2, 12 - (int) entity.machineAirHandler.getPressure()) != 0) {
             return;
         }
-        if (list.isEmpty()){
-            list =level.getRecipeManager().getAllRecipesFor(TinkerRecipeTypes.ALLOYING.get());
+        if (list.isEmpty()) {
+            list = level.getRecipeManager().getAllRecipesFor(TinkerRecipeTypes.ALLOYING.get());
         }
         Direction direction = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
-        BlockEntity blockEntity =level.getBlockEntity(entity.getBlockPos().relative(direction.getOpposite()));
-        if (blockEntity ==null){
+        BlockEntity blockEntity = level.getBlockEntity(entity.getBlockPos().relative(direction.getOpposite()));
+        if (blockEntity == null) {
             return;
         }
         if (blockEntity instanceof ServantTileEntity servantTileEntity) {
-            BlockEntity master = servantTileEntity.getMasterPos()!=null? level.getBlockEntity(servantTileEntity.getMasterPos()):null;
+            BlockEntity master = servantTileEntity.getMasterPos() != null ? level.getBlockEntity(servantTileEntity.getMasterPos()) : null;
             if (master instanceof ISmelteryTankHandler smelteryTankHandler) {
                 List<FluidStack> OutputfluidStacks = new ArrayList<>();
                 SmelteryTank smelteryTank = smelteryTankHandler.getTank();
@@ -135,7 +136,7 @@ public class AlloyCentrifugeEntity extends BlockEntity {
                     }
                     boolean canDrain = smelteryTank.drain(InputFluid, IFluidHandler.FluidAction.SIMULATE).getAmount() == InputFluid.getAmount() && !InputFluid.isEmpty();
                     if (canFill && canDrain) {
-                        entity.machineAirHandler.addAir(-100*(int) entity.machineAirHandler.getPressure());
+                        entity.machineAirHandler.addAir(-100 * (int) entity.machineAirHandler.getPressure());
                         smelteryTank.drain(InputFluid, IFluidHandler.FluidAction.EXECUTE);
                         for (FluidStack fluidStack : OutputfluidStacks) {
                             smelteryTank.fill(fluidStack, IFluidHandler.FluidAction.EXECUTE);
@@ -147,14 +148,14 @@ public class AlloyCentrifugeEntity extends BlockEntity {
         }
     }
 
-    public static AlloyRecipe getRecipe(FluidStack fluidStack){
-        AlloyRecipe recipe =null;
-        if (list.isEmpty()){
+    public static AlloyRecipe getRecipe(FluidStack fluidStack) {
+        AlloyRecipe recipe = null;
+        if (list.isEmpty()) {
             return recipe;
         }
-        for (AlloyRecipe recipes:list){
-            if (recipes.getOutput().getFluid().isSame(fluidStack.getFluid())){
-                recipe =recipes;
+        for (AlloyRecipe recipes : list) {
+            if (recipes.getOutput().getFluid().isSame(fluidStack.getFluid())) {
+                recipe = recipes;
                 break;
             }
         }

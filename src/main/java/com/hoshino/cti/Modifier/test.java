@@ -26,9 +26,10 @@ public class test extends Modifier implements GeneralInteractionModifierHook {
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.GENERAL_INTERACT);
     }
+
     @Override
     public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
-        GeneralInteractionModifierHook.startUsing(tool,modifier.getId(),player,interactionHand);
+        GeneralInteractionModifierHook.startUsing(tool, modifier.getId(), player, interactionHand);
         return InteractionResult.CONSUME;
     }
 
@@ -37,7 +38,7 @@ public class test extends Modifier implements GeneralInteractionModifierHook {
     public void onFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
         Holder<Biome> biome = entity.level.getBiome(entity.blockPosition());
         float lvl_ionize = getBiomeIonizeLevel(biome);
-        float iondef =getElectricResistance(entity);
+        float iondef = getElectricResistance(entity);
         entity.sendSystemMessage(Component.literal(String.valueOf(lvl_ionize)));
         entity.sendSystemMessage(Component.literal(String.valueOf(iondef)));
     }

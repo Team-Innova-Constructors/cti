@@ -10,8 +10,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -54,7 +52,7 @@ public class FixedEarthCoreCrush extends XIModifier {
         BlockPos pos = event.getPos();
         Level world = player.getLevel();
         BlockState state = world.getBlockState(pos);
-        if (!player.isCreative() && !player.hasEffect(MobEffects.DIG_SLOWDOWN)&&state.getDestroySpeed(world,pos)<0) {
+        if (!player.isCreative() && !player.hasEffect(MobEffects.DIG_SLOWDOWN) && state.getDestroySpeed(world, pos) < 0) {
             ToolStack tool = getHeldTool(player, InteractionHand.MAIN_HAND);
             if (tool == null || tool.isBroken() || tool.getModifierLevel(this) < 1) {
                 return;
@@ -66,11 +64,11 @@ public class FixedEarthCoreCrush extends XIModifier {
                 Direction sideHit = BlockSideHitListener.getSideHit(player);
                 ToolHarvestContext context = new ToolHarvestContext(serverLevel, player, state, pos, sideHit, true, true);
                 if (BreakLogicHelper.breakBlock(tool, toolStack, context)) {
-                    Iterable<BlockPos> extraBlocks = ((AreaOfEffectIterator)tool.getHook(ToolHooks.AOE_ITERATOR)).getBlocks(tool, toolStack, player, state, world, pos, BlockSideHitListener.getSideHit(player), AreaOfEffectIterator.AOEMatchType.BREAKING);
+                    Iterable<BlockPos> extraBlocks = ((AreaOfEffectIterator) tool.getHook(ToolHooks.AOE_ITERATOR)).getBlocks(tool, toolStack, player, state, world, pos, BlockSideHitListener.getSideHit(player), AreaOfEffectIterator.AOEMatchType.BREAKING);
                     Iterator var12 = extraBlocks.iterator();
 
-                    while(var12.hasNext()) {
-                        BlockPos extraPos = (BlockPos)var12.next();
+                    while (var12.hasNext()) {
+                        BlockPos extraPos = (BlockPos) var12.next();
                         BlockState extraState = world.getBlockState(extraPos);
                         if (!extraState.isAir()) {
                             ToolHarvestLogic.breakExtraBlock(tool, toolStack, context.forPosition(extraPos.immutable(), extraState));
@@ -79,9 +77,9 @@ public class FixedEarthCoreCrush extends XIModifier {
 
                     var12 = tool.getModifierList().iterator();
 
-                    while(var12.hasNext()) {
-                        ModifierEntry entry = (ModifierEntry)var12.next();
-                        ((BlockHarvestModifierHook)entry.getHook(ModifierHooks.BLOCK_HARVEST)).finishHarvest(tool, entry, context, true);
+                    while (var12.hasNext()) {
+                        ModifierEntry entry = (ModifierEntry) var12.next();
+                        ((BlockHarvestModifierHook) entry.getHook(ModifierHooks.BLOCK_HARVEST)).finishHarvest(tool, entry, context, true);
                     }
 
                     BreakLogicHelper.dropItems(state, pos, serverLevel);

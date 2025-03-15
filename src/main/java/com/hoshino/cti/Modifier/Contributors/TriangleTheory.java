@@ -2,20 +2,13 @@ package com.hoshino.cti.Modifier.Contributors;
 
 
 import com.hoshino.cti.cti;
-import com.hoshino.cti.register.ctiEffects;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
-import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
@@ -25,24 +18,24 @@ public class TriangleTheory extends BattleModifier {
     }
 
     private static final ResourceLocation triangletheorytime = cti.getResource("triangletheorytime");
+
     @Override
     public boolean havenolevel() {
         return true;
     }
 
     public void livinghurtevent(LivingHurtEvent event) {
-        if (event.getSource().getEntity() instanceof ServerPlayer player&&event.getEntity()!=null) {
+        if (event.getSource().getEntity() instanceof ServerPlayer player && event.getEntity() != null) {
             for (ItemStack stack : player.getInventory().armor) {
                 if (stack.getItem() instanceof ModifiableArmorItem) {
                     ToolStack tool = ToolStack.from(stack);
                     ModDataNBT a = tool.getPersistentData();
                     if (tool.getModifierLevel(this) > 0) {
-                        if (a.getInt(triangletheorytime)==2){
-                            a.putInt(triangletheorytime,0);
-                        }else
-                        if (a.getInt(triangletheorytime)==0){
+                        if (a.getInt(triangletheorytime) == 2) {
+                            a.putInt(triangletheorytime, 0);
+                        } else if (a.getInt(triangletheorytime) == 0) {
                             event.setAmount(0);
-                            a.putInt(triangletheorytime,a.getInt(triangletheorytime)+1);
+                            a.putInt(triangletheorytime, a.getInt(triangletheorytime) + 1);
                         }
                     }
                 }

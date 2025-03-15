@@ -15,21 +15,21 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.inventory.InventoryMenu;
-import slimeknights.tconstruct.library.materials.definition.IMaterial;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 
 public class TinkerRaligunRenderer extends EntityRenderer<TinkerRailgunProjectile> {
     public ItemRenderer itemRenderer;
+
     public TinkerRaligunRenderer(EntityRendererProvider.Context p_174008_) {
         super(p_174008_);
-        this.itemRenderer=p_174008_.getItemRenderer();
+        this.itemRenderer = p_174008_.getItemRenderer();
     }
 
     @Override
     public void render(TinkerRailgunProjectile p_114485_, float p_114486_, float p_114487_, PoseStack p_114488_, MultiBufferSource p_114489_, int p_114490_) {
-        if (p_114485_.stack!=null&&p_114485_.stack.getItem() instanceof ToolPartItem item) {
-            if (MaterialVariant.of(item.getMaterial(p_114485_.stack)).isEmpty()||MaterialVariant.of(item.getMaterial(p_114485_.stack)).isUnknown()) {
+        if (p_114485_.stack != null && p_114485_.stack.getItem() instanceof ToolPartItem item) {
+            if (MaterialVariant.of(item.getMaterial(p_114485_.stack)).isEmpty() || MaterialVariant.of(item.getMaterial(p_114485_.stack)).isUnknown()) {
                 ctiPacketHandler.sendToServer(new PRailgunC2S(p_114485_.getId()));
             } else {
                 p_114488_.pushPose();

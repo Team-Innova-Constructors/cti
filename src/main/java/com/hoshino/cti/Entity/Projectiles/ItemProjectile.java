@@ -18,11 +18,13 @@ import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class ItemProjectile extends Projectile implements ItemSupplier {
-    public @Nullable LivingEntity getLivingOwner(){
+    public @Nullable LivingEntity getLivingOwner() {
         return this.getOwner() instanceof LivingEntity living ? living : null;
     }
+
     static final EntityDataAccessor<ItemStack> DATA_ITEM_STACK;
-    public float Xdeg =0;
+    public float Xdeg = 0;
+
     protected ItemProjectile(EntityType<? extends ItemProjectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
     }
@@ -39,7 +41,7 @@ public abstract class ItemProjectile extends Projectile implements ItemSupplier 
     protected abstract Item getDefaultItem();
 
     protected ItemStack getItemRaw() {
-        return (ItemStack)this.getEntityData().get(DATA_ITEM_STACK);
+        return (ItemStack) this.getEntityData().get(DATA_ITEM_STACK);
     }
 
     public ItemStack getItem() {
@@ -73,7 +75,7 @@ public abstract class ItemProjectile extends Projectile implements ItemSupplier 
     @Override
     public void tick() {
         HitResult hitresult = ProjectileUtil.getHitResult(this, this::canHitEntity);
-        if (hitresult.getType() == HitResult.Type.ENTITY){
+        if (hitresult.getType() == HitResult.Type.ENTITY) {
             this.onHitEntity((EntityHitResult) hitresult);
         }
     }

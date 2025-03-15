@@ -22,27 +22,27 @@ public class FrozenInduced extends etshmodifieriii {
 
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-        Entity entity =context.getTarget();
-        LivingEntity living =context.getAttacker();
-        if (entity instanceof LivingEntity target &&living instanceof Player player&&!(target instanceof Player)){
-            target.invulnerableTime=0;
-            target.hurt(playerFrozenSource(damageDealt/4,player),damageDealt/4);
-            if (getFreezeResistance(target)<=1.5&&getFrozenValue(target)<500){
-                addFrozenValue(target,10*modifier.getLevel());
+        Entity entity = context.getTarget();
+        LivingEntity living = context.getAttacker();
+        if (entity instanceof LivingEntity target && living instanceof Player player && !(target instanceof Player)) {
+            target.invulnerableTime = 0;
+            target.hurt(playerFrozenSource(damageDealt / 4, player), damageDealt / 4);
+            if (getFreezeResistance(target) <= 1.5 && getFrozenValue(target) < 500) {
+                addFrozenValue(target, 10 * modifier.getLevel());
             }
-            target.invulnerableTime=0;
+            target.invulnerableTime = 0;
         }
     }
 
     @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
-        if (target!=null&&projectile instanceof AbstractArrow arrow&&attacker instanceof Player player&&!(target instanceof Player)){
-            target.invulnerableTime=0;
-            target.hurt(playerFrozenSource((float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/8),player),(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())/8));
-            if (getFreezeResistance(target)<=1.5&&getFrozenValue(target)<500){
-                addFrozenValue(target,10*modifier.getLevel());
+        if (target != null && projectile instanceof AbstractArrow arrow && attacker instanceof Player player && !(target instanceof Player)) {
+            target.invulnerableTime = 0;
+            target.hurt(playerFrozenSource((float) (arrow.getBaseDamage() * getMold(arrow.getDeltaMovement()) / 8), player), (float) (arrow.getBaseDamage() * getMold(arrow.getDeltaMovement()) / 8));
+            if (getFreezeResistance(target) <= 1.5 && getFrozenValue(target) < 500) {
+                addFrozenValue(target, 10 * modifier.getLevel());
             }
-            target.invulnerableTime=0;
+            target.invulnerableTime = 0;
         }
         return false;
     }

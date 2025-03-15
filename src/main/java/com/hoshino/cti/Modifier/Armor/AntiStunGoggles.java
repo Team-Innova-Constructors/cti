@@ -17,7 +17,7 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class AntiStunGoggles extends NoLevelsModifier implements InventoryTickModifierHook {
-    public AntiStunGoggles(){
+    public AntiStunGoggles() {
         MinecraftForge.EVENT_BUS.addListener(this::OnEffectApply);
     }
 
@@ -28,7 +28,7 @@ public class AntiStunGoggles extends NoLevelsModifier implements InventoryTickMo
     }
 
     private void OnEffectApply(MobEffectEvent.Applicable event) {
-        if (event.getEntity()!=null&& EntityUtil.isAntiStun(event.getEntity())&&event.getEffectInstance().getEffect()== MobEffects.CONFUSION){
+        if (event.getEntity() != null && EntityUtil.isAntiStun(event.getEntity()) && event.getEffectInstance().getEffect() == MobEffects.CONFUSION) {
             event.setResult(Event.Result.DENY);
         }
     }
@@ -37,7 +37,7 @@ public class AntiStunGoggles extends NoLevelsModifier implements InventoryTickMo
     @Override
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity livingEntity, int i, boolean b, boolean b1, ItemStack itemStack) {
         MobEffectInstance instance = livingEntity.getEffect(MobEffects.CONFUSION);
-        if (instance!=null){
+        if (instance != null) {
             livingEntity.removeEffect(MobEffects.CONFUSION);
         }
     }

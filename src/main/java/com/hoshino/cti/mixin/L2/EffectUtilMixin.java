@@ -13,11 +13,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = EffectUtil.class,remap = false)
+@Mixin(value = EffectUtil.class, remap = false)
 public class EffectUtilMixin {
     @Inject(at = {@At("HEAD")}, method = {"forceAddEffect"}, cancellable = true)
-    private static void cancleEffect(LivingEntity e, MobEffectInstance ins, Entity source, CallbackInfo ci){
-        if (e instanceof Player player&&ins.getEffect().getCategory()== MobEffectCategory.HARMFUL&& SuperpositionHandler.hasCurio(player, EnigmaticItems.THE_CUBE)){
+    private static void cancleEffect(LivingEntity e, MobEffectInstance ins, Entity source, CallbackInfo ci) {
+        if (e instanceof Player player && ins.getEffect().getCategory() == MobEffectCategory.HARMFUL && SuperpositionHandler.hasCurio(player, EnigmaticItems.THE_CUBE)) {
             ci.cancel();
         }
     }

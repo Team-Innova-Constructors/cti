@@ -13,16 +13,16 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import java.util.List;
 
 public class GoldSimulate extends NoLevelsModifier {
-    public GoldSimulate (){
+    public GoldSimulate() {
         MinecraftForge.EVENT_BUS.addListener(this::OnChangeTarget);
     }
 
     private void OnChangeTarget(LivingChangeTargetEvent event) {
-        boolean b =false;
-        LivingEntity living =event.getNewTarget();
-        if (living!=null){
-            for (EquipmentSlot slot: List.of(EquipmentSlot.CHEST,EquipmentSlot.FEET,EquipmentSlot.HEAD,EquipmentSlot.LEGS)){
-                ItemStack stack =living.getItemBySlot(slot);
+        boolean b = false;
+        LivingEntity living = event.getNewTarget();
+        if (living != null) {
+            for (EquipmentSlot slot : List.of(EquipmentSlot.CHEST, EquipmentSlot.FEET, EquipmentSlot.HEAD, EquipmentSlot.LEGS)) {
+                ItemStack stack = living.getItemBySlot(slot);
                 if (stack.getItem() instanceof IModifiable) {
                     ToolStack tool = ToolStack.from(stack);
                     if (tool.getModifierLevel(this) > 0) {
@@ -32,7 +32,7 @@ public class GoldSimulate extends NoLevelsModifier {
                 }
             }
         }
-        if (b&&event.getEntity() instanceof ZombifiedPiglin piglin &&piglin.getLastHurtByMob()!=event.getNewTarget()){
+        if (b && event.getEntity() instanceof ZombifiedPiglin piglin && piglin.getLastHurtByMob() != event.getNewTarget()) {
             event.setCanceled(true);
         }
     }

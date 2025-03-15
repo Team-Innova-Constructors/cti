@@ -21,7 +21,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 public class PlasmaWaveSlashPlus extends etshmodifieriii {
 
-    public PlasmaWaveSlashPlus(){
+    public PlasmaWaveSlashPlus() {
         MinecraftForge.EVENT_BUS.addListener(this::LeftClick);
         MinecraftForge.EVENT_BUS.addListener(this::LeftClickBlock);
     }
@@ -32,39 +32,41 @@ public class PlasmaWaveSlashPlus extends etshmodifieriii {
     }
 
     private void LeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
-        if (event.getSide()== LogicalSide.SERVER){
+        if (event.getSide() == LogicalSide.SERVER) {
             Player player = event.getEntity();
-            ItemStack stack =player.getItemInHand(event.getHand());
+            ItemStack stack = player.getItemInHand(event.getHand());
             if (stack.getItem() instanceof IModifiable) {
-                if (ToolStack.from(stack).getModifierLevel(this)>0) createslash(event.getEntity(), ToolStack.from(stack));
+                if (ToolStack.from(stack).getModifierLevel(this) > 0)
+                    createslash(event.getEntity(), ToolStack.from(stack));
             }
         }
     }
 
     private void LeftClick(PlayerInteractEvent.LeftClickEmpty event) {
         Player player = event.getEntity();
-        ItemStack stack =player.getMainHandItem();
+        ItemStack stack = player.getMainHandItem();
         if (stack.getItem() instanceof IModifiable) {
-            if (ToolStack.from(stack).getModifierLevel(this)>0) ctiPacketHandler.sendToServer(new PPlasmaWaveSlashC2S());
+            if (ToolStack.from(stack).getModifierLevel(this) > 0)
+                ctiPacketHandler.sendToServer(new PPlasmaWaveSlashC2S());
         }
     }
 
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
-        if (!context.isExtraAttack()&&context.isFullyCharged()&&context.getAttacker() instanceof Player player){
-            createslash(player,tool);
+        if (!context.isExtraAttack() && context.isFullyCharged() && context.getAttacker() instanceof Player player) {
+            createslash(player, tool);
         }
         return knockback;
     }
 
     public void createslash(Player player, IToolStackView tool) {
-        if (player != null&&player.getAttackStrengthScale(0)>=0.8) {
+        if (player != null && player.getAttackStrengthScale(0) >= 0.8) {
             Level world = player.level;
             plasmawaveslashentity slash = new plasmawaveslashentity(etshtinkerEntity.plasmawaveslashEntity.get(), world);
             world.noCollision(slash);
             slash.noCulling = true;
             slash.setOwner(player);
-            slash.setPos(player.getX(), player.getY() + 0.5 * (double)player.getBbHeight(), player.getZ());
+            slash.setPos(player.getX(), player.getY() + 0.5 * (double) player.getBbHeight(), player.getZ());
             slash.tool = tool;
             Vec3 vec3 = vecCalc.getUnitizedVec3(player.getLookAngle());
             slash.setDeltaMovement(vec3.scale(5.0));
@@ -73,13 +75,13 @@ public class PlasmaWaveSlashPlus extends etshmodifieriii {
     }
 
     public static void createSlash(Player player, IToolStackView tool) {
-        if (player != null&&player.getAttackStrengthScale(0)>=0.8) {
+        if (player != null && player.getAttackStrengthScale(0) >= 0.8) {
             Level world = player.level;
             plasmawaveslashentity slash = new plasmawaveslashentity(etshtinkerEntity.plasmawaveslashEntity.get(), world);
             world.noCollision(slash);
             slash.noCulling = true;
             slash.setOwner(player);
-            slash.setPos(player.getX(), player.getY() + 0.5 * (double)player.getBbHeight(), player.getZ());
+            slash.setPos(player.getX(), player.getY() + 0.5 * (double) player.getBbHeight(), player.getZ());
             slash.tool = tool;
             Vec3 vec3 = vecCalc.getUnitizedVec3(player.getLookAngle());
             slash.setDeltaMovement(vec3.scale(5.0));

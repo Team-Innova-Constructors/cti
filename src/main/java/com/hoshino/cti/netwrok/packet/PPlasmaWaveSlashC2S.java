@@ -9,21 +9,21 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import java.util.function.Supplier;
 
 public class PPlasmaWaveSlashC2S {
-    public PPlasmaWaveSlashC2S(){
+    public PPlasmaWaveSlashC2S() {
     }
 
-    public PPlasmaWaveSlashC2S(FriendlyByteBuf buf){
+    public PPlasmaWaveSlashC2S(FriendlyByteBuf buf) {
     }
 
-    public void toByte(FriendlyByteBuf buf){
+    public void toByte(FriendlyByteBuf buf) {
     }
 
-    public boolean handle(Supplier<NetworkEvent.Context> supplier){
-        NetworkEvent.Context context =supplier.get();
-        context.enqueueWork(()->{
+    public boolean handle(Supplier<NetworkEvent.Context> supplier) {
+        NetworkEvent.Context context = supplier.get();
+        context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
-            if (player!=null){
-                PlasmaWaveSlashPlus.createSlash(context.getSender(), ToolStack.from( context.getSender().getMainHandItem()));
+            if (player != null) {
+                PlasmaWaveSlashPlus.createSlash(context.getSender(), ToolStack.from(context.getSender().getMainHandItem()));
             }
         });
         return true;

@@ -13,12 +13,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 public class JsonUtil {
-    public static FluidStack readFluid(JsonObject json,String key) {
-        return deserializeFluid(GsonHelper.getAsJsonObject(json,key));
+    public static FluidStack readFluid(JsonObject json, String key) {
+        return deserializeFluid(GsonHelper.getAsJsonObject(json, key));
     }
 
-    public static JsonElement toJson(FluidStack stack){
-        return FluidStack.CODEC.encodeStart(JsonOps.INSTANCE,stack).result().orElseThrow();
+    public static JsonElement toJson(FluidStack stack) {
+        return FluidStack.CODEC.encodeStart(JsonOps.INSTANCE, stack).result().orElseThrow();
     }
 
     public static FluidStack deserializeFluid(@NotNull JsonObject json) {

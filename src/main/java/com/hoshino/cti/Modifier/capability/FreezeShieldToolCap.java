@@ -14,14 +14,15 @@ import java.util.function.Supplier;
 public class FreezeShieldToolCap implements IFreezeShielding, ToolCapabilityProvider.IToolCapabilityProvider {
     public final Supplier<? extends IToolStackView> tool;
     public final LazyOptional<IFreezeShielding> capOptional;
-    public FreezeShieldToolCap(ItemStack stack, Supplier<? extends IToolStackView> toolStack){
-        tool =toolStack;
-        capOptional =LazyOptional.of(()->this);
+
+    public FreezeShieldToolCap(ItemStack stack, Supplier<? extends IToolStackView> toolStack) {
+        tool = toolStack;
+        capOptional = LazyOptional.of(() -> this);
     }
 
     @Override
     public <T> LazyOptional<T> getCapability(IToolStackView iToolStackView, Capability<T> capability) {
-        return  iToolStackView.getStats().get(ctiToolStats.FROZEN_RESISTANCE)>0&& capability == ctiCapabilities.FREEZE_SHIELDING ? ctiCapabilities.FREEZE_SHIELDING.orEmpty(capability,this.capOptional):LazyOptional.empty();
+        return iToolStackView.getStats().get(ctiToolStats.FROZEN_RESISTANCE) > 0 && capability == ctiCapabilities.FREEZE_SHIELDING ? ctiCapabilities.FREEZE_SHIELDING.orEmpty(capability, this.capOptional) : LazyOptional.empty();
     }
 
     @Override

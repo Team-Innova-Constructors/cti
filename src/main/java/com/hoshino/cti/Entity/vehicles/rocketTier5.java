@@ -3,7 +3,6 @@ package com.hoshino.cti.Entity.vehicles;
 import com.hoshino.cti.register.ctiEntity;
 import com.hoshino.cti.register.ctiItem;
 import earth.terrarium.ad_astra.common.entity.vehicle.Rocket;
-import earth.terrarium.ad_astra.common.registry.ModEntityTypes;
 import earth.terrarium.ad_astra.common.registry.ModParticleTypes;
 import earth.terrarium.ad_astra.common.util.ModUtils;
 import net.minecraft.server.level.ServerLevel;

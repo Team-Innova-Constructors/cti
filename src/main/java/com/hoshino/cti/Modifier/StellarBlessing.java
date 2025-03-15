@@ -15,37 +15,37 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 public class StellarBlessing extends etshmodifieriii {
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
-        Entity entity =context.getTarget();
-        LivingEntity attacker =context.getAttacker();
-        if (entity instanceof LivingEntity living){
-            if (living.isOnFire()){
-                living.invulnerableTime =0;
-                living.hurt(DamageSource.explosion(attacker),damage);
-                living.invulnerableTime =0;
-                living.hurt(DamageSource.FREEZE,damage);
+        Entity entity = context.getTarget();
+        LivingEntity attacker = context.getAttacker();
+        if (entity instanceof LivingEntity living) {
+            if (living.isOnFire()) {
+                living.invulnerableTime = 0;
+                living.hurt(DamageSource.explosion(attacker), damage);
+                living.invulnerableTime = 0;
+                living.hurt(DamageSource.FREEZE, damage);
                 living.setSecondsOnFire(0);
-                living.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),255,255,false,false),attacker);
-            }else if (living.hasEffect(CoreMobEffects.CHILLED.get())||living.isInPowderSnow){
-                living.invulnerableTime =0;
-                living.hurt(DamageSource.explosion(attacker),damage);
-                living.invulnerableTime =0;
-                living.hurt(DamageSource.LAVA,damage);
+                living.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 255, 255, false, false), attacker);
+            } else if (living.hasEffect(CoreMobEffects.CHILLED.get()) || living.isInPowderSnow) {
+                living.invulnerableTime = 0;
+                living.hurt(DamageSource.explosion(attacker), damage);
+                living.invulnerableTime = 0;
+                living.hurt(DamageSource.LAVA, damage);
                 living.setIsInPowderSnow(false);
                 living.setSecondsOnFire(255);
-            }else switch (EtSHrnd().nextInt(2)){
-                case 0->{
-                    living.invulnerableTime =0;
-                    living.hurt(DamageSource.explosion(attacker),damage);
-                    living.invulnerableTime =0;
-                    living.hurt(DamageSource.FREEZE,damage);
+            } else switch (EtSHrnd().nextInt(2)) {
+                case 0 -> {
+                    living.invulnerableTime = 0;
+                    living.hurt(DamageSource.explosion(attacker), damage);
+                    living.invulnerableTime = 0;
+                    living.hurt(DamageSource.FREEZE, damage);
                     living.setSecondsOnFire(0);
-                    living.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),255,255,false,false),attacker);
+                    living.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 255, 255, false, false), attacker);
                 }
-                case 1->{
-                    living.invulnerableTime =0;
-                    living.hurt(DamageSource.explosion(attacker),damage);
-                    living.invulnerableTime =0;
-                    living.hurt(DamageSource.LAVA,damage);
+                case 1 -> {
+                    living.invulnerableTime = 0;
+                    living.hurt(DamageSource.explosion(attacker), damage);
+                    living.invulnerableTime = 0;
+                    living.hurt(DamageSource.LAVA, damage);
                     living.setIsInPowderSnow(false);
                     living.setSecondsOnFire(255);
                 }

@@ -5,12 +5,8 @@ import com.hollingsworth.arsnouveau.client.particle.ParticleColor;
 import com.hoshino.cti.Entity.Projectiles.MeteorEntity;
 import com.hoshino.cti.Event.ModEvents.MeteorSpawnEvent;
 import com.hoshino.cti.cti;
-import com.hoshino.cti.register.ctiItem;
-import com.hoshino.cti.util.DimensionConstants;
-import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,19 +17,19 @@ public class MeteorShowerRitual extends AbstractRitual {
     @Override
     protected void tick() {
         incrementProgress();
-        if (getWorld() instanceof ServerLevel level&&getPos()!=null&&isRunning()){
+        if (getWorld() instanceof ServerLevel level && getPos() != null && isRunning()) {
             Random random = new Random();
-            if (random.nextInt(20)==0) {
-                float x =random.nextFloat() * 128 - 64;
-                float y =random.nextFloat() * 128 - 64;
-                if (x==0&&y==0){
-                    x=0.1f;
+            if (random.nextInt(20) == 0) {
+                float x = random.nextFloat() * 128 - 64;
+                float y = random.nextFloat() * 128 - 64;
+                if (x == 0 && y == 0) {
+                    x = 0.1f;
                 }
-                float v = (float) Math.sqrt(x*x+y*y);
-                float x1 = x/ v;
-                float y1 = y/ v;
-                x+=x<0?-20*x1:20*x1;
-                y+=y<0?-20*y1:20*y1;
+                float v = (float) Math.sqrt(x * x + y * y);
+                float x1 = x / v;
+                float y1 = y / v;
+                x += x < 0 ? -20 * x1 : 20 * x1;
+                y += y < 0 ? -20 * y1 : 20 * y1;
                 Vec2 pos = new Vec2(getPos().getX() + x, getPos().getZ() + y);
                 MeteorSpawnEvent event1 = new MeteorSpawnEvent(new Vec3(pos.x, 350, pos.y));
                 MinecraftForge.EVENT_BUS.post(event1);
@@ -43,17 +39,17 @@ public class MeteorShowerRitual extends AbstractRitual {
                     level.addFreshEntity(entity);
                 }
             }
-            if (random.nextInt(5)==0) {
-                float x =random.nextFloat() * 128 - 64;
-                float y =random.nextFloat() * 128 - 64;
-                if (x==0&&y==0){
-                    x+=0.1f;
+            if (random.nextInt(5) == 0) {
+                float x = random.nextFloat() * 128 - 64;
+                float y = random.nextFloat() * 128 - 64;
+                if (x == 0 && y == 0) {
+                    x += 0.1f;
                 }
-                float v = (float) Math.sqrt(x*x+y*y);
-                float x1 = x/ v;
-                float y1 = y/ v;
-                x+=x<0?-8*x1:8*x1;
-                y+=y<0?-8*y1:8*y1;
+                float v = (float) Math.sqrt(x * x + y * y);
+                float x1 = x / v;
+                float y1 = y / v;
+                x += x < 0 ? -8 * x1 : 8 * x1;
+                y += y < 0 ? -8 * y1 : 8 * y1;
                 Vec2 pos = new Vec2(getPos().getX() + x, getPos().getZ() + y);
                 MeteorSpawnEvent event1 = new MeteorSpawnEvent(new Vec3(pos.x, 350, pos.y));
                 MinecraftForge.EVENT_BUS.post(event1);
@@ -64,7 +60,7 @@ public class MeteorShowerRitual extends AbstractRitual {
                 }
             }
         }
-        if (getProgress()>=1200){
+        if (getProgress() >= 1200) {
             setFinished();
         }
     }

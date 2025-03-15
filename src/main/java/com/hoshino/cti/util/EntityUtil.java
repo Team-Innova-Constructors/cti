@@ -8,10 +8,10 @@ import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 public class EntityUtil {
-    public static boolean isAntiStun(LivingEntity living){
-        ItemStack stack =living.getItemBySlot(EquipmentSlot.HEAD);
-        if (stack.getItem() instanceof IModifiable){
-            return ToolStack.from(stack).getModifierLevel(ctiModifiers.anti_stun_goggles.get())>0;
+    public static boolean isAntiStun(LivingEntity living) {
+        ItemStack stack = living.getItemBySlot(EquipmentSlot.HEAD);
+        if (stack.getItem() instanceof IModifiable) {
+            return ToolStack.from(stack).getModifierLevel(ctiModifiers.anti_stun_goggles.get()) > 0;
         }
         return false;
     }

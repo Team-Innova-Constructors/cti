@@ -12,7 +12,7 @@ import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import vazkii.botania.api.mana.ManaItemHandler;
 
-@Mixin(value = SpriteOfGaia.class,remap = false)
+@Mixin(value = SpriteOfGaia.class, remap = false)
 public class SpriteOfGaiaMixin {
     /**
      * @author Firefly

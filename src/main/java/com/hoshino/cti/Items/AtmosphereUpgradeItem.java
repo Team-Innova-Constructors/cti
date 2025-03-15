@@ -18,23 +18,24 @@ import java.util.List;
 public class AtmosphereUpgradeItem extends TooltipedItem {
     public final float SPEED_FACTOR;
     public final float POWER_FACTOR;
-    public AtmosphereUpgradeItem(float speedFactor,float powerFactor) {
-        super(new Item.Properties().tab(ctiTab.MIXC).stacksTo(64), List.of(Component.translatable("cti.tooltip.item.atmosphere_upgrade").withStyle(ChatFormatting.GREEN),Component.translatable("cti.tooltip.item.speed_factor").append(" + "+String.format("%.1f",speedFactor)+" x").withStyle(ChatFormatting.AQUA),Component.translatable("cti.tooltip.item.power_factor").append(" * "+String.format("%.1f",powerFactor)+" x").withStyle(ChatFormatting.RED)));
-        this.SPEED_FACTOR =speedFactor;
-        this.POWER_FACTOR =powerFactor;
+
+    public AtmosphereUpgradeItem(float speedFactor, float powerFactor) {
+        super(new Item.Properties().tab(ctiTab.MIXC).stacksTo(64), List.of(Component.translatable("cti.tooltip.item.atmosphere_upgrade").withStyle(ChatFormatting.GREEN), Component.translatable("cti.tooltip.item.speed_factor").append(" + " + String.format("%.1f", speedFactor) + " x").withStyle(ChatFormatting.AQUA), Component.translatable("cti.tooltip.item.power_factor").append(" * " + String.format("%.1f", powerFactor) + " x").withStyle(ChatFormatting.RED)));
+        this.SPEED_FACTOR = speedFactor;
+        this.POWER_FACTOR = powerFactor;
     }
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
-        if (context.getPlayer()!=null&&context.getPlayer().isShiftKeyDown()&&!context.getLevel().isClientSide) {
+        if (context.getPlayer() != null && context.getPlayer().isShiftKeyDown() && !context.getLevel().isClientSide) {
             BlockEntity blockEntity = context.getLevel().getBlockEntity(context.getClickedPos());
             ItemStack stack = context.getItemInHand();
             ItemStackHandler handler = null;
             if (blockEntity instanceof GeneralMachineEntity entity) handler = entity.getItemHandler();
             if (handler != null && (blockEntity instanceof AtmosphereExtractorEntity || blockEntity instanceof AtmosphereCondensatorEntity)) {
                 for (int i = 0; i < handler.getSlots(); i++) {
-                    if (handler.getStackInSlot(i).isEmpty()){
-                        handler.setStackInSlot(i,new ItemStack(stack.getItem()));
+                    if (handler.getStackInSlot(i).isEmpty()) {
+                        handler.setStackInSlot(i, new ItemStack(stack.getItem()));
                         stack.shrink(1);
                         return InteractionResult.SUCCESS;
                     }

@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = DrainTrait.class, remap = false)
 public class DrainTraitMixin {
     @Inject(at = {@At("HEAD")}, method = {"postHurtImpl"}, cancellable = true)
-    private void RemoveEffect(int level, LivingEntity attacker, LivingEntity target, CallbackInfo ci){
-        if(ModifierLevel.EquipHasModifierlevel(target, solidarytinkerModifiers.CLEAN_STATIC_MODIFIER.getId())){
+    private void RemoveEffect(int level, LivingEntity attacker, LivingEntity target, CallbackInfo ci) {
+        if (ModifierLevel.EquipHasModifierlevel(target, solidarytinkerModifiers.CLEAN_STATIC_MODIFIER.getId())) {
             ci.cancel();
         }
     }

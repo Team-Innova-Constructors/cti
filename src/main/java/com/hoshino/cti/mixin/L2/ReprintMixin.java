@@ -20,8 +20,8 @@ import java.util.List;
 @Mixin(value = ReprintTrait.class, remap = false)
 public class ReprintMixin {
     @Inject(at = {@At("HEAD")}, method = {"onHurtTarget"}, cancellable = true)
-    private void print(int level, LivingEntity attacker, AttackCache cache, TraitEffectCache traitCache, CallbackInfo ci){
-        if(ModifierLevel.EquipHasModifierlevel(cache.getAttackTarget(), ctiModifiers.encryptStaticModifier.getId())){
+    private void print(int level, LivingEntity attacker, AttackCache cache, TraitEffectCache traitCache, CallbackInfo ci) {
+        if (ModifierLevel.EquipHasModifierlevel(cache.getAttackTarget(), ctiModifiers.encryptStaticModifier.getId())) {
             ci.cancel();
         }
         List<ItemStack> curio = ToolUtils.Curios.getStacks(cache.getAttackTarget());

@@ -44,7 +44,7 @@ public class KingdomOfNumbers extends BattleModifier {
             if (c > 0) {
                 int b = (int) event.getAmount();
                 event.setAmount(b);
-                if (b % 2 != 0&&tool.getPersistentData().getInt(numericalperceptiontime)==0) {
+                if (b % 2 != 0 && tool.getPersistentData().getInt(numericalperceptiontime) == 0) {
                     tool.getPersistentData().putInt(numericalperceptiontime, 300 - c * 10);
                     player.addEffect(new MobEffectInstance(ctiEffects.numerical_perception.get(), 200, c));
                 }
@@ -56,15 +56,16 @@ public class KingdomOfNumbers extends BattleModifier {
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
         if (entity instanceof ServerPlayer player) {
             ToolStack tool = ToolStack.from(player.getMainHandItem());
-            if (tool.getPersistentData().getInt(numericalperceptiontime)>0){
-                tool.getPersistentData().putInt(numericalperceptiontime,tool.getPersistentData().getInt(numericalperceptiontime)-1);
+            if (tool.getPersistentData().getInt(numericalperceptiontime) > 0) {
+                tool.getPersistentData().putInt(numericalperceptiontime, tool.getPersistentData().getInt(numericalperceptiontime) - 1);
             }
         }
     }
+
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             ModDataNBT tooldata = tool.getPersistentData();
-            tooltip.add(net.minecraft.network.chat.Component.translatable("[数维的感知]的冷却还剩" + (tooldata.getInt(numericalperceptiontime)/20)+"秒").withStyle(ChatFormatting.AQUA));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("[数维的感知]的冷却还剩" + (tooldata.getInt(numericalperceptiontime) / 20) + "秒").withStyle(ChatFormatting.AQUA));
         }
     }
 }

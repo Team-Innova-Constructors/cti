@@ -20,8 +20,8 @@ public class Improve extends BattleModifier {
 
     @Override
     public void addVolatileData(IToolContext iToolContext, @NotNull ModifierEntry modifierEntry, ModDataNBT modDataNBT) {
-        modDataNBT.addSlots(SlotType.ABILITY,1);
-        modDataNBT.addSlots(SlotType.UPGRADE,1);
-        modDataNBT.addSlots(SlotType.DEFENSE,1);
+        modDataNBT.addSlots(SlotType.ABILITY, 1);
+        modDataNBT.addSlots(SlotType.UPGRADE, 1);
+        modDataNBT.addSlots(SlotType.DEFENSE, 1);
     }
 }

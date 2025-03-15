@@ -1,7 +1,6 @@
 package com.hoshino.cti.mixin.L2;
 
 import com.gjhi.tinkersinnovation.register.TinkersInnovationModifiers;
-import com.gjhi.tinkersinnovation.register.TinkersInnovationToolsDefinition;
 import com.hoshino.cti.Entity.specialDamageSource.Environmental;
 import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
 import com.hoshino.cti.util.method.GetModifierLevel;
@@ -17,16 +16,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = UndyingTrait.class, remap = false)
 public abstract class UndyingTraitMixin {
     @Inject(at = {@At("HEAD")}, method = {"onDeath"}, cancellable = true)
-    private void onDeath(int level, LivingEntity entity, LivingDeathEvent event, CallbackInfo ci){
-        if(event.getSource().isBypassMagic()){
+    private void onDeath(int level, LivingEntity entity, LivingDeathEvent event, CallbackInfo ci) {
+        if (event.getSource().isBypassMagic()) {
             ci.cancel();
-        }else if (event.getSource() instanceof PierceThrough||event.getSource() instanceof Environmental){
+        } else if (event.getSource() instanceof PierceThrough || event.getSource() instanceof Environmental) {
             ci.cancel();
-        }else if (entity.getMaxHealth()<=10||entity.getPersistentData().contains("atomic_dec")||entity.getPersistentData().contains("quark_disassemble")){
+        } else if (entity.getMaxHealth() <= 10 || entity.getPersistentData().contains("atomic_dec") || entity.getPersistentData().contains("quark_disassemble")) {
             ci.cancel();
-        }
-        else if(event.getSource().getEntity() instanceof Player player){
-            if(GetModifierLevel.getEachHandsTotalModifierlevel(player, TinkersInnovationModifiers.L2ComplementsModifier.curse_blade.getId())>0){
+        } else if (event.getSource().getEntity() instanceof Player player) {
+            if (GetModifierLevel.getEachHandsTotalModifierlevel(player, TinkersInnovationModifiers.L2ComplementsModifier.curse_blade.getId()) > 0) {
                 ci.cancel();
             }
         }

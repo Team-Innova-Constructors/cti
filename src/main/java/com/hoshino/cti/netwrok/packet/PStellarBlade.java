@@ -10,19 +10,19 @@ import java.util.function.Supplier;
 public class PStellarBlade {
 
 
-    public PStellarBlade(){
+    public PStellarBlade() {
 
     }
 
-    public PStellarBlade(FriendlyByteBuf buf){
+    public PStellarBlade(FriendlyByteBuf buf) {
     }
 
-    public void toByte(FriendlyByteBuf buf){
+    public void toByte(FriendlyByteBuf buf) {
     }
 
-    public boolean handle(Supplier<NetworkEvent.Context> supplier){
-        NetworkEvent.Context context =supplier.get();
-        if (supplier.get().getSender()!=null) {
+    public boolean handle(Supplier<NetworkEvent.Context> supplier) {
+        NetworkEvent.Context context = supplier.get();
+        if (supplier.get().getSender() != null) {
             context.enqueueWork(() -> {
                 ServerPlayer serverPlayer = supplier.get().getSender();
                 StellarBlade.summonStars(serverPlayer);

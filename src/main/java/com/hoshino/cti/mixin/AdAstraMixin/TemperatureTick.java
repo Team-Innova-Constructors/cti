@@ -12,20 +12,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = EntityTemperatureSystem.class, remap = false)
 public abstract class TemperatureTick {
     @Inject(method = "burnEntity", at = @At("HEAD"), cancellable = true)
-    private static void burnEntity(LivingEntity entity, CallbackInfo callbackInfo)
-    {
-        if (EnvironmentSystem.getScorchResistance(entity)>=1)
-        {
+    private static void burnEntity(LivingEntity entity, CallbackInfo callbackInfo) {
+        if (EnvironmentSystem.getScorchResistance(entity) >= 1) {
             callbackInfo.cancel();
         }
 
     }
 
     @Inject(method = "freezeEntity", at = @At("HEAD"), cancellable = true)
-    private static void freezeEntity(LivingEntity entity, ServerLevel level, CallbackInfo callbackInfo)
-    {
-        if (EnvironmentSystem.getFreezeResistance(entity)>=1)
-        {
+    private static void freezeEntity(LivingEntity entity, ServerLevel level, CallbackInfo callbackInfo) {
+        if (EnvironmentSystem.getFreezeResistance(entity) >= 1) {
             callbackInfo.cancel();
         }
 

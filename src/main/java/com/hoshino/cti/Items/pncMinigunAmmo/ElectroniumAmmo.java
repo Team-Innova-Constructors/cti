@@ -31,24 +31,30 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
     public int getAmmoColor(ItemStack itemStack) {
         return 0x00208099;
     }
+
     @Override
     public int getMaxDamage(ItemStack stack) {
         return 2048;
     }
+
     @Override
     protected float getDamageMultiplier(Entity target, ItemStack ammoStack) {
         return 36f;
     }
+
     @Override
     public float getAirUsageMultiplier(Minigun minigun, ItemStack ammoStack) {
         return 0.005f;
     }
+
     public float getRangeMultiplier(ItemStack ammoStack) {
         return 2f;
     }
-    protected DamageSource getDamageSource(Minigun minigun,Float amount) {
-        return PierceThrough.pierceDamage(minigun.getPlayer(),amount );
+
+    protected DamageSource getDamageSource(Minigun minigun, Float amount) {
+        return PierceThrough.pierceDamage(minigun.getPlayer(), amount);
     }
+
     @Override
     public int onTargetHit(Minigun minigun, ItemStack ammo, Entity target) {
         int times = 1;
@@ -59,11 +65,11 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
         double dmgMult = getDamageMultiplier(target, ammo);
         if (dmgMult > 0) {
             if (target instanceof LivingEntity || target instanceof EnderDragonPart || target instanceof EndCrystal) {
-                target.invulnerableTime=0;
-                target.hurt(getDamageSource(minigun,(float)(ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times)), (float)(ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times));
-                if (target instanceof LivingEntity living){
-                    living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),50,9),minigun.getPlayer());
-                    living.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,100,9),minigun.getPlayer());
+                target.invulnerableTime = 0;
+                target.hurt(getDamageSource(minigun, (float) (ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times)), (float) (ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times));
+                if (target instanceof LivingEntity living) {
+                    living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(), 50, 9), minigun.getPlayer());
+                    living.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 9), minigun.getPlayer());
                 }
             } else if (target instanceof ShulkerBullet || target instanceof AbstractHurtingProjectile) {
                 target.discard();
@@ -73,9 +79,9 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
     }
 
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        if (Screen.hasShiftDown()){
+        if (Screen.hasShiftDown()) {
             list.add(Component.translatable("cti.tooltip.item.electronium_ammo").withStyle(ChatFormatting.AQUA));
-        }else {
+        } else {
             list.add(Component.translatable("cti.tooltip.item.shift").withStyle(ChatFormatting.AQUA));
         }
     }

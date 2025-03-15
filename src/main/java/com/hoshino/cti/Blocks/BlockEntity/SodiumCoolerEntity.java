@@ -21,7 +21,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
@@ -33,13 +32,13 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
     public SodiumCoolerEntity(BlockPos blockPos, BlockState blockState) {
         super(ctiBlockEntityType.SODIUM_COOLER.get(), blockPos, blockState);
     }
-    protected int MAX_ENERGY =2000000000;
-    protected int MAX_TRANSFER =2000000000;
-    protected int BASE_ENERGY_PERTICK =50000000;
+
+    protected int MAX_ENERGY = 2000000000;
+    protected int MAX_TRANSFER = 2000000000;
+    protected int BASE_ENERGY_PERTICK = 50000000;
 
 
-
-    public final ctiEnergyStore ENERGY_STORAGE = new ctiEnergyStore(getMaxEnergy(),0,getMaxTransfer()) {
+    public final ctiEnergyStore ENERGY_STORAGE = new ctiEnergyStore(getMaxEnergy(), 0, getMaxTransfer()) {
         @Override
         public void onEnergyChange() {
             setChanged();
@@ -47,7 +46,7 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
     };
 
 
-    private final IGasHandler gasHandler =new IGasHandler() {
+    private final IGasHandler gasHandler = new IGasHandler() {
 
         @Override
         public int getTanks() {
@@ -85,40 +84,40 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
         }
     };
 
-    public int getMaxEnergy(){
+    public int getMaxEnergy() {
         return this.MAX_ENERGY;
     }
-    public int getMaxTransfer(){
+
+    public int getMaxTransfer() {
         return this.MAX_TRANSFER;
     }
-    public int getEnergyPerTick(){
+
+    public int getEnergyPerTick() {
         return this.BASE_ENERGY_PERTICK;
     }
 
 
     private LazyOptional<IEnergyStorage> LazyenergyHandler = LazyOptional.empty();
-    private LazyOptional<IGasHandler> LazyGasHandler =LazyOptional.empty();
-
-
+    private LazyOptional<IGasHandler> LazyGasHandler = LazyOptional.empty();
 
 
     @Override
-    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction direction){
-        if (capability == ForgeCapabilities.ENERGY){
+    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction direction) {
+        if (capability == ForgeCapabilities.ENERGY) {
             return LazyenergyHandler.cast();
         }
-        Direction locDir =this.getBlockState().getValue(SodiumCooler.FACING);
-        if (capability == Capabilities.GAS_HANDLER&&(direction==locDir.getClockWise()||direction==locDir.getCounterClockWise())){
+        Direction locDir = this.getBlockState().getValue(SodiumCooler.FACING);
+        if (capability == Capabilities.GAS_HANDLER && (direction == locDir.getClockWise() || direction == locDir.getCounterClockWise())) {
             return LazyGasHandler.cast();
         }
-        return super.getCapability(capability,direction);
+        return super.getCapability(capability, direction);
     }
 
     @Override
     public void onLoad() {
         super.onLoad();
-        LazyenergyHandler = LazyOptional.of(()->ENERGY_STORAGE);
-        LazyGasHandler = LazyOptional.of(()->gasHandler);
+        LazyenergyHandler = LazyOptional.of(() -> ENERGY_STORAGE);
+        LazyGasHandler = LazyOptional.of(() -> gasHandler);
     }
 
     @Override
@@ -146,7 +145,7 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
     }
 
     @Nullable
-    public ctiEnergyStore getEnergyStorage(){
+    public ctiEnergyStore getEnergyStorage() {
         return ENERGY_STORAGE;
     }
 
@@ -158,26 +157,26 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
         if (!state.is(ctiBlock.sodium_cooler_block.get())) {
             return;
         }
-        for (Direction direction: List.of(Direction.DOWN,Direction.UP,Direction.EAST,Direction.WEST,Direction.NORTH,Direction.SOUTH)){
-            if (entity.ENERGY_STORAGE.getEnergyStored()>0){
+        for (Direction direction : List.of(Direction.DOWN, Direction.UP, Direction.EAST, Direction.WEST, Direction.NORTH, Direction.SOUTH)) {
+            if (entity.ENERGY_STORAGE.getEnergyStored() > 0) {
                 BlockEntity energyContainer = level.getBlockEntity(entity.getBlockPos().relative(direction));
-                if (energyContainer!=null&&energyContainer.getCapability(ForgeCapabilities.ENERGY,direction.getOpposite()).isPresent()){
-                    IEnergyStorage storage = energyContainer.getCapability(ForgeCapabilities.ENERGY,direction.getOpposite()).orElse(null);
-                    int amount =Math.min( storage.receiveEnergy(entity.ENERGY_STORAGE.getEnergyStored(),true),entity.ENERGY_STORAGE.extractEnergy(entity.ENERGY_STORAGE.getEnergyStored(),true));
-                    if (storage.receiveEnergy(amount,true)==amount){
-                        storage.receiveEnergy(amount,false);
-                        entity.ENERGY_STORAGE.extractEnergy(amount,false);
+                if (energyContainer != null && energyContainer.getCapability(ForgeCapabilities.ENERGY, direction.getOpposite()).isPresent()) {
+                    IEnergyStorage storage = energyContainer.getCapability(ForgeCapabilities.ENERGY, direction.getOpposite()).orElse(null);
+                    int amount = Math.min(storage.receiveEnergy(entity.ENERGY_STORAGE.getEnergyStored(), true), entity.ENERGY_STORAGE.extractEnergy(entity.ENERGY_STORAGE.getEnergyStored(), true));
+                    if (storage.receiveEnergy(amount, true) == amount) {
+                        storage.receiveEnergy(amount, false);
+                        entity.ENERGY_STORAGE.extractEnergy(amount, false);
                     }
                 }
-            }else break;
+            } else break;
         }
-        if (entity.ENERGY_STORAGE.getEnergyStored() >entity.ENERGY_STORAGE.getMaxEnergyStored()- entity.getEnergyPerTick()) {
+        if (entity.ENERGY_STORAGE.getEnergyStored() > entity.ENERGY_STORAGE.getMaxEnergyStored() - entity.getEnergyPerTick()) {
             return;
         }
         Direction direction = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
         BlockEntity inputContainer = level.getBlockEntity(blockPos.relative(direction.getClockWise()));
         BlockEntity outputContainer = level.getBlockEntity(blockPos.relative(direction.getCounterClockWise()));
-        if ( outputContainer == null || inputContainer == null) {
+        if (outputContainer == null || inputContainer == null) {
             return;
         }
         LazyOptional<IGasHandler> inputOptional = inputContainer.getCapability(Capabilities.GAS_HANDLER, direction.getCounterClockWise());
@@ -196,7 +195,7 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
         for (int a = 0; a < inputHandler.getTanks(); a++) {
             GasStack stack = inputHandler.getChemicalInTank(a);
             if (stack.getType() == Fuel) {
-                drain = new GasStack(Fuel,Math.min(  stack.getAmount(),2870));
+                drain = new GasStack(Fuel, Math.min(stack.getAmount(), 2870));
                 GasStack gasStack = inputHandler.extractChemical(drain, Action.SIMULATE);
                 if (gasStack.getAmount() > 0) {
                     drain = gasStack;
@@ -228,12 +227,12 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
             return;
         }
         long amount = Math.min(drain.getAmount(), insert.getAmount());
-        float multiplier =(float) amount/2870f;
+        float multiplier = (float) amount / 2870f;
         drain.setAmount(amount);
         insert.setAmount(amount);
         inputHandler.extractChemical(drain, Action.EXECUTE);
         outputHandler.insertChemical(insert, Action.EXECUTE);
-        entity.ENERGY_STORAGE.setEnergy(entity.ENERGY_STORAGE.getEnergy()+(int) (entity.getEnergyPerTick()*multiplier));
+        entity.ENERGY_STORAGE.setEnergy(entity.ENERGY_STORAGE.getEnergy() + (int) (entity.getEnergyPerTick() * multiplier));
         entity.setChanged();
     }
 
