@@ -110,5 +110,7 @@ public class ctiModifiers {
     public static final StaticModifier<TriangleTheory> triangletheory = MODIFIERS.register("triangletheory", TriangleTheory::new);
     public static final StaticModifier<BuriedOcean> korea = MODIFIERS.register("buriedocean", BuriedOcean::new);
     public static final StaticModifier<ExplosionPrevent> ExplosionPrevent = MODIFIERS.register("explosionprevent", ExplosionPrevent::new);
+    public static final StaticModifier<AtrophyBlade> AtrophyBlade = MODIFIERS.register("atrophyblade", AtrophyBlade::new);
+    public static final StaticModifier<KillPhantom> KillPhantom = MODIFIERS.register("killphantom", KillPhantom::new);
 
 }

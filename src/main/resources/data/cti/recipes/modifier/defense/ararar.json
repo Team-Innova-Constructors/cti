@@ -2,7 +2,8 @@
   "type": "tconstruct:modifier",
   "inputs": [
     {
-      "item": "farmersdelight:safety_net"
+      "item": "farmersdelight:safety_net",
+      "amount_needed": 2
     },
     {
       "item": "tconstruct:nahuatl"
@@ -11,10 +12,12 @@
       "item": "farmersdelight:safety_net"
     },
     {
-      "tag": "forge:plates/invar"
+      "item": "create:sturdy_sheet",
+      "amount_needed": 3
     },
     {
-      "tag": "forge:plates/invar"
+      "item": "create:sturdy_sheet",
+      "amount_needed": 3
     }
   ],
   "tools": {

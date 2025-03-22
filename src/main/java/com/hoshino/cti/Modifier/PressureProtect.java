@@ -1,6 +1,7 @@
 package com.hoshino.cti.Modifier;
 
 import com.hoshino.cti.register.ctiToolStats;
+import net.minecraft.world.item.Items;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;

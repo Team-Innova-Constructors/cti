@@ -31,7 +31,7 @@ public class ctiFluid {
     }
 
     public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(MOD_ID);
-    public static final FluidObject<ForgeFlowingFluid> flux_fluid = register("flux_fluid", 8192);
+    public static final FluidObject<ForgeFlowingFluid> starenergy_fluid = register("starenergy_fluid", 3152);
     public static final FluidObject<ForgeFlowingFluid> molten_uriel = register("molten_uriel", 8192);
     public static final FluidObject<ForgeFlowingFluid> molten_infinity = register("molten_infinity", 8192);
     public static final FluidObject<ForgeFlowingFluid> molten_stellar_manyullyn = register("molten_stellar_manyullyn", 131072);

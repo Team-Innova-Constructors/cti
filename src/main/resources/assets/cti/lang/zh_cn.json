@@ -57,23 +57,23 @@
   "item.cti.bloodgod_ingot": "§c血神锭",
   "item.cti.molten_bloodgod_bucket": "熔融血神桶",
   "fluid.cti.molten_bloodgod": "熔融血神",
-  "cti.tooltip.item.bloodgod_ingot.desc1": "让这一抹殷红色重铸吾身",
+  "cti.tooltip.item.bloodgod_ingot.desc1": "blood for the blood,blood for the blood",
   "cti.tooltip.item.bloodgod_ingot.desc2": "白武男(rRickroll) 贡献者材料",
 
   "material.cti.bloodgod": "血神",
-  "material.cti.bloodgod.flavor": "殷红且不可直视",
-  "material.cti.bloodgod.encyclopedia": "白武男(rRickroll) 贡献者材料\n据说那个叫白武男的群友55天都在哈气",
+  "material.cti.bloodgod.flavor": "安格隆打过来了？",
+  "material.cti.bloodgod.encyclopedia": "白武男(rRickroll) 贡献者材料",
 
   "modifier.cti.bloodgodbless": "血神赐福",
-  "modifier.cti.bloodgodbless.flavor": "与我，缔结契约吧",
+  "modifier.cti.bloodgodbless.flavor": "血祭血神，颅献颅座",
   "modifier.cti.bloodgodbless.description":"你每失去一点生命提升0.8%的伤害。当你拥有红温效果时，你的攻击(包括远程)额外附带8%当前生命值与黄心的伤害；你每次攻击回复8%的已损失生命值",
 
   "modifier.cti.bloodthirsty": "渴血",
-  "modifier.cti.bloodthirsty.flavor": "更多...我需要更多",
+  "modifier.cti.bloodthirsty.flavor": "不要放过任何猎物，否则你将会成为血神的猎物",
   "modifier.cti.bloodthirsty.description":"嗜血:你的第8次攻击伤害将提升至8倍。你造成的伤害额外附带8%的目标已损失血量，你的每次攻击消耗自身当前8%的生命值(最多降低至8血)。(仅近战生效)",
 
   "modifier.cti.subspace": "亚空间本质",
-  "modifier.cti.subspace.flavor": "行走于生死之间",
+  "modifier.cti.subspace.flavor": "凡渴求杀戮者，皆不惧卑劣之矢",
   "modifier.cti.subspace.description":"受到的远程攻击和魔法伤害伤害均降低60%",
 
   "item.cti.awakesaintchef_ingot": "§6觉醒龙皇锭(未完成）",
@@ -624,6 +624,10 @@
   "modifier.cti.atrophyblade.flavor": "永远也长不大",
   "modifier.cti.atrophyblade.description":"攻击时候会把史莱姆大小强行压制为1",
 
+  "modifier.cti.killphantom": "幻翼杀手",
+  "modifier.cti.killphantom.flavor": "我讨厌你",
+  "modifier.cti.killphantom.description": "穿着时会自动移除玩家30格内所有幻翼",
+
 
 
 
@@ -729,5 +733,7 @@
   "item.cti.meteor_shower": "流星雨",
   "cti.ritual_desc.meteor_shower":"让雨点般密集的陨石从天上坠落，将你的世界焚烧殆尽。注：作用范围为84*84，这些陨石可能会摧毁你的火盆。",
 
-  "cti.ritual_desc.meteor_shower":"让雨点般密集的陨石从天上坠落，将你的世界焚烧殆尽。注：作用范围为84*84，这些陨石可能会摧毁你的火盆。"
+
+  "trait.l2hostility.purify": "净化",
+  "trait.l2hostility.purify.desc": "怪物会免疫掉负面药水状态效果"
 }
