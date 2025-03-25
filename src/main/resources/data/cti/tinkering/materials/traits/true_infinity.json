@@ -65,6 +65,20 @@
         "name": "cti:tinge",
         "level": 1
       }
+    ],
+    "etshtinker:plasma_generator": [
+      {
+        "name": "cti:infinity",
+        "level": 5
+      },
+      {
+        "name": "cti:cosmopolitan",
+        "level": 1
+      },
+      {
+        "name": "cti:tinge",
+        "level": 1
+      }
     ]
   }
 }
