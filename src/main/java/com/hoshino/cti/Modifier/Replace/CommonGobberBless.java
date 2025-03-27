@@ -48,7 +48,7 @@ public class CommonGobberBless extends BattleModifier {
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         if (context.getLivingTarget() instanceof WitherBoss wither && context.getAttacker() instanceof Player player) {
-            wither.hurt(DamageSource.playerAttack(player), wither.getMaxHealth() * 0.06F);
+            wither.hurt(DamageSource.playerAttack(player).bypassArmor().bypassMagic(), wither.getMaxHealth() * 0.06F);
         }
     }
 
