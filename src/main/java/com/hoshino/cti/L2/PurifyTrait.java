@@ -1,6 +1,5 @@
 package com.hoshino.cti.L2;
 
-import com.gjhi.tinkersinnovation.register.TinkersInnovationCompat;
 import com.hoshino.cti.register.ctiHostilityTrait;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import com.marth7th.solidarytinker.register.TinkerCuriosModifier;
@@ -21,12 +20,10 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
-import slimeknights.tconstruct.common.TinkerTags;
-import top.theillusivec4.curios.api.CuriosApi;
+ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
