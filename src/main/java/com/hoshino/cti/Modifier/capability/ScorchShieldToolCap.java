@@ -6,6 +6,7 @@ import com.hoshino.cti.register.ctiToolStats;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
@@ -21,7 +22,7 @@ public class ScorchShieldToolCap implements IScorchShielding, ToolCapabilityProv
     }
 
     @Override
-    public <T> LazyOptional<T> getCapability(IToolStackView iToolStackView, Capability<T> capability) {
+    public <T> @NotNull LazyOptional<T> getCapability(IToolStackView iToolStackView, @NotNull Capability<T> capability) {
         return iToolStackView.getStats().get(ctiToolStats.SCORCH_RESISTANCE) > 0 && capability == ctiCapabilities.SCORCH_SHIELDING ? ctiCapabilities.SCORCH_SHIELDING.orEmpty(capability, this.capOptional) : LazyOptional.empty();
     }
 
