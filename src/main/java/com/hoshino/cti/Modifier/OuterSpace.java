@@ -20,9 +20,9 @@ public class OuterSpace extends NoLevelsModifier {
                     event.setAmount(event.getAmount() * 1.25f);
                 }
                 if (!event.getSource().isDamageHelmet()) {
-                    living.invulnerableTime = 0;
-                    living.hurt(DamageSource.FALLING_BLOCK, event.getAmount() * 0.2f);
-                    living.invulnerableTime = 0;
+                    event.getEntity().invulnerableTime = 0;
+                    event.getEntity().hurt(DamageSource.FALLING_BLOCK, event.getAmount() * 0.2f);
+                    event.getEntity().invulnerableTime = 0;
                 }
             }
         }
