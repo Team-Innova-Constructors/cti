@@ -29,10 +29,12 @@ public class NerfedDash extends Modifier implements MeleeDamageModifierHook, Bre
     public float getbonus(float speed, int level, int status) {
         return speed * level * status;
     }
+
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.TOOLTIP, ModifierHooks.MELEE_DAMAGE, ModifierHooks.BREAK_SPEED, ModifierHooks.CONDITIONAL_STAT);
     }
+
     @Override
     public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
         Player player = context.getPlayerAttacker();

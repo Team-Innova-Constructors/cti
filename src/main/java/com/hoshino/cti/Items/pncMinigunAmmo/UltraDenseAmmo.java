@@ -5,8 +5,8 @@ import me.desht.pneumaticcraft.common.core.ModUpgrades;
 import me.desht.pneumaticcraft.common.item.minigun.AbstractGunAmmoItem;
 import me.desht.pneumaticcraft.common.minigun.Minigun;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.EnderDragonPart;
@@ -17,7 +17,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import net.minecraft.client.gui.screens.Screen;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -27,21 +26,26 @@ public class UltraDenseAmmo extends AbstractGunAmmoItem {
     public int getAmmoColor(ItemStack itemStack) {
         return 0x00600075;
     }
+
     @Override
     public int getMaxDamage(ItemStack stack) {
         return 1024;
     }
+
     @Override
     protected float getDamageMultiplier(Entity target, ItemStack ammoStack) {
         return 16f;
     }
+
     @Override
     public float getAirUsageMultiplier(Minigun minigun, ItemStack ammoStack) {
         return 0.1f;
     }
+
     public float getRangeMultiplier(ItemStack ammoStack) {
         return 7f;
     }
+
     @Override
     public int onTargetHit(Minigun minigun, ItemStack ammo, Entity target) {
         int times = 1;
@@ -52,8 +56,8 @@ public class UltraDenseAmmo extends AbstractGunAmmoItem {
         double dmgMult = getDamageMultiplier(target, ammo);
         if (dmgMult > 0) {
             if (target instanceof LivingEntity || target instanceof EnderDragonPart || target instanceof EndCrystal) {
-                target.invulnerableTime=0;
-                target.hurt(getDamageSource(minigun), (float)(ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times));
+                target.invulnerableTime = 0;
+                target.hurt(getDamageSource(minigun), (float) (ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times));
             } else if (target instanceof ShulkerBullet || target instanceof AbstractHurtingProjectile) {
                 target.discard();
             }
@@ -62,9 +66,9 @@ public class UltraDenseAmmo extends AbstractGunAmmoItem {
     }
 
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        if (Screen.hasShiftDown()){
+        if (Screen.hasShiftDown()) {
             list.add(Component.translatable("cti.tooltip.item.ultradense_ammo").withStyle(ChatFormatting.AQUA));
-        }else {
+        } else {
             list.add(Component.translatable("cti.tooltip.item.shift").withStyle(ChatFormatting.AQUA));
         }
     }

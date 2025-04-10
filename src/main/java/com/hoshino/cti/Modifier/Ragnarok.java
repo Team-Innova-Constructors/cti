@@ -1,12 +1,12 @@
 package com.hoshino.cti.Modifier;
 
 import dev.xkmc.l2hostility.content.capability.mob.MobTraitCap;
-import dev.xkmc.l2hostility.content.item.traits.TraitSymbol;
 import dev.xkmc.l2hostility.content.traits.base.MobTrait;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.util.LazyOptional;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -26,18 +26,18 @@ public class Ragnarok extends Modifier implements MeleeHitModifierHook {
     }
 
     @Override
-    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-        if (context.getTarget() instanceof LivingEntity living){
+    public void afterMeleeHit(@NotNull IToolStackView tool, @NotNull ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+        if (context.getTarget() instanceof LivingEntity living) {
             Random random = new Random();
             LazyOptional<MobTraitCap> optional = living.getCapability(MobTraitCap.CAPABILITY);
-            if (optional.isPresent()){
-                MobTraitCap cap = optional.orElse(null);
+            if (optional.resolve().isPresent()) {
+                MobTraitCap cap = optional.resolve().get();
                 Set<MobTrait> set = cap.traits.keySet();
                 MobTrait trait = set.stream().toList().get(random.nextInt(set.size()));
                 int count = cap.traits.get(trait);
-                if (trait!=null&&random.nextInt(3)==0){
+                if (trait != null && random.nextInt(3) == 0) {
                     cap.removeTrait(trait);
-                    ItemEntity entity = new ItemEntity(living.level,living.getX(),living.getY(),living.getZ(),new ItemStack(trait.asItem(),count));
+                    ItemEntity entity = new ItemEntity(living.level, living.getX(), living.getY(), living.getZ(), new ItemStack(trait.asItem(), count));
                     living.level.addFreshEntity(entity);
                 }
             }

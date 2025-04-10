@@ -3,7 +3,6 @@ package com.hoshino.cti.integration;
 import com.hoshino.cti.Plugin.JEIPlugin;
 import com.hoshino.cti.cti;
 import com.hoshino.cti.recipe.AtmosphereCondensorRecipe;
-import com.hoshino.cti.recipe.AtmosphereExtractorRecipe;
 import com.hoshino.cti.register.ctiItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
@@ -25,8 +24,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 
-import static mezz.jei.library.ingredients.IngredientInfoRecipe.recipeWidth;
-
 public class AtmosphereCondenseRecipeCategory implements IRecipeCategory<AtmosphereCondensorRecipe> {
     // 区分合成分类的ID
     public static final ResourceLocation UID = new ResourceLocation(cti.MOD_ID,
@@ -41,11 +38,11 @@ public class AtmosphereCondenseRecipeCategory implements IRecipeCategory<Atmosph
     private final IDrawable icon;
 
     // 构造方法
-    public AtmosphereCondenseRecipeCategory(IGuiHelper helper){
+    public AtmosphereCondenseRecipeCategory(IGuiHelper helper) {
         // 渲染背景图片。图片的开始位置和图片的结束的位置 u,v,width,height
-        this.background  = helper.createDrawable(TEXTURE,42,17,100,48);
+        this.background = helper.createDrawable(TEXTURE, 42, 17, 100, 48);
         // 图标
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(ctiItem.atmosphere_condensator.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ctiItem.atmosphere_condensator.get()));
 
     }
 
@@ -60,6 +57,7 @@ public class AtmosphereCondenseRecipeCategory implements IRecipeCategory<Atmosph
     public Component getTitle() {
         return Component.literal("大气冷凝");
     }
+
     //
     @Override
     public IDrawable getBackground() {
@@ -74,15 +72,15 @@ public class AtmosphereCondenseRecipeCategory implements IRecipeCategory<Atmosph
     // 添加合成表的输入slot和输出的slot
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, AtmosphereCondensorRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.OUTPUT,74,4).setFluidRenderer(40,false,16,40).addIngredient(ForgeTypes.FLUID_STACK,recipe.getFluid());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 74, 4).setFluidRenderer(40, false, 16, 40).addIngredient(ForgeTypes.FLUID_STACK, recipe.getFluid());
     }
 
     @Override
     public void draw(AtmosphereCondensorRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
         String biomes = recipe.getBiome();
-        ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(biomes));
-        Component biomeC =Component.literal("群系:").withStyle(ChatFormatting.WHITE).append( Component.translatable("biome."+key.location().toLanguageKey()).withStyle(ChatFormatting.LIGHT_PURPLE));
-        Minecraft.getInstance().font.draw(stack, biomeC, 2, (Minecraft.getInstance().font.lineHeight + 2) * 2 -20, 0);
+        ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(biomes));
+        Component biomeC = Component.literal("群系:").withStyle(ChatFormatting.WHITE).append(Component.translatable("biome." + key.location().toLanguageKey()).withStyle(ChatFormatting.LIGHT_PURPLE));
+        Minecraft.getInstance().font.draw(stack, biomeC, 2, (Minecraft.getInstance().font.lineHeight + 2) * 2 - 20, 0);
         IRecipeCategory.super.draw(recipe, recipeSlotsView, stack, mouseX, mouseY);
     }
 }

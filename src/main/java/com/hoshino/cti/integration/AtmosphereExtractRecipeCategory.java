@@ -39,11 +39,11 @@ public class AtmosphereExtractRecipeCategory implements IRecipeCategory<Atmosphe
     private final IDrawable icon;
 
     // 构造方法
-    public AtmosphereExtractRecipeCategory(IGuiHelper helper){
+    public AtmosphereExtractRecipeCategory(IGuiHelper helper) {
         // 渲染背景图片。图片的开始位置和图片的结束的位置 u,v,width,height
-        this.background  = helper.createDrawable(TEXTURE,42,17,100,48);
+        this.background = helper.createDrawable(TEXTURE, 42, 17, 100, 48);
         // 图标
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(ctiItem.atmosphere_extractor.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ctiItem.atmosphere_extractor.get()));
 
     }
 
@@ -58,6 +58,7 @@ public class AtmosphereExtractRecipeCategory implements IRecipeCategory<Atmosphe
     public Component getTitle() {
         return Component.literal("大气提取");
     }
+
     //
     @Override
     public IDrawable getBackground() {
@@ -72,15 +73,15 @@ public class AtmosphereExtractRecipeCategory implements IRecipeCategory<Atmosphe
     // 添加合成表的输入slot和输出的slot
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, AtmosphereExtractorRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.OUTPUT,74,18).addItemStack(recipe.getResultItem());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 74, 18).addItemStack(recipe.getResultItem());
     }
 
     @Override
     public void draw(AtmosphereExtractorRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
         String biomes = recipe.getBiome();
-        ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY,new ResourceLocation(biomes));
-        Component biomeC =Component.literal("群系:").withStyle(ChatFormatting.WHITE).append( Component.translatable("biome."+key.location().toLanguageKey()).withStyle(ChatFormatting.LIGHT_PURPLE));
-        Minecraft.getInstance().font.draw(stack, biomeC, recipeWidth / 2 - Minecraft.getInstance().font.width(biomeC), (Minecraft.getInstance().font.lineHeight + 2) * 2 -20, 0);
+        ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(biomes));
+        Component biomeC = Component.literal("群系:").withStyle(ChatFormatting.WHITE).append(Component.translatable("biome." + key.location().toLanguageKey()).withStyle(ChatFormatting.LIGHT_PURPLE));
+        Minecraft.getInstance().font.draw(stack, biomeC, recipeWidth / 2 - Minecraft.getInstance().font.width(biomeC), (Minecraft.getInstance().font.lineHeight + 2) * 2 - 20, 0);
         IRecipeCategory.super.draw(recipe, recipeSlotsView, stack, mouseX, mouseY);
     }
 }

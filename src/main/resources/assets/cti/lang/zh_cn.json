@@ -11,6 +11,9 @@
   "effect.cti.ev": "狩猎",
   "effect.cti.ancientdragonflame": "远古龙焰",
   "effect.cti.meteor_shower": "陨石雨",
+  "effect.cti.numerical_perception": "数维的感知",
+  "effect.cti.curve_mapping": "曲线映射",
+  "effect.cti.supplementary_formula": "补充算式",
 
 
   "cti.tooltip.item.shift": "按下 Shift 以获取信息",
@@ -54,23 +57,23 @@
   "item.cti.bloodgod_ingot": "§c血神锭",
   "item.cti.molten_bloodgod_bucket": "熔融血神桶",
   "fluid.cti.molten_bloodgod": "熔融血神",
-  "cti.tooltip.item.bloodgod_ingot.desc1": "让这一抹殷红色重铸吾身",
+  "cti.tooltip.item.bloodgod_ingot.desc1": "blood for the blood,blood for the blood",
   "cti.tooltip.item.bloodgod_ingot.desc2": "白武男(rRickroll) 贡献者材料",
 
   "material.cti.bloodgod": "血神",
-  "material.cti.bloodgod.flavor": "殷红且不可直视",
-  "material.cti.bloodgod.encyclopedia": "白武男(rRickroll) 贡献者材料\n据说那个叫白武男的群友55天都在哈气",
+  "material.cti.bloodgod.flavor": "安格隆打过来了？",
+  "material.cti.bloodgod.encyclopedia": "白武男(rRickroll) 贡献者材料",
 
   "modifier.cti.bloodgodbless": "血神赐福",
-  "modifier.cti.bloodgodbless.flavor": "与我，缔结契约吧",
+  "modifier.cti.bloodgodbless.flavor": "血祭血神，颅献颅座",
   "modifier.cti.bloodgodbless.description":"你每失去一点生命提升0.8%的伤害。当你拥有红温效果时，你的攻击(包括远程)额外附带8%当前生命值与黄心的伤害；你每次攻击回复8%的已损失生命值",
 
   "modifier.cti.bloodthirsty": "渴血",
-  "modifier.cti.bloodthirsty.flavor": "更多...我需要更多",
+  "modifier.cti.bloodthirsty.flavor": "不要放过任何猎物，否则你将会成为血神的猎物",
   "modifier.cti.bloodthirsty.description":"嗜血:你的第8次攻击伤害将提升至8倍。你造成的伤害额外附带8%的目标已损失血量，你的每次攻击消耗自身当前8%的生命值(最多降低至8血)。(仅近战生效)",
 
   "modifier.cti.subspace": "亚空间本质",
-  "modifier.cti.subspace.flavor": "行走于生死之间",
+  "modifier.cti.subspace.flavor": "凡渴求杀戮者，皆不惧卑劣之矢",
   "modifier.cti.subspace.description":"受到的远程攻击和魔法伤害伤害均降低60%",
 
   "item.cti.awakesaintchef_ingot": "§6觉醒龙皇锭(未完成）",
@@ -99,6 +102,14 @@
   "material.cti.uriel": "乌列尔",
   "material.cti.uriel.flavor": "恶魔般的火之审判官",
   "material.cti.uriel.encyclopedia": "牢墨贡献者材料\n祂手持火焰之剑，以地狱之火审判一切罪孽深重之人",
+
+  "material.cti.buriedocean": "海葬",
+  "material.cti.buriedocean.flavor": "跟随柯尼利亚船长一同沉入海底的一把随身武器的材料",
+  "material.cti.buriedocean.encyclopedia": "绽放着淡蓝色的光芒,明亮但又略显黯淡",
+
+  "modifier.cti.buriedocean": "海葬",
+  "modifier.cti.buriedocean.flavor": "无尽的怨恨",
+  "modifier.cti.buriedocean.description":"对目标额外造成柯尼利亚船长自身最大生命3%的魔法伤害,此伤害穿透魔法防御,并且会越累计越高,至多堆积到6000%倍率",
 
   "modifier.cti.timetojudge": "审判时刻",
   "modifier.cti.timetojudge.flavor": "自此刻起，下达判决",
@@ -132,16 +143,35 @@
 
   "modifier.cti.arcaneprotect": "奥法•魔力加护",
   "modifier.cti.arcaneprotect.flavor": "纵使相逢应不识,牢署模组几时实",
-  "modifier.cti.arcaneprotect.description":"你收到的所有为魔法类型的伤害变为1点,并且受伤的无敌帧延长.每5秒获得6秒生命恢复5",
+  "modifier.cti.arcaneprotect.description":"你收到的所有为魔法类型的伤害变为1点,并且受伤获得短暂无敌效果.每5秒获得6秒生命恢复5",
 
   "modifier.cti.arcanetough": "奥法•坚韧",
   "modifier.cti.arcanetough.flavor": "门前冷落鞍马稀,牢署大饼积又积",
-  "modifier.cti.arcanetough.description":"工具会吸收魔力来修复自己,并且每次修复10耐久,每次修复还会给与玩家1000经验点数.但是工具正常使用不再消耗耐久",
+  "modifier.cti.arcanetough.description":"工具会吸收魔力来修复自己,并且每次修复10耐久,每次修复还会给与玩家100经验点数.但是工具正常使用不再消耗耐久",
 
   "modifier.cti.arcanefilling": "奥法•充盈",
   "modifier.cti.arcanefilling.flavor": "白日放歌须纵酒,署观教程愁又愁",
   "modifier.cti.arcanefilling.description":"你的工具会对周围敌人溅射等额魔法伤害,等级越高范围越大.当装备这个装备到身上时,你造成的所有自己来源魔法伤害翻倍",
 
+  "modifier.cti.originbasedcomputation": "本源的运算",
+  "modifier.cti.originbasedcomputation.flavor": "矛盾的集合",
+  "modifier.cti.originbasedcomputation.description": "有该词条的武器的伤害转换为本源伤害（无视防御），每次攻击都视为暴击且暴击伤害增加35%。",
+
+  "modifier.cti.kingdomofnumbers": "数于几何的王国",
+  "modifier.cti.kingdomofnumbers.flavor": "它是尽头，是答案，是一切计算的结果",
+  "modifier.cti.kingdomofnumbers.description": "造成奇数伤害时获得一层[数维的感知]，持续10s，初始冷却为15s，每一级词条会使冷却减少0.5s并格外增加一层[数维的感知]。\n[数维的感知]：每级使面板攻击力提高10%，攻击距离+0.5，期间造成伤害提高至200%",
+
+  "modifier.cti.curvemapping": "曲线映射",
+  "modifier.cti.curvemapping.flavor": "一种优美的形式。在维度与分形上可取--众所周知的事实",
+  "modifier.cti.curvemapping.description": "造成偶数伤害时，获得25%减伤，持续10s，初始冷却15s，每一级提升，额外获得5%减伤，并减少0.5s冷却最高生效5级。",
+
+  "modifier.cti.supplementaryformula": "补充算式",
+  "modifier.cti.supplementaryformula.flavor": "不谙日月的真理之底",
+  "modifier.cti.supplementaryformula.description": "每过37秒获得持续10s的25%减伤，穿戴的装备中每有一级该词条都会使减伤格外获得5%，最高生效8级词条。",
+
+  "modifier.cti.triangletheory": "三角正论",
+  "modifier.cti.triangletheory.flavor": "一个显而易见的三角形，为不公的忽视而发声，举证如下",
+  "modifier.cti.triangletheory.description": "穿戴的装备中有该词条时第三次攻击才可对你造成伤害。",
 
 
   "item.cti.ultradense_ammo": "超致密机枪弹药",
@@ -527,16 +557,16 @@
   "modifier.cti.encrypt.description":"怪物无法复印你的装备词条",
 
   "modifier.cti.commongobberbless": "戈伯恩惠",
-  "modifier.cti.commongobberbless.flavor": "主世界加成",
-  "modifier.cti.commongobberbless.description":"处于主世界时，伤害每级增加15%，并且缓慢恢复饱食度.作为盔甲时每级减少6%收到的伤害\n[特殊效果]作为近战武器，对凋灵会附带6%最大生命的伤害(六百六十六，这个玩家开桂了)",
+  "modifier.cti.commongobberbless.flavor": "旅途的开始",
+  "modifier.cti.commongobberbless.description":"伤害每级增加15%，并且缓慢恢复饱食度.作为盔甲时每级减少6%收到的伤害\n[特殊效果]作为近战武器，对凋灵会附带6%最大生命的伤害(六百六十六，这个玩家开桂了)",
 
   "modifier.cti.nethergobberbless": "下界戈伯恩惠",
-  "modifier.cti.nethergobberbless.flavor": "下界加成",
-  "modifier.cti.nethergobberbless.description":"处于下界时，获得常驻的抗火效果，伤害每级增加25%，并且缓慢恢复饱食度.作为盔甲时每级减少8%收到的伤害\n[特殊效果]作为近战武器，对凋灵骷髅会直接击杀并且必定获得一个头颅。当对应工具为劈刀，则增加九倍的头颅获取量，并且基于肢解等级合-5会额外提升头颅获得倍率，至高一次获得27个头颅",
+  "modifier.cti.nethergobberbless.flavor": "焱狱与苦难",
+  "modifier.cti.nethergobberbless.description":"获得常驻的抗火效果，伤害每级增加25%，并且缓慢恢复饱食度.作为盔甲时每级减少8%收到的伤害\n[特殊效果]作为近战武器，对凋灵骷髅会直接击杀并且必定获得一个头颅。当对应工具为劈刀，会基于肢解等级*抢夺类词条总等级会额外提升头颅获得倍率",
 
   "modifier.cti.endergobberbless": "末影戈伯恩惠",
-  "modifier.cti.endergobberbless.flavor": "末地加成",
-  "modifier.cti.endergobberbless.description":"处于末地时，获得常驻的飞行和抗火效果，伤害每级增加35%，并且缓慢恢复饱食度.作为盔甲时每级减少10%收到的伤害\n[特殊效果]作为武器每次对末影龙造成伤害均会额外提升末影龙4%最大生命的伤害,使用劈刀击杀末影龙的时候必定掉落9个末影龙头颅",
+  "modifier.cti.endergobberbless.flavor": "结束了？",
+  "modifier.cti.endergobberbless.description":"获得抗火效果，伤害每级增加35%，并且缓慢恢复饱食度.作为盔甲时每级减少10%收到的伤害\n[特殊效果]作为武器每次对末影龙造成伤害均会额外提升末影龙6%最大生命的伤害,使用劈刀击杀末影龙的时候必定掉落9个末影龙头颅",
 
   "modifier.cti.encrypt": "加密",
   "modifier.cti.encrypt.flavor": "???",
@@ -585,6 +615,18 @@
   "modifier.cti.outer_space": "天外来客",
   "modifier.cti.outer_space.flavor": "人走在路上被陨石砸死的概率很小，但是不为零",
   "modifier.cti.outer_space.description": "所有攻击附带20%的下坠方块伤害，在非主世界的维度时所有伤害增加25%。",
+
+  "modifier.cti.explosionprevent": "热爆甲",
+  "modifier.cti.explosionprevent.flavor": "谁家小热爆花",
+  "modifier.cti.explosionprevent.description":"你周围10格内苦力怕类生物的爆炸会被完全压制，不再破坏方块",
+
+  "modifier.cti.atrophyblade": "生长抑制剂",
+  "modifier.cti.atrophyblade.flavor": "永远也长不大",
+  "modifier.cti.atrophyblade.description":"攻击时候会把史莱姆大小强行压制为1",
+
+  "modifier.cti.killphantom": "幻翼杀手",
+  "modifier.cti.killphantom.flavor": "我讨厌你",
+  "modifier.cti.killphantom.description": "穿着时会自动移除玩家30格内所有幻翼",
 
 
 
@@ -691,5 +733,7 @@
   "item.cti.meteor_shower": "流星雨",
   "cti.ritual_desc.meteor_shower":"让雨点般密集的陨石从天上坠落，将你的世界焚烧殆尽。注：作用范围为84*84，这些陨石可能会摧毁你的火盆。",
 
-  "cti.ritual_desc.meteor_shower":"让雨点般密集的陨石从天上坠落，将你的世界焚烧殆尽。注：作用范围为84*84，这些陨石可能会摧毁你的火盆。"
+
+  "trait.l2hostility.purify": "净化",
+  "trait.l2hostility.purify.desc": "怪物会免疫掉负面药水状态效果"
 }

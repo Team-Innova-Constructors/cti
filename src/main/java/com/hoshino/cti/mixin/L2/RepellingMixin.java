@@ -17,18 +17,18 @@ import java.util.List;
 
 @Mixin(value = PushPullTrait.class, remap = false)
 public abstract class RepellingMixin {
-    @Inject(method = "tick",remap = false,at = {@At("HEAD")}, cancellable = true)
-    private void tick(LivingEntity mob, int level, CallbackInfo ci){
+    @Inject(method = "tick", remap = false, at = {@At("HEAD")}, cancellable = true)
+    private void tick(LivingEntity mob, int level, CallbackInfo ci) {
         if (mob.level.isClientSide()) {
-            double x= mob.getX();
-            double y= mob.getY();
-            double z= mob.getZ();
-            List<Player> lv=mob.level.getEntitiesOfClass(Player.class, new AABB(x + 10, y + 10, z + 10, x - 10, y - 10, z - 10));
+            double x = mob.getX();
+            double y = mob.getY();
+            double z = mob.getZ();
+            List<Player> lv = mob.level.getEntitiesOfClass(Player.class, new AABB(x + 10, y + 10, z + 10, x - 10, y - 10, z - 10));
             for (Player players : lv) {
-                if(players!=null){
-                    List<ItemStack>stacks= ToolUtils.Curios.getStacks(players);
-                    for(ItemStack curios : stacks){
-                        if(ModifierUtil.getModifierLevel(curios, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId())>0){
+                if (players != null) {
+                    List<ItemStack> stacks = ToolUtils.Curios.getStacks(players);
+                    for (ItemStack curios : stacks) {
+                        if (ModifierUtil.getModifierLevel(curios, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId()) > 0) {
                             ci.cancel();
                         }
                     }

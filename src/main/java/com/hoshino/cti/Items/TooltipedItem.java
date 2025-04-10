@@ -10,11 +10,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class TooltipedItem extends Item{
+public class TooltipedItem extends Item {
     public final List<Component> tooltip;
+
     public TooltipedItem(Item.Properties properties, @NotNull List<Component> tooltip) {
         super(properties);
-        this.tooltip =tooltip;
+        this.tooltip = tooltip;
     }
 
     @Override

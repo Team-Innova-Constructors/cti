@@ -6,9 +6,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.fml.LogicalSide;
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
@@ -22,13 +20,13 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 public class DoubleEdged extends NoLevelsModifier implements MeleeDamageModifierHook, MeleeHitModifierHook {
-    public DoubleEdged(){
+    public DoubleEdged() {
         MinecraftForge.EVENT_BUS.addListener(this::OnLeftClick);
         MinecraftForge.EVENT_BUS.addListener(this::OnLeftClickBlock);
     }
 
     private void OnLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
-        if (event.getSide()== LogicalSide.CLIENT) {
+        if (event.getSide() == LogicalSide.CLIENT) {
             ItemStack stack = event.getItemStack();
             if (stack.getItem() instanceof IModifiable && event.getHand() == InteractionHand.MAIN_HAND) {
                 ToolStack tool = ToolStack.from(stack);
@@ -42,11 +40,11 @@ public class DoubleEdged extends NoLevelsModifier implements MeleeDamageModifier
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         super.registerHooks(hookBuilder);
-        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE,ModifierHooks.MELEE_HIT);
+        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.MELEE_HIT);
     }
 
     private void OnLeftClick(PlayerInteractEvent.LeftClickEmpty event) {
-        if (event.getSide()== LogicalSide.CLIENT) {
+        if (event.getSide() == LogicalSide.CLIENT) {
             ItemStack stack = event.getItemStack();
             if (stack.getItem() instanceof IModifiable && event.getHand() == InteractionHand.MAIN_HAND) {
                 ToolStack tool = ToolStack.from(stack);
@@ -59,16 +57,16 @@ public class DoubleEdged extends NoLevelsModifier implements MeleeDamageModifier
 
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
-        if (!context.isFullyCharged()&&!context.isExtraAttack()){
-            ToolAttackUtil.attackEntity(tool,context.getAttacker(),context.getHand(),context.getAttacker(), context::getCooldown,true);
+        if (!context.isFullyCharged() && !context.isExtraAttack()) {
+            ToolAttackUtil.attackEntity(tool, context.getAttacker(), context.getHand(), context.getAttacker(), context::getCooldown, true);
         }
         return knockback;
     }
 
     @Override
     public float getMeleeDamage(IToolStackView iToolStackView, ModifierEntry modifierEntry, ToolAttackContext toolAttackContext, float baseDamage, float damage) {
-        if (toolAttackContext.getHand()==InteractionHand.MAIN_HAND&&toolAttackContext.isFullyCharged()) {
-            return damage *2.5f;
+        if (toolAttackContext.getHand() == InteractionHand.MAIN_HAND && toolAttackContext.isFullyCharged()) {
+            return damage * 2.5f;
         }
         return damage;
     }

@@ -17,12 +17,12 @@ public class QuantumMinerRecipe implements Recipe<SimpleContainer> {
     private final ResourceLocation id;
     private final ItemStack output;
     private final float chance;
-    private final Ingredient ingredient =Ingredient.EMPTY;
+    private final Ingredient ingredient = Ingredient.EMPTY;
 
-    public QuantumMinerRecipe(ResourceLocation id, ItemStack output,float chance){
+    public QuantumMinerRecipe(ResourceLocation id, ItemStack output, float chance) {
         this.id = id;
         this.output = output;
-        this.chance =chance;
+        this.chance = chance;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class QuantumMinerRecipe implements Recipe<SimpleContainer> {
         return !pLevel.isClientSide();
     }
 
-    public float getChance(){
+    public float getChance() {
         return chance;
     }
 
@@ -64,8 +64,10 @@ public class QuantumMinerRecipe implements Recipe<SimpleContainer> {
         return QuantumMinerRecipe.Type.INSTANCE;
     }
 
-    public static class Type implements RecipeType<QuantumMinerRecipe>{
-        private Type(){}
+    public static class Type implements RecipeType<QuantumMinerRecipe> {
+        private Type() {
+        }
+
         public static final QuantumMinerRecipe.Type INSTANCE = new QuantumMinerRecipe.Type();
         public static final String ID = "quantum_mining";
     }
@@ -75,19 +77,21 @@ public class QuantumMinerRecipe implements Recipe<SimpleContainer> {
     @Deprecated
     public static class Serializer implements RecipeSerializer<QuantumMinerRecipe> {
         public static final QuantumMinerRecipe.Serializer INSTANCE = new QuantumMinerRecipe.Serializer();
-        public static final  ResourceLocation ID = new ResourceLocation(cti.MOD_ID,"quantum_mining");
+        public static final ResourceLocation ID = new ResourceLocation(cti.MOD_ID, "quantum_mining");
+
         @Override
         public QuantumMinerRecipe fromJson(@NotNull ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
-            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe,"output"));
-            float chance = GsonHelper.getAsFloat(pSerializedRecipe,"chance");
-            return new QuantumMinerRecipe(pRecipeId,output,chance);
+            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
+            float chance = GsonHelper.getAsFloat(pSerializedRecipe, "chance");
+            return new QuantumMinerRecipe(pRecipeId, output, chance);
         }
+
         // 从服务器中发送的数据中解码recipe，配方标识符不需要解码。
         @Override
         public @Nullable QuantumMinerRecipe fromNetwork(@NotNull ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
             ItemStack output = pBuffer.readItem();
             float chance = pBuffer.readFloat();
-            return new QuantumMinerRecipe(pRecipeId,output,chance);
+            return new QuantumMinerRecipe(pRecipeId, output, chance);
         }
 
         @Override
@@ -95,7 +99,7 @@ public class QuantumMinerRecipe implements Recipe<SimpleContainer> {
             pBuffer.writeResourceLocation(pRecipe.id);
             pBuffer.writeInt(pRecipe.getIngredients().size());
             pRecipe.ingredient.toNetwork(pBuffer);
-            pBuffer.writeItemStack(pRecipe.getResultItem(),false);
+            pBuffer.writeItemStack(pRecipe.getResultItem(), false);
             pBuffer.writeFloat(pRecipe.chance);
         }
     }

@@ -25,7 +25,7 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import java.util.List;
 
 public class Emp extends etshmodifieriii implements DurabilityDisplayModifierHook {
-    public static ResourceLocation charge = new ResourceLocation(cti.MOD_ID,"emp_charge");
+    public static ResourceLocation charge = new ResourceLocation(cti.MOD_ID, "emp_charge");
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
@@ -45,12 +45,12 @@ public class Emp extends etshmodifieriii implements DurabilityDisplayModifierHoo
 
     @Override
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (tool.getPersistentData().getInt(charge)<100&&!level.isClientSide){
-            tool.getPersistentData().putInt(charge,tool.getPersistentData().getInt(charge)+1);
+        if (tool.getPersistentData().getInt(charge) < 100 && !level.isClientSide) {
+            tool.getPersistentData().putInt(charge, tool.getPersistentData().getInt(charge) + 1);
         }
-        if (holder!=null&&holder.getPersistentData().getInt("empcd")>0){
-            holder.getPersistentData().putInt("empcd",holder.getPersistentData().getInt("empcd")-1);
-            if (holder.getPersistentData().getInt("empcd")<=0){
+        if (holder != null && holder.getPersistentData().getInt("empcd") > 0) {
+            holder.getPersistentData().putInt("empcd", holder.getPersistentData().getInt("empcd") - 1);
+            if (holder.getPersistentData().getInt("empcd") <= 0) {
                 holder.getPersistentData().remove("empcd");
             }
         }
@@ -58,33 +58,33 @@ public class Emp extends etshmodifieriii implements DurabilityDisplayModifierHoo
 
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
-        LivingEntity living =context.getAttacker();
-        if (tool.getPersistentData().getInt(charge)>=100&&living.getPersistentData().getInt("empcd")<=0) {
+        LivingEntity living = context.getAttacker();
+        if (tool.getPersistentData().getInt(charge) >= 100 && living.getPersistentData().getInt("empcd") <= 0) {
             Entity entity = context.getTarget();
             List<LivingEntity> list = entity.level.getEntitiesOfClass(LivingEntity.class, new AABB(entity.blockPosition()).inflate(24));
             for (LivingEntity target : list) {
-                if (!(target instanceof Player)&&target!=null) {
+                if (!(target instanceof Player) && target != null) {
                     target.getPersistentData().putInt("emp", 60);
                 }
             }
-            tool.getPersistentData().putInt(charge,0);
-            living.getPersistentData().putInt("empcd",200);
+            tool.getPersistentData().putInt(charge, 0);
+            living.getPersistentData().putInt("empcd", 200);
         }
         return knockback;
     }
 
     @Override
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        if (livingEntity!=null) {
+        if (livingEntity != null) {
             if (tool.getPersistentData().getInt(charge) >= 100 && livingEntity.getPersistentData().getInt("empcd") <= 0) {
                 List<LivingEntity> list = livingEntity.level.getEntitiesOfClass(LivingEntity.class, new AABB(livingEntity.blockPosition()).inflate(24));
                 for (LivingEntity target : list) {
-                    if (!(target instanceof Player)&&target!=null) {
+                    if (!(target instanceof Player) && target != null) {
                         target.getPersistentData().putInt("emp", 60);
                     }
                 }
                 tool.getPersistentData().putInt(charge, 0);
-                livingEntity.getPersistentData().putInt("empcd",200);
+                livingEntity.getPersistentData().putInt("empcd", 200);
             }
         }
     }
@@ -104,12 +104,12 @@ public class Emp extends etshmodifieriii implements DurabilityDisplayModifierHoo
 
     @Override
     public int getDurabilityRGB(IToolStackView tool, ModifierEntry modifierEntry) {
-        return tool.getPersistentData().getInt(charge) >= 100?0x0000FF:-1;
+        return tool.getPersistentData().getInt(charge) >= 100 ? 0x0000FF : -1;
     }
 
     @Override
     public Component getDisplayName(IToolStackView tool, ModifierEntry entry) {
-        return this.getDisplayName().copy().append(" ").append(Component.translatable("etshtinker.modifier.tooltip.charge")).append("").append(tool.getPersistentData().getInt(charge)+ "%");
+        return this.getDisplayName().copy().append(" ").append(Component.translatable("etshtinker.modifier.tooltip.charge")).append("").append(tool.getPersistentData().getInt(charge) + "%");
     }
 
 }

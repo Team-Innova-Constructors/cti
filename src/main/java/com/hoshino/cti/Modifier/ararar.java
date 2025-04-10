@@ -14,8 +14,8 @@ public class ararar extends ArmorModifier {
 
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ToolStats.DURABILITY.add(builder,400 * modifier.getLevel());
-        ToolStats.ARMOR_TOUGHNESS.add(builder,2*modifier.getLevel());
-        ToolStats.ARMOR.add(builder,3*modifier.getLevel());
+        ToolStats.DURABILITY.add(builder, 400 * modifier.getLevel());
+        ToolStats.ARMOR_TOUGHNESS.add(builder, 2 * modifier.getLevel());
+        ToolStats.ARMOR.add(builder, 3 * modifier.getLevel());
     }
 }

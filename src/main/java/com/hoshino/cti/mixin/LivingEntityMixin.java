@@ -22,24 +22,27 @@ import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.getFreezeResistan
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
-    @Shadow public abstract boolean hasEffect(MobEffect p_21024_);
+    @Shadow
+    public abstract boolean hasEffect(MobEffect p_21024_);
 
-    @Shadow @Nullable public abstract LivingEntity getLastHurtByMob();
+    @Shadow
+    @Nullable
+    public abstract LivingEntity getLastHurtByMob();
 
-    @Inject(at = @At(value = "HEAD"), method = "checkTotemDeathProtection",cancellable = true)
+    @Inject(at = @At(value = "HEAD"), method = "checkTotemDeathProtection", cancellable = true)
     private void checkTotemDeathProtection(DamageSource pDamageSource, CallbackInfoReturnable<Boolean> cir) {
         LivingEntity living = (LivingEntity) (Object) this;
-        if (pDamageSource.isBypassMagic()||pDamageSource.getEntity()== living){
+        if (pDamageSource.isBypassMagic() || pDamageSource.getEntity() == living) {
             cir.setReturnValue(false);
         }
     }
 
-    @Inject(at = @At(value = "HEAD"), method = "aiStep",cancellable = true)
-    public void StopAi(CallbackInfo ci){
-        LivingEntity entity =(LivingEntity) (Object)this;
-        if (entity.getPersistentData().getInt("emp")>0){
-            entity.getPersistentData().putInt("emp",entity.getPersistentData().getInt("emp")-1);
-            if (entity.getPersistentData().getInt("emp")<=0){
+    @Inject(at = @At(value = "HEAD"), method = "aiStep", cancellable = true)
+    public void StopAi(CallbackInfo ci) {
+        LivingEntity entity = (LivingEntity) (Object) this;
+        if (entity.getPersistentData().getInt("emp") > 0) {
+            entity.getPersistentData().putInt("emp", entity.getPersistentData().getInt("emp") - 1);
+            if (entity.getPersistentData().getInt("emp") <= 0) {
                 entity.getPersistentData().remove("emp");
             }
             ci.cancel();
@@ -48,23 +51,24 @@ public abstract class LivingEntityMixin {
 
 
     @Inject(at = @At(value = "HEAD"), method = "tick")
-    public void CtiTick(CallbackInfo callbackInfo){
+    public void CtiTick(CallbackInfo callbackInfo) {
         LivingEntity entity = ((LivingEntity) (Object) this);
         Level level = entity.level;
         if (entity instanceof Player player && (player.isCreative() || player.isSpectator())) {
             return;
         }
-        if (!(entity instanceof Player)&&entity!=null&&entity.getPersistentData().getBoolean("vulnerable")){
-            entity.invulnerableTime=0;
+        if (!(entity instanceof Player) && entity != null && entity.getPersistentData().getBoolean("vulnerable")) {
+            entity.invulnerableTime = 0;
         }
         if (!level.isClientSide) {
-            if (level.getGameTime()%10==0){
-                EnvironmentSystem.EnvironmentTick(entity,(ServerLevel) level);
+            if (level.getGameTime() % 10 == 0) {
+                EnvironmentSystem.EnvironmentTick(entity, (ServerLevel) level);
             }
         }
     }
+
     @Inject(at = @At(value = "TAIL"), method = "tick")
-    public void FreezeTick(CallbackInfo callbackInfo){
+    public void FreezeTick(CallbackInfo callbackInfo) {
         LivingEntity entity = ((LivingEntity) (Object) this);
         Level level = entity.level;
         if (!level.isClientSide) {
@@ -74,9 +78,10 @@ public abstract class LivingEntityMixin {
             }
         }
     }
-    @Inject(at =@At(value = "HEAD"),method = "hurt", cancellable = true)
-    public void Hurt(DamageSource p_21016_, float p_21017_, CallbackInfoReturnable<Boolean> cir){
-        if(this.hasEffect(ctiEffects.ev.get())){
+
+    @Inject(at = @At(value = "HEAD"), method = "hurt", cancellable = true)
+    public void Hurt(DamageSource p_21016_, float p_21017_, CallbackInfoReturnable<Boolean> cir) {
+        if (this.hasEffect(ctiEffects.ev.get())) {
             cir.setReturnValue(false);
         }
     }

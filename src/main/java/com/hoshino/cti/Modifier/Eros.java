@@ -23,9 +23,9 @@ public class Eros extends NoLevelsModifier implements EntityInteractionModifierH
 
     @Override
     public InteractionResult afterEntityUse(IToolStackView tool, ModifierEntry modifier, Player player, LivingEntity target, InteractionHand hand, InteractionSource source) {
-        if (target instanceof Animal animal){
+        if (target instanceof Animal animal) {
             animal.setInLove(player);
-            ToolDamageUtil.damageAnimated(tool,1,player,hand);
+            ToolDamageUtil.damageAnimated(tool, 1, player, hand);
         }
         return InteractionResult.CONSUME;
     }

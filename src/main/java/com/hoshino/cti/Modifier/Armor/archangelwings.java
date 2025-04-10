@@ -17,9 +17,9 @@ public class archangelwings extends ArmorModifier {
 
     @Override
     public float TrueDamageamount(IToolStackView armor, int level, EquipmentContext context, EquipmentSlot slot, DamageSource source, float amount, boolean isDirectDamage, LivingEntity entity, LivingEntity enemy) {
-        if(enemy.getTags().contains("wick")){
-            entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION,100,4,false,false));
-            entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,100,1,false,false));
+        if (enemy.getTags().contains("wick")) {
+            entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 4, false, false));
+            entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 1, false, false));
         }
         return amount;
     }

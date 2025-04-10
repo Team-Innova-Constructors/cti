@@ -14,30 +14,27 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.WorldData;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
-import slimeknights.tconstruct.library.recipe.TinkerRecipeTypes;
-import slimeknights.tconstruct.library.recipe.material.MaterialRecipe;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 public class RecipeTestItem extends Item {
     public RecipeTestItem() {
         super(new Item.Properties().tab(ctiTab.MIXC).stacksTo(1));
     }
+
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(player.getItemInHand(hand));
     }
+
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
         if (!level.isClientSide) {
             living.sendSystemMessage(Component.literal("开始检查配方").withStyle(ChatFormatting.AQUA));
@@ -45,7 +42,7 @@ public class RecipeTestItem extends Item {
             for (RecipeType recipeType : ForgeRegistries.RECIPE_TYPES) {
                 count1 += level.getRecipeManager().getAllRecipesFor(recipeType).size();
             }
-            living.sendSystemMessage(Component.literal("重载前有 "+count1+" 个配方").withStyle(ChatFormatting.AQUA));
+            living.sendSystemMessage(Component.literal("重载前有 " + count1 + " 个配方").withStyle(ChatFormatting.AQUA));
             MinecraftServer server = level.getServer();
             if (server != null) {
                 living.sendSystemMessage(Component.literal("开始重载").withStyle(ChatFormatting.AQUA));
@@ -68,20 +65,22 @@ public class RecipeTestItem extends Item {
 
         return stack;
     }
-    public static void reloadPacks(Collection<String> p_138236_,MinecraftServer server) {
+
+    public static void reloadPacks(Collection<String> p_138236_, MinecraftServer server) {
         server.reloadResources(p_138236_).exceptionally((p_138234_) -> {
             LOGGER.warn("Failed to execute reload", p_138234_);
             return null;
         });
     }
+
     public static Collection<String> discoverNewPacks(PackRepository repository, WorldData data, Collection<String> collection) {
         repository.reload();
         Collection<String> $$3 = Lists.newArrayList(collection);
         Collection<String> $$4 = data.getDataPackConfig().getDisabled();
         Iterator var5 = repository.getAvailableIds().iterator();
 
-        while(var5.hasNext()) {
-            String $$5 = (String)var5.next();
+        while (var5.hasNext()) {
+            String $$5 = (String) var5.next();
             if (!$$4.contains($$5) && !$$3.contains($$5)) {
                 $$3.add($$5);
             }
@@ -89,9 +88,11 @@ public class RecipeTestItem extends Item {
 
         return $$3;
     }
+
     public int getUseDuration(ItemStack p_41454_) {
         return 1;
     }
+
     public UseAnim getUseAnimation(ItemStack p_41452_) {
         return UseAnim.BLOCK;
     }

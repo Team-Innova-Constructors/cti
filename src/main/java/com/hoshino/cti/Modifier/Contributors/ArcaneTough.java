@@ -2,10 +2,10 @@ package com.hoshino.cti.Modifier.Contributors;
 
 
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -19,17 +19,21 @@ public class ArcaneTough extends BattleModifier {
     public boolean havenolevel() {
         return true;
     }
+
+    public int getManaPerDamage(ServerPlayer player) {
+        return BotaniaHelper.getManaPerDamageBonus(player, 60);
+    }
+
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-        if(entity instanceof Player player){
-            if(tool.getDamage()>0){
-                ManaItemHandler.instance().requestManaForTool(tool.getItem().getDefaultInstance(),player, BotaniaHelper.getManaPerDamageBonus(player, 60),true);
-                tool.setDamage(tool.getDamage()-10);
-                player.giveExperiencePoints(1000);
+        if (entity instanceof ServerPlayer player) {
+            if (tool.getDamage() > 0 && ManaItemHandler.instance().requestManaExactForTool(stack, player, this.getManaPerDamage(player) * 2, true)) {
+                tool.setDamage(tool.getDamage() - 10);
+                player.giveExperiencePoints(100);
             }
-             player.giveExperiencePoints(5);
-            if(player.tickCount%100==0){
-                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION,120,4,true,true));
+            player.giveExperiencePoints(5);
+            if (player.tickCount % 100 == 0) {
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 120, 4, true, true));
             }
         }
     }

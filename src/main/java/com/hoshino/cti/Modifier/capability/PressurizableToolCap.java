@@ -20,18 +20,18 @@ public class PressurizableToolCap implements ToolCapabilityProvider.IToolCapabil
     public final LazyOptional<IPressurizableItem> capOptional;
     public final float maxPressure;
     public final LazyOptional<IAirHandlerItem> airHandlerItemLazyOptional;
-    public static final ResourceLocation BASE_VOLUME_KEY =new ResourceLocation(cti.MOD_ID,"base_volume");
-    public static final ResourceLocation MAX_PRESSURE_KEY =new ResourceLocation(cti.MOD_ID,"max_pressure");
-    public static final ResourceLocation AIR_KEY =new ResourceLocation(cti.MOD_ID,"air");
+    public static final ResourceLocation BASE_VOLUME_KEY = new ResourceLocation(cti.MOD_ID, "base_volume");
+    public static final ResourceLocation MAX_PRESSURE_KEY = new ResourceLocation(cti.MOD_ID, "max_pressure");
+    public static final ResourceLocation AIR_KEY = new ResourceLocation(cti.MOD_ID, "air");
 
     public final AirHandlerItemStack airHandlerItemStack;
 
 
-    public PressurizableToolCap(ItemStack stack,Supplier<? extends IToolStackView> tool) {
+    public PressurizableToolCap(ItemStack stack, Supplier<? extends IToolStackView> tool) {
         this.tool = tool;
-        this.capOptional = LazyOptional.of(()->this);
-        this.maxPressure =tool.get().getVolatileData().getInt(MAX_PRESSURE_KEY);
-        this.airHandlerItemStack =new AirHandlerItemStack(new ItemStack(ModItems.REINFORCED_AIR_CANISTER.get()),this.maxPressure){
+        this.capOptional = LazyOptional.of(() -> this);
+        this.maxPressure = tool.get().getVolatileData().getInt(MAX_PRESSURE_KEY);
+        this.airHandlerItemStack = new AirHandlerItemStack(new ItemStack(ModItems.REINFORCED_AIR_CANISTER.get()), this.maxPressure) {
             @Override
             public int getAir() {
                 return tool.get().getPersistentData().getInt(AIR_KEY);
@@ -39,9 +39,9 @@ public class PressurizableToolCap implements ToolCapabilityProvider.IToolCapabil
 
             @Override
             public void addAir(int amount) {
-                if (tool.get().getPersistentData().contains(AIR_KEY,3)) {
+                if (tool.get().getPersistentData().contains(AIR_KEY, 3)) {
                     tool.get().getPersistentData().putInt(AIR_KEY, tool.get().getPersistentData().getInt(AIR_KEY) + amount);
-                }else {
+                } else {
                     tool.get().getPersistentData().putInt(AIR_KEY, amount);
                 }
             }
@@ -53,7 +53,7 @@ public class PressurizableToolCap implements ToolCapabilityProvider.IToolCapabil
 
             @Override
             public float getPressure() {
-                return (float) this.getAir() /this.getBaseVolume();
+                return (float) this.getAir() / this.getBaseVolume();
             }
 
             @Override
@@ -70,13 +70,13 @@ public class PressurizableToolCap implements ToolCapabilityProvider.IToolCapabil
                 return tool.get().getVolatileData().getFloat(MAX_PRESSURE_KEY);
             }
         };
-        this.airHandlerItemLazyOptional =LazyOptional.of(()->this.airHandlerItemStack);
+        this.airHandlerItemLazyOptional = LazyOptional.of(() -> this.airHandlerItemStack);
     }
 
     @Override
     public <T> LazyOptional<T> getCapability(IToolStackView iToolStackView, Capability<T> capability) {
-        if (tool.get().getVolatileData().getInt(BASE_VOLUME_KEY)>0) {
-            return PNCCapabilities.AIR_HANDLER_ITEM_CAPABILITY.orEmpty(capability,airHandlerItemLazyOptional);
+        if (tool.get().getVolatileData().getInt(BASE_VOLUME_KEY) > 0) {
+            return PNCCapabilities.AIR_HANDLER_ITEM_CAPABILITY.orEmpty(capability, airHandlerItemLazyOptional);
         }
         return LazyOptional.empty();
     }
@@ -101,30 +101,30 @@ public class PressurizableToolCap implements ToolCapabilityProvider.IToolCapabil
         return getBaseVolume();
     }
 
-    public static float getPressure(IToolStackView tool){
-        return (float) tool.getPersistentData().getInt(AIR_KEY) /tool.getVolatileData().getInt(BASE_VOLUME_KEY);
+    public static float getPressure(IToolStackView tool) {
+        return (float) tool.getPersistentData().getInt(AIR_KEY) / tool.getVolatileData().getInt(BASE_VOLUME_KEY);
     }
 
-    public static int getAir(IToolStackView tool){
+    public static int getAir(IToolStackView tool) {
         return tool.getPersistentData().getInt(AIR_KEY);
     }
 
-    public static void addAir(IToolStackView tool,int amount) {
-        if (tool.getPersistentData().contains(AIR_KEY,3)) {
+    public static void addAir(IToolStackView tool, int amount) {
+        if (tool.getPersistentData().contains(AIR_KEY, 3)) {
             tool.getPersistentData().putInt(AIR_KEY, tool.getPersistentData().getInt(AIR_KEY) + amount);
-            if (tool.getPersistentData().getInt(AIR_KEY)<0){
-                tool.getPersistentData().putInt(AIR_KEY,0);
+            if (tool.getPersistentData().getInt(AIR_KEY) < 0) {
+                tool.getPersistentData().putInt(AIR_KEY, 0);
             }
-        }else {
+        } else {
             tool.getPersistentData().putInt(AIR_KEY, amount);
         }
     }
 
-    public static int getBaseVolume(IToolStackView tool){
+    public static int getBaseVolume(IToolStackView tool) {
         return tool.getVolatileData().getInt(BASE_VOLUME_KEY);
     }
 
-    public static float getMaxPressure(IToolStackView tool){
+    public static float getMaxPressure(IToolStackView tool) {
         return tool.getVolatileData().getInt(MAX_PRESSURE_KEY);
     }
 }

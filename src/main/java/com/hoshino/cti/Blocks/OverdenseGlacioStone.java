@@ -24,7 +24,7 @@ public class OverdenseGlacioStone extends Block {
     @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         int rnd = pRandom.nextInt(300);
-        if (rnd<=20) {
+        if (rnd <= 20) {
             BlockPos blockpos = new BlockPos(pPos.getX(), pPos.getY() + 1, pPos.getZ());
             BlockState blockstate = pLevel.getBlockState(blockpos);
             int a = 0;
@@ -34,7 +34,7 @@ public class OverdenseGlacioStone extends Block {
                 a++;
             }
             if (a < 20) {
-                if (pLevel.getBlockState(blockpos.below()).is(ctiBlock.unipolar_magnet_budding.get())&&rnd!=0){
+                if (pLevel.getBlockState(blockpos.below()).is(ctiBlock.unipolar_magnet_budding.get()) && rnd != 0) {
                     Block block = ctiBlock.unipolar_magnet.get();
                     BlockState blockState = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, Direction.UP).setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);
                     pLevel.setBlockAndUpdate(blockpos, blockState);
@@ -43,17 +43,16 @@ public class OverdenseGlacioStone extends Block {
                     entity.special = "entropic";
                     entity.scale = 1.5f;
                     entity.damage = 200;
-                    entity.rayVec3 = new Vec3(0, pRandom.nextInt(12)+4, 0);
+                    entity.rayVec3 = new Vec3(0, pRandom.nextInt(12) + 4, 0);
                     entity.setPos(blockpos.getX(), blockpos.getY() - 2, blockpos.getZ());
                     pLevel.addFreshEntity(entity);
-                }
-                else if (rnd==0) {
+                } else if (rnd == 0) {
                     plasmaexplosionentity entity = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), pLevel);
                     entity.particle = etshtinkerParticleType.plasmaexplosionpurple.get();
                     entity.special = "entropic";
                     entity.scale = 0.75f;
                     entity.damage = 30;
-                    entity.rayVec3 = new Vec3(0, pRandom.nextInt(6)+2, 0);
+                    entity.rayVec3 = new Vec3(0, pRandom.nextInt(6) + 2, 0);
                     entity.setPos(blockpos.getX(), blockpos.getY() - 2, blockpos.getZ());
                     pLevel.addFreshEntity(entity);
                 }

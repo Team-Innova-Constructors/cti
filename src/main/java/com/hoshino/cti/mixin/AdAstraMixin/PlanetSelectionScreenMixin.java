@@ -12,13 +12,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(remap = false,value = PlanetSelectionScreen.class)
+@Mixin(remap = false, value = PlanetSelectionScreen.class)
 public abstract class PlanetSelectionScreenMixin extends Screen implements MenuAccess<PlanetSelectionMenu> {
     protected PlanetSelectionScreenMixin(Component p_96550_) {
         super(p_96550_);
     }
 
-    @Inject(at = @At(value = "HEAD"),method = "m_7379_")
+    @Inject(at = @At(value = "HEAD"), method = "m_7379_")
     public void onClose(CallbackInfo ci) {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player != null && !(minecraft.player.getVehicle() instanceof Rocket)) {

@@ -21,8 +21,8 @@ public class ArcaneFilling extends BattleModifier {
 
     @Override
     public void LivingHurtEvent(LivingHurtEvent event) {
-        if(event.getSource().isMagic()&&event.getSource().getEntity() instanceof Player player){
-            if(ModifierLevel.EquipHasModifierlevel(player,this.getId())){
+        if (event.getSource().isMagic() && event.getSource().getEntity() instanceof Player player) {
+            if (ModifierLevel.EquipHasModifierlevel(player, this.getId())) {
                 event.setAmount(event.getAmount() * 2F);
             }
         }
@@ -30,14 +30,14 @@ public class ArcaneFilling extends BattleModifier {
 
     @Override
     public float staticdamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity livingTarget, float baseDamage, float damage) {
-        if(attacker instanceof Player player){
-            double x= player.getX();
-            double y= player.getY();
-            double z= player.getZ();
-            int range=level * 2;
-            List<Mob> mobbbb = player.level.getEntitiesOfClass(Mob.class, new AABB(x +range , y + range, z + range, x - range, y - range, z - range));
-            for(Mob target:mobbbb){
-                target.hurt(DamageSource.playerAttack(player).bypassArmor().setMagic(),damage);
+        if (attacker instanceof Player player) {
+            double x = player.getX();
+            double y = player.getY();
+            double z = player.getZ();
+            int range = level * 2;
+            List<Mob> mobbbb = player.level.getEntitiesOfClass(Mob.class, new AABB(x + range, y + range, z + range, x - range, y - range, z - range));
+            for (Mob target : mobbbb) {
+                target.hurt(DamageSource.playerAttack(player).bypassArmor().setMagic(), damage);
             }
         }
         return damage;

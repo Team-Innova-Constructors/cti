@@ -25,23 +25,23 @@ public class ctiPotatocannon extends BuiltinPotatoProjectileTypes {
             .knockback(0.1f)
             .velocity(1.1f)
             .renderTumbling()
-            .onEntityHit(potion(MobEffects.LEVITATION,0,200,true))
-            .onEntityHit(fireandexplode(20,1,false))
+            .onEntityHit(potion(MobEffects.LEVITATION, 0, 200, true))
+            .onEntityHit(fireandexplode(20, 1, false))
             .sticky()
             .soundPitch(1.0f)
             .registerAndAssign(ctiItem.TIER_5_ROCKET.get());
 
 
     public static final PotatoCannonProjectileType VIOLANE = create("violane")
-                    .damage(555)
-                    .reloadTicks(15)
-                    .knockback(0.1f)
-                    .velocity(1.1f)
-                    .renderTumbling()
-                    .sticky()
-                    .soundPitch(1.0f)
-                    .drag(2)
-                    .registerAndAssign(solidarytinkerItem.violane.get());
+            .damage(555)
+            .reloadTicks(15)
+            .knockback(0.1f)
+            .velocity(1.1f)
+            .renderTumbling()
+            .sticky()
+            .soundPitch(1.0f)
+            .drag(2)
+            .registerAndAssign(solidarytinkerItem.violane.get());
     public static final PotatoCannonProjectileType ANTI = create("anti")
             .damage(9999999)
             .reloadTicks(15)
@@ -49,7 +49,7 @@ public class ctiPotatocannon extends BuiltinPotatoProjectileTypes {
             .velocity(1f)
             .renderTumbling()
             .sticky()
-            .onEntityHit(fireandexplode(10,2,true))
+            .onEntityHit(fireandexplode(10, 2, true))
             .soundPitch(1.0f)
             .drag(2)
             .registerAndAssign(MekanismItems.ANTIMATTER_PELLET.get());
@@ -57,13 +57,15 @@ public class ctiPotatocannon extends BuiltinPotatoProjectileTypes {
     public static void register() {
 
     }
-    private static Predicate<EntityHitResult> fireandexplode(int seconds,int explodelevel,boolean ifbroke) {
+
+    private static Predicate<EntityHitResult> fireandexplode(int seconds, int explodelevel, boolean ifbroke) {
         return ray -> {
             ray.getEntity().setSecondsOnFire(seconds);
-            ray.getEntity().level.explode(ray.getEntity(),ray.getEntity().getX(),ray.getEntity().getY(),ray.getEntity().getZ(),explodelevel,ifbroke, Explosion.BlockInteraction.NONE);
+            ray.getEntity().level.explode(ray.getEntity(), ray.getEntity().getX(), ray.getEntity().getY(), ray.getEntity().getZ(), explodelevel, ifbroke, Explosion.BlockInteraction.NONE);
             return false;
         };
     }
+
     private static Predicate<EntityHitResult> potion(MobEffect effect, int level, int ticks, boolean recoverable) {
         return ray -> {
             Entity entity = ray.getEntity();
@@ -74,6 +76,7 @@ public class ctiPotatocannon extends BuiltinPotatoProjectileTypes {
             return !recoverable;
         };
     }
+
     private static void applyEffect(LivingEntity entity, MobEffectInstance effect) {
         if (effect.getEffect()
                 .isInstantenous())

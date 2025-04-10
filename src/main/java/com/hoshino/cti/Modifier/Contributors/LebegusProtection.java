@@ -21,7 +21,7 @@ public class LebegusProtection extends ArmorModifier {
         if (event.getEntity() instanceof Player player) {
             player.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
                 int level = holder.get(key, 0);
-                event.setAmount(event.getAmount() *1-(0.06F*level));
+                event.setAmount(event.getAmount() * 1 - (0.06F * level));
             });
         }
     }

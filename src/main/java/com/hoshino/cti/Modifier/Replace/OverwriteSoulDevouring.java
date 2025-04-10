@@ -1,8 +1,6 @@
 package com.hoshino.cti.Modifier.Replace;
 
 import com.hoshino.cti.cti;
-import com.xiaoyue.tingenuity_library.generic.XICModifier;
-import com.xiaoyue.tingenuity_library.generic.XModifier;
 import com.xiaoyue.tinkers_ingenuity.generic.XIRModifier;
 import com.xiaoyue.tinkers_ingenuity.utils.TooltipUtils;
 import net.minecraft.network.chat.Component;
@@ -45,7 +43,7 @@ public class OverwriteSoulDevouring extends XIRModifier implements ModifierRemov
     }
 
     private float getBonus(IToolStackView tool, int level) {
-        return this.getData(tool).getFloat(this.KEY) * 0.1F * (float)level;
+        return this.getData(tool).getFloat(this.KEY) * 0.1F * (float) level;
     }
 
     public float onModifyMeleeDamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity target, float baseDamage, float actualDamage) {
@@ -54,22 +52,21 @@ public class OverwriteSoulDevouring extends XIRModifier implements ModifierRemov
 
     public void onTinkerArrowShoot(IToolStackView bow, int level, LivingEntity shooter, Projectile projectile, AbstractArrow arrow, NamespacedNBT namespacedNBT, boolean primary) {
         if (this.getData(bow).contains(this.KEY, 5)) {
-            arrow.setBaseDamage(arrow.getBaseDamage() * (double)(1.0F + this.getBonus(bow, level)));
+            arrow.setBaseDamage(arrow.getBaseDamage() * (double) (1.0F + this.getBonus(bow, level)));
         }
     }
 
     public void onKillTarget(IToolStackView tool, LivingDeathEvent event, LivingEntity attacker, LivingEntity target, int level) {
         if (event.getSource().getEntity() instanceof AbstractArrow) {
-            this.getData(tool).putFloat(this.KEY, this.getData(tool).getFloat(this.KEY) + 0.1F * (float)level);
+            this.getData(tool).putFloat(this.KEY, this.getData(tool).getFloat(this.KEY) + 0.1F * (float) level);
         }
     }
 
     public void onAfterMeleeHit(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity target, float damageDealt) {
         if (target.isDeadOrDying()) {
-            if(attacker instanceof FakePlayer){
+            if (attacker instanceof FakePlayer) {
                 return;
-            }
-            else {
+            } else {
                 this.getData(tool).putFloat(this.KEY, this.getData(tool).getFloat(this.KEY) + 0.1F);
             }
         }

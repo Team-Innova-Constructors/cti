@@ -14,9 +14,10 @@ import java.util.List;
 public class TooltipedBlockItem extends BlockItem {
 
     public final List<Component> tooltip;
+
     public TooltipedBlockItem(Block block, Properties properties, @NotNull List<Component> tooltip) {
-        super(block,properties);
-        this.tooltip =tooltip;
+        super(block, properties);
+        this.tooltip = tooltip;
     }
 
     @Override

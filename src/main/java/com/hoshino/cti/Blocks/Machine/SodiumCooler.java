@@ -21,14 +21,17 @@ import org.jetbrains.annotations.Nullable;
 
 public class SodiumCooler extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+
     public SodiumCooler(Properties p_49224_) {
         super(p_49224_);
     }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new SodiumCoolerEntity(blockPos,blockState);
+        return new SodiumCoolerEntity(blockPos, blockState);
     }
+
     public RenderShape getRenderShape(BlockState p_49232_) {
         return RenderShape.MODEL;
     }
@@ -36,12 +39,12 @@ public class SodiumCooler extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return defaultBlockState().setValue(FACING,context.getHorizontalDirection().getOpposite());
+        return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @Override
     public BlockState rotate(BlockState state, LevelAccessor level, BlockPos pos, Rotation direction) {
-        return state.setValue(FACING,direction.rotate(state.getValue(FACING)));
+        return state.setValue(FACING, direction.rotate(state.getValue(FACING)));
     }
 
     @Override

@@ -11,9 +11,9 @@ public class AncientDragonFlame extends StaticMobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity living, int amplifier) {
-        int count=living.tickCount;
-        if(count%20==0){
-            living.hurt(DamageSource.indirectMobAttack(living,living).bypassInvul().bypassArmor().bypassMagic(),living.getMaxHealth() * 0.03f);
+        int count = living.tickCount;
+        if (count % 20 == 0) {
+            living.hurt(DamageSource.indirectMobAttack(living, living).bypassInvul().bypassArmor().bypassMagic(), living.getMaxHealth() * 0.03f);
         }
     }
 }

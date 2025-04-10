@@ -10,8 +10,8 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 public class ArcaneOmniscient extends BattleModifier {
     @Override
     public void addVolatileData(IToolContext iToolContext, @NotNull ModifierEntry modifierEntry, ModDataNBT modDataNBT) {
-        modDataNBT.addSlots(SlotType.ABILITY,2 * modifierEntry.getLevel());
-        modDataNBT.addSlots(SlotType.DEFENSE,2 * modifierEntry.getLevel());
-        modDataNBT.addSlots(SlotType.UPGRADE,2 * modifierEntry.getLevel());
+        modDataNBT.addSlots(SlotType.ABILITY, 2 * modifierEntry.getLevel());
+        modDataNBT.addSlots(SlotType.DEFENSE, 2 * modifierEntry.getLevel());
+        modDataNBT.addSlots(SlotType.UPGRADE, 2 * modifierEntry.getLevel());
     }
 }

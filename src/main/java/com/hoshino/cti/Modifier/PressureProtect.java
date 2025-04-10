@@ -1,6 +1,7 @@
 package com.hoshino.cti.Modifier;
 
 import com.hoshino.cti.register.ctiToolStats;
+import net.minecraft.world.item.Items;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -15,8 +16,9 @@ public class PressureProtect extends Modifier implements ToolStatsModifierHook {
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.TOOL_STATS);
     }
+
     @Override
     public void addToolStats(IToolContext tool, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ctiToolStats.PRESSURE_RESISTANCE.add(builder,0.5*modifier.getLevel());
+        ctiToolStats.PRESSURE_RESISTANCE.add(builder, 0.5 * modifier.getLevel());
     }
 }

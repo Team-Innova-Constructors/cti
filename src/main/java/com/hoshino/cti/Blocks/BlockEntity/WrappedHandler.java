@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 public class WrappedHandler implements IItemHandlerModifiable {
     public final IItemHandlerModifiable itemHandlerModifiable;
     public final Predicate<Integer> extract;
-    public final BiPredicate<Integer,ItemStack> insert;
+    public final BiPredicate<Integer, ItemStack> insert;
 
     public WrappedHandler(IItemHandlerModifiable itemHandlerModifiable, Predicate<Integer> extract, BiPredicate<Integer, ItemStack> insert) {
         this.itemHandlerModifiable = itemHandlerModifiable;
@@ -20,7 +20,7 @@ public class WrappedHandler implements IItemHandlerModifiable {
 
     @Override
     public void setStackInSlot(int slot, @NotNull ItemStack itemStack) {
-        this.itemHandlerModifiable.setStackInSlot(slot,itemStack);
+        this.itemHandlerModifiable.setStackInSlot(slot, itemStack);
     }
 
     @Override
@@ -35,12 +35,12 @@ public class WrappedHandler implements IItemHandlerModifiable {
 
     @Override
     public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack itemStack, boolean simulate) {
-        return this.insert.test(slot,itemStack)? this.itemHandlerModifiable.insertItem(slot,itemStack,simulate):itemStack;
+        return this.insert.test(slot, itemStack) ? this.itemHandlerModifiable.insertItem(slot, itemStack, simulate) : itemStack;
     }
 
     @Override
     public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
-        return this.extract.test(slot)?this.itemHandlerModifiable.extractItem(slot,amount,simulate):ItemStack.EMPTY;
+        return this.extract.test(slot) ? this.itemHandlerModifiable.extractItem(slot, amount, simulate) : ItemStack.EMPTY;
     }
 
     @Override
@@ -50,6 +50,6 @@ public class WrappedHandler implements IItemHandlerModifiable {
 
     @Override
     public boolean isItemValid(int slot, @NotNull ItemStack itemStack) {
-        return this.insert.test(slot,itemStack)&&this.itemHandlerModifiable.isItemValid(slot,itemStack);
+        return this.insert.test(slot, itemStack) && this.itemHandlerModifiable.isItemValid(slot, itemStack);
     }
 }

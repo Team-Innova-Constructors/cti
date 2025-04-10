@@ -8,10 +8,11 @@ public class DisposibleFakePlayer extends FakePlayer {
     public DisposibleFakePlayer(ServerLevel level, GameProfile name) {
         super(level, name);
     }
+
     @Override
     public void tick() {
         super.tick();
-        if (this.tickCount>=50){
+        if (this.tickCount >= 50) {
             this.discard();
         }
     }

@@ -23,10 +23,10 @@ public class GravityNormalize extends NoLevelsModifier implements InventoryTickM
     @Override
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity livingEntity, int i, boolean b, boolean b1, ItemStack itemStack) {
         AttributeInstance gravity = livingEntity.getAttribute(ForgeMod.ENTITY_GRAVITY.get());
-        if (gravity!=null){
+        if (gravity != null) {
             gravity.removeModifiers();
         }
-        if (livingEntity.getEffect(MobEffects.SLOW_FALLING)!=null){
+        if (livingEntity.getEffect(MobEffects.SLOW_FALLING) != null) {
             livingEntity.removeEffect(MobEffects.SLOW_FALLING);
         }
     }

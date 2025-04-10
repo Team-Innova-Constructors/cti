@@ -32,19 +32,20 @@ import java.util.List;
 import java.util.UUID;
 
 public class TinkerRailgunProjectile extends AbstractArrow {
-    public final MaterialNBT materialNBT ;
+    public final MaterialNBT materialNBT;
     public final ToolStack tool;
     public ItemStack stack;
-    public float damageMul =40;
-    public TinkerRailgunProjectile(EntityType<? extends AbstractArrow> p_36721_, Level p_36722_, ItemStack itemStack, ModifiableItem item){
-        super(p_36721_,p_36722_);
+    public float damageMul = 40;
+
+    public TinkerRailgunProjectile(EntityType<? extends AbstractArrow> p_36721_, Level p_36722_, ItemStack itemStack, ModifiableItem item) {
+        super(p_36721_, p_36722_);
         stack = itemStack;
-        ToolPartItem toolPartItem =(ToolPartItem) itemStack.getItem();
-        if (item == TinkerTools.cleaver.get()){
-            materialNBT = new MaterialNBT(List.of(MaterialVariant.of(toolPartItem.getMaterial(itemStack)),MaterialVariant.of(toolPartItem.getMaterial(itemStack)),MaterialVariant.of(toolPartItem.getMaterial(itemStack)),MaterialVariant.of(toolPartItem.getMaterial(itemStack))));
-        }
-        else materialNBT = new MaterialNBT(List.of(MaterialVariant.of(toolPartItem.getMaterial(itemStack)),MaterialVariant.of(toolPartItem.getMaterial(itemStack)),MaterialVariant.of(toolPartItem.getMaterial(itemStack))));
-        tool = ToolStack.createTool(item, ToolDefinitions.RAPIER,materialNBT);
+        ToolPartItem toolPartItem = (ToolPartItem) itemStack.getItem();
+        if (item == TinkerTools.cleaver.get()) {
+            materialNBT = new MaterialNBT(List.of(MaterialVariant.of(toolPartItem.getMaterial(itemStack)), MaterialVariant.of(toolPartItem.getMaterial(itemStack)), MaterialVariant.of(toolPartItem.getMaterial(itemStack)), MaterialVariant.of(toolPartItem.getMaterial(itemStack))));
+        } else
+            materialNBT = new MaterialNBT(List.of(MaterialVariant.of(toolPartItem.getMaterial(itemStack)), MaterialVariant.of(toolPartItem.getMaterial(itemStack)), MaterialVariant.of(toolPartItem.getMaterial(itemStack))));
+        tool = ToolStack.createTool(item, ToolDefinitions.RAPIER, materialNBT);
     }
 
     @Override
@@ -55,12 +56,13 @@ public class TinkerRailgunProjectile extends AbstractArrow {
     @Override
     public void tick() {
         super.tick();
-        if (this.tickCount>1200){
+        if (this.tickCount > 1200) {
             this.discard();
         }
     }
-    public void sendItemS2CPacket(){
-        if (ServerLifecycleHooks.getCurrentServer()!=null) {
+
+    public void sendItemS2CPacket() {
+        if (ServerLifecycleHooks.getCurrentServer() != null) {
             ctiPacketHandler.sendToClient(new PRailgunItemS2C(this, stack));
         }
     }
@@ -69,29 +71,29 @@ public class TinkerRailgunProjectile extends AbstractArrow {
     protected void onHitEntity(EntityHitResult result) {
         Entity entity = result.getEntity();
         Entity at = this.getOwner();
-        if (at instanceof Player player&&this.tool!=null&&player.level instanceof ServerLevel serverLevel){
-            entity.invulnerableTime=0;
-            if (tool.getItem()==TinkerTools.cleaver.get()){
-                tool.addModifier(TinkerModifiers.severing.getId(),18);
+        if (at instanceof Player player && this.tool != null && player.level instanceof ServerLevel serverLevel) {
+            entity.invulnerableTime = 0;
+            if (tool.getItem() == TinkerTools.cleaver.get()) {
+                tool.addModifier(TinkerModifiers.severing.getId(), 18);
             }
             tool.rebuildStats();
-            FakePlayer fakePlayer = new DisposibleFakePlayer(serverLevel,new GameProfile(UUID.randomUUID(),player.getName().getString()));
-            fakePlayer.setItemInHand(InteractionHand.MAIN_HAND,tool.createStack());
-            fakePlayer.setPos(player.getX(),player.getY(),player.getZ());
+            FakePlayer fakePlayer = new DisposibleFakePlayer(serverLevel, new GameProfile(UUID.randomUUID(), player.getName().getString()));
+            fakePlayer.setItemInHand(InteractionHand.MAIN_HAND, tool.createStack());
+            fakePlayer.setPos(player.getX(), player.getY(), player.getZ());
             fakePlayer.setDeltaMovement(player.getDeltaMovement());
             fakePlayer.setHealth(player.getHealth());
             fakePlayer.setExperienceLevels(player.experienceLevel);
-            fakePlayer.setItemSlot(EquipmentSlot.CHEST,player.getItemBySlot(EquipmentSlot.CHEST));
-            fakePlayer.setItemSlot(EquipmentSlot.HEAD,player.getItemBySlot(EquipmentSlot.HEAD));
-            fakePlayer.setItemSlot(EquipmentSlot.LEGS,player.getItemBySlot(EquipmentSlot.LEGS));
-            fakePlayer.setItemSlot(EquipmentSlot.FEET,player.getItemBySlot(EquipmentSlot.FEET));
+            fakePlayer.setItemSlot(EquipmentSlot.CHEST, player.getItemBySlot(EquipmentSlot.CHEST));
+            fakePlayer.setItemSlot(EquipmentSlot.HEAD, player.getItemBySlot(EquipmentSlot.HEAD));
+            fakePlayer.setItemSlot(EquipmentSlot.LEGS, player.getItemBySlot(EquipmentSlot.LEGS));
+            fakePlayer.setItemSlot(EquipmentSlot.FEET, player.getItemBySlot(EquipmentSlot.FEET));
             fakePlayer.setXRot(player.getXRot());
             fakePlayer.setYRot(player.getYRot());
             fakePlayer.setYHeadRot(player.getYHeadRot());
-            ToolAttackUtil.attackEntity(tool,player,InteractionHand.MAIN_HAND,entity,()->1,true);
-            entity.invulnerableTime=0;
-            attackUtil.attackEntity(tool,fakePlayer,InteractionHand.MAIN_HAND,entity,()->1,false,EquipmentSlot.MAINHAND,tool.getStats().get(ToolStats.ATTACK_DAMAGE)*damageMul,true,true,true,true,0);
-            entity.invulnerableTime=0;
+            ToolAttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true);
+            entity.invulnerableTime = 0;
+            attackUtil.attackEntity(tool, fakePlayer, InteractionHand.MAIN_HAND, entity, () -> 1, false, EquipmentSlot.MAINHAND, tool.getStats().get(ToolStats.ATTACK_DAMAGE) * damageMul, true, true, true, true, 0);
+            entity.invulnerableTime = 0;
         }
         super.onHitEntity(result);
     }

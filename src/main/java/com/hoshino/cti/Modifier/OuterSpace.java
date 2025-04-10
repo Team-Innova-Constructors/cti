@@ -9,13 +9,13 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 
 public class OuterSpace extends NoLevelsModifier {
-    public OuterSpace(){
+    public OuterSpace() {
         MinecraftForge.EVENT_BUS.addListener(this::onLivingDamage);
     }
 
     private void onLivingDamage(LivingDamageEvent event) {
-        if (event.getSource().getEntity() instanceof LivingEntity living&&living!=event.getEntity()){
-            if (GetModifierLevel.getTotalArmorModifierlevel(living,this.getId())>0) {
+        if (event.getSource().getEntity() instanceof LivingEntity living && living != event.getEntity()) {
+            if (GetModifierLevel.getTotalArmorModifierlevel(living, this.getId()) > 0) {
                 if (living.getLevel().dimension() != Level.OVERWORLD) {
                     event.setAmount(event.getAmount() * 1.25f);
                 }

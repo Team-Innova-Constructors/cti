@@ -1,6 +1,5 @@
 package com.hoshino.cti.Blocks.Machine;
 
-import com.hoshino.cti.Blocks.BlockEntity.AtmosphereExtractorEntity;
 import com.hoshino.cti.Blocks.BlockEntity.QuantumMinerEntity;
 import com.hoshino.cti.register.ctiBlock;
 import com.hoshino.cti.register.ctiBlockEntityType;
@@ -18,20 +17,22 @@ public class QuantumMinerBlock extends BaseEntityBlock {
     public QuantumMinerBlock(Properties p_49224_) {
         super(p_49224_);
     }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new QuantumMinerEntity(blockPos,blockState);
+        return new QuantumMinerEntity(blockPos, blockState);
     }
+
     public RenderShape getRenderShape(BlockState p_49232_) {
         return RenderShape.MODEL;
     }
 
     @Override
     public void onRemove(BlockState state, Level level, BlockPos blockPos, BlockState newState, boolean isMoving) {
-        if (state.getBlock()!=newState.getBlock()){
+        if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof QuantumMinerEntity entity&&entity.getBlockState().is(ctiBlock.quantum_miner.get())){
+            if (blockEntity instanceof QuantumMinerEntity entity && entity.getBlockState().is(ctiBlock.quantum_miner.get())) {
                 entity.dropItem();
             }
             blockEntity.setRemoved();

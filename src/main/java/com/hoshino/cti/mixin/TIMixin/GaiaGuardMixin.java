@@ -11,11 +11,11 @@ import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import vazkii.botania.api.mana.ManaItemHandler;
 
-@Mixin(value = GaiaGuard.class,remap = false)
+@Mixin(value = GaiaGuard.class, remap = false)
 public class GaiaGuardMixin {
     /**
      * @author Firefly
-     * @reason 无需多言,222格挡诗人啊？
+     * @reason 无需多言, 222格挡诗人啊？
      * @数值调整 格挡值222->100
      */
     @Overwrite
@@ -23,7 +23,7 @@ public class GaiaGuardMixin {
         LivingEntity entity = context.getEntity();
         if (entity instanceof Player player) {
             float maxReduce = Math.min(100.0F, amount);
-            if (ManaItemHandler.instance().requestManaExactForTool(player.getItemBySlot(slot), player, (int)(maxReduce * 50.0F), true)) {
+            if (ManaItemHandler.instance().requestManaExactForTool(player.getItemBySlot(slot), player, (int) (maxReduce * 50.0F), true)) {
                 return amount - maxReduce;
             }
         }

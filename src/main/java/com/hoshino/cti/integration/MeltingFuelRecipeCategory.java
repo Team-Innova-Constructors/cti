@@ -1,6 +1,5 @@
 package com.hoshino.cti.integration;
 
-import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.hoshino.cti.Plugin.JEIPlugin;
 import com.hoshino.cti.cti;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -19,7 +18,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.recipe.fuel.MeltingFuel;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
@@ -35,9 +33,9 @@ public class MeltingFuelRecipeCategory implements IRecipeCategory<MeltingFuel> {
 
     private final IDrawable icon;
 
-    public MeltingFuelRecipeCategory(IGuiHelper helper){
-        this.background  = helper.createDrawable(TEXTURE,0,0,140,26);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(TinkerSmeltery.smelteryController.get()));
+    public MeltingFuelRecipeCategory(IGuiHelper helper) {
+        this.background = helper.createDrawable(TEXTURE, 0, 0, 140, 26);
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TinkerSmeltery.smelteryController.get()));
     }
 
     // 返回JEITutorialModPlugin定义的type
@@ -51,6 +49,7 @@ public class MeltingFuelRecipeCategory implements IRecipeCategory<MeltingFuel> {
     public Component getTitle() {
         return Component.literal("冶炼炉燃料");
     }
+
     //
     @Override
     public IDrawable getBackground() {
@@ -64,13 +63,13 @@ public class MeltingFuelRecipeCategory implements IRecipeCategory<MeltingFuel> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, MeltingFuel recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT,5,5).setFluidRenderer(1,false,16,16).addIngredient(ForgeTypes.FLUID_STACK,recipe.getInputs().get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 5, 5).setFluidRenderer(1, false, 16, 16).addIngredient(ForgeTypes.FLUID_STACK, recipe.getInputs().get(0));
     }
 
     @Override
     public void draw(MeltingFuel recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
-        Component tick =Component.literal("燃烧时间").append(": ").append(recipe.getDuration() +"ticks").withStyle(ChatFormatting.DARK_GRAY);
-        Component temp =Component.literal("燃烧温度").append(": ").append(recipe.getTemperature() +"℃").withStyle(ChatFormatting.DARK_GRAY);
+        Component tick = Component.literal("燃烧时间").append(": ").append(recipe.getDuration() + "ticks").withStyle(ChatFormatting.DARK_GRAY);
+        Component temp = Component.literal("燃烧温度").append(": ").append(recipe.getTemperature() + "℃").withStyle(ChatFormatting.DARK_GRAY);
         Minecraft.getInstance().font.draw(stack, tick, 26, 4, 0);
         Minecraft.getInstance().font.draw(stack, temp, 26, 14, 0);
         IRecipeCategory.super.draw(recipe, recipeSlotsView, stack, mouseX, mouseY);

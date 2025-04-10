@@ -16,9 +16,9 @@ public class StressModifier extends etshmodifieriii {
     public void modifierOnAttacked(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         super.modifierOnAttacked(tool, modifier, context, slotType, source, amount, isDirectDamage);
         LivingEntity entity = context.getEntity();
-        if (entity instanceof Player player&&amount>1){
+        if (entity instanceof Player player && amount > 1) {
             MobEffectInstance instance = player.getEffect(ctiEffects.stress.get());
-            player.addEffect(new MobEffectInstance(ctiEffects.stress.get(),20,Math.min(9,(instance==null?0:instance.getAmplifier())+modifier.getLevel()),false,false));
+            player.addEffect(new MobEffectInstance(ctiEffects.stress.get(), 20, Math.min(9, (instance == null ? 0 : instance.getAmplifier()) + modifier.getLevel()), false, false));
         }
     }
 }

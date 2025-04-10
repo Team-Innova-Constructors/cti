@@ -8,7 +8,7 @@ import mekanism.common.util.MekanismUtils;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(value = MekanismUtils.class,remap = false)
+@Mixin(value = MekanismUtils.class, remap = false)
 public class MekanismUtilMixin {
     /**
      * @author EtSH_C2H6S
@@ -28,7 +28,7 @@ public class MekanismUtilMixin {
      */
     @Overwrite
     public static FloatingLong getEnergyPerTick(IUpgradeTile tile, FloatingLong def) {
-        return tile.supportsUpgrades() ? def.multiply(Math.pow((double) MekanismConfig.general.maxUpgradeMultiplier.get(), 2.0 * fractionUpgrades(tile, Upgrade.SPEED) -Math.min( fractionUpgrades(tile, Upgrade.ENERGY),1))) : def;
+        return tile.supportsUpgrades() ? def.multiply(Math.pow((double) MekanismConfig.general.maxUpgradeMultiplier.get(), 2.0 * fractionUpgrades(tile, Upgrade.SPEED) - Math.min(fractionUpgrades(tile, Upgrade.ENERGY), 1))) : def;
     }
 
     /**
@@ -38,11 +38,12 @@ public class MekanismUtilMixin {
     @Overwrite
     public static double getGasPerTickMeanMultiplier(IUpgradeTile tile) {
         if (tile.supportsUpgrades()) {
-            double upgradeMul =fractionUpgrades(tile,Upgrade.SPEED);
-            double gasMul =fractionUpgrades(tile, Upgrade.GAS);
-            if (upgradeMul<=1) {
+            double upgradeMul = fractionUpgrades(tile, Upgrade.SPEED);
+            double gasMul = fractionUpgrades(tile, Upgrade.GAS);
+            if (upgradeMul <= 1) {
                 return tile.supportsUpgrade(Upgrade.GAS) ? Math.pow(MekanismConfig.general.maxUpgradeMultiplier.get(), 2.0 * upgradeMul - gasMul) : Math.pow(MekanismConfig.general.maxUpgradeMultiplier.get(), upgradeMul);
-            }else return tile.supportsUpgrade(Upgrade.GAS) ? Math.pow(MekanismConfig.general.maxUpgradeMultiplier.get(), 2.0 * upgradeMul - gasMul * upgradeMul) : Math.pow(MekanismConfig.general.maxUpgradeMultiplier.get(), upgradeMul);
+            } else
+                return tile.supportsUpgrade(Upgrade.GAS) ? Math.pow(MekanismConfig.general.maxUpgradeMultiplier.get(), 2.0 * upgradeMul - gasMul * upgradeMul) : Math.pow(MekanismConfig.general.maxUpgradeMultiplier.get(), upgradeMul);
         } else {
             return 1.0;
         }

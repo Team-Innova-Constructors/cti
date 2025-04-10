@@ -14,6 +14,7 @@ public class uriel_ingot extends Item {
     public uriel_ingot(Properties properties) {
         super(properties);
     }
+
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.uriel_ingot.desc1").withStyle(ChatFormatting.YELLOW));
         tooltip.add(Component.translatable("tooltip.uriel_ingot.desc2").withStyle(ChatFormatting.AQUA));

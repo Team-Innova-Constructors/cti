@@ -12,7 +12,7 @@ import java.util.List;
 public class AlienMatter extends BattleModifier {
     @Override
     public void processLoot(IToolStackView iToolStackView, ModifierEntry modifierEntry, List<ItemStack> list, LootContext lootContext) {
-          list.add(new ItemStack(AEItems.CERTUS_QUARTZ_CRYSTAL));
-          list.add(new ItemStack(AEItems.FLUIX_CRYSTAL));
+        list.add(new ItemStack(AEItems.CERTUS_QUARTZ_CRYSTAL));
+        list.add(new ItemStack(AEItems.FLUIX_CRYSTAL));
     }
 }

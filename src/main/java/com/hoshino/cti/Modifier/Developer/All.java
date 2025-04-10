@@ -19,9 +19,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
@@ -45,18 +43,20 @@ import java.util.List;
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.vecCalc.getScatteredVec3;
 
-public class All extends NoLevelsModifier implements ToolDamageModifierHook , ToolStatsModifierHook {
-    public static List<MobEffect> ls =new ArrayList<>(List.of());
-    public static void init(){
-        Iterator<MobEffect> iterator =ForgeRegistries.MOB_EFFECTS.iterator();
-        if (iterator.hasNext()){
-            MobEffect effect =iterator.next();
-            if (effect!=null&& effect.getCategory()== MobEffectCategory.HARMFUL) {
+public class All extends NoLevelsModifier implements ToolDamageModifierHook, ToolStatsModifierHook {
+    public static List<MobEffect> ls = new ArrayList<>(List.of());
+
+    public static void init() {
+        Iterator<MobEffect> iterator = ForgeRegistries.MOB_EFFECTS.iterator();
+        if (iterator.hasNext()) {
+            MobEffect effect = iterator.next();
+            if (effect != null && effect.getCategory() == MobEffectCategory.HARMFUL) {
                 ls.add(effect);
             }
         }
     }
-    public All(){
+
+    public All() {
         MinecraftForge.EVENT_BUS.addListener(this::livingHurtEvent);
         MinecraftForge.EVENT_BUS.addListener(this::livingAttackEvent);
     }
@@ -70,7 +70,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                     if (tool.getModifierLevel(this) > 0) {
                         event.setCanceled(true);
                         StellarBlade.summonStars(player);
-                        if (event.getAmount()>5&&slotUtil.ARMOR.contains(slot)&&!player.getCooldowns().isOnCooldown(tool.getItem())) {
+                        if (event.getAmount() > 5 && slotUtil.ARMOR.contains(slot) && !player.getCooldowns().isOnCooldown(tool.getItem())) {
                             List<Mob> mobbbbbbb = player.level.getEntitiesOfClass(Mob.class, new AABB(player.getX() - 16, player.getY() - 16, player.getZ() - 16, player.getX() + 16, player.getY() + 16, player.getZ() + 16));
                             if (!mobbbbbbb.isEmpty()) {
                                 for (Mob target : mobbbbbbb) {
@@ -101,47 +101,43 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                                         }
                                     }
                                 }
-                                player.getCooldowns().addCooldown(tool.getItem(),10);
+                                player.getCooldowns().addCooldown(tool.getItem(), 10);
                             }
                         }
-                        if (event.getSource().getEntity() instanceof LivingEntity living&&!(living instanceof Player)){
+                        if (event.getSource().getEntity() instanceof LivingEntity living && !(living instanceof Player)) {
                             CompoundTag tag = living.getPersistentData();
-                            tag.putBoolean("vulnerable",true);
-                            if (!tag.contains("dmg_amplifier")){
-                                tag.putFloat("dmg_amplifier",1.5f);
-                            }
-                            else {
-                                tag.putFloat("dmg_amplifier",Math.max(1.5f,tag.getFloat("dmg_amplifier")+0.5f));
+                            tag.putBoolean("vulnerable", true);
+                            if (!tag.contains("dmg_amplifier")) {
+                                tag.putFloat("dmg_amplifier", 1.5f);
+                            } else {
+                                tag.putFloat("dmg_amplifier", Math.max(1.5f, tag.getFloat("dmg_amplifier") + 0.5f));
                             }
 
-                            if (!tag.contains("legacyhealth")){
-                                tag.putFloat("legacyhealth",living.getHealth()-event.getAmount());
-                            }
-                            else {
-                                if (living.getHealth()>tag.getFloat("legacyhealth")){
+                            if (!tag.contains("legacyhealth")) {
+                                tag.putFloat("legacyhealth", living.getHealth() - event.getAmount());
+                            } else {
+                                if (living.getHealth() > tag.getFloat("legacyhealth")) {
                                     living.setHealth(tag.getFloat("legacyhealth"));
                                 }
-                                tag.putFloat("legacyhealth",tag.getFloat("legacyhealth")-event.getAmount());
+                                tag.putFloat("legacyhealth", tag.getFloat("legacyhealth") - event.getAmount());
                             }
 
-                            if (!tag.contains("atomic_dec")){
-                                tag.putFloat("atomic_dec",20f);
-                            }
-                            else {
-                                tag.putFloat("atomic_dec",Math.max(20,tag.getFloat("atomic_dec")+20));
+                            if (!tag.contains("atomic_dec")) {
+                                tag.putFloat("atomic_dec", 20f);
+                            } else {
+                                tag.putFloat("atomic_dec", Math.max(20, tag.getFloat("atomic_dec") + 20));
                             }
 
-                            if (!tag.contains("quark_disassemble")){
-                                tag.putFloat("quark_disassemble",20f);
+                            if (!tag.contains("quark_disassemble")) {
+                                tag.putFloat("quark_disassemble", 20f);
+                            } else {
+                                tag.putFloat("quark_disassemble", Math.max(20, tag.getFloat("quark_disassemble") + 20));
                             }
-                            else {
-                                tag.putFloat("quark_disassemble",Math.max(20,tag.getFloat("quark_disassemble")+20));
-                            }
-                            if (ls!=null&&!ls.isEmpty()){
-                                int i =0;
-                                while (i<10){
+                            if (ls != null && !ls.isEmpty()) {
+                                int i = 0;
+                                while (i < 10) {
                                     MobEffect effect = ls.get(EtSHrnd().nextInt(ls.size()));
-                                    living.forceAddEffect(new MobEffectInstance(effect,200,9,false,false),player);
+                                    living.forceAddEffect(new MobEffectInstance(effect, 200, 9, false, false), player);
                                     i++;
                                 }
                             }
@@ -155,54 +151,50 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         super.registerHooks(hookBuilder);
-        hookBuilder.addHook(this, ModifierHooks.TOOL_DAMAGE,ModifierHooks.TOOL_STATS);
+        hookBuilder.addHook(this, ModifierHooks.TOOL_DAMAGE, ModifierHooks.TOOL_STATS);
     }
 
     private void livingHurtEvent(LivingHurtEvent event) {
-        if (event.getSource().getEntity() instanceof Player player&&!(event.getEntity() instanceof Player)){
-            for (EquipmentSlot slot: slotUtil.ALL){
+        if (event.getSource().getEntity() instanceof Player player && !(event.getEntity() instanceof Player)) {
+            for (EquipmentSlot slot : slotUtil.ALL) {
                 ItemStack stack = player.getItemBySlot(slot);
-                if (stack.getItem() instanceof IModifiable){
+                if (stack.getItem() instanceof IModifiable) {
                     ToolStack tool = ToolStack.from(stack);
-                    if (tool.getModifierLevel(this)>0&&event.getEntity()!=null&&!(event.getEntity() instanceof Player)){
-                        event.setAmount(event.getAmount()*10);
+                    if (tool.getModifierLevel(this) > 0 && event.getEntity() != null && !(event.getEntity() instanceof Player)) {
+                        event.setAmount(event.getAmount() * 10);
                         CompoundTag tag = event.getEntity().getPersistentData();
-                        tag.putBoolean("vulnerable",true);
-                        if (!tag.contains("dmg_amplifier")){
-                            tag.putFloat("dmg_amplifier",1.5f);
-                        }
-                        else {
-                            tag.putFloat("dmg_amplifier",Math.max(1.5f,tag.getFloat("dmg_amplifier")+0.5f));
+                        tag.putBoolean("vulnerable", true);
+                        if (!tag.contains("dmg_amplifier")) {
+                            tag.putFloat("dmg_amplifier", 1.5f);
+                        } else {
+                            tag.putFloat("dmg_amplifier", Math.max(1.5f, tag.getFloat("dmg_amplifier") + 0.5f));
                         }
 
-                        if (!tag.contains("legacyhealth")){
-                            tag.putFloat("legacyhealth",event.getEntity().getHealth()-event.getAmount());
-                        }
-                        else {
-                            if (event.getEntity().getHealth()>tag.getFloat("legacyhealth")){
+                        if (!tag.contains("legacyhealth")) {
+                            tag.putFloat("legacyhealth", event.getEntity().getHealth() - event.getAmount());
+                        } else {
+                            if (event.getEntity().getHealth() > tag.getFloat("legacyhealth")) {
                                 event.getEntity().setHealth(tag.getFloat("legacyhealth"));
                             }
-                            tag.putFloat("legacyhealth",tag.getFloat("legacyhealth")-event.getAmount());
+                            tag.putFloat("legacyhealth", tag.getFloat("legacyhealth") - event.getAmount());
                         }
 
-                        if (!tag.contains("atomic_dec")){
-                            tag.putFloat("atomic_dec",20f);
-                        }
-                        else {
-                            tag.putFloat("atomic_dec",Math.max(20,tag.getFloat("atomic_dec")+20));
+                        if (!tag.contains("atomic_dec")) {
+                            tag.putFloat("atomic_dec", 20f);
+                        } else {
+                            tag.putFloat("atomic_dec", Math.max(20, tag.getFloat("atomic_dec") + 20));
                         }
 
-                        if (!tag.contains("quark_disassemble")){
-                            tag.putFloat("quark_disassemble",20f);
+                        if (!tag.contains("quark_disassemble")) {
+                            tag.putFloat("quark_disassemble", 20f);
+                        } else {
+                            tag.putFloat("quark_disassemble", Math.max(20, tag.getFloat("quark_disassemble") + 20));
                         }
-                        else {
-                            tag.putFloat("quark_disassemble",Math.max(20,tag.getFloat("quark_disassemble")+20));
-                        }
-                        if (ls!=null&&!ls.isEmpty()){
-                            int i =0;
-                            while (i<10){
+                        if (ls != null && !ls.isEmpty()) {
+                            int i = 0;
+                            while (i < 10) {
                                 MobEffect effect = ls.get(EtSHrnd().nextInt(ls.size()));
-                                event.getEntity().forceAddEffect(new MobEffectInstance(effect,200,9,false,false),player);
+                                event.getEntity().forceAddEffect(new MobEffectInstance(effect, 200, 9, false, false), player);
                                 i++;
                             }
                         }
@@ -210,52 +202,48 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
                 }
             }
             LazyOptional<IItemHandlerModifiable> optional = CuriosApi.getCuriosHelper().getEquippedCurios(player);
-            if (optional.isPresent()){
-                IItemHandlerModifiable handler =optional.orElse(null);
-                for (int i =0;i<handler.getSlots();i++){
-                    ItemStack stack =handler.getStackInSlot(i);
+            if (optional.isPresent()) {
+                IItemHandlerModifiable handler = optional.orElse(null);
+                for (int i = 0; i < handler.getSlots(); i++) {
+                    ItemStack stack = handler.getStackInSlot(i);
                     if (stack.getItem() instanceof IModifiable) {
                         ToolStack tool = ToolStack.from(stack);
-                        if (tool.getModifierLevel(this) > 0 ) {
-                            event.setAmount(event.getAmount()*10);
-                            if (tool.getModifierLevel(this)>0&&event.getEntity()!=null&&!(event.getEntity() instanceof Player)){
+                        if (tool.getModifierLevel(this) > 0) {
+                            event.setAmount(event.getAmount() * 10);
+                            if (tool.getModifierLevel(this) > 0 && event.getEntity() != null && !(event.getEntity() instanceof Player)) {
                                 CompoundTag tag = event.getEntity().getPersistentData();
-                                tag.putBoolean("vulnerable",true);
-                                if (!tag.contains("dmg_amplifier")){
-                                    tag.putFloat("dmg_amplifier",1.5f);
-                                }
-                                else {
-                                    tag.putFloat("dmg_amplifier",Math.max(1.5f,tag.getFloat("dmg_amplifier")+0.5f));
+                                tag.putBoolean("vulnerable", true);
+                                if (!tag.contains("dmg_amplifier")) {
+                                    tag.putFloat("dmg_amplifier", 1.5f);
+                                } else {
+                                    tag.putFloat("dmg_amplifier", Math.max(1.5f, tag.getFloat("dmg_amplifier") + 0.5f));
                                 }
 
-                                if (!tag.contains("legacyhealth")){
-                                    tag.putFloat("legacyhealth",event.getEntity().getHealth()-event.getAmount());
-                                }
-                                else {
-                                    if (event.getEntity().getHealth()>tag.getFloat("legacyhealth")){
+                                if (!tag.contains("legacyhealth")) {
+                                    tag.putFloat("legacyhealth", event.getEntity().getHealth() - event.getAmount());
+                                } else {
+                                    if (event.getEntity().getHealth() > tag.getFloat("legacyhealth")) {
                                         event.getEntity().setHealth(tag.getFloat("legacyhealth"));
                                     }
-                                    tag.putFloat("legacyhealth",tag.getFloat("legacyhealth")-event.getAmount());
+                                    tag.putFloat("legacyhealth", tag.getFloat("legacyhealth") - event.getAmount());
                                 }
 
-                                if (!tag.contains("dmg_amplifier")){
-                                    tag.putFloat("dmg_amplifier",1.5f);
-                                }
-                                else {
-                                    tag.putFloat("atomic_dec",Math.max(20,tag.getFloat("atomic_dec")+20));
+                                if (!tag.contains("dmg_amplifier")) {
+                                    tag.putFloat("dmg_amplifier", 1.5f);
+                                } else {
+                                    tag.putFloat("atomic_dec", Math.max(20, tag.getFloat("atomic_dec") + 20));
                                 }
 
-                                if (!tag.contains("dmg_amplifier")){
-                                    tag.putFloat("dmg_amplifier",1.5f);
+                                if (!tag.contains("dmg_amplifier")) {
+                                    tag.putFloat("dmg_amplifier", 1.5f);
+                                } else {
+                                    tag.putFloat("quark_disassemble", Math.max(20, tag.getFloat("quark_disassemble") + 20));
                                 }
-                                else {
-                                    tag.putFloat("quark_disassemble",Math.max(20,tag.getFloat("quark_disassemble")+20));
-                                }
-                                if (ls!=null&&!ls.isEmpty()){
-                                    int j =0;
-                                    while (j<10){
+                                if (ls != null && !ls.isEmpty()) {
+                                    int j = 0;
+                                    while (j < 10) {
                                         MobEffect effect = ls.get(EtSHrnd().nextInt(ls.size()));
-                                        event.getEntity().forceAddEffect(new MobEffectInstance(effect,200,9,false,false),player);
+                                        event.getEntity().forceAddEffect(new MobEffectInstance(effect, 200, 9, false, false), player);
                                         j++;
                                     }
                                 }
@@ -279,9 +267,9 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook , To
 
     @Override
     public void addToolStats(IToolContext iToolContext, ModifierEntry modifierEntry, ModifierStatsBuilder modifierStatsBuilder) {
-        ctiToolStats.ELECTRIC_RESISTANCE.add(modifierStatsBuilder,50);
-        ctiToolStats.SCORCH_RESISTANCE.add(modifierStatsBuilder,50);
-        ctiToolStats.FROZEN_RESISTANCE.add(modifierStatsBuilder,50);
-        ctiToolStats.PRESSURE_RESISTANCE.add(modifierStatsBuilder,50);
+        ctiToolStats.ELECTRIC_RESISTANCE.add(modifierStatsBuilder, 50);
+        ctiToolStats.SCORCH_RESISTANCE.add(modifierStatsBuilder, 50);
+        ctiToolStats.FROZEN_RESISTANCE.add(modifierStatsBuilder, 50);
+        ctiToolStats.PRESSURE_RESISTANCE.add(modifierStatsBuilder, 50);
     }
 }

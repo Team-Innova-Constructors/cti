@@ -3,7 +3,6 @@ package com.hoshino.cti.recipe;
 import com.google.gson.JsonObject;
 import com.hoshino.cti.cti;
 import committee.nova.mods.avaritia.init.registry.ModItems;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -20,14 +19,14 @@ public class ReactorNeutronCollectorRecipe implements Recipe<SimpleContainer> {
     private final ItemStack catalyst;
     private final float consumption_rate;
     private final float efficiency;
-    private final Ingredient ingredient =Ingredient.EMPTY;
+    private final Ingredient ingredient = Ingredient.EMPTY;
 
-    public ReactorNeutronCollectorRecipe(ResourceLocation id, ItemStack output, float efficiency,float consumption,ItemStack catalyst){
+    public ReactorNeutronCollectorRecipe(ResourceLocation id, ItemStack output, float efficiency, float consumption, ItemStack catalyst) {
         this.id = id;
         this.output = output;
-        this.efficiency =efficiency;
-        this.consumption_rate=consumption;
-        this.catalyst =catalyst;
+        this.efficiency = efficiency;
+        this.consumption_rate = consumption;
+        this.catalyst = catalyst;
     }
 
     @Override
@@ -35,10 +34,11 @@ public class ReactorNeutronCollectorRecipe implements Recipe<SimpleContainer> {
         return !pLevel.isClientSide();
     }
 
-    public float getEfficiency(){
+    public float getEfficiency() {
         return efficiency;
     }
-    public float getConsumptionRate(){
+
+    public float getConsumptionRate() {
         return consumption_rate;
     }
 
@@ -76,8 +76,10 @@ public class ReactorNeutronCollectorRecipe implements Recipe<SimpleContainer> {
         return Type.INSTANCE;
     }
 
-    public static class Type implements RecipeType<ReactorNeutronCollectorRecipe>{
-        private Type(){}
+    public static class Type implements RecipeType<ReactorNeutronCollectorRecipe> {
+        private Type() {
+        }
+
         public static final Type INSTANCE = new Type();
         public static final String ID = "reactor_neutron_collect";
     }
@@ -86,23 +88,25 @@ public class ReactorNeutronCollectorRecipe implements Recipe<SimpleContainer> {
     @Deprecated
     public static class Serializer implements RecipeSerializer<ReactorNeutronCollectorRecipe> {
         public static final Serializer INSTANCE = new Serializer();
-        public static final  ResourceLocation ID =
-                new ResourceLocation(cti.MOD_ID,"reactor_neutron_collect");
+        public static final ResourceLocation ID =
+                new ResourceLocation(cti.MOD_ID, "reactor_neutron_collect");
+
         @Override
         public ReactorNeutronCollectorRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
             ItemStack output = new ItemStack(ModItems.neutron_pile.get());
-            float efficiency = GsonHelper.getAsFloat(pSerializedRecipe,"efficiency");
-            float consumption = GsonHelper.getAsFloat(pSerializedRecipe,"consumption_rate");
-            ItemStack catalyst = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe,"catalyst"));
-            return new ReactorNeutronCollectorRecipe(pRecipeId,output,efficiency,consumption,catalyst);
+            float efficiency = GsonHelper.getAsFloat(pSerializedRecipe, "efficiency");
+            float consumption = GsonHelper.getAsFloat(pSerializedRecipe, "consumption_rate");
+            ItemStack catalyst = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "catalyst"));
+            return new ReactorNeutronCollectorRecipe(pRecipeId, output, efficiency, consumption, catalyst);
         }
+
         @Override
         public @Nullable ReactorNeutronCollectorRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
             ItemStack output = new ItemStack(ModItems.neutron_pile.get());
-            float efficiency =pBuffer.readFloat();
+            float efficiency = pBuffer.readFloat();
             float consumption_rate = (float) pBuffer.readDouble();
             ItemStack catalyst = pBuffer.readItem();
-            return new ReactorNeutronCollectorRecipe(pRecipeId,output,efficiency,consumption_rate,catalyst);
+            return new ReactorNeutronCollectorRecipe(pRecipeId, output, efficiency, consumption_rate, catalyst);
         }
 
         @Override
@@ -112,7 +116,7 @@ public class ReactorNeutronCollectorRecipe implements Recipe<SimpleContainer> {
             pRecipe.ingredient.toNetwork(pBuffer);
             pBuffer.writeFloat(pRecipe.efficiency);
             pBuffer.writeDouble(pRecipe.consumption_rate);
-            pBuffer.writeItemStack(pRecipe.getCatalyst(),false);
+            pBuffer.writeItemStack(pRecipe.getCatalyst(), false);
         }
     }
 }

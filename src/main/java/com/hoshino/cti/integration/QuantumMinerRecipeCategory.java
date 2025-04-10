@@ -35,9 +35,9 @@ public class QuantumMinerRecipeCategory implements IRecipeCategory<QuantumMinerR
     private final IDrawable icon;
 
 
-    public QuantumMinerRecipeCategory(IGuiHelper helper){
-        this.background  = helper.createDrawable(TEXTURE,6,37,100,26);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(ctiItem.quantum_miner.get()));
+    public QuantumMinerRecipeCategory(IGuiHelper helper) {
+        this.background = helper.createDrawable(TEXTURE, 6, 37, 100, 26);
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ctiItem.quantum_miner.get()));
 
     }
 
@@ -65,14 +65,14 @@ public class QuantumMinerRecipeCategory implements IRecipeCategory<QuantumMinerR
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, QuantumMinerRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT,5,5).addItemStack(new ItemStack( ctiItem.compressed_singularity.get()));
-        builder.addSlot(RecipeIngredientRole.OUTPUT,79,5).addItemStack(recipe.getResultItem());
+        builder.addSlot(RecipeIngredientRole.INPUT, 5, 5).addItemStack(new ItemStack(ctiItem.compressed_singularity.get()));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 79, 5).addItemStack(recipe.getResultItem());
     }
 
     @Override
     public void draw(QuantumMinerRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
-        Component component =Component.literal("概率:").withStyle(ChatFormatting.WHITE).append(String.format("%.2f",recipe.getChance()));
-        Minecraft.getInstance().font.draw(stack, component, recipeWidth / 2 - Minecraft.getInstance().font.width(component)-20, (Minecraft.getInstance().font.lineHeight + 2) * 2-16, 0);
+        Component component = Component.literal("概率:").withStyle(ChatFormatting.WHITE).append(String.format("%.2f", recipe.getChance()));
+        Minecraft.getInstance().font.draw(stack, component, recipeWidth / 2 - Minecraft.getInstance().font.width(component) - 20, (Minecraft.getInstance().font.lineHeight + 2) * 2 - 16, 0);
         IRecipeCategory.super.draw(recipe, recipeSlotsView, stack, mouseX, mouseY);
     }
 }

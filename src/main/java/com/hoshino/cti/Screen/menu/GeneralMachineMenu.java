@@ -6,18 +6,19 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-
 public abstract class GeneralMachineMenu extends AbstractContainerMenu {
     public final GeneralMachineEntity entity;
-    public int getEnergy(){
+
+    public int getEnergy() {
         return entity.getCurrentEnergy();
     }
-    public FluidStack getFluidstack(){
+
+    public FluidStack getFluidstack() {
         return entity.getFluidDis();
     }
-    public GeneralMachineMenu(@Nullable MenuType<?> p_38851_, int p_38852_,GeneralMachineEntity entity) {
+
+    public GeneralMachineMenu(@Nullable MenuType<?> p_38851_, int p_38852_, GeneralMachineEntity entity) {
         super(p_38851_, p_38852_);
-        this.entity =entity;
+        this.entity = entity;
     }
 }

@@ -18,11 +18,11 @@ public class NerfColossal extends Modifier implements MeleeDamageModifierHook {
 
     @Override
     public float getMeleeDamage(IToolStackView iToolStackView, ModifierEntry modifierEntry, ToolAttackContext context, float baseDamage, float damage) {
-        float bonus =0;
-        if (context.getTarget() instanceof LivingEntity living&&context.isFullyCharged()&&context.getAttacker().getMaxHealth()>0){
+        float bonus = 0;
+        if (context.getTarget() instanceof LivingEntity living && context.isFullyCharged() && context.getAttacker().getMaxHealth() > 0) {
             LivingEntity attacker = context.getAttacker();
-            bonus = Math.min(100*modifierEntry.getLevel(),baseDamage*(int) (living.getMaxHealth()/attacker.getMaxHealth()));
+            bonus = Math.min(100 * modifierEntry.getLevel(), baseDamage * (int) (living.getMaxHealth() / attacker.getMaxHealth()));
         }
-        return damage+bonus;
+        return damage + bonus;
     }
 }

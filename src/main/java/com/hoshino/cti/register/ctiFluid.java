@@ -1,7 +1,6 @@
 package com.hoshino.cti.register;
 
 import com.hoshino.cti.cti;
-import com.marth7th.solidarytinker.solidarytinker;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.SoundActions;
@@ -30,19 +29,20 @@ public class ctiFluid {
     private static FlowingFluidObject<ForgeFlowingFluid> register(String name, int temp) {
         return FLUIDS.register(name).type(hot(name).temperature(temp).lightLevel(12)).block(Material.LAVA, 15).bucket().flowing();
     }
+
     public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(MOD_ID);
-    public static final FluidObject<ForgeFlowingFluid> flux_fluid = register("flux_fluid",8192);
-    public static final FluidObject<ForgeFlowingFluid> molten_uriel = register("molten_uriel",8192);
-    public static final FluidObject<ForgeFlowingFluid> molten_infinity = register("molten_infinity",8192);
-    public static final FluidObject<ForgeFlowingFluid> molten_stellar_manyullyn = register("molten_stellar_manyullyn",131072);
-    public static final FluidObject<ForgeFlowingFluid> molten_invert_hoshino = register("molten_invert_hoshino",350507);
-    public static final FluidObject<ForgeFlowingFluid> molten_roxy = register("molten_roxy",225252);
-    public static final FluidObject<ForgeFlowingFluid> molten_omniscient_gold = register("molten_omniscient_gold",225252);
-    public static final FluidObject<ForgeFlowingFluid> molten_violium = register("molten_violium",6000);
-    public static final FluidObject<ForgeFlowingFluid> molten_aetherium = register("molten_aetherium",7000);
-    public static final FluidObject<ForgeFlowingFluid> extraterrestrial_essense = register("extraterrestrial_essense",0);
-    public static final FluidObject<ForgeFlowingFluid> molten_meteorium = register("molten_meteorium",8900);
-    public static final FluidObject<ForgeFlowingFluid> molten_awakesaintchef = register("molten_awakesaintchef",5600);
-    public static final FluidObject<ForgeFlowingFluid> molten_bloodgod = register("molten_bloodgod",1257);
+    public static final FluidObject<ForgeFlowingFluid> starenergy_fluid = register("starenergy_fluid", 3152);
+    public static final FluidObject<ForgeFlowingFluid> molten_uriel = register("molten_uriel", 8192);
+    public static final FluidObject<ForgeFlowingFluid> molten_infinity = register("molten_infinity", 8192);
+    public static final FluidObject<ForgeFlowingFluid> molten_stellar_manyullyn = register("molten_stellar_manyullyn", 131072);
+    public static final FluidObject<ForgeFlowingFluid> molten_invert_hoshino = register("molten_invert_hoshino", 350507);
+    public static final FluidObject<ForgeFlowingFluid> molten_roxy = register("molten_roxy", 225252);
+    public static final FluidObject<ForgeFlowingFluid> molten_omniscient_gold = register("molten_omniscient_gold", 225252);
+    public static final FluidObject<ForgeFlowingFluid> molten_violium = register("molten_violium", 6000);
+    public static final FluidObject<ForgeFlowingFluid> molten_aetherium = register("molten_aetherium", 7000);
+    public static final FluidObject<ForgeFlowingFluid> extraterrestrial_essense = register("extraterrestrial_essense", 0);
+    public static final FluidObject<ForgeFlowingFluid> molten_meteorium = register("molten_meteorium", 8900);
+    public static final FluidObject<ForgeFlowingFluid> molten_awakesaintchef = register("molten_awakesaintchef", 5600);
+    public static final FluidObject<ForgeFlowingFluid> molten_bloodgod = register("molten_bloodgod", 1257);
 
 }

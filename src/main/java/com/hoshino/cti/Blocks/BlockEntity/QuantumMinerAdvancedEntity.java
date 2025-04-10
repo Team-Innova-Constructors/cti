@@ -34,13 +34,14 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
     public QuantumMinerAdvancedEntity(BlockPos p_155229_, BlockState p_155230_) {
         super(ctiBlockEntityType.QUANTUM_MINER_ADVANCED_ENTITY.get(), p_155229_, p_155230_);
     }
-    protected int MAX_ENERGY =2147483647;
-    protected int MAX_TRANSFER =2147483647;
-    protected int BASE_ENERGY_PERTICK =536870912;
+
+    protected int MAX_ENERGY = 2147483647;
+    protected int MAX_TRANSFER = 2147483647;
+    protected int BASE_ENERGY_PERTICK = 536870912;
     public ContainerData DATA;
-    public int PROGRESS =0;
-    public int MAX_PROGRESS =20;
-    private static final IItemHandler EMPTY =new IItemHandler() {
+    public int PROGRESS = 0;
+    public int MAX_PROGRESS = 20;
+    private static final IItemHandler EMPTY = new IItemHandler() {
         @Override
         public int getSlots() {
             return 0;
@@ -72,14 +73,14 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
         }
     };
 
-    public final ctiEnergyStore ENERGY_STORAGE = new ctiEnergyStore(getMaxEnergy(),getMaxTransfer()) {
+    public final ctiEnergyStore ENERGY_STORAGE = new ctiEnergyStore(getMaxEnergy(), getMaxTransfer()) {
         @Override
         public void onEnergyChange() {
             setChanged();
         }
     };
 
-    private final ItemStackHandler itemStackHandler =new ItemStackHandler(1){
+    private final ItemStackHandler itemStackHandler = new ItemStackHandler(1) {
         protected void onContentsChanged(int slot) {
             setChanged();
         }
@@ -90,32 +91,37 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
         }
     };
 
-    public int getMaxEnergy(){
+    public int getMaxEnergy() {
         return this.MAX_ENERGY;
     }
-    public int getMaxTransfer(){
+
+    public int getMaxTransfer() {
         return this.MAX_TRANSFER;
     }
-    public int getEnergyPerTick(){
+
+    public int getEnergyPerTick() {
         return this.BASE_ENERGY_PERTICK;
     }
+
     private LazyOptional<ItemStackHandler> LazyitemStackHandler = LazyOptional.empty();
     private LazyOptional<IEnergyStorage> LazyenergyHandler = LazyOptional.empty();
+
     @Override
-    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction direction){
-        if (capability == ForgeCapabilities.ITEM_HANDLER){
+    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction direction) {
+        if (capability == ForgeCapabilities.ITEM_HANDLER) {
             return LazyitemStackHandler.cast();
         }
-        if (capability == ForgeCapabilities.ENERGY){
+        if (capability == ForgeCapabilities.ENERGY) {
             return LazyenergyHandler.cast();
         }
-        return super.getCapability(capability,direction);
+        return super.getCapability(capability, direction);
     }
+
     @Override
     public void onLoad() {
         super.onLoad();
-        LazyitemStackHandler = LazyOptional.of(()->itemStackHandler);
-        LazyenergyHandler = LazyOptional.of(()->ENERGY_STORAGE);
+        LazyitemStackHandler = LazyOptional.of(() -> itemStackHandler);
+        LazyenergyHandler = LazyOptional.of(() -> ENERGY_STORAGE);
     }
 
     @Override
@@ -139,8 +145,8 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
         super.load(nbt);
     }
 
-    public void dropItem(){
-        if (itemStackHandler.getSlots()>0) {
+    public void dropItem() {
+        if (itemStackHandler.getSlots() > 0) {
             SimpleContainer container = new SimpleContainer(itemStackHandler.getSlots());
             for (int i = 0; i < itemStackHandler.getSlots(); i++) {
                 container.setItem(i, itemStackHandler.getStackInSlot(i));
@@ -152,45 +158,45 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
     }
 
     @Nullable
-    public ctiEnergyStore getEnergyStorage(){
+    public ctiEnergyStore getEnergyStorage() {
         return ENERGY_STORAGE;
     }
 
-    public static void tick(Level level, BlockPos blockPos, BlockState state, QuantumMinerAdvancedEntity entity){
-        if (level.isClientSide){
+    public static void tick(Level level, BlockPos blockPos, BlockState state, QuantumMinerAdvancedEntity entity) {
+        if (level.isClientSide) {
             return;
         }
-        if (entity.itemStackHandler.getStackInSlot(0).isEmpty()||entity.itemStackHandler.getStackInSlot(0).getCount()==0){
+        if (entity.itemStackHandler.getStackInSlot(0).isEmpty() || entity.itemStackHandler.getStackInSlot(0).getCount() == 0) {
             return;
         }
-        if (entity.itemStackHandler.getStackInSlot(0).getItem()!=ctiItem.compressed_singularity.get()){
+        if (entity.itemStackHandler.getStackInSlot(0).getItem() != ctiItem.compressed_singularity.get()) {
             return;
         }
-        if (entity.PROGRESS<=0&&!entity.itemStackHandler.extractItem(0,1,true).isEmpty()&&entity.itemStackHandler.extractItem(0,1,true).is(ctiItem.compressed_singularity.get())){
-            entity.itemStackHandler.extractItem(0,1,false);
-            entity.PROGRESS+=20;
+        if (entity.PROGRESS <= 0 && !entity.itemStackHandler.extractItem(0, 1, true).isEmpty() && entity.itemStackHandler.extractItem(0, 1, true).is(ctiItem.compressed_singularity.get())) {
+            entity.itemStackHandler.extractItem(0, 1, false);
+            entity.PROGRESS += 20;
         }
-        ServerLevel serverLevel =(ServerLevel)level;
-        PlayerList list =serverLevel.getServer().getPlayerList();
+        ServerLevel serverLevel = (ServerLevel) level;
+        PlayerList list = serverLevel.getServer().getPlayerList();
         ItemStack output = getOutPut(level);
-        if (output.isEmpty()){
+        if (output.isEmpty()) {
             return;
         }
-        if (entity.ENERGY_STORAGE.getEnergyStored()<entity.BASE_ENERGY_PERTICK){
+        if (entity.ENERGY_STORAGE.getEnergyStored() < entity.BASE_ENERGY_PERTICK) {
             return;
         }
-        BlockEntity blockEntity =level.getBlockEntity(blockPos.above());
-        if (blockEntity!=null){
+        BlockEntity blockEntity = level.getBlockEntity(blockPos.above());
+        if (blockEntity != null) {
             LazyOptional<IItemHandler> optional = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER);
-            IItemHandler Handler =optional.orElse(EMPTY);
-            boolean effective =false;
-            for (int i=0;i<10;i++) {
-                if (Handler != EMPTY&&entity.PROGRESS>0) {
+            IItemHandler Handler = optional.orElse(EMPTY);
+            boolean effective = false;
+            for (int i = 0; i < 10; i++) {
+                if (Handler != EMPTY && entity.PROGRESS > 0) {
                     int slotAmount = Handler.getSlots();
                     boolean checkoutput = false;
                     int effectiveSlot = 0;
                     for (int a = 0; a < slotAmount; a++) {
-                        if ((Handler.getStackInSlot(a).isEmpty() || (Handler.getStackInSlot(a).is(output.getItem()) && Handler.getStackInSlot(a).getCount() + output.getCount() <= Handler.getSlotLimit(a))) && Handler.isItemValid(a, output)&&entity.itemStackHandler.getStackInSlot(0).getItem()==ctiItem.compressed_singularity.get()) {
+                        if ((Handler.getStackInSlot(a).isEmpty() || (Handler.getStackInSlot(a).is(output.getItem()) && Handler.getStackInSlot(a).getCount() + output.getCount() <= Handler.getSlotLimit(a))) && Handler.isItemValid(a, output) && entity.itemStackHandler.getStackInSlot(0).getItem() == ctiItem.compressed_singularity.get()) {
                             checkoutput = true;
                             effectiveSlot = a;
                             break;
@@ -201,11 +207,11 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
                     }
                     Handler.insertItem(effectiveSlot, output, false);
                     entity.PROGRESS--;
-                    if (entity.PROGRESS<=0&&!entity.itemStackHandler.extractItem(0,1,true).isEmpty()&&entity.itemStackHandler.extractItem(0,1,true).is(ctiItem.compressed_singularity.get())){
-                        entity.itemStackHandler.extractItem(0,1,false);
-                        entity.PROGRESS+=20;
+                    if (entity.PROGRESS <= 0 && !entity.itemStackHandler.extractItem(0, 1, true).isEmpty() && entity.itemStackHandler.extractItem(0, 1, true).is(ctiItem.compressed_singularity.get())) {
+                        entity.itemStackHandler.extractItem(0, 1, false);
+                        entity.PROGRESS += 20;
                     }
-                    effective =true;
+                    effective = true;
                     entity.setChanged();
                 }
             }
@@ -215,22 +221,21 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
         }
     }
 
-    public static ItemStack getOutPut(Level level){
-        List<QuantumMinerRecipe> list =List.copyOf(RecipeMap.AdvancedMinerRecipeList);
-        if (list.isEmpty()){
+    public static ItemStack getOutPut(Level level) {
+        List<QuantumMinerRecipe> list = List.copyOf(RecipeMap.AdvancedMinerRecipeList);
+        if (list.isEmpty()) {
             return ItemStack.EMPTY;
         }
-        int length =list.size();
-        QuantumMinerRecipe recipe =list.get(EtSHrnd().nextInt(length));
+        int length = list.size();
+        QuantumMinerRecipe recipe = list.get(EtSHrnd().nextInt(length));
         ItemStack stack = recipe.getResultItem();
-        int count = (int)recipe.getChance();
-        if (count==0&&EtSHrnd().nextFloat()>recipe.getChance()){
+        int count = (int) recipe.getChance();
+        if (count == 0 && EtSHrnd().nextFloat() > recipe.getChance()) {
             stack = ItemStack.EMPTY;
-        }
-        else {
-            float chance = recipe.getChance()-count;
-            count+= EtSHrnd().nextFloat()>chance? -1:0;
-            stack.setCount((stack.getCount()+count)*2);
+        } else {
+            float chance = recipe.getChance() - count;
+            count += EtSHrnd().nextFloat() > chance ? -1 : 0;
+            stack.setCount((stack.getCount() + count) * 2);
         }
         return stack;
     }

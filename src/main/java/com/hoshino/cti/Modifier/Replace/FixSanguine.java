@@ -35,7 +35,7 @@ public class FixSanguine extends XIRModifier {
     }
 
     private float getBonus(IToolStackView tool) {
-        return (float)this.getData(tool).getInt(this.KEY) * 0.01F;
+        return (float) this.getData(tool).getInt(this.KEY) * 0.01F;
     }
 
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
@@ -58,7 +58,7 @@ public class FixSanguine extends XIRModifier {
 
     public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
         if (slot == EquipmentSlot.MAINHAND) {
-            consumer.accept(Attributes.ATTACK_SPEED, ItemUtils.mulBaseAttr(slot, ItemUtils.getAttrName("sanguine", slot), (double)this.getBonus(tool)));
+            consumer.accept(Attributes.ATTACK_SPEED, ItemUtils.mulBaseAttr(slot, ItemUtils.getAttrName("sanguine", slot), (double) this.getBonus(tool)));
         }
     }
 

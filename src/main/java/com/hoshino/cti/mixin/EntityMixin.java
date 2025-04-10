@@ -18,44 +18,46 @@ import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.getScorchResistan
 @Mixin(Entity.class)
 public class EntityMixin {
     @Inject(at = @At(value = "HEAD"), method = "isInvulnerableTo", cancellable = true)
-    private void setInvulnerableTo(DamageSource source, CallbackInfoReturnable<Boolean> cir){
-        Entity entity =(Entity) (Object)this;
-        if(entity instanceof Player living){
-            if (getScorchResistance(living)>0.5&&source.isFire()){
+    private void setInvulnerableTo(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
+        Entity entity = (Entity) (Object) this;
+        if (entity instanceof Player living) {
+            if (getScorchResistance(living) > 0.5 && source.isFire()) {
                 cir.setReturnValue(true);
             }
-            if (getFreezeResistance(living)>0.5&&(source== ModDamageSource.CRYO_FUEL||source==DamageSource.FREEZE)){
+            if (getFreezeResistance(living) > 0.5 && (source == ModDamageSource.CRYO_FUEL || source == DamageSource.FREEZE)) {
                 cir.setReturnValue(true);
             }
-        }else if(entity!=null&&entity.getPersistentData().getBoolean("vulnerable")){
+        } else if (entity != null && entity.getPersistentData().getBoolean("vulnerable")) {
             cir.setReturnValue(false);
         }
-        if(entity instanceof AbstractSemiblockEntity&&!source.isBypassInvul()){
+        if (entity instanceof AbstractSemiblockEntity && !source.isBypassInvul()) {
             cir.setReturnValue(true);
         }
-
     }
+
     @Inject(at = @At(value = "HEAD"), method = "isInvulnerable", cancellable = true)
-    private void setVulnerable(CallbackInfoReturnable<Boolean> cir){
-        Entity entity =(Entity) (Object)this;
-        if(entity!=null&&entity.getPersistentData().getBoolean("vulnerable")){
+    private void setVulnerable(CallbackInfoReturnable<Boolean> cir) {
+        Entity entity = (Entity) (Object) this;
+        if (entity != null && entity.getPersistentData().getBoolean("vulnerable")) {
             cir.setReturnValue(false);
         }
     }
+
     @Inject(at = @At(value = "HEAD"), method = "fireImmune", cancellable = true)
-    private void setFireImmune(CallbackInfoReturnable<Boolean> cir){
-        Entity entity =(Entity) (Object)this;
-        if(entity instanceof Player living){
-            if (getScorchResistance(living)>0.5|| SuperpositionHandler.hasCurio(living, ctiItem.astra_tablet_5.get())){
+    private void setFireImmune(CallbackInfoReturnable<Boolean> cir) {
+        Entity entity = (Entity) (Object) this;
+        if (entity instanceof Player living) {
+            if (getScorchResistance(living) > 0.5 || SuperpositionHandler.hasCurio(living, ctiItem.astra_tablet_5.get())) {
                 cir.setReturnValue(true);
             }
         }
     }
+
     @Inject(at = @At(value = "HEAD"), method = "canFreeze", cancellable = true)
-    private void setFreezeImmune(CallbackInfoReturnable<Boolean> cir){
-        Entity entity =(Entity) (Object)this;
-        if(entity instanceof Player living){
-            if (getFreezeResistance(living)>0.5){
+    private void setFreezeImmune(CallbackInfoReturnable<Boolean> cir) {
+        Entity entity = (Entity) (Object) this;
+        if (entity instanceof Player living) {
+            if (getFreezeResistance(living) > 0.5) {
                 cir.setReturnValue(false);
             }
         }

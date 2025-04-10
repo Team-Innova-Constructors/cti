@@ -24,6 +24,7 @@ public class BloodThirsty extends BattleModifier {
     public boolean havenolevel() {
         return true;
     }
+
     @Override
     public void LivingDamageEvent(LivingDamageEvent event) {
         if (event.getSource().getEntity() instanceof Player player) {
@@ -41,35 +42,36 @@ public class BloodThirsty extends BattleModifier {
             }
         }
     }
-    public float DamageBoost(LivingEntity target){
-        return (target.getMaxHealth()-target.getHealth())*0.08F;
+
+    public float DamageBoost(LivingEntity target) {
+        return (target.getMaxHealth() - target.getHealth()) * 0.08F;
     }
 
     @Override
     public float staticdamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity livingTarget, float baseDamage, float damage) {
-        if(livingTarget!=null&&attacker instanceof Player player){
-            float amount=DamageBoost(livingTarget);
-            if(player.getHealth()>8){
-                player.setHealth(player.getHealth()-8);
-                return damage+amount;
+        if (livingTarget != null && attacker instanceof Player player) {
+            float amount = DamageBoost(livingTarget);
+            if (player.getHealth() > 8) {
+                player.setHealth(player.getHealth() - 8);
+                return damage + amount;
             }
-            return damage+amount;
+            return damage + amount;
         }
         return damage;
     }
 
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-        if(context.getAttacker() instanceof Player player &&player.hasEffect(solidarytinkerEffects.bloodanger.get())&&context.getLivingTarget()!=null){
-            context.getLivingTarget().hurt(DamageSource.playerAttack(player),player.getAbsorptionAmount()+player.getHealth() * 0.08F);
+        if (context.getAttacker() instanceof Player player && player.hasEffect(solidarytinkerEffects.bloodanger.get()) && context.getLivingTarget() != null) {
+            context.getLivingTarget().hurt(DamageSource.playerAttack(player), player.getAbsorptionAmount() + player.getHealth() * 0.08F);
             player.heal(player.getMaxHealth() - player.getHealth() * 0.08F);
         }
     }
 
     @Override
     public void arrowhurt(ModifierNBT modifiers, NamespacedNBT persistentData, int level, Projectile projectile, EntityHitResult hit, AbstractArrow arrow, LivingEntity attacker, LivingEntity target) {
-        if(attacker instanceof Player player&&player.hasEffect(solidarytinkerEffects.bloodanger.get())){
-            target.hurt(DamageSource.playerAttack(player),player.getAbsorptionAmount()+player.getHealth() * 0.08F);
+        if (attacker instanceof Player player && player.hasEffect(solidarytinkerEffects.bloodanger.get())) {
+            target.hurt(DamageSource.playerAttack(player), player.getAbsorptionAmount() + player.getHealth() * 0.08F);
             player.heal((player.getMaxHealth() - player.getHealth()) * 0.08F);
         }
     }

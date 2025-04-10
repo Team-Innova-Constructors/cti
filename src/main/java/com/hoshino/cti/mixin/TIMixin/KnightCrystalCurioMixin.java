@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-@Mixin(value = CurioKnightVow.class,remap = false)
+@Mixin(value = CurioKnightVow.class, remap = false)
 public class KnightCrystalCurioMixin {
     /**
      * @author firyfly
@@ -17,7 +17,7 @@ public class KnightCrystalCurioMixin {
      * @数值调整 最大生命4.0->最大生命 0.2
      */
     @Overwrite
-    public void onCurioTakeHurt(IToolStackView curio, LivingHurtEvent event, LivingEntity entity, DamageSource source, int level){
+    public void onCurioTakeHurt(IToolStackView curio, LivingHurtEvent event, LivingEntity entity, DamageSource source, int level) {
         if (event.getAmount() > 0.0F) {
             ScheduleHelper.scheduleInTick("knight_vow", 40, () -> {
                 float amount = event.getAmount() * 1.1F;

@@ -1,6 +1,5 @@
 package com.hoshino.cti.util.method;
 
-import com.xiaoyue.tinkers_ingenuity.utils.ToolUtils;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -122,31 +121,34 @@ public class GetModifierLevel {
     public static boolean EquipHasModifierlevel(LivingEntity entity, ModifierId modifierId) {
         return GetModifierLevel.getTotalArmorModifierlevel(entity, modifierId) > 0 || GetModifierLevel.HandsHaveModifierlevel(entity, modifierId);
     }
+
     public static int getAllSlotModifierlevel(LivingEntity entity, ModifierId modifierId) {
         return GetModifierLevel.getTotalArmorModifierlevel(entity, modifierId) + GetModifierLevel.getEachHandsTotalModifierlevel(entity, modifierId);
     }
+
     public static int CurioModifierLevel(LivingEntity entity, ModifierId modifierId) {
         if (entity != null) {
             if (entity instanceof Player) {
                 List<ItemStack> list = new ArrayList<>();
                 LazyOptional<ICuriosItemHandler> handler = CuriosApi.getCuriosHelper().getCuriosHandler(entity);
                 if (handler.resolve().isPresent()) {
-                    for(ICurioStacksHandler curios : handler.resolve().get().getCurios().values()) {
-                        for(int i = 0; i < curios.getSlots(); ++i) {
+                    for (ICurioStacksHandler curios : handler.resolve().get().getCurios().values()) {
+                        for (int i = 0; i < curios.getSlots(); ++i) {
                             ItemStack stack = curios.getStacks().getStackInSlot(i);
                             if (!stack.isEmpty() && stack.is(TinkerTags.Items.MODIFIABLE)) {
                                 list.add(stack);
                             }
-                            }
                         }
                     }
+                }
                 for (ItemStack curios : list) {
-                    return ModifierUtil.getModifierLevel(curios,modifierId);
+                    return ModifierUtil.getModifierLevel(curios, modifierId);
                 }
             }
         }
         return 0;
     }
+
     public static boolean CurioHasModifierlevel(LivingEntity entity, ModifierId modifierId) {
         return GetModifierLevel.CurioModifierLevel(entity, modifierId) > 0;
     }

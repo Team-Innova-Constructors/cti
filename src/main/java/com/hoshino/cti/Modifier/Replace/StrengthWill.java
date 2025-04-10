@@ -10,17 +10,21 @@ import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
 public class StrengthWill extends XIModifier {
     public static final TinkerDataCapability.TinkerDataKey<Integer> KEY = TinkersIngenuity.createKey("strength_will");
+
     public StrengthWill() {
     }
+
     public boolean isSingleLevel() {
         return true;
     }
+
     public TinkerDataCapability.TinkerDataKey<Integer> useKey() {
         return KEY;
     }
+
     public static void onLivDamage(LivingEntity entity) {
         entity.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
-            if (holder.get(KEY, 0) > 0 && entity.getHealth() >= entity.getMaxHealth()&&EnvironmentSystem.IsEnvironmentalSafe(entity)) {
+            if (holder.get(KEY, 0) > 0 && entity.getHealth() >= entity.getMaxHealth() && EnvironmentSystem.IsEnvironmentalSafe(entity)) {
                 EntityUtils.addEffect(entity, TIEffects.LAST_STAND.get(), 40);
             }
         });

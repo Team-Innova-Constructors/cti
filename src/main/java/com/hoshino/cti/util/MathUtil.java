@@ -6,7 +6,7 @@ import java.util.UUID;
 public class MathUtil {
     public static UUID getUUIDFromString(String str) {
         int hash = str.hashCode();
-        Random random =new Random();
+        Random random = new Random();
         random.setSeed(hash);
         long l0 = random.nextLong();
         long l1 = random.nextLong();

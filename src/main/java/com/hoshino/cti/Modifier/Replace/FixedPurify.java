@@ -1,6 +1,5 @@
 package com.hoshino.cti.Modifier.Replace;
 
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -25,7 +24,7 @@ public class FixedPurify extends Modifier implements InventoryTickModifierHook {
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifierEntry, Level level, LivingEntity holder, int slot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-        if (isCorrectSlot){
+        if (isCorrectSlot) {
             Collection<MobEffectInstance> harmeffect = holder.getActiveEffects();
             for (int i = 0; i < harmeffect.size(); i++) {
                 MobEffectInstance effect = harmeffect.stream().toList().get(i);

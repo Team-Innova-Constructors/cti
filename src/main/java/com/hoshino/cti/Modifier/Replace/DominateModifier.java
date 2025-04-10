@@ -22,27 +22,28 @@ public class DominateModifier extends Modifier implements MeleeDamageModifierHoo
     @Override
     public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity target = context.getLivingTarget();
-        float bonus =0;
-        if (target != null&&modifier.getLevel()>0) {
-            float cap = modifier.getLevel()*1000f;
-            bonus =Math.min(cap,modifier.getLevel()>=2?target.getHealth()*0.4f:target.getHealth()*0.25f);
+        float bonus = 0;
+        if (target != null && modifier.getLevel() > 0) {
+            float cap = modifier.getLevel() * 1000f;
+            bonus = Math.min(cap, modifier.getLevel() >= 2 ? target.getHealth() * 0.4f : target.getHealth() * 0.25f);
         }
-        return damage+bonus;
+        return damage + bonus;
     }
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.PROJECTILE_HIT);
     }
+
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (projectile instanceof AbstractArrow arrow && target != null) {
-            float bonus =0;
-            if (modifier.getLevel()>0) {
-                float cap = modifier.getLevel()*1000f;
-                bonus =Math.min(cap,modifier.getLevel()>=2?target.getHealth()*0.4f:target.getHealth()*0.25f);
+            float bonus = 0;
+            if (modifier.getLevel() > 0) {
+                float cap = modifier.getLevel() * 1000f;
+                bonus = Math.min(cap, modifier.getLevel() >= 2 ? target.getHealth() * 0.4f : target.getHealth() * 0.25f);
             }
-            arrow.setBaseDamage(arrow.getBaseDamage()+bonus);
+            arrow.setBaseDamage(arrow.getBaseDamage() + bonus);
         }
         return false;
     }

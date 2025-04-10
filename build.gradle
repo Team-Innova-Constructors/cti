@@ -229,7 +229,8 @@ dependencies {
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.36')
     compileOnly fg.deobf("mezz.jei:jei-1.19-common-api:11.0.0.211")
     compileOnly fg.deobf("mezz.jei:jei-1.19-forge-api:11.0.0.211")
-
+    implementation fg.deobf("slimeknights.tconstruct:TConstruct:1.19.2-${tcon_version}")
+    implementation fg.deobf("slimeknights.mantle:Mantle:1.19.2-${mantle_version}")
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.1.0")
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.1.0:api")
 

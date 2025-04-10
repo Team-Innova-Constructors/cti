@@ -18,33 +18,33 @@ public class Refined extends Modifier implements VolatileDataModifierHook, ToolS
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         super.registerHooks(hookBuilder);
-        hookBuilder.addHook(this, ModifierHooks.TOOL_STATS,ModifierHooks.VOLATILE_DATA);
+        hookBuilder.addHook(this, ModifierHooks.TOOL_STATS, ModifierHooks.VOLATILE_DATA);
     }
 
     @Override
     public void addToolStats(IToolContext iToolContext, ModifierEntry modifier, ModifierStatsBuilder modifierStatsBuilder) {
-        ToolStats.ARMOR.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
-        ToolStats.ARMOR_TOUGHNESS.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
-        ToolStats.ACCURACY.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
-        ToolStats.PROJECTILE_DAMAGE.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
-        ToolStats.MINING_SPEED.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
-        ToolStats.ATTACK_SPEED.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
-        ToolStats.ATTACK_DAMAGE.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
-        ToolStats.BLOCK_ANGLE.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
-        ToolStats.BLOCK_AMOUNT.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
-        ToolStats.DURABILITY.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
-        ToolStats.DRAW_SPEED.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
+        ToolStats.ARMOR.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
+        ToolStats.ARMOR_TOUGHNESS.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
+        ToolStats.ACCURACY.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
+        ToolStats.PROJECTILE_DAMAGE.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
+        ToolStats.MINING_SPEED.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
+        ToolStats.ATTACK_SPEED.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
+        ToolStats.ATTACK_DAMAGE.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
+        ToolStats.BLOCK_ANGLE.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
+        ToolStats.BLOCK_AMOUNT.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
+        ToolStats.DURABILITY.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
+        ToolStats.DRAW_SPEED.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
 
-        etshtinkerToolStats.PLASMARANGE.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
-        etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
-        etshtinkerToolStats.FLUID_EFFICIENCY.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
+        etshtinkerToolStats.PLASMARANGE.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
+        etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
+        etshtinkerToolStats.FLUID_EFFICIENCY.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
 
-        ToolTankHelper.CAPACITY_STAT.multiply(modifierStatsBuilder,1+0.3*modifier.getLevel());
+        ToolTankHelper.CAPACITY_STAT.multiply(modifierStatsBuilder, 1 + 0.3 * modifier.getLevel());
     }
 
     @Override
     public void addVolatileData(IToolContext iToolContext, ModifierEntry modifierEntry, ModDataNBT modDataNBT) {
-        modDataNBT.addSlots(SlotType.UPGRADE,modifierEntry.getLevel());
-        modDataNBT.addSlots(SlotType.ABILITY,modifierEntry.getLevel());
+        modDataNBT.addSlots(SlotType.UPGRADE, modifierEntry.getLevel());
+        modDataNBT.addSlots(SlotType.ABILITY, modifierEntry.getLevel());
     }
 }

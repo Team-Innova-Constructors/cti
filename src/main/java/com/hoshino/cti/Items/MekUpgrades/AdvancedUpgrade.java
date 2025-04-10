@@ -3,10 +3,8 @@ package com.hoshino.cti.Items.MekUpgrades;
 import com.hoshino.cti.Items.TooltipedItem;
 import com.hoshino.cti.register.ctiTab;
 import mekanism.api.Upgrade;
-import mekanism.common.registries.MekanismBlocks;
 import mekanism.common.tile.component.TileComponentUpgrade;
 import mekanism.common.tile.interfaces.IUpgradeTile;
-import mekanism.common.tile.machine.TileEntityDigitalMiner;
 import mekanism.common.util.WorldUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -25,11 +23,12 @@ public class AdvancedUpgrade extends TooltipedItem {
     public final List<Upgrade> typeList;
     public final int upTo;
     public final boolean consume;
-    public AdvancedUpgrade(int upTo,boolean consume,@NotNull List<Upgrade> typeList) {
-        super(new Item.Properties().stacksTo(consume?64:1).tab(ctiTab.MIXC),List.of(Component.literal("Shift-右键机器时将对应升级的等级提升至 ").append(String.valueOf(upTo)+" 级").withStyle(ChatFormatting.AQUA),Component.literal(consume?"消耗品":"不消耗").withStyle(consume?ChatFormatting.YELLOW:ChatFormatting.GREEN)));
-        this.typeList=typeList;
-        this.upTo=upTo;
-        this.consume=consume;
+
+    public AdvancedUpgrade(int upTo, boolean consume, @NotNull List<Upgrade> typeList) {
+        super(new Item.Properties().stacksTo(consume ? 64 : 1).tab(ctiTab.MIXC), List.of(Component.literal("Shift-右键机器时将对应升级的等级提升至 ").append(String.valueOf(upTo) + " 级").withStyle(ChatFormatting.AQUA), Component.literal(consume ? "消耗品" : "不消耗").withStyle(consume ? ChatFormatting.YELLOW : ChatFormatting.GREEN)));
+        this.typeList = typeList;
+        this.upTo = upTo;
+        this.consume = consume;
     }
 
     @Override
@@ -42,24 +41,23 @@ public class AdvancedUpgrade extends TooltipedItem {
                 if (upgradeTile.supportsUpgrades()) {
                     TileComponentUpgrade component = upgradeTile.getComponent();
                     ItemStack stack = context.getItemInHand();
-                    if (stack.getItem() instanceof AdvancedUpgrade upgrade&&!upgrade.typeList.isEmpty()) {
+                    if (stack.getItem() instanceof AdvancedUpgrade upgrade && !upgrade.typeList.isEmpty()) {
                         boolean successful = false;
-                        for (Upgrade type:upgrade.typeList) {
+                        for (Upgrade type : upgrade.typeList) {
                             if (component.supports(type)) {
                                 if (!world.isClientSide) {
-                                    if (component.getUpgrades(type)>0){
-                                        int toAdd = upgrade.upTo-component.getUpgrades(type);
-                                        if (toAdd>0){
+                                    if (component.getUpgrades(type) > 0) {
+                                        int toAdd = upgrade.upTo - component.getUpgrades(type);
+                                        if (toAdd > 0) {
                                             component.addUpgrades(type, toAdd);
-                                            successful =true;
+                                            successful = true;
                                             if (upgrade.consume) {
                                                 stack.shrink(1);
                                             }
                                         }
-                                    }
-                                    else {
+                                    } else {
                                         component.addUpgrades(type, upgrade.upTo);
-                                        successful =true;
+                                        successful = true;
                                         if (upgrade.consume) {
                                             stack.shrink(1);
                                         }

@@ -1,9 +1,12 @@
 package com.hoshino.cti.mixin.L2;
 
+import com.gjhi.tinkersinnovation.register.TinkersInnovationModifiers;
 import com.hoshino.cti.Entity.specialDamageSource.Environmental;
 import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
+import com.hoshino.cti.util.method.GetModifierLevel;
 import dev.xkmc.l2hostility.content.traits.legendary.UndyingTrait;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,13 +16,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = UndyingTrait.class, remap = false)
 public abstract class UndyingTraitMixin {
     @Inject(at = {@At("HEAD")}, method = {"onDeath"}, cancellable = true)
-    private void onDeath(int level, LivingEntity entity, LivingDeathEvent event, CallbackInfo ci){
-        if(event.getSource().isBypassMagic()){
+    private void onDeath(int level, LivingEntity entity, LivingDeathEvent event, CallbackInfo ci) {
+        if (event.getSource().isBypassMagic()) {
             ci.cancel();
-        }else if (event.getSource() instanceof PierceThrough||event.getSource() instanceof Environmental){
+        } else if (event.getSource() instanceof PierceThrough || event.getSource() instanceof Environmental) {
             ci.cancel();
-        }else if (entity.getMaxHealth()<=10||entity.getPersistentData().contains("atomic_dec")||entity.getPersistentData().contains("quark_disassemble")){
+        } else if (entity.getMaxHealth() <= 10 || entity.getPersistentData().contains("atomic_dec") || entity.getPersistentData().contains("quark_disassemble")) {
             ci.cancel();
+        } else if (event.getSource().getEntity() instanceof Player player) {
+            if (GetModifierLevel.getEachHandsTotalModifierlevel(player, TinkersInnovationModifiers.L2ComplementsModifier.curse_blade.getId()) > 0) {
+                ci.cancel();
+            }
         }
     }
 }

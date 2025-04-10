@@ -14,13 +14,13 @@ import java.util.List;
 public class Breeding extends etshmodifieriii {
     @Override
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (holder !=null&&isCorrectSlot){
-            List<Animal> list = holder.level.getEntitiesOfClass(Animal.class,new AABB(holder.blockPosition()).inflate(modifier.getLevel()*5));
-            for (Animal animal:list){
-                if (animal!=null) {
+        if (holder != null && isCorrectSlot) {
+            List<Animal> list = holder.level.getEntitiesOfClass(Animal.class, new AABB(holder.blockPosition()).inflate(modifier.getLevel() * 5));
+            for (Animal animal : list) {
+                if (animal != null) {
                     if (animal.getAge() < 0) {
-                        animal.setAge(animal.getAge()+2*modifier.getLevel());
-                    }else {
+                        animal.setAge(animal.getAge() + 2 * modifier.getLevel());
+                    } else {
                         animal.setAge(0);
                     }
                 }

@@ -4,7 +4,6 @@ import appeng.api.config.Actionable;
 import appeng.api.networking.IGridNode;
 import appeng.api.networking.security.IActionSource;
 import appeng.api.networking.ticking.TickRateModulation;
-import appeng.api.networking.ticking.TickingRequest;
 import appeng.api.parts.IPartItem;
 import appeng.api.parts.IPartModel;
 import appeng.api.stacks.AEItemKey;
@@ -24,9 +23,9 @@ import java.util.Random;
 
 public class MeteoriumAnnihilationPlanePart extends AnnihilationPlanePart {
     private static final PlaneModels MODELS = new PlaneModels("part/annihilation_plane", "part/annihilation_plane_on");
-    private final IActionSource actionSource=new MachineSource(this);
+    private final IActionSource actionSource = new MachineSource(this);
     private boolean rightPlace = false;
-    public int process=0;
+    public int process = 0;
 
     @PartModels
     public static List<IPartModel> getModels() {
@@ -40,7 +39,7 @@ public class MeteoriumAnnihilationPlanePart extends AnnihilationPlanePart {
         if (host.hasLevel()) {
             int buildHeight = host.getLevel().getMaxBuildHeight();
             if (host.getBlockPos().getY() + 1 >= buildHeight && this.getSide() == Direction.UP) {
-                rightPlace=true;
+                rightPlace = true;
             }
         }
     }
@@ -48,15 +47,16 @@ public class MeteoriumAnnihilationPlanePart extends AnnihilationPlanePart {
     public MeteoriumAnnihilationPlanePart(IPartItem<?> partItem) {
         super(partItem);
     }
+
     @Override
     public TickRateModulation tickingRequest(IGridNode node, int ticksSinceLastCall) {
         var grid = node.getGrid();
         Random random = new Random();
-        if (isActive()&&rightPlace) {
-            process+=ticksSinceLastCall;
-            if (process>2000){
-                insertToGrid(AEItemKey.of(new ItemStack(ctiItem.meteorite_ore.get())),1,Actionable.MODULATE);
-                process=0;
+        if (isActive() && rightPlace) {
+            process += ticksSinceLastCall;
+            if (process > 2000) {
+                insertToGrid(AEItemKey.of(new ItemStack(ctiItem.meteorite_ore.get())), 1, Actionable.MODULATE);
+                process = 0;
             }
             return TickRateModulation.IDLE;
         }

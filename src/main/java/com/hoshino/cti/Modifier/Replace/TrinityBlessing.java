@@ -32,37 +32,38 @@ import static com.c2h6s.etshtinker.util.getMainOrOff.getOffLevel;
 
 public class TrinityBlessing extends etshmodifieriii implements ToolStatsModifierHook, ToolDamageModifierHook, DisplayNameModifierHook {
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("trinityblessing");
+
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.TOOL_STATS,ModifierHooks.TOOL_DAMAGE,ModifierHooks.DISPLAY_NAME);
-        builder.addModule(new ArmorLevelModule(key, false, (TagKey)null));
+        builder.addHook(this, ModifierHooks.TOOL_STATS, ModifierHooks.TOOL_DAMAGE, ModifierHooks.DISPLAY_NAME);
+        builder.addModule(new ArmorLevelModule(key, false, (TagKey) null));
     }
-    public TrinityBlessing(){
+
+    public TrinityBlessing() {
         MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
     private void livinghurtevent(LivingHurtEvent event) {
-        LivingEntity attacker =event.getEntity();
-        if (attacker!=null){
+        LivingEntity attacker = event.getEntity();
+        if (attacker != null) {
             attacker.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
                 int level = holder.get(key, 0);
-                if (level > 0&&event.getSource().isBypassArmor()) {
+                if (level > 0 && event.getSource().isBypassArmor()) {
                     event.setCanceled(true);
                 }
             });
-            if (getMainLevel(attacker,this)>0&&event.getSource().isBypassArmor()){
+            if (getMainLevel(attacker, this) > 0 && event.getSource().isBypassArmor()) {
                 event.setCanceled(true);
-            }
-            else if (getOffLevel(attacker,this)>0&&event.getSource().isBypassArmor()){
+            } else if (getOffLevel(attacker, this) > 0 && event.getSource().isBypassArmor()) {
                 event.setCanceled(true);
             }
         }
     }
 
     private void livingattackevent(LivingAttackEvent event) {
-        Entity entity =event.getSource().getEntity();
+        Entity entity = event.getSource().getEntity();
         if (entity instanceof LivingEntity attacker) {
             attacker.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
                 int level = holder.get(key, 0);
@@ -81,50 +82,51 @@ public class TrinityBlessing extends etshmodifieriii implements ToolStatsModifie
 
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        if (modifier.getLevel()!=3){
-            ToolStats.DURABILITY.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.ATTACK_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.ATTACK_DAMAGE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.ACCURACY.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.DRAW_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.VELOCITY.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.MINING_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.ARMOR.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.ARMOR_TOUGHNESS.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.PROJECTILE_DAMAGE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.BLOCK_AMOUNT.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.BLOCK_ANGLE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            etshtinkerToolStats.PLASMARANGE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            etshtinkerToolStats.ENERGY_STORE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolTankHelper.CAPACITY_STAT.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+        if (modifier.getLevel() != 3) {
+            ToolStats.DURABILITY.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolStats.ATTACK_SPEED.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolStats.ATTACK_DAMAGE.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolStats.ACCURACY.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolStats.DRAW_SPEED.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolStats.VELOCITY.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolStats.MINING_SPEED.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolStats.ARMOR.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolStats.ARMOR_TOUGHNESS.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolStats.PROJECTILE_DAMAGE.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolStats.BLOCK_AMOUNT.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolStats.BLOCK_ANGLE.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            etshtinkerToolStats.PLASMARANGE.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            etshtinkerToolStats.ENERGY_STORE.multiply(builder, Math.pow(1.67, modifier.getLevel()));
+            ToolTankHelper.CAPACITY_STAT.multiply(builder, Math.pow(1.67, modifier.getLevel()));
         }
-        if (modifier.getLevel()==3){
-            ToolStats.DURABILITY.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolStats.ATTACK_SPEED.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolStats.ATTACK_DAMAGE.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolStats.ACCURACY.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolStats.DRAW_SPEED.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolStats.VELOCITY.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolStats.MINING_SPEED.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolStats.ARMOR.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolStats.ARMOR_TOUGHNESS.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolStats.PROJECTILE_DAMAGE.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolStats.BLOCK_AMOUNT.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolStats.BLOCK_ANGLE.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            etshtinkerToolStats.PLASMARANGE.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            etshtinkerToolStats.ENERGY_STORE.multiply(builder,Math.pow(3.33,modifier.getLevel()));
-            ToolTankHelper.CAPACITY_STAT.multiply(builder,Math.pow(3.33,modifier.getLevel()));
+        if (modifier.getLevel() == 3) {
+            ToolStats.DURABILITY.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolStats.ATTACK_SPEED.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolStats.ATTACK_DAMAGE.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolStats.ACCURACY.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolStats.DRAW_SPEED.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolStats.VELOCITY.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolStats.MINING_SPEED.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolStats.ARMOR.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolStats.ARMOR_TOUGHNESS.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolStats.PROJECTILE_DAMAGE.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolStats.BLOCK_AMOUNT.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolStats.BLOCK_ANGLE.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            etshtinkerToolStats.PLASMARANGE.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            etshtinkerToolStats.ENERGY_STORE.multiply(builder, Math.pow(3.33, modifier.getLevel()));
+            ToolTankHelper.CAPACITY_STAT.multiply(builder, Math.pow(3.33, modifier.getLevel()));
         }
     }
 
     public int getPriority() {
         return 512;
     }
+
     @Override
     public int onDamageTool(IToolStackView tool, ModifierEntry modifier, int i, @Nullable LivingEntity livingEntity) {
-        if (modifier.getLevel()>0){
+        if (modifier.getLevel() > 0) {
             return 0;
         }
         return i;

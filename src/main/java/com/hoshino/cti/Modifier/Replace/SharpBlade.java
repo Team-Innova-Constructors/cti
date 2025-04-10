@@ -20,6 +20,6 @@ public class SharpBlade extends XIModifier {
     }
 
     public float onModifyMeleeDamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity target, float baseDamage, float actualDamage) {
-        return actualDamage  + Math.min(this.getBonus(tool, target),target.getMaxHealth() * 0.1F);
+        return actualDamage + Math.min(this.getBonus(tool, target), target.getMaxHealth() * 0.1F);
     }
 }

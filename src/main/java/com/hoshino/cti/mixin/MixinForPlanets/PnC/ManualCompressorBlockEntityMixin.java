@@ -12,20 +12,18 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Optional;
-
-@Mixin(remap = false,value = ManualCompressorBlockEntity.class)
+@Mixin(remap = false, value = ManualCompressorBlockEntity.class)
 public class ManualCompressorBlockEntityMixin {
-    @Inject(cancellable = true,method = "tickServer",at = @At(value = "HEAD"))
+    @Inject(cancellable = true, method = "tickServer", at = @At(value = "HEAD"))
     public void tickServer(CallbackInfo ci) {
-        ManualCompressorBlockEntity entity =(ManualCompressorBlockEntity) (Object) this;
-        Level level =entity.getLevel();
-        if (level!=null&&level.dimension().equals(DimensionConstants.JUPITER)) {
+        ManualCompressorBlockEntity entity = (ManualCompressorBlockEntity) (Object) this;
+        Level level = entity.getLevel();
+        if (level != null && level.dimension().equals(DimensionConstants.JUPITER)) {
             LazyOptional<IAirHandlerMachine> optional = entity.getCapability(PNCCapabilities.AIR_HANDLER_MACHINE_CAPABILITY, entity.getRotation());
             IAirHandler handler = optional.orElse(null);
-            int MaxAmount = (int) (handler.getBaseVolume()*4.9);
-            if (handler.getPressure()<4.9){
-                handler.addAir((int) ((MaxAmount-handler.getAir())*0.75f));
+            int MaxAmount = (int) (handler.getBaseVolume() * 4.9);
+            if (handler.getPressure() < 4.9) {
+                handler.addAir((int) ((MaxAmount - handler.getAir()) * 0.75f));
             }
         }
 
