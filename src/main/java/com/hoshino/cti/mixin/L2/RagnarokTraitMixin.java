@@ -39,7 +39,7 @@ public abstract class RagnarokTraitMixin {
         sealModifier.add(etshtinkerModifiers.manaoverload_STATIC_MODIFIER.get());//魔灵皇
         sealModifier.add(etshtinkerModifiers.perfectism.get());//魔灵皇
         sealModifier.add(etshtinkerModifiers.trinitycurse_STATIC_MODIFIER.get());//三位一体
-        sealModifier.add(ctiModifiers.timetojudge.get());//乌列尔
+        sealModifier.add(ctiModifiers.timetojudge.get());//乌列尔 
         sealModifier.add(ctiModifiers.celestiallight.get());//乌列尔
         sealModifier.add(ctiModifiers.disorder.get());//单机磁石
         sealModifier.add(ctiModifiers.ionize_induced.get());//感电水晶

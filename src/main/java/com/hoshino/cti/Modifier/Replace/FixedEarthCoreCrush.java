@@ -64,7 +64,7 @@ public class FixedEarthCoreCrush extends XIModifier {
                 Direction sideHit = BlockSideHitListener.getSideHit(player);
                 ToolHarvestContext context = new ToolHarvestContext(serverLevel, player, state, pos, sideHit, true, true);
                 if (BreakLogicHelper.breakBlock(tool, toolStack, context)) {
-                    Iterable<BlockPos> extraBlocks = ((AreaOfEffectIterator) tool.getHook(ToolHooks.AOE_ITERATOR)).getBlocks(tool, toolStack, player, state, world, pos, BlockSideHitListener.getSideHit(player), AreaOfEffectIterator.AOEMatchType.BREAKING);
+                    Iterable<BlockPos> extraBlocks = tool.getHook(ToolHooks.AOE_ITERATOR).getBlocks(tool, toolStack, player, state, world, pos, BlockSideHitListener.getSideHit(player), AreaOfEffectIterator.AOEMatchType.BREAKING);
                     Iterator var12 = extraBlocks.iterator();
 
                     while (var12.hasNext()) {
@@ -79,7 +79,7 @@ public class FixedEarthCoreCrush extends XIModifier {
 
                     while (var12.hasNext()) {
                         ModifierEntry entry = (ModifierEntry) var12.next();
-                        ((BlockHarvestModifierHook) entry.getHook(ModifierHooks.BLOCK_HARVEST)).finishHarvest(tool, entry, context, true);
+                        entry.getHook(ModifierHooks.BLOCK_HARVEST).finishHarvest(tool, entry, context, true);
                     }
 
                     BreakLogicHelper.dropItems(state, pos, serverLevel);
