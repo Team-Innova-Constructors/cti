@@ -91,6 +91,12 @@
       "cooldown": 100,
       "plasmarange": 50,
       "damagemultiplier": 6.5
+    },
+    "solidarytinker:soulge_heart": {
+      "detection_range": 100,
+      "exert_times": 100,
+      "attack_frequency": 1,
+      "kill_threshold": 0.99
     }
   }
 }

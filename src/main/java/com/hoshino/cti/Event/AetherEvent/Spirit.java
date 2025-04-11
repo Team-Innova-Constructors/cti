@@ -28,7 +28,7 @@ public class Spirit {
     public static void onSunSpiritCool(LivingDamageEvent event) {
         if (event.getSource().getEntity() instanceof Player player && ModifierLevel.EquipHasModifierlevel(player, solidarytinkerModifiers.EXTREMELYCOLD_STATIC_MODIFIER.getId())) {
             if (event.getEntity().getType() == AetherEntityTypes.SUN_SPIRIT.get()) {
-                event.setAmount(event.getEntity().getMaxHealth() * 0.1F + event.getAmount());
+                event.setAmount(event.getEntity().getMaxHealth() * 0.8F + event.getAmount());
             }
         }
     }
