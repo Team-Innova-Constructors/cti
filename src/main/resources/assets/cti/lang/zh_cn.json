@@ -53,11 +53,10 @@
 
   "cti.tooltip.item.etsh": "-EtSH_C2H6S 开发者材料-",
 
-
   "item.cti.bloodgod_ingot": "§c血神锭",
   "item.cti.molten_bloodgod_bucket": "熔融血神桶",
   "fluid.cti.molten_bloodgod": "熔融血神",
-  "cti.tooltip.item.bloodgod_ingot.desc1": "blood for the blood,blood for the blood",
+  "cti.tooltip.item.bloodgod_ingot.desc1": "弥留之际,将于下版本彻底移除",
   "cti.tooltip.item.bloodgod_ingot.desc2": "白武男(rRickroll) 贡献者材料",
 
   "material.cti.bloodgod": "血神",
@@ -153,6 +152,10 @@
   "modifier.cti.arcanefilling.flavor": "白日放歌须纵酒,署观教程愁又愁",
   "modifier.cti.arcanefilling.description":"你的工具会对周围敌人溅射等额魔法伤害,等级越高范围越大.当装备这个装备到身上时,你造成的所有自己来源魔法伤害翻倍",
 
+  "material.cti.xinian": "37",
+  "material.cti.xinian.flavor": "嘶...37",
+  "material.cti.xinian.encyclopedia": "惜念开发者材料",
+
   "modifier.cti.originbasedcomputation": "本源的运算",
   "modifier.cti.originbasedcomputation.flavor": "矛盾的集合",
   "modifier.cti.originbasedcomputation.description": "有该词条的武器的伤害转换为本源伤害（无视防御），每次攻击都视为暴击且暴击伤害增加35%。",
@@ -172,6 +175,12 @@
   "modifier.cti.triangletheory": "三角正论",
   "modifier.cti.triangletheory.flavor": "一个显而易见的三角形，为不公的忽视而发声，举证如下",
   "modifier.cti.triangletheory.description": "穿戴的装备中有该词条时第三次攻击才可对你造成伤害。",
+
+  "item.cti.xinian_ingot": "§c37锭",
+  "item.cti.molten_xinian_bucket": "熔融37桶",
+  "fluid.cti.molten_xinian": "熔融37",
+  "cti.tooltip.item.xinian_ingot.desc1": "37",
+  "cti.tooltip.item.xinian_ingot.desc2": "惜念(xinian) 开发者材料",
 
 
   "item.cti.ultradense_ammo": "超致密机枪弹药",

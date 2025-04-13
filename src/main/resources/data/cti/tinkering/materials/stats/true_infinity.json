@@ -81,10 +81,22 @@
     "etshtinker:fluid_chamber": {
       "fluid_capacity": 2147483647
     },
+    "etshtinker:plasma_generator": {
+      "damagemultiplier": 30,
+      "criticalrate": 30,
+      "fluidefficiency": 30,
+      "slash_color": 10
+    },
     "etshtinker:ionizer": {
       "cooldown": 100,
       "plasmarange": 50,
       "damagemultiplier": 6.5
+    },
+    "solidarytinker:soulge_heart": {
+      "detection_range": 100,
+      "exert_times": 100,
+      "attack_frequency": 1,
+      "kill_threshold": 0.99
     }
   }
 }

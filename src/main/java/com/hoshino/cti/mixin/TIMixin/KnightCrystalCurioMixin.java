@@ -20,8 +20,8 @@ public class KnightCrystalCurioMixin {
     public void onCurioTakeHurt(IToolStackView curio, LivingHurtEvent event, LivingEntity entity, DamageSource source, int level) {
         if (event.getAmount() > 0.0F) {
             ScheduleHelper.scheduleInTick("knight_vow", 40, () -> {
-                float amount = event.getAmount() * 1.1F;
-                entity.setAbsorptionAmount(Math.min(entity.getMaxHealth() * 0.2F, amount));
+                float amount = event.getAmount() * 0.3F;
+                entity.setAbsorptionAmount(Math.min(entity.getMaxHealth() * 0.2F, amount+entity.getAbsorptionAmount()));
             });
         }
     }
