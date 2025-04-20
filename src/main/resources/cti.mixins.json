@@ -20,6 +20,7 @@
     "ForgeEventMixin.EventMixin",
     "ForgeEventMixin.LivingDamageEventMixin",
     "ForgeEventMixin.LivingHurtEventMixin",
+    "L2.AttackListenerMixin",
     "L2.DementorMixin",
     "L2.DispellTraitMixin",
     "L2.DrainTraitMixin",

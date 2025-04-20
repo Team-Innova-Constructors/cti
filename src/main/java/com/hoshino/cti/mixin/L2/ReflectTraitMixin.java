@@ -6,6 +6,7 @@ import dev.xkmc.l2hostility.compat.curios.CurioCompat;
 import dev.xkmc.l2hostility.content.traits.common.ReflectTrait;
 import dev.xkmc.l2hostility.init.data.LHConfig;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -28,9 +29,10 @@ public class ReflectTraitMixin {
             if(lv instanceof Player player&& GetModifierLevel.CurioHasModifierlevel(player, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId())){
                 return;
             }
-            float Magnification = (float) (level * LHConfig.COMMON.reflectFactor.get());
+            float Magnification = level * 0.5F;
             float reflectAmount =Math.min(event.getEntity().getHealth() * Magnification,event.getAmount() *Magnification);
-            EntityDamageSource mobAttackReflect=new EntityDamageSource("mobattackreflect",event.getEntity());
+            EntityDamageSource mobAttackReflect=new EntityDamageSource("mobattackreflect",entity).setThorns();
+            mobAttackReflect.setScalesWithDifficulty().setMagic();
             lv.hurt(mobAttackReflect,reflectAmount);
         }
     }

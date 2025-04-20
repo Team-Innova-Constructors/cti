@@ -84,15 +84,9 @@ public class CommonLivingHurt {
             float shouldHeal = event.getAmount();
             if (a > 0) {
                 switch (a) {
-                    case 1, 2, 3 -> {
-                        event.setAmount(Math.max(0.1F, shouldHeal - a * 0.7F));
-                    }
-                    case 4, 5, 6 -> {
-                        event.setAmount(Math.max(0.05F, shouldHeal - a * 0.6F));
-                    }
-                    case 7, 8, 9 -> {
-                        event.setAmount(Math.max(0, shouldHeal - a * 0.5F));
-                    }
+                    case 1, 2, 3 -> event.setAmount(Math.max(0.1F, shouldHeal - a * 0.7F));
+                    case 4, 5, 6 -> event.setAmount(Math.max(0.05F, shouldHeal - a * 0.6F));
+                    case 7, 8, 9 -> event.setAmount(Math.max(0, shouldHeal - a * 0.5F));
                 }
             }
         }
