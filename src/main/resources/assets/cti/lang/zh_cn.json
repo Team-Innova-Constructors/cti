@@ -274,6 +274,8 @@
   "death.attack.cti.frozen.player": "%1$s 变成了速冻水饺。",
   "death.attack.cti.pressure": "%1$s 变成了压缩毛巾。",
   "death.attack.cti.pressure.player": "%1$s 变成了压缩毛巾。",
+  "death.attack.cti.mobattackreflect": "%1$s 被怪物弹死了。",
+  "death.attack.cti.mobattackreflect.player": "%1$s 被怪物弹死了。",
 
 
 

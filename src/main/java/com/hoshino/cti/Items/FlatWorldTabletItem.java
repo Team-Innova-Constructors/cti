@@ -39,9 +39,15 @@ public class FlatWorldTabletItem extends Item {
             MinecraftServer server = player.getServer();
             if (server != null) {
                 if (level.dimension().equals(Level.OVERWORLD)) {
-                    player.teleportTo(server.getLevel(ULTRA_FLAT_KEY), 0, 324, 0, 0, 0);
+                    var ultraFlat=server.getLevel(ULTRA_FLAT_KEY);
+                    if(ultraFlat!=null){
+                        player.teleportTo(ultraFlat, 0, 324, 0, 0, 0);
+                    }
                 } else if (level.dimension().equals(ULTRA_FLAT_KEY)) {
-                    player.teleportTo(server.getLevel(Level.OVERWORLD), 0, 324, 0, 0, 0);
+                    var overWorld=server.getLevel(Level.OVERWORLD);
+                    if(overWorld!=null){
+                        player.teleportTo(overWorld, 0, 324, 0, 0, 0);
+                    }
                 }
             }
         }

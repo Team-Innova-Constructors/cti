@@ -1,6 +1,7 @@
 package com.hoshino.cti.Modifier;
 
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
+import mekanism.common.item.gear.ItemMekaSuitArmor;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -8,6 +9,8 @@ import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+
+import java.lang.reflect.Constructor;
 
 public class Cosmopolitan extends BattleModifier {
     @Override

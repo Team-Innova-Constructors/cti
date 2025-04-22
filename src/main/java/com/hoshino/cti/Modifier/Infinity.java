@@ -38,37 +38,33 @@ public class Infinity extends BattleModifier implements ToolStatsModifierHook {
     @Override
     public float staticdamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity livingTarget, float baseDamage, float damage) {
         if (livingTarget instanceof Mob mob && attacker instanceof Player player) {
-            if (level > 3 || mob.getHealth() <= mob.getMaxHealth() * 0.33f * level) {
-                livingTarget.die(DamageSource.playerAttack(player));
-
-            } else if (mob.getHealth() > mob.getMaxHealth() * 0.33f * level) {
-                return damage + 131072 * level;
+            mob.invulnerableTime=0;
+            switch (level){
+                case 1, 2 -> {
+                    mob.hurt(DamageSource.playerAttack(player).bypassArmor().bypassMagic().bypassInvul(),131072);
+                    return damage + 131072;
+                }
+                default -> {
+                    mob.hurt(DamageSource.playerAttack(player).bypassArmor().bypassMagic().bypassInvul(),Float.MAX_VALUE);
+                    return Float.MAX_VALUE;
+                }
             }
         }
         return damage;
     }
-
-    @Override
-    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-        if (context.getLivingTarget() instanceof Mob mob) {
-            if (modifier.getLevel() > 3 || mob.getHealth() <= mob.getMaxHealth() * 0.33f * modifier.getLevel()) {
-                mob.kill();
-            } else if (mob.getHealth() > mob.getMaxHealth() * 0.33 * modifier.getLevel()) {
-                mob.setHealth(mob.getHealth() - mob.getMaxHealth() * 0.33f * modifier.getLevel());
-            }
-        }
-    }
-
     @Override
     public void arrowhurt(ModifierNBT modifiers, NamespacedNBT persistentData, int level, Projectile projectile, EntityHitResult hit, AbstractArrow arrow, LivingEntity attacker, LivingEntity target) {
-        if (target instanceof Mob mob && attacker instanceof Player player) {
-            if (level < 4 || mob.getHealth() >= mob.getMaxHealth() * 0.33f * level) {
-                mob.setHealth((mob.getHealth() - mob.getMaxHealth() * 0.33f * level));
-                arrow.setBaseDamage(arrow.getBaseDamage() + 131072 * level);
-            } else {
-                arrow.setBaseDamage(2147483647);
-                mob.die(DamageSource.playerAttack(player));
-                mob.kill();
+        if (target instanceof Mob mob&& attacker instanceof Player player) {
+            mob.invulnerableTime=0;
+            switch (level){
+                case 1, 2 -> {
+                    mob.hurt(DamageSource.playerAttack(player).bypassArmor().bypassMagic().bypassInvul(),131072);
+                    arrow.setBaseDamage(131072 * level);
+                }
+                default -> {
+                    mob.hurt(DamageSource.playerAttack(player).bypassArmor().bypassMagic().bypassInvul(),Float.MAX_VALUE);
+                    arrow.setBaseDamage(Integer.MAX_VALUE);
+                }
             }
         }
     }

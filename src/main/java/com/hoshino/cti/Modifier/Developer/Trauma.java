@@ -7,6 +7,8 @@ import com.marth7th.solidarytinker.util.method.ModifierLevel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -54,13 +56,15 @@ public class Trauma extends ArmorModifier {
                             targets.die(DamageSource.playerAttack(player));
                             player.level.playSound(null, posA, SoundEvents.ZOMBIE_VILLAGER_CURE, SoundSource.PLAYERS, 1F, 1F);
                             targets.remove(Entity.RemovalReason.KILLED);
-                            Minecraft.getInstance().particleEngine.createTrackingEmitter(targets, ParticleTypes.TOTEM_OF_UNDYING, 30);
+                            if(player instanceof ServerPlayer serverPlayer){
+                                serverPlayer.getLevel().sendParticles(ParticleTypes.TOTEM_OF_UNDYING, targets.getX(), targets.getY()+targets.getBbHeight(), targets.getZ(), 40, 0.25, 0.5, 0.25, 0.25);
+                            }
                             if (player.level.isClientSide && mobbbb.size() < 20) {
                                 Vec3 center = player.position();
                                 float tpi = (float) (Math.PI * 2);
                                 Vec3 v0 = new Vec3(0, 10, 0);
                                 v0 = v0.xRot(tpi / 4).yRot(player.getRandom().nextFloat() * tpi);
-                                player.level.addAlwaysVisibleParticle(ParticleTypes.LAVA,
+                                player.level.addAlwaysVisibleParticle(ParticleTypes.FLAME,
                                         center.x + v0.x,
                                         center.y + v0.y + 0.5f,
                                         center.z + v0.z, 0, 0, 0);

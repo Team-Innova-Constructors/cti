@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -18,6 +19,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.FakePlayer;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -29,19 +31,25 @@ public class FlatWorldDayTabletItem extends Item {
         super(new Properties().tab(ctiTab.MIXC).stacksTo(1).fireResistant());
     }
 
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(player.getItemInHand(hand));
     }
 
-    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
+    public @NotNull ItemStack finishUsingItem(@NotNull ItemStack stack, Level level, @NotNull LivingEntity living) {
         if (!level.isClientSide && living instanceof ServerPlayer player && !(player instanceof FakePlayer)) {
             MinecraftServer server = player.getServer();
             if (server != null) {
                 if (level.dimension().equals(Level.OVERWORLD)) {
-                    player.teleportTo(server.getLevel(ULTRA_FLAT_KEY), 0, 324, 0, 0, 0);
+                    var ultraFlat=server.getLevel(ULTRA_FLAT_KEY);
+                    if(ultraFlat!=null){
+                        player.teleportTo(ultraFlat, 0, 324, 0, 0, 0);
+                    }
                 } else if (level.dimension().equals(ULTRA_FLAT_KEY)) {
-                    player.teleportTo(server.getLevel(Level.OVERWORLD), 0, 324, 0, 0, 0);
+                    var overWorld=server.getLevel(Level.OVERWORLD);
+                    if(overWorld!=null){
+                        player.teleportTo(overWorld, 0, 324, 0, 0, 0);
+                    }
                 }
             }
         }
