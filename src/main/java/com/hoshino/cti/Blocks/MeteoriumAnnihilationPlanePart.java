@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Random;
 
 public class MeteoriumAnnihilationPlanePart extends AnnihilationPlanePart {
-    private static final PlaneModels MODELS = new PlaneModels("part/annihilation_plane", "part/annihilation_plane_on");
+    private static final PlaneModels MODELS = new PlaneModels("part/meteorium_annihilation_plane", "part/meteorium_annihilation_plane_on");
     private final IActionSource actionSource = new MachineSource(this);
     private boolean rightPlace = false;
     public int process = 0;
