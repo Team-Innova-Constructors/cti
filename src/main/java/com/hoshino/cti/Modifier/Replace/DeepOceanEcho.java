@@ -5,6 +5,7 @@ import com.hoshino.cti.register.ctiModifiers;
 import com.hoshino.cti.register.ctiSlots;
 import com.james.tinkerscalibration.Utils;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
+import com.marth7th.solidarytinker.util.compound.DynamicComponentUtil;
 import com.marth7th.solidarytinker.util.compound.IceFantasy;
 import com.xiaoyue.tinkers_ingenuity.register.TIModifiers;
 import net.minecraft.network.chat.Component;
@@ -77,10 +78,10 @@ public class DeepOceanEcho extends BattleModifier {
         if (player != null) {
             ItemStack stack = player.getMainHandItem();
             int level = modifier.getLevel();
-            list.add(applyStyle(Component.literal(IceFantasy.GetColor("当前回声点数")).append(IceFantasy.GetColor(this.EchoAmount(player) + ""))));
-            list.add(applyStyle(Component.literal(IceFantasy.GetColor("额外生效的海洋系词条等级")).append(IceFantasy.GetColor(this.SeaLevel(stack) + ""))));
-            list.add(applyStyle(Component.literal(IceFantasy.GetColor("每点回声所增幅的伤害")).append(IceFantasy.GetColor(0.1f * level * ((this.SeaLevel(stack) + 1) * 2F) * (this.DeepAndDeepLevel(stack) + 1) + "攻击力"))));
-            list.add(applyStyle(Component.literal(IceFantasy.GetColor("实际提升的总伤害")).append(IceFantasy.GetColor(this.DamageAddAmount(player, stack, level) + "攻击力"))));
+            list.add(DynamicComponentUtil.BreathColorfulText.getColorfulText("当前回声点数",String.valueOf(this.EchoAmount(player)),new int[] {0x99b1ff},60,1500,false));
+            list.add(DynamicComponentUtil.BreathColorfulText.getColorfulText("额外生效的海洋系词条等级",String.valueOf(this.SeaLevel(stack)),new int[] {0x99b1ff},60,1500,false));
+            list.add(DynamicComponentUtil.scrollColorfulText.getColorfulText("每点回声所增幅的伤害", 0.1f * level * ((this.SeaLevel(stack) + 1) * 2F) * (this.DeepAndDeepLevel(stack) + 1) + "攻击力",new int[] {0x99b1ff,0xf8c0ff},40,20,false));
+            list.add(DynamicComponentUtil.scrollColorfulText.getColorfulText("实际提升的总伤害", this.DamageAddAmount(player, stack, level) + "攻击力",new int[] {0x99b1ff,0xf8c0ff},40,20,false));
         }
     }
 }

@@ -12,7 +12,7 @@ import java.util.UUID;
 @Mixin(value = SoundHandler.class, remap = false)
 public abstract class MekSoundHandler {
     /**
-     * @author <h3>牢墨</h3>
+     * @author <h3>firefly</h3>
      * @reason <h5>meka创造飞行太鸡儿的吵了,给去掉了</h5>
      */
     @Inject(method = "startSound(Lnet/minecraft/world/level/LevelAccessor;Ljava/util/UUID;Lmekanism/client/sound/PlayerSound$SoundType;)V",

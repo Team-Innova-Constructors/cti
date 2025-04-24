@@ -112,5 +112,7 @@ public class ctiModifiers {
     public static final StaticModifier<ExplosionPrevent> ExplosionPrevent = MODIFIERS.register("explosionprevent", ExplosionPrevent::new);
     public static final StaticModifier<AtrophyBlade> AtrophyBlade = MODIFIERS.register("atrophyblade", AtrophyBlade::new);
     public static final StaticModifier<KillPhantom> KillPhantom = MODIFIERS.register("killphantom", KillPhantom::new);
+    public static final StaticModifier<Qcf> qcfStaticModifier = MODIFIERS.register("qcf", Qcf::new);
+    public static final StaticModifier<DoNotSplit> doNotSplitStaticModifier = MODIFIERS.register("donotsplit", DoNotSplit::new);
 
 }

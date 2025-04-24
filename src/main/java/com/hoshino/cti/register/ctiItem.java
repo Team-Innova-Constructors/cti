@@ -206,7 +206,7 @@ public class ctiItem {
             .build()).setShowInGroups(getFlag(FLAG_UPGRADE_AUGMENTS)));
     public static final RegistryObject<Item> UPGRADE_AUGMENTS_6 = ITEMS.register("upgrade_augment_6", () -> new ThermalAugment(new Item.Properties().tab(ctiTab.MIXC), AugmentDataHelper.builder()
             .type(TAG_AUGMENT_TYPE_UPGRADE)
-            .mod(TAG_AUGMENT_BASE_MOD, 10)
+            .mod(TAG_AUGMENT_BASE_MOD, 14)
             .build()).setShowInGroups(getFlag(FLAG_UPGRADE_AUGMENTS)));
 
     //黑雾级别

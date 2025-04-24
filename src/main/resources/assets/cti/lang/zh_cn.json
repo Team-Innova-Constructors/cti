@@ -492,16 +492,16 @@
   "material.tinkerscalibration.fazelle.encyclopedia": "增加工具2×玩家速度倍的攻击伤害、采掘速度和箭矢初速度。",
 
   "modifier.cti.eventually": "终焉",
-  "modifier.cti.eventually.flavor": "自光明中得到救赎，却又终散于黑暗",
-  "modifier.cti.eventually.description":"获得持久的狩猎状态，主手持有时，处于狩猎状态，你10格以内的所有友善生物和玩家以外的生物都会被吞噬",
+  "modifier.cti.eventually.flavor": "聚...散",
+  "modifier.cti.eventually.description":"获得持久的狩猎状态，主手持有时，处于狩猎状态，你10格以内的所有友善生物和玩家以外的生物会直接化为齑粉",
 
   "modifier.cti.transmigration": "轮回",
-  "modifier.cti.transmigration.flavor": "最后一刻",
-  "modifier.cti.transmigration.description":"会赢吗？",
+  "modifier.cti.transmigration.flavor": "1,2,3,4,5,6,7,8,9,0...1,2...",
+  "modifier.cti.transmigration.description":"你身上的狩猎效果无法被牛奶移除",
 
   "modifier.cti.trauma": "创伤",
-  "modifier.cti.trauma.flavor": "第二次机会",
-  "modifier.cti.trauma.description":"处于狩猎状态你受到的“伤害”会被全部抵消，代价是什么呢",
+  "modifier.cti.trauma.flavor": "痛苦仅是一瞬",
+  "modifier.cti.trauma.description":"处于狩猎状态你受到的“伤害”会被全部抵消",
 
   "modifier.cti.nerf_colossal": "泰坦杀手",
   "modifier.cti.nerf_colossal.flavor": "泰坦杀手",
@@ -513,7 +513,7 @@
 
   "modifier.cti.infinity": "无限",
   "modifier.cti.infinity.flavor": "旅途的重点",
-  "modifier.cti.infinity.description":"每级提升基础伤害131072点,并且附带目标最大生命33% * 词条等级的生命值扣除.当词条等级大于3时候，你的攻击会直接杀死目标",
+  "modifier.cti.infinity.description":"每级提升基础伤害131072点。当词条等级大于等于3时候，你直接造成3.4E38点伤害",
 
   "modifier.cti.cosmopolitan": "寰宇",
   "modifier.cti.cosmopolitan.flavor": "......",
@@ -639,7 +639,13 @@
   "modifier.cti.killphantom.flavor": "我讨厌你",
   "modifier.cti.killphantom.description": "穿着时会自动移除玩家30格内所有幻翼",
 
+  "modifier.cti.qcf": "引力场约束",
+  "modifier.cti.qcf.flavor": "引力展开",
+  "modifier.cti.qcf.description":"当怪物目标为你时候，不会再触发'传送'词条导致的传送,你的攻击不会在被'传送'词条所闪避",
 
+  "modifier.cti.donotsplit": "分裂抑制",
+  "modifier.cti.donotsplit.flavor": "不准分裂",
+  "modifier.cti.donotsplit.description":"攻击为目标施加'不准分裂',怪物拥有此效果不会则分裂",
 
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
@@ -700,8 +706,6 @@
   "stat.tconstruct.slot.display.ocean": "深海",
   "stat.tconstruct.slot.prefix.shenjin": "神金槽：",
   "stat.tconstruct.slot.display.shenjin": "神金",
-
-  "death.attack.tinker": "%1$s 被牢墨用数据线爱死了",
 
   "stat.tconstruct.harvest_tier.cti.roxy": "洛琪希",
 
