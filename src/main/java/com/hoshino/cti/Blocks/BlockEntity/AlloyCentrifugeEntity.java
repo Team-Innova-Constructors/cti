@@ -84,9 +84,6 @@ public class AlloyCentrifugeEntity extends BlockEntity {
     public void load(CompoundTag nbt) {
         super.load(nbt);
         this.machineAirHandler.deserializeNBT(nbt.getCompound("AirHandler"));
-        if (nbt.contains("AirAmount")) {
-            this.machineAirHandler.addAir(nbt.getInt("AirAmount"));
-        }
     }
 
 
@@ -94,6 +91,7 @@ public class AlloyCentrifugeEntity extends BlockEntity {
         if (level.isClientSide) {
             return;
         }
+        entity.machineAirHandler.tick(entity);
         if (entity.machineAirHandler.getVolume() < 100 * (int) entity.machineAirHandler.getPressure() || entity.machineAirHandler.getPressure() < 3) {
             return;
         }

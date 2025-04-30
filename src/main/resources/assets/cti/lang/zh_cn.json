@@ -654,6 +654,19 @@
   "fluid.cti.molten_roxy": "熔融洛琪希",
   "item.cti.molten_roxy_bucket": "熔融洛琪希桶",
 
+  "fluid.cti.lava_heated": "加热的熔岩",
+  "item.cti.lava_heated_bucket": "加热的熔岩桶",
+  "fluid.cti.lava_overheated": "过热熔岩",
+  "item.cti.lava_overheated_bucket": "过热熔岩桶",
+  "fluid.cti.lava_gaseous": "气态熔岩",
+  "item.cti.lava_gaseous_bucket": "气态熔岩桶",
+  "fluid.cti.lava_plasmatic": "等离子态熔岩",
+  "item.cti.lava_plasmatic_bucket": "等离子态熔岩桶",
+  "fluid.cti.lava_atomic": "简并态熔岩",
+  "item.cti.lava_atomic_bucket": "简并态熔岩桶",
+
+
+
   "cti.gui.environmental.ionize_build": "电离强度",
   "cti.gui.environmental.ionize_value": "电离值",
   "cti.gui.environmental.scorch_build": "灼热强度",
