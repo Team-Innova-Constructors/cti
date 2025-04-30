@@ -8,7 +8,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
+/**
+ * @author firefly
+ *<h5>反射伤害太高,改为不能被莱特兰增伤自我增幅</h5>
+ */
 @Mixin(value = LHAttackListener.class,remap = false)
 public class AttackListenerMixin implements AttackListener {
     @Inject(at = {@At(value = "INVOKE", target = "Ldev/xkmc/l2hostility/backport/damage/DamageModifier;hurtMultTotal(Ldev/xkmc/l2library/init/events/attack/AttackCache;F)V")}, method = {"onHurt"}, cancellable = true)

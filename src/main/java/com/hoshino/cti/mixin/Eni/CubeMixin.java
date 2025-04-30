@@ -19,7 +19,7 @@ import static com.aizistral.enigmaticlegacy.EnigmaticLegacy.etheriumConfig;
 @Mixin(value = EnigmaticEventHandler.class, remap = false)
 public abstract class CubeMixin {
     /**
-     * @author momo
+     * @author firefly
      * @reason 现在获取成本过低,
      * <br>削弱非欧立方限伤效果 无效化->原伤害30%
      */

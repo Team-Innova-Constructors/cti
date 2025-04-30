@@ -4,10 +4,8 @@ import com.hoshino.cti.register.ctiEffects;
 import com.hoshino.cti.register.ctiToolStats;
 import com.marth7th.solidarytinker.extend.superclass.ArmorModifier;
 import com.marth7th.solidarytinker.util.method.ModifierLevel;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -47,7 +45,7 @@ public class Trauma extends ArmorModifier {
                     double z = player.getZ();
                     List<Mob> mobbbb = player.level.getEntitiesOfClass(Mob.class, new AABB(x + 10, y + 10, z + 10, x - 10, y - 10, z - 10));
                     for (Mob targets : mobbbb) {
-                        if (targets != null && !targets.getType().getCategory().isFriendly()) {
+                        if (targets != null && !targets.getType().getCategory().isFriendly()&&targets.tickCount>20) {
                             if (targets instanceof Slime slime) {
                                 slime.setSize(1, false);
                             }

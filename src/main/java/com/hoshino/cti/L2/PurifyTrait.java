@@ -67,7 +67,7 @@ public class PurifyTrait extends MobTrait {
                             for (ICurioStacksHandler curios : handler.resolve().get().getCurios().values()){
                                 for (int k = 0; k < curios.getSlots(); ++k) {
                                     ItemStack stack = curios.getStacks().getStackInSlot(k);
-                                    if(stack.is(LHItems.RING_REFLECTION.get())){
+                                    if(stack.is(LHItems.RING_REFLECTION.get())||stack.is(LHItems.ABRAHADABRA.get())){
                                         return;
                                     }
                                 }

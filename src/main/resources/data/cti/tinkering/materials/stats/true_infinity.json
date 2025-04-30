@@ -96,7 +96,7 @@
       "detection_range": 100,
       "exert_times": 100,
       "attack_frequency": 1,
-      "kill_threshold": 0.99
+      "kill_threshold": 0.9
     }
   }
 }
