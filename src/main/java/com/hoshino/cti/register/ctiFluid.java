@@ -74,8 +74,8 @@ public class ctiFluid {
     public static final FluidObject<ForgeFlowingFluid> extraterrestrial_essense = register("extraterrestrial_essense", 0,supplier-> new LiquidBlock(supplier, BlockBehaviour.Properties.of(Material.LAVA)){
         @Override
         public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-            if (!pEntity.noPhysics){
-                pEntity.setDeltaMovement(pEntity.getDeltaMovement().x*100,100,pEntity.getDeltaMovement().z*100);
+            if (!pEntity.noPhysics&&pEntity instanceof LivingEntity){
+                pEntity.setDeltaMovement(0,100,0);
             }
         }
     });

@@ -5,10 +5,12 @@
   "minVersion": "0.7",
   "refmap": "cti.refmap.json",
   "mixins": [
+    "AbstractArrowMixin",
     "EntityMixin",
     "LivingEntityAccessor",
     "LivingEntityMixin",
     "PlayerMixin",
+    "ProjectileMixin",
     "WitherSkullMixin",
     "AdAstraMixin.AcidRainTick",
     "AdAstraMixin.CryoFuelLiquidBlockMixin",
