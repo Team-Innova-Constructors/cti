@@ -2,7 +2,8 @@ package com.hoshino.cti.Entity.Projectiles;
 
 import cofh.core.init.CoreParticles;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
-import com.hoshino.cti.Entity.specialDamageSource.Environmental;
+import com.hoshino.cti.content.environmentSystem.EDamageSource;
+import com.hoshino.cti.content.environmentSystem.EnvironmentalHandler;
 import com.hoshino.cti.register.ctiItem;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -134,27 +135,23 @@ public class FallenStars extends ItemProjectile {
         super.tick();
     }
 
-    public static final String IONIZED_AMOUNT = "environmental.ionized";
-    public static final String SCORCH_AMOUNT = "environmental.scorch";
-    public static final String FROZEN_AMOUNT = "environmental.frozen";
-    public static final String PRESSURE_AMOUNT = "environmental.pressure";
 
     public DamageSource getSource(Player player, @NotNull LivingEntity living) {
         CompoundTag nbt = living.getPersistentData();
         if (this.environmental == ctiItem.star_frozen.get()) {
-            nbt.putFloat(FROZEN_AMOUNT, Mth.clamp(nbt.getFloat(FROZEN_AMOUNT) + 100, 0, 250));
-            return Environmental.playerFrozenSource(this.baseDamage, player);
+            EnvironmentalHandler.addFrozenValue(living,100);
+            return EDamageSource.indirectFrozen(false, player,10);
         }
         if (this.environmental == ctiItem.star_ionize.get()) {
-            nbt.putFloat(IONIZED_AMOUNT, Mth.clamp(nbt.getFloat(IONIZED_AMOUNT) + 50, 0, 250));
-            return Environmental.playerIonizedSource(this.baseDamage, player);
+            EnvironmentalHandler.addIonizeValue(living,100);
+            return EDamageSource.indirectIonize(false, player,10);
         }
         if (this.environmental == ctiItem.star_pressure.get()) {
-            nbt.putFloat(PRESSURE_AMOUNT, Mth.clamp(nbt.getFloat(PRESSURE_AMOUNT) + 20, 0, 250));
-            return Environmental.playerPressureSource(this.baseDamage, player);
+            EnvironmentalHandler.addPressureValue(living,100);
+            return EDamageSource.indirectPressure(false, player,10);
         } else {
-            nbt.putFloat(SCORCH_AMOUNT, Mth.clamp(nbt.getFloat(SCORCH_AMOUNT) + 100, 0, 250));
-            return Environmental.playerScorchSource(this.baseDamage, player);
+            EnvironmentalHandler.addScorchValue(living,100);
+            return EDamageSource.indirectScorched(false, player,10);
         }
     }
 }

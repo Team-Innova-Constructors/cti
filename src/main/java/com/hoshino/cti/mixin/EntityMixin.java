@@ -12,8 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.getFreezeResistance;
-import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.getScorchResistance;
+import static com.hoshino.cti.content.environmentSystem.EnvironmentalHandler.*;
 
 @Mixin(Entity.class)
 public class EntityMixin {
@@ -24,7 +23,7 @@ public class EntityMixin {
             if (getScorchResistance(living) > 0.5 && source.isFire()) {
                 cir.setReturnValue(true);
             }
-            if (getFreezeResistance(living) > 0.5 && (source == ModDamageSource.CRYO_FUEL || source == DamageSource.FREEZE)) {
+            if (getFrozenResistance(living) > 0.5 && (source == ModDamageSource.CRYO_FUEL || source == DamageSource.FREEZE)) {
                 cir.setReturnValue(true);
             }
         } else if (entity != null && entity.getPersistentData().getBoolean("vulnerable")) {
@@ -57,7 +56,7 @@ public class EntityMixin {
     private void setFreezeImmune(CallbackInfoReturnable<Boolean> cir) {
         Entity entity = (Entity) (Object) this;
         if (entity instanceof Player living) {
-            if (getFreezeResistance(living) > 0.5) {
+            if (getFrozenResistance(living) > 0.5) {
                 cir.setReturnValue(false);
             }
         }

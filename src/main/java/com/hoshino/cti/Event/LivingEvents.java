@@ -3,8 +3,6 @@ package com.hoshino.cti.Event;
 import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
 import com.aizistral.enigmaticlegacy.registries.EnigmaticItems;
 import com.hoshino.cti.Entity.DisposibleFakePlayer;
-import com.hoshino.cti.Entity.specialDamageSource.Environmental;
-import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
 import com.hoshino.cti.register.ctiEffects;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
@@ -27,8 +25,6 @@ import java.util.Collection;
 
 public class LivingEvents {
     public LivingEvents() {
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onPierceDamage);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onPierceAttack);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onPierceHurt);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onFakePlayerHurt);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onPlayerHurt);
@@ -91,33 +87,8 @@ public class LivingEvents {
                 event.setAmount(event.getAmount() * red);
             }
         }
-        if (event.getSource() instanceof PierceThrough source) {
-            event.setAmount(source.getAMOUNT());
-            event.setCanceled(false);
-        } else if (event.getSource() instanceof Environmental source) {
-            event.setAmount(source.getAMOUNT());
-            event.setCanceled(false);
-        }
         if (event.getEntity() instanceof Warden warden && event.getSource().getMsgId().equals("sonic_boom")) {
             event.setAmount(warden.getMaxHealth() / 4);
-        }
-    }
-
-    private void onPierceAttack(LivingAttackEvent event) {
-        if (event.getSource() instanceof PierceThrough source) {
-            event.setCanceled(false);
-        } else if (event.getSource() instanceof Environmental source) {
-            event.setCanceled(false);
-        }
-    }
-
-    public void onPierceDamage(LivingDamageEvent event) {
-        if (event.getSource() instanceof PierceThrough source) {
-            event.setAmount(source.getAMOUNT());
-            event.setCanceled(false);
-        } else if (event.getSource() instanceof Environmental source) {
-            event.setAmount(source.getAMOUNT());
-            event.setCanceled(false);
         }
     }
 }

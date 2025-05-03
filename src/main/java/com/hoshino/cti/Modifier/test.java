@@ -16,7 +16,6 @@ import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSou
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.getElectricResistance;
 import static com.hoshino.cti.util.BiomeUtil.getBiomeIonizeLevel;
 
 
@@ -38,9 +37,7 @@ public class test extends Modifier implements GeneralInteractionModifierHook {
     public void onFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
         Holder<Biome> biome = entity.level.getBiome(entity.blockPosition());
         float lvl_ionize = getBiomeIonizeLevel(biome);
-        float iondef = getElectricResistance(entity);
         entity.sendSystemMessage(Component.literal(String.valueOf(lvl_ionize)));
-        entity.sendSystemMessage(Component.literal(String.valueOf(iondef)));
     }
 
     @Override

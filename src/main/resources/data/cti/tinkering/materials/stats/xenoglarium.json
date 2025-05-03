@@ -18,14 +18,14 @@
     "tconstruct:handle": {
       "durability": 0.25,
       "mining_speed": 0.75,
-      "melee_speed": 1.25,
-      "melee_damage": -0.1
+      "melee_speed": 0.75,
+      "melee_damage": 0.75
     },
     "tconstruct:head": {
       "durability": 1950,
       "mining_speed": 7,
       "mining_tier": "minecraft:netherite",
-      "melee_attack": 4.0
+      "melee_attack": 8
     },
     "tconstruct:plating_helmet": {
       "armor": 7.5,

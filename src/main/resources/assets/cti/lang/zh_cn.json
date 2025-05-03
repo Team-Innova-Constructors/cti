@@ -176,6 +176,10 @@
   "modifier.cti.triangletheory.flavor": "一个显而易见的三角形，为不公的忽视而发声，举证如下",
   "modifier.cti.triangletheory.description": "穿戴的装备中有该词条时第三次攻击才可对你造成伤害。",
 
+  "modifier.cti.auto_shooting": "自动射击",
+  "modifier.cti.auto_shooting.flavor": "有弓了谁还需要枪？",
+  "modifier.cti.auto_shooting.description": "按住右键就能自动射击，不需要松手。",
+
   "item.cti.xinian_ingot": "§c37锭",
   "item.cti.molten_xinian_bucket": "熔融37桶",
   "fluid.cti.molten_xinian": "熔融37",
@@ -615,9 +619,9 @@
   "modifier.cti.ragnarok.flavor": "史蒂夫对恶意生物的研究成果",
   "modifier.cti.ragnarok.description": "攻击时有概率移除目标的一个词条并将它掉落出来。",
 
-  "modifier.cti.plasma_wave_slash_ex": "等离子波动斩EX",
-  "modifier.cti.plasma_wave_slash_ex.flavor": "泰拉瑞亚1.4.4更新后的泰拉之刃belike",
-  "modifier.cti.plasma_wave_slash_ex.description": "挥舞武器时释放等离子波动，点燃目标并造成电离减益。",
+  "modifier.cti.star_fury": "群星之怒",
+  "modifier.cti.star_fury.flavor": "至少你不用去找空岛了",
+  "modifier.cti.star_fury.description": "挥舞时召唤陨石砸向你的敌人。",
 
   "modifier.cti.plasma_shielding": "离子护盾",
   "modifier.cti.plasma_shielding.flavor": "离子护盾",

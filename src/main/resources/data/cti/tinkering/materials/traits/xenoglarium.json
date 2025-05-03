@@ -1,7 +1,7 @@
 {
   "default": [
     {
-      "name": "cti:plasma_wave_slash_ex",
+      "name": "cti:star_fury",
       "level": 1
     },
     {
@@ -30,7 +30,7 @@
         "level": 1
       },
       {
-        "name": "etshtinker:masseffect",
+        "name": "etshtinker:star_fury",
         "level": 1
       },
       {
@@ -48,7 +48,7 @@
         "level": 1
       },
       {
-        "name": "cti:plasma_wave_slash_ex",
+        "name": "cti:star_fury",
         "level": 1
       }
     ]

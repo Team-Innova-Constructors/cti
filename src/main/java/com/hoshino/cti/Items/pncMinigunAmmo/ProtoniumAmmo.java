@@ -1,6 +1,5 @@
 package com.hoshino.cti.Items.pncMinigunAmmo;
 
-import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
 import me.desht.pneumaticcraft.common.config.ConfigHelper;
 import me.desht.pneumaticcraft.common.core.ModUpgrades;
 import me.desht.pneumaticcraft.common.item.minigun.AbstractGunAmmoItem;
@@ -49,7 +48,7 @@ public class ProtoniumAmmo extends AbstractGunAmmoItem {
     }
 
     protected DamageSource getDamageSource(Minigun minigun, Float amount) {
-        return PierceThrough.pierceDamage(minigun.getPlayer(), amount);
+        return DamageSource.playerAttack(minigun.getPlayer()).bypassMagic().bypassArmor();
     }
 
     @Override

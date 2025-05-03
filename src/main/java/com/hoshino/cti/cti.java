@@ -47,6 +47,7 @@ public class cti {
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::registerGuiOverlay);
+        CtiAttributes.ATTRIBUTES.register(eventBus);
         ctiItem.ITEMS.register(eventBus);
         ctiModifiers.MODIFIERS.register(eventBus);
         ctiFluid.FLUIDS.register(eventBus);

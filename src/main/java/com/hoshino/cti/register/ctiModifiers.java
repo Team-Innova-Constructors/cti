@@ -48,7 +48,6 @@ public class ctiModifiers {
     public static final StaticModifier<ArmorDragonsWifu> armor_dragons_wifu = MODIFIERS.register("armor_dragons_wifu", ArmorDragonsWifu::new);
     public static final StaticModifier<TrinityCurse> trinitycurse = MODIFIERS.register("trinitycurse", TrinityCurse::new);
     public static final StaticModifier<TrinityBlessing> trinityblessing = MODIFIERS.register("trinityblessing", TrinityBlessing::new);
-    public static final StaticModifier<StrengthWill> strengthwill = MODIFIERS.register("strengthwill", StrengthWill::new);
     public static final StaticModifier<Breeding> breeding = MODIFIERS.register("breeding", Breeding::new);
     public static final StaticModifier<Eros> eros = MODIFIERS.register("eros", Eros::new);
     public static final StaticModifier<ararar> ararar = MODIFIERS.register("ararar", ararar::new);
@@ -88,7 +87,7 @@ public class ctiModifiers {
     public static final StaticModifier<FixSanguine> fixSanguineStaticModifier = MODIFIERS.register("fixsanguine", FixSanguine::new);
     public static final StaticModifier<CrippleSupperMass> crippleSupperMassStaticModifier = MODIFIERS.register("cripplesuppermass", CrippleSupperMass::new);
     public static final StaticModifier<Ragnarok> ragnarok = MODIFIERS.register("ragnarok", Ragnarok::new);
-    public static final StaticModifier<PlasmaWaveSlashPlus> plasma_wave_slash_ex = MODIFIERS.register("plasma_wave_slash_ex", PlasmaWaveSlashPlus::new);
+    public static final StaticModifier<StarFury> STAR_FURY = MODIFIERS.register("star_fury", StarFury::new);
     public static final StaticModifier<PlasmaShielding> plasma_shielding = MODIFIERS.register("plasma_shielding", PlasmaShielding::new);
     public static final StaticModifier<OuterSpace> outer_space = MODIFIERS.register("outer_space", OuterSpace::new);
     public static final StaticModifier<CommonGobberBless> commonGobberBlessStaticModifier = MODIFIERS.register("commongobberbless", CommonGobberBless::new);
@@ -114,5 +113,5 @@ public class ctiModifiers {
     public static final StaticModifier<KillPhantom> KillPhantom = MODIFIERS.register("killphantom", KillPhantom::new);
     public static final StaticModifier<Qcf> qcfStaticModifier = MODIFIERS.register("qcf", Qcf::new);
     public static final StaticModifier<DoNotSplit> doNotSplitStaticModifier = MODIFIERS.register("donotsplit", DoNotSplit::new);
-
+    public static final StaticModifier<AutoShooting> AUTO_SHOOTING = MODIFIERS.register("auto_shooting", AutoShooting::new);
 }

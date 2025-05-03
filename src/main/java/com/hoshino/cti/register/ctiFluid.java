@@ -1,8 +1,7 @@
 package com.hoshino.cti.register;
 
 import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
-import com.hoshino.cti.Entity.Systems.EnvironmentSystem;
-import com.hoshino.cti.Entity.specialDamageSource.Environmental;
+import com.hoshino.cti.content.environmentSystem.EDamageSource;
 import com.hoshino.cti.cti;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -59,10 +58,10 @@ public class ctiFluid {
         @Override
         public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
             if (!(pEntity instanceof Player player&&player.isCreative())){
-                pEntity.hurt(Environmental.ionizedSource(Float.MAX_VALUE),Float.MAX_VALUE);
-                pEntity.hurt(Environmental.pressureSource(Float.MAX_VALUE),Float.MAX_VALUE);
-                pEntity.hurt(Environmental.scorchSource(Float.MAX_VALUE),Float.MAX_VALUE);
-                pEntity.hurt(Environmental.frozenSource(Float.MAX_VALUE),Float.MAX_VALUE);
+                pEntity.hurt(EDamageSource.ionize(true,10),Float.MAX_VALUE);
+                pEntity.hurt(EDamageSource.scorched(true,10),Float.MAX_VALUE);
+                pEntity.hurt(EDamageSource.frozen(true,10),Float.MAX_VALUE);
+                pEntity.hurt(EDamageSource.pressure(true,10),Float.MAX_VALUE);
             }
         }
     });
@@ -104,7 +103,7 @@ public class ctiFluid {
         @Override
         public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
             pEntity.invulnerableTime=0;
-            pEntity.hurt(Environmental.scorchSource(25),25);
+            pEntity.hurt(EDamageSource.scorched(true,5),25);
             pEntity.invulnerableTime=0;
         }
     });

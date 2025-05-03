@@ -21,7 +21,7 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
 
-import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.*;
+import static com.hoshino.cti.content.environmentSystem.EnvironmentalHandler.*;
 
 public class PlanetGuiItem extends Item implements ICurioItem {
     @Override
@@ -52,9 +52,9 @@ public class PlanetGuiItem extends Item implements ICurioItem {
                 player.inventoryMenu.removed(player);
                 MenuHooks.openMenu(player, new PlanetSelectionMenuProvider(this.lvl));
             } else {
-                player.sendSystemMessage(Component.translatable("cti.message.environmental.freeze").append(" " + String.format("%.2f", getFreezeResistance(player))));
+                player.sendSystemMessage(Component.translatable("cti.message.environmental.freeze").append(" " + String.format("%.2f", getFrozenResistance(player))));
                 player.sendSystemMessage(Component.translatable("cti.message.environmental.scorch").append(" " + String.format("%.2f", getScorchResistance(player))));
-                player.sendSystemMessage(Component.translatable("cti.message.environmental.ionize").append(" " + String.format("%.2f", getElectricResistance(player))));
+                player.sendSystemMessage(Component.translatable("cti.message.environmental.ionize").append(" " + String.format("%.2f", getIonizeResistance(player))));
                 player.sendSystemMessage(Component.translatable("cti.message.environmental.pressure").append(" " + String.format("%.2f", getPressureResistance(player))));
             }
         }
