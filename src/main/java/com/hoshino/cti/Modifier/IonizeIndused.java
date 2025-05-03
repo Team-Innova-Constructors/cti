@@ -23,7 +23,7 @@ public class IonizeIndused extends etshmodifieriii {
         if (entity instanceof LivingEntity target && living instanceof Player player && !(target instanceof Player)&&context.isFullyCharged()) {
             target.invulnerableTime = 0;
             target.hurt(EDamageSource.indirectIonize(false, player,modifier.getLevel()), damage / 16);
-            if (EnvironmentalHandler.getIonizeResistance(target) <= 1.5 &&EnvironmentalHandler.getIonizeValue(target) < 25) {
+            if (EnvironmentalHandler.getIonizeResistance(target) <= 1.5 &&EnvironmentalHandler.getIonizeValue(target) < 20) {
                 EnvironmentalHandler.addIonizeValue(target, 4 * modifier.getLevel());
             }
             target.invulnerableTime = 0;
