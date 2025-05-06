@@ -1,4 +1,4 @@
-package com.hoshino.cti.Blocks;
+package com.hoshino.cti.Blocks.AEParts;
 
 import appeng.api.config.Actionable;
 import appeng.api.networking.IGridNode;
@@ -50,8 +50,6 @@ public class MeteoriumAnnihilationPlanePart extends AnnihilationPlanePart {
 
     @Override
     public TickRateModulation tickingRequest(IGridNode node, int ticksSinceLastCall) {
-        var grid = node.getGrid();
-        Random random = new Random();
         if (isActive() && rightPlace) {
             process += ticksSinceLastCall;
             if (process > 2000) {

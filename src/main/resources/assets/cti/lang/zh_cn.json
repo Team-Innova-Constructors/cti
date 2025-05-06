@@ -740,7 +740,7 @@
   "fluid.cti.extraterrestrial_essense": "液化以太",
   "item.cti.extraterrestrial_essense_bucket": "液化以太桶",
 
-    "fluid.cti.molten_meteorium": "熔融陨铁合金",
+  "fluid.cti.molten_meteorium": "熔融陨铁合金",
   "item.cti.molten_meteorium_bucket": "熔融陨铁合金桶",
 
   "dimension.ad_astra.infernal": "炼狱",
@@ -763,9 +763,15 @@
   "item.cti.flat_tablet_day": "全息永昼世界投影板",
 
   "item.cti.meteor_shower": "流星雨",
-  "cti.ritual_desc.meteor_shower":"让雨点般密集的陨石从天上坠落，将你的世界焚烧殆尽。注：作用范围为84*84，这些陨石可能会摧毁你的火盆。",
+  "cti.ritual_desc.meteor_shower":"让雨点般密集的陨石从天上坠落，将你的世界焚烧殆尽。\n注：作用范围为84*84，这些陨石可能会摧毁你的火盆。",
 
 
   "trait.l2hostility.purify": "净化",
-  "trait.l2hostility.purify.desc": "怪物会免疫掉负面药水状态效果"
+  "trait.l2hostility.purify.desc": "怪物会免疫掉负面药水状态效果",
+
+
+  "info.cti.panel_condition.upward": "于世界最高处向上放置",
+  "info.cti.panel_condition.downward": "于世界最低处向下放置",
+
+  "info.biomes.cti.disordered_zone": "异常区域位于电离冻土星球，你需要进入主线第三章并且做出五级火箭才能到达这里。在此之前你需要做出一个完整的质子、电子产线。"
 }

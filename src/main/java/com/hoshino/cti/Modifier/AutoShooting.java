@@ -20,6 +20,11 @@ public class AutoShooting extends NoLevelsModifier implements InventoryTickModif
     }
 
     @Override
+    public int getPriority() {
+        return -100;
+    }
+
+    @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         if (!world.isClientSide&&holder.getUseItem()==stack){
             int drawtime = ModifierUtil.getPersistentInt(stack, GeneralInteractionModifierHook.KEY_DRAWTIME, -1);

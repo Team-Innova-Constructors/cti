@@ -1,8 +1,16 @@
 package com.hoshino.cti.recipe;
 
+import appeng.core.definitions.AEItems;
+import appeng.core.definitions.AEParts;
 import com.hoshino.cti.cti;
+import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.util.DimensionConstants;
+import com.hoshino.cti.util.PanelCondition;
+import mekanism.common.registries.MekanismFluids;
+import mekanism.common.registries.MekanismGases;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -10,6 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeMap {
+    public static ItemStack stack(ItemLike item,int count){
+        return new ItemStack(item,count);
+    }
+    public static ItemStack stack(ItemLike item){
+        return stack(item,1);
+    }
+
     //这个类用于真正添加配方
     //为了方便添加，物品和流体使用的是字符串
 
@@ -19,7 +34,7 @@ public class RecipeMap {
     //  "ad_astra:cryo_fuel"            -流体注册名
     //  25                              -流体数量
     //  "ad_astra:glacio_snowy_barrens" -群系
-    public static List<AtmosphereCondensorRecipe> CondensorRecipeList = new ArrayList<>(List.of(
+    public static final List<AtmosphereCondensorRecipe> CondensorRecipeList = new ArrayList<>(List.of(
 
             new AtmosphereCondensorRecipe(cti.getResource("cryo_fuel1"),
                     new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation("ad_astra:cryo_fuel")), 25),
@@ -64,7 +79,7 @@ public class RecipeMap {
     //  "ad_astra:ice_shard"            -物品注册名
     //  4                               -物品数量
     //  "ad_astra:glacio_snowy_barrens" -群系
-    public static List<AtmosphereExtractorRecipe> ExtractorRecipeList = new ArrayList<>(List.of(
+    public static final List<AtmosphereExtractorRecipe> ExtractorRecipeList = new ArrayList<>(List.of(
 
             new AtmosphereExtractorRecipe(cti.getResource("ice_shard"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra:ice_shard")), 4),
@@ -103,7 +118,7 @@ public class RecipeMap {
     //  "minecraft:copper_ore"          -物品注册名
     //  6                               -物品数量
     //  1.8f                            -产出概率（>1则增产）
-    public static List<QuantumMinerRecipe> MinerRecipeList = new ArrayList<>(List.of(
+    public static final List<QuantumMinerRecipe> MinerRecipeList = new ArrayList<>(List.of(
 
             new QuantumMinerRecipe(cti.getResource("copper_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:copper_ore")), 18),
@@ -205,7 +220,7 @@ public class RecipeMap {
     ));
     //高级量子采掘
     //和量子采掘一样，但是产出的是锭
-    public static List<QuantumMinerRecipe> AdvancedMinerRecipeList = new ArrayList<>(List.of(
+    public static final List<QuantumMinerRecipe> AdvancedMinerRecipeList = new ArrayList<>(List.of(
             new QuantumMinerRecipe(cti.getResource("copper_quantum"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:copper_ingot")), 36),
                     1.28f),
@@ -306,7 +321,7 @@ public class RecipeMap {
     //  0.000075f                           -基础催化剂消耗概率（每个催化剂单元增加一次，加算，一次只消耗一个，每tick计算）
     //  "etshtinker:activated_chroma_plate" -催化剂种类
     //  3                               -每个催化剂单元的催化剂数量
-    public static List<ReactorNeutronCollectorRecipe> NeutronRecipeList = new ArrayList<>(List.of(
+    public static final List<ReactorNeutronCollectorRecipe> NeutronRecipeList = new ArrayList<>(List.of(
 
             new ReactorNeutronCollectorRecipe(cti.getResource("activated_chroma"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("avaritia:neutron_nugget")), 1),
@@ -352,4 +367,34 @@ public class RecipeMap {
                     new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("etshtinker:anti_neutronium")), 2))
 
     ));
+
+    /**
+     * 面板开采的配方，后续用于亚轨道空间采集面板。
+     * 注：修改非亚轨道空间采集面板的配方没有任何意义，破坏面板和陨铁面板的配方只用于JEI显示。
+     * panel 面板类型，填破坏面板一类的东西。。
+     * condition 使用 util.PanelCondition 枚举类。包含在最高处向上、在最低处向下和无条件三种。
+     * ticks 处理间隔。
+     * dimension 维度，为null时允许任何维度。
+     * 3个list分别是化学品、流体、物品的产出。产出类型的总和不要超过10，JEI显示不了。
+     */
+    public static final List<AnnihilationPanelRecipe> ANNIHILATION_PANEL_RECIPES = List.of(
+            new AnnihilationPanelRecipe(cti.getResource("sky_stone_dust"),
+                    AEParts.ANNIHILATION_PLANE.m_5456_(),
+                    PanelCondition.UPWARD,
+                    200,
+                    null,
+                    List.of(),
+                    List.of(),
+                    List.of(AEItems.SKY_DUST.stack())
+                    ),
+            new AnnihilationPanelRecipe(cti.getResource("meteorium"),
+                    ctiItem.meteorium_plane.get(),
+                    PanelCondition.UPWARD,
+                    2000,
+                    null,
+                    List.of(),
+                    List.of(),
+                    List.of(stack(ctiItem.meteorite_ore.get()))
+            )
+    );
 }

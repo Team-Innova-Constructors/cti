@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
 
 import static com.hoshino.cti.content.environmentSystem.EnvironmentalHandler.*;
 
@@ -29,7 +30,7 @@ public class EntityMixin {
         } else if (entity != null && entity.getPersistentData().getBoolean("vulnerable")) {
             cir.setReturnValue(false);
         }
-        if (entity instanceof AbstractSemiblockEntity && !source.isBypassInvul()) {
+        if (entity instanceof AbstractSemiblockEntity && source.getEntity() instanceof Player player&&player.getMainHandItem().getItem() instanceof IModifiable) {
             cir.setReturnValue(true);
         }
     }

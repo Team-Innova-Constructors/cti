@@ -8,7 +8,7 @@ import cofh.thermal.lib.common.ThermalFlags;
 import cofh.thermal.lib.item.AugmentItem;
 import com.c2h6s.etshtinker.Items.StoriedMaterial;
 import com.hollingsworth.arsnouveau.common.items.RitualTablet;
-import com.hoshino.cti.Blocks.MeteoriumAnnihilationPlanePart;
+import com.hoshino.cti.Blocks.AEParts.MeteoriumAnnihilationPlanePart;
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
 import com.hoshino.cti.Items.*;
 import com.hoshino.cti.Items.MekUpgrades.AdvancedUpgrade;
@@ -18,6 +18,7 @@ import com.hoshino.cti.Items.ingots.uriel_ingot;
 import com.hoshino.cti.Items.pncMinigunAmmo.ElectroniumAmmo;
 import com.hoshino.cti.Items.pncMinigunAmmo.ProtoniumAmmo;
 import com.hoshino.cti.Items.pncMinigunAmmo.UltraDenseAmmo;
+import com.hoshino.cti.cti;
 import com.hoshino.cti.integration.ArsNouveau.MeteorShowerRitual;
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistries;
@@ -29,6 +30,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -276,5 +278,20 @@ public class ctiItem {
     public static final RegistryObject<Item> upgrade_speed_kit = ITEMS.register("upgrade_speed_kit", () -> new AdvancedUpgrade(8, false, List.of(Upgrade.SPEED)));
     public static final RegistryObject<Item> upgrade_energy_kit_2 = ITEMS.register("upgrade_energy_kit_2", () -> new AdvancedUpgrade(16, false, List.of(Upgrade.ENERGY)));
     public static final RegistryObject<Item> upgrade_energy_kit_3 = ITEMS.register("upgrade_energy_kit_3", () -> new AdvancedUpgrade(32, false, List.of(Upgrade.ENERGY)));
+
+    public static final RegistryObject<Item> BIOMES_ITEM = ITEMS.register("biomes_item",BiomeInfoItem::new);
+
+    /*
+    //群系JEI物品
+    public static class BiomesItems{
+        private static final DeferredRegister<Item> BIOMES_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, cti.MOD_ID);
+        public static void init(IEventBus eventBus){
+            ForgeRegistries.BIOMES.getKeys().forEach(location -> {
+                BIOMES_ITEMS.register()
+            });
+        }
+    }
+
+     */
 
 }

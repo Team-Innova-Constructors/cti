@@ -3,7 +3,6 @@ package com.hoshino.cti.util;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
-import com.mojang.serialization.JsonOps;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.level.material.Fluid;
@@ -15,10 +14,6 @@ import org.jetbrains.annotations.NotNull;
 public class JsonUtil {
     public static FluidStack readFluid(JsonObject json, String key) {
         return deserializeFluid(GsonHelper.getAsJsonObject(json, key));
-    }
-
-    public static JsonElement toJson(FluidStack stack) {
-        return FluidStack.CODEC.encodeStart(JsonOps.INSTANCE, stack).result().orElseThrow();
     }
 
     public static FluidStack deserializeFluid(@NotNull JsonObject json) {

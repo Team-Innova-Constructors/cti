@@ -34,6 +34,7 @@
     "L2.SplitTraitMixin",
     "L2.TeleportMixin",
     "L2.UndyingTraitMixin",
+    "MekMixin.ChemicalStackRendererMixin",
     "MekMixin.ItemUpgradeMixin",
     "MekMixin.MekanismUtilMixin",
     "MekMixin.MekasuitMixin",

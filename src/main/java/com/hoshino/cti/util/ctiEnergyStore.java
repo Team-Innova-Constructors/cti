@@ -1,5 +1,6 @@
 package com.hoshino.cti.util;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.energy.EnergyStorage;
 
 public abstract class ctiEnergyStore extends EnergyStorage {
@@ -42,4 +43,11 @@ public abstract class ctiEnergyStore extends EnergyStorage {
     }
 
     public abstract void onEnergyChange();
+
+    public void writeToNbt(CompoundTag tag){
+        tag.putInt("energy",this.energy);
+    }
+    public void readFromNbt(CompoundTag tag){
+        this.energy=tag.getInt("energy");
+    }
 }
