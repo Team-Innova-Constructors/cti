@@ -114,7 +114,7 @@ public class GetModifierLevel {
         return GetModifierLevel.getHeadModifierlevel(entity, modifierId) + GetModifierLevel.getChestModifierlevel(entity, modifierId) + GetModifierLevel.getLegsModifierlevel(entity, modifierId) + GetModifierLevel.getFeetsModifierlevel(entity, modifierId);
     }
 
-    public static boolean EachaArmorHasModifierlevel(LivingEntity entity, ModifierId modifierId) {
+    public static boolean EachArmorHasModifierLevel(LivingEntity entity, ModifierId modifierId) {
         return GetModifierLevel.getHeadModifierlevel(entity, modifierId) > 0 && GetModifierLevel.getChestModifierlevel(entity, modifierId) > 0 && GetModifierLevel.getLegsModifierlevel(entity, modifierId) > 0 && GetModifierLevel.getFeetsModifierlevel(entity, modifierId) > 0;
     }
 
