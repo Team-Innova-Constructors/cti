@@ -1,6 +1,6 @@
 package com.hoshino.cti.world.feature;
 
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -13,7 +13,7 @@ public class ctiPlacedFeature {
 
 
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES =
-            DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, cti.MOD_ID);
+            DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, Cti.MOD_ID);
 
 
     public static final RegistryObject<PlacedFeature> EXTRA_LAPIS_ORE_PLACED = PLACED_FEATURES.register("extra_lapis_ore_placed",

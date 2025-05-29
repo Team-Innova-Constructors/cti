@@ -13,13 +13,13 @@ import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
 
 
-public class ctiRailgunProjectile {
+public class CtiRailgunProjectile {
     public static void register() {
         RailgunHandler.registerProjectile(() -> Ingredient.of(new ItemStack(TinkerToolParts.toolHandle)), new RailgunHandler.IRailgunProjectile() {
             @Override
             public Entity getProjectile(@Nullable Player shooter, ItemStack ammo, Entity defaultProjectile) {
                 if (shooter != null) {
-                    TinkerRailgunProjectile projectile = new TinkerRailgunProjectile(ctiEntity.tinker_railgun.get(), shooter.level, ammo, TinkerTools.sword.get());
+                    TinkerRailgunProjectile projectile = new TinkerRailgunProjectile(CtiEntity.tinker_railgun.get(), shooter.level, ammo, TinkerTools.sword.get());
                     projectile.setOwner(shooter);
                     projectile.pickup = AbstractArrow.Pickup.ALLOWED;
                     projectile.damageMul = 50;
@@ -34,7 +34,7 @@ public class ctiRailgunProjectile {
             @Override
             public Entity getProjectile(@Nullable Player shooter, ItemStack ammo, Entity defaultProjectile) {
                 if (shooter != null) {
-                    TinkerRailgunProjectile projectile = new TinkerRailgunProjectile(ctiEntity.tinker_railgun.get(), shooter.level, ammo, TIItems.RAPIER.get());
+                    TinkerRailgunProjectile projectile = new TinkerRailgunProjectile(CtiEntity.tinker_railgun.get(), shooter.level, ammo, TIItems.RAPIER.get());
                     projectile.setOwner(shooter);
                     projectile.pickup = AbstractArrow.Pickup.ALLOWED;
                     projectile.setPierceLevel((byte) 2);

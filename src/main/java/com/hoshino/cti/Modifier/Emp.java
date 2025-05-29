@@ -1,7 +1,7 @@
 package com.hoshino.cti.Modifier;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -25,7 +25,7 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import java.util.List;
 
 public class Emp extends etshmodifieriii implements DurabilityDisplayModifierHook {
-    public static ResourceLocation charge = new ResourceLocation(cti.MOD_ID, "emp_charge");
+    public static ResourceLocation charge = new ResourceLocation(Cti.MOD_ID, "emp_charge");
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {

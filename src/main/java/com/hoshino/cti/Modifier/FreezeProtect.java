@@ -1,7 +1,7 @@
 package com.hoshino.cti.Modifier;
 
 
-import com.hoshino.cti.register.ctiToolStats;
+import com.hoshino.cti.register.CtiToolStats;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -19,6 +19,6 @@ public class FreezeProtect extends Modifier implements ToolStatsModifierHook {
 
     @Override
     public void addToolStats(IToolContext tool, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ctiToolStats.FROZEN_RESISTANCE.add(builder, 0.25 * modifier.getLevel());
+        CtiToolStats.FROZEN_RESISTANCE.add(builder, 0.25 * modifier.getLevel());
     }
 }

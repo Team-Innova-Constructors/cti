@@ -1,7 +1,7 @@
 package com.hoshino.cti.Items.MekUpgrades;
 
 import com.hoshino.cti.Items.TooltipedItem;
-import com.hoshino.cti.register.ctiTab;
+import com.hoshino.cti.register.CtiTab;
 import mekanism.api.Upgrade;
 import mekanism.common.tile.component.TileComponentUpgrade;
 import mekanism.common.tile.interfaces.IUpgradeTile;
@@ -25,7 +25,7 @@ public class AdvancedUpgrade extends TooltipedItem {
     public final boolean consume;
 
     public AdvancedUpgrade(int upTo, boolean consume, @NotNull List<Upgrade> typeList) {
-        super(new Item.Properties().stacksTo(consume ? 64 : 1).tab(ctiTab.MIXC), List.of(Component.literal("Shift-右键机器时将对应升级的等级提升至 ").append(String.valueOf(upTo) + " 级").withStyle(ChatFormatting.AQUA), Component.literal(consume ? "消耗品" : "不消耗").withStyle(consume ? ChatFormatting.YELLOW : ChatFormatting.GREEN)));
+        super(new Item.Properties().stacksTo(consume ? 64 : 1).tab(CtiTab.MIXC), List.of(Component.literal("Shift-右键机器时将对应升级的等级提升至 ").append(String.valueOf(upTo) + " 级").withStyle(ChatFormatting.AQUA), Component.literal(consume ? "消耗品" : "不消耗").withStyle(consume ? ChatFormatting.YELLOW : ChatFormatting.GREEN)));
         this.typeList = typeList;
         this.upTo = upTo;
         this.consume = consume;

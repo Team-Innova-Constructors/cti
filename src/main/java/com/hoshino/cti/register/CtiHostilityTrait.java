@@ -6,7 +6,7 @@ import dev.xkmc.l2hostility.init.L2Hostility;
 import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import net.minecraft.ChatFormatting;
 
-public class ctiHostilityTrait {
+public class CtiHostilityTrait {
     public static final RegistryEntry<PurifyTrait> PURIFYTRAIT = L2Hostility.REGISTRATE.regTrait("purify", () -> new PurifyTrait(ChatFormatting.AQUA), (rl) -> new TraitConfig(rl, 100, 30, 1, 400)).desc("The Mob who have this trait will ignore Harmful effects and increase 10% damage each trait level").lang("Purify").register();
     public static void register() {
     }

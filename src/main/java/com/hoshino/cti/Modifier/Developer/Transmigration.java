@@ -1,6 +1,6 @@
 package com.hoshino.cti.Modifier.Developer;
 
-import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.register.CtiEffects;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,13 +18,13 @@ public class Transmigration extends BattleModifier {
     }
 
     private void EffectRemove(MobEffectEvent.Remove event) {
-        if (event.getEntity() instanceof Player player && player.hasEffect(ctiEffects.ev.get())) {
+        if (event.getEntity() instanceof Player player && player.hasEffect(CtiEffects.ev.get())) {
             event.setCanceled(true);
         }
     }
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-        entity.addEffect(new MobEffectInstance(ctiEffects.ev.get(), 200, 0, true, true));
+        entity.addEffect(new MobEffectInstance(CtiEffects.ev.get(), 200, 0, true, true));
     }
 }

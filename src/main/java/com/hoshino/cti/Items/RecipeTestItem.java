@@ -1,7 +1,7 @@
 package com.hoshino.cti.Items;
 
 import com.google.common.collect.Lists;
-import com.hoshino.cti.register.ctiTab;
+import com.hoshino.cti.register.CtiTab;
 import com.mojang.logging.LogUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -25,7 +25,7 @@ import java.util.Iterator;
 
 public class RecipeTestItem extends Item {
     public RecipeTestItem() {
-        super(new Item.Properties().tab(ctiTab.MIXC).stacksTo(1));
+        super(new Item.Properties().tab(CtiTab.MIXC).stacksTo(1));
     }
 
     private static final Logger LOGGER = LogUtils.getLogger();

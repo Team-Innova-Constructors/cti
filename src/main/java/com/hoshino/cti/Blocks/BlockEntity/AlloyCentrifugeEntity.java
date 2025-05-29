@@ -1,6 +1,6 @@
 package com.hoshino.cti.Blocks.BlockEntity;
 
-import com.hoshino.cti.register.ctiBlockEntityType;
+import com.hoshino.cti.register.CtiBlockEntityType;
 import me.desht.pneumaticcraft.api.PNCCapabilities;
 import me.desht.pneumaticcraft.api.pressure.PressureTier;
 import me.desht.pneumaticcraft.api.tileentity.IAirHandlerMachine;
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class AlloyCentrifugeEntity extends BlockEntity {
     public AlloyCentrifugeEntity(BlockPos p_155229_, BlockState p_155230_) {
-        super(ctiBlockEntityType.ALLOY_CENTRIFUGE.get(), p_155229_, p_155230_);
+        super(CtiBlockEntityType.ALLOY_CENTRIFUGE.get(), p_155229_, p_155230_);
     }
 
     protected static List<AlloyRecipe> list = new ArrayList<>();

@@ -2,7 +2,7 @@ package com.hoshino.cti.Screen.menu;
 
 import com.hoshino.cti.Blocks.BlockEntity.GeneralMachineEntity;
 import com.hoshino.cti.Blocks.BlockEntity.ReactorNeutronCollectorEntity;
-import com.hoshino.cti.register.ctiBlock;
+import com.hoshino.cti.register.CtiBlock;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
@@ -69,7 +69,7 @@ public class ReactorNeutronCollectorMenu extends GeneralMachineMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(ContainerLevelAccess.create(level, entity.getBlockPos()), player, ctiBlock.reactor_neutron_collector.get());
+        return stillValid(ContainerLevelAccess.create(level, entity.getBlockPos()), player, CtiBlock.reactor_neutron_collector.get());
     }
 
     private void addPlayerInventory(Inventory inventory) {

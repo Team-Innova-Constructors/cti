@@ -1,6 +1,6 @@
 package com.hoshino.cti.Event;
 
-import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.register.CtiEffects;
 import com.hoshino.cti.register.CtiModifiers;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import dev.xkmc.l2hostility.content.capability.mob.MobTraitCap;
@@ -27,13 +27,13 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.List;
 import java.util.Set;
 
-import static com.hoshino.cti.cti.MOD_ID;
+import static com.hoshino.cti.Cti.MOD_ID;
 
 @Mod.EventBusSubscriber(modid = MOD_ID)
 public class CommonLivingHurt {
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void LivingEntityEffectHurt(LivingHurtEvent event) {
-        if (event.getSource().getEntity() instanceof ServerPlayer player && player.hasEffect(ctiEffects.numerical_perception.get())) {
+        if (event.getSource().getEntity() instanceof ServerPlayer player && player.hasEffect(CtiEffects.numerical_perception.get())) {
             event.setAmount(event.getAmount() * 2);
         }
     }

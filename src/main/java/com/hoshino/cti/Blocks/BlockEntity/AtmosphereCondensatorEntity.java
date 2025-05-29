@@ -7,7 +7,7 @@ import com.hoshino.cti.netwrok.packet.PMachineEnergySync;
 import com.hoshino.cti.netwrok.packet.PMachineFluidSync;
 import com.hoshino.cti.recipe.AtmosphereCondensorRecipe;
 import com.hoshino.cti.recipe.RecipeMap;
-import com.hoshino.cti.register.ctiBlockEntityType;
+import com.hoshino.cti.register.CtiBlockEntityType;
 import com.hoshino.cti.util.ctiEnergyStore;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -49,7 +49,7 @@ import static com.hoshino.cti.util.BiomeUtil.getBiomeKey;
 
 public class AtmosphereCondensatorEntity extends GeneralMachineEntity implements MenuProvider {
     public AtmosphereCondensatorEntity(BlockPos blockPos, BlockState blockState) {
-        super(ctiBlockEntityType.Atmosphere_condensator.get(), blockPos, blockState);
+        super(CtiBlockEntityType.Atmosphere_condensator.get(), blockPos, blockState);
         this.DATA = new ContainerData() {
             @Override
             public int get(int index) {

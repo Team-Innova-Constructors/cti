@@ -1,7 +1,7 @@
 package com.hoshino.cti.Modifier.Contributors;
 
 
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -17,7 +17,7 @@ public class TriangleTheory extends BattleModifier {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
-    private static final ResourceLocation triangletheorytime = cti.getResource("triangletheorytime");
+    private static final ResourceLocation triangletheorytime = Cti.getResource("triangletheorytime");
 
     @Override
     public boolean havenolevel() {

@@ -2,8 +2,8 @@ package com.hoshino.cti.world.feature;
 
 import appeng.core.definitions.AEBlocks;
 import com.google.common.base.Suppliers;
-import com.hoshino.cti.cti;
-import com.hoshino.cti.register.ctiBlock;
+import com.hoshino.cti.Cti;
+import com.hoshino.cti.register.CtiBlock;
 import mekanism.common.registries.MekanismFluids;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.OreFeatures;
@@ -26,7 +26,7 @@ import java.util.function.Supplier;
 
 public class ctiConfiguredFeature {
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES =
-            DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, cti.MOD_ID);
+            DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, Cti.MOD_ID);
     /*
     创建一个Supplier对象，提供一个包含了两个OreConfiguration.TargetBlockState对象的列表
     OreConfiguration.TargetBlockState 描述矿物生成时候的目标方块和替代方块。
@@ -66,10 +66,10 @@ public class ctiConfiguredFeature {
             () -> new ConfiguredFeature<>(Feature.GEODE,
                     new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(MekanismFluids.HYDROGEN.getBlock()),
                             BlockStateProvider.simple(Blocks.BUDDING_AMETHYST),
-                            BlockStateProvider.simple(ctiBlock.ultra_dense_hydride_ore.get()),
+                            BlockStateProvider.simple(CtiBlock.ultra_dense_hydride_ore.get()),
                             BlockStateProvider.simple(Blocks.CALCITE),
                             BlockStateProvider.simple(Blocks.SMOOTH_BASALT),
-                            List.of(ctiBlock.ultra_dense_hydride_ore.get().defaultBlockState()),
+                            List.of(CtiBlock.ultra_dense_hydride_ore.get().defaultBlockState()),
                             BlockTags.FEATURES_CANNOT_REPLACE, BlockTags.GEODE_INVALID_BLOCKS),
                             new GeodeLayerSettings(1.7, 2.2, 3.2, 5.2), new GeodeCrackSettings(0.95, 2.0, 2), 0.5D, 0.1D,
                             true, UniformInt.of(6, 9), UniformInt.of(3, 4), UniformInt.of(1, 2), 16, -32, 0.05D, 1)));
@@ -78,10 +78,10 @@ public class ctiConfiguredFeature {
             () -> new ConfiguredFeature<>(Feature.GEODE,
                     new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(Blocks.POWDER_SNOW),
                             BlockStateProvider.simple(Blocks.GRANITE),
-                            BlockStateProvider.simple(ctiBlock.rasterite_budding.get()),
+                            BlockStateProvider.simple(CtiBlock.rasterite_budding.get()),
                             BlockStateProvider.simple(Blocks.ANDESITE),
                             BlockStateProvider.simple(Blocks.BASALT),
-                            List.of(ctiBlock.rasterite.get().defaultBlockState()),
+                            List.of(CtiBlock.rasterite.get().defaultBlockState()),
                             BlockTags.FEATURES_CANNOT_REPLACE, BlockTags.GEODE_INVALID_BLOCKS),
                             new GeodeLayerSettings(0.75, 1.44, 2.03, 2.9), new GeodeCrackSettings(0.67, 0.30, 1), 0.5D, 0.1D,
                             true, UniformInt.of(3, 5), UniformInt.of(3, 4), UniformInt.of(1, 2), 16, -32, 0.05D, 1)));
@@ -90,10 +90,10 @@ public class ctiConfiguredFeature {
             () -> new ConfiguredFeature<>(Feature.GEODE,
                     new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(Blocks.AIR),
                             BlockStateProvider.simple(Blocks.GRANITE),
-                            BlockStateProvider.simple(ctiBlock.rasterite_budding.get()),
+                            BlockStateProvider.simple(CtiBlock.rasterite_budding.get()),
                             BlockStateProvider.simple(Blocks.ANDESITE),
                             BlockStateProvider.simple(Blocks.BASALT),
-                            List.of(ctiBlock.rasterite.get().defaultBlockState()),
+                            List.of(CtiBlock.rasterite.get().defaultBlockState()),
                             BlockTags.FEATURES_CANNOT_REPLACE, BlockTags.GEODE_INVALID_BLOCKS),
                             new GeodeLayerSettings(1.75, 2.44, 3.03, 4.5), new GeodeCrackSettings(0.67, 0.30, 1), 0.5D, 0.1D,
                             true, UniformInt.of(3, 5), UniformInt.of(3, 4), UniformInt.of(1, 2), 16, -32, 0.05D, 1)));
@@ -102,10 +102,10 @@ public class ctiConfiguredFeature {
             () -> new ConfiguredFeature<>(Feature.GEODE,
                     new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(Blocks.LAVA),
                             BlockStateProvider.simple(AEBlocks.QUARTZ_BLOCK.block()),
-                            BlockStateProvider.simple(ctiBlock.fracture_silicon_budding.get()),
+                            BlockStateProvider.simple(CtiBlock.fracture_silicon_budding.get()),
                             BlockStateProvider.simple(Blocks.NETHER_QUARTZ_ORE),
                             BlockStateProvider.simple(Blocks.BASALT),
-                            List.of(ctiBlock.fracture_silicon.get().defaultBlockState()),
+                            List.of(CtiBlock.fracture_silicon.get().defaultBlockState()),
                             BlockTags.FEATURES_CANNOT_REPLACE, BlockTags.GEODE_INVALID_BLOCKS),
                             new GeodeLayerSettings(0.35, 1.08, 3.73, 6.9), new GeodeCrackSettings(0.67, 0.30, 1), 0.5D, 0.1D,
                             true, UniformInt.of(2, 4), UniformInt.of(3, 4), UniformInt.of(1, 2), 16, -32, 0.05D, 1)));
@@ -114,10 +114,10 @@ public class ctiConfiguredFeature {
             () -> new ConfiguredFeature<>(Feature.GEODE,
                     new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(Blocks.LAVA),
                             BlockStateProvider.simple(AEBlocks.QUARTZ_BLOCK.block()),
-                            BlockStateProvider.simple(ctiBlock.fracture_silicon_budding.get()),
+                            BlockStateProvider.simple(CtiBlock.fracture_silicon_budding.get()),
                             BlockStateProvider.simple(Blocks.NETHER_QUARTZ_ORE),
                             BlockStateProvider.simple(Blocks.BASALT),
-                            List.of(ctiBlock.fracture_silicon.get().defaultBlockState()),
+                            List.of(CtiBlock.fracture_silicon.get().defaultBlockState()),
                             BlockTags.FEATURES_CANNOT_REPLACE, BlockTags.GEODE_INVALID_BLOCKS),
                             new GeodeLayerSettings(1.35, 2.08, 3.73, 6.9), new GeodeCrackSettings(0.67, 0.30, 1), 0.5D, 0.1D,
                             true, UniformInt.of(2, 4), UniformInt.of(3, 4), UniformInt.of(1, 2), 16, -32, 0.05D, 1)));

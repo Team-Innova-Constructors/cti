@@ -1,6 +1,6 @@
 package com.hoshino.cti.Entity.vehicles;
 
-import com.hoshino.cti.register.ctiEntity;
+import com.hoshino.cti.register.CtiEntity;
 import com.hoshino.cti.register.CtiItem;
 import earth.terrarium.ad_astra.common.entity.vehicle.Rocket;
 import earth.terrarium.ad_astra.common.registry.ModParticleTypes;
@@ -14,7 +14,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class rocketTier5 extends Rocket {
     public rocketTier5(Level level) {
-        super(ctiEntity.TIER_5_ROCKET.get(), level, 5);
+        super(CtiEntity.TIER_5_ROCKET.get(), level, 5);
     }
 
     public rocketTier5(EntityType<?> type, Level level) {

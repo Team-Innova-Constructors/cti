@@ -1,6 +1,6 @@
 package com.hoshino.cti.Blocks;
 
-import com.hoshino.cti.register.ctiBlock;
+import com.hoshino.cti.register.CtiBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -27,13 +27,13 @@ public class FractureSiliconBudding extends AmethystBlock {
 
         if (blockstate.is(Blocks.AIR) || blockstate.is(Blocks.CAVE_AIR) || blockstate.is(Blocks.VOID_AIR) || blockstate.is(Blocks.WATER)) {
             if (rnd <= 1) {
-                Block block = ctiBlock.fracture_silicon.get();
+                Block block = CtiBlock.fracture_silicon.get();
                 BlockState blockState = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, direction).setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);
                 pLevel.setBlockAndUpdate(blockpos, blockState);
             }
         } else if (blockstate.getBlock() instanceof LiquidBlock) {
             FluidState fluidState = pLevel.getFluidState(blockpos);
-            Block block = ctiBlock.fracture_silicon.get();
+            Block block = CtiBlock.fracture_silicon.get();
             if (fluidState.isSource()) {
                 if (blockstate.is(Blocks.WATER) && rnd <= 3) {
                     BlockState blockState = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, direction).setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);

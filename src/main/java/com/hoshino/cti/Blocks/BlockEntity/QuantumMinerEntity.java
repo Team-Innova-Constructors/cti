@@ -2,7 +2,7 @@ package com.hoshino.cti.Blocks.BlockEntity;
 
 import com.hoshino.cti.recipe.QuantumMinerRecipe;
 import com.hoshino.cti.recipe.RecipeMap;
-import com.hoshino.cti.register.ctiBlockEntityType;
+import com.hoshino.cti.register.CtiBlockEntityType;
 import com.hoshino.cti.register.CtiItem;
 import com.hoshino.cti.util.ctiEnergyStore;
 import net.minecraft.core.BlockPos;
@@ -30,7 +30,7 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
 public class QuantumMinerEntity extends BlockEntity {
     public QuantumMinerEntity(BlockPos p_155229_, BlockState p_155230_) {
-        super(ctiBlockEntityType.QUANTUM_MINER_ENTITY.get(), p_155229_, p_155230_);
+        super(CtiBlockEntityType.QUANTUM_MINER_ENTITY.get(), p_155229_, p_155230_);
         this.DATA = new ContainerData() {
             @Override
             public int get(int index) {

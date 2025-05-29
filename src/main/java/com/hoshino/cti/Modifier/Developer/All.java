@@ -2,8 +2,8 @@ package com.hoshino.cti.Modifier.Developer;
 
 import com.c2h6s.etshtinker.util.slotUtil;
 import com.hoshino.cti.Entity.Projectiles.FallenStars;
-import com.hoshino.cti.register.ctiEntity;
-import com.hoshino.cti.register.ctiToolStats;
+import com.hoshino.cti.register.CtiEntity;
+import com.hoshino.cti.register.CtiToolStats;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -86,13 +86,13 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook, Too
                                             FallenStars fallenStars;
                                             int rnd = EtSHrnd().nextInt(4);
                                             if (rnd == 1) {
-                                                fallenStars = new FallenStars(ctiEntity.star_pressure.get(), level, StellarBlade.ls.get(1));
+                                                fallenStars = new FallenStars(CtiEntity.star_pressure.get(), level, StellarBlade.ls.get(1));
                                             } else if (rnd == 2) {
-                                                fallenStars = new FallenStars(ctiEntity.star_ionize.get(), level, StellarBlade.ls.get(2));
+                                                fallenStars = new FallenStars(CtiEntity.star_ionize.get(), level, StellarBlade.ls.get(2));
                                             } else if (rnd == 3) {
-                                                fallenStars = new FallenStars(ctiEntity.star_frozen.get(), level, StellarBlade.ls.get(3));
+                                                fallenStars = new FallenStars(CtiEntity.star_frozen.get(), level, StellarBlade.ls.get(3));
                                             } else {
-                                                fallenStars = new FallenStars(ctiEntity.star_blaze.get(), level, StellarBlade.ls.get(0));
+                                                fallenStars = new FallenStars(CtiEntity.star_blaze.get(), level, StellarBlade.ls.get(0));
                                             }
                                             fallenStars.setOwner(player);
                                             fallenStars.baseDamage = event.getAmount();
@@ -269,9 +269,9 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook, Too
 
     @Override
     public void addToolStats(IToolContext iToolContext, ModifierEntry modifierEntry, ModifierStatsBuilder modifierStatsBuilder) {
-        ctiToolStats.ELECTRIC_RESISTANCE.add(modifierStatsBuilder, 50);
-        ctiToolStats.SCORCH_RESISTANCE.add(modifierStatsBuilder, 50);
-        ctiToolStats.FROZEN_RESISTANCE.add(modifierStatsBuilder, 50);
-        ctiToolStats.PRESSURE_RESISTANCE.add(modifierStatsBuilder, 50);
+        CtiToolStats.ELECTRIC_RESISTANCE.add(modifierStatsBuilder, 50);
+        CtiToolStats.SCORCH_RESISTANCE.add(modifierStatsBuilder, 50);
+        CtiToolStats.FROZEN_RESISTANCE.add(modifierStatsBuilder, 50);
+        CtiToolStats.PRESSURE_RESISTANCE.add(modifierStatsBuilder, 50);
     }
 }

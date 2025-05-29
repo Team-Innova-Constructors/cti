@@ -1,7 +1,7 @@
 package com.hoshino.cti.integration;
 
 import com.hoshino.cti.Plugin.JEIPlugin;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
@@ -25,7 +25,7 @@ import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 public class MeltingFuelRecipeCategory implements IRecipeCategory<MeltingFuel> {
     public static final ResourceLocation UID = new ResourceLocation(TConstruct.MOD_ID,
             "melting_fuel");
-    public static final ResourceLocation TEXTURE = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation TEXTURE = new ResourceLocation(Cti.MOD_ID,
             "textures/gui/jei/gui_melting_fuel.png");
 
 

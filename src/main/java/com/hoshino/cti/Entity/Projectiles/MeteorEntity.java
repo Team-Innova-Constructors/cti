@@ -1,8 +1,8 @@
 package com.hoshino.cti.Entity.Projectiles;
 
 import appeng.core.definitions.AEBlocks;
-import com.hoshino.cti.register.ctiBlock;
-import com.hoshino.cti.register.ctiEntity;
+import com.hoshino.cti.register.CtiBlock;
+import com.hoshino.cti.register.CtiEntity;
 import com.hoshino.cti.util.DimensionConstants;
 import com.mojang.math.Vector3f;
 import earth.terrarium.ad_astra.common.registry.ModBlocks;
@@ -40,7 +40,7 @@ public class MeteorEntity extends Projectile {
     }
 
     public MeteorEntity(Level level, double x, double y, double z, Vec3 movement) {
-        this(ctiEntity.meteor_entity.get(), level);
+        this(CtiEntity.meteor_entity.get(), level);
         this.setPos(x, y, z);
         this.setDeltaMovement(movement);
     }
@@ -95,7 +95,7 @@ public class MeteorEntity extends Projectile {
                         generatedPress = true;
                     }
                     if (rnd == 0) {
-                        this.level.setBlockAndUpdate(blockPos, ctiBlock.meteorite_ore.get().defaultBlockState());
+                        this.level.setBlockAndUpdate(blockPos, CtiBlock.meteorite_ore.get().defaultBlockState());
                     } else if (rnd > 0 && rnd < 5) {
                         this.level.setBlockAndUpdate(blockPos, Blocks.MAGMA_BLOCK.defaultBlockState());
                     } else if (rnd > 5 && rnd < 9) {

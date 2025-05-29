@@ -2,7 +2,7 @@ package com.hoshino.cti.client.hud;
 
 import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
 import com.hoshino.cti.Items.PlanetGuiItem;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.register.CtiItem;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.ChatFormatting;
@@ -29,18 +29,18 @@ public class EnvironmentalHud {
             ChatFormatting.DARK_RED
     );
     public static final String Str = "cti.gui.environmental.";
-    public static final ResourceLocation LV_0 = new ResourceLocation(cti.MOD_ID, "/textures/gui/environmental/lv0.png");
-    public static final ResourceLocation LV_1 = new ResourceLocation(cti.MOD_ID, "/textures/gui/environmental/lv1.png");
-    public static final ResourceLocation LV_2 = new ResourceLocation(cti.MOD_ID, "/textures/gui/environmental/lv2.png");
-    public static final ResourceLocation LV_3 = new ResourceLocation(cti.MOD_ID, "/textures/gui/environmental/lv3.png");
-    public static final ResourceLocation LV_4 = new ResourceLocation(cti.MOD_ID, "/textures/gui/environmental/lv4.png");
-    public static final ResourceLocation LV_5 = new ResourceLocation(cti.MOD_ID, "/textures/gui/environmental/lv5.png");
+    public static final ResourceLocation LV_0 = new ResourceLocation(Cti.MOD_ID, "/textures/gui/environmental/lv0.png");
+    public static final ResourceLocation LV_1 = new ResourceLocation(Cti.MOD_ID, "/textures/gui/environmental/lv1.png");
+    public static final ResourceLocation LV_2 = new ResourceLocation(Cti.MOD_ID, "/textures/gui/environmental/lv2.png");
+    public static final ResourceLocation LV_3 = new ResourceLocation(Cti.MOD_ID, "/textures/gui/environmental/lv3.png");
+    public static final ResourceLocation LV_4 = new ResourceLocation(Cti.MOD_ID, "/textures/gui/environmental/lv4.png");
+    public static final ResourceLocation LV_5 = new ResourceLocation(Cti.MOD_ID, "/textures/gui/environmental/lv5.png");
     public static final List<ResourceLocation> LVL = List.of(LV_0, LV_1, LV_2, LV_3, LV_4, LV_5);
 
-    public static final ResourceLocation IONIZE = new ResourceLocation(cti.MOD_ID, "/textures/gui/environmental/gui_ionize.png");
-    public static final ResourceLocation SCORCH = new ResourceLocation(cti.MOD_ID, "/textures/gui/environmental/gui_scorch.png");
-    public static final ResourceLocation FROZEN = new ResourceLocation(cti.MOD_ID, "/textures/gui/environmental/gui_frozen.png");
-    public static final ResourceLocation PRESSURE = new ResourceLocation(cti.MOD_ID, "/textures/gui/environmental/gui_pressure.png");
+    public static final ResourceLocation IONIZE = new ResourceLocation(Cti.MOD_ID, "/textures/gui/environmental/gui_ionize.png");
+    public static final ResourceLocation SCORCH = new ResourceLocation(Cti.MOD_ID, "/textures/gui/environmental/gui_scorch.png");
+    public static final ResourceLocation FROZEN = new ResourceLocation(Cti.MOD_ID, "/textures/gui/environmental/gui_frozen.png");
+    public static final ResourceLocation PRESSURE = new ResourceLocation(Cti.MOD_ID, "/textures/gui/environmental/gui_pressure.png");
 
 
     public static final IGuiOverlay ENVIRONMENT_OVERLAY = ((gui, poseStack, partialTick, width, height) -> {

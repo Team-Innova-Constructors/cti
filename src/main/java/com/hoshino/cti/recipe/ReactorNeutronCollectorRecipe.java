@@ -1,7 +1,7 @@
 package com.hoshino.cti.recipe;
 
 import com.google.gson.JsonObject;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import committee.nova.mods.avaritia.init.registry.ModItems;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -89,7 +89,7 @@ public class ReactorNeutronCollectorRecipe implements Recipe<SimpleContainer> {
     public static class Serializer implements RecipeSerializer<ReactorNeutronCollectorRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         public static final ResourceLocation ID =
-                new ResourceLocation(cti.MOD_ID, "reactor_neutron_collect");
+                new ResourceLocation(Cti.MOD_ID, "reactor_neutron_collect");
 
         @Override
         public ReactorNeutronCollectorRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {

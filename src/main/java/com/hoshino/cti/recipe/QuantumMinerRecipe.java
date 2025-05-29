@@ -1,7 +1,7 @@
 package com.hoshino.cti.recipe;
 
 import com.google.gson.JsonObject;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -77,7 +77,7 @@ public class QuantumMinerRecipe implements Recipe<SimpleContainer> {
     @Deprecated
     public static class Serializer implements RecipeSerializer<QuantumMinerRecipe> {
         public static final QuantumMinerRecipe.Serializer INSTANCE = new QuantumMinerRecipe.Serializer();
-        public static final ResourceLocation ID = new ResourceLocation(cti.MOD_ID, "quantum_mining");
+        public static final ResourceLocation ID = new ResourceLocation(Cti.MOD_ID, "quantum_mining");
 
         @Override
         public QuantumMinerRecipe fromJson(@NotNull ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {

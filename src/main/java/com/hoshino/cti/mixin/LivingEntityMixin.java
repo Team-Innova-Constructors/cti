@@ -2,9 +2,8 @@ package com.hoshino.cti.mixin;
 
 import com.hoshino.cti.content.environmentSystem.EnvironmentalHandler;
 import com.hoshino.cti.content.environmentSystem.IEnvironmentalSource;
-import com.hoshino.cti.mixin.TIMixin.PlayerAccessor;
 import com.hoshino.cti.mixin.TIMixin.ServerPlayerAccessor;
-import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.register.CtiEffects;
 import com.hoshino.cti.util.ILivingEntityMixin;
 import com.mojang.logging.LogUtils;
 import net.minecraft.ChatFormatting;
@@ -112,7 +111,7 @@ public abstract class LivingEntityMixin implements ILivingEntityMixin {
 
     @Inject(at = @At(value = "HEAD"), method = "hurt", cancellable = true)
     public void Hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if (this.hasEffect(ctiEffects.ev.get())) {
+        if (this.hasEffect(CtiEffects.ev.get())) {
             cir.setReturnValue(false);
         }else if (source instanceof IEnvironmentalSource){
             cir.setReturnValue(EnvironmentalHandler.hurtEntity((LivingEntity) (Object) this,source,amount));

@@ -36,42 +36,42 @@ import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 
 import java.util.List;
 
-@Mod(cti.MOD_ID)
+@Mod(Cti.MOD_ID)
 
-public class cti {
+public class Cti {
     public static boolean Mekenabled = ModList.get().isLoaded("mekanism");
     public static final String MOD_ID = "cti";
 
-    public cti() {
+    public Cti() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::registerGuiOverlay);
         CtiAttributes.ATTRIBUTES.register(eventBus);
-        ctiItem.ITEMS.register(eventBus);
-        ctiModifiers.MODIFIERS.register(eventBus);
-        ctiFluid.FLUIDS.register(eventBus);
-        ctiBlock.BLOCK.register(eventBus);
-        ctiEffects.EFFECT.register(eventBus);
-        ctiEntity.ENTITIES.register(eventBus);
-        ctiBlockEntityType.BLOCK_ENTITIES.register(eventBus);
-        ctiInfusetype.INFUSE.register(eventBus);
-        ctiItem.ASTRAITEM.init();
-        ctiItem.VEHICLES.init();
-        ctiHostilityTrait.register();
-        ctiEntity.ENTITY_TYPES.init();
+        CtiItem.ITEMS.register(eventBus);
+        CtiModifiers.MODIFIERS.register(eventBus);
+        CtiFluid.FLUIDS.register(eventBus);
+        CtiBlock.BLOCK.register(eventBus);
+        CtiEffects.EFFECT.register(eventBus);
+        CtiEntity.ENTITIES.register(eventBus);
+        CtiBlockEntityType.BLOCK_ENTITIES.register(eventBus);
+        CtiInfusetype.INFUSE.register(eventBus);
+        CtiItem.ASTRAITEM.init();
+        CtiItem.VEHICLES.init();
+        CtiHostilityTrait.register();
+        CtiEntity.ENTITY_TYPES.init();
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
         MinecraftForge.EVENT_BUS.register(new MobEffect());
         MinecraftForge.EVENT_BUS.register(new ServerEvent());
         ctiPacketHandler.init();
         ctiMenu.MENU_TYPE.register(eventBus);
-        ctiPotions.POTIONS.register(eventBus);
-        ctiItem.registerPartModels();
+        CtiPotions.POTIONS.register(eventBus);
+        CtiItem.registerPartModels();
         //ctiRecipes.register(eventBus);
         ctiConfiguredFeature.CONFIGURED_FEATURES.register(eventBus);
         ctiPlacedFeature.PLACED_FEATURES.register(eventBus);
         if (Mekenabled) {
-            ctiChemical.GAS.register(eventBus);
+            CtiChemical.GAS.register(eventBus);
         }
 
     }
@@ -87,7 +87,7 @@ public class cti {
         MenuScreens.register(ctiMenu.ATMOSPHERE_EXT_MENU.get(), AtmosphereExtractorScreen::new);
         MenuScreens.register(ctiMenu.ATMOSPHERE_CON_MENU.get(), AtmosphereCondensatorScreen::new);
         MenuScreens.register(ctiMenu.NEUT_COL_MENU.get(), ReactorNeutronCollectorScreen::new);
-        event.enqueueWork(ctiEntity::registerEntityRenderers);
+        event.enqueueWork(CtiEntity::registerEntityRenderers);
     }
 
     @SubscribeEvent
@@ -106,15 +106,15 @@ public class cti {
         ToolCapabilityProvider.register(PressureShieldToolCap::new);
         ToolCapabilityProvider.register(PressurizableToolCap::new);
         event.enqueueWork(BiomeUtil::init);
-        event.enqueueWork(ctiRailgunProjectile::register);
-        event.enqueueWork(ctiRitual::init);
+        event.enqueueWork(CtiRailgunProjectile::register);
+        event.enqueueWork(CtiRitual::init);
         //机械动力土豆加农炮
-        ctiPotatocannon.register();
+        CtiPotatocannon.register();
         //powah反应堆冷却剂
         PowahSolid.init();
-        ctiSlots.init();
+        CtiSlots.init();
         //药水配方
-        ctiBrewing.init();
+        CtiBrewing.init();
         TierSortingRegistry.registerTier(Roxy.instance, new ResourceLocation("cti:roxy"), List.of(Tiers.NETHERITE), List.of());
     }
 

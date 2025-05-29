@@ -1,6 +1,6 @@
 package com.hoshino.cti.Modifier;
 
-import com.hoshino.cti.register.ctiToolStats;
+import com.hoshino.cti.register.CtiToolStats;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,10 +29,10 @@ public class Infinity extends BattleModifier implements ToolStatsModifierHook {
 
     @Override
     public void addToolStats(IToolContext iToolContext, ModifierEntry modifierEntry, ModifierStatsBuilder modifierStatsBuilder) {
-        ctiToolStats.ELECTRIC_RESISTANCE.add(modifierStatsBuilder, 50);
-        ctiToolStats.SCORCH_RESISTANCE.add(modifierStatsBuilder, 50);
-        ctiToolStats.FROZEN_RESISTANCE.add(modifierStatsBuilder, 50);
-        ctiToolStats.PRESSURE_RESISTANCE.add(modifierStatsBuilder, 50);
+        CtiToolStats.ELECTRIC_RESISTANCE.add(modifierStatsBuilder, 50);
+        CtiToolStats.SCORCH_RESISTANCE.add(modifierStatsBuilder, 50);
+        CtiToolStats.FROZEN_RESISTANCE.add(modifierStatsBuilder, 50);
+        CtiToolStats.PRESSURE_RESISTANCE.add(modifierStatsBuilder, 50);
     }
 
     @Override

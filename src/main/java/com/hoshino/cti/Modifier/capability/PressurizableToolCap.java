@@ -1,6 +1,6 @@
 package com.hoshino.cti.Modifier.capability;
 
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import me.desht.pneumaticcraft.api.PNCCapabilities;
 import me.desht.pneumaticcraft.api.pressure.IPressurizableItem;
 import me.desht.pneumaticcraft.api.tileentity.IAirHandlerItem;
@@ -20,9 +20,9 @@ public class PressurizableToolCap implements ToolCapabilityProvider.IToolCapabil
     public final LazyOptional<IPressurizableItem> capOptional;
     public final float maxPressure;
     public final LazyOptional<IAirHandlerItem> airHandlerItemLazyOptional;
-    public static final ResourceLocation BASE_VOLUME_KEY = new ResourceLocation(cti.MOD_ID, "base_volume");
-    public static final ResourceLocation MAX_PRESSURE_KEY = new ResourceLocation(cti.MOD_ID, "max_pressure");
-    public static final ResourceLocation AIR_KEY = new ResourceLocation(cti.MOD_ID, "air");
+    public static final ResourceLocation BASE_VOLUME_KEY = new ResourceLocation(Cti.MOD_ID, "base_volume");
+    public static final ResourceLocation MAX_PRESSURE_KEY = new ResourceLocation(Cti.MOD_ID, "max_pressure");
+    public static final ResourceLocation AIR_KEY = new ResourceLocation(Cti.MOD_ID, "air");
 
     public final AirHandlerItemStack airHandlerItemStack;
 

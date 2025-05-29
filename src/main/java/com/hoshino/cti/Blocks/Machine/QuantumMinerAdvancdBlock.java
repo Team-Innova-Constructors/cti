@@ -1,8 +1,8 @@
 package com.hoshino.cti.Blocks.Machine;
 
 import com.hoshino.cti.Blocks.BlockEntity.QuantumMinerAdvancedEntity;
-import com.hoshino.cti.register.ctiBlock;
-import com.hoshino.cti.register.ctiBlockEntityType;
+import com.hoshino.cti.register.CtiBlock;
+import com.hoshino.cti.register.CtiBlockEntityType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -32,7 +32,7 @@ public class QuantumMinerAdvancdBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level level, BlockPos blockPos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof QuantumMinerAdvancedEntity entity && entity.getBlockState().is(ctiBlock.quantum_miner.get())) {
+            if (blockEntity instanceof QuantumMinerAdvancedEntity entity && entity.getBlockState().is(CtiBlock.quantum_miner.get())) {
                 entity.dropItem();
             }
             blockEntity.setRemoved();
@@ -43,7 +43,7 @@ public class QuantumMinerAdvancdBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ctiBlockEntityType.QUANTUM_MINER_ADVANCED_ENTITY.get(), QuantumMinerAdvancedEntity::tick);
+        return createTickerHelper(type, CtiBlockEntityType.QUANTUM_MINER_ADVANCED_ENTITY.get(), QuantumMinerAdvancedEntity::tick);
     }
 
 }

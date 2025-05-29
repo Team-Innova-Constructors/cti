@@ -7,7 +7,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import umpaz.brewinandchewin.common.registry.BCEffects;
 
-public class ctiWine {
+public class CtiWine {
     public static final FoodProperties COLD_GOBBERWINE = (
             new FoodProperties.Builder()).effect(() ->
             new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(), 12000, 2), 1).effect(() ->

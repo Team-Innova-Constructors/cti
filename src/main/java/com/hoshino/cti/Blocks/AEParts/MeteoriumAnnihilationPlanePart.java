@@ -19,7 +19,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 import java.util.List;
-import java.util.Random;
 
 public class MeteoriumAnnihilationPlanePart extends AnnihilationPlanePart {
     private static final PlaneModels MODELS = new PlaneModels("part/meteorium_annihilation_plane", "part/meteorium_annihilation_plane_on");

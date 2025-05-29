@@ -2,7 +2,7 @@ package com.hoshino.cti.register;
 
 import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
 import com.hoshino.cti.content.environmentSystem.EDamageSource;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -26,16 +26,16 @@ import slimeknights.tconstruct.fluids.block.BurningLiquidBlock;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static com.hoshino.cti.cti.MOD_ID;
+import static com.hoshino.cti.Cti.MOD_ID;
 
-public class ctiFluid {
+public class CtiFluid {
 
     private static FluidType.Properties hot(String name) {
-        return FluidType.Properties.create().density(2000).viscosity(10000).temperature(1000).descriptionId(cti.makeDescriptionId("fluid", name)).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_FILL_LAVA);
+        return FluidType.Properties.create().density(2000).viscosity(10000).temperature(1000).descriptionId(Cti.makeDescriptionId("fluid", name)).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_FILL_LAVA);
     }
 
     private static FluidType.Properties cool(String name) {
-        return cool().descriptionId(cti.makeDescriptionId("fluid", name)).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_FILL_LAVA);
+        return cool().descriptionId(Cti.makeDescriptionId("fluid", name)).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_FILL_LAVA);
     }
 
     private static FluidType.Properties cool() {

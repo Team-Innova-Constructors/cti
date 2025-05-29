@@ -1,7 +1,7 @@
 package com.hoshino.cti.Blocks.Machine;
 
 import com.hoshino.cti.Blocks.BlockEntity.AlloyCentrifugeEntity;
-import com.hoshino.cti.register.ctiBlockEntityType;
+import com.hoshino.cti.register.CtiBlockEntityType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
@@ -60,7 +60,7 @@ public class AlloyCentrifugeBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ctiBlockEntityType.ALLOY_CENTRIFUGE.get(), AlloyCentrifugeEntity::tick);
+        return createTickerHelper(type, CtiBlockEntityType.ALLOY_CENTRIFUGE.get(), AlloyCentrifugeEntity::tick);
     }
 
 }

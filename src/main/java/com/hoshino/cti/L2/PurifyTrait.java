@@ -1,6 +1,6 @@
 package com.hoshino.cti.L2;
 
-import com.hoshino.cti.register.ctiHostilityTrait;
+import com.hoshino.cti.register.CtiHostilityTrait;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import com.marth7th.solidarytinker.register.TinkerCuriosModifier;
 import dev.xkmc.l2hostility.content.capability.mob.MobTraitCap;
@@ -10,7 +10,6 @@ import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
@@ -57,7 +56,7 @@ public class PurifyTrait extends MobTrait {
                 MobTraitCap cap = optional.resolve().get();
                 Set<MobTrait> set = cap.traits.keySet();
                 for (int i = 0; i < set.stream().toList().size(); i++) {
-                    MobTrait trait = ctiHostilityTrait.PURIFYTRAIT.get();
+                    MobTrait trait = CtiHostilityTrait.PURIFYTRAIT.get();
                     List<Player> playerlist = mob.level.getEntitiesOfClass(Player.class, new AABB(mob.getX() + 10, mob.getY() + 10, mob.getZ() + 10, mob.getX() - 10, mob.getY() - 10, mob.getZ() - 10));
                     for(Player player:playerlist){
                         if(GetModifierLevel.CurioHasModifierlevel(player,TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId())){

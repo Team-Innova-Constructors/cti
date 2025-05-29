@@ -1,7 +1,7 @@
 package com.hoshino.cti.integration;
 
 import com.hoshino.cti.Plugin.JEIPlugin;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.recipe.ReactorNeutronCollectorRecipe;
 import com.hoshino.cti.register.CtiItem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -25,10 +25,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 public class ReactorNeutronCollectorRecipeCategory implements IRecipeCategory<ReactorNeutronCollectorRecipe> {
-    public static final ResourceLocation UID = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation UID = new ResourceLocation(Cti.MOD_ID,
             "reactor_neutron_collect");
 
-    public static final ResourceLocation TEXTURE = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation TEXTURE = new ResourceLocation(Cti.MOD_ID,
             "textures/gui/machine/neutron_collector_bg.png");
 
 

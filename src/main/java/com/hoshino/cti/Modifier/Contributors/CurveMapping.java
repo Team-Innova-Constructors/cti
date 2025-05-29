@@ -1,8 +1,8 @@
 package com.hoshino.cti.Modifier.Contributors;
 
 
-import com.hoshino.cti.cti;
-import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.Cti;
+import com.hoshino.cti.register.CtiEffects;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -34,7 +34,7 @@ public class CurveMapping extends BattleModifier {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
-    private static final ResourceLocation curvemappingtime = cti.getResource("curvemappingtime");
+    private static final ResourceLocation curvemappingtime = Cti.getResource("curvemappingtime");
 
     public void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getSource().getEntity();
@@ -46,7 +46,7 @@ public class CurveMapping extends BattleModifier {
                 event.setAmount(b);
                 if (b % 2 == 0 && tool.getPersistentData().getInt(curvemappingtime) == 0) {
                     tool.getPersistentData().putInt(curvemappingtime, 300 - c * 10);
-                    player.addEffect(new MobEffectInstance(ctiEffects.curve_mapping.get(), 200, c));
+                    player.addEffect(new MobEffectInstance(CtiEffects.curve_mapping.get(), 200, c));
                 }
             }
         }

@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
-public class ctiFood {
+public class CtiFood {
     public static final FoodProperties COLD_GOBBERWINE = (
             new FoodProperties.Builder()).effect(() ->
             new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(), 12000, 2), 1).effect(() ->

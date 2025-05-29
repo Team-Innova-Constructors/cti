@@ -1,20 +1,16 @@
 package com.hoshino.cti.recipe;
 
-import appeng.core.definitions.AEItems;
 import appeng.core.definitions.AEParts;
 import appeng.items.parts.PartItem;
 import com.google.gson.JsonObject;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.util.PanelCondition;
 import mekanism.api.chemical.ChemicalStack;
-import mekanism.common.recipe.ingredient.chemical.MultiChemicalStackIngredient;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -22,7 +18,6 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import slimeknights.mantle.recipe.ingredient.FluidIngredient;
 
 import java.util.List;
 
@@ -36,7 +31,7 @@ public class AnnihilationPanelRecipe implements Recipe<SimpleContainer> {
     public final List<FluidStack> fluidOutputs;
     public final List<ItemStack> itemOutputs;
 
-    public static AnnihilationPanelRecipe EMPTY = new AnnihilationPanelRecipe(cti.getResource("panel_recipe/empty"), AEParts.ANNIHILATION_PLANE.m_5456_(), PanelCondition.NULL,0,null,List.of(),List.of(),List.of());
+    public static AnnihilationPanelRecipe EMPTY = new AnnihilationPanelRecipe(Cti.getResource("panel_recipe/empty"), AEParts.ANNIHILATION_PLANE.m_5456_(), PanelCondition.NULL,0,null,List.of(),List.of(),List.of());
 
     public AnnihilationPanelRecipe(ResourceLocation id, PartItem<?> panel, PanelCondition condition, int ticks, ResourceKey<Level> dimension, List<ChemicalStack<?>> chemicalOutputs, List<FluidStack> fluidOutputs, List<ItemStack> itemOutputs) {
         this.id = id;

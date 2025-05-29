@@ -4,7 +4,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 
-public class ctiTab {
+public class CtiTab {
     public static final CreativeModeTab MATERIALS = new CreativeModeTab("cti.materials") {
         @Override
         public ItemStack makeIcon() {
@@ -30,6 +30,6 @@ public class ctiTab {
         }
     };
 
-    public ctiTab() {
+    public CtiTab() {
     }
 }

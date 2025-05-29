@@ -9,16 +9,16 @@ import com.hoshino.cti.Modifier.Replace.*;
 import com.hoshino.cti.Modifier.slot.Hardcore;
 import com.hoshino.cti.Modifier.slot.Improve;
 import com.hoshino.cti.Modifier.slot.Mutation;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
-public class ctiModifiers {
+public class CtiModifiers {
     /**
      * 词条的注册部分
      * 图省事所有直接把等号外部分写在一起了（
      */
-    public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(cti.MOD_ID);
+    public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(Cti.MOD_ID);
     public static final StaticModifier<ElectricProtect> electric_protect = MODIFIERS.register("electric_protect", ElectricProtect::new);
     public static final StaticModifier<ScorchProtect> scorch_protect = MODIFIERS.register("scorch_protect", ScorchProtect::new);
     public static final StaticModifier<FreezeProtect> freeze_protect = MODIFIERS.register("freeze_protect", FreezeProtect::new);
@@ -114,4 +114,6 @@ public class ctiModifiers {
     public static final StaticModifier<Qcf> qcfStaticModifier = MODIFIERS.register("qcf", Qcf::new);
     public static final StaticModifier<DoNotSplit> doNotSplitStaticModifier = MODIFIERS.register("donotsplit", DoNotSplit::new);
     public static final StaticModifier<AutoShooting> AUTO_SHOOTING = MODIFIERS.register("auto_shooting", AutoShooting::new);
+    public static final StaticModifier<Fragment> Fragment = MODIFIERS.register("fragment", Fragment::new);
+    public static final StaticModifier<Wearproof> wearproofStaticModifier = MODIFIERS.register("wearproof", Wearproof::new);
 }

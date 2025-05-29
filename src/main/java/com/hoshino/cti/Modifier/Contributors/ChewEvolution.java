@@ -1,7 +1,7 @@
 package com.hoshino.cti.Modifier.Contributors;
 
 import com.cazsius.solcarrot.api.SOLCarrotAPI;
-import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.register.CtiEffects;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -69,7 +69,7 @@ public class ChewEvolution extends BattleModifier {
                 }
             }
             if (count > 250) {
-                mob.forceAddEffect(new MobEffectInstance(ctiEffects.AncientDragonFlame.get(), 60, 0), player);
+                mob.forceAddEffect(new MobEffectInstance(CtiEffects.AncientDragonFlame.get(), 60, 0), player);
             }
         }
     }
@@ -95,7 +95,7 @@ public class ChewEvolution extends BattleModifier {
                 }
             }
             if (count > 250) {
-                mob.forceAddEffect(new MobEffectInstance(ctiEffects.AncientDragonFlame.get(), 60, 0), player);
+                mob.forceAddEffect(new MobEffectInstance(CtiEffects.AncientDragonFlame.get(), 60, 0), player);
             }
             float per = Math.min(level * this.getFoodLevel(player) * 0.03F, 0.25F);
             if (count > 500 && mob.getHealth() <= mob.getMaxHealth() * per) {

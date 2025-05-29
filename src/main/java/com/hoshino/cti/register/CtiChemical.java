@@ -4,9 +4,9 @@ import mekanism.api.chemical.gas.Gas;
 import mekanism.common.registration.impl.GasDeferredRegister;
 import mekanism.common.registration.impl.GasRegistryObject;
 
-import static com.hoshino.cti.cti.MOD_ID;
+import static com.hoshino.cti.Cti.MOD_ID;
 
-public class ctiChemical {
+public class CtiChemical {
     public static final GasDeferredRegister GAS = new GasDeferredRegister(MOD_ID);
 
     public static final GasRegistryObject<Gas> MANA_GAS = GAS.register("mana_gas", 0x65d1ff);

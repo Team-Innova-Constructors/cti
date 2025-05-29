@@ -1,8 +1,8 @@
 package com.hoshino.cti.Blocks.Machine;
 
 import com.hoshino.cti.Blocks.BlockEntity.AtmosphereExtractorEntity;
-import com.hoshino.cti.register.ctiBlock;
-import com.hoshino.cti.register.ctiBlockEntityType;
+import com.hoshino.cti.register.CtiBlock;
+import com.hoshino.cti.register.CtiBlockEntityType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -64,7 +64,7 @@ public class AtmosphereExtractorBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level level, BlockPos blockPos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof AtmosphereExtractorEntity entity && entity.getBlockState().is(ctiBlock.atmosphere_extractor.get())) {
+            if (blockEntity instanceof AtmosphereExtractorEntity entity && entity.getBlockState().is(CtiBlock.atmosphere_extractor.get())) {
                 entity.dropItem();
             }
             blockEntity.setRemoved();
@@ -75,7 +75,7 @@ public class AtmosphereExtractorBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ctiBlockEntityType.Atmosphere_extractor.get(), AtmosphereExtractorEntity::tick);
+        return createTickerHelper(type, CtiBlockEntityType.Atmosphere_extractor.get(), AtmosphereExtractorEntity::tick);
     }
 
     @Override

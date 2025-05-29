@@ -4,7 +4,7 @@ import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.hoshino.cti.Entity.Projectiles.FallenStars;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PStellarBlade;
-import com.hoshino.cti.register.ctiEntity;
+import com.hoshino.cti.register.CtiEntity;
 import com.hoshino.cti.register.CtiItem;
 import com.hoshino.cti.register.CtiModifiers;
 import net.minecraft.world.entity.Entity;
@@ -62,13 +62,13 @@ public class StellarBlade extends etshmodifieriii {
                 FallenStars fallenStars;
                 int rnd = EtSHrnd().nextInt(4);
                 if (rnd == 1) {
-                    fallenStars = new FallenStars(ctiEntity.star_pressure.get(), level, ls.get(1));
+                    fallenStars = new FallenStars(CtiEntity.star_pressure.get(), level, ls.get(1));
                 } else if (rnd == 2) {
-                    fallenStars = new FallenStars(ctiEntity.star_ionize.get(), level, ls.get(2));
+                    fallenStars = new FallenStars(CtiEntity.star_ionize.get(), level, ls.get(2));
                 } else if (rnd == 3) {
-                    fallenStars = new FallenStars(ctiEntity.star_frozen.get(), level, ls.get(3));
+                    fallenStars = new FallenStars(CtiEntity.star_frozen.get(), level, ls.get(3));
                 } else {
-                    fallenStars = new FallenStars(ctiEntity.star_blaze.get(), level, ls.get(0));
+                    fallenStars = new FallenStars(CtiEntity.star_blaze.get(), level, ls.get(0));
                 }
                 fallenStars.setOwner(player);
                 fallenStars.baseDamage = (float) (arrow.getBaseDamage() * getMold(arrow.getDeltaMovement()));
@@ -95,13 +95,13 @@ public class StellarBlade extends etshmodifieriii {
                 FallenStars fallenStars;
                 int rnd = EtSHrnd().nextInt(4);
                 if (rnd == 1) {
-                    fallenStars = new FallenStars(ctiEntity.star_pressure.get(), level, ls.get(1));
+                    fallenStars = new FallenStars(CtiEntity.star_pressure.get(), level, ls.get(1));
                 } else if (rnd == 2) {
-                    fallenStars = new FallenStars(ctiEntity.star_ionize.get(), level, ls.get(2));
+                    fallenStars = new FallenStars(CtiEntity.star_ionize.get(), level, ls.get(2));
                 } else if (rnd == 3) {
-                    fallenStars = new FallenStars(ctiEntity.star_frozen.get(), level, ls.get(3));
+                    fallenStars = new FallenStars(CtiEntity.star_frozen.get(), level, ls.get(3));
                 } else {
-                    fallenStars = new FallenStars(ctiEntity.star_blaze.get(), level, ls.get(0));
+                    fallenStars = new FallenStars(CtiEntity.star_blaze.get(), level, ls.get(0));
                 }
                 fallenStars.setOwner(player);
                 fallenStars.baseDamage = damage;
@@ -127,13 +127,13 @@ public class StellarBlade extends etshmodifieriii {
                 FallenStars fallenStars;
                 int rnd = EtSHrnd().nextInt(4);
                 if (rnd == 1) {
-                    fallenStars = new FallenStars(ctiEntity.star_pressure.get(), level, ls.get(1));
+                    fallenStars = new FallenStars(CtiEntity.star_pressure.get(), level, ls.get(1));
                 } else if (rnd == 2) {
-                    fallenStars = new FallenStars(ctiEntity.star_ionize.get(), level, ls.get(2));
+                    fallenStars = new FallenStars(CtiEntity.star_ionize.get(), level, ls.get(2));
                 } else if (rnd == 3) {
-                    fallenStars = new FallenStars(ctiEntity.star_frozen.get(), level, ls.get(3));
+                    fallenStars = new FallenStars(CtiEntity.star_frozen.get(), level, ls.get(3));
                 } else {
-                    fallenStars = new FallenStars(ctiEntity.star_blaze.get(), level, ls.get(0));
+                    fallenStars = new FallenStars(CtiEntity.star_blaze.get(), level, ls.get(0));
                 }
                 fallenStars.setOwner(player);
                 float damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);

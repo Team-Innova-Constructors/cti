@@ -1,6 +1,6 @@
 package com.hoshino.cti.netwrok;
 
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.netwrok.packet.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,7 +16,7 @@ public class ctiPacketHandler {
     static int id = 0;
 
     public static void init() {
-        INSTANCE = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(cti.MOD_ID, "cti_message")).networkProtocolVersion(() -> "1").clientAcceptedVersions(s -> true).serverAcceptedVersions(s -> true).simpleChannel();
+        INSTANCE = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(Cti.MOD_ID, "cti_message")).networkProtocolVersion(() -> "1").clientAcceptedVersions(s -> true).serverAcceptedVersions(s -> true).simpleChannel();
         INSTANCE.messageBuilder(PIonizeValueSync.class, id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PIonizeValueSync::new).encoder(PIonizeValueSync::toByte).consumerMainThread(PIonizeValueSync::handle).add();
         INSTANCE.messageBuilder(PScorchValueSync.class, id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PScorchValueSync::new).encoder(PScorchValueSync::toByte).consumerMainThread(PScorchValueSync::handle).add();
         INSTANCE.messageBuilder(PFrozenValueSync.class, id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PFrozenValueSync::new).encoder(PFrozenValueSync::toByte).consumerMainThread(PFrozenValueSync::handle).add();

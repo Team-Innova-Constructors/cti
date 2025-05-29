@@ -17,7 +17,7 @@ import net.minecraftforge.registries.RegistryObject;
 import slimeknights.tconstruct.world.block.CrystalClusterBlock;
 
 
-public class ctiBlock {
+public class CtiBlock {
     public static final DeferredRegister<Block> BLOCK = DeferredRegister.create(ForgeRegistries.BLOCKS, "cti");
     public static final RegistryObject<Block> unipolar_magnet_budding = BLOCK.register("unipolar_magnet_budding", () -> new unipolarBudding(BlockBehaviour.Properties.of(Material.AMETHYST).lightLevel((BlockStateBase) -> 15).sound(SoundType.AMETHYST).randomTicks().destroyTime(1)));
     public static final RegistryObject<Block> unipolar_magnet = BLOCK.register("unipolar_magnet", () -> new CrystalClusterBlock(SoundEvents.AMETHYST_BLOCK_CHIME, 7, 3, BlockBehaviour.Properties.of(Material.AMETHYST).noOcclusion().sound(SoundType.AMETHYST_CLUSTER).strength(5.5F).lightLevel((BlockStateBase) -> 5).destroyTime(1)));

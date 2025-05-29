@@ -1,7 +1,7 @@
 package com.hoshino.cti.integration;
 
 import com.hoshino.cti.Plugin.JEIPlugin;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.recipe.QuantumMinerRecipe;
 import com.hoshino.cti.register.CtiItem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -23,10 +23,10 @@ import net.minecraft.world.item.ItemStack;
 import static mezz.jei.library.ingredients.IngredientInfoRecipe.recipeWidth;
 
 public class QuantumMinerRecipeCategory implements IRecipeCategory<QuantumMinerRecipe> {
-    public static final ResourceLocation UID = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation UID = new ResourceLocation(Cti.MOD_ID,
             "quantum_mining");
 
-    public static final ResourceLocation TEXTURE = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation TEXTURE = new ResourceLocation(Cti.MOD_ID,
             "textures/gui/machine/quantum_miner_bg.png");
 
 

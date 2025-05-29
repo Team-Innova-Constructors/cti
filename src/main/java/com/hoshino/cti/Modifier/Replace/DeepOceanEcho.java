@@ -2,7 +2,7 @@ package com.hoshino.cti.Modifier.Replace;
 
 import com.gjhi.tinkersinnovation.register.TinkersInnovationModifiers;
 import com.hoshino.cti.register.CtiModifiers;
-import com.hoshino.cti.register.ctiSlots;
+import com.hoshino.cti.register.CtiSlots;
 import com.james.tinkerscalibration.Utils;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import com.marth7th.solidarytinker.util.compound.DynamicComponentUtil;
@@ -69,7 +69,7 @@ public class DeepOceanEcho extends BattleModifier {
 
     @Override
     public void addVolatileData(IToolContext iToolContext, @NotNull ModifierEntry modifierEntry, ModDataNBT modDataNBT) {
-        modDataNBT.addSlots(ctiSlots.OCEAN, 5);
+        modDataNBT.addSlots(CtiSlots.OCEAN, 5);
     }
 
     @Override
