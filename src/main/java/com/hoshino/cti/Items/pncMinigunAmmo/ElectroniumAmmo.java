@@ -1,7 +1,6 @@
 package com.hoshino.cti.Items.pncMinigunAmmo;
 
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
-import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
 import me.desht.pneumaticcraft.common.config.ConfigHelper;
 import me.desht.pneumaticcraft.common.core.ModUpgrades;
 import me.desht.pneumaticcraft.common.item.minigun.AbstractGunAmmoItem;
@@ -52,7 +51,7 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
     }
 
     protected DamageSource getDamageSource(Minigun minigun, Float amount) {
-        return PierceThrough.pierceDamage(minigun.getPlayer(), amount);
+        return DamageSource.playerAttack(minigun.getPlayer()).bypassMagic().bypassArmor();
     }
 
     @Override

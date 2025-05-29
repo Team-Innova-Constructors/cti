@@ -1,6 +1,7 @@
 package com.hoshino.cti.register;
 
 import com.hoshino.cti.Entity.Projectiles.FallenStars;
+import com.hoshino.cti.Entity.Projectiles.FriendlyMeteor;
 import com.hoshino.cti.Entity.Projectiles.MeteorEntity;
 import com.hoshino.cti.Entity.Projectiles.TinkerRailgunProjectile;
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
@@ -31,6 +32,8 @@ public class ctiEntity {
     public static final RegistryObject<EntityType<FallenStars>> star_pressure = ENTITIES.register("star_pressure", () -> EntityType.Builder.<FallenStars>of((entityType, level) -> new FallenStars(entityType, level, CtiItem.star_pressure.get()), MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new FallenStars(ctiEntity.star_pressure.get(), world, CtiItem.star_pressure.get())).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<TinkerRailgunProjectile>> tinker_railgun = ENTITIES.register("tinker_railgun", () -> EntityType.Builder.<TinkerRailgunProjectile>of((entityType, level) -> new TinkerRailgunProjectile(entityType, level, new ItemStack(TinkerToolParts.toolHandle), TinkerTools.cleaver.get()), MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new TinkerRailgunProjectile(ctiEntity.tinker_railgun.get(), world, new ItemStack(TinkerToolParts.toolHandle), TinkerTools.cleaver.get())).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<MeteorEntity>> meteor_entity = ENTITIES.register("meteor_entity", () -> EntityType.Builder.<MeteorEntity>of(MeteorEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new MeteorEntity(world, spawnEntity.getPosX(), spawnEntity.getPosY(), spawnEntity.getPosZ(), spawnEntity.getEntity().getDeltaMovement())).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<FriendlyMeteor>> FRIENDLY_METEOR = ENTITIES.register("friendly_meteor", () -> EntityType.Builder.<FriendlyMeteor>of(FriendlyMeteor::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new FriendlyMeteor(ctiEntity.FRIENDLY_METEOR.get(),world)).setShouldReceiveVelocityUpdates(true));
+
 
     public static void registerEntityRenderers() {
         ClientHooks.registerEntityRenderer(ctiEntity.TIER_5_ROCKET, RocketRendererTier5::new);
@@ -40,5 +43,6 @@ public class ctiEntity {
         ClientHooks.registerEntityRenderer(ctiEntity.star_pressure, LargeBrightItemProjectile::new);
         ClientHooks.registerEntityRenderer(ctiEntity.tinker_railgun, TinkerRaligunRenderer::new);
         ClientHooks.registerEntityRenderer(ctiEntity.meteor_entity, MeteorEntityRenderer::new);
+        ClientHooks.registerEntityRenderer(ctiEntity.FRIENDLY_METEOR, pContext -> new MeteorEntityRenderer(pContext,2));
     }
 }

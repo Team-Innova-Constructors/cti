@@ -176,6 +176,10 @@
   "modifier.cti.triangletheory.flavor": "一个显而易见的三角形，为不公的忽视而发声，举证如下",
   "modifier.cti.triangletheory.description": "穿戴的装备中有该词条时第三次攻击才可对你造成伤害。",
 
+  "modifier.cti.auto_shooting": "自动射击",
+  "modifier.cti.auto_shooting.flavor": "有弓了谁还需要枪？",
+  "modifier.cti.auto_shooting.description": "按住右键就能自动射击，不需要松手。",
+
   "item.cti.xinian_ingot": "§c37锭",
   "item.cti.molten_xinian_bucket": "熔融37桶",
   "fluid.cti.molten_xinian": "熔融37",
@@ -627,9 +631,9 @@
   "modifier.cti.ragnarok.flavor": "史蒂夫对恶意生物的研究成果",
   "modifier.cti.ragnarok.description": "攻击时有概率移除目标的一个词条并将它掉落出来。",
 
-  "modifier.cti.plasma_wave_slash_ex": "等离子波动斩EX",
-  "modifier.cti.plasma_wave_slash_ex.flavor": "泰拉瑞亚1.4.4更新后的泰拉之刃belike",
-  "modifier.cti.plasma_wave_slash_ex.description": "挥舞武器时释放等离子波动，点燃目标并造成电离减益。",
+  "modifier.cti.star_fury": "群星之怒",
+  "modifier.cti.star_fury.flavor": "至少你不用去找空岛了",
+  "modifier.cti.star_fury.description": "挥舞时召唤陨石砸向你的敌人。",
 
   "modifier.cti.plasma_shielding": "离子护盾",
   "modifier.cti.plasma_shielding.flavor": "离子护盾",
@@ -671,6 +675,19 @@
 
   "fluid.cti.molten_roxy": "熔融洛琪希",
   "item.cti.molten_roxy_bucket": "熔融洛琪希桶",
+
+  "fluid.cti.lava_heated": "加热的熔岩",
+  "item.cti.lava_heated_bucket": "加热的熔岩桶",
+  "fluid.cti.lava_overheated": "过热熔岩",
+  "item.cti.lava_overheated_bucket": "过热熔岩桶",
+  "fluid.cti.lava_gaseous": "气态熔岩",
+  "item.cti.lava_gaseous_bucket": "气态熔岩桶",
+  "fluid.cti.lava_plasmatic": "等离子态熔岩",
+  "item.cti.lava_plasmatic_bucket": "等离子态熔岩桶",
+  "fluid.cti.lava_atomic": "简并态熔岩",
+  "item.cti.lava_atomic_bucket": "简并态熔岩桶",
+
+
 
   "cti.gui.environmental.ionize_build": "电离强度",
   "cti.gui.environmental.ionize_value": "电离值",
@@ -735,7 +752,7 @@
   "fluid.cti.extraterrestrial_essense": "液化以太",
   "item.cti.extraterrestrial_essense_bucket": "液化以太桶",
 
-    "fluid.cti.molten_meteorium": "熔融陨铁合金",
+  "fluid.cti.molten_meteorium": "熔融陨铁合金",
   "item.cti.molten_meteorium_bucket": "熔融陨铁合金桶",
 
   "dimension.ad_astra.infernal": "炼狱",
@@ -758,9 +775,15 @@
   "item.cti.flat_tablet_day": "全息永昼世界投影板",
 
   "item.cti.meteor_shower": "流星雨",
-  "cti.ritual_desc.meteor_shower":"让雨点般密集的陨石从天上坠落，将你的世界焚烧殆尽。注：作用范围为84*84，这些陨石可能会摧毁你的火盆。",
+  "cti.ritual_desc.meteor_shower":"让雨点般密集的陨石从天上坠落，将你的世界焚烧殆尽。\n注：作用范围为84*84，这些陨石可能会摧毁你的火盆。",
 
 
   "trait.l2hostility.purify": "净化",
-  "trait.l2hostility.purify.desc": "怪物会免疫掉负面药水状态效果"
+  "trait.l2hostility.purify.desc": "怪物会免疫掉负面药水状态效果",
+
+
+  "info.cti.panel_condition.upward": "于世界最高处向上放置",
+  "info.cti.panel_condition.downward": "于世界最低处向下放置",
+
+  "info.biomes.cti.disordered_zone": "异常区域位于电离冻土星球，你需要进入主线第三章并且做出五级火箭才能到达这里。在此之前你需要做出一个完整的质子、电子产线。"
 }

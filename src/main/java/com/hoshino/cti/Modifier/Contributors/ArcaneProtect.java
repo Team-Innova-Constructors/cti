@@ -24,11 +24,11 @@ public class ArcaneProtect extends ArmorModifier {
         return true;
     }
 
-    public void setfakeInvurabletime(int time, Player player) {
+    public static void setfakeInvurabletime(int time, Player player) {
         player.getPersistentData().putInt("fakeInvurabletime", time);
     }
 
-    public int getfakeInvurabletime(Player player) {
+    public static int getfakeInvurabletime(Player player) {
         return player.getPersistentData().getInt("fakeInvurabletime");
     }
 
@@ -41,21 +41,10 @@ public class ArcaneProtect extends ArmorModifier {
             if (event.getSource().isMagic()) {
                 event.setAmount(1);
             }
-            List<ItemStack> itemStacks = player.getInventory().armor;
-            List<IToolStackView> views = new ArrayList<>();
-            for (ItemStack tool : itemStacks) {
-                if (ModifierUtil.getModifierLevel(tool, this.getId()) > 0) {
-                    IToolStackView correct = ToolStack.from(tool);
-                    views.add(correct);
-                    break;
-                }
-            }
-            Modifier modifier = views.get(0).getModifier(this).getModifier();
-            if (modifier instanceof ArcaneProtect arc) {
-                if (arc.getfakeInvurabletime(player) == 60) {
-                    arc.setfakeInvurabletime(0, player);
-                    player.setInvulnerable(true);
-                }
+            if (GetModifierLevel.getTotalArmorModifierlevel(player,this.getId())<=0) return;
+            if (getfakeInvurabletime(player) == 60) {
+                setfakeInvurabletime(0, player);
+                player.setInvulnerable(true);
             }
         }
     }
@@ -63,10 +52,10 @@ public class ArcaneProtect extends ArmorModifier {
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         if (isCorrectSlot) {
-            if (modifier.getModifier() instanceof ArcaneProtect arcaneProtect && entity instanceof Player player) {
-                if (arcaneProtect.getfakeInvurabletime(player) < 60) {
-                    arcaneProtect.setfakeInvurabletime(arcaneProtect.getfakeInvurabletime(player) + 1, player);
-                } else if (arcaneProtect.getfakeInvurabletime(player) == 60 && !GetModifierLevel.CurioHasModifierlevel(player, TinkerCuriosModifier.NATIVED_STATIC_MODIFIER.getId())) {
+            if (entity instanceof Player player) {
+                if (getfakeInvurabletime(player) < 60) {
+                    setfakeInvurabletime(getfakeInvurabletime(player) + 1, player);
+                } else if (getfakeInvurabletime(player) == 60 && !GetModifierLevel.CurioHasModifierlevel(player, TinkerCuriosModifier.NATIVED_STATIC_MODIFIER.getId())) {
                     entity.setInvulnerable(false);
                 }
             }

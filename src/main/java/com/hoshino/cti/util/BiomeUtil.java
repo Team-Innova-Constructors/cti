@@ -10,6 +10,7 @@ import net.minecraft.world.level.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BiomeUtil {
@@ -25,6 +26,17 @@ public class BiomeUtil {
     public static final ResourceKey<Biome> INFERNAL_MOLTEN = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(cti.MOD_ID, "infernal_molten_surface"));
     public static final ResourceKey<Biome> JUPITER = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(cti.MOD_ID, "jupiter"));
     public static final ResourceKey<Biome> URANUS = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(cti.MOD_ID, "uranus"));
+
+    public static final List<String> INFO_LIST = List.of(
+            "cti:ionized_mare",
+            "cti:ionized_glacio",
+            "cti:disordered_zone",
+            "cti:infernal",
+            "cti:infernal_molten_surface",
+            "cti:jupiter",
+            "cti:uranus",
+            "undergarden:smog_spires"
+    );
 
 
     public static void init() {

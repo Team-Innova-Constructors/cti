@@ -11,13 +11,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static com.hoshino.cti.Entity.Systems.EnvironmentSystem.getFreezeResistance;
+import static com.hoshino.cti.content.environmentSystem.EnvironmentalHandler.*;
 
 @Mixin(value = CryoFuelLiquidBlock.class, remap = false)
 public class CryoFuelLiquidBlockMixin {
     @Inject(method = "m_7892_", at = @At("HEAD"), cancellable = true)
     private void removeCryoEffect(BlockState state, Level level, BlockPos pos, Entity entity, CallbackInfo ci) {
-        if (entity instanceof LivingEntity living && getFreezeResistance(living) > 0.5) {
+        if (entity instanceof LivingEntity living && getFrozenResistance(living) > 0.5) {
             ci.cancel();
         }
     }

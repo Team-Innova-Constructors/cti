@@ -13,6 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -47,12 +48,12 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook, Too
     public static List<MobEffect> ls = new ArrayList<>(List.of());
 
     public static void init() {
-        Iterator<MobEffect> iterator = ForgeRegistries.MOB_EFFECTS.iterator();
+        Iterator<Potion> iterator = ForgeRegistries.POTIONS.iterator();
         if (iterator.hasNext()) {
-            MobEffect effect = iterator.next();
-            if (effect != null && effect.getCategory() == MobEffectCategory.HARMFUL) {
-                ls.add(effect);
-            }
+            Potion potion = iterator.next();
+            potion.getEffects().forEach((mobEffectInstance -> {
+                if (mobEffectInstance.getEffect().getCategory()==MobEffectCategory.HARMFUL) ls.add(mobEffectInstance.getEffect());
+            }));
         }
     }
 
@@ -62,6 +63,7 @@ public class All extends NoLevelsModifier implements ToolDamageModifierHook, Too
     }
 
     private void livingAttackEvent(LivingAttackEvent event) {
+        if (ls.isEmpty()) init();
         if (event.getEntity() instanceof Player player) {
             for (EquipmentSlot slot : slotUtil.ALL) {
                 ItemStack stack = player.getItemBySlot(slot);

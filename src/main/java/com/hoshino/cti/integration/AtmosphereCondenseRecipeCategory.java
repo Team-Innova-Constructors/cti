@@ -1,9 +1,11 @@
 package com.hoshino.cti.integration;
 
+import com.hoshino.cti.Items.BiomeInfoItem;
 import com.hoshino.cti.Plugin.JEIPlugin;
 import com.hoshino.cti.cti;
 import com.hoshino.cti.recipe.AtmosphereCondensorRecipe;
-import com.hoshino.cti.register.CtiItem;
+import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.util.BiomeUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
@@ -19,6 +21,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -42,7 +45,7 @@ public class AtmosphereCondenseRecipeCategory implements IRecipeCategory<Atmosph
         // 渲染背景图片。图片的开始位置和图片的结束的位置 u,v,width,height
         this.background = helper.createDrawable(TEXTURE, 42, 17, 100, 48);
         // 图标
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CtiItem.atmosphere_condensator.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ctiItem.atmosphere_condensator.get()));
 
     }
 
@@ -73,14 +76,23 @@ public class AtmosphereCondenseRecipeCategory implements IRecipeCategory<Atmosph
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, AtmosphereCondensorRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.OUTPUT, 74, 4).setFluidRenderer(40, false, 16, 40).addIngredient(ForgeTypes.FLUID_STACK, recipe.getFluid());
+        if (BiomeUtil.INFO_LIST.contains(recipe.getBiome())){
+            ItemStack stack = new ItemStack(ctiItem.BIOMES_ITEM.get());
+            stack.getOrCreateTag().putString(BiomeInfoItem.KEY_BIOMES,recipe.getBiome());
+            builder.addSlot(RecipeIngredientRole.INPUT,4,10).addItemStack(stack);
+        }
     }
 
     @Override
     public void draw(AtmosphereCondensorRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
         String biomes = recipe.getBiome();
         ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(biomes));
-        Component biomeC = Component.literal("群系:").withStyle(ChatFormatting.WHITE).append(Component.translatable("biome." + key.location().toLanguageKey()).withStyle(ChatFormatting.LIGHT_PURPLE));
-        Minecraft.getInstance().font.draw(stack, biomeC, 2, (Minecraft.getInstance().font.lineHeight + 2) * 2 - 20, 0);
+        MutableComponent biomeC = Component.literal("群系:").withStyle(ChatFormatting.WHITE);
+        biomeC.append(Component.translatable("biome." + key.location().toLanguageKey()).withStyle(ChatFormatting.LIGHT_PURPLE));
+        if (!BiomeUtil.INFO_LIST.contains(recipe.getBiome())){
+            Minecraft.getInstance().font.draw(stack, Component.literal("无可用信息"), 0, (Minecraft.getInstance().font.lineHeight + 2) * 2 - 14, 0);
+        }
+        Minecraft.getInstance().font.draw(stack, biomeC, 0, (Minecraft.getInstance().font.lineHeight + 2) * 2 - 20, 0);
         IRecipeCategory.super.draw(recipe, recipeSlotsView, stack, mouseX, mouseY);
     }
 }

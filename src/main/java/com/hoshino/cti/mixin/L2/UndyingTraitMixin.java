@@ -1,8 +1,7 @@
 package com.hoshino.cti.mixin.L2;
 
 import com.gjhi.tinkersinnovation.register.TinkersInnovationModifiers;
-import com.hoshino.cti.Entity.specialDamageSource.Environmental;
-import com.hoshino.cti.Entity.specialDamageSource.PierceThrough;
+import com.hoshino.cti.content.environmentSystem.IEnvironmentalSource;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import dev.xkmc.l2hostility.content.traits.legendary.UndyingTrait;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,7 +18,7 @@ public abstract class UndyingTraitMixin {
     private void onDeath(int level, LivingEntity entity, LivingDeathEvent event, CallbackInfo ci) {
         if (event.getSource().isBypassMagic()) {
             ci.cancel();
-        } else if (event.getSource() instanceof PierceThrough || event.getSource() instanceof Environmental) {
+        } else if (event.getSource() instanceof IEnvironmentalSource) {
             ci.cancel();
         } else if (entity.getMaxHealth() <= 10 || entity.getPersistentData().contains("atomic_dec") || entity.getPersistentData().contains("quark_disassemble")) {
             ci.cancel();

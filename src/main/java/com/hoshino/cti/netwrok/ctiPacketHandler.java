@@ -27,7 +27,7 @@ public class ctiPacketHandler {
         INSTANCE.messageBuilder(PRailgunItemS2C.class, id++, NetworkDirection.PLAY_TO_CLIENT).decoder(PRailgunItemS2C::new).encoder(PRailgunItemS2C::toByte).consumerMainThread(PRailgunItemS2C::handle).add();
         INSTANCE.messageBuilder(PRailgunC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PRailgunC2S::new).encoder(PRailgunC2S::toByte).consumerMainThread(PRailgunC2S::handle).add();
         INSTANCE.messageBuilder(PAttackSelfC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PAttackSelfC2S::new).encoder(PAttackSelfC2S::toByte).consumerMainThread(PAttackSelfC2S::handle).add();
-        INSTANCE.messageBuilder(PPlasmaWaveSlashC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PPlasmaWaveSlashC2S::new).encoder(PPlasmaWaveSlashC2S::toByte).consumerMainThread(PPlasmaWaveSlashC2S::handle).add();
+        INSTANCE.messageBuilder(PStarFuryC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PStarFuryC2S::new).encoder(PStarFuryC2S::toByte).consumerMainThread(PStarFuryC2S::handle).add();
     }
 
     public static <MSG> void sendToServer(MSG msg) {
