@@ -27,7 +27,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 
-import static com.hoshino.cti.register.ctiModifiers.kingdomofnumbers;
+import static com.hoshino.cti.register.CtiModifiers.kingdomofnumbers;
 
 public class KingdomOfNumbers extends BattleModifier {
     public KingdomOfNumbers() {

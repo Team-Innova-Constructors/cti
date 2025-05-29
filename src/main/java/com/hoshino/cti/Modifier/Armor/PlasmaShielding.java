@@ -2,7 +2,7 @@ package com.hoshino.cti.Modifier.Armor;
 
 import com.c2h6s.etshtinker.util.slotUtil;
 import com.hoshino.cti.cti;
-import com.hoshino.cti.register.ctiModifiers;
+import com.hoshino.cti.register.CtiModifiers;
 import com.hoshino.cti.register.ctiToolStats;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -80,7 +80,7 @@ public class PlasmaShielding extends NoLevelsModifier implements DamageBlockModi
         for (EquipmentSlot slot : slotUtil.ARMOR) {
             if (player.getItemBySlot(slot).getItem() instanceof IModifiable) {
                 ToolStack toolStack = ToolStack.from(player.getItemBySlot(slot));
-                if (toolStack.getModifierLevel(ctiModifiers.plasma_shielding.get()) > 0) {
+                if (toolStack.getModifierLevel(CtiModifiers.plasma_shielding.get()) > 0) {
                     return toolStack.getPersistentData().getInt(SHIELD_LOCATION) > 0 && toolStack.getPersistentData().getInt(CD_LOCATION) <= 0;
                 }
             }

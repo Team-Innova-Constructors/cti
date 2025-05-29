@@ -47,16 +47,16 @@ public class cti {
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::registerGuiOverlay);
-        ctiItem.ITEMS.register(eventBus);
-        ctiModifiers.MODIFIERS.register(eventBus);
+        CtiItem.ITEMS.register(eventBus);
+        CtiModifiers.MODIFIERS.register(eventBus);
         ctiFluid.FLUIDS.register(eventBus);
         ctiBlock.BLOCK.register(eventBus);
         ctiEffects.EFFECT.register(eventBus);
         ctiEntity.ENTITIES.register(eventBus);
         ctiBlockEntityType.BLOCK_ENTITIES.register(eventBus);
         ctiInfusetype.INFUSE.register(eventBus);
-        ctiItem.ASTRAITEM.init();
-        ctiItem.VEHICLES.init();
+        CtiItem.ASTRAITEM.init();
+        CtiItem.VEHICLES.init();
         ctiHostilityTrait.register();
         ctiEntity.ENTITY_TYPES.init();
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
@@ -65,7 +65,7 @@ public class cti {
         ctiPacketHandler.init();
         ctiMenu.MENU_TYPE.register(eventBus);
         ctiPotions.POTIONS.register(eventBus);
-        ctiItem.registerPartModels();
+        CtiItem.registerPartModels();
         //ctiRecipes.register(eventBus);
         ctiConfiguredFeature.CONFIGURED_FEATURES.register(eventBus);
         ctiPlacedFeature.PLACED_FEATURES.register(eventBus);
@@ -108,7 +108,7 @@ public class cti {
         event.enqueueWork(ctiRailgunProjectile::register);
         event.enqueueWork(ctiRitual::init);
         //机械动力土豆加农炮
-        ctiPotatocannon.register();
+        CtiPotatocannon.register();
         //powah反应堆冷却剂
         PowahSolid.init();
         ctiSlots.init();

@@ -3,7 +3,7 @@ package com.hoshino.cti.client.hud;
 import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
 import com.hoshino.cti.Items.PlanetGuiItem;
 import com.hoshino.cti.cti;
-import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.register.CtiItem;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -45,7 +45,7 @@ public class EnvironmentalHud {
 
     public static final IGuiOverlay ENVIRONMENT_OVERLAY = ((gui, poseStack, partialTick, width, height) -> {
         Player player = Minecraft.getInstance().player;
-        if (player != null && (player.getMainHandItem().getItem() instanceof PlanetGuiItem || player.getOffhandItem().getItem() instanceof PlanetGuiItem || SuperpositionHandler.hasCurio(player, ctiItem.astra_tablet_5.get()))) {
+        if (player != null && (player.getMainHandItem().getItem() instanceof PlanetGuiItem || player.getOffhandItem().getItem() instanceof PlanetGuiItem || SuperpositionHandler.hasCurio(player, CtiItem.astra_tablet_5.get()))) {
             int x = width / 2;
 
             float pre_val = EnvironmentalPlayerData.getPressureValue();

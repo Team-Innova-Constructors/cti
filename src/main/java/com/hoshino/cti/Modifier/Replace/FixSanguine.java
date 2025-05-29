@@ -66,6 +66,5 @@ public class FixSanguine extends XIRModifier {
         if (key == TooltipKey.SHIFT) {
             list.add(TooltipUtils.addTooltipWithValue("sanguine.keys", this.getData(tool).getInt(this.KEY)));
         }
-
     }
 }

@@ -1,7 +1,7 @@
 package com.hoshino.cti.client.renderer.projectile;
 
 import com.hoshino.cti.Entity.Projectiles.MeteorEntity;
-import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.register.CtiItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -29,7 +29,7 @@ public class MeteorEntityRenderer extends EntityRenderer<MeteorEntity> {
         p_114488_.mulPose(Vector3f.XP.rotationDegrees(entity.tickCount % 360));
         p_114488_.mulPose(Vector3f.ZP.rotationDegrees(entity.tickCount % 360));
         p_114488_.translate(-0.03125, -0.09375, 0);
-        this.itemRenderer.renderStatic(new ItemStack(ctiItem.meteorite_ore.get()), ItemTransforms.TransformType.GROUND, p_114490_, OverlayTexture.NO_OVERLAY, p_114488_, p_114489_, entity.getId());
+        this.itemRenderer.renderStatic(new ItemStack(CtiItem.meteorite_ore.get()), ItemTransforms.TransformType.GROUND, p_114490_, OverlayTexture.NO_OVERLAY, p_114488_, p_114489_, entity.getId());
         p_114488_.popPose();
     }
 

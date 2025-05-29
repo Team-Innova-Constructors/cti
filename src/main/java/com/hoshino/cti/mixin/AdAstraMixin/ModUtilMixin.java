@@ -1,6 +1,6 @@
 package com.hoshino.cti.mixin.AdAstraMixin;
 
-import com.hoshino.cti.register.ctiModifiers;
+import com.hoshino.cti.register.CtiModifiers;
 import com.hoshino.cti.util.BiomeUtil;
 import com.hoshino.cti.util.ctiTagkey;
 import earth.terrarium.ad_astra.common.util.ModUtils;
@@ -28,7 +28,7 @@ public abstract class ModUtilMixin {
             if (entity instanceof LivingEntity living) {
 
                 for (ItemStack stack : List.of(living.getItemBySlot(EquipmentSlot.HEAD), living.getItemBySlot(EquipmentSlot.CHEST), living.getItemBySlot(EquipmentSlot.FEET), living.getItemBySlot(EquipmentSlot.LEGS))) {
-                    if (stack.getItem() instanceof IModifiable && ToolStack.from(stack).getModifierLevel(ctiModifiers.gravity_normalizer.get()) > 0) {
+                    if (stack.getItem() instanceof IModifiable && ToolStack.from(stack).getModifierLevel(CtiModifiers.gravity_normalizer.get()) > 0) {
                         callbackInfo.setReturnValue(1f);
                     } else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)) {
                         callbackInfo.setReturnValue(1f);
@@ -54,7 +54,7 @@ public abstract class ModUtilMixin {
             ItemStack stack = entity.getItemBySlot(EquipmentSlot.HEAD);
             if (stack.getItem() instanceof IModifiable iModifiable) {
                 ToolStack tool = ToolStack.from(stack);
-                if (tool.getModifierLevel(ctiModifiers.space_suit.get()) > 0) {
+                if (tool.getModifierLevel(CtiModifiers.space_suit.get()) > 0) {
                     callbackInfo.setReturnValue(true);
                 }
             } else if (stack.getTags().toList().contains(ctiTagkey.OXYGEN_REGEN)) {

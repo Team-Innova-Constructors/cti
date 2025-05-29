@@ -27,7 +27,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 
-import static com.hoshino.cti.register.ctiModifiers.curvemapping;
+import static com.hoshino.cti.register.CtiModifiers.curvemapping;
 
 public class CurveMapping extends BattleModifier {
     public CurveMapping() {

@@ -3,7 +3,7 @@ package com.hoshino.cti.Entity.Projectiles;
 import cofh.core.init.CoreParticles;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import com.hoshino.cti.Entity.specialDamageSource.Environmental;
-import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.register.CtiItem;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -78,16 +78,16 @@ public class FallenStars extends ItemProjectile {
                 vec3.scale(1.5 / getMold(vec3));
             }
             if (getMold(vec3) >= 0.1) {
-                if (this.environmental == ctiItem.star_frozen.get()) {
+                if (this.environmental == CtiItem.star_frozen.get()) {
                     serverLevel.sendParticles(CoreParticles.FROST.get(), this.getX(), this.getY() + 0.5 * this.getBbHeight(), this.getZ(), 8, 0.25, 0.25, 0.25, 0.0125);
                 }
-                if (this.environmental == ctiItem.star_pressure.get()) {
+                if (this.environmental == CtiItem.star_pressure.get()) {
                     serverLevel.sendParticles(ParticleTypes.SMOKE, this.getX(), this.getY() + 0.5 * this.getBbHeight(), this.getZ(), 8, 0.25, 0.25, 0.25, 0.0125);
                 }
-                if (this.environmental == ctiItem.star_ionize.get()) {
+                if (this.environmental == CtiItem.star_ionize.get()) {
                     serverLevel.sendParticles(etshtinkerParticleType.electric.get(), this.getX(), this.getY() + 0.5 * this.getBbHeight(), this.getZ(), 16, 0.3, 0.3, 0.3, 0.0125);
                 }
-                if (this.environmental == ctiItem.star_blaze.get()) {
+                if (this.environmental == CtiItem.star_blaze.get()) {
                     serverLevel.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY() + 0.5 * this.getBbHeight(), this.getZ(), 8, 0.25, 0.25, 0.25, 0.0125);
                 }
             }
@@ -107,16 +107,16 @@ public class FallenStars extends ItemProjectile {
                         living.hurt(getSource(player, living), this.baseDamage);
                         if (world1 instanceof ServerLevel serverLevel) {
                             serverLevel.sendParticles(ParticleTypes.EXPLOSION, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 1, 0, 0, 0, 0);
-                            if (this.environmental == ctiItem.star_frozen.get()) {
+                            if (this.environmental == CtiItem.star_frozen.get()) {
                                 serverLevel.sendParticles(CoreParticles.FROST.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 10, 0.05, 0.05, 0.05, 0.25);
                             }
-                            if (this.environmental == ctiItem.star_pressure.get()) {
+                            if (this.environmental == CtiItem.star_pressure.get()) {
                                 serverLevel.sendParticles(ParticleTypes.SMOKE, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 10, 0.05, 0.05, 0.05, 0.25);
                             }
-                            if (this.environmental == ctiItem.star_ionize.get()) {
+                            if (this.environmental == CtiItem.star_ionize.get()) {
                                 serverLevel.sendParticles(etshtinkerParticleType.electric.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 10, 0.05, 0.05, 0.05, 0.25);
                             }
-                            if (this.environmental == ctiItem.star_blaze.get()) {
+                            if (this.environmental == CtiItem.star_blaze.get()) {
                                 serverLevel.sendParticles(ParticleTypes.FLAME, living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 10, 0.05, 0.05, 0.05, 0.25);
                             }
                         }
@@ -141,15 +141,15 @@ public class FallenStars extends ItemProjectile {
 
     public DamageSource getSource(Player player, @NotNull LivingEntity living) {
         CompoundTag nbt = living.getPersistentData();
-        if (this.environmental == ctiItem.star_frozen.get()) {
+        if (this.environmental == CtiItem.star_frozen.get()) {
             nbt.putFloat(FROZEN_AMOUNT, Mth.clamp(nbt.getFloat(FROZEN_AMOUNT) + 100, 0, 250));
             return Environmental.playerFrozenSource(this.baseDamage, player);
         }
-        if (this.environmental == ctiItem.star_ionize.get()) {
+        if (this.environmental == CtiItem.star_ionize.get()) {
             nbt.putFloat(IONIZED_AMOUNT, Mth.clamp(nbt.getFloat(IONIZED_AMOUNT) + 50, 0, 250));
             return Environmental.playerIonizedSource(this.baseDamage, player);
         }
-        if (this.environmental == ctiItem.star_pressure.get()) {
+        if (this.environmental == CtiItem.star_pressure.get()) {
             nbt.putFloat(PRESSURE_AMOUNT, Mth.clamp(nbt.getFloat(PRESSURE_AMOUNT) + 20, 0, 250));
             return Environmental.playerPressureSource(this.baseDamage, player);
         } else {

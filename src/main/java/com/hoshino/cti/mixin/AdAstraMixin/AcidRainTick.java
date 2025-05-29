@@ -1,6 +1,6 @@
 package com.hoshino.cti.mixin.AdAstraMixin;
 
-import com.hoshino.cti.register.ctiModifiers;
+import com.hoshino.cti.register.CtiModifiers;
 import com.hoshino.cti.util.ctiTagkey;
 import earth.terrarium.ad_astra.common.entity.system.EntityAcidRainSystem;
 import net.minecraft.server.level.ServerLevel;
@@ -25,7 +25,7 @@ public class AcidRainTick {
             ItemStack stack = entity.getItemBySlot(slot);
             if (stack.getItem() instanceof IModifiable iModifiable) {
                 ToolStack tool = ToolStack.from(stack);
-                if (tool.getModifierLevel(ctiModifiers.space_suit.get()) > 1) {
+                if (tool.getModifierLevel(CtiModifiers.space_suit.get()) > 1) {
                     b = true;
                 }
             } else if (stack.getTags().toList().contains(ctiTagkey.OXYGEN_REGEN)) {

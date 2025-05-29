@@ -5,8 +5,8 @@ import com.hoshino.cti.Entity.Projectiles.FallenStars;
 import com.hoshino.cti.netwrok.ctiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PStellarBlade;
 import com.hoshino.cti.register.ctiEntity;
-import com.hoshino.cti.register.ctiItem;
-import com.hoshino.cti.register.ctiModifiers;
+import com.hoshino.cti.register.CtiItem;
+import com.hoshino.cti.register.CtiModifiers;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -48,7 +48,7 @@ public class StellarBlade extends etshmodifieriii {
         return true;
     }
 
-    public static final List<Item> ls = List.of(ctiItem.star_blaze.get(), ctiItem.star_pressure.get(), ctiItem.star_ionize.get(), ctiItem.star_frozen.get());
+    public static final List<Item> ls = List.of(CtiItem.star_blaze.get(), CtiItem.star_pressure.get(), CtiItem.star_ionize.get(), CtiItem.star_frozen.get());
 
     @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
@@ -117,7 +117,7 @@ public class StellarBlade extends etshmodifieriii {
     public static void summonStars(@NotNull Player player) {
         Entity entity = getNearestLiEnt(16f, player, player.level);
         ToolStack tool = ToolStack.from(player.getItemInHand(player.getUsedItemHand()));
-        if (entity instanceof LivingEntity target && tool.getModifierLevel(ctiModifiers.stellar_blade.get()) > 0) {
+        if (entity instanceof LivingEntity target && tool.getModifierLevel(CtiModifiers.stellar_blade.get()) > 0) {
             int c = 0;
             while (c < EtSHrnd().nextInt(4) + 2) {
                 Level level = player.level;

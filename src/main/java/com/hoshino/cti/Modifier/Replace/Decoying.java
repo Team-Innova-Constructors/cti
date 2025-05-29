@@ -28,7 +28,7 @@ public class Decoying extends BattleModifier {
             int random = RANDOM.nextInt(Math.min(modifier.getLevel(), 5));
             if (target != null) {
                 Level level = target.getLevel();
-                List<Mob> spawns =level.getEntitiesOfClass(Mob.class, new AABB(target.getX() + 10, target.getY() + 10, target.getZ() + 10, target.getX() - 10, target.getY() - 10, target.getZ() - 10));
+                List<Mob> spawns =level.getEntitiesOfClass(Mob.class,new AABB(target.getOnPos()).inflate(10));
                 if(spawns.size()<20){
                     Chicken chicken = EntityType.CHICKEN.create(level);
                     Pig pig = EntityType.PIG.create(level);

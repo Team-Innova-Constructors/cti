@@ -1,30 +1,25 @@
 package com.hoshino.cti.Event;
 
 import com.hoshino.cti.register.ctiEffects;
-import com.hoshino.cti.register.ctiHostilityTrait;
-import com.hoshino.cti.register.ctiModifiers;
+import com.hoshino.cti.register.CtiModifiers;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import dev.xkmc.l2hostility.content.capability.mob.MobTraitCap;
 import dev.xkmc.l2hostility.content.traits.base.MobTrait;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.level.ExplosionEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -48,7 +43,7 @@ public class CommonLivingHurt {
         if (event.getExplosion().getSourceMob() instanceof Creeper creeper) {
             List<Player> playerlist = creeper.level.getEntitiesOfClass(Player.class, new AABB(creeper.getX() + 10, creeper.getY() + 10, creeper.getZ() + 10, creeper.getX() - 10, creeper.getY() - 10, creeper.getZ() - 10));
             for (Player player : playerlist) {
-                if (GetModifierLevel.EquipHasModifierlevel(player, ctiModifiers.ExplosionPrevent.getId())) {
+                if (GetModifierLevel.EquipHasModifierlevel(player, CtiModifiers.ExplosionPrevent.getId())) {
                     if (creeper.level instanceof ServerLevel level) {
                         level.playSound(null, player.getOnPos(), SoundEvents.GENERIC_EXPLODE, SoundSource.PLAYERS, 1, 1);
                         level.sendParticles(ParticleTypes.EXPLOSION, creeper.getX(), creeper.getY() + 0.5 * creeper.getBbHeight(), creeper.getZ(), 1, 0, 0, 0, 0);

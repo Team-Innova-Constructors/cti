@@ -519,6 +519,10 @@
   "modifier.cti.cosmopolitan.flavor": "......",
   "modifier.cti.cosmopolitan.description":"工具正常使用不再消耗耐久,在你的背包时候每刻恢复耐久100点",
 
+  "modifier.cti.unitedasone": "万众一心",
+  "modifier.cti.unitedasone.flavor": "众志成城",
+  "modifier.cti.unitedasone.description":"每当游戏中多一个匠魂词条(任何模组),你的伤害都会增加6%,无上限",
+
   "modifier.cti.tinge": "色彩",
   "modifier.cti.tinge.flavor": "......",
   "modifier.cti.tinge.description":"每级等效增加时运,抢夺88级",
@@ -582,6 +586,14 @@
   "modifier.cti.encrypt": "加密",
   "modifier.cti.encrypt.flavor": "???",
   "modifier.cti.encrypt.description":"怪物无法复印你的装备词条",
+
+  "modifier.cti.fragment": "破片",
+  "modifier.cti.fragment.flavor": "fire in the hole",
+  "modifier.cti.fragment.description":"损失耐久提升400%,损失耐久时对周围3格内生物造成损失的耐久的200% + 100% * lv(全身)点伤害,这个伤害会有50%概率伤害到你自己,如果不掉耐久则不造成伤害",
+
+  "modifier.cti.crystallization": "晶体化",
+  "modifier.cti.crystallization.flavor": "融合了就是不一样",
+  "modifier.cti.crystallization.description":"当身上穿有黑曜石装备时候提升其破片伤害倍率2.8 * 此词条总等级倍并且使其无视护甲,同时不会再伤害到自己",
 
   "modifier.cti.cripplesuppermass": "超级质量",
   "modifier.cti.cripplesuppermass.flavor": "保护效果更上一层楼！",

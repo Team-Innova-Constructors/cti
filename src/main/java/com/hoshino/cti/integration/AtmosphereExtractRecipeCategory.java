@@ -3,7 +3,7 @@ package com.hoshino.cti.integration;
 import com.hoshino.cti.Plugin.JEIPlugin;
 import com.hoshino.cti.cti;
 import com.hoshino.cti.recipe.AtmosphereExtractorRecipe;
-import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.register.CtiItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -43,7 +43,7 @@ public class AtmosphereExtractRecipeCategory implements IRecipeCategory<Atmosphe
         // 渲染背景图片。图片的开始位置和图片的结束的位置 u,v,width,height
         this.background = helper.createDrawable(TEXTURE, 42, 17, 100, 48);
         // 图标
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ctiItem.atmosphere_extractor.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CtiItem.atmosphere_extractor.get()));
 
     }
 

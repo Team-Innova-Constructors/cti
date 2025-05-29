@@ -13,7 +13,7 @@ import appeng.items.parts.PartModels;
 import appeng.me.helpers.MachineSource;
 import appeng.parts.automation.AnnihilationPlanePart;
 import appeng.parts.automation.PlaneModels;
-import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.register.CtiItem;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -55,7 +55,7 @@ public class MeteoriumAnnihilationPlanePart extends AnnihilationPlanePart {
         if (isActive() && rightPlace) {
             process += ticksSinceLastCall;
             if (process > 2000) {
-                insertToGrid(AEItemKey.of(new ItemStack(ctiItem.meteorite_ore.get())), 1, Actionable.MODULATE);
+                insertToGrid(AEItemKey.of(new ItemStack(CtiItem.meteorite_ore.get())), 1, Actionable.MODULATE);
                 process = 0;
             }
             return TickRateModulation.IDLE;

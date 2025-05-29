@@ -3,7 +3,7 @@ package com.hoshino.cti.integration;
 import com.hoshino.cti.Plugin.JEIPlugin;
 import com.hoshino.cti.cti;
 import com.hoshino.cti.recipe.ReactorNeutronCollectorRecipe;
-import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.register.CtiItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.client.jei.ChemicalStackRenderer;
@@ -39,7 +39,7 @@ public class ReactorNeutronCollectorRecipeCategory implements IRecipeCategory<Re
 
     public ReactorNeutronCollectorRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 180, 59);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ctiItem.reactor_neutron_collector.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CtiItem.reactor_neutron_collector.get()));
 
     }
 

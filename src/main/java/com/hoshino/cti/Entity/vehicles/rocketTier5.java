@@ -1,7 +1,7 @@
 package com.hoshino.cti.Entity.vehicles;
 
 import com.hoshino.cti.register.ctiEntity;
-import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.register.CtiItem;
 import earth.terrarium.ad_astra.common.entity.vehicle.Rocket;
 import earth.terrarium.ad_astra.common.registry.ModParticleTypes;
 import earth.terrarium.ad_astra.common.util.ModUtils;
@@ -33,7 +33,7 @@ public class rocketTier5 extends Rocket {
 
     @Override
     public ItemStack getDropStack() {
-        return ctiItem.TIER_5_ROCKET.get().getDefaultInstance();
+        return CtiItem.TIER_5_ROCKET.get().getDefaultInstance();
     }
 
     @Override
