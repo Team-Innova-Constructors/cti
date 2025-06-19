@@ -11,7 +11,7 @@ import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.eventbus.api.Event;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 
-import static com.hoshino.cti.register.ctiModifiers.originbasedcomputation;
+import static com.hoshino.cti.register.CtiModifiers.originbasedcomputation;
 
 public class OriginBasedComputation extends BattleModifier {
     public OriginBasedComputation() {

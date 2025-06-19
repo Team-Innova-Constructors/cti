@@ -4,7 +4,7 @@ import com.hollingsworth.arsnouveau.api.ritual.AbstractRitual;
 import com.hollingsworth.arsnouveau.client.particle.ParticleColor;
 import com.hoshino.cti.Entity.Projectiles.MeteorEntity;
 import com.hoshino.cti.Event.ModEvents.MeteorSpawnEvent;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.phys.Vec2;
@@ -67,7 +67,7 @@ public class MeteorShowerRitual extends AbstractRitual {
 
     @Override
     public ResourceLocation getRegistryName() {
-        return cti.getResource("meteor_shower");
+        return Cti.getResource("meteor_shower");
     }
 
     @Override

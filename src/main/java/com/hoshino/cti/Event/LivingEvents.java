@@ -3,7 +3,7 @@ package com.hoshino.cti.Event;
 import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
 import com.aizistral.enigmaticlegacy.registries.EnigmaticItems;
 import com.hoshino.cti.Entity.DisposibleFakePlayer;
-import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.register.CtiEffects;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -80,7 +80,7 @@ public class LivingEvents {
 
     private void onPierceHurt(LivingHurtEvent event) {
         if (event.getEntity() instanceof Player player) {
-            MobEffectInstance instance = player.getEffect(ctiEffects.stress.get());
+            MobEffectInstance instance = player.getEffect(CtiEffects.stress.get());
             if (instance != null && instance.getDuration() > 0) {
                 int level = instance.getAmplifier() + 1;
                 float red = Math.max(0.9f, 1 - 0.04f * level);

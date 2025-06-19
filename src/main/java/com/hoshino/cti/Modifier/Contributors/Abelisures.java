@@ -1,7 +1,7 @@
 package com.hoshino.cti.Modifier.Contributors;
 
 import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
-import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.register.CtiEffects;
 import com.marth7th.solidarytinker.extend.superclass.ArmorModifier;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,7 +33,7 @@ public class Abelisures extends ArmorModifier {
     }
 
     private void DeathEvent(LivingDeathEvent event) {
-        if (event.getEntity().hasEffect(ctiEffects.Abel.get()) && event.getEntity() instanceof Player player) {
+        if (event.getEntity().hasEffect(CtiEffects.Abel.get()) && event.getEntity() instanceof Player player) {
             player.setHealth(1);
             event.setCanceled(true);
         }
@@ -49,7 +49,7 @@ public class Abelisures extends ArmorModifier {
     }
 
     private void WhenEffectExpire(MobEffectEvent.Expired event) {
-        if (event.getEffectInstance().getEffect() == ctiEffects.Abel.get() && event.getEntity() instanceof ServerPlayer player) {
+        if (event.getEffectInstance().getEffect() == CtiEffects.Abel.get() && event.getEntity() instanceof ServerPlayer player) {
             Collection<MobEffectInstance> Effect = player.getActiveEffects();
             for (int i = 0; i < Effect.size(); i++) {
                 MobEffectInstance effect = Effect.stream().toList().get(i);
@@ -70,7 +70,7 @@ public class Abelisures extends ArmorModifier {
     public void MobEffectEvent(MobEffectEvent.Applicable event) {
         if (event.getEntity().getLastHurtByMob() != null) {
             if (event.getEntity().getLastHurtByMob() instanceof Player player) {
-                if (player.hasEffect(ctiEffects.ev.get())) {
+                if (player.hasEffect(CtiEffects.ev.get())) {
                     event.setResult(Event.Result.ALLOW);
                 }
             }
@@ -80,7 +80,7 @@ public class Abelisures extends ArmorModifier {
     @Override
     public void onFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
         if (tool.getCurrentDurability() > 500 && entity instanceof ServerPlayer player) {
-            player.addEffect(new MobEffectInstance(ctiEffects.Abel.get(), 200 * modifier.getLevel(), 0));
+            player.addEffect(new MobEffectInstance(CtiEffects.Abel.get(), 200 * modifier.getLevel(), 0));
             player.getCooldowns().addCooldown(tool.getItem(), 2400);
             ToolDamageUtil.damageAnimated(tool, 500, entity);
         }

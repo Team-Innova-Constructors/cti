@@ -1,6 +1,6 @@
 package com.hoshino.cti.Items;
 
-import com.hoshino.cti.register.ctiTab;
+import com.hoshino.cti.register.CtiTab;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
@@ -26,7 +26,7 @@ public class FlatWorldTabletItem extends Item {
     public static final ResourceKey<Level> ULTRA_FLAT_KEY = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("kubejs", "ultra_flat"));
 
     public FlatWorldTabletItem() {
-        super(new Item.Properties().tab(ctiTab.MIXC).stacksTo(1).fireResistant());
+        super(new Item.Properties().tab(CtiTab.MIXC).stacksTo(1).fireResistant());
     }
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {

@@ -6,8 +6,8 @@ import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PMachineEnergySync;
 import com.hoshino.cti.recipe.ReactorNeutronCollectorRecipe;
 import com.hoshino.cti.recipe.RecipeMap;
-import com.hoshino.cti.register.ctiBlock;
-import com.hoshino.cti.register.ctiBlockEntityType;
+import com.hoshino.cti.register.CtiBlock;
+import com.hoshino.cti.register.CtiBlockEntityType;
 import com.hoshino.cti.util.DimensionConstants;
 import com.hoshino.cti.util.EmptyHandlers;
 import com.hoshino.cti.util.ctiEnergyStore;
@@ -50,7 +50,7 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
 public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implements MenuProvider {
     public ReactorNeutronCollectorEntity(BlockPos blockPos, BlockState blockState) {
-        super(ctiBlockEntityType.REACTOR_NEUTRON_COLLECTOR.get(), blockPos, blockState);
+        super(CtiBlockEntityType.REACTOR_NEUTRON_COLLECTOR.get(), blockPos, blockState);
         this.DATA = new ContainerData() {
             @Override
             public int get(int index) {
@@ -241,7 +241,7 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
             return;
         }
         CtiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(), entity.getBlockPos()));
-        if (!state.is(ctiBlock.reactor_neutron_collector.get())) {
+        if (!state.is(CtiBlock.reactor_neutron_collector.get())) {
             return;
         }
         for (Direction direction : List.of(Direction.DOWN, Direction.UP, Direction.EAST, Direction.WEST, Direction.NORTH, Direction.SOUTH)) {
@@ -379,7 +379,7 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        CtiPacketHandler.sendToClient(new PMachineEnergySync(this.ENERGY_STORAGE.getEnergyStored(), this.getBlockPos()));
+        ctiPacketHandler.sendToClient(new PMachineEnergySync(this.ENERGY_STORAGE.getEnergyStored(), this.getBlockPos()));
         return new ReactorNeutronCollectorMenu(i, inventory, this, this.DATA);
     }
 

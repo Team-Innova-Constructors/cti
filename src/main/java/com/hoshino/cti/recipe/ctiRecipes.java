@@ -1,6 +1,6 @@
 package com.hoshino.cti.recipe;
 
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -10,7 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 @Deprecated
 public class ctiRecipes {
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS =
-            DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, cti.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Cti.MOD_ID);
 
     //public static final RegistryObject<RecipeSerializer<AtmosphereExtractorRecipe>> EXTRACTOR_SERIALIZER = SERIALIZERS.register("atmosphere_extract",() -> AtmosphereExtractorRecipe.Serializer.INSTANCE);
     //public static final RegistryObject<RecipeSerializer<AtmosphereCondensorRecipe>> CONDENSER_SERIALIZER = SERIALIZERS.register("atmosphere_condense",() -> AtmosphereCondensorRecipe.Serializer.INSTANCE);

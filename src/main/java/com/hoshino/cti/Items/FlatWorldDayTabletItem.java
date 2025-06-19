@@ -1,13 +1,12 @@
 package com.hoshino.cti.Items;
 
-import com.hoshino.cti.register.ctiTab;
+import com.hoshino.cti.register.CtiTab;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -28,7 +27,7 @@ public class FlatWorldDayTabletItem extends Item {
     public static final ResourceKey<Level> ULTRA_FLAT_KEY = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("kubejs", "ultra_flat_day"));
 
     public FlatWorldDayTabletItem() {
-        super(new Properties().tab(ctiTab.MIXC).stacksTo(1).fireResistant());
+        super(new Properties().tab(CtiTab.MIXC).stacksTo(1).fireResistant());
     }
 
     public InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {

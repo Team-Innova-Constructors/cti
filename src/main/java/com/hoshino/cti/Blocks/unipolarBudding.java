@@ -1,6 +1,6 @@
 package com.hoshino.cti.Blocks;
 
-import com.hoshino.cti.register.ctiBlock;
+import com.hoshino.cti.register.CtiBlock;
 import com.hoshino.cti.util.BiomeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,7 +28,7 @@ public class unipolarBudding extends AmethystBlock {
         BlockPos blockpos = pPos.relative(direction);
         BlockState blockstate = pLevel.getBlockState(blockpos);
         if (pLevel.getDayTime() % 24000 >= 1000 && pLevel.getDayTime() % 24000 <= 13000 && pLevel.getBiome(blockpos).is(BiomeUtil.DISORDERED_ZONE) && ((blockstate.is(Blocks.AIR) || blockstate.is(Blocks.CAVE_AIR) || blockstate.is(Blocks.VOID_AIR) || blockstate.is(Blocks.WATER)))) {
-            Block block = ctiBlock.unipolar_magnet.get();
+            Block block = CtiBlock.unipolar_magnet.get();
             BlockState blockState = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, direction).setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);
             pLevel.setBlockAndUpdate(blockpos, blockState);
         }
@@ -36,7 +36,7 @@ public class unipolarBudding extends AmethystBlock {
         blockpos = pPos.relative(direction);
         blockstate = pLevel.getBlockState(blockpos);
         if (pLevel.getDayTime() % 24000 >= 1000 && pLevel.getDayTime() % 24000 <= 13000 && pLevel.getBiome(blockpos).is(BiomeUtil.DISORDERED_ZONE) && ((blockstate.is(Blocks.AIR) || blockstate.is(Blocks.CAVE_AIR) || blockstate.is(Blocks.VOID_AIR) || blockstate.is(Blocks.WATER)))) {
-            Block block = ctiBlock.unipolar_magnet.get();
+            Block block = CtiBlock.unipolar_magnet.get();
             BlockState blockState = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, direction).setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);
             pLevel.setBlockAndUpdate(blockpos, blockState);
         }

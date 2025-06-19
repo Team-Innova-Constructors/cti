@@ -1,8 +1,8 @@
 package com.hoshino.cti.Modifier.Contributors;
 
 
-import com.hoshino.cti.cti;
-import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.Cti;
+import com.hoshino.cti.register.CtiEffects;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -23,7 +23,7 @@ public class SupplementaryFormula extends BattleModifier {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
-    private static final ResourceLocation supplementaryformulatime = cti.getResource("supplementaryformulatime");
+    private static final ResourceLocation supplementaryformulatime = Cti.getResource("supplementaryformulatime");
 
     public void livinghurtevent(LivingHurtEvent event) {
         if (event.getSource().getEntity() instanceof ServerPlayer player) {
@@ -34,11 +34,11 @@ public class SupplementaryFormula extends BattleModifier {
                     if (a.getInt(supplementaryformulatime) == 0) {
                         if (tool.getModifierLevel(this) > 0 && tool.getModifierLevel(this) < 8) {
                             a.putInt(supplementaryformulatime, 37);
-                            player.addEffect(new MobEffectInstance(ctiEffects.curve_mapping.get(), 200, tool.getModifierLevel(this) - 1));
+                            player.addEffect(new MobEffectInstance(CtiEffects.curve_mapping.get(), 200, tool.getModifierLevel(this) - 1));
                         }
                         if (tool.getModifierLevel(this) >= 8) {
                             a.putInt(supplementaryformulatime, 37);
-                            player.addEffect(new MobEffectInstance(ctiEffects.curve_mapping.get(), 200, 7));
+                            player.addEffect(new MobEffectInstance(CtiEffects.curve_mapping.get(), 200, 7));
                         }
                     }
                 }

@@ -1,6 +1,6 @@
 package com.hoshino.cti.mixin.L2;
 
-import com.hoshino.cti.register.ctiModifiers;
+import com.hoshino.cti.register.CtiModifiers;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import com.marth7th.solidarytinker.register.TinkerCuriosModifier;
 import dev.xkmc.l2hostility.content.traits.goals.EnderTrait;
@@ -20,7 +20,7 @@ public class TeleportMixin {
         if(!mob.level.isClientSide()&&mob instanceof Mob mob1){
             var entity=mob1.getTarget();
             if(entity instanceof ServerPlayer serverPlayer){
-               if(GetModifierLevel.CurioHasModifierlevel(serverPlayer, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId())||GetModifierLevel.EquipHasModifierlevel(serverPlayer, ctiModifiers.qcfStaticModifier.getId())){
+               if(GetModifierLevel.CurioHasModifierlevel(serverPlayer, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId())||GetModifierLevel.EquipHasModifierlevel(serverPlayer, CtiModifiers.qcfStaticModifier.getId())){
                    ci.cancel();
                }
             }
@@ -30,7 +30,7 @@ public class TeleportMixin {
     private void onAttack(int level, LivingEntity entity, LivingAttackEvent event, CallbackInfo ci){
         var entity1=event.getSource().getEntity();
         if(entity1 instanceof LivingEntity lv){
-            if(GetModifierLevel.CurioHasModifierlevel(lv, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId())||GetModifierLevel.EquipHasModifierlevel(lv, ctiModifiers.qcfStaticModifier.getId())){
+            if(GetModifierLevel.CurioHasModifierlevel(lv, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId())||GetModifierLevel.EquipHasModifierlevel(lv, CtiModifiers.qcfStaticModifier.getId())){
                 ci.cancel();
             }
         }

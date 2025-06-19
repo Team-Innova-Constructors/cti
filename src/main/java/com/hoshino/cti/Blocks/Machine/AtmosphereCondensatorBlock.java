@@ -1,8 +1,8 @@
 package com.hoshino.cti.Blocks.Machine;
 
 import com.hoshino.cti.Blocks.BlockEntity.AtmosphereCondensatorEntity;
-import com.hoshino.cti.register.ctiBlock;
-import com.hoshino.cti.register.ctiBlockEntityType;
+import com.hoshino.cti.register.CtiBlock;
+import com.hoshino.cti.register.CtiBlockEntityType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -64,7 +64,7 @@ public class AtmosphereCondensatorBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level level, BlockPos blockPos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof AtmosphereCondensatorEntity entity && entity.getBlockState().is(ctiBlock.atmosphere_condensator.get())) {
+            if (blockEntity instanceof AtmosphereCondensatorEntity entity && entity.getBlockState().is(CtiBlock.atmosphere_condensator.get())) {
                 entity.dropItem();
             }
             blockEntity.setRemoved();
@@ -75,7 +75,7 @@ public class AtmosphereCondensatorBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ctiBlockEntityType.Atmosphere_condensator.get(), AtmosphereCondensatorEntity::tick);
+        return createTickerHelper(type, CtiBlockEntityType.Atmosphere_condensator.get(), AtmosphereCondensatorEntity::tick);
     }
 
     @Override

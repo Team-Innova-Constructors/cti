@@ -1,9 +1,9 @@
 package com.hoshino.cti.integration;
 
 import com.hoshino.cti.Plugin.JEIPlugin;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.recipe.QuantumMinerRecipe;
-import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.register.CtiItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -23,10 +23,10 @@ import net.minecraft.world.item.ItemStack;
 import static mezz.jei.library.ingredients.IngredientInfoRecipe.recipeWidth;
 
 public class QuantumMinerRecipeCategory implements IRecipeCategory<QuantumMinerRecipe> {
-    public static final ResourceLocation UID = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation UID = new ResourceLocation(Cti.MOD_ID,
             "quantum_mining");
 
-    public static final ResourceLocation TEXTURE = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation TEXTURE = new ResourceLocation(Cti.MOD_ID,
             "textures/gui/machine/quantum_miner_bg.png");
 
 
@@ -37,7 +37,7 @@ public class QuantumMinerRecipeCategory implements IRecipeCategory<QuantumMinerR
 
     public QuantumMinerRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 6, 37, 100, 26);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ctiItem.quantum_miner.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CtiItem.quantum_miner.get()));
 
     }
 
@@ -65,7 +65,7 @@ public class QuantumMinerRecipeCategory implements IRecipeCategory<QuantumMinerR
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, QuantumMinerRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 5, 5).addItemStack(new ItemStack(ctiItem.compressed_singularity.get()));
+        builder.addSlot(RecipeIngredientRole.INPUT, 5, 5).addItemStack(new ItemStack(CtiItem.compressed_singularity.get()));
         builder.addSlot(RecipeIngredientRole.OUTPUT, 79, 5).addItemStack(recipe.getResultItem());
     }
 

@@ -1,7 +1,7 @@
 package com.hoshino.cti.recipe;
 
 import com.google.gson.JsonObject;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.util.JsonUtil;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -98,7 +98,7 @@ public class AtmosphereCondensorRecipe implements Recipe<SimpleContainer> {
     public static class Serializer implements RecipeSerializer<AtmosphereCondensorRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         public static final ResourceLocation ID =
-                new ResourceLocation(cti.MOD_ID, "atmosphere_condense");
+                new ResourceLocation(Cti.MOD_ID, "atmosphere_condense");
 
         // 将JSON解码为recipe子类型
         @Override

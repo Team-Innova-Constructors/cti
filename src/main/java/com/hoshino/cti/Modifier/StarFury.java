@@ -4,7 +4,7 @@ import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.hoshino.cti.Entity.Projectiles.FriendlyMeteor;
 import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PStarFuryC2S;
-import com.hoshino.cti.register.ctiModifiers;
+import com.hoshino.cti.register.CtiModifiers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -58,7 +58,7 @@ public class StarFury extends etshmodifieriii {
     public static void leftClickEmpty(PlayerInteractEvent.LeftClickEmpty event){
         if (event.getSide()==LogicalSide.CLIENT&&event.getHand()==InteractionHand.MAIN_HAND&&event.getItemStack().getItem() instanceof IModifiable){
             ToolStack toolStack = ToolStack.from(event.getItemStack());
-            if (toolStack.getModifierLevel(ctiModifiers.STAR_FURY.get())>0){
+            if (toolStack.getModifierLevel(CtiModifiers.STAR_FURY.get())>0){
                 CtiPacketHandler.sendToServer(new PStarFuryC2S());
             }
         }
@@ -89,8 +89,8 @@ public class StarFury extends etshmodifieriii {
         ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
         if (player.getAttackStrengthScale(0)>0.8&&stack.getItem() instanceof IModifiable) {
             ToolStack toolStack = ToolStack.from(stack);
-            if (toolStack.getModifierLevel(ctiModifiers.STAR_FURY.get())>0) {
-                LivingEntity living = getNearestLiEnt(toolStack.getModifierLevel(ctiModifiers.STAR_FURY.get()) + 4f, player, player.level);
+            if (toolStack.getModifierLevel(CtiModifiers.STAR_FURY.get())>0) {
+                LivingEntity living = getNearestLiEnt(toolStack.getModifierLevel(CtiModifiers.STAR_FURY.get()) + 4f, player, player.level);
                 if (living!=null) {
                     float baseDamage = toolStack.getStats().get(ToolStats.ATTACK_DAMAGE);
                     float damage = baseDamage;
@@ -98,7 +98,7 @@ public class StarFury extends etshmodifieriii {
                     for (ModifierEntry entry : toolStack.getModifierList()) {
                         damage = entry.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(toolStack, entry, context, baseDamage, damage);
                     }
-                    summonMeteor(player, toolStack.getModifierLevel(ctiModifiers.STAR_FURY.get()), living, damage/4);
+                    summonMeteor(player, toolStack.getModifierLevel(CtiModifiers.STAR_FURY.get()), living, damage/4);
                 }
             }
         }

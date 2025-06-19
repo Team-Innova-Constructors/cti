@@ -1,7 +1,7 @@
 package com.hoshino.cti.Blocks.Machine;
 
 import com.hoshino.cti.Blocks.BlockEntity.SodiumCoolerEntity;
-import com.hoshino.cti.register.ctiBlockEntityType;
+import com.hoshino.cti.register.CtiBlockEntityType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
@@ -56,7 +56,7 @@ public class SodiumCooler extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ctiBlockEntityType.SODIUM_COOLER.get(), SodiumCoolerEntity::tick);
+        return createTickerHelper(type, CtiBlockEntityType.SODIUM_COOLER.get(), SodiumCoolerEntity::tick);
     }
 
 }

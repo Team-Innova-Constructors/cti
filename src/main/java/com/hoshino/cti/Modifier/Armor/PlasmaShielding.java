@@ -1,9 +1,9 @@
 package com.hoshino.cti.Modifier.Armor;
 
 import com.c2h6s.etshtinker.util.slotUtil;
-import com.hoshino.cti.cti;
-import com.hoshino.cti.register.ctiModifiers;
-import com.hoshino.cti.register.ctiToolStats;
+import com.hoshino.cti.Cti;
+import com.hoshino.cti.register.CtiModifiers;
+import com.hoshino.cti.register.CtiToolStats;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -28,8 +28,8 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 
 public class PlasmaShielding extends NoLevelsModifier implements DamageBlockModifierHook, InventoryTickModifierHook, ToolStatsModifierHook {
-    public static final ResourceLocation SHIELD_LOCATION = cti.getResource("plasma_shield");
-    public static final ResourceLocation CD_LOCATION = cti.getResource("plasma_cooldown");
+    public static final ResourceLocation SHIELD_LOCATION = Cti.getResource("plasma_shield");
+    public static final ResourceLocation CD_LOCATION = Cti.getResource("plasma_cooldown");
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
@@ -80,7 +80,7 @@ public class PlasmaShielding extends NoLevelsModifier implements DamageBlockModi
         for (EquipmentSlot slot : slotUtil.ARMOR) {
             if (player.getItemBySlot(slot).getItem() instanceof IModifiable) {
                 ToolStack toolStack = ToolStack.from(player.getItemBySlot(slot));
-                if (toolStack.getModifierLevel(ctiModifiers.plasma_shielding.get()) > 0) {
+                if (toolStack.getModifierLevel(CtiModifiers.plasma_shielding.get()) > 0) {
                     return toolStack.getPersistentData().getInt(SHIELD_LOCATION) > 0 && toolStack.getPersistentData().getInt(CD_LOCATION) <= 0;
                 }
             }
@@ -90,8 +90,8 @@ public class PlasmaShielding extends NoLevelsModifier implements DamageBlockModi
 
     @Override
     public void addToolStats(IToolContext iToolContext, ModifierEntry modifierEntry, ModifierStatsBuilder modifierStatsBuilder) {
-        ctiToolStats.ELECTRIC_RESISTANCE.add(modifierStatsBuilder, 1);
-        ctiToolStats.FROZEN_RESISTANCE.add(modifierStatsBuilder, 1);
-        ctiToolStats.SCORCH_RESISTANCE.add(modifierStatsBuilder, 1);
+        CtiToolStats.ELECTRIC_RESISTANCE.add(modifierStatsBuilder, 1);
+        CtiToolStats.FROZEN_RESISTANCE.add(modifierStatsBuilder, 1);
+        CtiToolStats.SCORCH_RESISTANCE.add(modifierStatsBuilder, 1);
     }
 }

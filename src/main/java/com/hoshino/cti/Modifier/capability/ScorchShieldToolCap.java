@@ -2,7 +2,7 @@ package com.hoshino.cti.Modifier.capability;
 
 import com.hoshino.cti.Capabilitiess.IScorchShielding;
 import com.hoshino.cti.Capabilitiess.ctiCapabilities;
-import com.hoshino.cti.register.ctiToolStats;
+import com.hoshino.cti.register.CtiToolStats;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -23,11 +23,11 @@ public class ScorchShieldToolCap implements IScorchShielding, ToolCapabilityProv
 
     @Override
     public <T> @NotNull LazyOptional<T> getCapability(IToolStackView iToolStackView, @NotNull Capability<T> capability) {
-        return iToolStackView.getStats().get(ctiToolStats.SCORCH_RESISTANCE) > 0 && capability == ctiCapabilities.SCORCH_SHIELDING ? ctiCapabilities.SCORCH_SHIELDING.orEmpty(capability, this.capOptional) : LazyOptional.empty();
+        return iToolStackView.getStats().get(CtiToolStats.SCORCH_RESISTANCE) > 0 && capability == ctiCapabilities.SCORCH_SHIELDING ? ctiCapabilities.SCORCH_SHIELDING.orEmpty(capability, this.capOptional) : LazyOptional.empty();
     }
 
     @Override
     public float getScorchShieldinng() {
-        return tool.get().getStats().get(ctiToolStats.SCORCH_RESISTANCE);
+        return tool.get().getStats().get(CtiToolStats.SCORCH_RESISTANCE);
     }
 }

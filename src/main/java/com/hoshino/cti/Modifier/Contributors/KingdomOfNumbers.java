@@ -1,8 +1,8 @@
 package com.hoshino.cti.Modifier.Contributors;
 
 
-import com.hoshino.cti.cti;
-import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.Cti;
+import com.hoshino.cti.register.CtiEffects;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -27,14 +27,14 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 
-import static com.hoshino.cti.register.ctiModifiers.kingdomofnumbers;
+import static com.hoshino.cti.register.CtiModifiers.kingdomofnumbers;
 
 public class KingdomOfNumbers extends BattleModifier {
     public KingdomOfNumbers() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
-    private static final ResourceLocation numericalperceptiontime = cti.getResource("numericalperceptiontime");
+    private static final ResourceLocation numericalperceptiontime = Cti.getResource("numericalperceptiontime");
 
     public void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getSource().getEntity();
@@ -46,7 +46,7 @@ public class KingdomOfNumbers extends BattleModifier {
                 event.setAmount(b);
                 if (b % 2 != 0 && tool.getPersistentData().getInt(numericalperceptiontime) == 0) {
                     tool.getPersistentData().putInt(numericalperceptiontime, 300 - c * 10);
-                    player.addEffect(new MobEffectInstance(ctiEffects.numerical_perception.get(), 200, c));
+                    player.addEffect(new MobEffectInstance(CtiEffects.numerical_perception.get(), 200, c));
                 }
             }
         }

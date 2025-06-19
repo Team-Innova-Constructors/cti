@@ -2,8 +2,8 @@ package com.hoshino.cti.Blocks.BlockEntity;
 
 import com.hoshino.cti.recipe.QuantumMinerRecipe;
 import com.hoshino.cti.recipe.RecipeMap;
-import com.hoshino.cti.register.ctiBlockEntityType;
-import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.register.CtiBlockEntityType;
+import com.hoshino.cti.register.CtiItem;
 import com.hoshino.cti.util.ctiEnergyStore;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -32,7 +32,7 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
 public class QuantumMinerAdvancedEntity extends BlockEntity {
     public QuantumMinerAdvancedEntity(BlockPos p_155229_, BlockState p_155230_) {
-        super(ctiBlockEntityType.QUANTUM_MINER_ADVANCED_ENTITY.get(), p_155229_, p_155230_);
+        super(CtiBlockEntityType.QUANTUM_MINER_ADVANCED_ENTITY.get(), p_155229_, p_155230_);
     }
 
     protected int MAX_ENERGY = 2147483647;
@@ -87,7 +87,7 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
 
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-            return stack.getItem().equals(ctiItem.compressed_singularity.get());
+            return stack.getItem().equals(CtiItem.compressed_singularity.get());
         }
     };
 
@@ -169,10 +169,10 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
         if (entity.itemStackHandler.getStackInSlot(0).isEmpty() || entity.itemStackHandler.getStackInSlot(0).getCount() == 0) {
             return;
         }
-        if (entity.itemStackHandler.getStackInSlot(0).getItem() != ctiItem.compressed_singularity.get()) {
+        if (entity.itemStackHandler.getStackInSlot(0).getItem() != CtiItem.compressed_singularity.get()) {
             return;
         }
-        if (entity.PROGRESS <= 0 && !entity.itemStackHandler.extractItem(0, 1, true).isEmpty() && entity.itemStackHandler.extractItem(0, 1, true).is(ctiItem.compressed_singularity.get())) {
+        if (entity.PROGRESS <= 0 && !entity.itemStackHandler.extractItem(0, 1, true).isEmpty() && entity.itemStackHandler.extractItem(0, 1, true).is(CtiItem.compressed_singularity.get())) {
             entity.itemStackHandler.extractItem(0, 1, false);
             entity.PROGRESS += 20;
         }
@@ -196,7 +196,7 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
                     boolean checkoutput = false;
                     int effectiveSlot = 0;
                     for (int a = 0; a < slotAmount; a++) {
-                        if ((Handler.getStackInSlot(a).isEmpty() || (Handler.getStackInSlot(a).is(output.getItem()) && Handler.getStackInSlot(a).getCount() + output.getCount() <= Handler.getSlotLimit(a))) && Handler.isItemValid(a, output) && entity.itemStackHandler.getStackInSlot(0).getItem() == ctiItem.compressed_singularity.get()) {
+                        if ((Handler.getStackInSlot(a).isEmpty() || (Handler.getStackInSlot(a).is(output.getItem()) && Handler.getStackInSlot(a).getCount() + output.getCount() <= Handler.getSlotLimit(a))) && Handler.isItemValid(a, output) && entity.itemStackHandler.getStackInSlot(0).getItem() == CtiItem.compressed_singularity.get()) {
                             checkoutput = true;
                             effectiveSlot = a;
                             break;
@@ -207,7 +207,7 @@ public class QuantumMinerAdvancedEntity extends BlockEntity {
                     }
                     Handler.insertItem(effectiveSlot, output, false);
                     entity.PROGRESS--;
-                    if (entity.PROGRESS <= 0 && !entity.itemStackHandler.extractItem(0, 1, true).isEmpty() && entity.itemStackHandler.extractItem(0, 1, true).is(ctiItem.compressed_singularity.get())) {
+                    if (entity.PROGRESS <= 0 && !entity.itemStackHandler.extractItem(0, 1, true).isEmpty() && entity.itemStackHandler.extractItem(0, 1, true).is(CtiItem.compressed_singularity.get())) {
                         entity.itemStackHandler.extractItem(0, 1, false);
                         entity.PROGRESS += 20;
                     }

@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
-import static com.hoshino.cti.register.ctiEffects.supplementary_formula;
+import static com.hoshino.cti.register.CtiEffects.supplementary_formula;
 
 public class SupplementaryFormula extends StaticMobEffect {
     public SupplementaryFormula() {

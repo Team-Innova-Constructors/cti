@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
-import static com.hoshino.cti.register.ctiEffects.curve_mapping;
+import static com.hoshino.cti.register.CtiEffects.curve_mapping;
 
 public class CurveMapping extends StaticMobEffect {
     public CurveMapping() {

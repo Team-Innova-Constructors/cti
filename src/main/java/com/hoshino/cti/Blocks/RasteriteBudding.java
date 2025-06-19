@@ -1,6 +1,6 @@
 package com.hoshino.cti.Blocks;
 
-import com.hoshino.cti.register.ctiBlock;
+import com.hoshino.cti.register.CtiBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -27,7 +27,7 @@ public class RasteriteBudding extends AmethystBlock {
         BlockState blockstate = pLevel.getBlockState(blockpos);
         if (pRandom.nextInt(144) <= pLevel.getBrightness(LightLayer.BLOCK, blockpos) * pLevel.getBrightness(LightLayer.BLOCK, blockpos)) {
             if ((blockstate.is(Blocks.AIR) || blockstate.is(Blocks.CAVE_AIR) || blockstate.is(Blocks.VOID_AIR) || blockstate.is(Blocks.WATER))) {
-                Block block = ctiBlock.rasterite.get();
+                Block block = CtiBlock.rasterite.get();
                 BlockState blockState = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, direction).setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);
                 pLevel.setBlockAndUpdate(blockpos, blockState);
             }

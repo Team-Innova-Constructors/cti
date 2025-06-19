@@ -1,6 +1,6 @@
 package com.hoshino.cti.Modifier.Developer;
 
-import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.register.CtiEffects;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -48,7 +48,7 @@ public class Eventually extends BattleModifier {
     public float staticdamage(IToolStackView tool, int level, ToolAttackContext context, LivingEntity attacker, LivingEntity livingTarget, float baseDamage, float damage) {
         if (context.getLivingTarget() instanceof Player) {
             return damage;
-        } else if (attacker.hasEffect(ctiEffects.ev.get())) {
+        } else if (attacker.hasEffect(CtiEffects.ev.get())) {
             return damage + Float.MAX_VALUE;
         }
         return damage;

@@ -2,7 +2,7 @@ package com.hoshino.cti.Modifier.capability;
 
 import com.hoshino.cti.Capabilitiess.IElectricShielding;
 import com.hoshino.cti.Capabilitiess.ctiCapabilities;
-import com.hoshino.cti.register.ctiToolStats;
+import com.hoshino.cti.register.CtiToolStats;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -22,11 +22,11 @@ public class ElectricShieldToolCap implements IElectricShielding, ToolCapability
 
     @Override
     public <T> LazyOptional<T> getCapability(IToolStackView iToolStackView, Capability<T> capability) {
-        return iToolStackView.getStats().get(ctiToolStats.ELECTRIC_RESISTANCE) > 0 && capability == ctiCapabilities.ELECTRIC_SHIELDING ? ctiCapabilities.ELECTRIC_SHIELDING.orEmpty(capability, this.capOptional) : LazyOptional.empty();
+        return iToolStackView.getStats().get(CtiToolStats.ELECTRIC_RESISTANCE) > 0 && capability == ctiCapabilities.ELECTRIC_SHIELDING ? ctiCapabilities.ELECTRIC_SHIELDING.orEmpty(capability, this.capOptional) : LazyOptional.empty();
     }
 
     @Override
     public float getElectricShieldinng() {
-        return tool.get().getStats().get(ctiToolStats.ELECTRIC_RESISTANCE);
+        return tool.get().getStats().get(CtiToolStats.ELECTRIC_RESISTANCE);
     }
 }

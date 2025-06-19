@@ -1,9 +1,9 @@
 package com.hoshino.cti.integration;
 
 import com.hoshino.cti.Plugin.JEIPlugin;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.recipe.ReactorNeutronCollectorRecipe;
-import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.register.CtiItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.client.jei.ChemicalStackRenderer;
@@ -25,10 +25,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 public class ReactorNeutronCollectorRecipeCategory implements IRecipeCategory<ReactorNeutronCollectorRecipe> {
-    public static final ResourceLocation UID = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation UID = new ResourceLocation(Cti.MOD_ID,
             "reactor_neutron_collect");
 
-    public static final ResourceLocation TEXTURE = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation TEXTURE = new ResourceLocation(Cti.MOD_ID,
             "textures/gui/machine/neutron_collector_bg.png");
 
 
@@ -39,7 +39,7 @@ public class ReactorNeutronCollectorRecipeCategory implements IRecipeCategory<Re
 
     public ReactorNeutronCollectorRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 180, 59);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ctiItem.reactor_neutron_collector.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CtiItem.reactor_neutron_collector.get()));
 
     }
 

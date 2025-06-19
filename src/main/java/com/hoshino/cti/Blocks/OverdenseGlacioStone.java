@@ -3,7 +3,7 @@ package com.hoshino.cti.Blocks;
 import com.c2h6s.etshtinker.Entities.plasmaexplosionentity;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
-import com.hoshino.cti.register.ctiBlock;
+import com.hoshino.cti.register.CtiBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -34,8 +34,8 @@ public class OverdenseGlacioStone extends Block {
                 a++;
             }
             if (a < 20) {
-                if (pLevel.getBlockState(blockpos.below()).is(ctiBlock.unipolar_magnet_budding.get()) && rnd != 0) {
-                    Block block = ctiBlock.unipolar_magnet.get();
+                if (pLevel.getBlockState(blockpos.below()).is(CtiBlock.unipolar_magnet_budding.get()) && rnd != 0) {
+                    Block block = CtiBlock.unipolar_magnet.get();
                     BlockState blockState = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, Direction.UP).setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);
                     pLevel.setBlockAndUpdate(blockpos, blockState);
                     plasmaexplosionentity entity = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), pLevel);

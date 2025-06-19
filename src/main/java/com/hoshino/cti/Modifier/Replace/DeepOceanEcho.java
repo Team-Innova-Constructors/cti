@@ -1,12 +1,11 @@
 package com.hoshino.cti.Modifier.Replace;
 
 import com.gjhi.tinkersinnovation.register.TinkersInnovationModifiers;
-import com.hoshino.cti.register.ctiModifiers;
-import com.hoshino.cti.register.ctiSlots;
+import com.hoshino.cti.register.CtiModifiers;
+import com.hoshino.cti.register.CtiSlots;
 import com.james.tinkerscalibration.Utils;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
 import com.marth7th.solidarytinker.util.compound.DynamicComponentUtil;
-import com.marth7th.solidarytinker.util.compound.IceFantasy;
 import com.xiaoyue.tinkers_ingenuity.register.TIModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -34,7 +33,7 @@ public class DeepOceanEcho extends BattleModifier {
     }
 
     private int DeepAndDeepLevel(ItemStack tool) {
-        return ModifierUtil.getModifierLevel(tool, ctiModifiers.DEEP_AND_DEEP_STATIC_MODIFIER.getId());
+        return ModifierUtil.getModifierLevel(tool, CtiModifiers.DEEP_AND_DEEP_STATIC_MODIFIER.getId());
     }
 
     private float EchoAmount(Player player) {
@@ -70,7 +69,7 @@ public class DeepOceanEcho extends BattleModifier {
 
     @Override
     public void addVolatileData(IToolContext iToolContext, @NotNull ModifierEntry modifierEntry, ModDataNBT modDataNBT) {
-        modDataNBT.addSlots(ctiSlots.OCEAN, 5);
+        modDataNBT.addSlots(CtiSlots.OCEAN, 5);
     }
 
     @Override

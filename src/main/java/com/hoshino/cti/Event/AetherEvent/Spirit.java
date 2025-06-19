@@ -10,7 +10,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.hoshino.cti.cti.MOD_ID;
+import static com.hoshino.cti.Cti.MOD_ID;
 
 @Mod.EventBusSubscriber(modid = MOD_ID)
 public class Spirit {

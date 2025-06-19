@@ -1,8 +1,8 @@
 package com.hoshino.cti.Blocks.BlockEntity;
 
 import com.hoshino.cti.Blocks.Machine.SodiumCooler;
-import com.hoshino.cti.register.ctiBlock;
-import com.hoshino.cti.register.ctiBlockEntityType;
+import com.hoshino.cti.register.CtiBlock;
+import com.hoshino.cti.register.CtiBlockEntityType;
 import com.hoshino.cti.util.EmptyHandlers;
 import com.hoshino.cti.util.ctiEnergyStore;
 import mekanism.api.Action;
@@ -30,7 +30,7 @@ import java.util.List;
 
 public class SodiumCoolerEntity extends GeneralMachineEntity {
     public SodiumCoolerEntity(BlockPos blockPos, BlockState blockState) {
-        super(ctiBlockEntityType.SODIUM_COOLER.get(), blockPos, blockState);
+        super(CtiBlockEntityType.SODIUM_COOLER.get(), blockPos, blockState);
     }
 
     protected int MAX_ENERGY = 2000000000;
@@ -154,7 +154,7 @@ public class SodiumCoolerEntity extends GeneralMachineEntity {
         if (level.isClientSide) {
             return;
         }
-        if (!state.is(ctiBlock.sodium_cooler_block.get())) {
+        if (!state.is(CtiBlock.sodium_cooler_block.get())) {
             return;
         }
         for (Direction direction : List.of(Direction.DOWN, Direction.UP, Direction.EAST, Direction.WEST, Direction.NORTH, Direction.SOUTH)) {

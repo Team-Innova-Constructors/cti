@@ -1,6 +1,6 @@
 package com.hoshino.cti.Modifier;
 
-import com.hoshino.cti.register.ctiToolStats;
+import com.hoshino.cti.register.CtiToolStats;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,9 +26,9 @@ public class SpaceSuitModifier extends Modifier implements ToolStatsModifierHook
 
     @Override
     public void addToolStats(IToolContext tool, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ctiToolStats.SCORCH_RESISTANCE.add(builder, 0.25 * modifier.getLevel());
-        ctiToolStats.FROZEN_RESISTANCE.add(builder, 0.25 * modifier.getLevel());
-        ctiToolStats.ELECTRIC_RESISTANCE.add(builder, 0.1 * modifier.getLevel());
+        CtiToolStats.SCORCH_RESISTANCE.add(builder, 0.25 * modifier.getLevel());
+        CtiToolStats.FROZEN_RESISTANCE.add(builder, 0.25 * modifier.getLevel());
+        CtiToolStats.ELECTRIC_RESISTANCE.add(builder, 0.1 * modifier.getLevel());
     }
 
     @Override

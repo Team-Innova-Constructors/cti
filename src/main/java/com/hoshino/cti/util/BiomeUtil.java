@@ -1,6 +1,6 @@
 package com.hoshino.cti.util;
 
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import earth.terrarium.ad_astra.AdAstra;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -19,13 +19,13 @@ public class BiomeUtil {
     public static final ResourceKey<Biome> GLACIO_BARRENS = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(AdAstra.MOD_ID, "glacio_snowy_barrens"));
     public static final ResourceKey<Biome> GLACIO_ICE = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(AdAstra.MOD_ID, "glacio_ice_peaks"));
 
-    public static final ResourceKey<Biome> IONIZED_MARE = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(cti.MOD_ID, "ionized_mare"));
-    public static final ResourceKey<Biome> IONIZED_GLACIO = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(cti.MOD_ID, "ionized_glacio"));
-    public static final ResourceKey<Biome> DISORDERED_ZONE = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(cti.MOD_ID, "disordered_zone"));
-    public static final ResourceKey<Biome> INFERNAL = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(cti.MOD_ID, "infernal"));
-    public static final ResourceKey<Biome> INFERNAL_MOLTEN = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(cti.MOD_ID, "infernal_molten_surface"));
-    public static final ResourceKey<Biome> JUPITER = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(cti.MOD_ID, "jupiter"));
-    public static final ResourceKey<Biome> URANUS = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(cti.MOD_ID, "uranus"));
+    public static final ResourceKey<Biome> IONIZED_MARE = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Cti.MOD_ID, "ionized_mare"));
+    public static final ResourceKey<Biome> IONIZED_GLACIO = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Cti.MOD_ID, "ionized_glacio"));
+    public static final ResourceKey<Biome> DISORDERED_ZONE = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Cti.MOD_ID, "disordered_zone"));
+    public static final ResourceKey<Biome> INFERNAL = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Cti.MOD_ID, "infernal"));
+    public static final ResourceKey<Biome> INFERNAL_MOLTEN = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Cti.MOD_ID, "infernal_molten_surface"));
+    public static final ResourceKey<Biome> JUPITER = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Cti.MOD_ID, "jupiter"));
+    public static final ResourceKey<Biome> URANUS = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Cti.MOD_ID, "uranus"));
 
     public static final List<String> INFO_LIST = List.of(
             "cti:ionized_mare",

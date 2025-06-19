@@ -2,9 +2,9 @@ package com.hoshino.cti.integration;
 
 import com.hoshino.cti.Items.BiomeInfoItem;
 import com.hoshino.cti.Plugin.JEIPlugin;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.recipe.AtmosphereCondensorRecipe;
-import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.register.CtiItem;
 import com.hoshino.cti.util.BiomeUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
@@ -29,10 +29,10 @@ import net.minecraft.world.level.biome.Biome;
 
 public class AtmosphereCondenseRecipeCategory implements IRecipeCategory<AtmosphereCondensorRecipe> {
     // 区分合成分类的ID
-    public static final ResourceLocation UID = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation UID = new ResourceLocation(Cti.MOD_ID,
             "atmosphere_condense");
     // png file texture
-    public static final ResourceLocation TEXTURE = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation TEXTURE = new ResourceLocation(Cti.MOD_ID,
             "textures/gui/machine/gui_condensor.png");
 
     // 合成分类的背景图片
@@ -45,7 +45,7 @@ public class AtmosphereCondenseRecipeCategory implements IRecipeCategory<Atmosph
         // 渲染背景图片。图片的开始位置和图片的结束的位置 u,v,width,height
         this.background = helper.createDrawable(TEXTURE, 42, 17, 100, 48);
         // 图标
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ctiItem.atmosphere_condensator.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CtiItem.atmosphere_condensator.get()));
 
     }
 
@@ -77,7 +77,7 @@ public class AtmosphereCondenseRecipeCategory implements IRecipeCategory<Atmosph
     public void setRecipe(IRecipeLayoutBuilder builder, AtmosphereCondensorRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.OUTPUT, 74, 4).setFluidRenderer(40, false, 16, 40).addIngredient(ForgeTypes.FLUID_STACK, recipe.getFluid());
         if (BiomeUtil.INFO_LIST.contains(recipe.getBiome())){
-            ItemStack stack = new ItemStack(ctiItem.BIOMES_ITEM.get());
+            ItemStack stack = new ItemStack(CtiItem.BIOMES_ITEM.get());
             stack.getOrCreateTag().putString(BiomeInfoItem.KEY_BIOMES,recipe.getBiome());
             builder.addSlot(RecipeIngredientRole.INPUT,4,10).addItemStack(stack);
         }

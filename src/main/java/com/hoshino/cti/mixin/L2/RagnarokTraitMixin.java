@@ -3,7 +3,7 @@ package com.hoshino.cti.mixin.L2;
 import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
 import com.aizistral.enigmaticlegacy.registries.EnigmaticItems;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
-import com.hoshino.cti.register.ctiModifiers;
+import com.hoshino.cti.register.CtiModifiers;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import com.marth7th.solidarytinker.register.TinkerCuriosModifier;
 import com.marth7th.solidarytinker.register.solidarytinkerModifiers;
@@ -39,10 +39,10 @@ public abstract class RagnarokTraitMixin {
         sealModifier.add(etshtinkerModifiers.manaoverload_STATIC_MODIFIER.get());//魔灵皇
         sealModifier.add(etshtinkerModifiers.perfectism.get());//魔灵皇
         sealModifier.add(etshtinkerModifiers.trinitycurse_STATIC_MODIFIER.get());//三位一体
-        sealModifier.add(ctiModifiers.timetojudge.get());//乌列尔 
-        sealModifier.add(ctiModifiers.celestiallight.get());//乌列尔
-        sealModifier.add(ctiModifiers.disorder.get());//单机磁石
-        sealModifier.add(ctiModifiers.ionize_induced.get());//感电水晶
+        sealModifier.add(CtiModifiers.timetojudge.get());//乌列尔
+        sealModifier.add(CtiModifiers.celestiallight.get());//乌列尔
+        sealModifier.add(CtiModifiers.disorder.get());//单机磁石
+        sealModifier.add(CtiModifiers.ionize_induced.get());//感电水晶
         sealModifier.add(TIModifiers.SEA_DREAM.get());//海梦
         for (Modifier modifier : sealModifier) {
             if (ModifierUtil.getModifierLevel(access.get(), modifier.getId()) > 0) {
@@ -66,9 +66,9 @@ public abstract class RagnarokTraitMixin {
             }
             //这个列表里面的是只要身上4盔甲/主副有这个材料就会让诸神黄昏对所有装备都不生效
             List<Modifier> AllowModifier = new ArrayList<>();
-            AllowModifier.add(ctiModifiers.INFINITY_STATIC_MODIFIER.get());//无尽
-            AllowModifier.add(ctiModifiers.trauma.get());//恐怖
-            AllowModifier.add(ctiModifiers.eventually.get());//恐怖
+            AllowModifier.add(CtiModifiers.INFINITY_STATIC_MODIFIER.get());//无尽
+            AllowModifier.add(CtiModifiers.trauma.get());//恐怖
+            AllowModifier.add(CtiModifiers.eventually.get());//恐怖
             AllowModifier.add(etshtinkerModifiers.beconcerted_STATIC_MODIFIER.get());//星河马玉灵和奇迹物质
             AllowModifier.add(etshtinkerModifiers.unknown_STATIC_MODIFIER.get());//宏原子
             AllowModifier.add(etshtinkerModifiers.controllableannihl_STATIC_MODIFIER.get());//反中子武器

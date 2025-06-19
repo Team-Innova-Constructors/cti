@@ -1,9 +1,9 @@
 package com.hoshino.cti.integration;
 
 import com.hoshino.cti.Plugin.JEIPlugin;
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.recipe.AnnihilationPanelRecipe;
-import com.hoshino.cti.register.ctiItem;
+import com.hoshino.cti.register.CtiItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.chemical.gas.GasStack;
@@ -17,7 +17,6 @@ import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredientType;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
@@ -35,9 +34,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnnihilationPanelRecipeCategory implements IRecipeCategory<AnnihilationPanelRecipe> {
-    public static final ResourceLocation UID = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation UID = new ResourceLocation(Cti.MOD_ID,
             "panel_recipe");
-    public static final ResourceLocation TEXTURE = new ResourceLocation(cti.MOD_ID,
+    public static final ResourceLocation TEXTURE = new ResourceLocation(Cti.MOD_ID,
             "textures/gui/jei/annihilation_panel_bg.png");
 
 
@@ -47,7 +46,7 @@ public class AnnihilationPanelRecipeCategory implements IRecipeCategory<Annihila
 
     public AnnihilationPanelRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 184, 42);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ctiItem.meteorium_plane.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CtiItem.meteorium_plane.get()));
     }
 
     @Override

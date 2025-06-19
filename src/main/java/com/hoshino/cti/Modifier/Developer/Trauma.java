@@ -1,7 +1,7 @@
 package com.hoshino.cti.Modifier.Developer;
 
-import com.hoshino.cti.register.ctiEffects;
-import com.hoshino.cti.register.ctiToolStats;
+import com.hoshino.cti.register.CtiEffects;
+import com.hoshino.cti.register.CtiToolStats;
 import com.marth7th.solidarytinker.extend.superclass.ArmorModifier;
 import com.marth7th.solidarytinker.util.method.ModifierLevel;
 import net.minecraft.core.BlockPos;
@@ -29,16 +29,16 @@ import java.util.List;
 public class Trauma extends ArmorModifier {
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ctiToolStats.ELECTRIC_RESISTANCE.add(builder, 14.5F);
-        ctiToolStats.FROZEN_RESISTANCE.add(builder, 14.5F);
-        ctiToolStats.PRESSURE_RESISTANCE.add(builder, 14.5F);
-        ctiToolStats.SCORCH_RESISTANCE.add(builder, 14.5F);
+        CtiToolStats.ELECTRIC_RESISTANCE.add(builder, 14.5F);
+        CtiToolStats.FROZEN_RESISTANCE.add(builder, 14.5F);
+        CtiToolStats.PRESSURE_RESISTANCE.add(builder, 14.5F);
+        CtiToolStats.SCORCH_RESISTANCE.add(builder, 14.5F);
     }
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         if (entity instanceof Player player) {
-            if (player.hasEffect(ctiEffects.ev.get())) {
+            if (player.hasEffect(CtiEffects.ev.get())) {
                 if (ModifierLevel.EquipHasModifierlevel(entity, this.getId())) {
                     double x = player.getX();
                     double y = player.getY();

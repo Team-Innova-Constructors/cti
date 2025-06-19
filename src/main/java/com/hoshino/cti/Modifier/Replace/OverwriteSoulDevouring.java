@@ -1,6 +1,6 @@
 package com.hoshino.cti.Modifier.Replace;
 
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.xiaoyue.tinkers_ingenuity.generic.XIRModifier;
 import com.xiaoyue.tinkers_ingenuity.utils.TooltipUtils;
 import net.minecraft.network.chat.Component;
@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class OverwriteSoulDevouring extends XIRModifier implements ModifierRemovalHook {
-    private final ResourceLocation KEY = cti.getResource("soul_devouring");
+    private final ResourceLocation KEY = Cti.getResource("soul_devouring");
 
     public OverwriteSoulDevouring() {
     }

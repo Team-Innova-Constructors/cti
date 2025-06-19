@@ -1,7 +1,7 @@
 package com.hoshino.cti.Modifier.Armor;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
-import com.hoshino.cti.register.ctiEffects;
+import com.hoshino.cti.register.CtiEffects;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -17,8 +17,8 @@ public class StressModifier extends etshmodifieriii {
         super.modifierOnAttacked(tool, modifier, context, slotType, source, amount, isDirectDamage);
         LivingEntity entity = context.getEntity();
         if (entity instanceof Player player && amount > 1) {
-            MobEffectInstance instance = player.getEffect(ctiEffects.stress.get());
-            player.addEffect(new MobEffectInstance(ctiEffects.stress.get(), 20, Math.min(9, (instance == null ? 0 : instance.getAmplifier()) + modifier.getLevel()), false, false));
+            MobEffectInstance instance = player.getEffect(CtiEffects.stress.get());
+            player.addEffect(new MobEffectInstance(CtiEffects.stress.get(), 20, Math.min(9, (instance == null ? 0 : instance.getAmplifier()) + modifier.getLevel()), false, false));
         }
     }
 }
