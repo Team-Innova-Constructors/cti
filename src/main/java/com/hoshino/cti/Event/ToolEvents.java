@@ -1,6 +1,6 @@
 package com.hoshino.cti.Event;
 
-import com.hoshino.cti.cti;
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.library.modifier.CtiModifierHook;
 import com.hoshino.cti.library.modifier.hooks.LeftClickModifierHook;
 import com.hoshino.cti.library.modifier.hooks.OnDeathModifierHook;
@@ -26,7 +26,7 @@ import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-@Mod.EventBusSubscriber(modid = cti.MOD_ID)
+@Mod.EventBusSubscriber(modid = Cti.MOD_ID)
 public class ToolEvents {
     @SubscribeEvent
     public static void onLeftClick(PlayerInteractEvent.LeftClickEmpty event){
