@@ -379,7 +379,7 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        ctiPacketHandler.sendToClient(new PMachineEnergySync(this.ENERGY_STORAGE.getEnergyStored(), this.getBlockPos()));
+        CtiPacketHandler.sendToClient(new PMachineEnergySync(this.ENERGY_STORAGE.getEnergyStored(), this.getBlockPos()));
         return new ReactorNeutronCollectorMenu(i, inventory, this, this.DATA);
     }
 

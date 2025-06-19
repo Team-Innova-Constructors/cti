@@ -26,7 +26,7 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import static com.c2h6s.etshtinker.util.vecCalc.getNearestLiEnt;
 import static com.c2h6s.etshtinker.util.vecCalc.getScatteredVec3;
-import static com.hoshino.cti.cti.MOD_ID;
+import static com.hoshino.cti.Cti.MOD_ID;
 
 @Mod.EventBusSubscriber(modid = MOD_ID,bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class StarFury extends etshmodifieriii {
@@ -40,8 +40,8 @@ public class StarFury extends etshmodifieriii {
         Player player = event.getEntity();
         if (event.getSide()== LogicalSide.SERVER&&event.getItemStack().getItem() instanceof IModifiable){
             ToolStack toolStack = ToolStack.from(event.getItemStack());
-            if (toolStack.getModifierLevel(ctiModifiers.STAR_FURY.get())>0){
-                LivingEntity living = getNearestLiEnt(toolStack.getModifierLevel(ctiModifiers.STAR_FURY.get())+4f,player,player.level);
+            if (toolStack.getModifierLevel(CtiModifiers.STAR_FURY.get())>0){
+                LivingEntity living = getNearestLiEnt(toolStack.getModifierLevel(CtiModifiers.STAR_FURY.get())+4f,player,player.level);
                 if (living!=null) {
                     float baseDamage = toolStack.getStats().get(ToolStats.ATTACK_DAMAGE);
                     float damage = baseDamage;
@@ -49,7 +49,7 @@ public class StarFury extends etshmodifieriii {
                     for (ModifierEntry entry : toolStack.getModifierList()) {
                         damage = entry.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(toolStack, entry, context, baseDamage, damage);
                     }
-                    StarFury.summonMeteor(player, toolStack.getModifierLevel(ctiModifiers.STAR_FURY.get()), living, damage);
+                    StarFury.summonMeteor(player, toolStack.getModifierLevel(CtiModifiers.STAR_FURY.get()), living, damage);
                 }
             }
         }
