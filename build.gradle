@@ -200,6 +200,12 @@ repositories {
         name = "Curios API"
         url = "https://maven.theillusivec4.top/"
     }
+    maven {
+        url = "https://maven.architectury.dev"
+        content {
+            includeGroup "dev.architectury"
+        }
+    }
 }
 
 dependencies {
@@ -235,6 +241,11 @@ dependencies {
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.1.0:api")
 
     runtimeOnly fg.deobf("mezz.jei:jei-1.19-forge:11.0.0.211")
+
+    implementation fg.deobf("curse.maven:custom-machinery-457017:5822339")
+    implementation fg.deobf("curse.maven:custom-machinery-mekanism-721079:5500274")
+
+    implementation fg.deobf("curse.maven:architectury-api-419699:5137942")
 
     //这里引入mixin依赖
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'

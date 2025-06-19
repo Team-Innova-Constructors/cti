@@ -2,7 +2,7 @@ package com.hoshino.cti.Entity.Projectiles;
 
 import com.c2h6s.etshtinker.util.attackUtil;
 import com.hoshino.cti.Entity.DisposibleFakePlayer;
-import com.hoshino.cti.netwrok.ctiPacketHandler;
+import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PRailgunItemS2C;
 import com.mojang.authlib.GameProfile;
 import com.xiaoyue.tinkers_ingenuity.content.tools.definition.ToolDefinitions;
@@ -63,7 +63,7 @@ public class TinkerRailgunProjectile extends AbstractArrow {
 
     public void sendItemS2CPacket() {
         if (ServerLifecycleHooks.getCurrentServer() != null) {
-            ctiPacketHandler.sendToClient(new PRailgunItemS2C(this, stack));
+            CtiPacketHandler.sendToClient(new PRailgunItemS2C(this, stack));
         }
     }
 

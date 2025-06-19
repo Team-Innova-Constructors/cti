@@ -10,7 +10,7 @@ import com.hoshino.cti.Screen.AtmosphereExtractorScreen;
 import com.hoshino.cti.Screen.ReactorNeutronCollectorScreen;
 import com.hoshino.cti.Screen.menu.ctiMenu;
 import com.hoshino.cti.client.hud.EnvironmentalHud;
-import com.hoshino.cti.netwrok.ctiPacketHandler;
+import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.register.*;
 import com.hoshino.cti.util.BiomeUtil;
 import com.hoshino.cti.util.tier.Roxy;
@@ -63,7 +63,7 @@ public class cti {
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
         MinecraftForge.EVENT_BUS.register(new MobEffect());
         MinecraftForge.EVENT_BUS.register(new ServerEvent());
-        ctiPacketHandler.init();
+        CtiPacketHandler.init();
         ctiMenu.MENU_TYPE.register(eventBus);
         ctiPotions.POTIONS.register(eventBus);
         ctiItem.registerPartModels();

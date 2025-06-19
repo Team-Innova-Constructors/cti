@@ -10,7 +10,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 
-public class ctiPacketHandler {
+public class CtiPacketHandler {
     private static final String PROTOCOL_VERSION = "1";
     public static SimpleChannel INSTANCE;
     static int id = 0;

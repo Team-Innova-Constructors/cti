@@ -2,7 +2,7 @@ package com.hoshino.cti.Modifier;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.hoshino.cti.Entity.Projectiles.FriendlyMeteor;
-import com.hoshino.cti.netwrok.ctiPacketHandler;
+import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PStarFuryC2S;
 import com.hoshino.cti.register.ctiModifiers;
 import net.minecraft.world.InteractionHand;
@@ -59,7 +59,7 @@ public class StarFury extends etshmodifieriii {
         if (event.getSide()==LogicalSide.CLIENT&&event.getHand()==InteractionHand.MAIN_HAND&&event.getItemStack().getItem() instanceof IModifiable){
             ToolStack toolStack = ToolStack.from(event.getItemStack());
             if (toolStack.getModifierLevel(ctiModifiers.STAR_FURY.get())>0){
-                ctiPacketHandler.sendToServer(new PStarFuryC2S());
+                CtiPacketHandler.sendToServer(new PStarFuryC2S());
             }
         }
     }

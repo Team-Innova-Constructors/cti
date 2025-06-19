@@ -2,7 +2,7 @@ package com.hoshino.cti.Modifier.Developer;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.hoshino.cti.Entity.Projectiles.FallenStars;
-import com.hoshino.cti.netwrok.ctiPacketHandler;
+import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PStellarBlade;
 import com.hoshino.cti.register.ctiEntity;
 import com.hoshino.cti.register.ctiItem;
@@ -40,7 +40,7 @@ public class StellarBlade extends etshmodifieriii {
     }
 
     private void LeftClick(PlayerInteractEvent.LeftClickEmpty event) {
-        ctiPacketHandler.sendToServer(new PStellarBlade());
+        CtiPacketHandler.sendToServer(new PStellarBlade());
     }
 
     @Override

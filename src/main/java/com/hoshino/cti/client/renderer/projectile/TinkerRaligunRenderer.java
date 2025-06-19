@@ -1,7 +1,7 @@
 package com.hoshino.cti.client.renderer.projectile;
 
 import com.hoshino.cti.Entity.Projectiles.TinkerRailgunProjectile;
-import com.hoshino.cti.netwrok.ctiPacketHandler;
+import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PRailgunC2S;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
@@ -30,7 +30,7 @@ public class TinkerRaligunRenderer extends EntityRenderer<TinkerRailgunProjectil
     public void render(TinkerRailgunProjectile p_114485_, float p_114486_, float p_114487_, PoseStack p_114488_, MultiBufferSource p_114489_, int p_114490_) {
         if (p_114485_.stack != null && p_114485_.stack.getItem() instanceof ToolPartItem item) {
             if (MaterialVariant.of(item.getMaterial(p_114485_.stack)).isEmpty() || MaterialVariant.of(item.getMaterial(p_114485_.stack)).isUnknown()) {
-                ctiPacketHandler.sendToServer(new PRailgunC2S(p_114485_.getId()));
+                CtiPacketHandler.sendToServer(new PRailgunC2S(p_114485_.getId()));
             } else {
                 p_114488_.pushPose();
                 p_114488_.mulPose(Vector3f.YP.rotationDegrees(Mth.lerp(p_114487_, p_114485_.yRotO, p_114485_.getYRot()) - 90f));
