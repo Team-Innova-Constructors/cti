@@ -1,7 +1,7 @@
 package com.hoshino.cti.Modifier;
 
 import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -23,7 +23,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 
-public class EndSlayer extends etshmodifieriii {
+public class EndSlayer extends EtSTBaseModifier {
     public EndSlayer() {
         MinecraftForge.EVENT_BUS.addListener(this::OnChangeTarget);
         MinecraftForge.EVENT_BUS.addListener(this::onTeleport);

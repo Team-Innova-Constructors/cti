@@ -6,9 +6,8 @@ import com.hoshino.cti.Modifier.Contributors.*;
 import com.hoshino.cti.Modifier.Developer.*;
 import com.hoshino.cti.Modifier.Mob.BuriedOcean;
 import com.hoshino.cti.Modifier.Replace.*;
-import com.hoshino.cti.Modifier.slot.Hardcore;
-import com.hoshino.cti.Modifier.slot.Improve;
-import com.hoshino.cti.Modifier.slot.Mutation;
+import com.hoshino.cti.Modifier.aetherCompact.*;
+import com.hoshino.cti.Modifier.slot.*;
 import com.hoshino.cti.Cti;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
@@ -116,4 +115,6 @@ public class CtiModifiers {
     public static final StaticModifier<AutoShooting> AUTO_SHOOTING = MODIFIERS.register("auto_shooting", AutoShooting::new);
     public static final StaticModifier<Fragment> Fragment = MODIFIERS.register("fragment", Fragment::new);
     public static final StaticModifier<Wearproof> wearproofStaticModifier = MODIFIERS.register("wearproof", Wearproof::new);
+    public static final StaticModifier<Atheric> ATHERIC = MODIFIERS.register("atheric", Atheric::new);
+    public static final StaticModifier<AmbrosiumPowered> AMBROSIUM_POWERED = MODIFIERS.register("ambrosium_powered", AmbrosiumPowered::new);
 }

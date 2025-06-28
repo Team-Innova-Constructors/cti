@@ -5,6 +5,7 @@ import com.hoshino.cti.library.modifier.CtiModifierHook;
 import com.hoshino.cti.library.modifier.hooks.LeftClickModifierHook;
 import com.hoshino.cti.library.modifier.hooks.OnDeathModifierHook;
 import com.hoshino.cti.library.modifier.hooks.OnHoldingPreventDeathHook;
+import com.hoshino.cti.library.modifier.hooks.SlotStackModifierHook;
 import com.hoshino.cti.util.EquipmentUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
@@ -13,6 +14,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.ItemStackedOnOtherEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -97,6 +99,15 @@ public class ToolEvents {
                     }
                 }
             }
+        }
+    }
+    @SubscribeEvent
+    public static void onStackedItemOnOther(ItemStackedOnOtherEvent event){
+        if(SlotStackModifierHook.handleSlotStackOnOther(event.getCarriedItem(),event.getSlot(),event.getClickAction(),event.getPlayer())){
+            event.setCanceled(true);
+            SlotStackModifierHook.handleSlotStackOnMe(event.getStackedOnItem(),event.getCarriedItem(),event.getSlot(),event.getClickAction(),event.getPlayer(),event.getCarriedSlotAccess());
+        } else if (SlotStackModifierHook.handleSlotStackOnMe(event.getStackedOnItem(),event.getCarriedItem(),event.getSlot(),event.getClickAction(),event.getPlayer(),event.getCarriedSlotAccess())){
+            event.setCanceled(true);
         }
     }
 }

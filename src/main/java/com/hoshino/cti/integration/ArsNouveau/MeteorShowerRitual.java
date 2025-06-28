@@ -1,23 +1,56 @@
 package com.hoshino.cti.integration.ArsNouveau;
 
+import com.aetherteam.aether.capability.time.AetherTime;
+import com.aetherteam.aether.data.resources.registries.AetherDimensions;
 import com.hollingsworth.arsnouveau.api.ritual.AbstractRitual;
 import com.hollingsworth.arsnouveau.client.particle.ParticleColor;
+import com.hoshino.cti.Entity.Projectiles.AethericMeteor;
 import com.hoshino.cti.Entity.Projectiles.MeteorEntity;
 import com.hoshino.cti.Event.ModEvents.MeteorSpawnEvent;
 import com.hoshino.cti.Cti;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.commands.TimeCommand;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.LazyOptional;
 
+import java.util.Optional;
 import java.util.Random;
 
 public class MeteorShowerRitual extends AbstractRitual {
+
+    public static boolean isAetherNight(Level level){
+        if (level.dimension()== AetherDimensions.AETHER_LEVEL){
+            return level.getDayTime()%72000>39000&&level.getDayTime()%72000<69000;
+        }
+        return false;
+    }
+
     @Override
     protected void tick() {
         incrementProgress();
-        if (getWorld() instanceof ServerLevel level && getPos() != null && isRunning()) {
+        if (getProgress() >= 1200) {
+            setFinished();
+        }
+
+        if (getWorld() instanceof ServerLevel level&& level.dimension()== AetherDimensions.AETHER_LEVEL&& isAetherNight(level)&& getPos() != null && isRunning()) {
+            for (int i =0;i<3;i++) {
+                Random random = new Random();
+                float x = random.nextFloat() * 48 - 24;
+                float y = random.nextFloat() * 48 - 24;
+                Vec2 pos = new Vec2(getPos().getX() + x, getPos().getZ() + y);
+                MeteorSpawnEvent event1 = new MeteorSpawnEvent(new Vec3(pos.x, 350, pos.y));
+                MinecraftForge.EVENT_BUS.post(event1);
+                if (!event1.isCanceled()) {
+                    AethericMeteor entity = new AethericMeteor(level, pos.x, 350, pos.y, new Vec3(random.nextFloat() * 0.5, random.nextFloat() * 2.5 - 1.5, random.nextFloat() * 0.5));
+                    level.addFreshEntity(entity);
+                }
+            }
+            this.getContext().progress+=4;
+        } else if (getWorld() instanceof ServerLevel level && getPos() != null && isRunning()) {
             Random random = new Random();
             if (random.nextInt(20) == 0) {
                 float x = random.nextFloat() * 128 - 64;
@@ -59,9 +92,6 @@ public class MeteorShowerRitual extends AbstractRitual {
                     level.addFreshEntity(entity);
                 }
             }
-        }
-        if (getProgress() >= 1200) {
-            setFinished();
         }
     }
 

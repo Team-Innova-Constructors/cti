@@ -23,19 +23,8 @@ public class PlayerMixin {
                 return;
             }
         }
-        if (player.level.getDifficulty() == Difficulty.HARD) {
-            delay *= 1.25f;
-        }
         if (delay < 10) {
-            if (player.level.getDifficulty() == Difficulty.HARD) {
-                cir.setReturnValue(Mth.clamp(((float) ((LivingEntityAccessor) player).getAttackStrengthTicker() + p_36404_) / (delay * 0.6f + 4f), 0.0F, 1.0F));
-            }
-            if (player.level.getDifficulty() == Difficulty.NORMAL) {
-                cir.setReturnValue(Mth.clamp(((float) ((LivingEntityAccessor) player).getAttackStrengthTicker() + p_36404_) / (delay * 0.7f + 3f), 0.0F, 1.0F));
-            }
-            if (player.level.getDifficulty() == Difficulty.EASY) {
-                cir.setReturnValue(Mth.clamp(((float) ((LivingEntityAccessor) player).getAttackStrengthTicker() + p_36404_) / (delay * 0.8f + 2f), 0.0F, 1.0F));
-            }
+            cir.setReturnValue(Mth.clamp(((float) ((LivingEntityAccessor) player).getAttackStrengthTicker() + p_36404_) / (delay * 0.7f + 3f), 0.0F, 1.0F));
         }
     }
 }

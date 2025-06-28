@@ -1,5 +1,6 @@
 package com.hoshino.cti.mixin.CMMixin;
 
+import com.hoshino.cti.util.IMixinMachineTile;
 import fr.frinn.custommachinery.api.machine.MachineTile;
 import net.minecraft.core.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
@@ -8,7 +9,7 @@ import org.spongepowered.asm.mixin.Unique;
 import java.util.List;
 
 @Mixin(value = MachineTile.class,remap = false)
-public class MachineTileMixin implements IMixinMachineTile{
+public class MachineTileMixin implements IMixinMachineTile {
     @Unique
     @Override
     public List<BlockPos> cti$getEnergyInputList() {
@@ -127,11 +128,11 @@ public class MachineTileMixin implements IMixinMachineTile{
         cti$listChemicalOutput.clear();
     }
     @Unique List<BlockPos> cti$listEnergyInput = List.of();
-    @Unique List<BlockPos> cti$listEnergyOutput = List.of();;
-    @Unique List<BlockPos> cti$listItemInput = List.of();;
-    @Unique List<BlockPos> cti$listItemOutput = List.of();;
-    @Unique List<BlockPos> cti$listFluidInput = List.of();;
-    @Unique List<BlockPos> cti$listFluidOutput = List.of();;
-    @Unique List<BlockPos> cti$listChemicalInput = List.of();;
-    @Unique List<BlockPos> cti$listChemicalOutput = List.of();;
+    @Unique List<BlockPos> cti$listEnergyOutput = List.of();
+    @Unique List<BlockPos> cti$listItemInput = List.of();
+    @Unique List<BlockPos> cti$listItemOutput = List.of();
+    @Unique List<BlockPos> cti$listFluidInput = List.of();
+    @Unique List<BlockPos> cti$listFluidOutput = List.of();
+    @Unique List<BlockPos> cti$listChemicalInput = List.of();
+    @Unique List<BlockPos> cti$listChemicalOutput = List.of();
 }

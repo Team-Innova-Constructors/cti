@@ -180,6 +180,16 @@
   "modifier.cti.auto_shooting.flavor": "有弓了谁还需要枪？",
   "modifier.cti.auto_shooting.description": "按住右键就能自动射击，不需要松手。",
 
+  "modifier.cti.atheric": "天赐神兵",
+  "modifier.cti.atheric.flavor": "你的工具已被上天赐福",
+  "modifier.cti.atheric.description": "工具每有一个部件由天镜材料制成，+1时运和抢夺等级，在天镜时+20%伤害，在天镜外造成+20点魔法伤害。",
+
+  "modifier.cti.ambrosium_powered": "神能",
+  "modifier.cti.ambrosium_powered.flavor": "你的工具已注入神的能量",
+  "modifier.cti.ambrosium_powered.description": "在背包中用神能晶右键充能，获得每级25%进攻性属性加成并抵消耐久损耗。",
+
+
+
   "item.cti.xinian_ingot": "§c37锭",
   "item.cti.molten_xinian_bucket": "熔融37桶",
   "fluid.cti.molten_xinian": "熔融37",
@@ -635,7 +645,7 @@
 
   "modifier.cti.star_fury": "群星之怒",
   "modifier.cti.star_fury.flavor": "至少你不用去找空岛了",
-  "modifier.cti.star_fury.description": "挥舞时召唤陨石砸向你的敌人。",
+  "modifier.cti.star_fury.description": "攻击时召唤陨石砸向你的敌人。",
 
   "modifier.cti.plasma_shielding": "离子护盾",
   "modifier.cti.plasma_shielding.flavor": "离子护盾",

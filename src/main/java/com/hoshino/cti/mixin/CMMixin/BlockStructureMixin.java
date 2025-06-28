@@ -1,16 +1,10 @@
 package com.hoshino.cti.mixin.CMMixin;
 
-import fr.frinn.custommachinery.api.component.IMachineComponent;
-import fr.frinn.custommachinery.api.component.MachineComponentType;
+import com.hoshino.cti.util.IMixinMachineTile;
 import fr.frinn.custommachinery.api.machine.MachineTile;
-import fr.frinn.custommachinery.common.component.EnergyMachineComponent;
-import fr.frinn.custommachinery.common.component.FluidMachineComponent;
-import fr.frinn.custommachinery.common.component.ItemMachineComponent;
-import fr.frinn.custommachinery.common.init.Registration;
 import fr.frinn.custommachinery.common.util.BlockStructure;
 import fr.frinn.custommachinery.common.util.PartialBlockState;
 import fr.frinn.custommachinery.common.util.ingredient.IIngredient;
-import fr.frinn.custommachinerymekanism.common.component.ChemicalMachineComponent;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelReader;
@@ -51,34 +45,34 @@ public abstract class BlockStructureMixin {
             if (pos!=machinePos&&machine instanceof MachineTile machineTile&&port instanceof MachineTile portTile) {
                 IMixinMachineTile tile = (IMixinMachineTile) machineTile;
 
-                if (machineTile.getMachine().getId().toString().contains("energy_input")) {
+                if (portTile.getMachine().getId().toString().contains("energy_input")) {
                     tile.cti$addEnergyInput(pos);
                 }
-                if (machineTile.getMachine().getId().toString().contains("energy_output")) {
+                if (portTile.getMachine().getId().toString().contains("energy_output")) {
                     tile.cti$addEnergyOutput(pos);
                 }
 
 
-                if (machineTile.getMachine().getId().toString().contains("item_input")) {
+                if (portTile.getMachine().getId().toString().contains("item_input")) {
                     tile.cti$addItemInput(pos);
                 }
-                if (machineTile.getMachine().getId().toString().contains("item_output")) {
+                if (portTile.getMachine().getId().toString().contains("item_output")) {
                     tile.cti$addItemOutput(pos);
                 }
 
 
-                if (machineTile.getMachine().getId().toString().contains("fluid_input")) {
+                if (portTile.getMachine().getId().toString().contains("fluid_input")) {
                     tile.cti$addFluidInput(pos);
                 }
-                if (machineTile.getMachine().getId().toString().contains("fluid_output")) {
+                if (portTile.getMachine().getId().toString().contains("fluid_output")) {
                     tile.cti$addFluidOutput(pos);
                 }
 
 
-                if (machineTile.getMachine().getId().toString().contains("chemical_input")) {
+                if (portTile.getMachine().getId().toString().contains("chemical_input")) {
                     tile.cti$addChemicalInput(pos);
                 }
-                if (machineTile.getMachine().getId().toString().contains("chemical_output")) {
+                if (portTile.getMachine().getId().toString().contains("chemical_output")) {
                     tile.cti$addChemicalOutput(pos);
                 }
 

@@ -1,10 +1,7 @@
 package com.hoshino.cti.library.modifier;
 
 import com.hoshino.cti.Cti;
-import com.hoshino.cti.library.modifier.hooks.EffectApplicableModifierHook;
-import com.hoshino.cti.library.modifier.hooks.LeftClickModifierHook;
-import com.hoshino.cti.library.modifier.hooks.OnDeathModifierHook;
-import com.hoshino.cti.library.modifier.hooks.OnHoldingPreventDeathHook;
+import com.hoshino.cti.library.modifier.hooks.*;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,4 +26,5 @@ public class CtiModifierHook {
             return false;
         }
     });
+    public static final ModuleHook<SlotStackModifierHook> SLOT_STACK = ModifierHooks.register(Cti.getResource("slot_stack"), SlotStackModifierHook.class, SlotStackModifierHook.FirstMerger::new, new SlotStackModifierHook(){});
 }

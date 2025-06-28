@@ -1,10 +1,10 @@
 package com.hoshino.cti.Modifier.Base;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class OxygenConsumeModifier extends etshmodifieriii {
+public class OxygenConsumeModifier extends EtSTBaseModifier {
     public boolean hasOxygen(IToolStackView tool, ModifierEntry modifier){
         return false;
     }

@@ -1,9 +1,12 @@
 package com.hoshino.cti.client.event;
 
+import com.hoshino.cti.client.CtiParticleType;
 import com.hoshino.cti.client.InitPartModel;
 import com.hoshino.cti.Cti;
+import com.hoshino.cti.client.particle.StarLineParticle;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ModelEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -13,4 +16,10 @@ public class ClientEventHandler {
     public static void registerLoader(ModelEvent.RegisterGeometryLoaders event){
         InitPartModel.init(event::register);
     }
+
+    @SubscribeEvent
+    public static void registerParticles(RegisterParticleProvidersEvent event) {
+        event.register(CtiParticleType.STAR_LINE.get(), StarLineParticle::provider);
+    }
+
 }

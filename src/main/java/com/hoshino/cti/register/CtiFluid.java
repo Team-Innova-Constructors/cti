@@ -1,6 +1,6 @@
 package com.hoshino.cti.register;
 
-import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
+import com.c2h6s.etshtinker.Entities.damageSources.ThroughSources;
 import com.hoshino.cti.content.environmentSystem.EDamageSource;
 import com.hoshino.cti.Cti;
 import net.minecraft.core.BlockPos;
@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -73,7 +74,7 @@ public class CtiFluid {
     public static final FluidObject<ForgeFlowingFluid> extraterrestrial_essense = register("extraterrestrial_essense", 0,supplier-> new LiquidBlock(supplier, BlockBehaviour.Properties.of(Material.LAVA)){
         @Override
         public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-            if (!pEntity.noPhysics&&pEntity instanceof LivingEntity){
+            if (!pEntity.noPhysics&&(pEntity instanceof LivingEntity||pEntity instanceof ItemEntity)){
                 pEntity.setDeltaMovement(0,100,0);
             }
         }
@@ -110,9 +111,11 @@ public class CtiFluid {
     public static final FluidObject<ForgeFlowingFluid> LAVA_ATOMIC = register("lava_atomic", 9000,supplier -> new LiquidBlock(supplier,BlockBehaviour.Properties.of(Material.LAVA)){
         @Override
         public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-            pEntity.invulnerableTime=0;
-            pEntity.hurt(throughSources.annihilate(200),200);
-            pEntity.invulnerableTime=0;
+            if (pEntity instanceof LivingEntity living) {
+                pEntity.invulnerableTime = 0;
+                ThroughSources.atomic(100).hurtEntity(living);
+                pEntity.invulnerableTime = 0;
+            }
         }
     });
 

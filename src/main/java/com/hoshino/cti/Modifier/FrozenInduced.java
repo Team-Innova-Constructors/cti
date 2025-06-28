@@ -1,6 +1,6 @@
 package com.hoshino.cti.Modifier;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import com.hoshino.cti.content.environmentSystem.EDamageSource;
 import com.hoshino.cti.content.environmentSystem.EnvironmentalHandler;
 import net.minecraft.world.entity.Entity;
@@ -18,7 +18,7 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 import static com.hoshino.cti.content.environmentSystem.EnvironmentalHandler.*;
 
-public class FrozenInduced extends etshmodifieriii {
+public class FrozenInduced extends EtSTBaseModifier {
 
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {

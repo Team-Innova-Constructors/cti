@@ -12,6 +12,7 @@
     "LivingEntityMixin",
     "PlayerMixin",
     "ProjectileMixin",
+    "ServerLevelMixin",
     "WitherSkullMixin",
     "AdAstraMixin.AcidRainTick",
     "AdAstraMixin.CryoFuelLiquidBlockMixin",

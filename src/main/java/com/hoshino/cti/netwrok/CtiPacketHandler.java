@@ -28,6 +28,10 @@ public class CtiPacketHandler {
         INSTANCE.messageBuilder(PRailgunC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PRailgunC2S::new).encoder(PRailgunC2S::toByte).consumerMainThread(PRailgunC2S::handle).add();
         INSTANCE.messageBuilder(PAttackSelfC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PAttackSelfC2S::new).encoder(PAttackSelfC2S::toByte).consumerMainThread(PAttackSelfC2S::handle).add();
         INSTANCE.messageBuilder(PStarFuryC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PStarFuryC2S::new).encoder(PStarFuryC2S::toByte).consumerMainThread(PStarFuryC2S::handle).add();
+        INSTANCE.messageBuilder(PLeftClickEmptyC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PLeftClickEmptyC2S::new).encoder(PLeftClickEmptyC2S::toByte).consumerMainThread(PLeftClickEmptyC2S::handle).add();
+//        INSTANCE.messageBuilder(PStackedOnMeC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PStackedOnMeC2S::new).encoder(PStackedOnMeC2S::toByte).consumerMainThread(PStackedOnMeC2S::handle).add();
+//        INSTANCE.messageBuilder(PStackedOnOtherC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PStackedOnOtherC2S::new).encoder(PStackedOnOtherC2S::toByte).consumerMainThread(PStackedOnOtherC2S::handle).add();
+        INSTANCE.messageBuilder(PAmbrosiumChargeC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PAmbrosiumChargeC2S::new).encoder(PAmbrosiumChargeC2S::toByte).consumerMainThread(PAmbrosiumChargeC2S::handle).add();
     }
 
     public static <MSG> void sendToServer(MSG msg) {

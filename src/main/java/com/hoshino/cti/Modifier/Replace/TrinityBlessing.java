@@ -1,6 +1,6 @@
 package com.hoshino.cti.Modifier.Replace;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import com.c2h6s.etshtinker.util.C;
 import net.minecraft.network.chat.Component;
@@ -30,7 +30,7 @@ import slimeknights.tconstruct.library.utils.RomanNumeralHelper;
 import static com.c2h6s.etshtinker.util.getMainOrOff.getMainLevel;
 import static com.c2h6s.etshtinker.util.getMainOrOff.getOffLevel;
 
-public class TrinityBlessing extends etshmodifieriii implements ToolStatsModifierHook, ToolDamageModifierHook, DisplayNameModifierHook {
+public class TrinityBlessing extends EtSTBaseModifier implements ToolStatsModifierHook, ToolDamageModifierHook, DisplayNameModifierHook {
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("trinityblessing");
 
     @Override

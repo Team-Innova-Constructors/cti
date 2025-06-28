@@ -1,6 +1,7 @@
 package com.hoshino.cti.Modifier.Developer;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import com.hoshino.cti.Entity.Projectiles.FallenStars;
 import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PStellarBlade;
@@ -34,7 +35,7 @@ import java.util.List;
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 
-public class StellarBlade extends etshmodifieriii {
+public class StellarBlade extends EtSTBaseModifier {
     public StellarBlade() {
         MinecraftForge.EVENT_BUS.addListener(this::LeftClick);
     }

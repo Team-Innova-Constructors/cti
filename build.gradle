@@ -15,6 +15,7 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '5.+'
     id 'org.parchmentmc.librarian.forgegradle' version'1.+'
+    id 'io.freefair.lombok' version '8.6'
 }
 
 
@@ -26,7 +27,7 @@ apply plugin: 'org.spongepowered.mixin'
 
 
 
-version = '1.0.3'
+version = mod_version
 group = 'com.hoshino.cti' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'cti'
 
@@ -206,6 +207,7 @@ repositories {
             includeGroup "dev.architectury"
         }
     }
+    maven { url = "https://packages.aether-mod.net/Nitrogen" }
 }
 
 dependencies {
@@ -246,6 +248,8 @@ dependencies {
     implementation fg.deobf("curse.maven:custom-machinery-mekanism-721079:5500274")
 
     implementation fg.deobf("curse.maven:architectury-api-419699:5137942")
+
+    implementation fg.deobf("com.aetherteam.nitrogen:nitrogen_internals:1.19.2-1.0.3-forge")
 
     //这里引入mixin依赖
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
