@@ -117,4 +117,8 @@ public class CtiModifiers {
     public static final StaticModifier<Wearproof> wearproofStaticModifier = MODIFIERS.register("wearproof", Wearproof::new);
     public static final StaticModifier<Atheric> ATHERIC = MODIFIERS.register("atheric", Atheric::new);
     public static final StaticModifier<AmbrosiumPowered> AMBROSIUM_POWERED = MODIFIERS.register("ambrosium_powered", AmbrosiumPowered::new);
+    public static final StaticModifier<StellarArrow> STELLAR_ARROW = MODIFIERS.register("stellar_arrow", StellarArrow::new);
+    public static final StaticModifier<GravityShield> GRAVITY_SHIELD = MODIFIERS.register("gravity_shield", GravityShield::new);
+    public static final StaticModifier<SecondaryArmor> SECONDARY_ARMOR = MODIFIERS.register("secondary_armor", SecondaryArmor::new);
+    public static final StaticModifier<SentriteDefense> SENTRITE_DEFENSE = MODIFIERS.register("sentrite_defense", SentriteDefense::new);
 }

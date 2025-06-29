@@ -63,7 +63,7 @@ public class AmbrosiumPowered extends Modifier implements SlotStackModifierHook,
     public void addToolStats(IToolContext iToolContext, ModifierEntry modifierEntry, ModifierStatsBuilder modifierStatsBuilder) {
         IModDataView nbt = iToolContext.getPersistentData();
         if (nbt.getInt(KEY_AMBROSIUM_POWER)>0){
-            List.of(ToolStats.ATTACK_DAMAGE,ToolStats.PROJECTILE_DAMAGE,ToolStats.ATTACK_SPEED,ToolStats.DRAW_SPEED).forEach(stat->stat.percent(modifierStatsBuilder,0.25*modifierEntry.getLevel()));
+            List.of(ToolStats.ATTACK_DAMAGE,ToolStats.PROJECTILE_DAMAGE,ToolStats.ATTACK_SPEED,ToolStats.DRAW_SPEED,ToolStats.ARMOR,ToolStats.ARMOR_TOUGHNESS).forEach(stat->stat.percent(modifierStatsBuilder,0.25*modifierEntry.getLevel()));
         }
     }
 

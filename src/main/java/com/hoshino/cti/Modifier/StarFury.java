@@ -78,13 +78,6 @@ public class StarFury extends EtSTBaseModifier {
         return knockback;
     }
 
-    @Override
-    public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
-        if (projectile instanceof AbstractArrow arrow&&attacker instanceof Player player&&target!=null){
-            summonMeteor(player,modifier.getLevel(),target,(float) (arrow.getBaseDamage()*arrow.getDeltaMovement().length()*0.2f));
-        }
-        return false;
-    }
 
     public static void summonMeteor(Player player, int modifierLevel, Entity target, float damage){
         int count =1 + RANDOM.nextInt(modifierLevel*2);
