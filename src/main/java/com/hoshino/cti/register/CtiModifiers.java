@@ -28,7 +28,7 @@ public class CtiModifiers {
     public static final StaticModifier<TimeToJudge> timetojudge = MODIFIERS.register("timetojudge", TimeToJudge::new);
     public static final StaticModifier<NetherFire> netherfire = MODIFIERS.register("netherfire", NetherFire::new);
     public static final StaticModifier<CelestialLight> celestiallight = MODIFIERS.register("celestiallight", CelestialLight::new);
-    public static final StaticModifier<archangelwings> archangelwings = MODIFIERS.register("archangelwings", archangelwings::new);
+    public static final StaticModifier<Archangelwings> archangelwings = MODIFIERS.register("archangelwings", Archangelwings::new);
     public static final StaticModifier<GoldSimulate> gold_simulate = MODIFIERS.register("gold_simulate", GoldSimulate::new);
     public static final StaticModifier<EndSlayer> end_slayer = MODIFIERS.register("end_slayer", EndSlayer::new);
     public static final StaticModifier<StellarBlade> stellar_blade = MODIFIERS.register("stellar_blade", StellarBlade::new);
@@ -116,4 +116,7 @@ public class CtiModifiers {
     public static final StaticModifier<AutoShooting> AUTO_SHOOTING = MODIFIERS.register("auto_shooting", AutoShooting::new);
     public static final StaticModifier<Fragment> Fragment = MODIFIERS.register("fragment", Fragment::new);
     public static final StaticModifier<Wearproof> wearproofStaticModifier = MODIFIERS.register("wearproof", Wearproof::new);
+    public static final StaticModifier<OxygeliumBudHelmet> oxygeliumBudHelmetStaticModifier = MODIFIERS.register("oxygelium_bud_helmet", OxygeliumBudHelmet::new);
+    public static final StaticModifier<ShanXiPickaxe> shanXiPickaxeStaticModifier = MODIFIERS.register("shanxipickaxe", ShanXiPickaxe::new);
+    public static final StaticModifier<HealthBoost> healthBoostStaticModifier = MODIFIERS.register("healthboost", HealthBoost::new);
 }

@@ -26,9 +26,12 @@ import mekanism.api.Upgrade;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.GlassBlock;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -278,6 +281,7 @@ public class CtiItem {
     public static final RegistryObject<Item> upgrade_speed_kit = ITEMS.register("upgrade_speed_kit", () -> new AdvancedUpgrade(8, false, List.of(Upgrade.SPEED)));
     public static final RegistryObject<Item> upgrade_energy_kit_2 = ITEMS.register("upgrade_energy_kit_2", () -> new AdvancedUpgrade(16, false, List.of(Upgrade.ENERGY)));
     public static final RegistryObject<Item> upgrade_energy_kit_3 = ITEMS.register("upgrade_energy_kit_3", () -> new AdvancedUpgrade(32, false, List.of(Upgrade.ENERGY)));
+    public static final RegistryObject<BlockItem> aluminium_glass = ITEMS.register("aluminium_glass", () -> new BlockItem(CtiBlock.aluminium_glass.get(), new Item.Properties().tab(CtiTab.MIXC)));
 
     public static final RegistryObject<Item> BIOMES_ITEM = ITEMS.register("biomes_item",BiomeInfoItem::new);
 

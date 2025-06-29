@@ -20,7 +20,8 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
- import top.theillusivec4.curios.api.CuriosApi;
+import slimeknights.tconstruct.TConstruct;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 

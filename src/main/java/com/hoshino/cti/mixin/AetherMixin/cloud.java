@@ -20,7 +20,7 @@ public abstract class cloud extends Fireball {
      * @reason 这B吐泡泡一弹弹十多格诗人啊, 天镜还一直刷，杀都杀不完,搭个裂变产线崩飞800次
      */
 
-    @Inject(at = @At("HEAD"), method = "m_8119_", cancellable = true)
+    @Inject(at = @At("HEAD"), method = "tick", cancellable = true)
     private void tick(CallbackInfo ci) {
         this.discard();
         ci.cancel();

@@ -53,7 +53,6 @@ public class CommonLivingHurt {
             }
         }
     }
-
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void whenCurseMobAttackPlayer(LivingHurtEvent event) {
         if (event.getSource().getEntity() instanceof Mob mob) {

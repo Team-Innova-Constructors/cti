@@ -1,6 +1,8 @@
 package com.hoshino.cti.Modifier;
 
 import com.marth7th.solidarytinker.extend.superclass.ArmorModifier;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.NeutralMob;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;

@@ -225,6 +225,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
     implementation fg.deobf('curse.maven:framework-549225:3873800')
+    implementation fg.deobf('curse.maven:aether-255308:5302176')
     implementation fg.deobf('curse.maven:mrcrayfishs-gun-mod-289479:3874034')
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.36')
     compileOnly fg.deobf("mezz.jei:jei-1.19-common-api:11.0.0.211")

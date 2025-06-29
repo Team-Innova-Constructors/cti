@@ -19,8 +19,10 @@ public class TooltipedItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack p_40572_, @Nullable Level p_40573_, List<net.minecraft.network.chat.Component> list, TooltipFlag p_40575_) {
-        list.addAll(this.tooltip);
-        super.appendHoverText(p_40572_, p_40573_, list, p_40575_);
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        pTooltipComponents.addAll(this.tooltip);
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
+
+
 }
