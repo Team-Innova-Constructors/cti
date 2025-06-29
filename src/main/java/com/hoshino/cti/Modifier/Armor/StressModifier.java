@@ -1,6 +1,6 @@
 package com.hoshino.cti.Modifier.Armor;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import com.hoshino.cti.register.CtiEffects;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class StressModifier extends etshmodifieriii {
+public class StressModifier extends EtSTBaseModifier {
     @Override
     public void modifierOnAttacked(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         super.modifierOnAttacked(tool, modifier, context, slotType, source, amount, isDirectDamage);

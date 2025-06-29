@@ -180,6 +180,32 @@
   "modifier.cti.auto_shooting.flavor": "有弓了谁还需要枪？",
   "modifier.cti.auto_shooting.description": "按住右键就能自动射击，不需要松手。",
 
+  "modifier.cti.atheric": "天赐神兵",
+  "modifier.cti.atheric.flavor": "你的工具已被上天赐福",
+  "modifier.cti.atheric.description": "工具每有一个部件由天镜材料制成，+1时运和抢夺等级、在天镜时+20%伤害、在天镜外造成+20点魔法伤害。",
+
+  "modifier.cti.ambrosium_powered": "神能",
+  "modifier.cti.ambrosium_powered.flavor": "你的工具已注入神的能量",
+  "modifier.cti.ambrosium_powered.description": "在背包中用神能晶右键充能，获得每级25%攻防属性加成并抵消耐久损耗。",
+
+  "modifier.cti.stellar_arrow": "星辰箭矢",
+  "modifier.cti.stellar_arrow.flavor": "据说能射下天上的星星",
+  "modifier.cti.stellar_arrow.description": "把箭矢替换成伤害更高且击中时召唤落星的星辰箭矢。当工具有神能晶充能时优先消耗充能而非箭矢来射击。",
+
+  "modifier.cti.gravity_shield": "重力场护盾",
+  "modifier.cti.gravity_shield.flavor": "反转引力！",
+  "modifier.cti.gravity_shield.description": "对附近的弹射物施加斥力，使它们偏离原轨迹，等级越高效果越强。",
+
+  "modifier.cti.secondary_armor": "第二护甲",
+  "modifier.cti.secondary_armor.flavor": "没想到吧，我还有隐藏护甲！",
+  "modifier.cti.secondary_armor.description": "以一半的护甲值使你的护甲抵抗穿甲伤害。",
+
+  "modifier.cti.sentrite_defense": "哨石之庇护",
+  "modifier.cti.sentrite_defense.flavor": "从滑行魔石上扒下来的外壳",
+  "modifier.cti.sentrite_defense.description": "对非穿甲伤害提供40%的减免。",
+
+
+
   "item.cti.xinian_ingot": "§c37锭",
   "item.cti.molten_xinian_bucket": "熔融37桶",
   "fluid.cti.molten_xinian": "熔融37",
@@ -635,7 +661,7 @@
 
   "modifier.cti.star_fury": "群星之怒",
   "modifier.cti.star_fury.flavor": "至少你不用去找空岛了",
-  "modifier.cti.star_fury.description": "挥舞时召唤陨石砸向你的敌人。",
+  "modifier.cti.star_fury.description": "攻击时召唤陨石砸向你的敌人。",
 
   "modifier.cti.plasma_shielding": "离子护盾",
   "modifier.cti.plasma_shielding.flavor": "离子护盾",

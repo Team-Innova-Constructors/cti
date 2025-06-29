@@ -1,34 +1,44 @@
 package com.hoshino.cti.Event;
 
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.Entity.Projectiles.MeteorEntity;
 import com.hoshino.cti.Event.ModEvents.MeteorSpawnEvent;
+import com.hoshino.cti.content.entityTicker.EntityTickerManager;
 import com.hoshino.cti.util.DimensionConstants;
 import com.xiaoyue.tinkers_ingenuity.content.basic.entity.projectile.ShurikenEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
+import net.minecraftforge.event.server.ServerStoppingEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
 import java.util.Random;
 
+@Mod.EventBusSubscriber(modid = Cti.MOD_ID)
 public class ServerEvent {
-    public ServerEvent() {
-        MinecraftForge.EVENT_BUS.addListener(this::onPlayerTick);
-        MinecraftForge.EVENT_BUS.addListener(this::onEntityTravelDimension);
-    }
 
-    private void onEntityTravelDimension(EntityTravelToDimensionEvent event) {
+
+    @SubscribeEvent
+    public static void onServerStopping(ServerStoppingEvent event){
+        EntityTickerManager.saveAll();
+    }
+    @SubscribeEvent
+    public static void onEntityTravelDimension(EntityTravelToDimensionEvent event) {
         if (event.getEntity() instanceof ShurikenEntity entity) {
             entity.discard();
             event.setCanceled(true);
         }
+        if (event.getEntity() instanceof FallingBlockEntity) event.setCanceled(true);
     }
-
-    public void onPlayerTick(TickEvent.PlayerTickEvent event) {
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.player.getLevel() instanceof ServerLevel level && level.dimension().equals(DimensionConstants.MOON) && level.getGameTime() % 2000 == 0) {
             Player player = event.player;
             if (Math.abs(player.getX()) + Math.abs(player.getZ()) > 750) {

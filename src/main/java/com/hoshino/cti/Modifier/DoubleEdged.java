@@ -1,6 +1,6 @@
 package com.hoshino.cti.Modifier;
 
-import com.hoshino.cti.netwrok.ctiPacketHandler;
+import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PAttackSelfC2S;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
@@ -31,7 +31,7 @@ public class DoubleEdged extends NoLevelsModifier implements MeleeDamageModifier
             if (stack.getItem() instanceof IModifiable && event.getHand() == InteractionHand.MAIN_HAND) {
                 ToolStack tool = ToolStack.from(stack);
                 if (tool.getModifierLevel(this) > 0) {
-                    ctiPacketHandler.sendToServer(new PAttackSelfC2S());
+                    CtiPacketHandler.sendToServer(new PAttackSelfC2S());
                 }
             }
         }
@@ -49,7 +49,7 @@ public class DoubleEdged extends NoLevelsModifier implements MeleeDamageModifier
             if (stack.getItem() instanceof IModifiable && event.getHand() == InteractionHand.MAIN_HAND) {
                 ToolStack tool = ToolStack.from(stack);
                 if (tool.getModifierLevel(this) > 0) {
-                    ctiPacketHandler.sendToServer(new PAttackSelfC2S());
+                    CtiPacketHandler.sendToServer(new PAttackSelfC2S());
                 }
             }
         }

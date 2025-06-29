@@ -1,6 +1,7 @@
 package com.hoshino.cti.Modifier;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import com.hoshino.cti.content.environmentSystem.EDamageSource;
 import com.hoshino.cti.content.environmentSystem.EnvironmentalHandler;
 import net.minecraft.world.entity.Entity;
@@ -10,7 +11,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class IonizeIndused extends etshmodifieriii {
+public class IonizeIndused extends EtSTBaseModifier {
     @Override
     public int getPriority() {
         return 255;

@@ -6,9 +6,8 @@ import com.hoshino.cti.Modifier.Contributors.*;
 import com.hoshino.cti.Modifier.Developer.*;
 import com.hoshino.cti.Modifier.Mob.BuriedOcean;
 import com.hoshino.cti.Modifier.Replace.*;
-import com.hoshino.cti.Modifier.slot.Hardcore;
-import com.hoshino.cti.Modifier.slot.Improve;
-import com.hoshino.cti.Modifier.slot.Mutation;
+import com.hoshino.cti.Modifier.aetherCompact.*;
+import com.hoshino.cti.Modifier.slot.*;
 import com.hoshino.cti.Cti;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
@@ -28,7 +27,7 @@ public class CtiModifiers {
     public static final StaticModifier<TimeToJudge> timetojudge = MODIFIERS.register("timetojudge", TimeToJudge::new);
     public static final StaticModifier<NetherFire> netherfire = MODIFIERS.register("netherfire", NetherFire::new);
     public static final StaticModifier<CelestialLight> celestiallight = MODIFIERS.register("celestiallight", CelestialLight::new);
-    public static final StaticModifier<Archangelwings> archangelwings = MODIFIERS.register("archangelwings", Archangelwings::new);
+    public static final StaticModifier<archangelwings> archangelwings = MODIFIERS.register("archangelwings", archangelwings::new);
     public static final StaticModifier<GoldSimulate> gold_simulate = MODIFIERS.register("gold_simulate", GoldSimulate::new);
     public static final StaticModifier<EndSlayer> end_slayer = MODIFIERS.register("end_slayer", EndSlayer::new);
     public static final StaticModifier<StellarBlade> stellar_blade = MODIFIERS.register("stellar_blade", StellarBlade::new);
@@ -116,7 +115,10 @@ public class CtiModifiers {
     public static final StaticModifier<AutoShooting> AUTO_SHOOTING = MODIFIERS.register("auto_shooting", AutoShooting::new);
     public static final StaticModifier<Fragment> Fragment = MODIFIERS.register("fragment", Fragment::new);
     public static final StaticModifier<Wearproof> wearproofStaticModifier = MODIFIERS.register("wearproof", Wearproof::new);
-    public static final StaticModifier<OxygeliumBudHelmet> oxygeliumBudHelmetStaticModifier = MODIFIERS.register("oxygelium_bud_helmet", OxygeliumBudHelmet::new);
-    public static final StaticModifier<ShanXiPickaxe> shanXiPickaxeStaticModifier = MODIFIERS.register("shanxipickaxe", ShanXiPickaxe::new);
-    public static final StaticModifier<HealthBoost> healthBoostStaticModifier = MODIFIERS.register("healthboost", HealthBoost::new);
+    public static final StaticModifier<Atheric> ATHERIC = MODIFIERS.register("atheric", Atheric::new);
+    public static final StaticModifier<AmbrosiumPowered> AMBROSIUM_POWERED = MODIFIERS.register("ambrosium_powered", AmbrosiumPowered::new);
+    public static final StaticModifier<StellarArrow> STELLAR_ARROW = MODIFIERS.register("stellar_arrow", StellarArrow::new);
+    public static final StaticModifier<GravityShield> GRAVITY_SHIELD = MODIFIERS.register("gravity_shield", GravityShield::new);
+    public static final StaticModifier<SecondaryArmor> SECONDARY_ARMOR = MODIFIERS.register("secondary_armor", SecondaryArmor::new);
+    public static final StaticModifier<SentriteDefense> SENTRITE_DEFENSE = MODIFIERS.register("sentrite_defense", SentriteDefense::new);
 }

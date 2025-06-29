@@ -6,6 +6,7 @@ import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class GoldSimulate extends NoLevelsModifier {
     public GoldSimulate() {
-        MinecraftForge.EVENT_BUS.addListener(this::OnChangeTarget);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::OnChangeTarget);
     }
 
     private void OnChangeTarget(LivingChangeTargetEvent event) {

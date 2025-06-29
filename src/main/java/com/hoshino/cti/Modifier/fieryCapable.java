@@ -1,6 +1,6 @@
 package com.hoshino.cti.Modifier;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
-public class fieryCapable extends etshmodifieriii {
+public class fieryCapable extends EtSTBaseModifier {
     @Override
     public boolean isNoLevels() {
         return true;

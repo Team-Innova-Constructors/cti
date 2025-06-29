@@ -4,11 +4,15 @@ import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.packs.repository.PackRepository;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.level.storage.WorldData;
 import org.slf4j.Logger;
+import slimeknights.tconstruct.library.modifiers.ModifierId;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.UUID;
 
 public class CommonUtil {
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -43,5 +47,9 @@ public class CommonUtil {
         }
 
         return $$3;
+    }
+
+    public static UUID UUIDFromSlot(EquipmentSlot slot, ModifierId modifierId){
+        return UUID.nameUUIDFromBytes((slot.getName() +modifierId.toString()).getBytes(StandardCharsets.UTF_8));
     }
 }

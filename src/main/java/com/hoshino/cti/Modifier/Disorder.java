@@ -1,7 +1,7 @@
 package com.hoshino.cti.Modifier;
 
 import com.c2h6s.etshtinker.Entities.plasmaexplosionentity;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
@@ -20,7 +20,7 @@ import java.util.Random;
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.vecCalc.getScatteredVec3;
 
-public class Disorder extends etshmodifieriii {
+public class Disorder extends EtSTBaseModifier {
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         if (!context.isExtraAttack()) {

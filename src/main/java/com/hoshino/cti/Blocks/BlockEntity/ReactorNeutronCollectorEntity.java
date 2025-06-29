@@ -2,7 +2,7 @@ package com.hoshino.cti.Blocks.BlockEntity;
 
 import com.hoshino.cti.Blocks.Machine.ReactorNeutronCollectorBlock;
 import com.hoshino.cti.Screen.menu.ReactorNeutronCollectorMenu;
-import com.hoshino.cti.netwrok.ctiPacketHandler;
+import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PMachineEnergySync;
 import com.hoshino.cti.recipe.ReactorNeutronCollectorRecipe;
 import com.hoshino.cti.recipe.RecipeMap;
@@ -240,7 +240,7 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
         if (level.isClientSide) {
             return;
         }
-        ctiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(), entity.getBlockPos()));
+        CtiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(), entity.getBlockPos()));
         if (!state.is(CtiBlock.reactor_neutron_collector.get())) {
             return;
         }
@@ -379,7 +379,7 @@ public class ReactorNeutronCollectorEntity extends GeneralMachineEntity implemen
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        ctiPacketHandler.sendToClient(new PMachineEnergySync(this.ENERGY_STORAGE.getEnergyStored(), this.getBlockPos()));
+        CtiPacketHandler.sendToClient(new PMachineEnergySync(this.ENERGY_STORAGE.getEnergyStored(), this.getBlockPos()));
         return new ReactorNeutronCollectorMenu(i, inventory, this, this.DATA);
     }
 

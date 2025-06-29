@@ -4,7 +4,7 @@ import cofh.core.init.CoreParticles;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import com.hoshino.cti.Capabilitiess.*;
 import com.hoshino.cti.util.ILivingEntityMixin;
-import com.hoshino.cti.netwrok.ctiPacketHandler;
+import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PFrozenValueSync;
 import com.hoshino.cti.netwrok.packet.PIonizeValueSync;
 import com.hoshino.cti.netwrok.packet.PPressureValueSync;
@@ -98,7 +98,7 @@ public class EnvironmentalHandler {
                     int added =(int) Math.min(maxValue- value,toAdd);
                     addScorchValue(living,added);
                     if (living instanceof ServerPlayer player) {
-                        ctiPacketHandler.sendToPlayer(new PScorchValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
+                        CtiPacketHandler.sendToPlayer(new PScorchValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
                     }
                 }else if (scorchLevel <=0&& value >0){
                     toAdd = Math.min(-1, baseDecrease*scorchLevel);
@@ -106,7 +106,7 @@ public class EnvironmentalHandler {
                     addScorchValue(living,added);
                 }
                 if (living instanceof ServerPlayer player) {
-                    ctiPacketHandler.sendToPlayer(new PScorchValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
+                    CtiPacketHandler.sendToPlayer(new PScorchValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
                 }
                 toAdd =0;
 
@@ -122,7 +122,7 @@ public class EnvironmentalHandler {
                     addFrozenValue(living,added);
                 }
                 if (living instanceof ServerPlayer player) {
-                    ctiPacketHandler.sendToPlayer(new PFrozenValueSync((float) (value * 100) /volume, toAdd *100/volume), player);
+                    CtiPacketHandler.sendToPlayer(new PFrozenValueSync((float) (value * 100) /volume, toAdd *100/volume), player);
                 }
                 toAdd=0;
 
@@ -138,7 +138,7 @@ public class EnvironmentalHandler {
                     addPressureValue(living,added);
                 }
                 if (living instanceof ServerPlayer player) {
-                    ctiPacketHandler.sendToPlayer(new PPressureValueSync((float) (value * 100) /volume, toAdd *100/volume), player);
+                    CtiPacketHandler.sendToPlayer(new PPressureValueSync((float) (value * 100) /volume, toAdd *100/volume), player);
                 }
                 toAdd=0;
 
@@ -154,7 +154,7 @@ public class EnvironmentalHandler {
                     addIonizeValue(living,added);
                 }
                 if (living instanceof ServerPlayer player) {
-                    ctiPacketHandler.sendToPlayer(new PIonizeValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
+                    CtiPacketHandler.sendToPlayer(new PIonizeValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
                 }
 
                 //压强的大伤害

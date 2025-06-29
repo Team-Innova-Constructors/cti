@@ -3,7 +3,7 @@ package com.hoshino.cti.Blocks.BlockEntity;
 import com.hoshino.cti.Blocks.Machine.AtmosphereExtractorBlock;
 import com.hoshino.cti.Items.AtmosphereUpgradeItem;
 import com.hoshino.cti.Screen.menu.AtmosphereExtractorMenu;
-import com.hoshino.cti.netwrok.ctiPacketHandler;
+import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.PMachineEnergySync;
 import com.hoshino.cti.recipe.AtmosphereExtractorRecipe;
 import com.hoshino.cti.recipe.RecipeMap;
@@ -246,7 +246,7 @@ public class AtmosphereExtractorEntity extends GeneralMachineEntity implements M
         if (level.isClientSide) {
             return;
         }
-        ctiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(), entity.getBlockPos()));
+        CtiPacketHandler.sendToClient(new PMachineEnergySync(entity.ENERGY_STORAGE.getEnergyStored(), entity.getBlockPos()));
         ResourceKey<Biome> biomekey = getBiomeKey(level.getBiome(blockPos));
 
         if (biomekey == null) {
@@ -309,7 +309,7 @@ public class AtmosphereExtractorEntity extends GeneralMachineEntity implements M
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        ctiPacketHandler.sendToClient(new PMachineEnergySync(this.ENERGY_STORAGE.getEnergyStored(), this.getBlockPos()));
+        CtiPacketHandler.sendToClient(new PMachineEnergySync(this.ENERGY_STORAGE.getEnergyStored(), this.getBlockPos()));
         return new AtmosphereExtractorMenu(i, inventory, this, this.DATA);
     }
 
