@@ -220,6 +220,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.4.0'
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
+
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
@@ -233,6 +234,8 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
     implementation fg.deobf('curse.maven:framework-549225:3873800')
+    implementation fg.deobf('curse.maven:aether-255308:5302176')
+    implementation fg.deobf('curse.maven:mowzies-mobs-250498:5180680')
     implementation fg.deobf('curse.maven:mrcrayfishs-gun-mod-289479:3874034')
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.36')
     compileOnly fg.deobf("mezz.jei:jei-1.19-common-api:11.0.0.211")

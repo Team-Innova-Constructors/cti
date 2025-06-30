@@ -92,7 +92,7 @@
   "modifier.cti.chewevolution.description":"根据你所吃过的食物种类解锁独特的能力\n　　50层：每次攻击造成额外的（食物种类*1.5*词条等级）的魔法伤害\n　　125层：击中目标会使目标产生额外的爆炸，对其与周围敌人造成额外的（食物种类*0.15*词条等级）的伤害\n　　250层：使攻击目标陷入“远古龙焰”状态3秒，每秒对敌方造成敌方总血量3%的三穿伤害\n　　300层：工具正常使用不再损失耐久\n　　500层：攻击目标时，若敌方血量削至百分之（食物种类*0.03*词条等级）下时，直接斩杀。该斩杀血量百分比最高为25%",
 
 
-  "item.cti.uriel_ingot": "§e乌列尔",
+  "item.cti.uriel_ingot": "乌列尔",
   "item.cti.molten_uriel_bucket": "熔融乌列尔桶",
   "fluid.cti.molten_uriel": "熔融乌列尔",
   "tooltip.uriel_ingot.desc1": "Esdras IV in Catholic versions",
@@ -717,6 +717,10 @@
   "modifier.cti.donotsplit.flavor": "不准分裂",
   "modifier.cti.donotsplit.description":"攻击为目标施加'不准分裂',怪物拥有此效果不会则分裂",
 
+  "modifier.cti.shanxipickaxe": "山西镐",
+  "modifier.cti.shanxipickaxe.flavor": "山西人祖传锻造技术",
+  "modifier.cti.shanxipickaxe.description":"使用带有此词条的镐类工具击杀凋零骷髅会掉落大量煤炭(真的是大量)",
+
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",
@@ -808,6 +812,14 @@
 
   "fluid.cti.molten_meteorium": "熔融陨铁合金",
   "item.cti.molten_meteorium_bucket": "熔融陨铁合金桶",
+
+  "modifier.cti.electric_protect": "电离防护",
+  "modifier.cti.electric_protect.flavor": "电流退散！",
+  "modifier.cti.electric_protect.description":"每级提供0.25电离抗性",
+
+  "modifier.cti.oxygelium_bud_helmet": "氧素生物头盔",
+  "modifier.cti.oxygelium_bud_helmet.flavor": "这个头盔有生命！",
+  "modifier.cti.oxygelium_bud_helmet.description":"当你氧气不为满,并且头盔中有水存储的时候,你的头盔每隔0.5秒会尝试为你补充氧气,如果补充成功还有20%概率恢复1点生命,同时消耗10mb水.同时在外太空受到的来自生物的伤害降低18%",
 
   "dimension.ad_astra.infernal": "炼狱",
   "dimension.ad_astra.uranus": "天王星",

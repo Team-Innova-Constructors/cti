@@ -6,6 +6,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -19,6 +20,10 @@ public class uriel_ingot extends Item {
         tooltip.add(Component.translatable("tooltip.uriel_ingot.desc1").withStyle(ChatFormatting.YELLOW));
         tooltip.add(Component.translatable("tooltip.uriel_ingot.desc2").withStyle(ChatFormatting.AQUA));
         super.appendHoverText(stack, level, tooltip, flag);
+    }
+    @Override
+    public @NotNull Component getName(@NotNull ItemStack pStack) {
+        return Component.translatable(this.getDescriptionId(pStack)).withStyle(style -> style.withColor(0xffaaff));
     }
 
 }
