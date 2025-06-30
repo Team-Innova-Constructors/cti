@@ -27,7 +27,7 @@ public class CtiModifiers {
     public static final StaticModifier<TimeToJudge> timetojudge = MODIFIERS.register("timetojudge", TimeToJudge::new);
     public static final StaticModifier<NetherFire> netherfire = MODIFIERS.register("netherfire", NetherFire::new);
     public static final StaticModifier<CelestialLight> celestiallight = MODIFIERS.register("celestiallight", CelestialLight::new);
-    public static final StaticModifier<archangelwings> archangelwings = MODIFIERS.register("archangelwings", archangelwings::new);
+    public static final StaticModifier<Archangelwings> archangelwings = MODIFIERS.register("archangelwings", Archangelwings::new);
     public static final StaticModifier<GoldSimulate> gold_simulate = MODIFIERS.register("gold_simulate", GoldSimulate::new);
     public static final StaticModifier<EndSlayer> end_slayer = MODIFIERS.register("end_slayer", EndSlayer::new);
     public static final StaticModifier<StellarBlade> stellar_blade = MODIFIERS.register("stellar_blade", StellarBlade::new);
