@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -32,9 +33,6 @@ public abstract class SpiritMixin extends PathfinderMob{
     @Inject(method = "tick",at = @At("HEAD"))
     private void tick(CallbackInfo ci){
         cti$freezeTick--;
-        if(cti$freezeTick >0&&!isFreezing()){
-            setFrozen(true);
-        }
     }
     @Inject(method = "hurt",at = @At("HEAD"))
     private void hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
@@ -42,4 +40,15 @@ public abstract class SpiritMixin extends PathfinderMob{
             cti$freezeTick =200;
         }
     }
+    @Inject(method = "hurt",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addFreshEntity(Lnet/minecraft/world/entity/Entity;)Z"), cancellable = true)
+    private void spawn(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+        boolean shouldSpawn=source.getMsgId().equals("aether.ice_crystal");
+        if(!shouldSpawn) cir.setReturnValue(true);
+
+    }
+    @ModifyArg(method = "customServerAiStep",at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/monster/dungeon/boss/SunSpirit;setFrozen(Z)V",remap = false))
+    private boolean set(boolean frozen){
+        return cti$freezeTick>0;
+    }
+
 }

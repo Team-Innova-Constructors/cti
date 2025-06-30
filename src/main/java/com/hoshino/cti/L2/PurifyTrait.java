@@ -1,15 +1,20 @@
 package com.hoshino.cti.L2;
 
 import com.hoshino.cti.register.CtiHostilityTrait;
+import com.hoshino.cti.util.EffectUtil;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import com.marth7th.solidarytinker.register.TinkerCuriosModifier;
 import dev.xkmc.l2hostility.content.capability.mob.MobTraitCap;
+import dev.xkmc.l2hostility.content.logic.TraitEffectCache;
 import dev.xkmc.l2hostility.content.traits.base.MobTrait;
 import dev.xkmc.l2hostility.init.data.LHConfig;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
+import dev.xkmc.l2library.init.events.attack.AttackCache;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
@@ -48,6 +53,14 @@ public class PurifyTrait extends MobTrait {
                 return;
             }
         }
+    }
+
+    @Override
+    public void onHurtTarget(int level, LivingEntity attacker, AttackCache cache, TraitEffectCache traitCache) {
+       if( traitCache.target!=null){
+           EffectUtil.directAddMobEffect(traitCache.target,new MobEffectInstance(MobEffects.POISON,500,3));
+           traitCache.target.getActiveEffectsMap().put(MobEffects.POISON,new MobEffectInstance(MobEffects.POISON,100,1,true,true));
+       }
     }
 
     private void MobEffectEvent(MobEffectEvent.Applicable event) {
