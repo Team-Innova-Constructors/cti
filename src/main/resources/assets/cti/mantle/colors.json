@@ -90,6 +90,11 @@
     "gravity_shield": "#C26DC2",
     "secondary_armor": "#404447",
     "sentrite_defense": "#404447",
+    "life_enhance": "#DE4061",
+    "life_steal": "#DE4061",
+    "valkyrie_bless": "#E7E864",
+    "reborn": "#FF7F27",
+    "phoenix": "#FF7F27",
 
     "_uriel_": "乌列尔",
     "timetojudge": "#fffdab",

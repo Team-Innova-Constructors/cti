@@ -121,4 +121,9 @@ public class CtiModifiers {
     public static final StaticModifier<GravityShield> GRAVITY_SHIELD = MODIFIERS.register("gravity_shield", GravityShield::new);
     public static final StaticModifier<SecondaryArmor> SECONDARY_ARMOR = MODIFIERS.register("secondary_armor", SecondaryArmor::new);
     public static final StaticModifier<SentriteDefense> SENTRITE_DEFENSE = MODIFIERS.register("sentrite_defense", SentriteDefense::new);
+    public static final StaticModifier<ValkyrieBless> VALKYRIE_BLESS = MODIFIERS.register("valkyrie_bless", ValkyrieBless::new);
+    public static final StaticModifier<Reborn> REBORN = MODIFIERS.register("reborn", Reborn::new);
+    public static final StaticModifier<LifeSteal> LIFE_STEAL = MODIFIERS.register("life_steal", LifeSteal::new);
+    public static final StaticModifier<LifeEnhance> LIFE_ENHANCE = MODIFIERS.register("life_enhance", LifeEnhance::new);
+    public static final StaticModifier<Phoenix> PHOENIX = MODIFIERS.register("phoenix", Phoenix::new);
 }

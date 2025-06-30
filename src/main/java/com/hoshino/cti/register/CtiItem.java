@@ -87,6 +87,7 @@ public class CtiItem {
     public static final RegistryObject<Item> recipe_test_item = ITEMS.register("recipe_test_item", RecipeTestItem::new);
     public static final RegistryObject<Item> flat_tablet = ITEMS.register("flat_tablet", FlatWorldTabletItem::new);
     public static final RegistryObject<Item> flat_tablet_day = ITEMS.register("flat_tablet_day", FlatWorldDayTabletItem::new);
+    public static final RegistryObject<Item> STRANGE_ICE_CRYSTAL = ITEMS.register("strange_ice_crystal", StrangeIceCrystalItem::new);
 
     public static final RegistryObject<BlockItem> unipolar_magnet = ITEMS.register("unipolar_magnet", () -> new BlockItem(CtiBlock.unipolar_magnet.get(), new Item.Properties().tab(CtiTab.MIXC)));
     public static final RegistryObject<BlockItem> unipolar_magnet_budding = ITEMS.register("unipolar_magnet_budding", () -> new BlockItem(CtiBlock.unipolar_magnet_budding.get(), new Item.Properties().tab(CtiTab.MIXC)));

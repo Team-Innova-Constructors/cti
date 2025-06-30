@@ -8,14 +8,19 @@ import com.hoshino.cti.util.DimensionConstants;
 import com.xiaoyue.tinkers_ingenuity.content.basic.entity.projectile.ShurikenEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.item.FallingBlockEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.event.server.ServerStoppingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -23,7 +28,15 @@ import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = Cti.MOD_ID)
 public class ServerEvent {
-
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void onLightningStrikeEntity(EntityStruckByLightningEvent event){
+        LightningBolt bolt = event.getLightning();
+        if (bolt.getCause()!=null){
+            if (event.getEntity() instanceof ItemEntity||event.getEntity() instanceof ExperienceOrb) event.setCanceled(true);
+            else if (event.getEntity()==bolt.getCause()) event.setCanceled(true);
+            else event.getEntity().invulnerableTime=0;
+        }
+    }
 
     @SubscribeEvent
     public static void onServerStopping(ServerStoppingEvent event){
