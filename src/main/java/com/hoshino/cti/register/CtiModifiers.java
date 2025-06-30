@@ -126,4 +126,5 @@ public class CtiModifiers {
     public static final StaticModifier<LifeSteal> LIFE_STEAL = MODIFIERS.register("life_steal", LifeSteal::new);
     public static final StaticModifier<LifeEnhance> LIFE_ENHANCE = MODIFIERS.register("life_enhance", LifeEnhance::new);
     public static final StaticModifier<Phoenix> PHOENIX = MODIFIERS.register("phoenix", Phoenix::new);
+    public static final StaticModifier<FixedArmorOracular> ARMOR_ORACLE = MODIFIERS.register("armor_oracle", FixedArmorOracular::new);
 }
