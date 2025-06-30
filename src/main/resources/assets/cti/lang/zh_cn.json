@@ -204,6 +204,26 @@
   "modifier.cti.sentrite_defense.flavor": "从滑行魔石上扒下来的外壳",
   "modifier.cti.sentrite_defense.description": "对非穿甲伤害提供40%的减免。",
 
+  "modifier.cti.life_steal": "生命窃取",
+  "modifier.cti.life_steal.flavor": "以血换血",
+  "modifier.cti.life_steal.description": "攻击时每级恢复攻击伤害10%的血量，最大为每级自身生命值2.5%。",
+
+  "modifier.cti.life_enhance": "生命强化",
+  "modifier.cti.life_enhance.flavor": "增加了你的维生能量",
+  "modifier.cti.life_enhance.description": "每级增加20最大生命。",
+
+  "modifier.cti.valkyrie_bless": "武神之馈",
+  "modifier.cti.valkyrie_bless.flavor": "风之号令",
+  "modifier.cti.valkyrie_bless.description": "攻击时造成风暴伤害，并使不会劈中自己和掉落物的落雷击中目标。",
+
+  "modifier.cti.reborn": "重生",
+  "modifier.cti.reborn.flavor": "名为Yharon的龙",
+  "modifier.cti.reborn.description": "死亡时以半血重生，获得10秒抗性V和力量X，冷却240s。",
+
+  "modifier.cti.phoenix": "凤凰",
+  "modifier.cti.phoenix.flavor": "从烈火中诞生",
+  "modifier.cti.phoenix.description": "使你能在熔岩中顺畅移动，如同穿了凤凰套一般。",
+
 
 
   "item.cti.xinian_ingot": "§c37锭",
@@ -284,6 +304,8 @@
   "item.minecraft.splash_potion.effect.resolute": "喷溅型坚定药水",
   "item.minecraft.lingering_potion.effect.resolute": "滞留型坚定药水",
 
+
+  "item.cti.strange_ice_crystal":"奇特的冰晶",
 
 
   "biome.cti.disordered_zone":"异常区域",
@@ -812,6 +834,8 @@
 
   "info.cti.panel_condition.upward": "于世界最高处向上放置",
   "info.cti.panel_condition.downward": "于世界最低处向下放置",
+
+  "info.cti.strange_ice_crystal": "右键发射冰结球，冷却30秒。",
 
   "info.biomes.cti.disordered_zone": "异常区域位于电离冻土星球，你需要进入主线第三章并且做出五级火箭才能到达这里。在此之前你需要做出一个完整的质子、电子产线。"
 }
