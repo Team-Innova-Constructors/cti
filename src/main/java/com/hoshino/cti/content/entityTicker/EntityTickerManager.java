@@ -1,13 +1,11 @@
 package com.hoshino.cti.content.entityTicker;
 
-import com.mojang.logging.LogUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -21,7 +19,7 @@ public class EntityTickerManager {
     }
 
     public static boolean tick(Entity entity){
-        if (entity.getPersistentData().contains("etstlib_tickers")){
+        if (entity.getPersistentData().contains("cti_tickers")){
             load(entity);
         }
         if (!TICKER_MAP.containsKey(entity)) return true;
@@ -31,7 +29,7 @@ public class EntityTickerManager {
         }
         boolean doTick = true;
         EntityTickerManagerInstance managerInstance = new EntityTickerManagerInstance(entity);
-        Map<EntityTicker,EntityTickerInstance> instances = managerInstance.instanceMap;
+        if (managerInstance.instanceMap==null) return true;
         List<EntityTickerInstance> instancesCopy = List.copyOf(managerInstance.instanceMap.values());
         for (EntityTickerInstance instance:instancesCopy){
             EntityTicker ticker = instance.ticker;
@@ -48,7 +46,7 @@ public class EntityTickerManager {
     }
 
     public static void load(Entity entity){
-        CompoundTag nbt = entity.getPersistentData().getCompound("etstlib_tickers");
+        CompoundTag nbt = entity.getPersistentData().getCompound("cti_tickers");
         Map<EntityTicker,EntityTickerInstance> instances = new HashMap<>();
         if (!nbt.isEmpty()){
             nbt.getAllKeys().forEach(string -> {
@@ -59,27 +57,27 @@ public class EntityTickerManager {
             });
         }
         TICKER_MAP.put(entity,instances);
-        entity.getPersistentData().remove("etstlib_tickers");
+        entity.getPersistentData().remove("cti_tickers");
     }
     public static void save(Entity entity){
         if (entity==null) return;
         CompoundTag nbt = new CompoundTag();
         if (TICKER_MAP.get(entity)!=null) {
             TICKER_MAP.get(entity).values().forEach(instance -> instance.writeToNbt(nbt));
-            entity.getPersistentData().put("etstlib_tickers", nbt);
+            entity.getPersistentData().put("cti_tickers", nbt);
         }
     }
 
     public static class EntityTickerManagerInstance {
-        public final @NotNull Map<EntityTicker,EntityTickerInstance> instanceMap;
+        protected @Nullable Map<EntityTicker,EntityTickerInstance> instanceMap;
         public final Entity entity;
         //为实体创建ManagerInstance，不需要从总的表去再获取。
         public EntityTickerManagerInstance(Entity entity){
             this.entity = entity;
-            TICKER_MAP.computeIfAbsent(entity, k -> new HashMap<>());
             this.instanceMap = TICKER_MAP.get(entity);
         }
         public boolean hasTicker(EntityTicker ticker){
+            if (this.instanceMap==null) return false;
             return instanceMap.containsKey(ticker);
         }
         //获取一个Optional封装的Instance，Optional真的很方便
@@ -88,6 +86,7 @@ public class EntityTickerManager {
         }
         //直接获取Instance，可能为null
         public @Nullable EntityTickerInstance getTicker(EntityTicker type){
+            if (this.instanceMap==null) return null;
             return this.instanceMap.get(type);
         }
         //直接把实体对应Ticker的Instance替换成指定的Instance
@@ -95,10 +94,20 @@ public class EntityTickerManager {
             if (!this.hasTicker(instance.ticker)){
                 instance.ticker.onTickerStart(instance.duration,instance.level,this.entity);
             }
-            this.instanceMap.put(instance.ticker,instance);
+            if (this.instanceMap==null){
+                this.instanceMap = new HashMap<>();
+                this.instanceMap.put(instance.ticker, instance);
+                TICKER_MAP.put(entity,this.instanceMap);
+            } else {
+                this.instanceMap.put(instance.ticker, instance);
+            }
         }
         //用两个函数将你要添加的Instance和已有的融合。函数控制的是融合算法（比如你想让等级相加就给levelFunction填Integer::sum）
         public void addTicker(EntityTickerInstance instance, BiFunction<Integer,Integer,Integer> levelFunction, BiFunction<Integer,Integer,Integer> timeFunction){
+            if (this.instanceMap==null){
+                this.instanceMap = new HashMap<>();
+                TICKER_MAP.put(entity,this.instanceMap);
+            }
             EntityTickerInstance existing = this.instanceMap.get(instance.ticker);
             int existingLevel = 0;
             int existingTime = 0;
@@ -110,7 +119,7 @@ public class EntityTickerManager {
             this.setTicker(merged);
         }
         public void removeTicker(EntityTicker ticker){
-            if (this.hasTicker(ticker)){
+            if (this.instanceMap!=null&&this.hasTicker(ticker)){
                 ticker.onTickerEnd(this.instanceMap.get(ticker).level,this.entity);
                 this.instanceMap.remove(ticker);
             }

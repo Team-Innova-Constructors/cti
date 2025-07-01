@@ -208,6 +208,7 @@ repositories {
         }
     }
     maven { url = "https://packages.aether-mod.net/Nitrogen" }
+
 }
 
 dependencies {
@@ -254,12 +255,13 @@ dependencies {
 
     implementation fg.deobf("com.aetherteam.nitrogen:nitrogen_internals:1.19.2-1.0.3-forge")
 
-    //这里引入mixin依赖
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     // compile against the JEI API but do not include it at runtime
     compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
     // at runtime, use the full JEI jar for Forge
     runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
+
+    implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5037952")
 
 }
 

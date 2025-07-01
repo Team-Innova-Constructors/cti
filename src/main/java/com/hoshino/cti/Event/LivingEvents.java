@@ -2,6 +2,7 @@ package com.hoshino.cti.Event;
 
 import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
 import com.aizistral.enigmaticlegacy.registries.EnigmaticItems;
+import com.github.alexthe666.iceandfire.entity.EntityDragonBase;
 import com.hoshino.cti.Cti;
 import com.hoshino.cti.Entity.DisposibleFakePlayer;
 import com.hoshino.cti.content.entityTicker.EntityTickerManager;
@@ -109,5 +110,9 @@ public class LivingEvents {
         if (event.getEntity() instanceof Warden warden && event.getSource().getMsgId().equals("sonic_boom")) {
             event.setAmount(warden.getMaxHealth() / 4);
         }
+    }
+    @SubscribeEvent
+    public static void onLivingAttack(LivingAttackEvent event){
+        if (event.getEntity() instanceof EntityDragonBase&&event.getSource().getEntity()!=null&&!(event.getSource().getEntity() instanceof Player)) event.setCanceled(true);
     }
 }
