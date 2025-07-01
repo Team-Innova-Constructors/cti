@@ -230,6 +230,10 @@
   "modifier.cti.phoenix.flavor": "从烈火中诞生",
   "modifier.cti.phoenix.description": "使你能在熔岩中顺畅移动，如同穿了凤凰套一般。",
 
+  "modifier.cti.armor_oracle": "神谕",
+  "modifier.cti.armor_oracle.flavor": "神不让你加buff，你加吗？",
+  "modifier.cti.armor_oracle.description": "清除穿戴者负面效果，阻止其它生物对自己施加神谕效果。",
+
 
 
   "item.cti.xinian_ingot": "§c37锭",
@@ -621,7 +625,7 @@
 
   "modifier.cti.fixed_oracular": "神谕",
   "modifier.cti.fixed_oracular.flavor": "洗涤心灵。",
-  "modifier.cti.fixed_oracular.description":"净化目标增益效果，净化使用者减益效果。",
+  "modifier.cti.fixed_oracular.description":"每级施加10s神谕，使目标免疫正面效果并失去对负面效果的免疫。",
 
   "modifier.cti.fixed_purify": "净化",
   "modifier.cti.fixed_purify.flavor": "纯净之躯。",
@@ -856,6 +860,9 @@
 
   "trait.l2hostility.purify": "净化",
   "trait.l2hostility.purify.desc": "怪物会免疫掉负面药水状态效果",
+
+  "trait.l2hostility.oracle": "神谕",
+  "trait.l2hostility.oracle.desc": "怪物攻击后每级移除10秒目标的正面效果并取消对负面效果的免疫。",
 
 
   "info.cti.panel_condition.upward": "于世界最高处向上放置",

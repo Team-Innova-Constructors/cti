@@ -1,5 +1,8 @@
 package com.hoshino.cti.Modifier.Replace;
 
+import com.hoshino.cti.content.entityTicker.EntityTickerInstance;
+import com.hoshino.cti.content.entityTicker.EntityTickerManager;
+import com.hoshino.cti.register.CtiEntityTickers;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -24,39 +27,15 @@ import java.util.Collection;
 public class FixedOracular extends Modifier implements MeleeHitModifierHook, ProjectileHitModifierHook {
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-        LivingEntity target = context.getLivingTarget(), holder = context.getAttacker();
+        LivingEntity target = context.getLivingTarget();
         if (target == null) {
             return;
         }
-        Collection<MobEffectInstance> harmeffect;
-        harmeffect = target.getActiveEffects();
-        for (int i = 0; i < harmeffect.size(); i++) {
-            MobEffectInstance effect = harmeffect.stream().toList().get(i);
-            MobEffect bene = effect.getEffect();
-            if (bene.getCategory() == MobEffectCategory.BENEFICIAL) {
-                target.removeEffect(bene);
-                target.level.addParticle(
-                        ParticleTypes.HAPPY_VILLAGER,
-                        target.getX() + RANDOM.nextDouble() - 0.5,
-                        target.getY() + 1,
-                        target.getZ() + RANDOM.nextDouble() - 0.5,
-                        0, 0, 0);
-            }
-        }
-        harmeffect = holder.getActiveEffects();
-        for (int i = 0; i < harmeffect.size(); i++) {
-            MobEffectInstance effect = harmeffect.stream().toList().get(i);
-            MobEffect harm = effect.getEffect();
-            if (harm.getCategory() == MobEffectCategory.HARMFUL) {
-                holder.removeEffect(harm);
-                holder.level.addParticle(
-                        ParticleTypes.HAPPY_VILLAGER,
-                        holder.getX() + RANDOM.nextDouble() - 0.5,
-                        holder.getY() + 1,
-                        holder.getZ() + RANDOM.nextDouble() - 0.5,
-                        0, 0, 0);
-            }
-        }
+        EntityTickerManager.getInstance(target).addTicker(
+                new EntityTickerInstance(CtiEntityTickers.ORACLE.get(),1,200),
+                Integer::max,
+                Integer::sum
+        );
     }
 
     @Override
@@ -67,35 +46,11 @@ public class FixedOracular extends Modifier implements MeleeHitModifierHook, Pro
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (target != null && attacker != null) {
-            Collection<MobEffectInstance> harmeffect;
-            harmeffect = target.getActiveEffects();
-            for (int i = 0; i < harmeffect.size(); i++) {
-                MobEffectInstance effect = harmeffect.stream().toList().get(i);
-                MobEffect harm = effect.getEffect();
-                if (harm.getCategory() == MobEffectCategory.BENEFICIAL) {
-                    target.removeEffect(harm);
-                    target.level.addParticle(
-                            ParticleTypes.HAPPY_VILLAGER,
-                            target.getX() + RANDOM.nextDouble() - 0.5,
-                            target.getY() + 1,
-                            target.getZ() + RANDOM.nextDouble() - 0.5,
-                            0, 0, 0);
-                }
-            }
-            harmeffect = attacker.getActiveEffects();
-            for (int i = 0; i < harmeffect.size(); i++) {
-                MobEffectInstance effect = harmeffect.stream().toList().get(i);
-                MobEffect harm = effect.getEffect();
-                if (harm.getCategory() == MobEffectCategory.HARMFUL) {
-                    attacker.removeEffect(harm);
-                    attacker.level.addParticle(
-                            ParticleTypes.HAPPY_VILLAGER,
-                            attacker.getX() + RANDOM.nextDouble() - 0.5,
-                            attacker.getY() + 1,
-                            attacker.getZ() + RANDOM.nextDouble() - 0.5,
-                            0, 0, 0);
-                }
-            }
+            EntityTickerManager.getInstance(target).addTicker(
+                    new EntityTickerInstance(CtiEntityTickers.ORACLE.get(),1,200),
+                    Integer::max,
+                    Integer::sum
+            );
         }
         return false;
     }

@@ -126,8 +126,5 @@ public class CtiModifiers {
     public static final StaticModifier<LifeSteal> LIFE_STEAL = MODIFIERS.register("life_steal", LifeSteal::new);
     public static final StaticModifier<LifeEnhance> LIFE_ENHANCE = MODIFIERS.register("life_enhance", LifeEnhance::new);
     public static final StaticModifier<Phoenix> PHOENIX = MODIFIERS.register("phoenix", Phoenix::new);
-    public static final StaticModifier<SugarMaker> sugarmaker = MODIFIERS.register("sugarmaker", SugarMaker::new);
-    public static final StaticModifier<HealthBoost> healthBoostStaticModifier = MODIFIERS.register("healthboost", HealthBoost::new);
-    public static final StaticModifier<ShanXiPickaxe> shanXiPickaxeStaticModifier = MODIFIERS.register("shanxipickaxe", ShanXiPickaxe::new);
-    public static final StaticModifier<SuperCritHit> superCritHitStaticModifier = MODIFIERS.register("supercrithit", SuperCritHit::new);
+    public static final StaticModifier<FixedArmorOracular> ARMOR_ORACLE = MODIFIERS.register("armor_oracle", FixedArmorOracular::new);
 }

@@ -3,6 +3,7 @@ package com.hoshino.cti.Modifier.aetherCompact;
 import com.aetherteam.aether.data.resources.AetherDamageTypes;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
@@ -25,11 +26,18 @@ public class ValkyrieBless extends EtSTBaseModifier {
             entity.invulnerableTime = 0;
             entity.hurt(RANDOM.nextBoolean() ? AetherDamageTypes.cloudCrystal(context.getAttacker(), context.getAttacker()) : AetherDamageTypes.thunderCrystal(context.getAttacker(), context.getAttacker()), damage * 0.2f * modifier.getLevel());
             entity.invulnerableTime = 0;
-            LightningBolt bolt = new LightningBolt(EntityType.LIGHTNING_BOLT, entity.level);
-            bolt.setPos(entity.position());
-            bolt.setCause(context.getAttacker() instanceof ServerPlayer player ? player : null);
-            bolt.setDamage(damage * 0.2f);
-            entity.level.addFreshEntity(bolt);
+            if (!context.isExtraAttack()) {
+                LightningBolt bolt = new LightningBolt(EntityType.LIGHTNING_BOLT, entity.level);
+                bolt.setPos(entity.position());
+                bolt.setCause(context.getAttacker() instanceof ServerPlayer player ? player : null);
+                bolt.setDamage(damage * 0.2f);
+                entity.level.addFreshEntity(bolt);
+            }else {
+                entity.invulnerableTime = 0;
+                entity.hurt(DamageSource.LIGHTNING_BOLT, damage * 0.2f * modifier.getLevel());
+                entity.invulnerableTime = 0;
+            }
+
         }
     }
 
