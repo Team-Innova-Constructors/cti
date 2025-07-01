@@ -54,15 +54,6 @@ public class PurifyTrait extends MobTrait {
             }
         }
     }
-
-    @Override
-    public void onHurtTarget(int level, LivingEntity attacker, AttackCache cache, TraitEffectCache traitCache) {
-       if( traitCache.target!=null){
-           EffectUtil.directAddMobEffect(traitCache.target,new MobEffectInstance(MobEffects.POISON,500,3));
-           traitCache.target.getActiveEffectsMap().put(MobEffects.POISON,new MobEffectInstance(MobEffects.POISON,100,1,true,true));
-       }
-    }
-
     private void MobEffectEvent(MobEffectEvent.Applicable event) {
         if (event.getEntity() instanceof Mob mob) {
             LazyOptional<MobTraitCap> optional = mob.getCapability(MobTraitCap.CAPABILITY);

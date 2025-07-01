@@ -26,6 +26,8 @@ import mekanism.api.Upgrade;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -64,7 +66,6 @@ public class CtiItem {
     public static void registerPartModels() {
         PartModels.registerModels(PartModelsHelper.createModels(MeteoriumAnnihilationPlanePart.class));
     }
-
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "cti");
     public static final ResourcefulRegistry<Item> ASTRAITEM = ResourcefulRegistries.create(Registry.ITEM, "cti");
     public static final ResourcefulRegistry<Item> VEHICLES = ResourcefulRegistries.create(ASTRAITEM);
@@ -270,6 +271,13 @@ public class CtiItem {
     public static final RegistryObject<Item> qdbeer = ITEMS.register("qdbeer", () -> new BoozeItem(1, 1, bottle_drinkItem().food(CtiWine.qdbeer)));
     public static final RegistryObject<Item> boomwine = ITEMS.register("boomwine", () -> new BoozeItem(1, 5, bottle_drinkItem().food(CtiWine.boomwine)));
     public static final RegistryObject<Item> fishbone_wine = ITEMS.register("fishbone_wine", () -> new BoozeItem(1, 1, tankard_drinkItem().food(CtiWine.fishbone_wine).craftRemainder(Items.ENCHANTED_GOLDEN_APPLE)));
+
+    //佛糖
+    public static final RegistryObject<Item> heng_sugar = ITEMS.register("heng_sugar", () -> new FoSugar(new Item.Properties(),CtiEffects.heng.get()));
+    public static final RegistryObject<Item> ha_sugar = ITEMS.register("ha_sugar", () -> new FoSugar(new Item.Properties(),CtiEffects.ha.get()));
+    public static final RegistryObject<Item> strong_sugar = ITEMS.register("strong_sugar", () -> new FoSugar(new Item.Properties(),CtiEffects.strong.get()));
+    public static final RegistryObject<Item> covert_sugar = ITEMS.register("covert_sugar", () -> new FoSugar(new Item.Properties(),CtiEffects.covert.get()));
+    public static final RegistryObject<Item> nakshatra_sugar = ITEMS.register("nakshatra_sugar", () -> new FoSugar(new Item.Properties(),CtiEffects.nakshatra.get()));
 
 
     //mek高级升级

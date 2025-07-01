@@ -2,7 +2,7 @@ package com.hoshino.cti.mixin.AdAstraMixin;
 
 import com.hoshino.cti.register.CtiModifiers;
 import com.hoshino.cti.util.BiomeUtil;
-import com.hoshino.cti.util.ctiTagkey;
+import com.hoshino.cti.util.CtiTagkey;
 import earth.terrarium.ad_astra.common.util.ModUtils;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -30,7 +30,7 @@ public abstract class ModUtilMixin {
                 for (ItemStack stack : List.of(living.getItemBySlot(EquipmentSlot.HEAD), living.getItemBySlot(EquipmentSlot.CHEST), living.getItemBySlot(EquipmentSlot.FEET), living.getItemBySlot(EquipmentSlot.LEGS))) {
                     if (stack.getItem() instanceof IModifiable && ToolStack.from(stack).getModifierLevel(CtiModifiers.gravity_normalizer.get()) > 0) {
                         callbackInfo.setReturnValue(1f);
-                    } else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)) {
+                    } else if (stack.getTags().toList().contains(CtiTagkey.ENVIRONMENT_ADV)) {
                         callbackInfo.setReturnValue(1f);
                     }
                 }
@@ -57,7 +57,7 @@ public abstract class ModUtilMixin {
                 if (tool.getModifierLevel(CtiModifiers.space_suit.get()) > 0) {
                     callbackInfo.setReturnValue(true);
                 }
-            } else if (stack.getTags().toList().contains(ctiTagkey.OXYGEN_REGEN)) {
+            } else if (stack.getTags().toList().contains(CtiTagkey.OXYGEN_REGEN)) {
                 callbackInfo.setReturnValue(true);
             }
         }

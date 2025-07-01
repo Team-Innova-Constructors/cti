@@ -10,7 +10,7 @@ import com.hoshino.cti.netwrok.packet.PIonizeValueSync;
 import com.hoshino.cti.netwrok.packet.PPressureValueSync;
 import com.hoshino.cti.netwrok.packet.PScorchValueSync;
 import com.hoshino.cti.register.CtiAttributes;
-import com.hoshino.cti.util.ctiTagkey;
+import com.hoshino.cti.util.CtiTagkey;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
@@ -265,7 +265,7 @@ public class EnvironmentalHandler {
             Optional<IElectricShielding> shielding = getCapability(stack, ctiCapabilities.ELECTRIC_SHIELDING, null).resolve();
             if (shielding.isPresent()) {
                 resist += shielding.get().getElectricShieldinng();
-            } else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)) {
+            } else if (stack.getTags().toList().contains(CtiTagkey.ENVIRONMENT_ADV)) {
                 resist += 10f;
             }
         }
@@ -283,9 +283,9 @@ public class EnvironmentalHandler {
             Optional<IScorchShielding> shielding = getCapability(stack, ctiCapabilities.SCORCH_SHIELDING, null).resolve();
             if (shielding.isPresent()) {
                 resist += shielding.get().getScorchShieldinng();
-            } else if (stack.getTags().toList().contains(ctiTagkey.PRESSURE_MINOR)) {
+            } else if (stack.getTags().toList().contains(CtiTagkey.PRESSURE_MINOR)) {
                 resist += 1f;
-            } else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)) {
+            } else if (stack.getTags().toList().contains(CtiTagkey.ENVIRONMENT_ADV)) {
                 resist += 10f;
             }
         }
@@ -303,9 +303,9 @@ public class EnvironmentalHandler {
             Optional<IFreezeShielding> shielding = getCapability(stack, ctiCapabilities.FREEZE_SHIELDING, null).resolve();
             if (shielding.isPresent()) {
                 resist += shielding.get().getFreezeShieldinng();
-            } else if (stack.getTags().toList().contains(ctiTagkey.PRESSURE_MINOR)) {
+            } else if (stack.getTags().toList().contains(CtiTagkey.PRESSURE_MINOR)) {
                 resist += 0.5f;
-            } else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)) {
+            } else if (stack.getTags().toList().contains(CtiTagkey.ENVIRONMENT_ADV)) {
                 resist += 10f;
             }
         }
@@ -323,9 +323,9 @@ public class EnvironmentalHandler {
             Optional<IPressureShielding> shielding = getCapability(stack, ctiCapabilities.PRESSURE_SHIELDING, null).resolve();
             if (shielding.isPresent()) {
                 resist += shielding.get().getPressureShielding();
-            } else if (stack.getTags().toList().contains(ctiTagkey.PRESSURE_MINOR)) {
+            } else if (stack.getTags().toList().contains(CtiTagkey.PRESSURE_MINOR)) {
                 resist += 0.5f;
-            } else if (stack.getTags().toList().contains(ctiTagkey.ENVIRONMENT_ADV)) {
+            } else if (stack.getTags().toList().contains(CtiTagkey.ENVIRONMENT_ADV)) {
                 resist += 10f;
             }
         }
