@@ -2,6 +2,7 @@ package com.hoshino.cti.register;
 
 import com.hoshino.cti.Effects.*;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -19,5 +20,10 @@ public class CtiEffects {
     public static final RegistryObject<MobEffect> numerical_perception = EFFECT.register("numerical_perception", NumericalPerception::new);
     public static final RegistryObject<MobEffect> curve_mapping = EFFECT.register("curve_mapping", CurveMapping::new);
     public static final RegistryObject<MobEffect> supplementary_formula = EFFECT.register("supplementary_formula", SupplementaryFormula::new);
+    public static final RegistryObject<MobEffect> heng = EFFECT.register("heng",Heng::new);
+    public static final RegistryObject<MobEffect> ha = EFFECT.register("ha",Ha::new);
+    public static final RegistryObject<MobEffect> strong = EFFECT.register("strong",Strong::new);
+    public static final RegistryObject<MobEffect> covert = EFFECT.register("covert",Covert::new);
+    public static final RegistryObject<MobEffect> nakshatra = EFFECT.register("nakshatra",Nakshatra::new);
 
 }

@@ -53,6 +53,12 @@
 
   "cti.tooltip.item.etsh": "-EtSH_C2H6S 开发者材料-",
 
+  "item.cti.heng_sugar": "哼将糖",
+  "item.cti.ha_sugar": "哈将糖",
+  "item.cti.strong_sugar": "钢躯糖",
+  "item.cti.covert_sugar": "月隐糖",
+  "item.cti.nakshatra_sugar": "夜叉戮糖",
+
   "item.cti.bloodgod_ingot": "§c血神锭",
   "item.cti.molten_bloodgod_bucket": "熔融血神桶",
   "fluid.cti.molten_bloodgod": "熔融血神",
@@ -720,6 +726,14 @@
   "modifier.cti.shanxipickaxe": "山西镐",
   "modifier.cti.shanxipickaxe.flavor": "山西人祖传锻造技术",
   "modifier.cti.shanxipickaxe.description":"使用带有此词条的镐类工具击杀凋零骷髅会掉落大量煤炭(真的是大量)",
+
+  "modifier.cti.shanxipickaxe": "山西镐",
+  "modifier.cti.shanxipickaxe.flavor": "山西人祖传锻造技术",
+  "modifier.cti.shanxipickaxe.description":"使用带有此词条的镐类工具击杀凋零骷髅会掉落大量煤炭(真的是大量)",
+
+  "modifier.cti.sugarmaker": "制糖机",
+  "modifier.cti.sugarmaker.flavor": "Cti食品有限公司认证",
+  "modifier.cti.sugarmaker.description":"击杀生物后有30%概率掉落佛糖,不同佛糖食用后有不同的属性\n哈将:提高20%全伤害\n哼将:降低20%全伤害\n钢躯:免疫所有击退\n月隐:不会被3格内生物主动索敌锁到\n夜叉戮:降低50%最大生命,受到击退翻倍但是大幅提升伤害",
 
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
