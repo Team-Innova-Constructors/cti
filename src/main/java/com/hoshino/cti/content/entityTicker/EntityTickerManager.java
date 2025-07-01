@@ -8,11 +8,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 
 //EntityTicker的总控，可以很方便的来添加/减少Ticker。
 public class EntityTickerManager {
-    public static final Map<Entity, Map<EntityTicker,EntityTickerInstance>> TICKER_MAP = new HashMap<>();
+    public static final ConcurrentHashMap<Entity, ConcurrentHashMap<EntityTicker,EntityTickerInstance>> TICKER_MAP = new ConcurrentHashMap<>();
 
     public static EntityTickerManagerInstance getInstance(Entity entity){
         return new EntityTickerManagerInstance(entity);
@@ -22,6 +23,7 @@ public class EntityTickerManager {
         if (entity.getPersistentData().contains("cti_tickers")){
             load(entity);
         }
+
         if (!TICKER_MAP.containsKey(entity)) return true;
         if (TICKER_MAP.get(entity)==null||TICKER_MAP.get(entity).isEmpty()){
             TICKER_MAP.remove(entity);
@@ -47,7 +49,7 @@ public class EntityTickerManager {
 
     public static void load(Entity entity){
         CompoundTag nbt = entity.getPersistentData().getCompound("cti_tickers");
-        Map<EntityTicker,EntityTickerInstance> instances = new HashMap<>();
+        ConcurrentHashMap<EntityTicker,EntityTickerInstance> instances = new ConcurrentHashMap<>();
         if (!nbt.isEmpty()){
             nbt.getAllKeys().forEach(string -> {
                 if (nbt.contains(string, CompoundTag.TAG_COMPOUND)){
@@ -69,7 +71,7 @@ public class EntityTickerManager {
     }
 
     public static class EntityTickerManagerInstance {
-        protected @Nullable Map<EntityTicker,EntityTickerInstance> instanceMap;
+        protected @Nullable ConcurrentHashMap<EntityTicker,EntityTickerInstance> instanceMap;
         public final Entity entity;
         //为实体创建ManagerInstance，不需要从总的表去再获取。
         public EntityTickerManagerInstance(Entity entity){
@@ -95,7 +97,7 @@ public class EntityTickerManager {
                 instance.ticker.onTickerStart(instance.duration,instance.level,this.entity);
             }
             if (this.instanceMap==null){
-                this.instanceMap = new HashMap<>();
+                this.instanceMap = new ConcurrentHashMap<>();
                 this.instanceMap.put(instance.ticker, instance);
                 TICKER_MAP.put(entity,this.instanceMap);
             } else {
@@ -105,7 +107,7 @@ public class EntityTickerManager {
         //用两个函数将你要添加的Instance和已有的融合。函数控制的是融合算法（比如你想让等级相加就给levelFunction填Integer::sum）
         public void addTicker(EntityTickerInstance instance, BiFunction<Integer,Integer,Integer> levelFunction, BiFunction<Integer,Integer,Integer> timeFunction){
             if (this.instanceMap==null){
-                this.instanceMap = new HashMap<>();
+                this.instanceMap = new ConcurrentHashMap<>();
                 TICKER_MAP.put(entity,this.instanceMap);
             }
             EntityTickerInstance existing = this.instanceMap.get(instance.ticker);
