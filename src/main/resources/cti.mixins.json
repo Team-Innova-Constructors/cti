@@ -21,6 +21,7 @@
     "AdAstraMixin.TemperatureTick",
     "AetherMixin.AbilityHooks$ToolHooksMixin",
     "AetherMixin.AbilityHooks$WeaponHookMixin",
+    "AetherMixin.AetherPortalMixin",
     "AetherMixin.EquipmentUtilMixin",
     "AetherMixin.SpiritMixin",
     "AetherMixin.ZephyrSnowballMixin",
