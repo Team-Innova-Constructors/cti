@@ -3,6 +3,8 @@ package com.hoshino.cti.client.event;
 import com.hoshino.cti.client.CtiParticleType;
 import com.hoshino.cti.client.InitPartModel;
 import com.hoshino.cti.Cti;
+import com.hoshino.cti.client.particle.FieryExplodeParticle;
+import com.hoshino.cti.client.particle.RedSparkParticle;
 import com.hoshino.cti.client.particle.StarLineParticle;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ModelEvent;
@@ -20,6 +22,8 @@ public class ClientEventHandler {
     @SubscribeEvent
     public static void registerParticles(RegisterParticleProvidersEvent event) {
         event.register(CtiParticleType.STAR_LINE.get(), StarLineParticle::provider);
+        event.register(CtiParticleType.RED_SPARK.get(), RedSparkParticle::provider);
+        event.register(CtiParticleType.FIERY_EXPLODE.get(), FieryExplodeParticle::provider);
     }
 
 }

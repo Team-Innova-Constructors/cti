@@ -1,11 +1,11 @@
 package com.hoshino.cti.register;
 
+import com.c2h6s.etshtinker.Entities.plasmawaveslashentity;
+import com.c2h6s.etshtinker.client.render.renderSlash;
+import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.hoshino.cti.Entity.Projectiles.*;
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
-import com.hoshino.cti.client.renderer.projectile.FriendlyMeteorRenderer;
-import com.hoshino.cti.client.renderer.projectile.LargeBrightItemProjectile;
-import com.hoshino.cti.client.renderer.projectile.MeteorEntityRenderer;
-import com.hoshino.cti.client.renderer.projectile.TinkerRaligunRenderer;
+import com.hoshino.cti.client.renderer.projectile.*;
 import com.hoshino.cti.client.renderer.vehicle.rocketTier5.RocketRendererTier5;
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
 import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistries;
@@ -32,7 +32,8 @@ public class CtiEntity {
     public static final RegistryObject<EntityType<MeteorEntity>> meteor_entity = ENTITIES.register("meteor_entity", () -> EntityType.Builder.<MeteorEntity>of(MeteorEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new MeteorEntity(world, spawnEntity.getPosX(), spawnEntity.getPosY(), spawnEntity.getPosZ(), spawnEntity.getEntity().getDeltaMovement())).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<FriendlyMeteor>> FRIENDLY_METEOR = ENTITIES.register("friendly_meteor", () -> EntityType.Builder.<FriendlyMeteor>of(FriendlyMeteor::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new FriendlyMeteor(CtiEntity.FRIENDLY_METEOR.get(),world)).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<AethericMeteor>> AETHERIC_METEOR = ENTITIES.register("aetheric_meteor", () -> EntityType.Builder.<AethericMeteor>of(AethericMeteor::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new AethericMeteor(CtiEntity.AETHERIC_METEOR.get(),world)).setShouldReceiveVelocityUpdates(true));
-
+    public static final RegistryObject<EntityType<FieryJavelinProjectile>> FIERY_JAVELIN = ENTITIES.register("fiery_javelin", () -> EntityType.Builder.<FieryJavelinProjectile>of(FieryJavelinProjectile::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new FieryJavelinProjectile(CtiEntity.FIERY_JAVELIN.get(),world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<PlasmaWaveSlashProjectile>> PLASMA_WAVE_SLASH = ENTITIES.register("plasma_wave_slash", () -> EntityType.Builder.of(PlasmaWaveSlashProjectile::new, MobCategory.MISC).sized(8F, 1F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new PlasmaWaveSlashProjectile(CtiEntity.PLASMA_WAVE_SLASH.get(), world)).setShouldReceiveVelocityUpdates(true));
 
     public static void registerEntityRenderers() {
         ClientHooks.registerEntityRenderer(CtiEntity.TIER_5_ROCKET, RocketRendererTier5::new);
@@ -44,5 +45,7 @@ public class CtiEntity {
         ClientHooks.registerEntityRenderer(CtiEntity.meteor_entity, MeteorEntityRenderer::new);
         ClientHooks.registerEntityRenderer(CtiEntity.FRIENDLY_METEOR, FriendlyMeteorRenderer::new);
         ClientHooks.registerEntityRenderer(CtiEntity.AETHERIC_METEOR, FriendlyMeteorRenderer::new);
+        ClientHooks.registerEntityRenderer(CtiEntity.PLASMA_WAVE_SLASH, renderSlash::new);
+        ClientHooks.registerEntityRenderer(CtiEntity.FIERY_JAVELIN, FieryJavelinRender::new);
     }
 }

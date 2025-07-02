@@ -7,6 +7,8 @@ import com.hoshino.cti.Modifier.Developer.*;
 import com.hoshino.cti.Modifier.Mob.BuriedOcean;
 import com.hoshino.cti.Modifier.Replace.*;
 import com.hoshino.cti.Modifier.aetherCompact.*;
+import com.hoshino.cti.Modifier.iafCompact.*;
+import com.hoshino.cti.Modifier.l2Compact.Eternity;
 import com.hoshino.cti.Modifier.slot.*;
 import com.hoshino.cti.Cti;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
@@ -131,4 +133,10 @@ public class CtiModifiers {
     public static final StaticModifier<HealthBoost> healthBoostStaticModifier = MODIFIERS.register("healthboost", HealthBoost::new);
     public static final StaticModifier<ShanXiPickaxe> shanXiPickaxeStaticModifier = MODIFIERS.register("shanxipickaxe", ShanXiPickaxe::new);
     public static final StaticModifier<SuperCritHit> superCritHitStaticModifier = MODIFIERS.register("supercrithit", SuperCritHit::new);
+    public static final StaticModifier<Eternity> ETERNITY = MODIFIERS.register("eternity", Eternity::new);
+    public static final StaticModifier<DevourerOfDragons> DEVOURER_OF_DRAGONS = MODIFIERS.register("devourer_of_dragons", DevourerOfDragons::new);
+    public static final StaticModifier<DevourerOfDragonsArmor> DEVOURER_OF_DRAGONS_ARMOR = MODIFIERS.register("devourer_of_dragons_armor", DevourerOfDragonsArmor::new);
+    public static final StaticModifier<PermafrostRevival> PERMAFROST_REVIVAL = MODIFIERS.register("permafrost_revival", PermafrostRevival::new);
+    public static final StaticModifier<FieryJavelinModifier> FIERY_JAVELIN = MODIFIERS.register("fiery_javelin", FieryJavelinModifier::new);
+    public static final StaticModifier<PlasmaWaveSlashEx> PLASMA_WAVE_SLASH = MODIFIERS.register("plasma_wave_slash", PlasmaWaveSlashEx::new);
 }

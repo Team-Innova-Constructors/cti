@@ -7,7 +7,9 @@ import com.hoshino.cti.library.modifier.hooks.OnDeathModifierHook;
 import com.hoshino.cti.library.modifier.hooks.OnHoldingPreventDeathHook;
 import com.hoshino.cti.library.modifier.hooks.SlotStackModifierHook;
 import com.hoshino.cti.util.EquipmentUtil;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -92,6 +94,7 @@ public class ToolEvents {
                     if(shouldPrevent(source,canIgnore)&&HealthRemain>0){
                         event.setCanceled(true);
                         event.getEntity().setHealth(HealthRemain);
+                        event.getEntity().sendSystemMessage(Component.translatable("etshtinker.message.death_prevent").withStyle(ChatFormatting.AQUA));
                         return;
                     }
                     if(livingEntity.isDeadOrDying()){

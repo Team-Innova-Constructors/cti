@@ -735,6 +735,31 @@
   "modifier.cti.sugarmaker.flavor": "Cti食品有限公司认证",
   "modifier.cti.sugarmaker.description":"击杀生物后有30%概率掉落佛糖,不同佛糖食用后有不同的属性\n哈将:提高20%全伤害\n哼将:降低20%全伤害\n钢躯:免疫所有击退\n月隐:不会被3格内生物主动索敌锁到\n夜叉戮:降低50%最大生命,受到击退翻倍但是大幅提升伤害",
 
+  "modifier.cti.eternity": "永恒",
+  "modifier.cti.eternity.flavor": "不朽的 ToolStack",
+  "modifier.cti.eternity.description":"获得优先级较高的不毁，手持/穿着时获得50%伤害减免（仅生效一次）。",
+
+  "modifier.cti.devourer_of_dragons": "龙魂吞噬者",
+  "modifier.cti.devourer_of_dragons.flavor": "虽然你不是龙，但你的灵魂依然是我的盛宴！",
+  "modifier.cti.devourer_of_dragons.description":"你的工具会铭记你的屠龙之举并从中汲取力量。每击杀一条龙，伤害增加10%（最高500%，独立乘算）。",
+
+  "modifier.cti.devourer_of_dragons_armor": "龙魂吞噬者",
+  "modifier.cti.devourer_of_dragons_armor.flavor": "虽然你不是龙，但你的灵魂依然是我的盛宴！",
+  "modifier.cti.devourer_of_dragons_armor.description":"你的工具会铭记你的屠龙之举并从中汲取力量。每击杀一条龙，护甲值和生命值增加2（最高100）。减少75%来自龙的伤害。",
+
+  "modifier.cti.permafrost_revival": "永冻之秘药",
+  "modifier.cti.permafrost_revival.flavor": "不过现在它不会把你冻住了",
+  "modifier.cti.permafrost_revival.description":"死亡时以满血复活并冻结周围敌人5s（240s冷却）。",
+
+  "modifier.cti.plasma_wave_slash": "等离子波动斩Ex",
+  "modifier.cti.plasma_wave_slash.flavor": "泰拉瑞亚1.4.4更新的泰拉之刃belike",
+  "modifier.cti.plasma_wave_slash.description":"挥舞武器，释放毁灭性等离子波动。",
+
+  "modifier.cti.fiery_javelin": "火焰标枪",
+  "modifier.cti.fiery_javelin.flavor": "更快，更强，更炽热",
+  "modifier.cti.fiery_javelin.description":"将箭矢替换为8基础伤害的火焰标枪，击中时造成爆炸。",
+
+
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
   "item.cti.molten_stellar_manyullyn_bucket": "熔融玛玉灵(?)桶",

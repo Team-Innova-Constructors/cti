@@ -39,6 +39,10 @@ public class AmbrosiumPowered extends Modifier implements SlotStackModifierHook,
         hookBuilder.addHook(this, ModifierHooks.TOOL_STATS, CtiModifierHook.SLOT_STACK,ModifierHooks.TOOLTIP,ModifierHooks.TOOL_DAMAGE);
     }
 
+    @Override
+    public int getPriority() {
+        return 200;
+    }
 
     public static final ResourceLocation KEY_AMBROSIUM_POWER = Cti.getResource("ambrosium_power");
 

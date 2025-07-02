@@ -29,10 +29,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.GlassBlock;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -89,6 +86,7 @@ public class CtiItem {
     public static final RegistryObject<Item> flat_tablet = ITEMS.register("flat_tablet", FlatWorldTabletItem::new);
     public static final RegistryObject<Item> flat_tablet_day = ITEMS.register("flat_tablet_day", FlatWorldDayTabletItem::new);
     public static final RegistryObject<Item> STRANGE_ICE_CRYSTAL = ITEMS.register("strange_ice_crystal", StrangeIceCrystalItem::new);
+    public static final RegistryObject<FieryJavelinItem> FIERY_JAVELIN = ITEMS.register("fiery_javelin", FieryJavelinItem::new);
 
     public static final RegistryObject<BlockItem> unipolar_magnet = ITEMS.register("unipolar_magnet", () -> new BlockItem(CtiBlock.unipolar_magnet.get(), new Item.Properties().tab(CtiTab.MIXC)));
     public static final RegistryObject<BlockItem> unipolar_magnet_budding = ITEMS.register("unipolar_magnet_budding", () -> new BlockItem(CtiBlock.unipolar_magnet_budding.get(), new Item.Properties().tab(CtiTab.MIXC)));

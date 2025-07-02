@@ -21,7 +21,7 @@ public class fieryCapable extends EtSTBaseModifier {
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (isCorrectSlot && holder != null) {
             holder.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 10, 0, false, false));
-            if (holder.isInLava() && tool.getDamage() > 0 && EtSHrnd().nextInt(3) == 1) {
+            if (!level.isClientSide&&holder.isInLava() && tool.getDamage() > 0 && EtSHrnd().nextInt(2) == 0) {
                 tool.setDamage(tool.getDamage() - 1);
             }
         }
