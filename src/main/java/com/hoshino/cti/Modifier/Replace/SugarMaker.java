@@ -19,6 +19,8 @@ public class SugarMaker extends BattleModifier {
     @Override
     public void processLoot(IToolStackView iToolStackView, ModifierEntry modifierEntry, List<ItemStack> list, LootContext lootContext) {
         if (!(lootContext.getParamOrNull(LootContextParams.KILLER_ENTITY) instanceof Player player)) return;
+        boolean should=player.level.random.nextInt(10)>2;
+        if(!should)return;
         final int[] rule = {94, 69, 34, 14, 0};
         final Item[] items = {
                 CtiItem.nakshatra_sugar.get(),
