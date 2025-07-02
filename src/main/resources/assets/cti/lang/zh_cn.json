@@ -727,9 +727,13 @@
   "modifier.cti.shanxipickaxe.flavor": "山西人祖传锻造技术",
   "modifier.cti.shanxipickaxe.description":"使用带有此词条的镐类工具击杀凋零骷髅会掉落大量煤炭(真的是大量)",
 
-  "modifier.cti.shanxipickaxe": "山西镐",
-  "modifier.cti.shanxipickaxe.flavor": "山西人祖传锻造技术",
-  "modifier.cti.shanxipickaxe.description":"使用带有此词条的镐类工具击杀凋零骷髅会掉落大量煤炭(真的是大量)",
+  "modifier.cti.supercrithit": "大暴击",
+  "modifier.cti.supercrithit.flavor": "超级头槌",
+  "modifier.cti.supercrithit.description":"你生命值比例越高可以提高此次暴击伤害,至高200%",
+
+  "modifier.cti.healthboost": "生命洪流",
+  "modifier.cti.healthboost.flavor": "生命在我体内流淌",
+  "modifier.cti.healthboost.description":"每级增加5点生命值",
 
   "modifier.cti.sugarmaker": "制糖机",
   "modifier.cti.sugarmaker.flavor": "Cti食品有限公司认证",

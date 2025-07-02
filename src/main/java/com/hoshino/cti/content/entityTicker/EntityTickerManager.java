@@ -17,6 +17,7 @@ public class EntityTickerManager {
 
     public static EntityTickerManagerInstance getInstance(Entity entity){
         return new EntityTickerManagerInstance(entity);
+
     }
 
     public static boolean tick(Entity entity){

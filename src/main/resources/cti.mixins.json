@@ -38,6 +38,7 @@
     "L2.DispellTraitMixin",
     "L2.DrainTraitMixin",
     "L2.EffectUtilMixin",
+    "L2.GrowTraitMixin",
     "L2.NDHGmixin",
     "L2.RagnarokTraitMixin",
     "L2.ReflectTraitMixin",
