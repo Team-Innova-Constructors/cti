@@ -6,8 +6,10 @@ import com.github.alexthe666.iceandfire.entity.EntityDragonBase;
 import com.hoshino.cti.Cti;
 import com.hoshino.cti.Entity.DisposibleFakePlayer;
 import com.hoshino.cti.content.entityTicker.EntityTickerManager;
+import com.hoshino.cti.register.CtiBlock;
 import com.hoshino.cti.register.CtiEffects;
 import com.hoshino.cti.register.CtiEntityTickers;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -17,6 +19,8 @@ import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.TickEvent;
@@ -114,5 +118,24 @@ public class LivingEvents {
     @SubscribeEvent
     public static void onLivingAttack(LivingAttackEvent event){
         if (event.getEntity() instanceof EntityDragonBase&&event.getSource().getEntity()!=null&&!(event.getSource().getEntity() instanceof Player)) event.setCanceled(true);
+    }
+    @SubscribeEvent
+    public static void glassWeakDamage(LivingDamageEvent event){
+        var source=event.getSource();
+        var entity=event.getEntity();
+        if(source.isBypassArmor()||source.isBypassMagic()||source.isBypassEnchantments()||source.isBypassInvul()||source.getEntity()==null)return;
+        double x= entity.getX();
+        double y= entity.getY();
+        double z= entity.getZ();
+        var pos1=new BlockPos(x+3,y-1,z+3);
+        var pos2=new BlockPos(x-3,y-1,z-3);
+        var stateStream=entity.level.getBlockStates(new AABB(pos1,pos2));
+        var list=stateStream.toList();
+        int count=0;
+        for(BlockState state:list){
+            if(state.getBlock()!= CtiBlock.aluminium_glass.get())continue;
+            count++;
+        }
+        event.setAmount(event.getAmount() * 1-(Math.min(40f,count)/100f));
     }
 }

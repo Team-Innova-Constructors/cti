@@ -5,11 +5,14 @@ import com.hoshino.cti.Blocks.Machine.*;
 import com.hoshino.cti.Blocks.OverdenseGlacioStone;
 import com.hoshino.cti.Blocks.RasteriteBudding;
 import com.hoshino.cti.Blocks.unipolarBudding;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -43,8 +46,13 @@ public class CtiBlock {
             .lightLevel((a)->0)
             .isViewBlocking((a,b,c)->false)
             .isSuffocating((a,b,c)->false)
-
-    ));
+            .isRedstoneConductor((a,b,c)->true)
+    ){
+        @Override
+        public float getEnchantPowerBonus(BlockState state, LevelReader level, BlockPos pos) {
+            return 350234;
+        }
+    });
     public static final RegistryObject<BaseEntityBlock> atmosphere_extractor = BLOCK.register("atmosphere_extractor", () -> new AtmosphereExtractorBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).destroyTime(2).requiresCorrectToolForDrops()));
     public static final RegistryObject<BaseEntityBlock> atmosphere_condensator = BLOCK.register("atmosphere_condensator", () -> new AtmosphereCondensatorBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).destroyTime(2).requiresCorrectToolForDrops()));
     public static final RegistryObject<BaseEntityBlock> quantum_miner = BLOCK.register("quantum_miner", () -> new QuantumMinerBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).destroyTime(2).requiresCorrectToolForDrops()));
