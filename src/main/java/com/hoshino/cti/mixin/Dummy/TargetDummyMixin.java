@@ -30,8 +30,8 @@ public abstract class TargetDummyMixin extends Mob {
     @Inject(method = "tick",at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;displayClientMessage(Lnet/minecraft/network/chat/Component;Z)V"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void summon(CallbackInfo ci, BlockPos onPos, BlockState onState, CombatTracker tracker, float combatDuration, CommonConfigs.DpsMode dpsMode, boolean dynamic, float seconds, float dps, List outOfCombat, Iterator var10, Map.Entry e, ServerPlayer p, int timer, boolean showMessage){
         if(dps>1000){
-            ItemEntity shark=new ItemEntity(this.level,this.getX(),this.getY(),this.getZ(),new ItemStack(LCItems.SPACE_SHARD.get()));
-            this.level.addFreshEntity(shark);
+            ItemEntity shard=new ItemEntity(this.level,this.getX(),this.getY(),this.getZ(),new ItemStack(LCItems.SPACE_SHARD.get()));
+            this.level.addFreshEntity(shard);
         }
     }
 }
