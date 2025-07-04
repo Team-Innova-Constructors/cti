@@ -23,10 +23,12 @@ import org.jetbrains.annotations.Nullable;
 public class FieryJavelinProjectile extends AbstractArrow {
     public FieryJavelinProjectile(EntityType<? extends AbstractArrow> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        this.setBaseDamage(8);
     }
 
     public FieryJavelinProjectile(Level level, LivingEntity pShooter){
         super(CtiEntity.FIERY_JAVELIN.get(),pShooter,level);
+        this.setBaseDamage(8);
     }
 
     @Override
@@ -45,7 +47,7 @@ public class FieryJavelinProjectile extends AbstractArrow {
         this.playSound(SoundEvents.FIREWORK_ROCKET_BLAST);
         if (this.level instanceof ServerLevel serverLevel){
             serverLevel.sendParticles(CtiParticleType.FIERY_EXPLODE.get(),position.x,position.y,position.z,1,0,0,0,0);
-            serverLevel.sendParticles(CtiParticleType.RED_SPARK.get(),position.x,position.y,position.z,16,0,0,0,0.35);
+            serverLevel.sendParticles(CtiParticleType.RED_SPARK.get(),position.x,position.y,position.z,16,0,0,0,0.4);
         }
     }
 
@@ -61,18 +63,27 @@ public class FieryJavelinProjectile extends AbstractArrow {
         this.xRotO = this.getXRot();
     }
 
+    public void shootFromRotation(Entity pShooter, float pX, float pY, float pZ, float pVelocity, float pInaccuracy) {
+        float f = -Mth.sin(pY * ((float)Math.PI / 180F)) * Mth.cos(pX * ((float)Math.PI / 180F));
+        float f1 = -Mth.sin((pX + pZ) * ((float)Math.PI / 180F));
+        float f2 = Mth.cos(pY * ((float)Math.PI / 180F)) * Mth.cos(pX * ((float)Math.PI / 180F));
+        this.shoot(f, f1, f2, pVelocity, pInaccuracy);
+        Vec3 vec3 = pShooter.getDeltaMovement();
+        this.setDeltaMovement(this.getDeltaMovement().add(vec3.x, pShooter.isOnGround() ? 0.0D : vec3.y, vec3.z));
+    }
+
     @Override
     public void tick() {
         if (this.firstTick) this.setPierceLevel((byte) (this.getPierceLevel()+1));
         this.tickCount++;
         if (this.tickCount>800) this.discard();
-        EntityHitResult hitResult = ProjectileUtil.getEntityHitResult(this.level, this, this.position(),this.position().add(this.getDeltaMovement().scale(2)), this.getBoundingBox().expandTowards(this.getDeltaMovement().scale(2)).inflate(1.0D), this::canHitEntity);
+        EntityHitResult hitResult = ProjectileUtil.getEntityHitResult(this.level, this, this.position(),this.position().add(this.getDeltaMovement().scale(2)), this.getBoundingBox().expandTowards(this.getDeltaMovement().scale(2)).inflate(1.0D), entity -> entity != this.getOwner() && this.canHitEntity(entity));
         if (hitResult!=null){
             net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, hitResult);
             this.onHit(hitResult);
         }
         this.setPos(this.position().add(this.getDeltaMovement().scale(2)));
-        this.level.addParticle(CtiParticleType.STAR_LINE.get(),this.getX(),this.getY()+0.5*this.getBbHeight(),this.getZ(),this.getDeltaMovement().x*2,this.getDeltaMovement().y*2,this.getDeltaMovement().z*2);
+        this.level.addParticle(CtiParticleType.FIERY_LINE.get(),this.getX(),this.getY()+0.5*this.getBbHeight(),this.getZ(),this.getDeltaMovement().x*2,this.getDeltaMovement().y*2,this.getDeltaMovement().z*2);
     }
 
     @Override

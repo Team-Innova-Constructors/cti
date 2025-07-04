@@ -4,6 +4,7 @@ import com.hoshino.cti.client.CtiParticleType;
 import com.hoshino.cti.client.InitPartModel;
 import com.hoshino.cti.Cti;
 import com.hoshino.cti.client.particle.FieryExplodeParticle;
+import com.hoshino.cti.client.particle.FieryJavelinLineParticle;
 import com.hoshino.cti.client.particle.RedSparkParticle;
 import com.hoshino.cti.client.particle.StarLineParticle;
 import net.minecraftforge.api.distmarker.Dist;
@@ -24,6 +25,7 @@ public class ClientEventHandler {
         event.register(CtiParticleType.STAR_LINE.get(), StarLineParticle::provider);
         event.register(CtiParticleType.RED_SPARK.get(), RedSparkParticle::provider);
         event.register(CtiParticleType.FIERY_EXPLODE.get(), FieryExplodeParticle::provider);
+        event.register(CtiParticleType.FIERY_LINE.get(), FieryJavelinLineParticle::provider);
     }
 
 }
