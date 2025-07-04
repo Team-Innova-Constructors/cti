@@ -30,10 +30,12 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.GlassBlock;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
 import umpaz.brewinandchewin.common.item.BoozeItem;
 
 import java.util.List;
@@ -288,7 +290,13 @@ public class CtiItem {
     public static final RegistryObject<Item> upgrade_speed_kit = ITEMS.register("upgrade_speed_kit", () -> new AdvancedUpgrade(8, false, List.of(Upgrade.SPEED)));
     public static final RegistryObject<Item> upgrade_energy_kit_2 = ITEMS.register("upgrade_energy_kit_2", () -> new AdvancedUpgrade(16, false, List.of(Upgrade.ENERGY)));
     public static final RegistryObject<Item> upgrade_energy_kit_3 = ITEMS.register("upgrade_energy_kit_3", () -> new AdvancedUpgrade(32, false, List.of(Upgrade.ENERGY)));
-    public static final RegistryObject<BlockItem> aluminium_glass = ITEMS.register("aluminium_glass", () -> new BlockItem(CtiBlock.aluminium_glass.get(), new Item.Properties().tab(CtiTab.MIXC)));
+    public static final RegistryObject<BlockItem> aluminium_glass = ITEMS.register("aluminium_glass", () -> new BlockItem(CtiBlock.aluminium_glass.get(), new Item.Properties().tab(CtiTab.MIXC)){
+        @Override
+        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+            pTooltip.add(Component.literal("高强度的铝玻璃,他会弱化周围生物的攻击,半径4格内每多一块就会降低1%伤害,至多降低40%").withStyle(style -> style.withColor(0xffaaff)));
+            pTooltip.add(Component.literal("对于穿甲/穿魔伤害无效！").withStyle(style -> style.withColor(0xff557f)));
+        }
+    });
 
     public static final RegistryObject<Item> BIOMES_ITEM = ITEMS.register("biomes_item",BiomeInfoItem::new);
 
