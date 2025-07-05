@@ -14,17 +14,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbstractArrow.class)
 public class AbstractArrowMixin {
     @Unique private Vec3 cti$deltaMovement;
-    @Inject(at = @At("HEAD"),method = "onHitEntity")
-    private void cancelVelocity(EntityHitResult pResult, CallbackInfo ci){
+    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraftforge/event/ForgeEventFactory;onProjectileImpact(Lnet/minecraft/world/entity/projectile/Projectile;Lnet/minecraft/world/phys/HitResult;)Z"),method = "tick")
+    private void cancelVelocity(CallbackInfo ci){
         AbstractArrow arrow = (AbstractArrow) (Object) this;
         this.cti$deltaMovement = arrow.getDeltaMovement();
         CompoundTag nbt = arrow.getPersistentData();
         if (nbt.getFloat("cti_basedamage")>0) arrow.setBaseDamage(nbt.getFloat("cti_basedamage"));
         else nbt.putFloat("cti_basedamage", (float) arrow.getBaseDamage());
-        arrow.setDeltaMovement(arrow.getDeltaMovement().scale(1/arrow.getDeltaMovement().length()));
+        arrow.setDeltaMovement(arrow.getDeltaMovement().normalize());
     }
-    @Inject(at = @At("TAIL"),method = "onHitEntity")
-    private void addBackVelocity(EntityHitResult pResult, CallbackInfo ci){
+    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;getDeltaMovement()Lnet/minecraft/world/phys/Vec3;",ordinal = 1),method = "tick")
+    private void addBackVelocity(CallbackInfo ci){
         AbstractArrow arrow = (AbstractArrow) (Object) this;
         if (this.cti$deltaMovement!=null) arrow.setDeltaMovement(this.cti$deltaMovement);
     }

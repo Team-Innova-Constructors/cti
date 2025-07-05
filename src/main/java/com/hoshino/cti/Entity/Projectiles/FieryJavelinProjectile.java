@@ -23,12 +23,12 @@ import org.jetbrains.annotations.Nullable;
 public class FieryJavelinProjectile extends AbstractArrow {
     public FieryJavelinProjectile(EntityType<? extends AbstractArrow> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.setBaseDamage(8);
+        this.setBaseDamage(16);
     }
 
     public FieryJavelinProjectile(Level level, LivingEntity pShooter){
         super(CtiEntity.FIERY_JAVELIN.get(),pShooter,level);
-        this.setBaseDamage(8);
+        this.setBaseDamage(16);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class FieryJavelinProjectile extends AbstractArrow {
 
     @Override
     public void shoot(double pX, double pY, double pZ, float pVelocity, float pInaccuracy) {
-        Vec3 vec3 = (new Vec3(pX, pY, pZ)).normalize().scale(4);
+        Vec3 vec3 = (new Vec3(pX, pY, pZ)).normalize().scale(2);
         this.setBaseDamage(this.getBaseDamage()*pVelocity);
         this.setDeltaMovement(vec3);
         double d0 = vec3.horizontalDistance();
@@ -77,13 +77,15 @@ public class FieryJavelinProjectile extends AbstractArrow {
         if (this.firstTick) this.setPierceLevel((byte) (this.getPierceLevel()+1));
         this.tickCount++;
         if (this.tickCount>800) this.discard();
-        EntityHitResult hitResult = ProjectileUtil.getEntityHitResult(this.level, this, this.position(),this.position().add(this.getDeltaMovement().scale(2)), this.getBoundingBox().expandTowards(this.getDeltaMovement().scale(2)).inflate(1.0D), entity -> entity != this.getOwner() && this.canHitEntity(entity));
+        Vec3 velocity = this.getDeltaMovement();
+        EntityHitResult hitResult = ProjectileUtil.getEntityHitResult(this.level, this, this.position(),this.position().add(this.getDeltaMovement().scale(5)), this.getBoundingBox().expandTowards(this.getDeltaMovement().scale(5)).inflate(1.0D), entity -> entity != this.getOwner() && this.canHitEntity(entity));
         if (hitResult!=null){
             net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, hitResult);
             this.onHit(hitResult);
         }
+        this.setDeltaMovement(velocity);
         this.setPos(this.position().add(this.getDeltaMovement().scale(2)));
-        this.level.addParticle(CtiParticleType.FIERY_LINE.get(),this.getX(),this.getY()+0.5*this.getBbHeight(),this.getZ(),this.getDeltaMovement().x*2,this.getDeltaMovement().y*2,this.getDeltaMovement().z*2);
+        this.level.addParticle(CtiParticleType.FIERY_LINE.get(),this.getX(),this.getY()+0.5*this.getBbHeight(),this.getZ(),this.getDeltaMovement().x*5,this.getDeltaMovement().y*5,this.getDeltaMovement().z*5);
     }
 
     @Override

@@ -5,10 +5,12 @@ import com.c2h6s.etshtinker.Entities.ItemProjectile;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.github.alexthe666.iceandfire.misc.IafDamageRegistry;
+import com.hoshino.cti.util.AttackUtil;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -47,7 +49,7 @@ public class PlasmaWaveSlashProjectile extends ItemProjectile {
     public void tick() {
         time++;
         Vec3 movement =this.getDeltaMovement();
-        if (time>=8){
+        if (time>=5){
             this.remove(RemovalReason.DISCARDED);
         }
         this.setPos(movement.x+this.getX(),movement.y+this.getY(),movement.z+this.getZ());
@@ -57,7 +59,7 @@ public class PlasmaWaveSlashProjectile extends ItemProjectile {
             if (entity!=null&&entity!=this.getOwner()&&this.getOwner() instanceof Player player&&!(entity instanceof Player)){
                 if (tool!=null) {
                     entity.invulnerableTime = 0;
-                    ToolAttackUtil.attackEntity(tool,player, InteractionHand.MAIN_HAND,entity,()->1,true);
+                    AttackUtil.attackEntity(tool,player, InteractionHand.MAIN_HAND,entity,()->1,true, EquipmentSlot.MAINHAND,0.25f);
                     entity.invulnerableTime =0;
                     entity.hurt(IafDamageRegistry.causeIndirectDragonLightningDamage(this,this.getOwner()),this.tool.getStats().get(ToolStats.ATTACK_DAMAGE));
                     hitList.add(entity);

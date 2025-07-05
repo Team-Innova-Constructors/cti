@@ -1,10 +1,12 @@
 package com.hoshino.cti.util;
 
+import com.aetherteam.aether.data.resources.registries.AetherDimensions;
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.packs.repository.PackRepository;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.WorldData;
 import org.slf4j.Logger;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
@@ -51,5 +53,12 @@ public class CommonUtil {
 
     public static UUID UUIDFromSlot(EquipmentSlot slot, ModifierId modifierId){
         return UUID.nameUUIDFromBytes((slot.getName() +modifierId.toString()).getBytes(StandardCharsets.UTF_8));
+    }
+
+    public static boolean isAetherNight(Level level){
+        if (level.dimension()== AetherDimensions.AETHER_LEVEL){
+            return level.getDayTime()%72000>39000&&level.getDayTime()%72000<69000;
+        }
+        return false;
     }
 }

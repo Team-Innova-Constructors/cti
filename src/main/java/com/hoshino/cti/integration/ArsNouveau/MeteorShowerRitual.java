@@ -20,14 +20,11 @@ import net.minecraftforge.common.util.LazyOptional;
 import java.util.Optional;
 import java.util.Random;
 
+import static com.hoshino.cti.util.CommonUtil.isAetherNight;
+
 public class MeteorShowerRitual extends AbstractRitual {
 
-    public static boolean isAetherNight(Level level){
-        if (level.dimension()== AetherDimensions.AETHER_LEVEL){
-            return level.getDayTime()%72000>39000&&level.getDayTime()%72000<69000;
-        }
-        return false;
-    }
+
 
     @Override
     protected void tick() {

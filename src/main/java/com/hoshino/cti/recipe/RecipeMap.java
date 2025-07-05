@@ -2,9 +2,12 @@ package com.hoshino.cti.recipe;
 
 import appeng.core.definitions.AEItems;
 import appeng.core.definitions.AEParts;
+import com.aetherteam.aether.data.resources.registries.AetherDimensions;
 import com.hoshino.cti.Cti;
 import com.hoshino.cti.register.CtiItem;
 import com.hoshino.cti.util.PanelCondition;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
@@ -15,11 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeMap {
-    public static ItemStack stack(ItemLike item,int count){
-        return new ItemStack(item,count);
+    public static ItemStack stack(ItemLike item, int count) {
+        return new ItemStack(item, count);
     }
-    public static ItemStack stack(ItemLike item){
-        return stack(item,1);
+
+    public static ItemStack stack(ItemLike item) {
+        return stack(item, 1);
     }
 
     //这个类用于真正添加配方
@@ -383,7 +387,7 @@ public class RecipeMap {
                     List.of(),
                     List.of(),
                     List.of(AEItems.SKY_DUST.stack())
-                    ),
+            ),
             new AnnihilationPanelRecipe(Cti.getResource("meteorium"),
                     CtiItem.meteorium_plane.get(),
                     PanelCondition.UPWARD,
@@ -392,6 +396,16 @@ public class RecipeMap {
                     List.of(),
                     List.of(),
                     List.of(stack(CtiItem.meteorite_ore.get()))
+            ),
+            new AnnihilationPanelRecipe(Cti.getResource("aetheric_meteorite_ore"),
+                    CtiItem.meteorium_plane.get(),
+                    PanelCondition.UPWARD,
+                    1000,
+                    AetherDimensions.AETHER_LEVEL,
+                    List.of(),
+                    List.of(),
+                    List.of(stack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("kubejs:aetheric_meteorite_ore")))),
+                    Component.translatable("info.cti.panel_condition.night").withStyle(ChatFormatting.DARK_AQUA)
             )
     );
 }

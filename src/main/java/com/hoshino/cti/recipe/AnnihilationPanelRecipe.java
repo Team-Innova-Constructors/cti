@@ -7,6 +7,7 @@ import com.hoshino.cti.Cti;
 import com.hoshino.cti.util.PanelCondition;
 import mekanism.api.chemical.ChemicalStack;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.SimpleContainer;
@@ -30,6 +31,7 @@ public class AnnihilationPanelRecipe implements Recipe<SimpleContainer> {
     public final List<ChemicalStack<?>> chemicalOutputs;
     public final List<FluidStack> fluidOutputs;
     public final List<ItemStack> itemOutputs;
+    public final Component additionalCondition;
 
     public static AnnihilationPanelRecipe EMPTY = new AnnihilationPanelRecipe(Cti.getResource("panel_recipe/empty"), AEParts.ANNIHILATION_PLANE.m_5456_(), PanelCondition.NULL,0,null,List.of(),List.of(),List.of());
 
@@ -42,6 +44,18 @@ public class AnnihilationPanelRecipe implements Recipe<SimpleContainer> {
         this.chemicalOutputs = chemicalOutputs;
         this.fluidOutputs = fluidOutputs;
         this.itemOutputs = itemOutputs;
+        this.additionalCondition = null;
+    }
+    public AnnihilationPanelRecipe(ResourceLocation id, PartItem<?> panel, PanelCondition condition, int ticks, ResourceKey<Level> dimension, List<ChemicalStack<?>> chemicalOutputs, List<FluidStack> fluidOutputs, List<ItemStack> itemOutputs,Component component) {
+        this.id = id;
+        this.condition = condition;
+        this.panel = panel;
+        this.ticks = ticks;
+        this.dimension = dimension;
+        this.chemicalOutputs = chemicalOutputs;
+        this.fluidOutputs = fluidOutputs;
+        this.itemOutputs = itemOutputs;
+        this.additionalCondition = component;
     }
 
     @Override

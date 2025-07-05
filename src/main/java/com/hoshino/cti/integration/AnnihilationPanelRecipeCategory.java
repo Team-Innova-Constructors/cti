@@ -141,9 +141,12 @@ public class AnnihilationPanelRecipeCategory implements IRecipeCategory<Annihila
     public void draw(AnnihilationPanelRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
         if (recipe.dimension!=null){
             String dim = recipe.dimension.location().toLanguageKey();
-            MutableComponent dimension = Component.literal("维度:").withStyle(ChatFormatting.WHITE);
-            dimension.append(Component.translatable("dimension." + dim).withStyle(ChatFormatting.LIGHT_PURPLE));
-            Minecraft.getInstance().font.draw(stack, dimension, 2, 2, 0);
+            MutableComponent dimension = Component.literal("维度:").withStyle(ChatFormatting.DARK_GRAY);
+            dimension.append(Component.translatable("dimension." + dim).withStyle(ChatFormatting.DARK_GRAY));
+            Minecraft.getInstance().font.draw(stack, dimension, 2, 0, 0);
+        }
+        if (recipe.additionalCondition!=null){
+            Minecraft.getInstance().font.draw(stack, recipe.additionalCondition, 32, 8, 0);
         }
         if (!recipe.condition.description.isEmpty()){
             Minecraft.getInstance().font.draw(stack, Component.translatable(recipe.condition.description).withStyle(Style.EMPTY.withColor(0x3c314b)), 2, 32, 0);
