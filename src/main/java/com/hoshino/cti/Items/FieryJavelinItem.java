@@ -17,12 +17,10 @@ public class FieryJavelinItem extends ArrowItem {
 
     @Override
     public boolean isInfinite(ItemStack stack, ItemStack bow, Player player) {
-        return false;
+        return true;
     }
 
     public @NotNull AbstractArrow createArrow(Level pLevel, ItemStack pStack, LivingEntity pShooter) {
-        FieryJavelinProjectile projectile = new FieryJavelinProjectile(pLevel, pShooter);
-        projectile.setBaseDamage(8);
-        return projectile;
+        return new FieryJavelinProjectile(pLevel, pShooter);
     }
 }

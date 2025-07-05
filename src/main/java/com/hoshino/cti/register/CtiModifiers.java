@@ -11,6 +11,7 @@ import com.hoshino.cti.Modifier.iafCompact.*;
 import com.hoshino.cti.Modifier.l2Compact.Eternity;
 import com.hoshino.cti.Modifier.slot.*;
 import com.hoshino.cti.Cti;
+import com.hoshino.cti.Modifier.underGardenCompact.RegaliumModifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
@@ -139,4 +140,5 @@ public class CtiModifiers {
     public static final StaticModifier<PermafrostRevival> PERMAFROST_REVIVAL = MODIFIERS.register("permafrost_revival", PermafrostRevival::new);
     public static final StaticModifier<FieryJavelinModifier> FIERY_JAVELIN = MODIFIERS.register("fiery_javelin", FieryJavelinModifier::new);
     public static final StaticModifier<PlasmaWaveSlashEx> PLASMA_WAVE_SLASH = MODIFIERS.register("plasma_wave_slash", PlasmaWaveSlashEx::new);
+    public static final StaticModifier<RegaliumModifier> REGALIUM = MODIFIERS.register("regalium", RegaliumModifier::new);
 }

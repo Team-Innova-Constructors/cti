@@ -766,6 +766,10 @@
   "modifier.cti.fiery_javelin.flavor": "更快，更强，更炽热",
   "modifier.cti.fiery_javelin.description":"将箭矢替换为8基础伤害的火焰标枪，击中时造成爆炸。",
 
+  "modifier.cti.regalium": "贵豪",
+  "modifier.cti.regalium.flavor": "贵豪真的贵吗",
+  "modifier.cti.regalium.description":"获得20%大部分属性增幅，使石生体与你中立。",
+
 
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
