@@ -1,7 +1,6 @@
 package com.hoshino.cti.mixin;
 
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ShulkerBullet;
 import net.minecraft.world.level.Level;
@@ -20,6 +19,7 @@ public abstract class ShulkerBulletMixin extends Projectile {
     @Inject(method = "tick",at = @At("HEAD"), cancellable = true)
     private void tick(CallbackInfo ci){
         if(this.tickCount>400){
+            this.discard();
             ci.cancel();
         }
     }
