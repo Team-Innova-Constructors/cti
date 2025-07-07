@@ -11,6 +11,7 @@
     "LightningBoltMixin",
     "LivingEntityAccessor",
     "LivingEntityMixin",
+    "MasticatorMixin",
     "PlayerMixin",
     "ProjectileMixin",
     "ServerLevelMixin",

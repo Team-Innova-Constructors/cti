@@ -3,7 +3,6 @@ package com.hoshino.cti.mixin;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -14,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbstractArrow.class)
 public class AbstractArrowMixin {
     @Unique private Vec3 cti$deltaMovement;
-    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraftforge/event/ForgeEventFactory;onProjectileImpact(Lnet/minecraft/world/entity/projectile/Projectile;Lnet/minecraft/world/phys/HitResult;)Z"),method = "tick")
+    @Inject(method = "tick",at = @At(value = "INVOKE", target = "Lnet/minecraftforge/event/ForgeEventFactory;onProjectileImpact(Lnet/minecraft/world/entity/projectile/Projectile;Lnet/minecraft/world/phys/HitResult;)Z"))
     private void cancelVelocity(CallbackInfo ci){
         AbstractArrow arrow = (AbstractArrow) (Object) this;
         this.cti$deltaMovement = arrow.getDeltaMovement();
