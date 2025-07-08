@@ -1,5 +1,6 @@
 package com.hoshino.cti.register;
 
+import com.bobmowzie.mowziesmobs.client.render.entity.RenderSunstrike;
 import com.c2h6s.etshtinker.Entities.plasmawaveslashentity;
 import com.c2h6s.etshtinker.client.render.renderSlash;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
@@ -34,6 +35,7 @@ public class CtiEntity {
     public static final RegistryObject<EntityType<AethericMeteor>> AETHERIC_METEOR = ENTITIES.register("aetheric_meteor", () -> EntityType.Builder.<AethericMeteor>of(AethericMeteor::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new AethericMeteor(CtiEntity.AETHERIC_METEOR.get(),world)).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<FieryJavelinProjectile>> FIERY_JAVELIN = ENTITIES.register("fiery_javelin", () -> EntityType.Builder.<FieryJavelinProjectile>of(FieryJavelinProjectile::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new FieryJavelinProjectile(CtiEntity.FIERY_JAVELIN.get(),world)).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<PlasmaWaveSlashProjectile>> PLASMA_WAVE_SLASH = ENTITIES.register("plasma_wave_slash", () -> EntityType.Builder.of(PlasmaWaveSlashProjectile::new, MobCategory.MISC).sized(8F, 1F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new PlasmaWaveSlashProjectile(CtiEntity.PLASMA_WAVE_SLASH.get(), world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<HomingSunStrike>> HOMING_SUNSTRIKE = ENTITIES.register("homing_sunstrike", () -> EntityType.Builder.of(HomingSunStrike::new, MobCategory.MISC).sized(0.1f, 0.1F).setCustomClientFactory((spawnEntity, world) -> new HomingSunStrike(CtiEntity.HOMING_SUNSTRIKE.get(), world)).setShouldReceiveVelocityUpdates(true));
 
     public static void registerEntityRenderers() {
         ClientHooks.registerEntityRenderer(CtiEntity.TIER_5_ROCKET, RocketRendererTier5::new);
@@ -47,5 +49,6 @@ public class CtiEntity {
         ClientHooks.registerEntityRenderer(CtiEntity.AETHERIC_METEOR, FriendlyMeteorRenderer::new);
         ClientHooks.registerEntityRenderer(CtiEntity.PLASMA_WAVE_SLASH, renderSlash::new);
         ClientHooks.registerEntityRenderer(CtiEntity.FIERY_JAVELIN, FieryJavelinRender::new);
+        ClientHooks.registerEntityRenderer(CtiEntity.HOMING_SUNSTRIKE, RenderSunstrike::new);
     }
 }

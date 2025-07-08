@@ -67,6 +67,7 @@
     "MixinForPlanets.PnC.ManualCompressorBlockEntityMixin",
     "MixinForPlanets.Powah.AbstractEnergyProviderMixin",
     "MowzieMixin.EntityWroughtnautMixin",
+    "MowzieMixin.EntitySunstrikeMixin",
     "PnCMixin.AirGrateMixin",
     "TconMixin.InsatiableMixin",
     "TconMixin.KineticMixin",

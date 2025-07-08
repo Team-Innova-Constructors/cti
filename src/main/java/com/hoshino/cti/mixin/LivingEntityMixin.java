@@ -5,6 +5,7 @@ import com.hoshino.cti.content.environmentSystem.IEnvironmentalSource;
 import com.hoshino.cti.mixin.TIMixin.ServerPlayerAccessor;
 import com.hoshino.cti.register.CtiEffects;
 import com.hoshino.cti.util.ILivingEntityMixin;
+import com.hoshino.cti.util.StrictDamageProcess;
 import com.mojang.logging.LogUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -121,6 +122,7 @@ public abstract class LivingEntityMixin implements ILivingEntityMixin {
     @Unique
     public void cti$actuallyHurt(DamageSource pDamageSource, float pDamageAmount) {
         LivingEntity living =(LivingEntity) (Object) this;
+        pDamageAmount = StrictDamageProcess.getStrictDamageForEntity(living,pDamageAmount);
         ForgeHooks.onLivingHurt(living, pDamageSource, pDamageAmount);
         if (pDamageAmount > 0.0F && pDamageAmount < 3.4028235E37F && pDamageSource.getEntity() instanceof ServerPlayer) {
             ((ServerPlayer) pDamageSource.getEntity()).awardStat(Stats.CUSTOM.get(Stats.DAMAGE_DEALT_ABSORBED), Math.round(pDamageAmount * 10.0F));

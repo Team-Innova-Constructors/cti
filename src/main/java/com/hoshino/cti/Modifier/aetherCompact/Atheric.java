@@ -3,12 +3,18 @@ package com.hoshino.cti.Modifier.aetherCompact;
 import com.aetherteam.aether.data.resources.registries.AetherDimensions;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import com.hoshino.cti.Cti;
+import com.hoshino.cti.util.DamageSourceUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.phys.EntityHitResult;
+import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
 import slimeknights.tconstruct.library.materials.definition.IMaterial;
 import slimeknights.tconstruct.library.materials.definition.MaterialManager;
@@ -18,9 +24,7 @@ import slimeknights.tconstruct.library.modifiers.hook.behavior.EnchantmentModifi
 import slimeknights.tconstruct.library.modifiers.hook.build.VolatileDataModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
-import slimeknights.tconstruct.library.tools.nbt.IToolContext;
-import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
+import slimeknights.tconstruct.library.tools.nbt.*;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -60,7 +64,7 @@ public class Atheric extends EtSTBaseModifier implements EnchantmentModifierHook
     @Override
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
         if (context.getAttacker().level.dimension().equals(AetherDimensions.AETHER_LEVEL)){
-            return damage*(1+0.2f*getBonus(tool));
+            return damage*(1+0.25f*getBonus(tool));
         }
         return damage;
     }
@@ -69,7 +73,14 @@ public class Atheric extends EtSTBaseModifier implements EnchantmentModifierHook
     public void postMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage) {
         if (!context.getAttacker().level.dimension().equals(AetherDimensions.AETHER_LEVEL)){
             context.getTarget().invulnerableTime=0;
-            context.getTarget().hurt(DamageSource.MAGIC,20*getBonus(tool));
+            context.getTarget().hurt(DamageSourceUtil.sourced(DamageSource.MAGIC,context.getAttacker(),context.getAttacker()).setMagic(),25*getBonus(tool));
+        }
+    }
+
+    @Override
+    public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
+        if (abstractArrow!=null){
+            abstractArrow.setBaseDamage(abstractArrow.getBaseDamage()*(1+0.25f*getBonus(tool)));
         }
     }
 
