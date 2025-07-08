@@ -245,6 +245,7 @@ public class CtiItem {
     public static final RegistryObject<Item> upgrade_electronium = ITEMS.register("upgrade_electronium", () -> new AtmosphereUpgradeItem(3f, 1.75f));
     public static final RegistryObject<Item> upgrade_violium = ITEMS.register("upgrade_violium", () -> new AtmosphereUpgradeItem(4.5f, 0.5f));
     public static final RegistryObject<Item> upgrade_aetherium = ITEMS.register("upgrade_aetherium", () -> new AtmosphereUpgradeItem(10.5f, 2f));
+    public static final RegistryObject<Item> test_tool = ITEMS.register("test_tool", () -> new TestTool(new Item.Properties().tab(CtiTab.MATERIALS)));
 
 
     //材料
