@@ -764,11 +764,19 @@
 
   "modifier.cti.fiery_javelin": "火焰标枪",
   "modifier.cti.fiery_javelin.flavor": "更快，更强，更炽热",
-  "modifier.cti.fiery_javelin.description":"将箭矢替换为8基础伤害的火焰标枪，击中时造成爆炸。",
+  "modifier.cti.fiery_javelin.description":"将箭矢替换为16基础伤害的火焰标枪，击中时造成爆炸。",
 
   "modifier.cti.regalium": "贵豪",
   "modifier.cti.regalium.flavor": "贵豪真的贵吗",
   "modifier.cti.regalium.description":"获得20%大部分属性增幅，使石生体与你中立。",
+
+  "modifier.cti.memory_alloy": "记忆合金",
+  "modifier.cti.memory_alloy.flavor": "记忆合金记忆力有多好？",
+  "modifier.cti.memory_alloy.description":"根据你历次所造成伤害平均值的50%增加攻击伤害（不会记录<10的伤害和多段伤害），用蓝冰右键以擦除历史记录。\n[小知识：玩家对训练人偶造成的伤害必定为0，只是训练人偶会显示出你本该造成的伤害。因此，攻击训练人偶不会增加本词条的增伤。]",
+
+  "modifier.cti.sunstrike": "耀斑打击",
+  "modifier.cti.sunstrike.flavor": "侦测到在途轨道打击。",
+  "modifier.cti.sunstrike.description":"令追踪的耀斑打击从天而降，惩戒你的敌人。耀斑打击造成10%的两段伤害，白天时威力翻倍。词条等级会增加耀斑打击的生效次数。",
 
 
 
@@ -850,6 +858,7 @@
   "cti.tooltip.modifier.air": "空气体积",
   "cti.tooltip.modifier.pressure": "空气压力",
   "cti.tooltip.modifier.pressure_damage": "压缩空气增幅",
+  "cti.tooltip.modifier.damage_boost": "伤害增幅",
 
   "fluid.cti.molten_aetherium": "熔融阳清合金",
   "item.cti.molten_aetherium_bucket": "熔融阳清合金桶",

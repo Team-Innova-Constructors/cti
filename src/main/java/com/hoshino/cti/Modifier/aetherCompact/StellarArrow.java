@@ -39,7 +39,7 @@ public class StellarArrow extends EtSTBaseModifier {
 
     @Override
     public void modifierAddToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ToolStats.PROJECTILE_DAMAGE.add(builder,2);
+        ToolStats.PROJECTILE_DAMAGE.add(builder,6);
     }
 
     @Override
@@ -48,10 +48,9 @@ public class StellarArrow extends EtSTBaseModifier {
     }
 
     @Override
-    public ItemStack modifierFindAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, ItemStack itemStack, Predicate<ItemStack> predicate) {
-        if (tool.getPersistentData().getInt(AmbrosiumPowered.KEY_AMBROSIUM_POWER)>0){
-            return new ItemStack(Items.ARROW,64);
+    public void shrinkAmmo(IToolStackView tool, ModifierEntry modifier, LivingEntity shooter, ItemStack ammo, int needed) {
+        if (tool.getPersistentData().getInt(AmbrosiumPowered.KEY_AMBROSIUM_POWER)<=0){
+            ammo.shrink(1);
         }
-        return itemStack;
     }
 }
