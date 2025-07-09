@@ -11,8 +11,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class TestTool extends Item {
     public TestTool(Properties p_41383_) {
@@ -27,7 +31,7 @@ public class TestTool extends Item {
 
     @Override
     public int getUseDuration(ItemStack p_41454_) {
-        return 5;
+        return 10;
     }
 
     @Override
@@ -39,12 +43,18 @@ public class TestTool extends Item {
                 var tag=fluid.defaultFluidState().getTags();
                 var list=tag.toList();
                 player.sendSystemMessage(Component.literal("该桶内流体ID"));
-                player.sendSystemMessage(runCopy(Component.literal(fluid.getFluidType().getDescriptionId())));
-                player.sendSystemMessage(Component.literal("该桶内有以下流体tag"));
-                for(TagKey<Fluid> fluidTagKey:list){
-                    String string=fluidTagKey.location().toString();
-                    var component=runCopy(Component.literal(string));
-                    player.sendSystemMessage(component);
+                String fluidName=fluid.getFluidType().toString();
+                player.sendSystemMessage(runCopy(Component.literal(fluidName)));
+                if(list.isEmpty()){
+                    player.sendSystemMessage(Component.literal("嗷呜~获取失败了,该流体没有什么tag").withStyle(style -> style.withColor(0xaaffff)));
+                }
+                else {
+                    player.sendSystemMessage(Component.literal("该桶内有以下流体tag"));
+                    for(TagKey<Fluid> fluidTagKey:list){
+                        String string=fluidTagKey.location().toString();
+                        var component=runCopy(Component.literal(string));
+                        player.sendSystemMessage(component);
+                    }
                 }
             }
         }
@@ -56,5 +66,10 @@ public class TestTool extends Item {
                 .withStyle(style -> style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,Component.literal("点了就能复制到粘贴板喵"))))
                 .withStyle(style -> style.withColor(0xffc4ff))
                 .append(component.getString());
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
+        components.add(Component.literal("副手拿流体桶,然后长按右键此物品0.5秒可以查看该流体的ID和tag等信息").withStyle(style -> style.withColor(0xffc4ff)));
     }
 }
