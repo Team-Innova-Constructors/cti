@@ -26,6 +26,7 @@ import mekanism.api.Upgrade;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
@@ -246,6 +247,7 @@ public class CtiItem {
     public static final RegistryObject<Item> upgrade_violium = ITEMS.register("upgrade_violium", () -> new AtmosphereUpgradeItem(4.5f, 0.5f));
     public static final RegistryObject<Item> upgrade_aetherium = ITEMS.register("upgrade_aetherium", () -> new AtmosphereUpgradeItem(10.5f, 2f));
     public static final RegistryObject<Item> test_tool = ITEMS.register("test_tool", () -> new TestTool(new Item.Properties().tab(CtiTab.MIXC)));
+    public static final RegistryObject<Item> Vein_Remove_Tool = ITEMS.register("vein_remove_tool", () -> new VeinRemoveTool(new Item.Properties().tab(CtiTab.MIXC)));
 
 
     //材料
@@ -274,11 +276,16 @@ public class CtiItem {
     public static final RegistryObject<Item> fishbone_wine = ITEMS.register("fishbone_wine", () -> new BoozeItem(1, 1, tankard_drinkItem().food(CtiWine.fishbone_wine).craftRemainder(Items.ENCHANTED_GOLDEN_APPLE)));
 
     //佛糖
-    public static final RegistryObject<Item> heng_sugar = ITEMS.register("heng_sugar", () -> new FoSugar(new Item.Properties(),CtiEffects.heng.get()));
-    public static final RegistryObject<Item> ha_sugar = ITEMS.register("ha_sugar", () -> new FoSugar(new Item.Properties(),CtiEffects.ha.get()));
-    public static final RegistryObject<Item> strong_sugar = ITEMS.register("strong_sugar", () -> new FoSugar(new Item.Properties(),CtiEffects.strong.get()));
-    public static final RegistryObject<Item> covert_sugar = ITEMS.register("covert_sugar", () -> new FoSugar(new Item.Properties(),CtiEffects.covert.get()));
-    public static final RegistryObject<Item> nakshatra_sugar = ITEMS.register("nakshatra_sugar", () -> new FoSugar(new Item.Properties(),CtiEffects.nakshatra.get()));
+    public static final RegistryObject<Item> heng_sugar = ITEMS.register("heng_sugar", () -> new FoSugar(new Item.Properties().tab(CtiTab.MIXC),CtiEffects.heng.get()));
+    public static final RegistryObject<Item> ha_sugar = ITEMS.register("ha_sugar", () -> new FoSugar(new Item.Properties().tab(CtiTab.MIXC),CtiEffects.ha.get()));
+    public static final RegistryObject<Item> strong_sugar = ITEMS.register("strong_sugar", () -> new FoSugar(new Item.Properties().tab(CtiTab.MIXC),CtiEffects.strong.get()));
+    public static final RegistryObject<Item> covert_sugar = ITEMS.register("covert_sugar", () -> new FoSugar(new Item.Properties().tab(CtiTab.MIXC),CtiEffects.covert.get()));
+    public static final RegistryObject<Item> nakshatra_sugar = ITEMS.register("nakshatra_sugar", () -> new FoSugar(new Item.Properties().tab(CtiTab.MIXC),CtiEffects.nakshatra.get()));
+    public static final RegistryObject<Item> soul_spell = ITEMS.register("soul_spell", () -> new SoulSpell(new Item.Properties().tab(CtiTab.MIXC).stacksTo(1)));
+
+    //矿脉生成
+    //ResourceLocation部分需要完整的MODID和path(同实际路径)
+    public static final RegistryObject<Item> bi_mineral_generator = ITEMS.register("bi_mineral_generator", () -> new VeinGeneratorItem(new Item.Properties().tab(CtiTab.MIXC),new ResourceLocation("etshtinker","immersiveengineering/mineral/bismuthinite")));
 
 
     //mek高级升级
