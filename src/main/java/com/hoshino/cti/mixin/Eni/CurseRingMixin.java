@@ -1,43 +1,162 @@
 package com.hoshino.cti.mixin.Eni;
 
 import com.aizistral.enigmaticlegacy.api.capabilities.IPlaytimeCounter;
+import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
+import com.aizistral.enigmaticlegacy.helpers.ItemLoreHelper;
 import com.aizistral.enigmaticlegacy.items.CursedRing;
+import com.aizistral.omniconfig.wrappers.Omniconfig;
 import com.hoshino.cti.register.CtiModifiers;
+import com.hoshino.cti.util.CurseUtil;
 import com.hoshino.cti.util.method.GetModifierLevel;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import top.theillusivec4.curios.api.SlotContext;
 
-@Mixin(value = CursedRing.class,remap = false)
+import javax.annotation.Nullable;
+import java.util.List;
+
+@Mixin(value = CursedRing.class, remap = false)
 public class CurseRingMixin {
+    @Shadow
+    public static Omniconfig.PerhapsParameter painMultiplier;
+
+    @Shadow
+    public static Omniconfig.PerhapsParameter armorDebuff;
+
+    @Shadow
+    public static Omniconfig.PerhapsParameter monsterDamageDebuff;
+
+    @Shadow
+    public static Omniconfig.IntParameter lootingBonus;
+
+    @Shadow
+    public static Omniconfig.IntParameter fortuneBonus;
+
+    @Shadow
+    public static Omniconfig.PerhapsParameter experienceBonus;
+
+    @Shadow
+    public static Omniconfig.IntParameter enchantingBonus;
+
+    @Shadow public static Omniconfig.BooleanParameter enableLore;
+
     /**
      * @reason <h5>前期压力大并且激怒后还会有残留效果,现在在白天和携带七咒的游戏日前4天不会再激怒末影人</h5>
      * @author firefly
      */
-    @Inject(method = "curioTick",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/monster/EnderMan;m_6710_(Lnet/minecraft/world/entity/LivingEntity;)V"),cancellable = true)
-    private void angryEnderMan(SlotContext context, ItemStack stack, CallbackInfo ci){
-        if(!(context.entity() instanceof Player player))return;
-        boolean shouldNotBeAngry=player.getLevel().isDay()|| GetModifierLevel.EquipHasModifierlevel(player, CtiModifiers.end_slayer.getId())||this.cti$isInfancy(player);
-        if(shouldNotBeAngry){
+    @Inject(method = "curioTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/monster/EnderMan;m_6710_(Lnet/minecraft/world/entity/LivingEntity;)V"), cancellable = true)
+    private void angryEnderMan(SlotContext context, ItemStack stack, CallbackInfo ci) {
+        if (!(context.entity() instanceof Player player)) return;
+        boolean shouldNotBeAngry = player.getLevel().isDay() || GetModifierLevel.EquipHasModifierlevel(player, CtiModifiers.end_slayer.getId()) || this.cti$isInfancy(player);
+        if (shouldNotBeAngry) {
             ci.cancel();
         }
     }
-    @Inject(method = "curioTick",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/NeutralMob;m_6710_(Lnet/minecraft/world/entity/LivingEntity;)V"),cancellable = true)
-    private void angryOtherMob(SlotContext context, ItemStack stack, CallbackInfo ci){
-        if(!(context.entity() instanceof Player player))return;
-        boolean shouldNotBeAngry=player.level.isDay()||this.cti$isInfancy(player);
-        if(shouldNotBeAngry) {
+
+    @Inject(method = "curioTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/NeutralMob;m_6710_(Lnet/minecraft/world/entity/LivingEntity;)V"), cancellable = true)
+    private void angryOtherMob(SlotContext context, ItemStack stack, CallbackInfo ci) {
+        if (!(context.entity() instanceof Player player)) return;
+        boolean shouldNotBeAngry = player.level.isDay() || this.cti$isInfancy(player);
+        if (shouldNotBeAngry) {
             ci.cancel();
         }
     }
-    @Unique
-    private boolean cti$isInfancy(Player player){
-        IPlaytimeCounter counter = IPlaytimeCounter.get(player);
-        return counter.getTimeWithCurses()<96000;
+
+    @Inject(method = "curioTick", at = @At(value = "HEAD"))
+    private void curioTick(SlotContext context, ItemStack stack, CallbackInfo ci) {
+        if (context.entity() instanceof Player player && player.tickCount % 20 == 0) {
+            int time = CurseUtil.getPunishTime(player);
+            if (time > 0) {
+                var data = stack.getOrCreateTag();
+                data.putInt("punish_time", time - 1);
+            }
+        }
     }
-}
+
+    /**
+     * @author
+     * @reason
+     */
+    @OnlyIn(Dist.CLIENT)
+    @Overwrite()
+    public void m_7373_(ItemStack stack, @Nullable Level worldIn, List<Component> list, TooltipFlag flagIn) {
+        ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.void");
+        if (Screen.hasShiftDown()) {
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing3");
+            if (painMultiplier.getValue().asMultiplier() == (double) 2.0F) {
+                ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing4");
+            } else {
+                ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing4_alt", ChatFormatting.GOLD, painMultiplier + "%");
+            }
+            var player=Minecraft.getInstance().player;
+            int time=CurseUtil.getPunishTime(player);
+            int frequency=CurseUtil.getDeathFrequency(player);
+            var string1="当前你已经累计死亡"+(frequency)+"次";
+            var string2="由于你的死亡,你受到的伤害额外增加"+Math.max((frequency-3) * 0.5f * 100,0)+"%";
+            var string3="在"+(time)+"秒后,会结束灵魂破碎对你的影响";
+
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing5");
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing6", ChatFormatting.GOLD, armorDebuff + "%");
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing7", ChatFormatting.GOLD, monsterDamageDebuff + "%");
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing8");
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing9");
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing10");
+            list.add(Component.literal(string1).withStyle(style -> style.withColor(0xff435c)));
+            list.add(Component.literal(string2).withStyle(style -> style.withColor(0xff435c)));
+            if(time>0){
+                list.add(Component.literal(string3).withStyle(style -> style.withColor(0xff435c)));
+            }
+
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.void");
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing11");
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing12", ChatFormatting.GOLD, lootingBonus);
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing13", ChatFormatting.GOLD, fortuneBonus);
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing14", ChatFormatting.GOLD, experienceBonus + "%");
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing15", ChatFormatting.GOLD, enchantingBonus);
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing16");
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing17");
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing18");
+        } else {
+            if (enableLore.getValue()) {
+                ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRingLore1");
+                ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRingLore2");
+                ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRingLore3");
+                ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRingLore4");
+                ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRingLore5");
+                ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRingLore6");
+                ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRingLore7");
+                ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.void");
+            }
+
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.eternallyBound1");
+            if (Minecraft.getInstance().player != null && SuperpositionHandler.canUnequipBoundRelics(Minecraft.getInstance().player)) {
+                ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.eternallyBound2_creative");
+            } else {
+                ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.eternallyBound2");
+            }
+
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.void");
+            ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.holdShift");
+        }
+    }
+        @Unique
+        private boolean cti$isInfancy (Player player){
+            IPlaytimeCounter counter = IPlaytimeCounter.get(player);
+            return counter.getTimeWithCurses() < 96000;
+        }
+    }
