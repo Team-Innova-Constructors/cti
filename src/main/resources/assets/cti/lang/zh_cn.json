@@ -788,6 +788,10 @@
   "modifier.cti.industrial_armor.flavor": "工业化量产的材料，品质稳定的同时效力也不错。",
   "modifier.cti.industrial_armor.description":"增加防御槽和能力槽各一个。每级增加5%护甲值、护甲韧性、耐久和耐久修补量，增加5%（最大80%）不消耗耐久的概率，基于全身等级获得5%（最大80%）的非穿甲伤害减免。无论承受多高的伤害都至多消耗2耐久。",
 
+  "modifier.cti.carcinogenic": "致突变",
+  "modifier.cti.carcinogenic.flavor": "小心职业暴露！",
+  "modifier.cti.carcinogenic.description":"在两次攻击时，移除两次攻击之间目标恢复的生命值并依此治疗自己（最大恢复10生命值）。",
+
 
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",

@@ -23,4 +23,8 @@ public class CtiChemical {
     public static final GasRegistryObject<Gas> PHENOLIC = GAS.register("phenolic_resin", 0xB3774C);
     public static final GasRegistryObject<Gas> BENZOIC_ACID = GAS.register("benzoic_acid", 0xCFC869);
     public static final GasRegistryObject<Gas> BPO = GAS.register("dibenzoyl_peroxide", 0xAD5637);
+    public static final GasRegistryObject<Gas> CHROMATIC_METAL = GAS.register("chromatic_metal", 0xF8B3FF);
+    public static final GasRegistryObject<Gas> POLYMER = GAS.register("polymer", 0x9AA1C7);
+    public static final GasRegistryObject<Gas> PRECURSOR = GAS.register("precursor", 0xFFFD71);
+    public static final GasRegistryObject<Gas> PURE_MATTER = GAS.register("pure_matter", 0x000000);
 }

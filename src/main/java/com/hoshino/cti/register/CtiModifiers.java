@@ -1,5 +1,6 @@
 package com.hoshino.cti.register;
 
+import com.c2h6s.etshtinker.Modifiers.organiccr;
 import com.hoshino.cti.Modifier.Armor.*;
 import com.hoshino.cti.Modifier.*;
 import com.hoshino.cti.Modifier.Contributors.*;
@@ -150,4 +151,5 @@ public class CtiModifiers {
     public static final StaticModifier<SunStrikeModifier> SUN_STRIKE = MODIFIERS.register("sunstrike", SunStrikeModifier::new);
     public static final StaticModifier<Industrial> INDUSTRIAL = MODIFIERS.register("industrial", Industrial::new);
     public static final StaticModifier<IndustrialArmor> INDUSTRIAL_ARMOR = MODIFIERS.register("industrial_armor", IndustrialArmor::new);
+    public static final StaticModifier<organiccr> CARCINOGENIC = MODIFIERS.register("carcinogenic", organiccr::new);
 }
