@@ -191,11 +191,11 @@
 
   "modifier.cti.atheric": "天赐神兵",
   "modifier.cti.atheric.flavor": "你的工具已被上天赐福",
-  "modifier.cti.atheric.description": "工具每有一个部件由天镜材料制成，+1时运和抢夺等级、在天镜时+20%伤害、在天镜外造成+20点魔法伤害。",
+  "modifier.cti.atheric.description": "工具每有一个部件由天镜材料制成，+1时运和抢夺等级、+20%造成的伤害，并根据数量依次增加使用者的辛运、移动速度/飞行速度、交互距离和最大生命。",
 
   "modifier.cti.ambrosium_powered": "神能",
   "modifier.cti.ambrosium_powered.flavor": "你的工具已注入神的能量",
-  "modifier.cti.ambrosium_powered.description": "在背包中用神能晶右键充能，获得每级25%攻防属性加成并抵消耐久损耗。",
+  "modifier.cti.ambrosium_powered.description": "在背包中用神能晶右键充能，获得每级25%攻防属性加成并抵消耐久损耗，每级最大充能24次。",
 
   "modifier.cti.stellar_arrow": "星辰箭矢",
   "modifier.cti.stellar_arrow.flavor": "据说能射下天上的星星",
@@ -777,6 +777,14 @@
   "modifier.cti.sunstrike": "耀斑打击",
   "modifier.cti.sunstrike.flavor": "侦测到在途轨道打击。",
   "modifier.cti.sunstrike.description":"令追踪的耀斑打击从天而降，惩戒你的敌人。耀斑打击造成10%的两段伤害，白天时威力翻倍。词条等级会增加耀斑打击的生效次数。",
+
+  "modifier.cti.industrial": "工业",
+  "modifier.cti.industrial.flavor": "工业化量产的材料，品质稳定的同时效力也不错。",
+  "modifier.cti.industrial.description":"增加升级槽和能力槽各一个。每级增加5%攻击伤害、挖掘速度、弹射物伤害、耐久和耐久修补量，增加5%（最大80%）不消耗耐久的概率。",
+
+  "modifier.cti.industrial_armor": "工业",
+  "modifier.cti.industrial_armor.flavor": "工业化量产的材料，品质稳定的同时效力也不错。",
+  "modifier.cti.industrial_armor.description":"增加防御槽和能力槽各一个。每级增加5%护甲值、护甲韧性、耐久和耐久修补量，增加5%（最大80%）不消耗耐久的概率，基于全身等级获得5%（最大80%）的非穿甲伤害减免。无论承受多高的伤害都至多消耗2耐久。",
 
 
 

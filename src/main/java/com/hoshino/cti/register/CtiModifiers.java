@@ -148,4 +148,6 @@ public class CtiModifiers {
     public static final StaticModifier<RegaliumModifier> REGALIUM = MODIFIERS.register("regalium", RegaliumModifier::new);
     public static final StaticModifier<MemoryAlloy> MEMORY_ALLOY = MODIFIERS.register("memory_alloy", MemoryAlloy::new);
     public static final StaticModifier<SunStrikeModifier> SUN_STRIKE = MODIFIERS.register("sunstrike", SunStrikeModifier::new);
+    public static final StaticModifier<Industrial> INDUSTRIAL = MODIFIERS.register("industrial", Industrial::new);
+    public static final StaticModifier<IndustrialArmor> INDUSTRIAL_ARMOR = MODIFIERS.register("industrial_armor", IndustrialArmor::new);
 }

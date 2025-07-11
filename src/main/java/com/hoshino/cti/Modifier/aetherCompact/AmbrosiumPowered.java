@@ -49,7 +49,7 @@ public class AmbrosiumPowered extends Modifier implements SlotStackModifierHook,
     @Override
     public boolean overrideOtherStackedOnMe(IToolStackView slotTool, ModifierEntry modifier, ItemStack held, Slot slot, Player player, SlotAccess access) {
         if (held.is(AetherItems.AMBROSIUM_SHARD.get())&&slot.allowModification(player)){
-            if (!player.level.isClientSide&&slotTool.getPersistentData().getInt(KEY_AMBROSIUM_POWER)<64*modifier.getLevel()){
+            if (!player.level.isClientSide&&slotTool.getPersistentData().getInt(KEY_AMBROSIUM_POWER)<24*modifier.getLevel()){
                 held.shrink(1);
                 chargeTool(slotTool);
             }
