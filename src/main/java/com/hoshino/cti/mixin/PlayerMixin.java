@@ -1,6 +1,6 @@
 package com.hoshino.cti.mixin;
 
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.player.Player;
@@ -17,12 +17,6 @@ public class PlayerMixin {
     public void changeScale(float p_36404_, CallbackInfoReturnable<Float> cir) {
         Player player = (Player) (Object) this;
         float delay = player.getCurrentItemAttackStrengthDelay();
-        if (player.getItemInHand(player.getUsedItemHand()).getItem() instanceof IModifiable) {
-            ToolStack toolStack = ToolStack.from(player.getItemInHand(player.getUsedItemHand()));
-            if (toolStack.getModifierLevel(etshtinkerModifiers.atomorigin_STATIC_MODIFIER.get()) > 0) {
-                return;
-            }
-        }
         if (delay < 10) {
             cir.setReturnValue(Mth.clamp(((float) ((LivingEntityAccessor) player).getAttackStrengthTicker() + p_36404_) / (delay * 0.7f + 3f), 0.0F, 1.0F));
         }
