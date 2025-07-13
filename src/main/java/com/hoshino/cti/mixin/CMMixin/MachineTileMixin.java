@@ -1,5 +1,5 @@
 package com.hoshino.cti.mixin.CMMixin;
-
+/*
 import com.hoshino.cti.util.IMixinMachineTile;
 import fr.frinn.custommachinery.api.machine.MachineTile;
 import net.minecraft.core.BlockPos;
@@ -136,3 +136,5 @@ public class MachineTileMixin implements IMixinMachineTile {
     @Unique List<BlockPos> cti$listChemicalInput = List.of();
     @Unique List<BlockPos> cti$listChemicalOutput = List.of();
 }
+
+ */

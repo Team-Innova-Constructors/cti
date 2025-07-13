@@ -27,4 +27,5 @@ public class CtiChemical {
     public static final GasRegistryObject<Gas> POLYMER = GAS.register("polymer", 0x9AA1C7);
     public static final GasRegistryObject<Gas> PRECURSOR = GAS.register("precursor", 0xFFFD71);
     public static final GasRegistryObject<Gas> PURE_MATTER = GAS.register("pure_matter", 0x000000);
+    public static final GasRegistryObject<Gas> CONCENTRATED_CARBON = GAS.register("concentrated_carbon", 0xFF5943,new GasAttributes.Fuel(()->100,()-> FloatingLong.create(32768)));
 }

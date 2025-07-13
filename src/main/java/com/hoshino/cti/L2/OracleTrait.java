@@ -11,6 +11,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import quek.undergarden.registry.UGDimensions;
 import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
@@ -37,6 +38,6 @@ public class OracleTrait extends MobTrait {
 
     @Override
     public boolean allow(LivingEntity le, int difficulty, int maxModLv) {
-        return le.level.dimension()== AetherDimensions.AETHER_LEVEL;
+        return le.level.dimension()== AetherDimensions.AETHER_LEVEL||le.level.dimension()== UGDimensions.UNDERGARDEN_LEVEL;
     }
 }
