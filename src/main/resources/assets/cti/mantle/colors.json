@@ -113,6 +113,8 @@
     "industrial": "#89919C",
     "industrial_armor": "#89919C",
     "carcinogenic": "#260001",
+    "piercing_immune": "#571380",
+    "permanent_scar": "#260001",
 
     "_uriel_": "乌列尔",
     "timetojudge": "#fffdab",

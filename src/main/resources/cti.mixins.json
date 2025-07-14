@@ -31,7 +31,6 @@
     "Aquamixin.ScrollEffectsMixin",
     "bugFix.FeedingUpgradeWrapperMixin",
     "CMMixin.BlockStructureMixin",
-    "CMMixin.MachineTileMixin",
     "Dummy.TargetDummyMixin",
     "Eni.CubeMixin",
     "Eni.CurseRingMixin",

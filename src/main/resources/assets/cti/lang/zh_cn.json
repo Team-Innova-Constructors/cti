@@ -788,9 +788,17 @@
   "modifier.cti.industrial_armor.flavor": "工业化量产的材料，品质稳定的同时效力也不错。",
   "modifier.cti.industrial_armor.description":"增加防御槽和能力槽各一个。每级增加5%护甲值、护甲韧性、耐久和耐久修补量，增加5%（最大80%）不消耗耐久的概率，基于全身等级获得5%（最大80%）的非穿甲伤害减免。无论承受多高的伤害都至多消耗2耐久。",
 
-  "modifier.cti.carcinogenic": "致突变",
+  "modifier.cti.carcinogenic": "永久创伤",
   "modifier.cti.carcinogenic.flavor": "小心职业暴露！",
   "modifier.cti.carcinogenic.description":"在两次攻击时，移除两次攻击之间目标恢复的生命值并依此治疗自己（最大恢复10生命值）。",
+
+  "modifier.cti.piercing_immune": "穿刺防护",
+  "modifier.cti.piercing_immune.flavor": "最锐之矛也奈不了我何！",
+  "modifier.cti.piercing_immune.description":"使你的护甲能以75%的护甲效力格挡穿甲伤害。",
+
+  "modifier.cti.permanent_scar": "永久创伤",
+  "modifier.cti.permanent_scar.flavor": "小心职业暴露！",
+  "modifier.cti.permanent_scar.description":"被攻击时，对攻击者逐渐施加最大2.5倍的永久受到伤害提升。",
 
 
 
@@ -922,6 +930,9 @@
 
   "trait.l2hostility.oracle": "神谕",
   "trait.l2hostility.oracle.desc": "怪物攻击后每级移除10秒目标的正面效果并取消对负面效果的免疫。",
+
+  "trait.l2hostility.extreme_damage_reduce": "极端伤害防护",
+  "trait.l2hostility.extreme_damage_reduce.desc": "令生物受到的极端伤害减少60%",
 
 
   "info.cti.panel_condition.upward": "于世界最高处向上放置",
