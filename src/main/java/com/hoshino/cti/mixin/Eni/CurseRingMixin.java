@@ -53,7 +53,8 @@ public class CurseRingMixin {
     @Shadow
     public static Omniconfig.IntParameter enchantingBonus;
 
-    @Shadow public static Omniconfig.BooleanParameter enableLore;
+    @Shadow
+    public static Omniconfig.BooleanParameter enableLore;
 
     /**
      * @reason <h5>前期压力大并且激怒后还会有残留效果,现在在白天和携带七咒的游戏日前4天不会再激怒末影人</h5>
@@ -79,11 +80,20 @@ public class CurseRingMixin {
 
     @Inject(method = "curioTick", at = @At(value = "HEAD"))
     private void curioTick(SlotContext context, ItemStack stack, CallbackInfo ci) {
-        if (context.entity() instanceof Player player && player.tickCount % 20 == 0) {
+        var data = stack.getOrCreateTag();
+        if (context.entity() instanceof Player player) {
             int time = CurseUtil.getPunishTime(player);
             if (time > 0) {
-                var data = stack.getOrCreateTag();
-                data.putInt("punish_time", time - 1);
+                if (player.tickCount % 20 == 0) {
+                    data.putInt("punish_time", time - 1);
+                }
+            } else {
+                var worldIn = context.entity().getLevel();
+                var worldTime = worldIn.getGameTime();
+                int resoluteTime = data.getInt("resolute");
+                if (worldTime % 24000 == 0) {
+                    data.putInt("resolute", Math.min(3, resoluteTime + 1));
+                }
             }
         }
     }
@@ -103,12 +113,7 @@ public class CurseRingMixin {
             } else {
                 ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing4_alt", ChatFormatting.GOLD, painMultiplier + "%");
             }
-            var player=Minecraft.getInstance().player;
-            int time=CurseUtil.getPunishTime(player);
-            int frequency=CurseUtil.getDeathFrequency(player);
-            var string1="当前你已经累计死亡"+(frequency)+"次";
-            var string2="由于你的死亡,你受到的伤害额外增加"+Math.max((frequency-3) * 0.5f * 100,0)+"%";
-            var string3="在"+(time)+"秒后,会结束灵魂破碎对你的影响";
+
 
             ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing5");
             ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing6", ChatFormatting.GOLD, armorDebuff + "%");
@@ -116,12 +121,30 @@ public class CurseRingMixin {
             ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing8");
             ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing9");
             ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing10");
-            list.add(Component.literal(string1).withStyle(style -> style.withColor(0xff435c)));
-            list.add(Component.literal(string2).withStyle(style -> style.withColor(0xff435c)));
-            if(time>0){
-                list.add(Component.literal(string3).withStyle(style -> style.withColor(0xff435c)));
-            }
+            var player = Minecraft.getInstance().player;
+            if (player != null) {
+                int time = CurseUtil.getPunishTime(player);
+                int frequency = CurseUtil.getDeathFrequency(player);
+                int resoluteTime = CurseUtil.getResoluteTime(player);
+                var string1 = "当前你已经累计死亡" + (frequency) + "次";
+                var string2 = "由于你的死亡,你受到的伤害额外增加" + Math.max((frequency - 3) * 0.5f * 100, 0) + "%";
+                var string3 = "在" + (time) + "秒后,会结束灵魂破碎对你的影响";
 
+                var string4 = "当前坚毅层数为" + (resoluteTime) + "层,会减少受到的" + resoluteTime * 8 + "%" + "伤害";
+                var string5 = "如果你死亡了会清除所有的坚毅层数!";
+                long resoluteWait = 24000 - player.getLevel().getGameTime() % 24000;
+                var string6 = "下一层坚毅层数续上倒计时" + resoluteWait;
+                list.add(Component.literal(string1).withStyle(style -> style.withColor(0xff435c)));
+                list.add(Component.literal(string2).withStyle(style -> style.withColor(0xff435c)));
+                if (time > 0) {
+                    list.add(Component.literal(string3).withStyle(style -> style.withColor(0xff435c)));
+                }
+                list.add(Component.literal(string4).withStyle(style -> style.withColor(0xffaa7f)));
+                list.add(Component.literal(string5).withStyle(style -> style.withColor(0xffaa7f)));
+                if (resoluteTime < 3) {
+                    list.add(Component.literal(string6).withStyle(style -> style.withColor(0xffaa7f)));
+                }
+            }
             ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.void");
             ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing11");
             ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.cursedRing12", ChatFormatting.GOLD, lootingBonus);
@@ -154,9 +177,10 @@ public class CurseRingMixin {
             ItemLoreHelper.addLocalizedString(list, "tooltip.enigmaticlegacy.holdShift");
         }
     }
-        @Unique
-        private boolean cti$isInfancy (Player player){
-            IPlaytimeCounter counter = IPlaytimeCounter.get(player);
-            return counter.getTimeWithCurses() < 96000;
-        }
+
+    @Unique
+    private boolean cti$isInfancy(Player player) {
+        IPlaytimeCounter counter = IPlaytimeCounter.get(player);
+        return counter.getTimeWithCurses() < 96000;
     }
+}
