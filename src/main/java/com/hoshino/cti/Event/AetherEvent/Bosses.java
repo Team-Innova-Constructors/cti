@@ -4,6 +4,7 @@ import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import com.marth7th.solidarytinker.register.solidarytinkerModifiers;
 import com.marth7th.solidarytinker.util.method.ModifierLevel;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -18,6 +19,7 @@ import static com.hoshino.cti.Cti.MOD_ID;
 
 @Mod.EventBusSubscriber(modid = MOD_ID)
 public class Bosses {
+    private static final DamageSource hurt_for_slider=new DamageSource("special_damage_for_slider").bypassArmor().bypassInvul().bypassMagic();
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void SunSpiritCool(LivingAttackEvent event) {
@@ -38,14 +40,15 @@ public class Bosses {
     }
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onHurtStone(LivingDamageEvent event){
-        if(event.getEntity() instanceof Slider){
+        if(event.getSource().getMsgId().equals("special_damage_for_slider"))return;
+        if(event.getEntity() instanceof Slider slider){
             var source=event.getSource();
             var attacker=source.getEntity();
             if(attacker instanceof Player player){
                 var stack=player.getMainHandItem();
                 if(stack.getItem() instanceof ModifiableItem){
                     int digSpeed= ToolStack.from(stack).getStats().getInt(ToolStats.MINING_SPEED);
-                    event.setAmount(event.getAmount() * digSpeed/1.5f);
+                    slider.hurt(hurt_for_slider,digSpeed * digSpeed / (digSpeed * 0.1f));
                 }
             }
         }
