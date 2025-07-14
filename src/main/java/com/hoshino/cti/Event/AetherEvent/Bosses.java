@@ -1,6 +1,7 @@
 package com.hoshino.cti.Event.AetherEvent;
 
 import com.aetherteam.aether.entity.AetherEntityTypes;
+import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import com.marth7th.solidarytinker.register.solidarytinkerModifiers;
 import com.marth7th.solidarytinker.util.method.ModifierLevel;
 import net.minecraft.world.entity.player.Player;
@@ -9,11 +10,14 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import static com.hoshino.cti.Cti.MOD_ID;
 
 @Mod.EventBusSubscriber(modid = MOD_ID)
-public class Spirit {
+public class Bosses {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void SunSpiritCool(LivingAttackEvent event) {
@@ -29,6 +33,20 @@ public class Spirit {
         if (event.getSource().getEntity() instanceof Player player && ModifierLevel.EquipHasModifierlevel(player, solidarytinkerModifiers.EXTREMELYCOLD_STATIC_MODIFIER.getId())) {
             if (event.getEntity().getType() == AetherEntityTypes.SUN_SPIRIT.get()) {
                 event.setAmount(event.getEntity().getMaxHealth() * 0.8F + event.getAmount());
+            }
+        }
+    }
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public static void onHurtStone(LivingDamageEvent event){
+        if(event.getEntity() instanceof Slider){
+            var source=event.getSource();
+            var attacker=source.getEntity();
+            if(attacker instanceof Player player){
+                var stack=player.getMainHandItem();
+                if(stack.getItem() instanceof ModifiableItem){
+                    int digSpeed= ToolStack.from(stack).getStats().getInt(ToolStats.MINING_SPEED);
+                    event.setAmount(event.getAmount() * digSpeed/1.5f);
+                }
             }
         }
     }

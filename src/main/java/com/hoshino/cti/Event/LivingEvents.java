@@ -172,6 +172,15 @@ public class LivingEvents {
         event.setAmount((Math.max((fre-3) * 0.5f,0)+1) * event.getAmount());
     }
     @SubscribeEvent
+    public static void punishWeakenPlayer(LivingHurtEvent event) {
+        if (!(event.getSource().getEntity() instanceof Player player)) return;
+        if (!SuperpositionHandler.isTheCursedOne(player)) return;
+        int fre=CurseUtil.getDeathFrequency(player);
+        int time=CurseUtil.getPunishTime(player);
+        if(time==0)return;
+        event.setAmount(event.getAmount() / Math.max( fre-3,0));
+    }
+    @SubscribeEvent
     public static void resoluteModify(LivingHurtEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
         if (!SuperpositionHandler.isTheCursedOne(player)) return;
