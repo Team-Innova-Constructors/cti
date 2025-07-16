@@ -65,7 +65,6 @@ public abstract class CurseRingMixin extends ItemBaseCurio {
     @Shadow
     public static Omniconfig.BooleanParameter enableLore;
 
-    @Shadow public static Omniconfig.BooleanParameter saveTheBees;
 
     /**
      * @reason <h5>前期压力大并且激怒后还会有残留效果,现在在白天和携带七咒的游戏日前4天不会再激怒末影人</h5>
