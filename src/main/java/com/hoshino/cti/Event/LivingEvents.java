@@ -5,6 +5,7 @@ import com.aizistral.enigmaticlegacy.registries.EnigmaticItems;
 import com.github.alexthe666.iceandfire.entity.EntityDragonBase;
 import com.hoshino.cti.Cti;
 import com.hoshino.cti.Entity.DisposibleFakePlayer;
+import com.hoshino.cti.Modifier.Replace.FixedPurify;
 import com.hoshino.cti.content.entityTicker.EntityTickerManager;
 import com.hoshino.cti.register.CtiBlock;
 import com.hoshino.cti.register.CtiEffects;
@@ -29,6 +30,7 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.tools.TinkerTools;
 
 import java.util.Collection;
@@ -86,6 +88,9 @@ public class LivingEvents {
                 } else activeEffects.put(effect, event.getEffectInstance());
                 event.getEntity().onEffectAdded(activeEffects.get(effect), null);
             }
+            event.getEntity().getCapability(TinkerDataCapability.CAPABILITY).ifPresent(cap->{
+                if (cap.get(FixedPurify.KEY_PURIFY,0)>0) event.setResult(Event.Result.DENY);
+            });
         } else if (event.getEffectInstance().getEffect().getCategory() == MobEffectCategory.BENEFICIAL && EntityTickerManager.getInstance(event.getEntity()).hasTicker(CtiEntityTickers.ORACLE.get())) {
             event.setResult(Event.Result.DENY);
         }
@@ -127,6 +132,7 @@ public class LivingEvents {
     public static void onLivingAttack(LivingAttackEvent event) {
         if (event.getEntity() instanceof EntityDragonBase && event.getSource().getEntity() != null && !(event.getSource().getEntity() instanceof Player))
             event.setCanceled(true);
+        if (EntityTickerManager.getInstance(event.getEntity()).hasTicker(CtiEntityTickers.INVULNERABLE.get())) event.setCanceled(true);
     }
 
     @SubscribeEvent

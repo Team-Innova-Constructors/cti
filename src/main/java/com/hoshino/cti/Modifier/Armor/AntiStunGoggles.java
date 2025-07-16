@@ -13,34 +13,30 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickModifierHook;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
+import slimeknights.tconstruct.library.modifiers.modules.armor.EffectImmunityModule;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 public class AntiStunGoggles extends NoLevelsModifier implements InventoryTickModifierHook {
-    public AntiStunGoggles() {
-        MinecraftForge.EVENT_BUS.addListener(this::OnEffectApply);
-    }
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         super.registerHooks(hookBuilder);
         hookBuilder.addHook(this, ModifierHooks.INVENTORY_TICK);
+        hookBuilder.addModule(new EffectImmunityModule(MobEffects.CONFUSION));
+        hookBuilder.addModule(new EffectImmunityModule(MobEffects.BLINDNESS));
     }
-
-    private void OnEffectApply(MobEffectEvent.Applicable event) {
-        if (event.getEntity() != null && EntityUtil.isAntiStun(event.getEntity()) && event.getEffectInstance().getEffect() == MobEffects.CONFUSION) {
-            event.setResult(Event.Result.DENY);
-        }
-    }
-
 
     @Override
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity livingEntity, int i, boolean b, boolean b1, ItemStack itemStack) {
-        MobEffectInstance instance = livingEntity.getEffect(MobEffects.CONFUSION);
-        if (instance != null) {
-            livingEntity.removeEffect(MobEffects.CONFUSION);
-        }
+        List.of(MobEffects.CONFUSION,MobEffects.BLINDNESS).forEach(mobEffect -> {
+            MobEffectInstance instance = livingEntity.getEffect(mobEffect);
+            if (instance != null) {
+                livingEntity.removeEffect(mobEffect);
+            }
+        });
     }
 }

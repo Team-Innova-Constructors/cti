@@ -115,6 +115,11 @@
     "carcinogenic": "#260001",
     "piercing_immune": "#571380",
     "permanent_scar": "#260001",
+    "neutron_collect": "#262626",
+    "stable_step": "#434559",
+    "light_step": "#D3F3FF",
+    "strengthen": "#FFD3D4",
+    "clean": "#F1DBFF",
 
     "_uriel_": "乌列尔",
     "timetojudge": "#fffdab",

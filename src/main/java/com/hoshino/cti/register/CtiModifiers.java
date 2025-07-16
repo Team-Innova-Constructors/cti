@@ -1,23 +1,26 @@
 package com.hoshino.cti.register;
 
-import com.c2h6s.etshtinker.Modifiers.Armor.inorganiccr;
-import com.c2h6s.etshtinker.Modifiers.organiccr;
+import com.c2h6s.etshtinker.Modifiers.Armor.*;
+import com.c2h6s.etshtinker.Modifiers.*;
 import com.hoshino.cti.Modifier.Armor.*;
 import com.hoshino.cti.Modifier.*;
+import com.hoshino.cti.Modifier.Base.EffectsImmuneModifier;
 import com.hoshino.cti.Modifier.Contributors.*;
 import com.hoshino.cti.Modifier.Developer.*;
 import com.hoshino.cti.Modifier.Mob.BuriedOcean;
 import com.hoshino.cti.Modifier.Replace.*;
 import com.hoshino.cti.Modifier.aetherCompact.*;
 import com.hoshino.cti.Modifier.iafCompact.*;
-import com.hoshino.cti.Modifier.l2Compact.Eternity;
-import com.hoshino.cti.Modifier.miscCompact.SunStrikeModifier;
+import com.hoshino.cti.Modifier.l2Compact.*;
+import com.hoshino.cti.Modifier.miscCompact.*;
 import com.hoshino.cti.Modifier.slot.*;
 import com.hoshino.cti.Cti;
-import com.hoshino.cti.Modifier.underGardenCompact.MemoryAlloy;
-import com.hoshino.cti.Modifier.underGardenCompact.RegaliumModifier;
+import com.hoshino.cti.Modifier.test;
+import com.hoshino.cti.Modifier.underGardenCompact.*;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
+
+import java.util.List;
 
 public class CtiModifiers {
     /**
@@ -155,4 +158,9 @@ public class CtiModifiers {
     public static final StaticModifier<organiccr> CARCINOGENIC = MODIFIERS.register("carcinogenic", organiccr::new);
     public static final StaticModifier<SecondaryArmorPlus> PIERCING_IMMUNE = MODIFIERS.register("piercing_immune", SecondaryArmorPlus::new);
     public static final StaticModifier<inorganiccr> PERMANENT_SCAR = MODIFIERS.register("permanent_scar", inorganiccr::new);
+    public static final StaticModifier<NeutronCollect> NEUTRON_COLLECT = MODIFIERS.register("neutron_collect", NeutronCollect::new);
+    public static final StaticModifier<StableStep> STABLE_STEP = MODIFIERS.register("stable_step", StableStep::new);
+    public static final StaticModifier<LightStep> LIGHT_STEP = MODIFIERS.register("light_step", LightStep::new);
+    public static final StaticModifier<Strengthen> STRENGTHEN = MODIFIERS.register("strengthen", Strengthen::new);
+    public static final StaticModifier<Clean> CLEAN = MODIFIERS.register("clean", Clean::new);
 }

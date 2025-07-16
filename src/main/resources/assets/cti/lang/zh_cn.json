@@ -690,7 +690,7 @@
 
   "modifier.cti.anti_stun_goggles": "防眩眼镜",
   "modifier.cti.anti_stun_goggles.flavor": "指防止屏幕前的你晕眩",
-  "modifier.cti.anti_stun_goggles.description": "取消受伤时的屏幕抖动，免疫反胃效果，移除移速造成的视角场效果。",
+  "modifier.cti.anti_stun_goggles.description": "取消受伤时的屏幕抖动，免疫反胃和失明效果，移除移速造成的视角场效果。",
 
   "modifier.cti.ragnarok": "诸神黄昏·仿",
   "modifier.cti.ragnarok.flavor": "史蒂夫对恶意生物的研究成果",
@@ -799,6 +799,26 @@
   "modifier.cti.permanent_scar": "永久创伤",
   "modifier.cti.permanent_scar.flavor": "小心职业暴露！",
   "modifier.cti.permanent_scar.description":"被攻击时，对攻击者逐渐施加最大2.5倍的永久受到伤害提升。",
+
+  "modifier.cti.neutron_collect": "中子凝聚",
+  "modifier.cti.neutron_collect.flavor": "简并态物质的同化作用",
+  "modifier.cti.neutron_collect.description":"随机将掉落物中的一个物品替换成中子态素粒，幸运值影响概率，词条等级影响数量。",
+
+  "modifier.cti.stable_step": "稳健脚步",
+  "modifier.cti.stable_step.flavor": "",
+  "modifier.cti.stable_step.description":"对漂浮、缓降和月步免疫。",
+
+  "modifier.cti.light_step": "轻盈步伐",
+  "modifier.cti.light_step.flavor": "",
+  "modifier.cti.light_step.description":"对缓慢和重力免疫。",
+
+  "modifier.cti.strengthen": "强健体魄",
+  "modifier.cti.strengthen.flavor": "",
+  "modifier.cti.strengthen.description":"对虚弱和挖掘疲劳免疫。",
+
+  "modifier.cti.clean": "洁净之躯",
+  "modifier.cti.clean.flavor": "",
+  "modifier.cti.clean.description":"对毒、凋零和反胃免疫。",
 
 
 
@@ -932,7 +952,10 @@
   "trait.l2hostility.oracle.desc": "怪物攻击后每级移除10秒目标的正面效果并取消对负面效果的免疫。",
 
   "trait.l2hostility.extreme_damage_reduce": "极端伤害防护",
-  "trait.l2hostility.extreme_damage_reduce.desc": "令生物受到的极端伤害减少60%",
+  "trait.l2hostility.extreme_damage_reduce.desc": "令生物受到的极端伤害减少60%，受到的穿甲伤害减少80%。",
+
+  "trait.l2hostility.temporary_armor": "临时护盾",
+  "trait.l2hostility.temporary_armor.desc": "使生物获得99%减伤，但是每次受到伤害时该减伤减少1%。穿甲伤害会造成5倍效果（5%）。",
 
 
   "info.cti.panel_condition.upward": "于世界最高处向上放置",
