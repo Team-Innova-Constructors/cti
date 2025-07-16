@@ -5,6 +5,7 @@ import com.aizistral.enigmaticlegacy.registries.EnigmaticItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
@@ -51,6 +52,16 @@ public class CurseUtil {
         var data=getCurseCurioData(player);
         if(data==null)return;
         data.putInt("death_frequency",fre);
+    }
+    public static int getResoluteTime(@NotNull Player player) {
+        var data=getCurseCurioData(player);
+        if(data==null)return 0;
+        return data.getInt("resolute");
+    }
+    public static void setResoluteTime(Player player,int resoluteTime) {
+        var data=getCurseCurioData(player);
+        if(data==null)return;
+        data.putInt("resolute", resoluteTime);
     }
     
 

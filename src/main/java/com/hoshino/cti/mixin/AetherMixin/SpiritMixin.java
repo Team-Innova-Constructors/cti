@@ -44,7 +44,6 @@ public abstract class SpiritMixin extends PathfinderMob{
     private void spawn(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
         boolean shouldSpawn=source.getMsgId().equals("aether.ice_crystal");
         if(!shouldSpawn) cir.setReturnValue(true);
-
     }
     @ModifyArg(method = "customServerAiStep",at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/monster/dungeon/boss/SunSpirit;setFrozen(Z)V",remap = false))
     private boolean set(boolean frozen){

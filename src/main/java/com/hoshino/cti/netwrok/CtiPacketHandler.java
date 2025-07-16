@@ -32,6 +32,11 @@ public class CtiPacketHandler {
 //        INSTANCE.messageBuilder(PStackedOnMeC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PStackedOnMeC2S::new).encoder(PStackedOnMeC2S::toByte).consumerMainThread(PStackedOnMeC2S::handle).add();
 //        INSTANCE.messageBuilder(PStackedOnOtherC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PStackedOnOtherC2S::new).encoder(PStackedOnOtherC2S::toByte).consumerMainThread(PStackedOnOtherC2S::handle).add();
         INSTANCE.messageBuilder(PAmbrosiumChargeC2S.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(PAmbrosiumChargeC2S::new).encoder(PAmbrosiumChargeC2S::toByte).consumerMainThread(PAmbrosiumChargeC2S::handle).add();
+        INSTANCE.messageBuilder(ServerCursePacket.class, id++, NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(ServerCursePacket::new)
+                .encoder(ServerCursePacket::ToByte)
+                .consumerMainThread(ServerCursePacket::handle)
+                .add();
     }
 
     public static <MSG> void sendToServer(MSG msg) {

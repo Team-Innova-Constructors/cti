@@ -162,6 +162,7 @@ public class LivingEvents {
         if(event.isCanceled())return;
         int fre=CurseUtil.getDeathFrequency(player);
         CurseUtil.setDeathFrequency(player,fre+1);
+        CurseUtil.setResoluteTime(player,0);
         if(fre<3)return;
         CurseUtil.setPunishTime(player,1);
         CurseUtil.setDeathFrequency(player,fre+1);
@@ -177,12 +178,20 @@ public class LivingEvents {
         event.setAmount((Math.max((fre-3) * 0.5f,0)+1) * event.getAmount());
     }
     @SubscribeEvent
-    public static void deathPunish(LivingDamageEvent event){
+    public static void punishWeakenPlayer(LivingHurtEvent event) {
         if (!(event.getSource().getEntity() instanceof Player player)) return;
         if (!SuperpositionHandler.isTheCursedOne(player)) return;
         int fre=CurseUtil.getDeathFrequency(player);
         int time=CurseUtil.getPunishTime(player);
         if(time==0)return;
-        event.setAmount((Math.max((fre-3) * 0.5f,0)+1) * event.getAmount());
+        event.setAmount(event.getAmount() / Math.max( fre-3,0));
+    }
+    @SubscribeEvent
+    public static void resoluteModify(LivingHurtEvent event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        if (!SuperpositionHandler.isTheCursedOne(player)) return;
+        int time=CurseUtil.getResoluteTime(player);
+        if(time==0)return;
+        event.setAmount(event.getAmount() * (1-(0.08f * time)));
     }
 }

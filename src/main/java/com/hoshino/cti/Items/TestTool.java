@@ -14,13 +14,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class TestTool extends Item {
-    public TestTool(Properties p_41383_) {
-        super(p_41383_);
+    public TestTool(Properties properties) {
+        super(properties);
     }
 
     @Override
@@ -28,6 +29,7 @@ public class TestTool extends Item {
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(player.getItemInHand(hand));
     }
+
 
     @Override
     public int getUseDuration(ItemStack p_41454_) {
@@ -69,7 +71,7 @@ public class TestTool extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> components, @NotNull TooltipFlag flag) {
         components.add(Component.literal("副手拿流体桶,然后长按右键此物品0.5秒可以查看该流体的ID和tag等信息").withStyle(style -> style.withColor(0xffc4ff)));
     }
 }

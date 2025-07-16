@@ -82,7 +82,8 @@
     "TIMixin.ShurikenMixin",
     "TIMixin.Sin_RootMixin",
     "TIMixin.SpriteOfGaiaMixin",
-    "TIMixin.ToolUtilsMixin"
+    "TIMixin.ToolUtilsMixin",
+    "TwiMixin.HydraMixin"
   ],
   "client": [
     "AbstractClientPlayerMixin",
