@@ -121,6 +121,9 @@ public class EntityTickerManager {
             EntityTickerInstance merged = new EntityTickerInstance(instance.ticker,levelFunction.apply(existingLevel,instance.level),timeFunction.apply(existingTime,instance.duration));
             this.setTicker(merged);
         }
+        public void addTickerSimple(EntityTickerInstance instance){
+            addTicker(instance,Integer::max,Integer::max);
+        }
         public void removeTicker(EntityTicker ticker){
             if (this.instanceMap!=null&&this.hasTicker(ticker)){
                 ticker.onTickerEnd(this.instanceMap.get(ticker).level,this.entity);
