@@ -3,6 +3,7 @@ package com.hoshino.cti.Modifier;
 import com.c2h6s.etshtinker.util.slotUtil;
 import com.hoshino.cti.Modifier.Base.PressurizableModifier;
 import com.hoshino.cti.Modifier.capability.PressurizableToolCap;
+import com.hoshino.cti.util.CommonUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -111,9 +112,9 @@ public class PressureLoaded extends PressurizableModifier implements ToolDamageM
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot equipmentSlot, BiConsumer<Attribute, AttributeModifier> biConsumer) {
         if (slotUtil.ARMOR.contains(equipmentSlot) && getBonus(tool, modifier) > 0) {
-            biConsumer.accept(Attributes.ARMOR, new AttributeModifier(UUID.fromString("dd956aaf-a7e7-ca28-f352-34e76c7a4ebf"), Attributes.ARMOR.getDescriptionId(), getBonus(tool, modifier), AttributeModifier.Operation.MULTIPLY_BASE));
-            biConsumer.accept(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(UUID.fromString("45bbb1ce-b4ee-7ee2-2f5c-df86d24c361a"), Attributes.ARMOR_TOUGHNESS.getDescriptionId(), getBonus(tool, modifier), AttributeModifier.Operation.MULTIPLY_BASE));
-            biConsumer.accept(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(UUID.fromString("4639fef7-40a3-4ecf-ff5b-0cd263d3c9c0"), Attributes.KNOCKBACK_RESISTANCE.getDescriptionId(), getBonus(tool, modifier), AttributeModifier.Operation.MULTIPLY_BASE));
+            biConsumer.accept(Attributes.ARMOR, new AttributeModifier(CommonUtil.UUIDFromSlot(equipmentSlot,modifier.getId()), Attributes.ARMOR.getDescriptionId(), getBonus(tool, modifier), AttributeModifier.Operation.MULTIPLY_BASE));
+            biConsumer.accept(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(CommonUtil.UUIDFromSlot(equipmentSlot,modifier.getId()), Attributes.ARMOR_TOUGHNESS.getDescriptionId(), getBonus(tool, modifier), AttributeModifier.Operation.MULTIPLY_BASE));
+            biConsumer.accept(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(CommonUtil.UUIDFromSlot(equipmentSlot,modifier.getId()), Attributes.KNOCKBACK_RESISTANCE.getDescriptionId(), getBonus(tool, modifier), AttributeModifier.Operation.MULTIPLY_BASE));
         }
     }
 

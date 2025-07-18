@@ -19,10 +19,18 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
+import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import thelm.packagedauto.block.entity.CrafterBlockEntity;
+import thelm.packagedauto.block.entity.PackagerBlockEntity;
+import thelm.packagedauto.block.entity.UnpackagerBlockEntity;
+import thelm.packagedavaritia.block.entity.ExtremeCrafterBlockEntity;
+import thelm.packagedexcrafting.block.entity.AdvancedCrafterBlockEntity;
+import thelm.packagedexcrafting.block.entity.EliteCrafterBlockEntity;
+import thelm.packagedexcrafting.block.entity.UltimateCrafterBlockEntity;
 
 import java.util.Random;
 
@@ -70,5 +78,26 @@ public class ServerEvent {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onServerStart(ServerStartedEvent event){
+        tweakPackagedAuto();
+    }
+
+    //加速封包合成
+    public static void tweakPackagedAuto(){
+        CrafterBlockEntity.energyReq=500;
+        CrafterBlockEntity.energyUsage=500;
+        UltimateCrafterBlockEntity.energyReq=500;
+        UltimateCrafterBlockEntity.energyUsage =500;
+        EliteCrafterBlockEntity.energyReq=500;
+        EliteCrafterBlockEntity.energyUsage=500;
+        AdvancedCrafterBlockEntity.energyReq=500;
+        AdvancedCrafterBlockEntity.energyUsage=500;
+        ExtremeCrafterBlockEntity.energyReq=500;
+        ExtremeCrafterBlockEntity.energyUsage=500;
+        PackagerBlockEntity.energyReq = 500;
+        PackagerBlockEntity.energyUsage = 250;
     }
 }
