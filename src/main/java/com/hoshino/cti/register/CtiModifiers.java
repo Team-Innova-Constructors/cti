@@ -163,4 +163,6 @@ public class CtiModifiers {
     public static final StaticModifier<LightStep> LIGHT_STEP = MODIFIERS.register("light_step", LightStep::new);
     public static final StaticModifier<Strengthen> STRENGTHEN = MODIFIERS.register("strengthen", Strengthen::new);
     public static final StaticModifier<Clean> CLEAN = MODIFIERS.register("clean", Clean::new);
+    public static final StaticModifier<FixedPrecision> FIXED_PRECISION = MODIFIERS.register("fixed_precision", FixedPrecision::new);
+    public static final StaticModifier<AntiCurse> ANTI_CURSE = MODIFIERS.register("anti_curse", AntiCurse::new);
 }

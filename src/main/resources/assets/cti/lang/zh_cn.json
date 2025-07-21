@@ -806,19 +806,23 @@
 
   "modifier.cti.stable_step": "稳健脚步",
   "modifier.cti.stable_step.flavor": "",
-  "modifier.cti.stable_step.description":"对漂浮、缓降和月步免疫。",
+  "modifier.cti.stable_step.description":"对漂浮、缓降和月步效果免疫。",
 
   "modifier.cti.light_step": "轻盈步伐",
   "modifier.cti.light_step.flavor": "",
-  "modifier.cti.light_step.description":"对缓慢和重力免疫。",
+  "modifier.cti.light_step.description":"对缓慢和重力效果免疫。",
 
   "modifier.cti.strengthen": "强健体魄",
   "modifier.cti.strengthen.flavor": "",
-  "modifier.cti.strengthen.description":"对虚弱和挖掘疲劳免疫。",
+  "modifier.cti.strengthen.description":"对虚弱和挖掘疲劳效果免疫。",
 
   "modifier.cti.clean": "洁净之躯",
   "modifier.cti.clean.flavor": "",
-  "modifier.cti.clean.description":"对毒、凋零和反胃免疫。",
+  "modifier.cti.clean.description":"对毒、凋零和反胃效果免疫。",
+
+  "modifier.cti.anti_curse": "反诅咒咒语",
+  "modifier.cti.anti_curse.flavor": "",
+  "modifier.cti.anti_curse.description":"对诅咒、魂火效果免疫。使诅咒层的效果变为1/（全身总属性等级+1）倍，自然减少量增加全身总属性等级倍",
 
 
 
@@ -921,6 +925,12 @@
   "modifier.cti.oxygelium_bud_helmet": "氧素生物头盔",
   "modifier.cti.oxygelium_bud_helmet.flavor": "这个头盔有生命！",
   "modifier.cti.oxygelium_bud_helmet.description":"当你氧气不为满,并且头盔中有水存储的时候,你的头盔每隔0.5秒会尝试为你补充氧气,如果补充成功还有20%概率恢复1点生命,同时消耗10mb水.同时在外太空受到的来自生物的伤害降低18%",
+
+  "modifier.cti.fixed_precision": "精确",
+  "modifier.cti.fixed_precision.flavor": "精密如仪器！",
+  "modifier.cti.fixed_precision.description":"每级增加25%修复效率和5%耐久",
+
+
 
   "dimension.ad_astra.infernal": "炼狱",
   "dimension.ad_astra.uranus": "天王星",

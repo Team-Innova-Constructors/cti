@@ -6,15 +6,18 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.packs.repository.PackRepository;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.WorldData;
 import org.slf4j.Logger;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
+import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CommonUtil {
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -60,5 +63,14 @@ public class CommonUtil {
             return level.getDayTime()%72000>39000&&level.getDayTime()%72000<69000;
         }
         return false;
+    }
+
+    public static int getArmorLevelingValue(TinkerDataCapability.TinkerDataKey<Integer> key, LivingEntity living){
+        AtomicInteger atomicInteger = new AtomicInteger(0);
+        living.getCapability(TinkerDataCapability.CAPABILITY).ifPresent(cap->atomicInteger.set(cap.get(key,0)));
+        return atomicInteger.get();
+    }
+    public static boolean hasArmorLevel(TinkerDataCapability.TinkerDataKey<Integer> key,LivingEntity living){
+        return getArmorLevelingValue(key,living)>0;
     }
 }

@@ -68,7 +68,7 @@ public class ElectroniumAmmo extends AbstractGunAmmoItem {
                 target.hurt(getDamageSource(minigun, (float) (ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times)), (float) (ConfigHelper.common().minigun.baseDamage.get() * dmgMult * times));
                 if (target instanceof LivingEntity living) {
                     living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(), 50, 9), minigun.getPlayer());
-                    living.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 9), minigun.getPlayer());
+                    living.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 4), minigun.getPlayer());
                 }
             } else if (target instanceof ShulkerBullet || target instanceof AbstractHurtingProjectile) {
                 target.discard();

@@ -101,12 +101,11 @@ public class Atheric extends EtSTBaseModifier implements EnchantmentModifierHook
     public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
         int bonus = getBonus(tool);
         List<Attribute> attributes = List.of(Attributes.LUCK,Attributes.MOVEMENT_SPEED, ForgeMod.REACH_DISTANCE.get(),Attributes.MAX_HEALTH);
-        for (int i=0;i<attributes.size();i++){
-            bonus-=i;
-            if (bonus>0) {
-                Attribute attribute = attributes.get(i);
-                consumer.accept(attribute, new AttributeModifier(CommonUtil.UUIDFromSlot(slot, modifier.getId()), attribute.getDescriptionId(), 1 + 0.25 * bonus, AttributeModifier.Operation.MULTIPLY_BASE));
-                if (attribute == Attributes.MOVEMENT_SPEED) {
+        for (Attribute value : attributes) {
+            bonus -= 1;
+            if (bonus > 0) {
+                consumer.accept(value, new AttributeModifier(CommonUtil.UUIDFromSlot(slot, modifier.getId()), value.getDescriptionId(), 1 + 0.25 * bonus, AttributeModifier.Operation.MULTIPLY_BASE));
+                if (value == Attributes.MOVEMENT_SPEED) {
                     consumer.accept(Attributes.FLYING_SPEED, new AttributeModifier(CommonUtil.UUIDFromSlot(slot, modifier.getId()), Attributes.FLYING_SPEED.getDescriptionId(), 1 + 0.25 * bonus, AttributeModifier.Operation.MULTIPLY_BASE));
                 }
             } else break;

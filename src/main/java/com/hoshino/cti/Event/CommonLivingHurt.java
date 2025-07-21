@@ -53,46 +53,5 @@ public class CommonLivingHurt {
             }
         }
     }
-    @SubscribeEvent(priority = EventPriority.HIGH)
-    public static void whenCurseMobAttackPlayer(LivingHurtEvent event) {
-        if (event.getSource().getEntity() instanceof Mob mob) {
-            LazyOptional<MobTraitCap> optional = mob.getCapability(MobTraitCap.CAPABILITY);
-            if (optional.resolve().isPresent()) {
-                MobTraitCap cap = optional.resolve().get();
-                Set<MobTrait> set = cap.traits.keySet();
-                for (int i = 0; i < set.stream().toList().size(); i++) {
-                    MobTrait trait = LHTraits.CURSED.get();
-                    if (cap.hasTrait(trait) && event.getEntity() instanceof Player player) {
-                        int a = player.getPersistentData().getInt("pain");
-                        player.getPersistentData().putInt("pain", Math.min(a + 1, 12));
-                    }
-                }
-            }
-        }
-    }
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void curseCostPlayerHeal(LivingHealEvent event) {
-        if (event.getEntity() instanceof Player player) {
-            int a = player.getPersistentData().getInt("pain");
-            float shouldHeal = event.getAmount();
-            if (a > 0) {
-                switch (a) {
-                    case 1, 2, 3 -> event.setAmount(Math.max(0.1F, shouldHeal - a * 0.7F));
-                    case 4, 5, 6 -> event.setAmount(Math.max(0.05F, shouldHeal - a * 0.6F));
-                    case 7, 8, 9 -> event.setAmount(Math.max(0, shouldHeal - a * 0.5F));
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void livingTick(LivingEvent.LivingTickEvent event) {
-        if (event.getEntity() instanceof Player player) {
-            int a = player.getPersistentData().getInt("pain");
-            if (a > 0 && player.tickCount % 160 == 0) {
-                player.getPersistentData().putInt("pain", a - 1);
-            }
-        }
-    }
 }

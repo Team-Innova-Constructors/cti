@@ -60,8 +60,8 @@ public class IndustrialArmor extends EtSTBaseModifier implements VolatileDataMod
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         super.addToolStats(context, modifier, builder);
-        ToolStats.ARMOR.percent(builder,0.05);
-        ToolStats.ARMOR_TOUGHNESS.percent(builder,0.05);
+        ToolStats.ARMOR.percent(builder,0.05*modifier.getLevel());
+        ToolStats.ARMOR_TOUGHNESS.percent(builder,0.05*modifier.getLevel());
     }
 
     @Override
