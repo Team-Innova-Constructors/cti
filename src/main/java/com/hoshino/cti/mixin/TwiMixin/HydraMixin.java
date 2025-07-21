@@ -18,7 +18,7 @@ import twilightforest.entity.boss.HydraHeadContainer;
 @Mixin(Hydra.class)
 public abstract class HydraMixin extends Mob implements Enemy, EnforcedHomePoint {
 
-    @Shadow @Final public HydraHeadContainer[] hc;
+    @Shadow(remap = false) @Final public HydraHeadContainer[] hc;
 
     protected HydraMixin(EntityType<? extends Mob> p_21368_, Level p_21369_) {
         super(p_21368_, p_21369_);

@@ -34,7 +34,7 @@ public class ReflectTraitMixin {
             if(lv instanceof Player player&& GetModifierLevel.CurioHasModifierlevel(player, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId())){
                 return;
             }
-            float Magnification = level * 0.5F;
+            float Magnification = level * 0.3F;
             float reflectAmount =Math.min(event.getEntity().getHealth() * Magnification,event.getAmount() *Magnification);
             EntityDamageSource mobAttackReflect=new EntityDamageSource("mobattackreflect",entity).setThorns();
             mobAttackReflect.setScalesWithDifficulty().setMagic();

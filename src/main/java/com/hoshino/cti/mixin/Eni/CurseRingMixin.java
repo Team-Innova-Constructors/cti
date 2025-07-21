@@ -10,13 +10,17 @@ import com.hoshino.cti.client.cache.SevenCurse;
 import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.ServerCursePacket;
 import com.hoshino.cti.register.CtiModifiers;
+import com.hoshino.cti.util.CurseStage;
 import com.hoshino.cti.util.CurseUtil;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket;
+import net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -67,7 +71,7 @@ public abstract class CurseRingMixin extends ItemBaseCurio {
 
 
     /**
-     * @reason <h5>前期压力大并且激怒后还会有残留效果,现在在白天和携带七咒的游戏日前4天不会再激怒末影人</h5>
+     * @reason <h5>现在风起云涌阶段前不会再激怒末影人</h5>
      * @author firefly
      */
     @Inject(method = "curioTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/monster/EnderMan;m_6710_(Lnet/minecraft/world/entity/LivingEntity;)V"), cancellable = true)
@@ -109,7 +113,26 @@ public abstract class CurseRingMixin extends ItemBaseCurio {
                 int punishTime = CurseUtil.getPunishTime(player);
                 int deathFre = CurseUtil.getDeathFrequency(player);
                 int resoluteTime = CurseUtil.getResoluteTime(player);
+                long curseTime=CurseUtil.curseTime(player);
                 CtiPacketHandler.sendToPlayer(new ServerCursePacket(punishTime,deathFre,resoluteTime),serverPlayer);
+                cti$CheckStage(curseTime,serverPlayer);
+                if(serverPlayer.getLevel().getDifficulty()!=Difficulty.PEACEFUL&&serverPlayer.gameMode.isSurvival()&&curseTime<96000){
+                    SuperpositionHandler.backToSpawn(serverPlayer);
+                    serverPlayer.sendSystemMessage(Component.literal("末地之门尚未对你打开,请等待游戏日四天后"));
+                }
+            }
+        }
+    }
+    @Unique
+    private void cti$CheckStage(long curseTime, ServerPlayer serverPlayer){
+        if(curseTime%24000!=0)return;
+        var array= CurseStage.values();
+        for(CurseStage stage:array){
+            if(curseTime==stage.curseTime){
+                serverPlayer.connection.send(new ClientboundSetTitleTextPacket(stage.title));
+                serverPlayer.connection.send(new ClientboundSetSubtitleTextPacket(stage.subTitle));
+                serverPlayer.sendSystemMessage(Component.literal(serverPlayer.getName()+",你已进入"+stage.title+"阶段") );
+                serverPlayer.sendSystemMessage(stage.description);
             }
         }
     }
@@ -200,6 +223,11 @@ public abstract class CurseRingMixin extends ItemBaseCurio {
     private boolean cti$isInfancy(Player player) {
         IPlaytimeCounter counter = IPlaytimeCounter.get(player);
         return counter.getTimeWithCurses() < 96000;
+    }
+    @Unique
+    private long cti$getCurseTime(Player player) {
+        IPlaytimeCounter counter = IPlaytimeCounter.get(player);
+        return counter.getTimeWithCurses();
     }
     @Inject(method = "getFortuneLevel",at = @At("RETURN"), cancellable = true)
     private void fortuneLevel(SlotContext slotContext, LootContext lootContext, ItemStack curio, CallbackInfoReturnable<Integer> cir){
