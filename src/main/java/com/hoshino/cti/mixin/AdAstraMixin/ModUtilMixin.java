@@ -1,5 +1,7 @@
 package com.hoshino.cti.mixin.AdAstraMixin;
 
+import com.hoshino.cti.Capabilitiess.IFreezeShielding;
+import com.hoshino.cti.Modifier.Base.OxygenConsumeModifier;
 import com.hoshino.cti.register.CtiModifiers;
 import com.hoshino.cti.util.BiomeUtil;
 import com.hoshino.cti.util.CtiTagkey;
@@ -12,6 +14,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
@@ -52,10 +55,14 @@ public abstract class ModUtilMixin {
         boolean oxygenated = callbackInfo.getReturnValueZ();
         if (!oxygenated) {
             ItemStack stack = entity.getItemBySlot(EquipmentSlot.HEAD);
-            if (stack.getItem() instanceof IModifiable iModifiable) {
+            if (stack.getItem() instanceof IModifiable) {
                 ToolStack tool = ToolStack.from(stack);
-                if (tool.getModifierLevel(CtiModifiers.space_suit.get()) > 0) {
-                    callbackInfo.setReturnValue(true);
+                for (ModifierEntry entry:tool.getModifierList()){
+                    if (entry.getModifier() instanceof OxygenConsumeModifier modifier&&modifier.hasOxygen(tool,entry)) {
+                        if (!entity.level.isClientSide) modifier.consumeOxygen(tool,entry);
+                        callbackInfo.setReturnValue(true);
+                        return;
+                    }
                 }
             } else if (stack.getTags().toList().contains(CtiTagkey.OXYGEN_REGEN)) {
                 callbackInfo.setReturnValue(true);
