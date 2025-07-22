@@ -32,10 +32,11 @@ import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
 import java.util.List;
 import java.util.Set;
+import java.util.function.IntSupplier;
 
 public class PurifyTrait extends MobTrait {
-    public PurifyTrait(ChatFormatting format) {
-        super(format);
+    public PurifyTrait(IntSupplier color) {
+        super((color));
         MinecraftForge.EVENT_BUS.addListener(this::MobEffectEvent);
     }
 
@@ -54,6 +55,7 @@ public class PurifyTrait extends MobTrait {
             }
         }
     }
+
     private void MobEffectEvent(MobEffectEvent.Applicable event) {
         if (event.getEntity() instanceof Mob mob) {
             LazyOptional<MobTraitCap> optional = mob.getCapability(MobTraitCap.CAPABILITY);
@@ -63,16 +65,16 @@ public class PurifyTrait extends MobTrait {
                 for (int i = 0; i < set.stream().toList().size(); i++) {
                     MobTrait trait = CtiHostilityTrait.PURIFYTRAIT.get();
                     List<Player> playerlist = mob.level.getEntitiesOfClass(Player.class, new AABB(mob.getX() + 10, mob.getY() + 10, mob.getZ() + 10, mob.getX() - 10, mob.getY() - 10, mob.getZ() - 10));
-                    for(Player player:playerlist){
-                        if(GetModifierLevel.CurioHasModifierlevel(player,TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId())){
+                    for (Player player : playerlist) {
+                        if (GetModifierLevel.CurioHasModifierlevel(player, TinkerCuriosModifier.BHA_STATIC_MODIFIER.getId())) {
                             return;
                         }
                         LazyOptional<ICuriosItemHandler> handler = CuriosApi.getCuriosHelper().getCuriosHandler(player);
-                        if(handler.resolve().isPresent()){
-                            for (ICurioStacksHandler curios : handler.resolve().get().getCurios().values()){
+                        if (handler.resolve().isPresent()) {
+                            for (ICurioStacksHandler curios : handler.resolve().get().getCurios().values()) {
                                 for (int k = 0; k < curios.getSlots(); ++k) {
                                     ItemStack stack = curios.getStacks().getStackInSlot(k);
-                                    if(stack.is(LHItems.RING_REFLECTION.get())||stack.is(LHItems.ABRAHADABRA.get())){
+                                    if (stack.is(LHItems.RING_REFLECTION.get()) || stack.is(LHItems.ABRAHADABRA.get())) {
                                         return;
                                     }
                                 }

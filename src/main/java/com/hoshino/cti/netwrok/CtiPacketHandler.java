@@ -37,6 +37,11 @@ public class CtiPacketHandler {
                 .encoder(ServerCursePacket::ToByte)
                 .consumerMainThread(ServerCursePacket::handle)
                 .add();
+        INSTANCE.messageBuilder(CurseTimeUpdatePacket.class, id++, NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(CurseTimeUpdatePacket::new)
+                .encoder(CurseTimeUpdatePacket::ToByte)
+                .consumerMainThread(CurseTimeUpdatePacket::handle)
+                .add();
     }
 
     public static <MSG> void sendToServer(MSG msg) {
@@ -50,6 +55,4 @@ public class CtiPacketHandler {
     public static <MSG> void sendToClient(MSG msg) {
         INSTANCE.send(PacketDistributor.ALL.noArg(), msg);
     }
-
-
 }

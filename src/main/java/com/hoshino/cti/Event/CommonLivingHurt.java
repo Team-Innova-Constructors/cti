@@ -1,7 +1,11 @@
 package com.hoshino.cti.Event;
 
+import com.aizistral.enigmaticlegacy.handlers.SuperpositionHandler;
+import com.hoshino.cti.netwrok.CtiPacketHandler;
+import com.hoshino.cti.netwrok.packet.CurseTimeUpdatePacket;
 import com.hoshino.cti.register.CtiEffects;
 import com.hoshino.cti.register.CtiModifiers;
+import com.hoshino.cti.util.CurseUtil;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import dev.xkmc.l2hostility.content.capability.mob.MobTraitCap;
 import dev.xkmc.l2hostility.content.traits.base.MobTrait;
@@ -16,6 +20,7 @@ import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -53,5 +58,21 @@ public class CommonLivingHurt {
             }
         }
     }
-
+@SubscribeEvent
+public static void playerHurt(LivingDamageEvent event) {
+    var source = event.getSource();
+    if (event.getEntity() instanceof ServerPlayer player) {
+        long time = CurseUtil.curseTime(player);
+        if (!SuperpositionHandler.isTheCursedOne(player)) return;
+        if (time < 288000) {
+            if (source.getMsgId().equals("drown") || source.getMsgId().equals("inWall")) {
+                event.setCanceled(true);
+                return;
+            }
+        }
+        if (time < 192000) {
+            event.setAmount(event.getAmount() * 0.5f);
+        }
+    }
+}
 }

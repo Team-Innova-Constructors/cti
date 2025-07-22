@@ -29,6 +29,15 @@ public class DispellTraitMixin {
             }
         }
     }
+    /**
+     * @author firefly
+     * @reason 不让反射伤害被修改
+     */
+    @Overwrite
+    public void onCreateSource(int level, LivingEntity attacker, LivingAttackEvent event) {
+        if(event.getSource().getMsgId().equals("mobattackreflect"))return;
+        event.getSource().bypassMagic();
+    }
 
     /**
      * @author firefly

@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbstractArrow.class)
 public class AbstractArrowMixin {
     @Unique private Vec3 cti$deltaMovement;
-    @Inject(method = "tick",at = @At(value = "INVOKE", target = "Lnet/minecraftforge/event/ForgeEventFactory;onProjectileImpact(Lnet/minecraft/world/entity/projectile/Projectile;Lnet/minecraft/world/phys/HitResult;)Z"))
+    @Inject(method = "tick",at = @At(value = "INVOKE", target = "Lnet/minecraftforge/event/ForgeEventFactory;onProjectileImpact(Lnet/minecraft/world/entity/projectile/Projectile;Lnet/minecraft/world/phys/HitResult;)Z",remap = false))
     private void cancelVelocity(CallbackInfo ci){
         AbstractArrow arrow = (AbstractArrow) (Object) this;
         this.cti$deltaMovement = arrow.getDeltaMovement();
