@@ -778,7 +778,7 @@
 
   "modifier.cti.sunstrike": "耀斑打击",
   "modifier.cti.sunstrike.flavor": "侦测到在途轨道打击。",
-  "modifier.cti.sunstrike.description":"令追踪的耀斑打击从天而降，惩戒你的敌人。耀斑打击造成20%的两段伤害，白天时威力翻1.5倍。词条等级会增加耀斑打击的生效次数。",
+  "modifier.cti.sunstrike.description":"令追踪的耀斑打击从天而降，惩戒你的敌人。耀斑打击造成10%的两段伤害，白天时威力翻2倍。词条等级会增加耀斑打击的生效次数。",
 
   "modifier.cti.industrial": "工业",
   "modifier.cti.industrial.flavor": "工业化量产的材料，品质稳定的同时效力也不错。",

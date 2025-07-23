@@ -18,7 +18,7 @@ public class SunStrikeModifier extends EtSTBaseModifier implements PlasmaExplosi
             HomingSunStrike sunStrike = new HomingSunStrike(CtiEntity.HOMING_SUNSTRIKE.get(),level);
             sunStrike.owner = context.getAttacker();
             sunStrike.homingEntity = context.getLivingTarget();
-            sunStrike.damage=damage*0.2f*(level.isDay()?1.5f:1);
+            sunStrike.damage=damage*0.1f*(level.isDay()?2f:1);
             sunStrike.setStrikeCount(modifier.getLevel()-1);
             sunStrike.setPos(context.getTarget().position());
             level.addFreshEntity(sunStrike);
