@@ -72,7 +72,7 @@ public class HomingSunStrike extends EntitySunstrike {
             if (this.getStrikeTime()<44) {
                 this.moveDownToGround();
             }
-            if (getStrikeTime() < 1243) {
+            if (getStrikeTime() < 400) {
                 if (getStrikeTime() == 35) {
                     this.damageEntityLivingBaseNearby(3.0F);
                 }

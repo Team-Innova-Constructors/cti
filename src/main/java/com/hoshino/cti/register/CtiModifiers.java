@@ -168,4 +168,5 @@ public class CtiModifiers {
     public static final StaticModifier<OxygeliumBudHelmet> OXGELIUM_BUG_HELMET = MODIFIERS.register("oxygelium_bud_helmet", OxygeliumBudHelmet::new);
     public static final StaticModifier<Sacrifice> SACRIFICE_MODIFIER = MODIFIERS.register("sacrifice", Sacrifice::new);
     public static final StaticModifier<BuffedAnger> ANGER = MODIFIERS.register("buffed_anger", BuffedAnger::new);
+    public static final StaticModifier<ReworkedOmnipotent> OMNIPOTENT = MODIFIERS.register("omnipotent", ReworkedOmnipotent::new);
 }
