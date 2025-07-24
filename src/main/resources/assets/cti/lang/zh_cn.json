@@ -778,7 +778,7 @@
 
   "modifier.cti.sunstrike": "耀斑打击",
   "modifier.cti.sunstrike.flavor": "侦测到在途轨道打击。",
-  "modifier.cti.sunstrike.description":"令追踪的耀斑打击从天而降，惩戒你的敌人。耀斑打击造成10%的两段伤害，白天时威力翻倍。词条等级会增加耀斑打击的生效次数。",
+  "modifier.cti.sunstrike.description":"令追踪的耀斑打击从天而降，惩戒你的敌人。耀斑打击造成10%的两段伤害，白天时威力翻2倍。词条等级会增加耀斑打击的生效次数。",
 
   "modifier.cti.industrial": "工业",
   "modifier.cti.industrial.flavor": "工业化量产的材料，品质稳定的同时效力也不错。",
@@ -823,6 +823,18 @@
   "modifier.cti.anti_curse": "反诅咒咒语",
   "modifier.cti.anti_curse.flavor": "",
   "modifier.cti.anti_curse.description":"对诅咒、魂火效果免疫。使诅咒层的效果变为1/（全身总属性等级+1）倍，自然减少量增加全身总属性等级倍",
+
+  "modifier.cti.sacrifice": "牺牲",
+  "modifier.cti.sacrifice.flavor": "刻下伤痕，拥抱新生",
+  "modifier.cti.sacrifice.description":"手持工具右键对自己施加牺牲效果，shift-右键增加牺牲层数。每层牺牲会暂时封印你的10%最大生命值，被封印的生命值一旦损失则无法恢复。",
+
+  "modifier.cti.buffed_anger": "血偿",
+  "modifier.cti.buffed_anger.flavor": "死兆将至！",
+  "modifier.cti.buffed_anger.description":"[独立乘算]每损失1%生命值增加1%伤害。当损失超过67%生命值时此效用翻倍，当最大生命值大于100时此效用减半。",
+
+  "modifier.cti.omnipotent": "无所不能",
+  "modifier.cti.omnipotent.flavor": "我无所不能！",
+  "modifier.cti.omnipotent.description":"令工具全部词条等级+1。",
 
 
 
@@ -905,6 +917,8 @@
   "cti.tooltip.modifier.pressure": "空气压力",
   "cti.tooltip.modifier.pressure_damage": "压缩空气增幅",
   "cti.tooltip.modifier.damage_boost": "伤害增幅",
+  "cti.tooltip.modifier.sacrifice_level": "牺牲印记层数：",
+  "cti.tooltip.modifier.sacrifice_time": "牺牲印迹持续时间：",
 
   "fluid.cti.molten_aetherium": "熔融阳清合金",
   "item.cti.molten_aetherium_bucket": "熔融阳清合金桶",
@@ -924,7 +938,7 @@
 
   "modifier.cti.oxygelium_bud_helmet": "氧素生物头盔",
   "modifier.cti.oxygelium_bud_helmet.flavor": "这个头盔有生命！",
-  "modifier.cti.oxygelium_bud_helmet.description":"当你氧气不为满,并且头盔中有水存储的时候,你的头盔每隔0.5秒会尝试为你补充氧气,如果补充成功还有20%概率恢复1点生命,同时消耗10mb水.同时在外太空受到的来自生物的伤害降低18%",
+  "modifier.cti.oxygelium_bud_helmet.description":"当你氧气不为满,并且头盔中有水存储的时候,你的头盔每隔0.5秒会尝试为你补充氧气,如果补充成功还有20%概率恢复1点生命,同时消耗10mb水。\n在外星维度时，消耗水来抵御无氧环境，获得1霜冻抗性，受到的来自生物的伤害降低18%。",
 
   "modifier.cti.fixed_precision": "精确",
   "modifier.cti.fixed_precision.flavor": "精密如仪器！",

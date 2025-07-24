@@ -16,6 +16,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
@@ -193,5 +194,19 @@ public class LivingEvents {
         int time=CurseUtil.getResoluteTime(player);
         if(time==0)return;
         event.setAmount(event.getAmount() * (1-(0.08f * time)));
+    }
+
+    @SubscribeEvent
+    public static void onLivingHeal(LivingHealEvent event){
+        LivingEntity living = event.getEntity();
+        var tickerManager = EntityTickerManager.getInstance(living);
+        var tickerInstance = tickerManager.getTicker(CtiEntityTickers.SACRIFICE_SEAL.get());
+        if (tickerInstance!=null){
+            float maxHealth = living.getMaxHealth()*(1-0.1f*tickerInstance.level);
+            if (living.getHealth()+event.getAmount()>maxHealth){
+                living.setHealth(maxHealth);
+                event.setCanceled(true);
+            }
+        }
     }
 }

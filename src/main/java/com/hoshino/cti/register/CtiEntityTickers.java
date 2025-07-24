@@ -16,4 +16,5 @@ public class CtiEntityTickers {
     public static final RegistryObject<EntityTicker> ORACLE = ENTITY_TICKERS.register("oracle", Oracle::new);
     public static final RegistryObject<EntityTicker> EMP = ENTITY_TICKERS.register("emp", Emp::new);
     public static final RegistryObject<EntityTicker> INVULNERABLE = ENTITY_TICKERS.register("invulnerable", InvulnerableTicker::new);
+    public static final RegistryObject<EntityTicker> SACRIFICE_SEAL = ENTITY_TICKERS.register("sacrifice_seal", EmptyTicker::new);
 }
