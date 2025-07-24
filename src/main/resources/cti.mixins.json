@@ -12,7 +12,9 @@
     "LivingEntityAccessor",
     "LivingEntityMixin",
     "MasticatorMixin",
+    "MobMixin",
     "PlayerMixin",
+    "PlayerSkullMixin",
     "ProjectileMixin",
     "ServerLevelMixin",
     "ShulkerBulletMixin",
@@ -72,6 +74,8 @@
     "MixinForPlanets.PnC.ManualCompressorBlockEntityMixin",
     "MixinForPlanets.Powah.AbstractEnergyProviderMixin",
     "MowzieMixin.EntitySunstrikeMixin",
+    "MowzieMixin.EntityUmvuthiBossMixin",
+    "MowzieMixin.EntityUmvuthiAbilityMixin",
     "MowzieMixin.EntityWroughtnautMixin",
     "PnCMixin.AirGrateMixin",
     "TconMixin.InsatiableMixin",
@@ -87,6 +91,7 @@
     "TIMixin.Sin_RootMixin",
     "TIMixin.SpriteOfGaiaMixin",
     "TIMixin.ToolUtilsMixin",
+    "TwiMixin.BossSpawnerBlockEntityMixin",
     "TwiMixin.HydraMixin"
   ],
   "client": [
