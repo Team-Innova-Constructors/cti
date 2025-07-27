@@ -72,6 +72,7 @@ public class CtiItem {
     public static final RegistryObject<Item> test = ITEMS.register("test", () -> new Item(new Item.Properties().tab(CtiTab.MATERIALS)));
     public static final RegistryObject<Item> ultradense_ammo = ITEMS.register("ultradense_ammo", UltraDenseAmmo::new);
     public static final RegistryObject<Item> protonium_ammo = ITEMS.register("protonium_ammo", ProtoniumAmmo::new);
+    public static final RegistryObject<Item> star_dragon_ammo = ITEMS.register("star_dragon_ammo",() -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> magic_crystal = ITEMS.register("magic_crystal", () -> new Item(new Item.Properties().tab(CtiTab.MATERIALS)));
     public static final RegistryObject<Item> enriched_mana = ITEMS.register("enriched_mana", () -> new Item(new Item.Properties().tab(CtiTab.MATERIALS)));
     public static final RegistryObject<Item> uriel_ingot = ITEMS.register("uriel_ingot", () -> new uriel_ingot(new Item.Properties().tab(CtiTab.MATERIALS)));

@@ -16,13 +16,18 @@ import net.minecraft.core.Registry;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import slimeknights.mantle.registration.deferred.EntityTypeDeferredRegister;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
 
 public class CtiEntity {
+    public static final DeferredRegister<EntityType<?>> ENTITY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, "cti");
     public static final EntityTypeDeferredRegister ENTITIES = new EntityTypeDeferredRegister("cti");
+
     public static final ResourcefulRegistry<EntityType<?>> ENTITY_TYPES = ResourcefulRegistries.create(Registry.ENTITY_TYPE, "cti");
     public static final RegistryEntry<EntityType<rocketTier5>> TIER_5_ROCKET = ENTITY_TYPES.register("tier_5_rocket", () -> EntityType.Builder.<rocketTier5>of(rocketTier5::new, MobCategory.MISC).sized(1.1f, 7.0f).fireImmune().build("cti"));
     public static final RegistryObject<EntityType<FallenStars>> star_blaze = ENTITIES.register("star_blaze", () -> EntityType.Builder.<FallenStars>of((entityType, level) -> new FallenStars(entityType, level, CtiItem.star_blaze.get()), MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new FallenStars(CtiEntity.star_blaze.get(), world, CtiItem.star_blaze.get())).setShouldReceiveVelocityUpdates(true));
@@ -36,6 +41,14 @@ public class CtiEntity {
     public static final RegistryObject<EntityType<FieryJavelinProjectile>> FIERY_JAVELIN = ENTITIES.register("fiery_javelin", () -> EntityType.Builder.<FieryJavelinProjectile>of(FieryJavelinProjectile::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new FieryJavelinProjectile(CtiEntity.FIERY_JAVELIN.get(),world)).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<PlasmaWaveSlashProjectile>> PLASMA_WAVE_SLASH = ENTITIES.register("plasma_wave_slash", () -> EntityType.Builder.of(PlasmaWaveSlashProjectile::new, MobCategory.MISC).sized(8F, 1F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new PlasmaWaveSlashProjectile(CtiEntity.PLASMA_WAVE_SLASH.get(), world)).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<HomingSunStrike>> HOMING_SUNSTRIKE = ENTITIES.register("homing_sunstrike", () -> EntityType.Builder.of(HomingSunStrike::new, MobCategory.MISC).sized(0.1f, 0.1F).setCustomClientFactory((spawnEntity, world) -> new HomingSunStrike(CtiEntity.HOMING_SUNSTRIKE.get(), world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<StarDargonAmmo>> star_dragon_ammo = ENTITY.register(
+            "star_dragon_ammo",
+            () -> EntityType.Builder.<StarDargonAmmo>of(StarDargonAmmo::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f)
+                    .clientTrackingRange(4)
+                    .updateInterval(20)
+                    .build("star_dragon_ammo")
+    );
 
     public static void registerEntityRenderers() {
         ClientHooks.registerEntityRenderer(CtiEntity.TIER_5_ROCKET, RocketRendererTier5::new);
@@ -50,5 +63,9 @@ public class CtiEntity {
         ClientHooks.registerEntityRenderer(CtiEntity.PLASMA_WAVE_SLASH, renderSlash::new);
         ClientHooks.registerEntityRenderer(CtiEntity.FIERY_JAVELIN, FieryJavelinRender::new);
         ClientHooks.registerEntityRenderer(CtiEntity.HOMING_SUNSTRIKE, RenderSunstrike::new);
+    }
+    public static void register(IEventBus bus){
+        ENTITIES.register(bus);
+        ENTITY.register(bus);
     }
 }

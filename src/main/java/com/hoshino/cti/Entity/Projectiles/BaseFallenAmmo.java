@@ -16,9 +16,15 @@ import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.TheEndGatewayBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
@@ -89,9 +95,29 @@ public abstract class BaseFallenAmmo extends Projectile implements ItemSupplier 
         }
     }
     protected abstract void shockWaveHurt(Mob mob, Player player);
-    private void commonTick(){
-        if(this.isArrived){
+    private void commonTick() {
+        this.noPhysics=true;
+        if (this.isArrived) {
             arrivedTime++;
+        }
+        HitResult hitresult = ProjectileUtil.getHitResult(this, this::canHitEntity);
+        boolean flag = false;
+        if (hitresult.getType() == HitResult.Type.BLOCK) {
+            BlockPos blockpos = ((BlockHitResult) hitresult).getBlockPos();
+            BlockState blockstate = this.level.getBlockState(blockpos);
+            if (blockstate.is(Blocks.NETHER_PORTAL)) {
+                this.handleInsidePortal(blockpos);
+                flag = true;
+            } else if (blockstate.is(Blocks.END_GATEWAY)) {
+                BlockEntity blockentity = this.level.getBlockEntity(blockpos);
+                if (blockentity instanceof TheEndGatewayBlockEntity && TheEndGatewayBlockEntity.canEntityTeleport(this)) {
+                    TheEndGatewayBlockEntity.teleportEntity(this.level, blockpos, blockstate, this, (TheEndGatewayBlockEntity) blockentity);
+                }
+                flag = true;
+            }
+        }
+        if (hitresult.getType() != HitResult.Type.MISS && !flag && !net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, hitresult)) {
+            this.onHit(hitresult);
         }
         this.checkInsideBlocks();
         Vec3 vec3 = this.getDeltaMovement();
@@ -101,7 +127,7 @@ public abstract class BaseFallenAmmo extends Projectile implements ItemSupplier 
         this.updateRotation();
         if (this.isInWater()) {
             for (int i = 0; i < 4; ++i) {
-                this.getLevel().addParticle(ParticleTypes.BUBBLE, d2 - vec3.x * 0.25D, d0 - vec3.y * 0.25D, d1 - vec3.z * 0.25D, vec3.x, vec3.y, vec3.z);
+                this.level.addParticle(ParticleTypes.BUBBLE, d2 - vec3.x * 0.25D, d0 - vec3.y * 0.25D, d1 - vec3.z * 0.25D, vec3.x, vec3.y, vec3.z);
             }
         }
         if (!this.isNoGravity()) {
@@ -116,19 +142,19 @@ public abstract class BaseFallenAmmo extends Projectile implements ItemSupplier 
     @Override
     public void tick() {
         super.tick();
-        if (this.tickCount > 500) {
+        if (this.tickCount > 300) {
             this.discard();
         }
-        if(this.getWaitTime()>0){
+        if (this.getWaitTime() > 0) {
             this.setWaitTime(this.getWaitTime() - 1);
             return;
         }
         commonTick();
         if (this.getWaitTime() == 0 || !hasBeenSetSpeed) {
-            hasBeenSetSpeed=true;
+            hasBeenSetSpeed = true;
         }
         Vec3 vec3 = this.getDeltaMovement();
-        if(this.getLevel().isClientSide)return;
+        if (this.level.isClientSide) return;
         if (this.getOwner() instanceof ServerPlayer player) {
             for (int i = 0; i < 4; ++i) {
                 double x = vec3.x;
@@ -136,14 +162,14 @@ public abstract class BaseFallenAmmo extends Projectile implements ItemSupplier 
                 double z = vec3.z;
                 player.getLevel().sendParticles(getTailParticleType(), this.getX() + x * (double) i / 4.0D, this.getY() + y * (double) i / 4.0D, this.getZ() + z * (double) i / 4.0D, 10, 0, 0, 0, 0.25);
             }
-            if (this.getLevel().getBlockState(this.getOnPos()).getBlock()!=Blocks.AIR&& !isArrived) {
+            if (this.position().distanceTo(getTargetPosition())<1d && !isArrived) {
                 onArrived(player);
             }
-            if (isArrived&&arrivedTime<40){
-                var Vec3Pos=getTargetPosition();
+            if (isArrived && arrivedTime < 80) {
+                var Vec3Pos = getTargetPosition();
                 var pos = new BlockPos((int) Vec3Pos.x(), (int) Vec3Pos.y(), (int) Vec3Pos.z());
-                AABB aabb = new AABB(pos).inflate(50);
-                List<Mob> mobList = this.getLevel().getEntitiesOfClass(Mob.class, aabb, LivingEntity::isAlive);
+                AABB aabb = new AABB(pos).inflate(100);
+                List<Mob> mobList = this.level.getEntitiesOfClass(Mob.class, aabb, LivingEntity::isAlive);
                 for (Mob mob : mobList) {
                     var distance = mob.position().subtract(getTargetPosition()).length();
                     if (distance < arrivedTime - 3 || distance > arrivedTime + 3) continue;

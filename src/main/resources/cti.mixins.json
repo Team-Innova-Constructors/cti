@@ -74,8 +74,8 @@
     "MixinForPlanets.PnC.ManualCompressorBlockEntityMixin",
     "MixinForPlanets.Powah.AbstractEnergyProviderMixin",
     "MowzieMixin.EntitySunstrikeMixin",
-    "MowzieMixin.EntityUmvuthiBossMixin",
     "MowzieMixin.EntityUmvuthiAbilityMixin",
+    "MowzieMixin.EntityUmvuthiBossMixin",
     "MowzieMixin.EntityWroughtnautMixin",
     "PnCMixin.AirGrateMixin",
     "TconMixin.InsatiableMixin",
@@ -92,7 +92,8 @@
     "TIMixin.SpriteOfGaiaMixin",
     "TIMixin.ToolUtilsMixin",
     "TwiMixin.BossSpawnerBlockEntityMixin",
-    "TwiMixin.HydraMixin"
+    "TwiMixin.HydraMixin",
+    "TwiMixin.UrGhastMixin"
   ],
   "client": [
     "AbstractClientPlayerMixin",

@@ -64,6 +64,11 @@
   "item.cti.covert_sugar": "月隐糖",
   "item.cti.nakshatra_sugar": "夜叉戮糖",
 
+  "item.cti.star_dragon_ingot": "星界龙神锭",
+  "material.cti.star_dragon": "星界龙神",
+  "material.cti.star_dragon.flavor": "天上天下,唯我独尊",
+  "material.cti.star_dragon.encyclopedia": "三龙合一,飞升护体",
+
   "item.cti.bloodgod_ingot": "§c血神锭",
   "item.cti.molten_bloodgod_bucket": "熔融血神桶",
   "fluid.cti.molten_bloodgod": "熔融血神",

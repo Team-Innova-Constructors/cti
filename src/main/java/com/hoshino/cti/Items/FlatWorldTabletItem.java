@@ -1,6 +1,7 @@
 package com.hoshino.cti.Items;
 
 import com.hoshino.cti.register.CtiTab;
+import com.hoshino.cti.util.EffectUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;

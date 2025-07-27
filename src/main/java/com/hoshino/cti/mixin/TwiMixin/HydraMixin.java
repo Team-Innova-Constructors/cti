@@ -1,5 +1,6 @@
 package com.hoshino.cti.mixin.TwiMixin;
 
+import com.hoshino.cti.util.TwiAdvanceID;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -29,7 +30,7 @@ public abstract class HydraMixin extends Mob implements Enemy, EnforcedHomePoint
         var count = this.countActiveHeads();
         cir.setReturnValue(super.hurt(src, damage));
     }
-    @ModifyArg(method = "attackEntityFromPart",at = @At(value = "INVOKE", target = "Ljava/lang/Math;round(F)I"))
+    @ModifyArg(method = "attackEntityFromPart",at = @At(value = "INVOKE", target = "Ljava/lang/Math;round(F)I"),remap = false)
     private float setModify(float a){
         return a * 4;
     }
