@@ -836,6 +836,10 @@
   "modifier.cti.omnipotent.flavor": "我无所不能！",
   "modifier.cti.omnipotent.description":"令工具全部词条等级+1。",
 
+  "modifier.cti.ion_apocalypse": "离子启示录",
+  "modifier.cti.ion_apocalypse.flavor": "没有什么比这个更绚烂，更致命。",
+  "modifier.cti.ion_apocalypse.description":"攻击时令工具的词条效用扩散至周围6格半径内的生物。\n[警告]作用于范围伤害武器时可能造成严重卡顿。",
+
 
 
   "fluid.cti.molten_stellar_manyullyn": "熔融玛玉灵(?)",
