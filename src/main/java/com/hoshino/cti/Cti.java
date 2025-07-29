@@ -44,16 +44,13 @@ public class Cti {
 
     public Cti() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        eventBus.addListener(this::clientSetup);
-        eventBus.addListener(this::commonSetup);
-        eventBus.addListener(this::registerGuiOverlay);
+        CtiEntity.register(eventBus);
         CtiAttributes.ATTRIBUTES.register(eventBus);
         CtiItem.ITEMS.register(eventBus);
         CtiModifiers.MODIFIERS.register(eventBus);
         CtiFluid.FLUIDS.register(eventBus);
         CtiBlock.BLOCK.register(eventBus);
         CtiEffects.EFFECT.register(eventBus);
-        CtiEntity.ENTITIES.register(eventBus);
         CtiBlockEntityType.BLOCK_ENTITIES.register(eventBus);
         CtiInfusetype.INFUSE.register(eventBus);
         CtiItem.ASTRAITEM.init();
@@ -68,12 +65,16 @@ public class Cti {
         CtiPotions.POTIONS.register(eventBus);
         CtiParticleType.PARTICLES.register(eventBus);
         CtiItem.registerPartModels();
+        CtiSounds.sound.register(eventBus);
         //ctiRecipes.register(eventBus);
         ctiConfiguredFeature.CONFIGURED_FEATURES.register(eventBus);
         ctiPlacedFeature.PLACED_FEATURES.register(eventBus);
         if (Mekenabled) {
             CtiChemical.GAS.register(eventBus);
         }
+        eventBus.addListener(this::clientSetup);
+        eventBus.addListener(this::commonSetup);
+        eventBus.addListener(this::registerGuiOverlay);
 
     }
 

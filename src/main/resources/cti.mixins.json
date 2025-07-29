@@ -93,7 +93,8 @@
     "TIMixin.SpriteOfGaiaMixin",
     "TIMixin.ToolUtilsMixin",
     "TwiMixin.BossSpawnerBlockEntityMixin",
-    "TwiMixin.HydraMixin"
+    "TwiMixin.HydraMixin",
+    "TwiMixin.UrGhastMixin"
   ],
   "client": [
     "AbstractClientPlayerMixin",

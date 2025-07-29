@@ -1,7 +1,6 @@
 package com.hoshino.cti.mixin.TwiMixin;
 
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
+import com.hoshino.cti.util.TwiAdvanceID;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
