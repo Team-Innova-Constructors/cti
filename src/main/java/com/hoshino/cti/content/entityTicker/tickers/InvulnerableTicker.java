@@ -13,7 +13,7 @@ public class InvulnerableTicker extends EntityTicker {
 
     @Override
     public boolean tick(int duration, int level, Entity entity) {
-        if (entity.level instanceof ServerLevel serverLevel) serverLevel.sendParticles(ParticleTypes.ELECTRIC_SPARK,entity.getX(),entity.getY(),entity.getZ(),5,entity.getBbWidth()/2,entity.getBbWidth()/2,entity.getBbHeight(),0.1);
+        if (entity.level instanceof ServerLevel serverLevel) serverLevel.sendParticles(ParticleTypes.ELECTRIC_SPARK,entity.getX(),entity.getY(),entity.getZ(),5,entity.getBbWidth()/2,entity.getBbHeight(),entity.getBbWidth()/2,0.1);
         return true;
     }
 

@@ -31,7 +31,7 @@ public class SecondaryArmor extends EtSTBaseModifier {
                 int level = cap.get(KEY_SECONDARY_ARMOR,0);
                 if (level>0){
                     player.getInventory().hurtArmor(event.getSource(),event.getAmount(), Inventory.ALL_ARMOR_SLOTS);
-                    event.setAmount(CombatRules.getDamageAfterAbsorb(event.getAmount(), (float) player.getArmorValue()/2, (float) player.getAttributeValue(Attributes.ARMOR_TOUGHNESS)/2));
+                    event.setAmount(CombatRules.getDamageAfterAbsorb(event.getAmount(), (float) player.getArmorValue(), (float) player.getAttributeValue(Attributes.ARMOR_TOUGHNESS)));
                 }
             });
         }

@@ -1,9 +1,7 @@
 package com.hoshino.cti.register;
 
 import com.bobmowzie.mowziesmobs.client.render.entity.RenderSunstrike;
-import com.c2h6s.etshtinker.Entities.plasmawaveslashentity;
 import com.c2h6s.etshtinker.client.render.renderSlash;
-import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.hoshino.cti.Entity.Projectiles.*;
 import com.hoshino.cti.Entity.vehicles.rocketTier5;
 import com.hoshino.cti.client.renderer.projectile.*;

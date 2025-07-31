@@ -1,9 +1,8 @@
-package com.hoshino.cti.client.renderer.projectile;
+package com.hoshino.cti.Entity.Projectiles;
 
 import cofh.core.init.CoreMobEffects;
 import com.c2h6s.etshtinker.Entities.ItemProjectile;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
-import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.github.alexthe666.iceandfire.misc.IafDamageRegistry;
 import com.hoshino.cti.util.AttackUtil;
 import net.minecraft.world.InteractionHand;
@@ -17,7 +16,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
@@ -61,7 +59,6 @@ public class PlasmaWaveSlashProjectile extends ItemProjectile {
                     entity.invulnerableTime = 0;
                     AttackUtil.attackEntity(tool,player, InteractionHand.MAIN_HAND,entity,()->1,true, EquipmentSlot.MAINHAND,0.25f);
                     entity.invulnerableTime =0;
-                    entity.hurt(IafDamageRegistry.causeIndirectDragonLightningDamage(this,this.getOwner()),this.tool.getStats().get(ToolStats.ATTACK_DAMAGE));
                     hitList.add(entity);
                 }
 

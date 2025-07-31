@@ -212,9 +212,9 @@
   "modifier.cti.gravity_shield.flavor": "反转引力！",
   "modifier.cti.gravity_shield.description": "对附近的弹射物施加斥力，使它们偏离原轨迹，等级越高效果越强。",
 
-  "modifier.cti.secondary_armor": "第二护甲",
-  "modifier.cti.secondary_armor.flavor": "没想到吧，我还有隐藏护甲！",
-  "modifier.cti.secondary_armor.description": "以一半的护甲值使你的护甲抵抗穿甲伤害。",
+  "modifier.cti.secondary_armor": "穿刺防护",
+  "modifier.cti.secondary_armor.flavor": "最锐之矛也奈不了我何！",
+  "modifier.cti.secondary_armor.description": "使你的护甲能抵抗穿甲伤害。",
 
   "modifier.cti.sentrite_defense": "哨石之庇护",
   "modifier.cti.sentrite_defense.flavor": "从滑行魔石上扒下来的外壳",
@@ -797,9 +797,9 @@
   "modifier.cti.carcinogenic.flavor": "小心职业暴露！",
   "modifier.cti.carcinogenic.description":"在两次攻击时，移除两次攻击之间目标恢复的生命值并依此治疗自己（最大恢复10生命值）。",
 
-  "modifier.cti.piercing_immune": "穿刺防护",
-  "modifier.cti.piercing_immune.flavor": "最锐之矛也奈不了我何！",
-  "modifier.cti.piercing_immune.description":"使你的护甲能以75%的护甲效力格挡穿甲伤害。",
+  "modifier.cti.piercing_immune": "双层护甲",
+  "modifier.cti.piercing_immune.flavor": "没想到吧，我还有隐藏护甲！",
+  "modifier.cti.piercing_immune.description":"使你的护甲能格挡穿甲伤害，每件带有此特性的护甲都会额外生效一次护甲值减伤。",
 
   "modifier.cti.permanent_scar": "永久创伤",
   "modifier.cti.permanent_scar.flavor": "小心职业暴露！",
