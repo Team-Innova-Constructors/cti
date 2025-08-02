@@ -21,10 +21,6 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = Cti.MOD_ID)
 public class RegaliumModifier extends EtSTBaseModifier {
     public static final TinkerDataCapability.TinkerDataKey<Integer> KEY_REGALIUM = TinkerDataCapability.TinkerDataKey.of(Cti.getResource("key_regallium"));
-    @Override
-    public boolean isNoLevels() {
-        return true;
-    }
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
@@ -60,6 +56,6 @@ public class RegaliumModifier extends EtSTBaseModifier {
                 etshtinkerToolStats.CRITICAL_RATE,
                 etshtinkerToolStats.DAMAGEMULTIPLIER,
                 etshtinkerToolStats.FLUID_EFFICIENCY
-        ).forEach(stat->stat.percent(modifierStatsBuilder,0.20));
+        ).forEach(stat->stat.percent(modifierStatsBuilder,0.20*modifierEntry.getLevel()));
     }
 }

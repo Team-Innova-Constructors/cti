@@ -43,6 +43,7 @@
     "IAFMixin.ChainPropertiesMixin",
     "IAFMixin.DragonAITargetNonTamedMixin",
     "IAFMixin.DragonCaveMixin",
+    "IAFMixin.IafDragonDestructionManagerMixin",
     "IEMixin.SurveyToolsItemMixin",
     "L2.AttackListenerMixin",
     "L2.DementorMixin",

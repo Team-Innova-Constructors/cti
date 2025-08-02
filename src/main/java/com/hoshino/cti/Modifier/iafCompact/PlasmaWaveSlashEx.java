@@ -29,6 +29,7 @@ public class PlasmaWaveSlashEx extends EtSTBaseModifier implements LeftClickModi
         super.registerHooks(builder);
         builder.addHook(this, CtiModifierHook.LEFT_CLICK, etshtinkerHook.PLASMA_EXPLOSION_HIT);
     }
+    public static float cacheDamage = 0;
 
     @Override
     public boolean isNoLevels() {
@@ -43,12 +44,19 @@ public class PlasmaWaveSlashEx extends EtSTBaseModifier implements LeftClickModi
     }
 
     @Override
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+        cacheDamage = damage;
+        return knockback;
+    }
+
+    @Override
     public void postMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage) {
         if (!context.isExtraAttack() && context.isFullyCharged() && context.getAttacker() instanceof Player player) {
             createslash(player, tool);
-        } else if (context.isExtraAttack()) {
-            context.getTarget().hurt(IafDamageRegistry.causeIndirectDragonLightningDamage(context.getAttacker(), context.getAttacker()), damage / 2);
-            context.getTarget().hurt(EDamageSource.indirectIonize(false, context.getAttacker(), 5).bypassArmor().bypassMagic(), damage / 4);
+        } else if (context.isExtraAttack()&&cacheDamage>0) {
+            context.getTarget().hurt(IafDamageRegistry.causeIndirectDragonLightningDamage(context.getAttacker(), context.getAttacker()), cacheDamage / 2);
+            context.getTarget().hurt(EDamageSource.indirectIonize(false, context.getAttacker(), 5).bypassArmor().bypassMagic(), cacheDamage / 3);
+            cacheDamage = 0;
         }
     }
 
