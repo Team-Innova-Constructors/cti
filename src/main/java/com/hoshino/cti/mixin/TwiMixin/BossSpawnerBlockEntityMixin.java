@@ -4,16 +4,19 @@ import com.hoshino.cti.util.AdvanceMentHelper;
 import com.hoshino.cti.util.ChangeBossHealth;
 import com.hoshino.cti.util.TwiAdvanceID;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,8 +37,12 @@ public abstract class BossSpawnerBlockEntityMixin<T extends Mob> extends BlockEn
     public BossSpawnerBlockEntityMixin(BlockEntityType<?> p_155228_, BlockPos p_155229_, BlockState p_155230_) {
         super(p_155228_, p_155229_, p_155230_);
     }
-    @Inject(method = "spawnMyBoss", at = @At(value = "RETURN"), remap = false, cancellable = true)
-    protected void spawnMyBoss(ServerLevelAccessor accessor, CallbackInfoReturnable<Boolean> cir) {
+    /**
+     * @author
+     * @reason
+     */
+    @Overwrite()
+    protected boolean spawnMyBoss(ServerLevelAccessor accessor) {
         var myCreature = this.makeMyCreature();
         myCreature.moveTo(this.getBlockPos().below(), accessor.getLevel().getRandom().nextFloat() * 360.0F, 0.0F);
         myCreature.finalizeSpawn(accessor, accessor.getCurrentDifficultyAt(this.getBlockPos()), MobSpawnType.SPAWNER, null, null);
@@ -66,6 +73,6 @@ public abstract class BossSpawnerBlockEntityMixin<T extends Mob> extends BlockEn
                 }
             }
         }
-        cir.setReturnValue(accessor.addFreshEntity(myCreature));
+        return accessor.addFreshEntity(myCreature);
     }
 }
