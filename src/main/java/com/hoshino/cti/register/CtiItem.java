@@ -306,6 +306,9 @@ public class CtiItem {
             pTooltip.add(Component.literal("对于穿甲/穿魔伤害无效！").withStyle(style -> style.withColor(0xff557f)));
         }
     });
+    public static final RegistryObject<Item> star_dragon_ingot = ITEMS.register("star_dragon_ingot", () -> new TooltipedItem(new Item.Properties().tab(CtiTab.MATERIALS),List.of(
+            Component.literal("游荡于星界之龙").withStyle(style -> style.withColor(0x5500ff))
+    )));
 
     public static final RegistryObject<Item> BIOMES_ITEM = ITEMS.register("biomes_item",BiomeInfoItem::new);
 

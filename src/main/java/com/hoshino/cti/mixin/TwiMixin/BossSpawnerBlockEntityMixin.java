@@ -41,7 +41,7 @@ public abstract class BossSpawnerBlockEntityMixin<T extends Mob> extends BlockEn
      * @author
      * @reason
      */
-    @Overwrite()
+    @Overwrite(remap = false)
     protected boolean spawnMyBoss(ServerLevelAccessor accessor) {
         var myCreature = this.makeMyCreature();
         myCreature.moveTo(this.getBlockPos().below(), accessor.getLevel().getRandom().nextFloat() * 360.0F, 0.0F);
