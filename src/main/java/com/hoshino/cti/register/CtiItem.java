@@ -91,6 +91,7 @@ public class CtiItem {
     public static final RegistryObject<Item> flat_tablet_day = ITEMS.register("flat_tablet_day", FlatWorldDayTabletItem::new);
     public static final RegistryObject<Item> STRANGE_ICE_CRYSTAL = ITEMS.register("strange_ice_crystal", StrangeIceCrystalItem::new);
     public static final RegistryObject<FieryJavelinItem> FIERY_JAVELIN = ITEMS.register("fiery_javelin", FieryJavelinItem::new);
+    public static final RegistryObject<Item> ORB_OF_CURSE = ITEMS.register("orb_of_curse", OrbOfCurse::new);
 
     public static final RegistryObject<BlockItem> unipolar_magnet = ITEMS.register("unipolar_magnet", () -> new BlockItem(CtiBlock.unipolar_magnet.get(), new Item.Properties().tab(CtiTab.MIXC)));
     public static final RegistryObject<BlockItem> unipolar_magnet_budding = ITEMS.register("unipolar_magnet_budding", () -> new BlockItem(CtiBlock.unipolar_magnet_budding.get(), new Item.Properties().tab(CtiTab.MIXC)));
@@ -290,8 +291,8 @@ public class CtiItem {
 
 
     //mek高级升级
-    public static final RegistryObject<Item> chroma_upgrade_speed_kit = ITEMS.register("chroma_upgrade_speed_kit", () -> new AdvancedUpgrade(12, true, List.of(Upgrade.SPEED)));
-    public static final RegistryObject<Item> aetherium_upgrade_speed_kit = ITEMS.register("aetherium_upgrade_speed_kit", () -> new AdvancedUpgrade(16, true, List.of(Upgrade.SPEED)));
+    public static final RegistryObject<Item> chroma_upgrade_speed_kit = ITEMS.register("chroma_upgrade_speed_kit", () -> new AdvancedUpgrade(10, true, List.of(Upgrade.SPEED)));
+    public static final RegistryObject<Item> aetherium_upgrade_speed_kit = ITEMS.register("aetherium_upgrade_speed_kit", () -> new AdvancedUpgrade(14, true, List.of(Upgrade.SPEED)));
     //public static final RegistryObject<Item> anti_upgrade_speed_kit = ITEMS.register("anti_upgrade_speed_kit", () -> new AdvancedUpgrade(20,true,List.of(Upgrade.SPEED)));
     public static final RegistryObject<Item> upgrade_double_kit = ITEMS.register("upgrade_double_kit", () -> new AdvancedUpgrade(8, false, List.of(Upgrade.SPEED, Upgrade.ENERGY)));
     public static final RegistryObject<Item> upgrade_energy_kit = ITEMS.register("upgrade_energy_kit", () -> new AdvancedUpgrade(8, false, List.of(Upgrade.ENERGY)));
@@ -299,6 +300,9 @@ public class CtiItem {
     public static final RegistryObject<Item> upgrade_speed_kit = ITEMS.register("upgrade_speed_kit", () -> new AdvancedUpgrade(8, false, List.of(Upgrade.SPEED)));
     public static final RegistryObject<Item> upgrade_energy_kit_2 = ITEMS.register("upgrade_energy_kit_2", () -> new AdvancedUpgrade(16, false, List.of(Upgrade.ENERGY)));
     public static final RegistryObject<Item> upgrade_energy_kit_3 = ITEMS.register("upgrade_energy_kit_3", () -> new AdvancedUpgrade(32, false, List.of(Upgrade.ENERGY)));
+    public static final RegistryObject<Item> upgrade_speed_kit_1 = ITEMS.register("upgrade_speed_kit_1", () -> new AdvancedUpgrade(12, false, List.of(Upgrade.SPEED)));
+    public static final RegistryObject<Item> upgrade_speed_kit_2 = ITEMS.register("upgrade_speed_kit_2", () -> new AdvancedUpgrade(16, false, List.of(Upgrade.SPEED)));
+
     public static final RegistryObject<BlockItem> aluminium_glass = ITEMS.register("aluminium_glass", () -> new BlockItem(CtiBlock.aluminium_glass.get(), new Item.Properties().tab(CtiTab.MIXC)){
         @Override
         public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag) {

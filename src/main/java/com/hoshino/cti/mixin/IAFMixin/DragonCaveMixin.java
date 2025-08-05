@@ -44,6 +44,7 @@ public abstract class DragonCaveMixin extends Feature<NoneFeatureConfiguration> 
         isMale = rand.nextBoolean();
         ChunkPos chunkPos = worldIn.getChunk(position).getPos();
 
+        //将初始高度改为90
         int j = 90;
         j -= rand.nextInt(30);
 

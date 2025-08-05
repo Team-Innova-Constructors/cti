@@ -5,7 +5,9 @@ import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import com.c2h6s.etshtinker.hooks.PlasmaExplosionHitModifierHook;
 import com.c2h6s.etshtinker.init.etshtinkerHook;
 import com.c2h6s.etshtinker.util.vecCalc;
-import com.hoshino.cti.client.renderer.projectile.PlasmaWaveSlashProjectile;
+import com.github.alexthe666.iceandfire.misc.IafDamageRegistry;
+import com.hoshino.cti.Entity.Projectiles.PlasmaWaveSlashProjectile;
+import com.hoshino.cti.content.environmentSystem.EDamageSource;
 import com.hoshino.cti.library.modifier.CtiModifierHook;
 import com.hoshino.cti.library.modifier.hooks.LeftClickModifierHook;
 import com.hoshino.cti.register.CtiEntity;
@@ -19,6 +21,7 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 public class PlasmaWaveSlashEx extends EtSTBaseModifier implements LeftClickModifierHook, PlasmaExplosionHitModifierHook {
     @Override
@@ -26,6 +29,7 @@ public class PlasmaWaveSlashEx extends EtSTBaseModifier implements LeftClickModi
         super.registerHooks(builder);
         builder.addHook(this, CtiModifierHook.LEFT_CLICK, etshtinkerHook.PLASMA_EXPLOSION_HIT);
     }
+    public static float cacheDamage = 0;
 
     @Override
     public boolean isNoLevels() {
@@ -40,9 +44,19 @@ public class PlasmaWaveSlashEx extends EtSTBaseModifier implements LeftClickModi
     }
 
     @Override
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+        cacheDamage = damage;
+        return knockback;
+    }
+
+    @Override
     public void postMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage) {
         if (!context.isExtraAttack() && context.isFullyCharged() && context.getAttacker() instanceof Player player) {
             createslash(player, tool);
+        } else if (context.isExtraAttack()&&cacheDamage>0) {
+            context.getTarget().hurt(IafDamageRegistry.causeIndirectDragonLightningDamage(context.getAttacker(), context.getAttacker()), cacheDamage / 2);
+            context.getTarget().hurt(EDamageSource.indirectIonize(false, context.getAttacker(), 5).bypassArmor().bypassMagic(), cacheDamage / 3);
+            cacheDamage = 0;
         }
     }
 

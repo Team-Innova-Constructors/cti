@@ -9,7 +9,7 @@ public class LifeSteal extends EtSTBaseModifier {
     @Override
     public void postMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage) {
         if (context.isFullyCharged()){
-            context.getAttacker().heal(Math.min(context.getAttacker().getMaxHealth()*0.025f*modifier.getLevel(),damage*0.1f*modifier.getLevel()));
+            context.getAttacker().heal(Math.min(context.getAttacker().getMaxHealth()*0.05f*modifier.getLevel(),damage*0.1f*modifier.getLevel()));
         }
     }
 }

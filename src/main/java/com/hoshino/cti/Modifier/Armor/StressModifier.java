@@ -18,7 +18,7 @@ public class StressModifier extends EtSTBaseModifier {
         LivingEntity entity = context.getEntity();
         if (entity instanceof Player player && amount > 1) {
             MobEffectInstance instance = player.getEffect(CtiEffects.stress.get());
-            player.addEffect(new MobEffectInstance(CtiEffects.stress.get(), 20, Math.min(9, (instance == null ? 0 : instance.getAmplifier()) + modifier.getLevel()), false, false));
+            player.addEffect(new MobEffectInstance(CtiEffects.stress.get(), 200, Math.min(9, (instance == null ? 0 : instance.getAmplifier()) + modifier.getLevel()), false, false));
         }
     }
 }

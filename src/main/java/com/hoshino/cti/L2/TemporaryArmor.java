@@ -22,7 +22,7 @@ public class TemporaryArmor extends LegendaryTrait {
         CompoundTag nbt = entity.getPersistentData();
         if (nbt.getInt(KEY_REDUCTION)>0){
             event.setAmount(event.getAmount()*(1-0.01f*nbt.getInt(KEY_REDUCTION)));
-            nbt.putInt(KEY_REDUCTION,Math.max(0,nbt.getInt(KEY_REDUCTION)-(event.getSource().isBypassArmor()?5:1)));
+            nbt.putInt(KEY_REDUCTION,Math.max(0,nbt.getInt(KEY_REDUCTION)-(event.getSource().isBypassArmor()?2:1)));
         }
     }
 }

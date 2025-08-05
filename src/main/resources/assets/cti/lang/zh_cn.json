@@ -212,9 +212,9 @@
   "modifier.cti.gravity_shield.flavor": "反转引力！",
   "modifier.cti.gravity_shield.description": "对附近的弹射物施加斥力，使它们偏离原轨迹，等级越高效果越强。",
 
-  "modifier.cti.secondary_armor": "第二护甲",
-  "modifier.cti.secondary_armor.flavor": "没想到吧，我还有隐藏护甲！",
-  "modifier.cti.secondary_armor.description": "以一半的护甲值使你的护甲抵抗穿甲伤害。",
+  "modifier.cti.secondary_armor": "穿刺防护",
+  "modifier.cti.secondary_armor.flavor": "最锐之矛也奈不了我何！",
+  "modifier.cti.secondary_armor.description": "使你的护甲能抵抗穿甲伤害。",
 
   "modifier.cti.sentrite_defense": "哨石之庇护",
   "modifier.cti.sentrite_defense.flavor": "从滑行魔石上扒下来的外壳",
@@ -222,7 +222,7 @@
 
   "modifier.cti.life_steal": "生命窃取",
   "modifier.cti.life_steal.flavor": "以血换血",
-  "modifier.cti.life_steal.description": "攻击时每级恢复攻击伤害10%的血量，最大为每级自身生命值2.5%。",
+  "modifier.cti.life_steal.description": "攻击时每级恢复攻击伤害10%的血量，最大为每级自身生命值5%。",
 
   "modifier.cti.life_enhance": "生命强化",
   "modifier.cti.life_enhance.flavor": "增加了你的维生能量",
@@ -281,6 +281,7 @@
   "item.cti.astra_tablet_5": "五阶全息星空板",
 
   "item.cti.compressed_singularity": "压缩奇点",
+  "item.cti.orb_of_curse": "球状恶意",
 
   "item.cti.upgrade_electronium": "辅助静电场分离组件",
   "item.cti.upgrade_violium": "外置滤波电容组件",
@@ -803,9 +804,9 @@
   "modifier.cti.carcinogenic.flavor": "小心职业暴露！",
   "modifier.cti.carcinogenic.description":"在两次攻击时，移除两次攻击之间目标恢复的生命值并依此治疗自己（最大恢复10生命值）。",
 
-  "modifier.cti.piercing_immune": "穿刺防护",
-  "modifier.cti.piercing_immune.flavor": "最锐之矛也奈不了我何！",
-  "modifier.cti.piercing_immune.description":"使你的护甲能以75%的护甲效力格挡穿甲伤害。",
+  "modifier.cti.piercing_immune": "双层护甲",
+  "modifier.cti.piercing_immune.flavor": "没想到吧，我还有隐藏护甲！",
+  "modifier.cti.piercing_immune.description":"使你的护甲能格挡穿甲伤害，每件带有此特性的护甲都会额外生效一次护甲值减伤。",
 
   "modifier.cti.permanent_scar": "永久创伤",
   "modifier.cti.permanent_scar.flavor": "小心职业暴露！",
@@ -846,6 +847,10 @@
   "modifier.cti.omnipotent": "无所不能",
   "modifier.cti.omnipotent.flavor": "我无所不能！",
   "modifier.cti.omnipotent.description":"令工具全部词条等级+1。",
+
+  "modifier.cti.ion_apocalypse": "离子启示录",
+  "modifier.cti.ion_apocalypse.flavor": "没有什么比这个更绚烂，更致命。",
+  "modifier.cti.ion_apocalypse.description":"攻击时令工具的词条效用扩散至周围6格半径内的生物。\n[警告]作用于范围伤害武器时可能造成严重卡顿。",
 
 
 
@@ -930,6 +935,7 @@
   "cti.tooltip.modifier.damage_boost": "伤害增幅",
   "cti.tooltip.modifier.sacrifice_level": "牺牲印记层数：",
   "cti.tooltip.modifier.sacrifice_time": "牺牲印迹持续时间：",
+  "cti.tooltip.modifier.be_aware": "谨慎使用！",
 
   "fluid.cti.molten_aetherium": "熔融阳清合金",
   "item.cti.molten_aetherium_bucket": "熔融阳清合金桶",
@@ -967,8 +973,10 @@
   "item.cti.upgrade_energy_kit": "无限能量升级安装器",
   "item.cti.upgrade_gas_kit": "无限气体升级安装器",
   "item.cti.upgrade_speed_kit": "无限速度升级安装器",
-  "item.cti.chroma_upgrade_speed_kit": "速度升级套件T1",
-  "item.cti.aetherium_upgrade_speed_kit": "速度升级套件T2",
+  "item.cti.chroma_upgrade_speed_kit": "速度升级套件T0.75",
+  "item.cti.aetherium_upgrade_speed_kit": "速度升级套件T1.5",
+  "item.cti.upgrade_speed_kit_1": "速度升级套件T1",
+  "item.cti.upgrade_speed_kit_2": "速度升级套件T2",
   "item.cti.anti_upgrade_speed_kit": "速度升级套件T3",
   "item.cti.upgrade_energy_kit_2": "高级无限能量升级安装器",
   "item.cti.upgrade_energy_kit_3": "高高高高高级无限能量升级安装器",
@@ -990,7 +998,7 @@
   "trait.l2hostility.extreme_damage_reduce.desc": "令生物受到的极端伤害减少60%，受到的穿甲伤害减少80%。",
 
   "trait.l2hostility.temporary_armor": "临时护盾",
-  "trait.l2hostility.temporary_armor.desc": "使生物获得99%减伤，但是每次受到伤害时该减伤减少1%。穿甲伤害会造成5倍效果（5%）。",
+  "trait.l2hostility.temporary_armor.desc": "使生物获得99%减伤，但是每次受到伤害时该减伤减少1%。穿甲伤害会造成2倍效果（2%）。",
 
   "trait.l2hostility.second_phase": "二阶段",
   "trait.l2hostility.second_phase.desc": "当生物血量降至50%时每级使其无敌5秒。",
