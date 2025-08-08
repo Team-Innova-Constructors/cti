@@ -52,6 +52,7 @@
     "L2.EffectUtilMixin",
     "L2.GrowTraitMixin",
     "L2.HostilityBulletMixin",
+    "L2.MobTraitCapMixin",
     "L2.NDHGmixin",
     "L2.RagnarokTraitMixin",
     "L2.ReflectTraitMixin",

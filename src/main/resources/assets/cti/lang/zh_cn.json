@@ -866,6 +866,9 @@
   "fluid.cti.molten_roxy": "熔融洛琪希",
   "item.cti.molten_roxy_bucket": "熔融洛琪希桶",
 
+  "fluid.cti.molten_star_dragon": "熔融星界龙神金属",
+  "item.cti.molten_star_dragon_bucket": "熔融星界龙神金属桶",
+
   "fluid.cti.lava_heated": "加热的熔岩",
   "item.cti.lava_heated_bucket": "加热的熔岩桶",
   "fluid.cti.lava_overheated": "过热熔岩",
@@ -1010,5 +1013,8 @@
 
   "info.cti.strange_ice_crystal": "右键发射冰结球，冷却30秒。",
 
-  "info.biomes.cti.disordered_zone": "异常区域位于电离冻土星球，你需要进入主线第三章并且做出五级火箭才能到达这里。在此之前你需要做出一个完整的质子、电子产线。"
+  "info.biomes.cti.disordered_zone": "异常区域位于电离冻土星球，你需要进入主线第三章并且做出五级火箭才能到达这里。在此之前你需要做出一个完整的质子、电子产线。",
+
+  "info.cti.space_shard": "近距离对训练人偶造成超过1000的dps时产生",
+  "info.cti.explosion_shard": "箭矢命中榴弹词条产生的恶意子弹时产生"
 }

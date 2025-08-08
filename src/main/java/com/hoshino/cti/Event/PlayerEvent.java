@@ -3,11 +3,13 @@ package com.hoshino.cti.Event;
 import com.aetherteam.aether.capability.time.AetherTime;
 import com.hoshino.cti.Cti;
 import com.xiaoyue.tinkers_ingenuity.register.TIItems;
+import dev.xkmc.l2complements.init.registrate.LCItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.mantle.client.SafeClientAccess;
@@ -42,7 +44,7 @@ public class PlayerEvent {
                 }
             } else event.getToolTip().add(Component.literal("按住§bCtrl§r查看材料特性描述"));
         }
-        if (event.getItemStack().is(TIItems.STAR_ALLOY_INGOT.get())){
+        else if (event.getItemStack().is(TIItems.STAR_ALLOY_INGOT.get())){
             TooltipKey key = SafeClientAccess.getTooltipKey();
             if (key==TooltipKey.SHIFT){
                 List.of(
@@ -53,6 +55,16 @@ public class PlayerEvent {
                 ).forEach(c->event.getToolTip().add(c));
             } else {
                 event.getToolTip().add(Component.translatable("etshtinker.item.tooltip.shift").withStyle(ChatFormatting.YELLOW));
+            }
+        }
+    }
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void addToolTipLowest(ItemTooltipEvent event) {
+        if (event.getToolTip().size()>1) {
+            if (event.getItemStack().is(LCItems.SPACE_SHARD.get())) {
+                event.getToolTip().set(1, Component.translatable("info.cti.space_shard").withStyle(ChatFormatting.GRAY));
+            } else if (event.getItemStack().is(LCItems.EXPLOSION_SHARD.get())) {
+                event.getToolTip().set(1, Component.translatable("info.cti.explosion_shard").withStyle(ChatFormatting.GRAY));
             }
         }
     }
