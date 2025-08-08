@@ -104,10 +104,15 @@ public class EnvironmentalHandler {
                     toAdd = Math.min(-1, baseDecrease*scorchLevel);
                     int added =(int) Math.max(-value,toAdd);
                     addScorchValue(living,added);
+                    if (living instanceof ServerPlayer player) {
+                        CtiPacketHandler.sendToPlayer(new PScorchValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
+                    }
+                } else {
+                    if (living instanceof ServerPlayer player) {
+                        CtiPacketHandler.sendToPlayer(new PScorchValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
+                    }
                 }
-                if (living instanceof ServerPlayer player) {
-                    CtiPacketHandler.sendToPlayer(new PScorchValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
-                }
+
                 toAdd =0;
 
                 value = getFrozenValue(living);
@@ -116,14 +121,22 @@ public class EnvironmentalHandler {
                     toAdd = Math.max(1,baseBuildUp* frozenLevel);
                     int added =(int) Math.min(maxValue- value,toAdd);
                     addFrozenValue(living,added);
+                    if (living instanceof ServerPlayer player) {
+                        CtiPacketHandler.sendToPlayer(new PFrozenValueSync((float) (value * 100) /volume, toAdd *100/volume), player);
+                    }
                 }else if (frozenLevel <=0&& value >0){
                     toAdd = Math.min(-1, baseDecrease*frozenLevel);
                     int added =(int) Math.max(-value,toAdd);
                     addFrozenValue(living,added);
+                    if (living instanceof ServerPlayer player) {
+                        CtiPacketHandler.sendToPlayer(new PFrozenValueSync((float) (value * 100) /volume, toAdd *100/volume), player);
+                    }
+                } else {
+                    if (living instanceof ServerPlayer player) {
+                        CtiPacketHandler.sendToPlayer(new PFrozenValueSync((float) (value * 100) /volume, toAdd *100/volume), player);
+                    }
                 }
-                if (living instanceof ServerPlayer player) {
-                    CtiPacketHandler.sendToPlayer(new PFrozenValueSync((float) (value * 100) /volume, toAdd *100/volume), player);
-                }
+
                 toAdd=0;
 
                 value = getPressureValue(living);
@@ -132,14 +145,22 @@ public class EnvironmentalHandler {
                     toAdd = Math.max(1,baseBuildUp* pressureLevel);
                     int added =(int) Math.min(maxValue- value,toAdd);
                     addPressureValue(living,added);
+                    if (living instanceof ServerPlayer player) {
+                        CtiPacketHandler.sendToPlayer(new PPressureValueSync((float) (value * 100) /volume, toAdd *100/volume), player);
+                    }
                 }else if (pressureLevel <=0&& value >0){
                     toAdd = Math.min(-1, baseDecrease*pressureLevel);
                     int added =(int) Math.max(-value,toAdd);
                     addPressureValue(living,added);
+                    if (living instanceof ServerPlayer player) {
+                        CtiPacketHandler.sendToPlayer(new PPressureValueSync((float) (value * 100) /volume, toAdd *100/volume), player);
+                    }
+                } else {
+                    if (living instanceof ServerPlayer player) {
+                        CtiPacketHandler.sendToPlayer(new PPressureValueSync((float) (value * 100) /volume, toAdd *100/volume), player);
+                    }
                 }
-                if (living instanceof ServerPlayer player) {
-                    CtiPacketHandler.sendToPlayer(new PPressureValueSync((float) (value * 100) /volume, toAdd *100/volume), player);
-                }
+
                 toAdd=0;
 
                 value = getIonizeValue(living);
@@ -148,14 +169,23 @@ public class EnvironmentalHandler {
                     toAdd = Math.max(1,baseBuildUp* ionizeLevel);
                     int added =(int) Math.min(maxValue- value,Math.max(1,baseBuildUp* ionizeLevel));
                     addIonizeValue(living,added);
+                    if (living instanceof ServerPlayer player) {
+                        CtiPacketHandler.sendToPlayer(new PIonizeValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
+                    }
                 }else if (ionizeLevel <=0&& value >0){
                     toAdd = Math.min(-1, baseDecrease*ionizeLevel);
                     int added =(int) Math.max(-value,Math.min(-1, baseDecrease*ionizeLevel));
                     addIonizeValue(living,added);
+                    if (living instanceof ServerPlayer player) {
+                        CtiPacketHandler.sendToPlayer(new PIonizeValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
+                    }
+                } else {
+                    if (living instanceof ServerPlayer player) {
+                        CtiPacketHandler.sendToPlayer(new PIonizeValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
+                    }
                 }
-                if (living instanceof ServerPlayer player) {
-                    CtiPacketHandler.sendToPlayer(new PIonizeValueSync((float) (value * 100) /volume, toAdd*100/volume), player);
-                }
+
+
 
                 //压强的大伤害
                 if (pressureLevel>=1.5){
