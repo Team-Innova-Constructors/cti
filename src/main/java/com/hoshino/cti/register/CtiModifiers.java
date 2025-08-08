@@ -171,4 +171,6 @@ public class CtiModifiers {
     public static final StaticModifier<ReworkedOmnipotent> OMNIPOTENT = MODIFIERS.register("omnipotent", ReworkedOmnipotent::new);
     public static final StaticModifier<StarDargonHit> STAR_DARGON_HIT_STATIC_MODIFIER = MODIFIERS.register("stardragonhit", StarDargonHit::new);
     public static final StaticModifier<IonApocalypse> ION_APOCALYPSE = MODIFIERS.register("ion_apocalypse", IonApocalypse::new);
+    public static final StaticModifier<StarBless> starBlessStaticModifier = MODIFIERS.register("starbless", StarBless::new);
+
 }

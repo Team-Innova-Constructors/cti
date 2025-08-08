@@ -35,6 +35,10 @@ public class StarDargonAmmo extends BaseFallenAmmo {
         Vec3 knock = mob.position().subtract(getTargetPosition()).normalize().scale(3);
         Vec3 finalKnock = new Vec3(knock.x(), 0.4, knock.z());
         mob.setDeltaMovement(finalKnock);
+        if(mob.getHealth()<mob.getMaxHealth() * 0.21f){
+            mob.die(DamageSource.playerAttack(player));
+            mob.discard();
+        }
     }
 
     @Override

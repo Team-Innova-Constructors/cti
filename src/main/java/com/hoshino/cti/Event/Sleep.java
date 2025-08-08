@@ -11,8 +11,8 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 
 import java.util.Random;
 
-public class sleep {
-    public sleep() {
+public class Sleep {
+    public Sleep() {
         MinecraftForge.EVENT_BUS.addListener(this::playertick);
     }
 

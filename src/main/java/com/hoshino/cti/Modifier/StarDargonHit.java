@@ -1,6 +1,7 @@
 package com.hoshino.cti.Modifier;
 
 import com.hoshino.cti.Entity.Projectiles.StarDargonAmmo;
+import net.minecraft.nbt.CompoundTag;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -19,7 +20,6 @@ public class StarDargonHit extends Modifier implements MeleeHitModifierHook , Me
     public int getPriority() {
         return 10;
     }
-
     private static final Map<UUID, Float> DAMAGE_SHOULD_BE = new ConcurrentHashMap<>();
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
@@ -35,7 +35,6 @@ public class StarDargonHit extends Modifier implements MeleeHitModifierHook , Me
         var ammo=new StarDargonAmmo(player,player.getLevel(),target.position(),damageShouldBe);
         player.getLevel().addFreshEntity(ammo);
     }
-
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
         var player=context.getPlayerAttacker();

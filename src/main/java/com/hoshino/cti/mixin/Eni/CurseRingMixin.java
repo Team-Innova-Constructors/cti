@@ -116,7 +116,7 @@ public abstract class CurseRingMixin extends ItemBaseCurio {
                 long curseTime=CurseUtil.curseTime(player);
                 CtiPacketHandler.sendToPlayer(new ServerCursePacket(punishTime,deathFre,resoluteTime),serverPlayer);
                 cti$CheckStage(curseTime,serverPlayer);
-                if(serverPlayer.getLevel().getDifficulty()!=Difficulty.PEACEFUL&&serverPlayer.gameMode.isSurvival()&&curseTime<96000){
+                if(serverPlayer.getLevel().getDifficulty()!=Difficulty.PEACEFUL&&serverPlayer.gameMode.isSurvival()&&curseTime<96000&&serverPlayer.getLevel().dimension().equals(Level.END)){
                     SuperpositionHandler.backToSpawn(serverPlayer);
                     serverPlayer.sendSystemMessage(Component.literal("末地之门尚未对你打开,请等待游戏日四天后"));
                 }

@@ -2,7 +2,7 @@ package com.hoshino.cti;
 
 import com.hoshino.cti.Event.LivingEvents;
 import com.hoshino.cti.Event.MobEffectEventHandler;
-import com.hoshino.cti.Event.sleep;
+import com.hoshino.cti.Event.Sleep;
 import com.hoshino.cti.Modifier.capability.*;
 import com.hoshino.cti.Screen.AtmosphereCondensatorScreen;
 import com.hoshino.cti.Screen.AtmosphereExtractorScreen;
@@ -78,7 +78,7 @@ public class Cti {
 
     }
 
-    public static sleep sleep = new sleep();
+    public static Sleep sleep = new Sleep();
 
     public static ResourceLocation getResource(String id) {
         return new ResourceLocation("cti", id);
