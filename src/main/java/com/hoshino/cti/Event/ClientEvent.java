@@ -1,26 +1,22 @@
 package com.hoshino.cti.Event;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
-import dev.xkmc.l2complements.init.registrate.LCEffects;
+import com.hoshino.cti.client.CtiKeyBinding;
+import com.hoshino.cti.netwrok.CtiPacketHandler;
+import com.hoshino.cti.netwrok.packet.StarHitPacket;
+import com.hoshino.cti.util.Vec3Helper;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraftforge.client.event.RenderLivingEvent;
+import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import static com.hoshino.cti.Cti.MOD_ID;
 
-@Mod.EventBusSubscriber(modid = MOD_ID,bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ClientEvent {
-//    @SubscribeEvent
+    //    @SubscribeEvent
 //    public static void onRenderLivingPost(RenderLivingEvent.Post<LivingEntity, ? extends EntityModel<LivingEntity>> event) {
 //        LivingEntity entity = event.getEntity();
 //        PoseStack poseStack = event.getPoseStack();
@@ -39,4 +35,18 @@ public class ClientEvent {
 //            poseStack.popPose();
 //        }
 //    }
+    @SubscribeEvent
+    public static void onKeyPressed(InputEvent.Key event) {
+        Player player = Minecraft.getInstance().player;
+        if (player != null) {
+            if (player.level.isClientSide()) {
+                if (CtiKeyBinding.STAR_HIT.consumeClick()) {
+                    var mob= Vec3Helper.getPointedEntity(player,player.getLevel(),50, Mob.class, Mob::isAlive, Mob -> false);
+                    if (mob != null) {
+                        CtiPacketHandler.sendToServer(new StarHitPacket(mob.getUUID()));
+                    }
+                }
+            }
+        }
+    }
 }
