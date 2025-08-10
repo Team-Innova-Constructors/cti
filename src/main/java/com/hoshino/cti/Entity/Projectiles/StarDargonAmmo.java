@@ -1,5 +1,6 @@
 package com.hoshino.cti.Entity.Projectiles;
 
+import com.hoshino.cti.Modifier.StarDargonHit;
 import com.hoshino.cti.client.particle.ParticleType.StarFallParticleType;
 import com.hoshino.cti.register.CtiEntity;
 import com.hoshino.cti.register.CtiItem;
@@ -18,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 public class StarDargonAmmo extends BaseFallenAmmo {
     public StarDargonAmmo(EntityType<? extends Projectile> pEntityType, Level pLevel) {
@@ -35,9 +37,12 @@ public class StarDargonAmmo extends BaseFallenAmmo {
         Vec3 knock = mob.position().subtract(getTargetPosition()).normalize().scale(3);
         Vec3 finalKnock = new Vec3(knock.x(), 0.4, knock.z());
         mob.setDeltaMovement(finalKnock);
-        if(mob.getHealth()<mob.getMaxHealth() * 0.21f){
+        if(mob.getHealth()<mob.getMaxHealth() * 0.21f||getHurtDamage()>mob.getMaxHealth() * 10f){
             mob.die(DamageSource.playerAttack(player));
             mob.discard();
+            var data= ToolStack.from(player.getMainHandItem()).getPersistentData();
+            var currentAmount=data.getInt(StarDargonHit.STAR_DUST);
+            data.putInt(StarDargonHit.STAR_DUST,currentAmount + 1);
         }
     }
 

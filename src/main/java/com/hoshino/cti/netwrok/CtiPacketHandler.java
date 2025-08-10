@@ -42,6 +42,11 @@ public class CtiPacketHandler {
                 .encoder(CurseTimeUpdatePacket::ToByte)
                 .consumerMainThread(CurseTimeUpdatePacket::handle)
                 .add();
+        INSTANCE.messageBuilder(StarHitPacket.class, id++, NetworkDirection.PLAY_TO_SERVER)
+                .decoder(StarHitPacket::new)
+                .encoder(StarHitPacket::ToByte)
+                .consumerMainThread(StarHitPacket::handle)
+                .add();
     }
 
     public static <MSG> void sendToServer(MSG msg) {
