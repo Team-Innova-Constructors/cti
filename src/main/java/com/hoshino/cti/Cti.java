@@ -4,33 +4,24 @@ import com.hoshino.cti.Event.LivingEvents;
 import com.hoshino.cti.Event.MobEffectEventHandler;
 import com.hoshino.cti.Event.Sleep;
 import com.hoshino.cti.Modifier.capability.*;
-import com.hoshino.cti.Screen.AtmosphereCondensatorScreen;
-import com.hoshino.cti.Screen.AtmosphereExtractorScreen;
-import com.hoshino.cti.Screen.ReactorNeutronCollectorScreen;
 import com.hoshino.cti.Screen.menu.ctiMenu;
 import com.hoshino.cti.client.CtiParticleType;
-import com.hoshino.cti.client.hud.EnvironmentalHud;
 import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.register.*;
 import com.hoshino.cti.util.BiomeUtil;
 import com.hoshino.cti.util.tier.Roxy;
 import com.hoshino.cti.world.feature.ctiConfiguredFeature;
 import com.hoshino.cti.world.feature.ctiPlacedFeature;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tiers;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLEnvironment;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 
@@ -72,9 +63,7 @@ public class Cti {
         if (Mekenabled) {
             CtiChemical.GAS.register(eventBus);
         }
-        eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::commonSetup);
-        eventBus.addListener(this::registerGuiOverlay);
 
     }
 
@@ -82,21 +71,6 @@ public class Cti {
 
     public static ResourceLocation getResource(String id) {
         return new ResourceLocation("cti", id);
-    }
-
-    @SubscribeEvent
-    public void clientSetup(FMLClientSetupEvent event) {
-        MenuScreens.register(ctiMenu.ATMOSPHERE_EXT_MENU.get(), AtmosphereExtractorScreen::new);
-        MenuScreens.register(ctiMenu.ATMOSPHERE_CON_MENU.get(), AtmosphereCondensatorScreen::new);
-        MenuScreens.register(ctiMenu.NEUT_COL_MENU.get(), ReactorNeutronCollectorScreen::new);
-        event.enqueueWork(CtiEntity::registerEntityRenderers);
-    }
-
-    @SubscribeEvent
-    public void registerGuiOverlay(RegisterGuiOverlaysEvent event) {
-        if (FMLEnvironment.dist == Dist.CLIENT) {
-            event.registerAboveAll("ionize", EnvironmentalHud.ENVIRONMENT_OVERLAY);
-        }
     }
 
     @SubscribeEvent

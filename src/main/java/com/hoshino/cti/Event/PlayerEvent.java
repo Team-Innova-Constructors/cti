@@ -1,13 +1,10 @@
 package com.hoshino.cti.Event;
 
-import com.aetherteam.aether.capability.time.AetherTime;
 import com.hoshino.cti.Cti;
 import com.xiaoyue.tinkers_ingenuity.register.TIItems;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
