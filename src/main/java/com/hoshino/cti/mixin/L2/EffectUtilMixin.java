@@ -15,10 +15,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = EffectUtil.class, remap = false)
 public class EffectUtilMixin {
+    //L2的强制添加效果会导致效果残留问题，故取消了
     @Inject(at = {@At("HEAD")}, method = {"forceAddEffect"}, cancellable = true)
-    private static void cancleEffect(LivingEntity e, MobEffectInstance ins, Entity source, CallbackInfo ci) {
-        if (e instanceof Player player && ins.getEffect().getCategory() == MobEffectCategory.HARMFUL && SuperpositionHandler.hasCurio(player, EnigmaticItems.THE_CUBE)) {
-            ci.cancel();
+    private static void cancelEffect(LivingEntity e, MobEffectInstance ins, Entity source, CallbackInfo ci) {
+        if (!(e instanceof Player player) || ins.getEffect().getCategory() != MobEffectCategory.HARMFUL || !SuperpositionHandler.hasCurio(player, EnigmaticItems.THE_CUBE)) {
+            e.forceAddEffect(ins,source);
         }
+        ci.cancel();
     }
 }

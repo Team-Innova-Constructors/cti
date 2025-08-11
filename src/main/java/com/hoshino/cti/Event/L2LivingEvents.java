@@ -4,12 +4,15 @@ import com.hoshino.cti.Cti;
 import com.hoshino.cti.netwrok.CtiPacketHandler;
 import com.hoshino.cti.netwrok.packet.CurseTimeUpdatePacket;
 import com.hoshino.cti.register.CtiModifiers;
+import com.hoshino.cti.util.CommonUtil;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import dev.xkmc.l2hostility.content.capability.mob.MobTraitCap;
 import dev.xkmc.l2hostility.content.traits.base.MobTrait;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.util.LazyOptional;
@@ -65,7 +68,7 @@ public class L2LivingEvents {
 
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void whenCurseMobAttackPlayer(LivingHurtEvent event) {
-        if (event.getSource().getEntity() instanceof Mob mob) {
+        if (event.getAmount()>0 && event.getSource().getEntity() instanceof Mob mob) {
             LazyOptional<MobTraitCap> optional = mob.getCapability(MobTraitCap.CAPABILITY);
             if (optional.resolve().isPresent()) {
                 MobTraitCap cap = optional.resolve().get();
@@ -87,11 +90,12 @@ public class L2LivingEvents {
             int painTime = player.getPersistentData().getInt("pain_time");
             int a = Math.round(painTime / 8f);
             float shouldHeal = event.getAmount();
+            float antiCurseFactor = 1f/CommonUtil.getAntiCurseLevel(player);
             if (a > 0) {
                 switch (a) {
-                    case 1, 2, 3 -> event.setAmount(Math.max(0.1F, shouldHeal - a * 0.7F));
-                    case 4, 5, 6 -> event.setAmount(Math.max(0.05F, shouldHeal - a * 0.6F));
-                    case 7, 8, 9, 10, 11, 12 -> event.setAmount(Math.max(0, shouldHeal - a * 0.5F));
+                    case 1, 2, 3 -> event.setAmount(Math.max(0.1F, shouldHeal - a * 0.7F * antiCurseFactor));
+                    case 4, 5, 6 -> event.setAmount(Math.max(0.05F, shouldHeal - a * 0.6F * antiCurseFactor));
+                    case 7, 8, 9, 10, 11, 12 -> event.setAmount(Math.max(0, shouldHeal - a * 0.5F * antiCurseFactor));
                 }
             }
         }
@@ -105,8 +109,8 @@ public class L2LivingEvents {
             int curseLevelToSend = 0;
             if (serverPlayer.tickCount % 20 == 0) {
                 if (painTime > 0) {
-                    serverPlayer.getPersistentData().putInt("pain_time", painTime - 1);
-                    painTime--;
+                    painTime -= CommonUtil.getAntiCurseLevel(serverPlayer)+1;
+                    serverPlayer.getPersistentData().putInt("pain_time",painTime);
                     switch (a) {
                         case 1, 2, 3 -> curseLevelToSend = 1;
                         case 4, 5, 6 -> curseLevelToSend = 2;
