@@ -167,6 +167,7 @@ public abstract class CurseRingMixin extends ItemBaseCurio {
                 var string1 = "当前你已经累计死亡" + (frequency) + "次";
                 var string2 = "由于你的死亡,你受到的伤害额外增加" + Math.max((frequency - 3) * 0.5f * 100, 0) + "%,造成的伤害降低"+attackWeakValue+"%" ;
                 var string3 = "在" + (time) + "秒后,会结束灵魂破碎对你的影响";
+                var string7 = "灵魂破碎影响已结束，暂时的";
 
                 var string4 = "当前坚毅层数为" + (resoluteTime) + "层,会减少受到的" + resoluteTime * 8 + "%" + "伤害";
                 var string5 = "如果你死亡了会清除所有的坚毅层数!";
@@ -176,6 +177,8 @@ public abstract class CurseRingMixin extends ItemBaseCurio {
                 list.add(Component.literal(string2).withStyle(style -> style.withColor(0xff435c)));
                 if (time > 0) {
                     list.add(Component.literal(string3).withStyle(style -> style.withColor(0xff435c)));
+                } else {
+                    list.add(Component.literal(string7).withStyle(style -> style.withColor(0xff435c)));
                 }
                 list.add(Component.literal(string4).withStyle(style -> style.withColor(0xffaa7f)));
                 list.add(Component.literal(string5).withStyle(style -> style.withColor(0xffaa7f)));
