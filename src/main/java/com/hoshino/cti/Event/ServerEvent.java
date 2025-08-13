@@ -8,6 +8,8 @@ import com.hoshino.cti.util.DimensionConstants;
 import com.xiaoyue.tinkers_ingenuity.content.basic.entity.projectile.ShurikenEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.item.FallingBlockEntity;
@@ -42,7 +44,13 @@ public class ServerEvent {
         if (bolt.getCause()!=null){
             if (event.getEntity() instanceof ItemEntity||event.getEntity() instanceof ExperienceOrb) event.setCanceled(true);
             else if (event.getEntity()==bolt.getCause()) event.setCanceled(true);
-            else event.getEntity().invulnerableTime=0;
+            else if (bolt.getTags().contains("valkyrie")){
+                DamageSource source = new EntityDamageSource(DamageSource.LIGHTNING_BOLT.msgId,bolt.getCause()).bypassArmor();
+                event.getEntity().invulnerableTime=0;
+                event.getEntity().hurt(source,bolt.getDamage());
+                event.getEntity().invulnerableTime=0;
+                event.setCanceled(true);
+            }
         }
     }
 

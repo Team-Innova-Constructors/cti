@@ -16,7 +16,7 @@ public class SentriteDefense extends EtSTBaseModifier {
     @Override
     public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         if (!source.isBypassArmor()&&!source.isBypassInvul()){
-            return amount*0.6f;
+            return amount*0.5f;
         }
         return amount;
     }

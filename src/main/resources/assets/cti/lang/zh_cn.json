@@ -200,11 +200,11 @@
 
   "modifier.cti.atheric": "天赐神兵",
   "modifier.cti.atheric.flavor": "你的工具已被上天赐福",
-  "modifier.cti.atheric.description": "工具每有一个部件由天镜材料制成，+1时运和抢夺等级、+20%造成的伤害，并根据数量依次增加使用者的辛运、击退抗性、交互距离和最大生命。",
+  "modifier.cti.atheric.description": "工具每有一个部件由天镜材料制成，+1时运和抢夺等级、+50%造成的伤害，并根据数量依次增加使用者的辛运、击退抗性、交互距离和最大生命。",
 
-  "modifier.cti.ambrosium_powered": "神能",
+  "modifier.cti.ambrosium_powered": "圣神光辉",
   "modifier.cti.ambrosium_powered.flavor": "你的工具已注入神的能量",
-  "modifier.cti.ambrosium_powered.description": "在背包中用神能晶右键充能，获得每级25%攻防属性加成并抵消耐久损耗，每级最大充能24次。",
+  "modifier.cti.ambrosium_powered.description": "在背包中用神能晶右键充能，获得每级50%攻防属性加成并抵消耐久损耗，每级最大充能24次。每推进一个天镜Boss增加100伤害",
 
   "modifier.cti.stellar_arrow": "星辰箭矢",
   "modifier.cti.stellar_arrow.flavor": "据说能射下天上的星星",
@@ -212,7 +212,7 @@
 
   "modifier.cti.gravity_shield": "重力场护盾",
   "modifier.cti.gravity_shield.flavor": "反转引力！",
-  "modifier.cti.gravity_shield.description": "对附近的弹射物施加斥力，使它们偏离原轨迹，等级越高效果越强。",
+  "modifier.cti.gravity_shield.description": "对附近的弹射物施加斥力，使它们偏离原轨迹，等级越高效果越强。[独立减免]对弹射物伤害获得75%减伤，非弹射物伤害则为25%",
 
   "modifier.cti.secondary_armor": "穿刺防护",
   "modifier.cti.secondary_armor.flavor": "最锐之矛也奈不了我何！",
@@ -220,7 +220,7 @@
 
   "modifier.cti.sentrite_defense": "哨石之庇护",
   "modifier.cti.sentrite_defense.flavor": "从滑行魔石上扒下来的外壳",
-  "modifier.cti.sentrite_defense.description": "对非穿甲伤害提供40%的减免。",
+  "modifier.cti.sentrite_defense.description": "[独立减免]对非穿甲伤害提供50%的减免。",
 
   "modifier.cti.life_steal": "生命窃取",
   "modifier.cti.life_steal.flavor": "以血换血",
@@ -228,11 +228,11 @@
 
   "modifier.cti.life_enhance": "生命强化",
   "modifier.cti.life_enhance.flavor": "增加了你的维生能量",
-  "modifier.cti.life_enhance.description": "每级增加20最大生命。",
+  "modifier.cti.life_enhance.description": "每级增加20最大生命。[单次加成]血量超过50%时获得50%减伤，小于50%时增加50%受治疗量。",
 
   "modifier.cti.valkyrie_bless": "武神之馈",
   "modifier.cti.valkyrie_bless.flavor": "风之号令",
-  "modifier.cti.valkyrie_bless.description": "攻击时造成风暴伤害，并使不会劈中自己和掉落物的落雷击中目标。",
+  "modifier.cti.valkyrie_bless.description": "攻击时造成风暴伤害，并使不会劈中自己和掉落物且无视无敌帧的落雷击中目标。",
 
   "modifier.cti.reborn": "重生",
   "modifier.cti.reborn.flavor": "名为Yharon的龙",
@@ -240,7 +240,7 @@
 
   "modifier.cti.phoenix": "凤凰",
   "modifier.cti.phoenix.flavor": "从烈火中诞生",
-  "modifier.cti.phoenix.description": "使你能在熔岩中顺畅移动，如同穿了凤凰套一般。",
+  "modifier.cti.phoenix.description": "穿着时缓缓恢复全身装备的神能晶充能，移除流体的迷雾视觉效果。",
 
   "modifier.cti.armor_oracle": "神谕",
   "modifier.cti.armor_oracle.flavor": "神不让你加buff，你加吗？",

@@ -4,8 +4,10 @@ import com.hoshino.cti.content.environmentSystem.EnvironmentalHandler;
 import com.hoshino.cti.content.environmentSystem.IEnvironmentalSource;
 import com.hoshino.cti.mixin.TIMixin.ServerPlayerAccessor;
 import com.hoshino.cti.register.CtiEffects;
+import com.hoshino.cti.register.CtiModifiers;
 import com.hoshino.cti.util.ILivingEntityMixin;
 import com.hoshino.cti.util.StrictDamageProcess;
+import com.hoshino.cti.util.method.GetModifierLevel;
 import com.mojang.logging.LogUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -38,6 +40,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 

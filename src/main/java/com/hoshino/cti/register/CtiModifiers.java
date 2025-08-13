@@ -4,7 +4,6 @@ import com.c2h6s.etshtinker.Modifiers.Armor.*;
 import com.c2h6s.etshtinker.Modifiers.*;
 import com.hoshino.cti.Modifier.Armor.*;
 import com.hoshino.cti.Modifier.*;
-import com.hoshino.cti.Modifier.Base.EffectsImmuneModifier;
 import com.hoshino.cti.Modifier.Contributors.*;
 import com.hoshino.cti.Modifier.Developer.*;
 import com.hoshino.cti.Modifier.Mob.BuriedOcean;
@@ -19,8 +18,6 @@ import com.hoshino.cti.Modifier.test;
 import com.hoshino.cti.Modifier.underGardenCompact.*;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
-
-import java.util.List;
 
 public class CtiModifiers {
     /**

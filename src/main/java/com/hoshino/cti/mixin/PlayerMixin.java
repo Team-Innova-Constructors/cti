@@ -1,15 +1,15 @@
 package com.hoshino.cti.mixin;
 
-import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
+import com.hoshino.cti.register.CtiModifiers;
 import net.minecraft.util.Mth;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import slimeknights.tconstruct.library.tools.item.IModifiable;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+
+import static com.hoshino.cti.util.method.GetModifierLevel.EquipHasModifierlevel;
 
 @Mixin(Player.class)
 public class PlayerMixin {

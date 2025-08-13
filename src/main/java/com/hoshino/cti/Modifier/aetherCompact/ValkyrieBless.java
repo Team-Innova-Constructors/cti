@@ -1,9 +1,15 @@
 package com.hoshino.cti.Modifier.aetherCompact;
 
 import com.aetherteam.aether.data.resources.AetherDamageTypes;
+import com.c2h6s.etshtinker.Entities.PlasmaSlashEntity;
+import com.c2h6s.etshtinker.Entities.plasmaexplosionentity;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
+import com.c2h6s.etshtinker.hooks.AfterPlasmaSlashHitModifierHook;
+import com.c2h6s.etshtinker.hooks.PlasmaExplosionHitModifierHook;
+import com.c2h6s.etshtinker.init.etshtinkerHook;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
@@ -13,12 +19,60 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-public class ValkyrieBless extends EtSTBaseModifier {
+public class ValkyrieBless extends EtSTBaseModifier implements PlasmaExplosionHitModifierHook, AfterPlasmaSlashHitModifierHook {
+    @Override
+    protected void registerHooks(ModuleHookMap.Builder builder) {
+        super.registerHooks(builder);
+        builder.addHook(this,etshtinkerHook.AFTER_SLASH_HIT,etshtinkerHook.PLASMA_EXPLOSION_HIT);
+    }
+
+    @Override
+    public void afterPlasmaSlashHit(ToolStack tool, LivingEntity target, PlasmaSlashEntity slash, boolean isCritical, float slashDamage) {
+        LivingEntity living = slash.getLivingOwner();
+        if (living!=null&&target!=null) {
+            if (RANDOM.nextFloat() < 0.2f) {
+                LightningBolt bolt = new LightningBolt(EntityType.LIGHTNING_BOLT, target.level);
+                bolt.setPos(target.position());
+                bolt.setCause(living instanceof ServerPlayer player ? player : null);
+                bolt.setDamage(slash.damage * 0.3f);
+                bolt.addTag("valkyrie");
+                target.level.addFreshEntity(bolt);
+            } else {
+                DamageSource source = new EntityDamageSource(DamageSource.LIGHTNING_BOLT.msgId,living).bypassArmor();
+                target.invulnerableTime = 0;
+                target.hurt(source, slash.damage * 0.5f);
+                target.invulnerableTime = 0;
+            }
+        }
+    }
+
+    @Override
+    public void afterPlasmaExplosionHit(ToolStack tool, LivingEntity target, plasmaexplosionentity explosion, boolean isCritical) {
+        LivingEntity living = explosion.getLivingOwner();
+        if (living!=null&&target!=null) {
+            if (RANDOM.nextFloat() < 0.2f) {
+                LightningBolt bolt = new LightningBolt(EntityType.LIGHTNING_BOLT, target.level);
+                bolt.setPos(target.position());
+                bolt.setCause(living instanceof ServerPlayer player ? player : null);
+                bolt.setDamage(explosion.damage * 0.3f);
+                bolt.addTag("valkyrie");
+                target.level.addFreshEntity(bolt);
+            } else {
+                DamageSource source = new EntityDamageSource(DamageSource.LIGHTNING_BOLT.msgId,living).bypassArmor();
+                target.invulnerableTime = 0;
+                target.hurt(source, explosion.damage * 0.5f);
+                target.invulnerableTime = 0;
+            }
+        }
+    }
+
     @Override
     public void postMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage) {
         if (context.isFullyCharged()&&context.getTarget() instanceof LivingEntity) {
@@ -30,11 +84,13 @@ public class ValkyrieBless extends EtSTBaseModifier {
                 LightningBolt bolt = new LightningBolt(EntityType.LIGHTNING_BOLT, entity.level);
                 bolt.setPos(entity.position());
                 bolt.setCause(context.getAttacker() instanceof ServerPlayer player ? player : null);
-                bolt.setDamage(damage * 0.2f);
+                bolt.setDamage(damage * 0.3f);
+                bolt.addTag("valkyrie");
                 entity.level.addFreshEntity(bolt);
             }else {
+                DamageSource source = new EntityDamageSource(DamageSource.LIGHTNING_BOLT.msgId,context.getAttacker()).bypassArmor();
                 entity.invulnerableTime = 0;
-                entity.hurt(DamageSource.LIGHTNING_BOLT, damage * 0.2f * modifier.getLevel());
+                entity.hurt(source, damage * 0.5f * modifier.getLevel());
                 entity.invulnerableTime = 0;
             }
 
@@ -50,7 +106,8 @@ public class ValkyrieBless extends EtSTBaseModifier {
             LightningBolt bolt = new LightningBolt(EntityType.LIGHTNING_BOLT, target.level);
             bolt.setPos(target.position());
             bolt.setCause(attacker instanceof ServerPlayer player ? player : null);
-            bolt.setDamage((float) (arrow.getBaseDamage()*arrow.getDeltaMovement().length() * 0.2f));
+            bolt.setDamage((float) (arrow.getBaseDamage() * 0.3f));
+            bolt.addTag("valkyrie");
             target.level.addFreshEntity(bolt);
         }
         return false;

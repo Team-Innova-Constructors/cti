@@ -73,7 +73,7 @@ public class Atheric extends EtSTBaseModifier implements EnchantmentModifierHook
 
     @Override
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
-        return damage*(1+0.20f*getBonus(tool));
+        return damage*(1+0.5f*getBonus(tool));
     }
 
     @Override
