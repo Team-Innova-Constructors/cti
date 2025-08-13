@@ -11,10 +11,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.SlotAccess;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -29,12 +27,14 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.armor.ModifyDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.ToolDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileLaunchModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
+import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.*;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
@@ -42,11 +42,11 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.List;
 
-public class AmbrosiumPowered extends Modifier implements SlotStackModifierHook, ToolStatsModifierHook, TooltipModifierHook, ToolDamageModifierHook , ProjectileLaunchModifierHook, MeleeDamageModifierHook {
+public class AmbrosiumPowered extends Modifier implements SlotStackModifierHook, ToolStatsModifierHook, TooltipModifierHook, ToolDamageModifierHook , ProjectileLaunchModifierHook, MeleeDamageModifierHook, ModifyDamageModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         super.registerHooks(hookBuilder);
-        hookBuilder.addHook(this, ModifierHooks.TOOL_STATS, CtiModifierHook.SLOT_STACK,ModifierHooks.TOOLTIP,ModifierHooks.TOOL_DAMAGE,ModifierHooks.MELEE_DAMAGE,ModifierHooks.PROJECTILE_LAUNCH);
+        hookBuilder.addHook(this, ModifierHooks.TOOL_STATS, CtiModifierHook.SLOT_STACK,ModifierHooks.TOOLTIP,ModifierHooks.TOOL_DAMAGE,ModifierHooks.MELEE_DAMAGE,ModifierHooks.PROJECTILE_LAUNCH,ModifierHooks.MODIFY_HURT);
     }
 
     public static final ResourceLocation KEY_AMBROSIUM_POWER = Cti.getResource("ambrosium_power");
@@ -62,6 +62,8 @@ public class AmbrosiumPowered extends Modifier implements SlotStackModifierHook,
         }
         return false;
     }
+
+
 
     public static void chargeTool(IToolStackView toolStackView){
         toolStackView.getPersistentData().putInt(KEY_AMBROSIUM_POWER,toolStackView.getPersistentData().getInt(KEY_AMBROSIUM_POWER)+4);
@@ -96,9 +98,8 @@ public class AmbrosiumPowered extends Modifier implements SlotStackModifierHook,
     public static int getBonus(ServerPlayer player){
         var stats = player.getStats();
         int bonus=0;
-        for (var entityType : List.of(AetherEntityTypes.VALKYRIE_QUEEN.get(), AetherEntityTypes.SUN_SPIRIT.get(), AetherEntityTypes.SLIDER.get())) {
-            if (stats.getValue(Stats.ENTITY_KILLED.get(entityType))>0) bonus++;
-        }
+        if (stats.getValue(Stats.ENTITY_KILLED.get(AetherEntityTypes.VALKYRIE_QUEEN.get()))>0) bonus+=2;
+        if (stats.getValue(Stats.ENTITY_KILLED.get(AetherEntityTypes.SUN_SPIRIT.get()))>0) bonus++;
         return bonus;
     }
 
@@ -113,5 +114,11 @@ public class AmbrosiumPowered extends Modifier implements SlotStackModifierHook,
         if (shooter instanceof ServerPlayer serverPlayer&&arrow!=null){
             arrow.setBaseDamage(arrow.getBaseDamage()+100*getBonus(serverPlayer));
         }
+    }
+
+    @Override
+    public float modifyDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
+        if (context.getEntity() instanceof ServerPlayer serverPlayer) return amount-getBonus(serverPlayer)*0.15f*amount;
+        return amount;
     }
 }

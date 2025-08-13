@@ -156,7 +156,7 @@ public class LivingEvents {
         }
         event.setAmount(event.getAmount() * 1 - (Math.min(40f, count) / 100f));
     }
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onCurseDeath(LivingDeathEvent event){
         if(!(event.getEntity() instanceof Player player))return;
         if(!(SuperpositionHandler.isTheCursedOne(player)))return;

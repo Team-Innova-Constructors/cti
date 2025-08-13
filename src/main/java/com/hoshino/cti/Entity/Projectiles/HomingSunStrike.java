@@ -13,6 +13,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
@@ -140,7 +141,7 @@ public class HomingSunStrike extends EntitySunstrike {
         if (this.homingEntity!=null&&this.homingEntity.isDeadOrDying()) this.homingEntity=null;
         if (this.homingEntity==null){
             AABB aabb = new AABB(this.getX()-8,this.getY()-8,this.getZ()-8,this.getX()+8,this.getY()+8,this.getZ()+8);
-            this.level.getEntitiesOfClass(LivingEntity.class, aabb, living -> living != this.owner)
+            this.level.getEntitiesOfClass(LivingEntity.class, aabb, living -> living != this.owner&&!(living instanceof Player))
                     .stream()
                     .min((living1, living2) ->
                     (int) ((living1.position().subtract(this.position()).length() - living2.position().subtract(this.position()).length()) * 100))

@@ -204,7 +204,7 @@
 
   "modifier.cti.ambrosium_powered": "圣神光辉",
   "modifier.cti.ambrosium_powered.flavor": "你的工具已注入神的能量",
-  "modifier.cti.ambrosium_powered.description": "在背包中用神能晶右键充能，获得每级50%攻防属性加成并抵消耐久损耗，每级最大充能24次。每推进一个天镜Boss增加100伤害",
+  "modifier.cti.ambrosium_powered.description": "在背包中用神能晶右键充能，获得每级50%攻防属性加成并抵消耐久损耗，每级最大充能24次。每推进一个天镜Boss增加100攻击伤害（近战、远程）或15%独立伤害减免（护甲）",
 
   "modifier.cti.stellar_arrow": "星辰箭矢",
   "modifier.cti.stellar_arrow.flavor": "据说能射下天上的星星",
