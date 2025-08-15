@@ -5,6 +5,7 @@ import com.c2h6s.etshtinker.Entities.PlasmaSlashEntity;
 import com.c2h6s.etshtinker.Entities.plasmaexplosionentity;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtSTBaseModifier;
 import com.c2h6s.etshtinker.hooks.AfterPlasmaSlashHitModifierHook;
+import com.c2h6s.etshtinker.hooks.BeforePlasmaSlashHitModifierHook;
 import com.c2h6s.etshtinker.hooks.PlasmaExplosionHitModifierHook;
 import com.c2h6s.etshtinker.init.etshtinkerHook;
 import net.minecraft.server.level.ServerPlayer;
@@ -26,51 +27,32 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-public class ValkyrieBless extends EtSTBaseModifier implements PlasmaExplosionHitModifierHook, AfterPlasmaSlashHitModifierHook {
+public class ValkyrieBless extends EtSTBaseModifier implements PlasmaExplosionHitModifierHook, AfterPlasmaSlashHitModifierHook, BeforePlasmaSlashHitModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this,etshtinkerHook.AFTER_SLASH_HIT,etshtinkerHook.PLASMA_EXPLOSION_HIT);
+        builder.addHook(this,etshtinkerHook.AFTER_SLASH_HIT,etshtinkerHook.PLASMA_EXPLOSION_HIT,etshtinkerHook.BEFORE_SLASH_HIT);
+    }
+
+    public static boolean b1 = false;
+
+    @Override
+    public void beforePlasmaSlashHit(ToolStack tool, LivingEntity target, PlasmaSlashEntity slash, boolean isCritical) {
+        b1 = true;
     }
 
     @Override
     public void afterPlasmaSlashHit(ToolStack tool, LivingEntity target, PlasmaSlashEntity slash, boolean isCritical, float slashDamage) {
-        LivingEntity living = slash.getLivingOwner();
-        if (living!=null&&target!=null) {
-            if (RANDOM.nextFloat() < 0.2f) {
-                LightningBolt bolt = new LightningBolt(EntityType.LIGHTNING_BOLT, target.level);
-                bolt.setPos(target.position());
-                bolt.setCause(living instanceof ServerPlayer player ? player : null);
-                bolt.setDamage(slash.damage * 0.3f);
-                bolt.addTag("valkyrie");
-                target.level.addFreshEntity(bolt);
-            } else {
-                DamageSource source = new EntityDamageSource(DamageSource.LIGHTNING_BOLT.msgId,living).bypassArmor();
-                target.invulnerableTime = 0;
-                target.hurt(source, slash.damage * 0.5f);
-                target.invulnerableTime = 0;
-            }
-        }
+        b1 = false;
+    }
+    @Override
+    public void beforePlasmaExplosionHit(ToolStack tool, LivingEntity target, plasmaexplosionentity explosion, boolean isCritical) {
+        b1 = true;
     }
 
     @Override
     public void afterPlasmaExplosionHit(ToolStack tool, LivingEntity target, plasmaexplosionentity explosion, boolean isCritical) {
-        LivingEntity living = explosion.getLivingOwner();
-        if (living!=null&&target!=null) {
-            if (RANDOM.nextFloat() < 0.2f) {
-                LightningBolt bolt = new LightningBolt(EntityType.LIGHTNING_BOLT, target.level);
-                bolt.setPos(target.position());
-                bolt.setCause(living instanceof ServerPlayer player ? player : null);
-                bolt.setDamage(explosion.damage * 0.3f);
-                bolt.addTag("valkyrie");
-                target.level.addFreshEntity(bolt);
-            } else {
-                DamageSource source = new EntityDamageSource(DamageSource.LIGHTNING_BOLT.msgId,living).bypassArmor();
-                target.invulnerableTime = 0;
-                target.hurt(source, explosion.damage * 0.5f);
-                target.invulnerableTime = 0;
-            }
-        }
+        b1 = false;
     }
 
     @Override
@@ -80,14 +62,15 @@ public class ValkyrieBless extends EtSTBaseModifier implements PlasmaExplosionHi
             entity.invulnerableTime = 0;
             entity.hurt(RANDOM.nextBoolean() ? AetherDamageTypes.cloudCrystal(context.getAttacker(), context.getAttacker()) : AetherDamageTypes.thunderCrystal(context.getAttacker(), context.getAttacker()), damage * 0.2f * modifier.getLevel());
             entity.invulnerableTime = 0;
-            if (!context.isExtraAttack()) {
+            if (!context.isExtraAttack()||(b1&&RANDOM.nextFloat()<=0.3)) {
                 LightningBolt bolt = new LightningBolt(EntityType.LIGHTNING_BOLT, entity.level);
                 bolt.setPos(entity.position());
                 bolt.setCause(context.getAttacker() instanceof ServerPlayer player ? player : null);
                 bolt.setDamage(damage * 0.3f);
                 bolt.addTag("valkyrie");
                 entity.level.addFreshEntity(bolt);
-            }else {
+                b1 =false;
+            } else {
                 DamageSource source = new EntityDamageSource(DamageSource.LIGHTNING_BOLT.msgId,context.getAttacker()).bypassArmor();
                 entity.invulnerableTime = 0;
                 entity.hurt(source, damage * 0.5f * modifier.getLevel());
