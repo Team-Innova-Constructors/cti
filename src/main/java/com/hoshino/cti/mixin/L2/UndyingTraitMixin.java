@@ -2,6 +2,7 @@ package com.hoshino.cti.mixin.L2;
 
 import com.gjhi.tinkersinnovation.register.TinkersInnovationModifiers;
 import com.hoshino.cti.content.environmentSystem.IEnvironmentalSource;
+import com.hoshino.cti.register.CtiModifiers;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import dev.xkmc.l2hostility.content.traits.legendary.UndyingTrait;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,12 +25,12 @@ public abstract class UndyingTraitMixin {
         } else if (entity.getMaxHealth() <= 10 || entity.getPersistentData().contains("atomic_dec") || entity.getPersistentData().contains("quark_disassemble")) {
             ci.cancel();
         }else if (event.getSource().getEntity() instanceof Player player) {
-            if (GetModifierLevel.getEachHandsTotalModifierlevel(player, TinkersInnovationModifiers.L2ComplementsModifier.curse_blade.getId()) > 0) {
+            if (GetModifierLevel.getEachHandsTotalModifierlevel(player, TinkersInnovationModifiers.L2ComplementsModifier.curse_blade.getId()) > 0||GetModifierLevel.getEachHandsTotalModifierlevel(player, CtiModifiers.CURSED_ARROW.getId()) > 0) {
                 ci.cancel();
             }
         }
         else if(entity instanceof Mob mob&&mob.getTarget() instanceof Player player){
-            if (GetModifierLevel.getEachHandsTotalModifierlevel(player, TinkersInnovationModifiers.L2ComplementsModifier.curse_blade.getId()) > 0) {
+            if (GetModifierLevel.getEachHandsTotalModifierlevel(player, TinkersInnovationModifiers.L2ComplementsModifier.curse_blade.getId()) > 0||GetModifierLevel.getEachHandsTotalModifierlevel(player, CtiModifiers.CURSED_ARROW.getId()) > 0) {
                 ci.cancel();
             }
         }
