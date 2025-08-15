@@ -80,6 +80,8 @@ public abstract class RagnarokTraitMixin {
             AllowModifier.add(CtiModifiers.PLASMA_WAVE_SLASH.get());//龙霆钢
             AllowModifier.add(solidarytinkerModifiers.ANCIENTOCEAN_STATIC_MODIFIER.get());//墨冰武器
             AllowModifier.add(solidarytinkerModifiers.DEEPOCEANPROTECT_STATIC_MODIFIER.get());//墨冰护甲
+            AllowModifier.add(CtiModifiers.STAR_DARGON_HIT_STATIC_MODIFIER.get());//星界龙神武器
+            AllowModifier.add(CtiModifiers.starBlessStaticModifier.get());//星界龙神护甲
             for (Modifier modifier : AllowModifier) {
                 if (ModifierLevel.EquipHasModifierlevel(target, modifier.getId())) {
                     ci.cancel();
