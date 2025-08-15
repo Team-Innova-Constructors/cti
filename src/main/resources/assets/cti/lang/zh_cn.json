@@ -254,6 +254,11 @@
   "modifier.cti.starbless.flavor": "畏惧么",
   "modifier.cti.starbless.description": "大部分目标的莱特兰等级低于你生命和护甲之合将不再敢把你视为目标,并且免疫其造成的额外伤害,同时你也会免疫掉大部分的无来源和全部的魔法伤害",
 
+  "modifier.cti.cursed_arrow": "诅咒之箭",
+  "modifier.cti.cursed_arrow.flavor": "禁止回血",
+  "modifier.cti.cursed_arrow.description": "箭矢击中时每级施加5s1级诅咒。",
+
+
   "item.cti.xinian_ingot": "§c37锭",
   "item.cti.molten_xinian_bucket": "熔融37桶",
   "fluid.cti.molten_xinian": "熔融37",
