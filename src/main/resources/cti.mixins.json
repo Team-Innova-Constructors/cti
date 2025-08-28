@@ -26,7 +26,6 @@
     "AetherMixin.AbilityHooks$ToolHooksMixin",
     "AetherMixin.AbilityHooks$WeaponHookMixin",
     "AetherMixin.AetherPortalMixin",
-    "AetherMixin.EquipmentUtilMixin",
     "AetherMixin.SpiritMixin",
     "AetherMixin.ZephyrSnowballMixin",
     "Aquamixin.CaptainCorneliaMixin",
@@ -101,9 +100,11 @@
   ],
   "client": [
     "AbstractClientPlayerMixin",
+    "CameraMixin",
     "GameRendererMixin",
     "AdAstraMixin.CustomButtonMixin",
-    "AdAstraMixin.PlanetSelectionScreenMixin"
+    "AdAstraMixin.PlanetSelectionScreenMixin",
+    "Fancymenu.GuiGraphicsMixin"
   ],
   "server": [
   ],

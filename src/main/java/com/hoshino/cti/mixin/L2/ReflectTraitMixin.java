@@ -6,6 +6,7 @@ import dev.xkmc.l2hostility.compat.curios.CurioCompat;
 import dev.xkmc.l2hostility.content.traits.common.ReflectTrait;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.l2library.init.events.attack.AttackCache;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -35,7 +36,7 @@ public class ReflectTraitMixin {
                 return;
             }
             float Magnification = level * 0.3F;
-            float reflectAmount =Math.min(event.getEntity().getHealth() * Magnification,event.getAmount() *Magnification);
+            float reflectAmount =Math.min(event.getEntity().getHealth() * Magnification,event.getAmount() *0.1f*level);
             EntityDamageSource mobAttackReflect=new EntityDamageSource("mobattackreflect",entity).setThorns();
             mobAttackReflect.setScalesWithDifficulty().setMagic();
             lv.hurt(mobAttackReflect,reflectAmount);

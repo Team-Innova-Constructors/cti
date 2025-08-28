@@ -19,7 +19,7 @@ public class AntiCurse extends EffectsImmuneModifier {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(new ArmorLevelModule(KEY_ANTI_CURSE,false, TinkerTags.Items.HELD));
+        builder.addModule(new ArmorLevelModule(KEY_ANTI_CURSE,false, TinkerTags.Items.HELD));
     }
 
     @Override

@@ -11,6 +11,8 @@ import com.hoshino.cti.content.environmentSystem.EDamageSource;
 import com.hoshino.cti.library.modifier.CtiModifierHook;
 import com.hoshino.cti.library.modifier.hooks.LeftClickModifierHook;
 import com.hoshino.cti.register.CtiEntity;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -54,8 +56,9 @@ public class PlasmaWaveSlashEx extends EtSTBaseModifier implements LeftClickModi
         if (!context.isExtraAttack() && context.isFullyCharged() && context.getAttacker() instanceof Player player) {
             createslash(player, tool);
         } else if (context.isExtraAttack()&&cacheDamage>0) {
+            DamageSource source = new EntityDamageSource("cti.ionized",context.getAttacker()).bypassArmor().bypassMagic();
             context.getTarget().hurt(IafDamageRegistry.causeIndirectDragonLightningDamage(context.getAttacker(), context.getAttacker()), cacheDamage / 2);
-            context.getTarget().hurt(EDamageSource.indirectIonize(false, context.getAttacker(), 5).bypassArmor().bypassMagic(), cacheDamage / 3);
+            context.getTarget().hurt(source, cacheDamage / 3);
             cacheDamage = 0;
         }
     }

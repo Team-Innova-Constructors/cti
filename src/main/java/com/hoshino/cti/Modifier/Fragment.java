@@ -1,8 +1,10 @@
 package com.hoshino.cti.Modifier;
 
+import com.hoshino.cti.Cti;
 import com.hoshino.cti.register.CtiModifiers;
 import com.hoshino.cti.util.method.GetModifierLevel;
 import com.marth7th.solidarytinker.extend.superclass.BattleModifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -21,10 +23,14 @@ public class Fragment extends BattleModifier{
     public int getPriority() {
         return 10;
     }
+    public static final ResourceLocation KEY_LAST_FRAGMENT = Cti.getResource("last_fragment");
 
     @Override
     public int onDamageTool(IToolStackView tool, ModifierEntry modifier, int amount, @Nullable LivingEntity entity) {
         if (amount == 0 || entity == null) return amount;
+        int lastFragmentTime = tool.getPersistentData().getInt(KEY_LAST_FRAGMENT);
+        if ((int) entity.level.getGameTime()%100==lastFragmentTime) return amount;
+        tool.getPersistentData().putInt(KEY_LAST_FRAGMENT, (int) (entity.level.getGameTime()%100));
         var area = new AABB(entity.getOnPos()).inflate(3);
         List<Mob> targets = entity.level.getEntitiesOfClass(Mob.class, area, LivingEntity::isAlive);
         int increaseLevel = GetModifierLevel.getTotalArmorModifierlevel(entity, CtiModifiers.wearproofStaticModifier.getId());

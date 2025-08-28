@@ -21,7 +21,7 @@ public class NeutronCollect extends EtSTBaseModifier implements ProcessLootModif
 
     @Override
     public void processLoot(IToolStackView tool, ModifierEntry modifier, List<ItemStack> generatedLoot, LootContext context) {
-        if (context.getRandom().nextInt(10)<context.getLuck()){
+        if (context.getRandom().nextInt(5)<context.getLuck()){
             generatedLoot.remove(context.getRandom().nextInt(generatedLoot.size()));
             generatedLoot.add(new ItemStack(ModItems.neutron_nugget.get(),modifier.getLevel()));
         }
