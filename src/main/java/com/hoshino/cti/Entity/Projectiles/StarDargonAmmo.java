@@ -49,7 +49,7 @@ public class StarDargonAmmo extends BaseFallenAmmo {
     @Override
     protected void onArrived(ServerPlayer player) {
         super.onArrived(player);
-        this.directHurtLiving(DamageSource.playerAttack(player).bypassArmor().bypassMagic(), this.getHurtDamage() * 10, 5);
+        this.directHurtLiving(DamageSource.playerAttack(player).bypassArmor().bypassMagic().bypassInvul(), this.getHurtDamage() * 10, 5);
         if (!this.level.isClientSide) {
             var particle = new StarFallParticleType(true, 20, 0xf8ffb2, 1, 1, 10, getTargetPosition());
             player.getLevel().sendParticles(particle, getTargetPosition().x(), getTargetPosition().y() + 0.05, getTargetPosition().z(), 1, 0, 0, 0, 0.25);
