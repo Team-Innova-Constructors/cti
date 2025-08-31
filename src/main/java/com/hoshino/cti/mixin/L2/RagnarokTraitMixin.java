@@ -66,6 +66,9 @@ public abstract class RagnarokTraitMixin {
             if (SuperpositionHandler.hasCurio(player, EnigmaticItems.THE_CUBE)) {
                 ci.cancel();
             }
+            if (SuperpositionHandler.hasCurio(player, EnigmaticItems.ENIGMATIC_ITEM)) {
+                ci.cancel();
+            }
             //这个列表里面的是只要身上4盔甲/主副有这个材料就会让诸神黄昏对所有装备都不生效
             List<Modifier> AllowModifier = new ArrayList<>();
             AllowModifier.add(CtiModifiers.INFINITY_STATIC_MODIFIER.get());//无尽
