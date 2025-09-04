@@ -252,7 +252,7 @@
 
   "modifier.cti.starbless": "星界压制",
   "modifier.cti.starbless.flavor": "畏惧么",
-  "modifier.cti.starbless.description": "大部分目标的莱特兰等级低于你生命和护甲之合将不再敢把你视为目标,并且免疫其造成的额外伤害,同时你也会免疫掉大部分的无来源和全部的魔法伤害",
+  "modifier.cti.starbless.description": "大部分目标的莱特兰等级低于你生命和护甲之合将不再敢把你视为目标,并且免疫其造成的额外伤害,同时你也会免疫掉大部分的无来源和全部的魔法伤害,以及自己造成的直接伤害\n受到的单次伤害不会超过最大生命20%",
 
   "modifier.cti.cursed_arrow": "诅咒之箭",
   "modifier.cti.cursed_arrow.flavor": "禁止回血",
@@ -974,8 +974,8 @@
   "fluid.cti.molten_violium": "熔融维奥合金",
   "item.cti.molten_violium_bucket": "熔融维奥合金桶",
 
-  "fluid.cti.extraterrestrial_essense": "液化以太",
-  "item.cti.extraterrestrial_essense_bucket": "液化以太桶",
+  "fluid.cti.extraterrestrial_essense": "液化伊瑟尔",
+  "item.cti.extraterrestrial_essense_bucket": "液化伊瑟尔桶",
 
   "fluid.cti.molten_meteorium": "熔融陨铁合金",
   "item.cti.molten_meteorium_bucket": "熔融陨铁合金桶",

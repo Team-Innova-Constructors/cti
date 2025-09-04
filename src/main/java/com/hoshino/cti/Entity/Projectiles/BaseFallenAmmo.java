@@ -84,12 +84,12 @@ public abstract class BaseFallenAmmo extends Projectile implements ItemSupplier 
             int x= (int) vec3.x();
             int y= (int) vec3.y();
             int z= (int) vec3.z();
-            List<LivingEntity>livingEntities=this.getLevel().getEntitiesOfClass(LivingEntity.class,new AABB(new BlockPos(x,y,z)).inflate(range),lv->{
+            List<Mob>livingEntities=this.getLevel().getEntitiesOfClass(Mob.class,new AABB(new BlockPos(x,y,z)).inflate(range),lv->{
                 boolean base=lv!=getOwner()&&lv.isAlive();
                 boolean isPet=lv instanceof TamableAnimal animal&&animal.isTame();
                 return base&&!isPet;
             });
-            for(LivingEntity lv:livingEntities){
+            for(Mob lv:livingEntities){
                 lv.hurt(source,amount);
             }
         }

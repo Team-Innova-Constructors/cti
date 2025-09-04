@@ -131,7 +131,7 @@ public abstract class CurseRingMixin extends ItemBaseCurio {
             if(curseTime==stage.curseTime){
                 serverPlayer.connection.send(new ClientboundSetTitleTextPacket(stage.title));
                 serverPlayer.connection.send(new ClientboundSetSubtitleTextPacket(stage.subTitle));
-                serverPlayer.sendSystemMessage(Component.literal(serverPlayer.getName()+",你已进入"+stage.title+"阶段") );
+                serverPlayer.sendSystemMessage(Component.literal(serverPlayer.getName()+",你已进入"+ stage.title.getString()+"阶段") );
                 serverPlayer.sendSystemMessage(stage.description);
             }
         }

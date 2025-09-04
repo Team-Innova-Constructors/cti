@@ -22,6 +22,7 @@ public class StarBless extends Modifier implements DamageBlockModifierHook , Mod
     @Override
     public boolean isDamageBlocked(IToolStackView iToolStackView, ModifierEntry modifierEntry, EquipmentContext equipmentContext, EquipmentSlot equipmentSlot, DamageSource damageSource, float v){
         if(damageSource.getEntity() == null||damageSource.isMagic())return true;
+        if(damageSource.getEntity()==equipmentContext.getEntity())return true;
         var attacker=damageSource.getEntity();
         var owner=equipmentContext.getEntity();
         if(!(attacker instanceof LivingEntity living))return false;

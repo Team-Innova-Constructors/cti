@@ -103,7 +103,8 @@
     "CameraMixin",
     "GameRendererMixin",
     "AdAstraMixin.CustomButtonMixin",
-    "AdAstraMixin.PlanetSelectionScreenMixin"
+    "AdAstraMixin.PlanetSelectionScreenMixin",
+    "Fancymenu.GuiGraphicsMixin"
   ],
   "server": [
   ],
