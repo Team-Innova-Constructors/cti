@@ -29,7 +29,7 @@ public class NeutronCollect extends EtSTBaseModifier implements ProcessLootModif
         if (context.getParamOrNull(LootContextParams.KILLER_ENTITY) instanceof FakePlayer) return;
         if (context.getParamOrNull(LootContextParams.KILLER_ENTITY) instanceof ServerPlayer &&context.getRandom().nextInt(5)<context.getLuck()){
             generatedLoot.remove(context.getRandom().nextInt(generatedLoot.size()));
-            Item item = tool.getModifierLevel(CtiModifiers.NEUTRON_COLLECT_PLUS.get())>0?ModItems.neutron_ingot.get():ModItems.neutron_nugget.get();
+            Item item = tool.getModifierLevel(CtiModifiers.NEUTRON_COLLECT_PLUS.get())>0?ModItems.neutron_nugget.get():ModItems.neutron_pile.get();
             generatedLoot.add(new ItemStack(item,modifier.getLevel()));
         }
     }
