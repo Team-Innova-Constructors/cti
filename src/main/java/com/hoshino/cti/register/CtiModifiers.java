@@ -170,5 +170,9 @@ public class CtiModifiers {
     public static final StaticModifier<IonApocalypse> ION_APOCALYPSE = MODIFIERS.register("ion_apocalypse", IonApocalypse::new);
     public static final StaticModifier<StarBless> starBlessStaticModifier = MODIFIERS.register("starbless", StarBless::new);
     public static final StaticModifier<CursedArrowModifier> CURSED_ARROW = MODIFIERS.register("cursed_arrow", CursedArrowModifier::new);
-
+    public static final StaticModifier<NeutronCollectPlus> NEUTRON_COLLECT_PLUS = MODIFIERS.register("neutron_collect_plus", NeutronCollectPlus::new);
+    public static final StaticModifier<SelfRegulate> SELF_REGULATE = MODIFIERS.register("self_regulate", SelfRegulate::new);
+    public static final StaticModifier<Anisotropy> ANISOTROPY = MODIFIERS.register("anisotropy", Anisotropy::new);
+    public static final StaticModifier<FixVoidTouch> VOID_TOUCH = MODIFIERS.register("void_touch", FixVoidTouch::new);
+    public static final StaticModifier<CrystallizingArmor> CRYSTALLIZING_ARMOR = MODIFIERS.register("crystallizing_armor", CrystallizingArmor::new);
 }

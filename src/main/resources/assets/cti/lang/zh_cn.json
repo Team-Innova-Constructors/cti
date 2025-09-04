@@ -821,7 +821,7 @@
 
   "modifier.cti.neutron_collect": "中子凝聚",
   "modifier.cti.neutron_collect.flavor": "简并态物质的同化作用",
-  "modifier.cti.neutron_collect.description":"随机将掉落物中的一个物品替换成中子态素粒，幸运值影响概率，词条等级影响数量。",
+  "modifier.cti.neutron_collect.description":"击杀生物后随机将掉落物中的一个物品替换成中子态素粒，幸运值影响概率，词条等级影响数量。",
 
   "modifier.cti.stable_step": "稳健脚步",
   "modifier.cti.stable_step.flavor": "",
@@ -858,6 +858,26 @@
   "modifier.cti.ion_apocalypse": "离子启示录",
   "modifier.cti.ion_apocalypse.flavor": "没有什么比这个更绚烂，更致命。",
   "modifier.cti.ion_apocalypse.description":"攻击时令工具的词条效用扩散至周围6格半径内的生物。\n[警告]作用于范围伤害武器时可能造成严重卡顿。",
+
+  "modifier.cti.neutron_collect_plus": "中子凝聚+",
+  "modifier.cti.neutron_collect_plus.flavor": "对物质凝聚器的至强升级",
+  "modifier.cti.neutron_collect_plus.description":"使“中子凝聚”词条掉落中子素锭而非中子素粒。",
+
+  "modifier.cti.self_regulate": "自范性",
+  "modifier.cti.self_regulate.flavor": "自发的有序化",
+  "modifier.cti.self_regulate.description":"每次增加工具最大耐久时，根据 词条等级*log1.2(耐久增量) 永久增加伤害。",
+
+  "modifier.cti.anisotropy": "各向异性",
+  "modifier.cti.anisotropy.flavor": "告诉了我们要从多个角度看待事物",
+  "modifier.cti.anisotropy.description":"[仅单次生效]对小于10的伤害提供7格挡，大于10的伤害提供70%伤害减免，在护甲和大部分词条生效后计算。",
+
+  "modifier.cti.void_touch": "虚空之触",
+  "modifier.cti.void_touch.flavor": "虚空侵扰",
+  "modifier.cti.void_touch.description":"使你的工具能破坏那些通常不可破坏的方块，攻击时附加25%虚空伤害。",
+
+  "modifier.cti.crystallizing_armor": "结晶护甲",
+  "modifier.cti.crystallizing_armor.flavor": "护甲上长晶体了！",
+  "modifier.cti.crystallizing_armor.description":"获得一面每秒增加5%伤害减免的护盾，每次受到伤害都会减少5%的减免。",
 
 
 
@@ -946,6 +966,7 @@
   "cti.tooltip.modifier.sacrifice_level": "牺牲印记层数：",
   "cti.tooltip.modifier.sacrifice_time": "牺牲印迹持续时间：",
   "cti.tooltip.modifier.be_aware": "谨慎使用！",
+  "cti.tooltip.modifier.self_regulate": "自范性-增加的伤害：",
 
   "fluid.cti.molten_aetherium": "熔融阳清合金",
   "item.cti.molten_aetherium_bucket": "熔融阳清合金桶",
