@@ -67,6 +67,7 @@ public class MemoryAlloy extends EtSTBaseModifier implements SlotStackModifierHo
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         if (damageDealt<=10) return;
+        if (context.getLivingTarget()==null) return;
         ModDataNBT nbt = tool.getPersistentData();
         int memorizedDamages = nbt.getInt(KEY_MEMORIZED_DAMAGE)+1;
         float memoryDamage = nbt.getFloat(KEY_DAMAGE_BOOST)*memorizedDamages;
