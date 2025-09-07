@@ -105,6 +105,7 @@
     "GameRendererMixin",
     "AdAstraMixin.CustomButtonMixin",
     "AdAstraMixin.PlanetSelectionScreenMixin",
+    "bugFix.EntityUmvuthiMixin",
     "Fancymenu.GuiGraphicsMixin"
   ],
   "server": [
