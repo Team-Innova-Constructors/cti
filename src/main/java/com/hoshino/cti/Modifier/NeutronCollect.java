@@ -16,6 +16,7 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import java.util.List;
+import java.util.Random;
 
 public class NeutronCollect extends EtSTBaseModifier implements ProcessLootModifierHook {
     @Override
@@ -27,8 +28,9 @@ public class NeutronCollect extends EtSTBaseModifier implements ProcessLootModif
     @Override
     public void processLoot(IToolStackView tool, ModifierEntry modifier, List<ItemStack> generatedLoot, LootContext context) {
         if (context.getParamOrNull(LootContextParams.KILLER_ENTITY) instanceof FakePlayer) return;
-        if (context.getParamOrNull(LootContextParams.KILLER_ENTITY) instanceof ServerPlayer &&context.getRandom().nextInt(5)<context.getLuck()){
-            generatedLoot.remove(context.getRandom().nextInt(generatedLoot.size()));
+        if (context.getLuck()<0||generatedLoot.isEmpty()) return;
+        if (context.getParamOrNull(LootContextParams.KILLER_ENTITY) instanceof ServerPlayer &&RANDOM.nextInt(5)<context.getLuck()){
+            generatedLoot.remove(RANDOM.nextInt(generatedLoot.size()));
             Item item = tool.getModifierLevel(CtiModifiers.NEUTRON_COLLECT_PLUS.get())>0?ModItems.neutron_nugget.get():ModItems.neutron_pile.get();
             generatedLoot.add(new ItemStack(item,modifier.getLevel()));
         }
