@@ -193,7 +193,7 @@ public class LivingEvents {
         if (!SuperpositionHandler.isTheCursedOne(player)) return;
         int time=CurseUtil.getResoluteTime(player);
         if(time==0)return;
-        event.setAmount(event.getAmount() * (1-(0.08f * time)));
+        event.setAmount(event.getAmount() * (1-(0.06f * time)));
     }
 
     @SubscribeEvent

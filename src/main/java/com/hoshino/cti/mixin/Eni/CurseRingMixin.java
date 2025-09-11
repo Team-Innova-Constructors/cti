@@ -116,10 +116,6 @@ public abstract class CurseRingMixin extends ItemBaseCurio {
                 long curseTime=CurseUtil.curseTime(player);
                 CtiPacketHandler.sendToPlayer(new ServerCursePacket(punishTime,deathFre,resoluteTime),serverPlayer);
                 cti$CheckStage(curseTime,serverPlayer);
-                if(serverPlayer.getLevel().getDifficulty()!=Difficulty.PEACEFUL&&serverPlayer.gameMode.isSurvival()&&curseTime<96000&&serverPlayer.getLevel().dimension().equals(Level.END)){
-                    SuperpositionHandler.backToSpawn(serverPlayer);
-                    serverPlayer.sendSystemMessage(Component.literal("末地之门尚未对你打开,请等待游戏日四天后"));
-                }
             }
         }
     }
@@ -169,7 +165,7 @@ public abstract class CurseRingMixin extends ItemBaseCurio {
                 var string3 = "在" + (time) + "秒后,会结束灵魂破碎对你的影响";
                 var string7 = "灵魂破碎影响已结束，暂时的";
 
-                var string4 = "当前坚毅层数为" + (resoluteTime) + "层,会减少受到的" + resoluteTime * 8 + "%" + "伤害";
+                var string4 = "当前坚毅层数为" + (resoluteTime) + "层,会减少受到的" + resoluteTime * 6 + "%" + "伤害";
                 var string5 = "如果你死亡了会清除所有的坚毅层数!";
                 long resoluteWait = 24000 - player.getLevel().getGameTime() % 24000;
                 var string6 = "下一层坚毅层数续上倒计时" + resoluteWait;
