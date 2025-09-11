@@ -28,6 +28,7 @@ public class ReflectTraitMixin {
      */
     @Overwrite
     public void onHurtByOthers(int level, LivingEntity entity, LivingHurtEvent event) {
+        if (event.getSource().isBypassInvul()) return;
         if(event.getSource().getEntity() instanceof LivingEntity lv&&event.getSource() instanceof EntityDamageSource source&&!source.isThorns()){
             if (CurioCompat.hasItem(lv, LHItems.ABRAHADABRA.get())) {
                 return;

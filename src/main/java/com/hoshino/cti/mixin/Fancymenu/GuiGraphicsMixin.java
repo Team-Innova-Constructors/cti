@@ -20,7 +20,9 @@ import java.util.List;
 public abstract class GuiGraphicsMixin {
 
     private static final List<String> BLACKLISTED_SCREEN_PREFIXES = Arrays.asList(
-            "de.mari_023.ae2wtlib."
+            "de.mari_023.ae2wtlib.",
+            "com.simibubi.create.",
+            "appeng.client.gui."
     );
 
     private boolean isScreenBlacklisted() {
