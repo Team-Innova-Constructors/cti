@@ -32,6 +32,7 @@ public class StarFallParticle extends TextureSheetParticle {
         this.maxRadius = maxRadius;
         this.currentRadius = 0;
         this.quadSize = size;
+        this.alpha= alpha;
     }
 
     @Override

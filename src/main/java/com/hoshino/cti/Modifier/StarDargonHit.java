@@ -81,7 +81,7 @@ public class StarDargonHit extends Modifier implements MeleeHitModifierHook , Me
             if(persistentData.getInt(STAR_DUST)>10){
                 persistentData.putInt(STAR_DUST,persistentData.getInt(STAR_DUST)-10);
                 float damageShouldBe=DAMAGE_SHOULD_BE.getOrDefault(player.getUUID(),10f);
-                var ammo=new StarDargonAmmo(player,player.getLevel(),target.position(),damageShouldBe);
+                var ammo=new StarDargonAmmo(player,player.getLevel(),target.blockPosition(),damageShouldBe);
                 player.getLevel().addFreshEntity(ammo);
             }
         }

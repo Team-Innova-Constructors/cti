@@ -5,6 +5,7 @@ import com.hoshino.cti.client.particle.ParticleType.StarFallParticleType;
 import com.hoshino.cti.register.CtiEntity;
 import com.hoshino.cti.register.CtiItem;
 import com.hoshino.cti.register.CtiSounds;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
@@ -26,7 +27,7 @@ public class StarDargonAmmo extends BaseFallenAmmo {
         super(pEntityType, pLevel);
     }
 
-    public StarDargonAmmo(LivingEntity owner, Level level, Vec3 targetPosition,float damageAmount) {
+    public StarDargonAmmo(LivingEntity owner, Level level, BlockPos targetPosition, float damageAmount) {
         super(CtiEntity.star_dragon_ammo.get(), owner, level, targetPosition);
         this.setHurtDamage(damageAmount);
     }
@@ -34,7 +35,7 @@ public class StarDargonAmmo extends BaseFallenAmmo {
     @Override
     protected void shockWaveHurt(Mob mob, Player player) {
         mob.hurt(DamageSource.playerAttack(player).bypassArmor().bypassMagic(),this.getHurtDamage());
-        Vec3 knock = mob.position().subtract(getTargetPosition()).normalize().scale(3);
+        Vec3 knock = mob.position().subtract(getVec3TargetPosition()).normalize().scale(3);
         Vec3 finalKnock = new Vec3(knock.x(), 0.4, knock.z());
         mob.setDeltaMovement(finalKnock);
         if(mob.getHealth()<mob.getMaxHealth() * 0.21f||getHurtDamage()>mob.getMaxHealth() * 10f){
@@ -51,8 +52,8 @@ public class StarDargonAmmo extends BaseFallenAmmo {
         super.onArrived(player);
         this.directHurtLiving(DamageSource.playerAttack(player).bypassArmor().bypassMagic().bypassInvul(), this.getHurtDamage() * 10, 5);
         if (!this.level.isClientSide) {
-            var particle = new StarFallParticleType(true, 20, 0xf8ffb2, 1, 1, 10, getTargetPosition());
-            player.getLevel().sendParticles(particle, getTargetPosition().x(), getTargetPosition().y() + 0.05, getTargetPosition().z(), 1, 0, 0, 0, 0.25);
+            var particle = new StarFallParticleType(true, 1, 0xf8ffb2, 1, 1, 10, getVec3TargetPosition());
+            player.getLevel().sendParticles(particle, getVec3TargetPosition().x(), getVec3TargetPosition().y() + 0.05, getVec3TargetPosition().z(), 1, 0, 0, 0, 0.25);
             getLevel().playSound(null, player, CtiSounds.starHit.get(), SoundSource.AMBIENT, 1f, 1);
         }
     }

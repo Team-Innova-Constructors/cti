@@ -31,8 +31,8 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 
 public class ClientEventHandler {
 
-    @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = Cti.MOD_ID,value = Dist.CLIENT,bus = net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD)
-    public static class Mod {
+    @Mod.EventBusSubscriber(modid = Cti.MOD_ID,value = Dist.CLIENT,bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class Mods {
 
         @SubscribeEvent
         public static void registerLoader(ModelEvent.RegisterGeometryLoaders event){
@@ -97,9 +97,8 @@ public class ClientEventHandler {
 
     }
 
-    @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = Cti.MOD_ID,value = Dist.CLIENT,bus = net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.FORGE)
+    @Mod.EventBusSubscriber(modid = Cti.MOD_ID,value = Dist.CLIENT,bus =Mod.EventBusSubscriber.Bus.FORGE)
     public static class Forge {
-
         @SubscribeEvent
         public static void onKeyPressed(InputEvent.Key event) {
             Player player = Minecraft.getInstance().player;
@@ -114,7 +113,5 @@ public class ClientEventHandler {
                 }
             }
         }
-
     }
-
 }

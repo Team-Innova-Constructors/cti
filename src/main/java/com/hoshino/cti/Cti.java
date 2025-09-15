@@ -12,6 +12,7 @@ import com.hoshino.cti.util.BiomeUtil;
 import com.hoshino.cti.util.tier.Roxy;
 import com.hoshino.cti.world.feature.ctiConfiguredFeature;
 import com.hoshino.cti.world.feature.ctiPlacedFeature;
+import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.common.MinecraftForge;
@@ -66,8 +67,6 @@ public class Cti {
         eventBus.addListener(this::commonSetup);
 
     }
-
-    public static Sleep sleep = new Sleep();
 
     public static ResourceLocation getResource(String id) {
         return new ResourceLocation("cti", id);

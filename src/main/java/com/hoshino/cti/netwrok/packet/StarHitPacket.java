@@ -40,7 +40,7 @@ public class StarHitPacket {
             if(starDust>=10){
                 view.getPersistentData().putInt(StarDargonHit.STAR_DUST,starDust-10);
                 float damageShouldBe=StarDargonHit.DAMAGE_SHOULD_BE.getOrDefault(sender.getUUID(),10f);
-                var ammo=new StarDargonAmmo(sender,sender.getLevel(),mob.position(),damageShouldBe);
+                var ammo=new StarDargonAmmo(sender,sender.getLevel(),mob.blockPosition(),damageShouldBe);
                 sender.getLevel().playSound(null,sender, SoundEvents.ENDER_DRAGON_SHOOT, SoundSource.AMBIENT,1f,1f);
                 sender.getLevel().addFreshEntity(ammo);
             }

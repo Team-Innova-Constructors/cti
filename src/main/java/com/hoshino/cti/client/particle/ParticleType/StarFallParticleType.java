@@ -88,7 +88,7 @@ public class StarFallParticleType extends ParticleType<StarFallParticleType> imp
         public @NotNull StarFallParticleType fromNetwork(@NotNull ParticleType<StarFallParticleType> pParticleType, FriendlyByteBuf pBuffer) {
             int alpha = pBuffer.readInt();
             int color = pBuffer.readInt();
-            float speed = pBuffer.readInt();
+            float speed = pBuffer.readFloat();
             float size = pBuffer.readFloat();
             float maxRadius = pBuffer.readFloat();
 
@@ -97,7 +97,7 @@ public class StarFallParticleType extends ParticleType<StarFallParticleType> imp
             double z = pBuffer.readDouble();
 
             Vec3 origin = new Vec3(x, y, z);
-            return new StarFallParticleType(true, color, alpha, speed, size, maxRadius, origin);
+            return new StarFallParticleType(true, alpha, color, speed, size, maxRadius, origin);
         }
     };
 

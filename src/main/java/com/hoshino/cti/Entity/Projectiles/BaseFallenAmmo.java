@@ -2,6 +2,7 @@ package com.hoshino.cti.Entity.Projectiles;
 
 import com.hoshino.cti.register.CtiEntityData;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Rotations;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -32,7 +33,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public abstract class BaseFallenAmmo extends Projectile implements ItemSupplier {
-    protected static final EntityDataAccessor<Vec3> targetPosition= SynchedEntityData.defineId(BaseFallenAmmo.class, CtiEntityData.VEC3);
+    protected static final EntityDataAccessor<BlockPos> targetPosition = SynchedEntityData.defineId(BaseFallenAmmo.class, EntityDataSerializers.BLOCK_POS);
     protected static final EntityDataAccessor<Integer> waitTick= SynchedEntityData.defineId(BaseFallenAmmo.class,EntityDataSerializers.INT);
     protected static final EntityDataAccessor<Float> hurtDamage= SynchedEntityData.defineId(BaseFallenAmmo.class,EntityDataSerializers.FLOAT);
     protected boolean isArrived;
@@ -41,18 +42,18 @@ public abstract class BaseFallenAmmo extends Projectile implements ItemSupplier 
     protected BaseFallenAmmo(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
-    protected BaseFallenAmmo(EntityType<? extends BaseFallenAmmo> pEntityType, LivingEntity owner, Level level, Vec3 targetPosition){
+    protected BaseFallenAmmo(EntityType<? extends BaseFallenAmmo> pEntityType, LivingEntity owner, Level level, BlockPos targetPosition){
         super(pEntityType,level);
         setOwner(owner);
         this.setTargetPosition(targetPosition);
         var source=this.getLevel().random;
-        this.setPos(targetPosition.add(new Vec3(source.nextInt(30), 50, source.nextInt(30))));
+        this.setPos(targetPosition.getX() + source.nextInt(30),targetPosition.getY() + 50,targetPosition.getZ() + source.nextInt(30));
         this.setNoGravity(true);
-        this.setDeltaMovement(getTargetPosition().subtract(this.position()).scale(0.02f));
+        this.setDeltaMovement(getVec3TargetPosition().subtract(this.position()).scale(0.02f));
     }
     @Override
     protected void defineSynchedData() {
-        this.entityData.define(targetPosition,Vec3.ZERO);
+        this.entityData.define(targetPosition,new BlockPos( 0,0,0));
         this.entityData.define(waitTick,0);
         this.entityData.define(hurtDamage,5f);
     }
@@ -68,11 +69,14 @@ public abstract class BaseFallenAmmo extends Projectile implements ItemSupplier 
     public int getWaitTime(){
         return this.entityData.get(waitTick);
     }
-    public Vec3 getTargetPosition(){
+    public Vec3 getVec3TargetPosition(){
+        return new Vec3(getTargetPosition().getX(),getTargetPosition().getY(),getTargetPosition().getZ());
+    }
+    public BlockPos getTargetPosition(){
         return this.entityData.get(targetPosition);
     }
-    public void setTargetPosition(Vec3 position){
-        this.entityData.set(targetPosition,position);
+    public void setTargetPosition(BlockPos position){
+        this.entityData.set(targetPosition,new BlockPos(position));
     }
     protected void onArrived(ServerPlayer player){
         this.setDeltaMovement(Vec3.ZERO);
@@ -80,7 +84,7 @@ public abstract class BaseFallenAmmo extends Projectile implements ItemSupplier 
     }
     protected void directHurtLiving(@Nullable DamageSource source,float amount,double range){
         if(source!=null&&range>0){
-            var vec3=getTargetPosition();
+            var vec3=getVec3TargetPosition();
             int x= (int) vec3.x();
             int y= (int) vec3.y();
             int z= (int) vec3.z();
@@ -142,7 +146,7 @@ public abstract class BaseFallenAmmo extends Projectile implements ItemSupplier 
     @Override
     public void tick() {
         super.tick();
-        if (this.tickCount > 300) {
+        if (this.tickCount > 200) {
             this.discard();
         }
         if (this.getWaitTime() > 0) {
@@ -162,16 +166,16 @@ public abstract class BaseFallenAmmo extends Projectile implements ItemSupplier 
                 double z = vec3.z;
                 player.getLevel().sendParticles(getTailParticleType(), this.getX() + x * (double) i / 4.0D, this.getY() + y * (double) i / 4.0D, this.getZ() + z * (double) i / 4.0D, 10, 0, 0, 0, 0.25);
             }
-            if (this.position().distanceTo(getTargetPosition())<1d && !isArrived) {
+            if (this.position().distanceTo(getVec3TargetPosition())<1d && !isArrived) {
                 onArrived(player);
             }
             if (isArrived && arrivedTime < 80) {
-                var Vec3Pos = getTargetPosition();
+                var Vec3Pos = getVec3TargetPosition();
                 var pos = new BlockPos((int) Vec3Pos.x(), (int) Vec3Pos.y(), (int) Vec3Pos.z());
                 AABB aabb = new AABB(pos).inflate(100);
                 List<Mob> mobList = this.level.getEntitiesOfClass(Mob.class, aabb, LivingEntity::isAlive);
                 for (Mob mob : mobList) {
-                    var distance = mob.position().subtract(getTargetPosition()).length();
+                    var distance = mob.position().subtract(getVec3TargetPosition()).length();
                     if (distance < arrivedTime - 3 || distance > arrivedTime + 3) continue;
                     this.shockWaveHurt(mob, player);
                 }
