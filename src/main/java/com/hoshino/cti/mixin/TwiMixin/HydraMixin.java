@@ -27,7 +27,6 @@ public abstract class HydraMixin extends Mob implements Enemy, EnforcedHomePoint
 
     @Inject(method = "hurt", at = @At("RETURN"), cancellable = true)
     private void s(DamageSource src, float damage, CallbackInfoReturnable<Boolean> cir) {
-        var count = this.countActiveHeads();
         cir.setReturnValue(super.hurt(src, damage));
     }
     @ModifyArg(method = "attackEntityFromPart",at = @At(value = "INVOKE", target = "Ljava/lang/Math;round(F)I"),remap = false)

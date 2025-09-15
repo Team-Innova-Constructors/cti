@@ -41,7 +41,7 @@ public class CurseUtil {
     public static void setPunishTime(Player player,int day){
         var data=getCurseCurioData(player);
         if(data==null)return;
-        data.putInt("punish_time",day * 1200);
+        data.putInt("punish_time",day * 300);
     }
     public static int getDeathFrequency(Player player) {
         var data=getCurseCurioData(player);
